@@ -209,7 +209,7 @@ body {
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #C9D1C8; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #7D8F84; }
+::-webkit-scrollbar-thumb:hover { background: #5B6B62; }
 
 /* Flex row responsive */
 .flex-row {

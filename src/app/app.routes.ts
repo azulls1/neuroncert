@@ -189,10 +189,11 @@ export const routes: Routes = [
     ],
   },
 
-  // Catch-all redirect
+  // 404 Not Found
   {
     path: '**',
-    redirectTo: '',
-    pathMatch: 'full',
+    loadComponent: () =>
+      import('./features/not-found/not-found.component').then((m) => m.NotFoundComponent),
+    title: '404 — Claude AI',
   },
 ];

@@ -24,7 +24,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
           <div class="animate-fadeInUp" style="margin-bottom: 16px;">
             <img
               src="/assets/icons/logo_ia_withe.webp"
-              alt="iagentek"
+              alt="Claude AI Learning Platform"
               style="width: 56px; height: 56px; border-radius: 12px; object-fit: contain;"
             />
           </div>
@@ -51,6 +51,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 6v6l4 2" />
@@ -66,6 +67,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -93,6 +95,15 @@ import { LearningTrack, LearningLevel } from '../../core/models';
         </div>
       </section>
 
+      @if (catalogError()) {
+        <div class="alert alert-warning">
+          <div class="alert__content">
+            <div class="alert__title">Error al cargar datos</div>
+            <span>{{ catalogError() }}</span>
+          </div>
+        </div>
+      }
+
       <!-- QUICK ACTIONS -- "What do you want to do?" -->
       <section class="actions-section">
         <h2 class="section-title font-display">Que te gustaria hacer?</h2>
@@ -107,6 +118,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="1.5"
+                aria-hidden="true"
               >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 6v6l4 2" />
@@ -126,6 +138,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -142,6 +155,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="1.5"
+                aria-hidden="true"
               >
                 <circle cx="12" cy="8" r="6" />
                 <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" />
@@ -162,6 +176,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -178,6 +193,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="1.5"
+                aria-hidden="true"
               >
                 <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
                 <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
@@ -197,6 +213,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -213,6 +230,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="1.5"
+                aria-hidden="true"
               >
                 <path
                   d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
@@ -234,6 +252,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -255,6 +274,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
@@ -276,6 +296,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path d="M9 11l3 3L22 4" />
                 <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
@@ -297,6 +318,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path
                   d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
@@ -324,6 +346,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <rect x="3" y="3" width="18" height="18" rx="2" />
                 <path d="M3 9h18" />
@@ -363,6 +386,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
+                    aria-hidden="true"
                   >
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     <path d="M9 12l2 2 4-4" />
@@ -392,6 +416,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
+                    aria-hidden="true"
                   >
                     <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                     <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
@@ -420,6 +445,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
+                    aria-hidden="true"
                   >
                     <circle cx="12" cy="12" r="10" />
                     <polygon points="10 8 16 12 10 16 10 8" />
@@ -448,6 +474,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
+                    aria-hidden="true"
                   >
                     <path
                       d="M12 2a10 10 0 0110 10 10 10 0 01-10 10A10 10 0 012 12 10 10 0 0112 2z"
@@ -478,6 +505,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
+                    aria-hidden="true"
                   >
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 6v6l4 2" />
@@ -666,7 +694,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
 
       .hero-subtitle {
         font-size: 1rem;
-        color: #9eada3;
+        color: #7d9088;
         line-height: 1.6;
         margin: 0 0 32px;
         max-width: 540px;
@@ -756,7 +784,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
 
       .hero-pill-label {
         font-size: 11px;
-        color: #9eada3;
+        color: #7d9088;
         margin-top: 4px;
       }
 
@@ -853,13 +881,13 @@ import { LearningTrack, LearningLevel } from '../../core/models';
       }
       .action-desc {
         font-size: 12px;
-        color: #7d8f84;
+        color: #5b6b62;
         margin: 0;
         line-height: 1.4;
       }
 
       .action-arrow {
-        color: #9eada3;
+        color: #7d9088;
         flex-shrink: 0;
         opacity: 0.5;
         transition: all 0.25s ease;
@@ -932,7 +960,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
       }
       .stat-label {
         font-size: 12px;
-        color: #7d8f84;
+        color: #5b6b62;
         margin-bottom: 8px;
       }
 
@@ -961,7 +989,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
 
       .stat-hint {
         font-size: 10px;
-        color: #9eada3;
+        color: #7d9088;
         margin-top: 6px;
       }
 
@@ -1005,7 +1033,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
         padding: 4px 12px;
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 4px;
-        color: #9eada3;
+        color: #7d9088;
         font-size: 11px;
         letter-spacing: 0.1em;
         margin-bottom: 16px;
@@ -1097,7 +1125,7 @@ import { LearningTrack, LearningLevel } from '../../core/models';
       }
       .cert-path-meta {
         font-size: 10px;
-        color: #9eada3;
+        color: #7d9088;
         margin-top: 6px;
         display: inline-block;
       }

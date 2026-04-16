@@ -63,6 +63,7 @@ export class QuestionBankService {
 
         const examQuestions: ExamQuestion[] = selected.map((q) => ({
           ...q,
+          options: shuffleArray([...q.options]), // Shuffle options to prevent pattern detection
           correctOptionId: undefined, // Don't expose to client during exam
           selectedOptionId: undefined,
           flagged: false,
@@ -243,6 +244,7 @@ export class QuestionBankService {
 
             const examQuestions: ExamQuestion[] = this._shuffleArray(selected).map((q) => ({
               ...q,
+              options: shuffleArray([...q.options]), // Shuffle options to prevent pattern detection
               correctOptionId: undefined, // Don't expose to client during exam
               selectedOptionId: undefined,
               flagged: false,

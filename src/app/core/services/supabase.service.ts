@@ -1,6 +1,6 @@
 import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import { ExamResult, DomainScore, ExamSummary } from '../models/exam-result.model';
 import { CurriculumProgress } from '../models/curriculum-progress.model';
 import { ExamMode } from '../models/content-type.model';
@@ -73,6 +73,7 @@ export interface LeaderboardRow {
 })
 export class SupabaseService {
   private supabase!: SupabaseClient;
+  private _clientPromise: Promise<SupabaseClient> | null = null;
   private deviceId = inject(DeviceIdService);
   private platformId = inject(PLATFORM_ID);
   private isBrowser: boolean;
@@ -91,20 +92,31 @@ export class SupabaseService {
 
   constructor() {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
-    if (!this.isBrowser) {
-      return;
+  /**
+   * Lazily initializes the Supabase client on first use via dynamic import.
+   * This avoids loading the ~194KB Supabase JS bundle eagerly at startup.
+   */
+  private async ensureClient(): Promise<SupabaseClient> {
+    if (this.supabase) return this.supabase;
+    if (!this.isBrowser) throw new Error('SupabaseService: Not in browser environment');
+
+    if (!this._clientPromise) {
+      this._clientPromise = import('@supabase/supabase-js').then(({ createClient }) => {
+        const supabaseUrl = environment.supabase.url.startsWith('http')
+          ? environment.supabase.url
+          : `${window.location.origin}${environment.supabase.url}`;
+        this.supabase = createClient(supabaseUrl, environment.supabase.anonKey, {
+          global: {
+            headers: { 'x-device-id': this.deviceId.getDeviceId() },
+          },
+        });
+        this.verifyConnection();
+        return this.supabase;
+      });
     }
-
-    const supabaseUrl = environment.supabase.url.startsWith('http')
-      ? environment.supabase.url
-      : `${window.location.origin}${environment.supabase.url}`;
-    this.supabase = createClient(supabaseUrl, environment.supabase.anonKey, {
-      global: {
-        headers: { 'x-device-id': this.deviceId.getDeviceId() },
-      },
-    });
-    this.verifyConnection();
+    return this._clientPromise;
   }
 
   /**
@@ -113,7 +125,8 @@ export class SupabaseService {
    */
   private async verifyConnection(): Promise<void> {
     try {
-      const { error } = await this.supabase
+      const client = await this.ensureClient();
+      const { error } = await client
         .from(TABLE_EXAM_RESULTS)
         .select('examId', { count: 'exact', head: true })
         .limit(1);
@@ -161,7 +174,8 @@ export class SupabaseService {
       durationSec: result.summary.totalTimeSpent,
     };
 
-    const { data, error } = await this.supabase
+    const client = await this.ensureClient();
+    const { data, error } = await client
       .from(TABLE_EXAM_RESULTS)
       .insert({ ...row, device_id: this.deviceId.getDeviceId() })
       .select()
@@ -184,7 +198,8 @@ export class SupabaseService {
     if (!this.isBrowser) {
       return [];
     }
-    const { data, error } = await this.supabase
+    const client = await this.ensureClient();
+    const { data, error } = await client
       .from(TABLE_EXAM_RESULTS)
       .select('*')
       .eq('device_id', this.deviceId.getDeviceId())
@@ -226,7 +241,8 @@ export class SupabaseService {
       totalTimeSpentSec: progress.totalTimeSpentSec ?? 0,
     };
 
-    const { data, error } = await this.supabase
+    const client = await this.ensureClient();
+    const { data, error } = await client
       .from(TABLE_PROGRESS)
       .upsert(
         { ...row, device_id: this.deviceId.getDeviceId() },
@@ -252,7 +268,8 @@ export class SupabaseService {
     if (!this.isBrowser) {
       return [];
     }
-    let query = this.supabase
+    const client = await this.ensureClient();
+    let query = client
       .from(TABLE_PROGRESS)
       .select('*')
       .eq('device_id', this.deviceId.getDeviceId())
@@ -286,7 +303,8 @@ export class SupabaseService {
     if (!this.isBrowser) {
       return [];
     }
-    const { data, error } = await this.supabase
+    const client = await this.ensureClient();
+    const { data, error } = await client
       .from(TABLE_LEADERBOARD)
       .select('*')
       .order('score', { ascending: false })
@@ -312,7 +330,8 @@ export class SupabaseService {
     if (!this.isBrowser) {
       return null;
     }
-    const { data, error } = await this.supabase
+    const client = await this.ensureClient();
+    const { data, error } = await client
       .from(TABLE_STUDY_SESSIONS)
       .insert({ ...session, device_id: this.deviceId.getDeviceId() })
       .select()
@@ -336,10 +355,10 @@ export class SupabaseService {
    * Returns null during SSR when no client is available.
    * @deprecated This method is currently unused — no callers exist in the codebase.
    */
-  getClient(): SupabaseClient | null {
+  async getClient(): Promise<SupabaseClient | null> {
     if (!this.isBrowser) {
       return null;
     }
-    return this.supabase;
+    return this.ensureClient();
   }
 }
