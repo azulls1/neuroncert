@@ -8,10 +8,9 @@ import { formatTime } from '../utils/exam.utils';
  * Maneja el tiempo restante, pausa/resume y notificaciones
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TimerService {
-
   // Signals para el estado del temporizador
   private _isRunning = signal(false);
   private _isPaused = signal(false);
@@ -89,9 +88,7 @@ export class TimerService {
    * Observable con el tiempo formateado
    */
   get formattedTime$(): Observable<string> {
-    return this._remainingTime$.pipe(
-      map(seconds => this.formatTime(seconds))
-    );
+    return this._remainingTime$.pipe(map((seconds) => this.formatTime(seconds)));
   }
 
   /**
@@ -179,9 +176,7 @@ export class TimerService {
     this._clearInterval();
 
     this._timerSubscription = interval(1000)
-      .pipe(
-        takeWhile(() => this._isRunning())
-      )
+      .pipe(takeWhile(() => this._isRunning()))
       .subscribe(() => {
         // Si esta pausado, no decrementar
         if (this._isPaused()) {
@@ -232,7 +227,7 @@ export class TimerService {
    */
   parseTime(timeString: string): number {
     const [minutes, seconds] = timeString.split(':').map(Number);
-    return (minutes * 60) + seconds;
+    return minutes * 60 + seconds;
   }
 
   /**
@@ -276,7 +271,7 @@ export class TimerService {
       remainingSeconds: this._remainingSeconds(),
       totalSeconds: this._totalSeconds(),
       formattedTime: this.formatTime(this._remainingSeconds()),
-      progressPercentage: this.progressPercentage()
+      progressPercentage: this.progressPercentage(),
     };
   }
 

@@ -20,12 +20,12 @@ export const environment = {
     EXAM_RESULTS: 'exam_results',
     EXAM_PROGRESS: 'exam_progress',
     LAST_RESULTS: 'last_results',
-    LEARNING_PROGRESS: 'claude_learning_progress'
+    LEARNING_PROGRESS: 'claude_learning_progress',
   },
   ACCESSIBILITY: {
     KEYBOARD_NAVIGATION: true,
     FOCUS_TIMEOUT: 100,
-    ANNOUNCE_DELAY: 500
+    ANNOUNCE_DELAY: 500,
   },
   VALIDATION: {
     MIN_QUESTIONS: 1,
@@ -33,15 +33,15 @@ export const environment = {
     MIN_DURATION_SEC: 300,
     MAX_DURATION_SEC: 7200,
     MIN_DOMAINS: 1,
-    MAX_DOMAINS: 10
+    MAX_DOMAINS: 10,
   },
   security: {
     enableDetailedLogs: false,
-    maskSensitiveData: true
+    maskSensitiveData: true,
   },
   supabase: {
     url: '/supabase',
     anonKey:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzE1MDUwODAwLAogICJleHAiOiAxODcyODE3MjAwCn0.23LYnOepZ9yTJObLFoTnszO5WdHpbekvgwMt8bn2o_k'
-  }
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzE1MDUwODAwLAogICJleHAiOiAxODcyODE3MjAwCn0.23LYnOepZ9yTJObLFoTnszO5WdHpbekvgwMt8bn2o_k',
+  },
 };

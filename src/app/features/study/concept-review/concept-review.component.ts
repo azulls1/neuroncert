@@ -1,4 +1,5 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, signal, computed } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from '../../../core/models';
@@ -20,7 +21,9 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
         <h1 class="page-header__title">Revision de Conceptos</h1>
         <p class="page-header__desc">
           Guia de estudio para el track: <strong class="text-forest">{{ trackId() }}</strong>
-          <span class="font-mono" style="margin-left: 8px;">({{ filteredQuestions().length }} preguntas)</span>
+          <span class="font-mono" style="margin-left: 8px;"
+            >({{ filteredQuestions().length }} preguntas)</span
+          >
         </p>
       </div>
 
@@ -33,14 +36,18 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
           <p style="font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px;">
             No se encontraron preguntas para este track.
           </p>
-          <button type="button" class="btn btn-secondary" (click)="goBack()">Volver a Tracks</button>
+          <button type="button" class="btn btn-secondary" (click)="goBack()">
+            Volver a Tracks
+          </button>
         </div>
       } @else {
         <!-- Filters -->
         <div class="animate-fadeInUp" style="margin-bottom: 24px;">
           <!-- Domain filter -->
           <div style="margin-bottom: 12px;">
-            <div style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">
+            <div
+              style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;"
+            >
               Filtrar por dominio
             </div>
             <div class="filter-pills">
@@ -67,7 +74,9 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
 
           <!-- Difficulty filter -->
           <div>
-            <div style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">
+            <div
+              style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;"
+            >
               Filtrar por dificultad
             </div>
             <div class="filter-pills">
@@ -97,22 +106,31 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                   </span>
                   <div class="cr-tags">
                     <span class="tag font-mono">{{ question.domainCode }}</span>
-                    <span class="badge" [ngClass]="{
-                      'badge-active': question.difficulty === 'easy',
-                      'badge-warning': question.difficulty === 'medium',
-                      'badge-error': question.difficulty === 'hard'
-                    }">
+                    <span
+                      class="badge"
+                      [ngClass]="{
+                        'badge-active': question.difficulty === 'easy',
+                        'badge-warning': question.difficulty === 'medium',
+                        'badge-error': question.difficulty === 'hard',
+                      }"
+                    >
                       {{ getDifficultyLabel(question.difficulty) }}
                     </span>
                   </div>
                 </div>
 
                 <!-- Question text -->
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--color-text-primary); line-height: 1.6; margin: 16px 0 4px;">
+                <h3
+                  style="font-size: 16px; font-weight: 600; color: var(--color-text-primary); line-height: 1.6; margin: 16px 0 4px;"
+                >
                   {{ question.text }}
                 </h3>
                 @if (question.textEs) {
-                  <p style="font-size: 13px; color: #5B7065; margin: 0 0 12px; padding: 8px 12px; background: #F7F9F8; border-radius: 8px; border-left: 3px solid #9EADA3; line-height: 1.5;">{{ question.textEs }}</p>
+                  <p
+                    style="font-size: 13px; color: #5B7065; margin: 0 0 12px; padding: 8px 12px; background: #F7F9F8; border-radius: 8px; border-left: 3px solid #9EADA3; line-height: 1.5;"
+                  >
+                    {{ question.textEs }}
+                  </p>
                 }
 
                 <!-- Options -->
@@ -122,13 +140,20 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                       class="cr-option"
                       [class.cr-option--correct]="option.id === question.correctOptionId"
                     >
-                      <span class="cr-option-label" [class.text-forest]="option.id === question.correctOptionId">
+                      <span
+                        class="cr-option-label"
+                        [class.text-forest]="option.id === question.correctOptionId"
+                      >
                         {{ getOptionLabel(option.order) }}
                       </span>
                       <div style="flex: 1;">
                         <div style="font-size: 14px; line-height: 1.5;">{{ option.text }}</div>
                         @if (option.textEs) {
-                          <div style="font-size: 12px; color: #5B7065; margin-top: 2px; font-style: italic;">{{ option.textEs }}</div>
+                          <div
+                            style="font-size: 12px; color: #5B7065; margin-top: 2px; font-style: italic;"
+                          >
+                            {{ option.textEs }}
+                          </div>
                         }
                       </div>
                       @if (option.id === question.correctOptionId) {
@@ -140,10 +165,18 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
 
                 <!-- Explanation -->
                 <div class="alert alert-info">
-                  <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Explicacion</div>
+                  <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">
+                    Explicacion
+                  </div>
                   @if (question.explanationEs) {
-                    <div style="font-size: 13px; line-height: 1.6; margin-bottom: 8px;">{{ question.explanationEs }}</div>
-                    <div style="font-size: 12px; color: var(--color-text-muted); border-top: 1px solid #EFF2F0; padding-top: 8px;"><strong>EN:</strong> {{ question.explanation }}</div>
+                    <div style="font-size: 13px; line-height: 1.6; margin-bottom: 8px;">
+                      {{ question.explanationEs }}
+                    </div>
+                    <div
+                      style="font-size: 12px; color: var(--color-text-muted); border-top: 1px solid #EFF2F0; padding-top: 8px;"
+                    >
+                      <strong>EN:</strong> {{ question.explanation }}
+                    </div>
                   } @else {
                     <div style="font-size: 13px; line-height: 1.6;">{{ question.explanation }}</div>
                   }
@@ -152,12 +185,18 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                 <!-- References -->
                 @if (question.references && question.references.length > 0) {
                   <div style="margin-top: 12px;">
-                    <div style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 4px;">
+                    <div
+                      style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 4px;"
+                    >
                       Referencias:
                     </div>
                     <ul style="list-style: none; padding: 0; margin: 0;">
                       @for (ref of question.references; track ref) {
-                        <li style="font-size: 12px; color: var(--color-text-muted); margin-bottom: 2px;">{{ ref }}</li>
+                        <li
+                          style="font-size: 12px; color: var(--color-text-muted); margin-bottom: 2px;"
+                        >
+                          {{ ref }}
+                        </li>
                       }
                     </ul>
                   </div>
@@ -206,71 +245,77 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
       <div style="margin-top: 24px;">
         <button type="button" class="btn btn-secondary" (click)="goBack()">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+            <path
+              fill-rule="evenodd"
+              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+              clip-rule="evenodd"
+            />
           </svg>
           Volver a Tracks
         </button>
       </div>
     </div>
   `,
-  styles: [`
-    .cr-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .cr-tags {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .cr-option {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      border: 2px solid var(--color-border-subtle);
-      border-radius: var(--radius-md);
-      background: var(--color-bg-surface);
-    }
-
-    .cr-option--correct {
-      border-color: #16a34a;
-      background: #f0fdf4;
-    }
-
-    .cr-option-label {
-      font-weight: 700;
-      min-width: 20px;
-      font-size: 14px;
-    }
-
-    .filter-pill--active {
-      background: var(--forest-900) !important;
-      color: white !important;
-      border-color: var(--forest-900) !important;
-    }
-
-    .pagination__btn--active {
-      background: var(--forest-900) !important;
-      color: white !important;
-      border-color: var(--forest-900) !important;
-    }
-
-    @media (max-width: 768px) {
+  styles: [
+    `
       .cr-header {
-        flex-direction: column;
-        align-items: flex-start;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
       }
-    }
-  `]
+
+      .cr-tags {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .cr-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 12px;
+        border: 2px solid var(--color-border-subtle);
+        border-radius: var(--radius-md);
+        background: var(--color-bg-surface);
+      }
+
+      .cr-option--correct {
+        border-color: #16a34a;
+        background: #f0fdf4;
+      }
+
+      .cr-option-label {
+        font-weight: 700;
+        min-width: 20px;
+        font-size: 14px;
+      }
+
+      .filter-pill--active {
+        background: var(--forest-900) !important;
+        color: white !important;
+        border-color: var(--forest-900) !important;
+      }
+
+      .pagination__btn--active {
+        background: var(--forest-900) !important;
+        color: white !important;
+        border-color: var(--forest-900) !important;
+      }
+
+      @media (max-width: 768px) {
+        .cr-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    `,
+  ],
 })
 export class ConceptReviewComponent implements OnInit {
-
+  private destroyRef = inject(DestroyRef);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private questionBank = inject(QuestionBankService);
@@ -291,12 +336,12 @@ export class ConceptReviewComponent implements OnInit {
     { value: 'all', label: 'Todas' },
     { value: 'easy', label: 'Facil' },
     { value: 'medium', label: 'Medio' },
-    { value: 'hard', label: 'Dificil' }
+    { value: 'hard', label: 'Dificil' },
   ];
 
   // Computed
   availableDomains = computed(() => {
-    const domains = this.allQuestions().map(q => q.domainCode);
+    const domains = this.allQuestions().map((q) => q.domainCode);
     return [...new Set(domains)].sort();
   });
 
@@ -306,10 +351,10 @@ export class ConceptReviewComponent implements OnInit {
     const diff = this.selectedDifficulty();
 
     if (domain !== 'all') {
-      questions = questions.filter(q => q.domainCode === domain);
+      questions = questions.filter((q) => q.domainCode === domain);
     }
     if (diff !== 'all') {
-      questions = questions.filter(q => q.difficulty === diff);
+      questions = questions.filter((q) => q.difficulty === diff);
     }
     return questions;
   });
@@ -343,7 +388,7 @@ export class ConceptReviewComponent implements OnInit {
     const trackId = this.route.snapshot.paramMap.get('trackId') ?? '';
     this.trackId.set(trackId);
 
-    this.questionBank.getQuestionsByTrack(trackId).subscribe({
+    this.questionBank.getQuestionsByTrack(trackId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (questions) => {
         this.allQuestions.set(questions);
         this.loading.set(false);
@@ -351,7 +396,7 @@ export class ConceptReviewComponent implements OnInit {
       error: () => {
         this.allQuestions.set([]);
         this.loading.set(false);
-      }
+      },
     });
   }
 

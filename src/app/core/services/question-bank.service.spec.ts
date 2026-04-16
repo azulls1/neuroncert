@@ -46,8 +46,22 @@ function makeCatalog(overrides: Partial<Catalog> = {}): Catalog {
       scenarioCount: 0,
       scenarioPool: [],
       domains: [
-        { code: 'D1', name: 'Domain 1', weight: 0.60, questionBankFile: 'ccaf/d1.json', description: '', totalQuestions: 20 },
-        { code: 'D2', name: 'Domain 2', weight: 0.40, questionBankFile: 'ccaf/d2.json', description: '', totalQuestions: 20 },
+        {
+          code: 'D1',
+          name: 'Domain 1',
+          weight: 0.6,
+          questionBankFile: 'ccaf/d1.json',
+          description: '',
+          totalQuestions: 20,
+        },
+        {
+          code: 'D2',
+          name: 'Domain 2',
+          weight: 0.4,
+          questionBankFile: 'ccaf/d2.json',
+          description: '',
+          totalQuestions: 20,
+        },
       ],
     },
     ...overrides,
@@ -102,10 +116,10 @@ describe('QuestionBankService', () => {
       loaderSpy.loadQuestionFile.and.returnValue(of(mockQuestions));
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       expect(loaderSpy.loadQuestionFile).toHaveBeenCalledWith(
-        'assets/question-bank/academy/foundation/claude-101.json'
+        'assets/question-bank/academy/foundation/claude-101.json',
       );
       expect(result).toBeTruthy();
       expect(result.examId).toBeTruthy();
@@ -121,14 +135,12 @@ describe('QuestionBankService', () => {
         difficulty: 'any',
       };
 
-      loaderSpy.loadQuestionFile.and.returnValue(of([
-        makeQuestion({ id: 'q1' }),
-        makeQuestion({ id: 'q2' }),
-        makeQuestion({ id: 'q3' }),
-      ]));
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([makeQuestion({ id: 'q1' }), makeQuestion({ id: 'q2' }), makeQuestion({ id: 'q3' })]),
+      );
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       expect(result.questions.length).toBe(1);
     });
@@ -145,7 +157,7 @@ describe('QuestionBankService', () => {
       loaderSpy.loadQuestionFile.and.returnValue(of([makeQuestion()]));
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       expect(result.durationSec).toBe(1800);
     });
@@ -161,12 +173,31 @@ describe('QuestionBankService', () => {
       loaderSpy.loadQuestionFile.and.returnValue(of([makeQuestion()]));
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       const eq = result.questions[0];
       expect(eq.selectedOptionId).toBeUndefined();
       expect(eq.flagged).toBeFalse();
       expect(eq.timeSpent).toBe(0);
+    });
+
+    it('should strip correctOptionId from ExamQuestions to prevent cheating', () => {
+      const params: ExamParams = {
+        mode: 'standard',
+        domains: [],
+        count: 1,
+        difficulty: 'any',
+      };
+
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([makeQuestion({ id: 'q1', correctOptionId: 'opt-a' })]),
+      );
+
+      let result: any;
+      service.getQuestions(params).subscribe((r) => (result = r));
+
+      const eq = result.questions[0];
+      expect(eq.correctOptionId).toBeUndefined();
     });
 
     it('should filter questions by difficulty when specified', () => {
@@ -177,15 +208,17 @@ describe('QuestionBankService', () => {
         difficulty: 'hard',
       };
 
-      loaderSpy.loadQuestionFile.and.returnValue(of([
-        makeQuestion({ id: 'q1', difficulty: 'easy' }),
-        makeQuestion({ id: 'q2', difficulty: 'hard' }),
-        makeQuestion({ id: 'q3', difficulty: 'medium' }),
-        makeQuestion({ id: 'q4', difficulty: 'hard' }),
-      ]));
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([
+          makeQuestion({ id: 'q1', difficulty: 'easy' }),
+          makeQuestion({ id: 'q2', difficulty: 'hard' }),
+          makeQuestion({ id: 'q3', difficulty: 'medium' }),
+          makeQuestion({ id: 'q4', difficulty: 'hard' }),
+        ]),
+      );
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       // Only hard questions should be returned
       expect(result.questions.length).toBe(2);
@@ -202,14 +235,16 @@ describe('QuestionBankService', () => {
         difficulty: 'any',
       };
 
-      loaderSpy.loadQuestionFile.and.returnValue(of([
-        makeQuestion({ id: 'q1', domainCode: 'D1' }),
-        makeQuestion({ id: 'q2', domainCode: 'D2' }),
-        makeQuestion({ id: 'q3', domainCode: 'D2' }),
-      ]));
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([
+          makeQuestion({ id: 'q1', domainCode: 'D1' }),
+          makeQuestion({ id: 'q2', domainCode: 'D2' }),
+          makeQuestion({ id: 'q3', domainCode: 'D2' }),
+        ]),
+      );
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       expect(result.questions.length).toBe(2);
       result.questions.forEach((q: any) => {
@@ -238,14 +273,14 @@ describe('QuestionBankService', () => {
       const payload: ExamPayload = {
         examId: 'test-exam',
         answers: [
-          { questionId: 'q1', optionId: 'opt-a' },  // correct
-          { questionId: 'q2', optionId: 'opt-b' },  // incorrect
+          { questionId: 'q1', optionId: 'opt-a' }, // correct
+          { questionId: 'q2', optionId: 'opt-b' }, // incorrect
         ],
         totalTimeSpent: 120,
       };
 
       let result: any;
-      service.validate(payload).subscribe(r => result = r);
+      service.validate(payload).subscribe((r) => (result = r));
 
       expect(result).toBeTruthy();
       expect(result.items[0].isCorrect).toBeTrue();
@@ -257,9 +292,9 @@ describe('QuestionBankService', () => {
 
     it('should count skipped questions (empty optionId)', () => {
       const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
-      loaderSpy.loadQuestionFile.and.returnValue(of([
-        makeQuestion({ id: 'q1', correctOptionId: 'opt-a' }),
-      ]));
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([makeQuestion({ id: 'q1', correctOptionId: 'opt-a' })]),
+      );
       service.getQuestions(params).subscribe();
 
       const payload: ExamPayload = {
@@ -270,7 +305,7 @@ describe('QuestionBankService', () => {
       };
 
       let result: any;
-      service.validate(payload).subscribe(r => result = r);
+      service.validate(payload).subscribe((r) => (result = r));
 
       expect(result.summary.skipped).toBe(1);
       expect(result.summary.correct).toBe(0);
@@ -283,20 +318,22 @@ describe('QuestionBankService', () => {
 
       const payload: ExamPayload = {
         examId: 'test',
-        answers: [
-          { questionId: 'q1', optionId: 'opt-a', flagged: true },
-        ],
+        answers: [{ questionId: 'q1', optionId: 'opt-a', flagged: true }],
       };
 
       let result: any;
-      service.validate(payload).subscribe(r => result = r);
+      service.validate(payload).subscribe((r) => (result = r));
 
       expect(result.summary.flagged).toBe(1);
     });
 
     it('should include explanation and domainCode from the original question', () => {
       const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
-      const q = makeQuestion({ id: 'q1', explanation: 'Custom explanation', domainCode: 'D-CUSTOM' });
+      const q = makeQuestion({
+        id: 'q1',
+        explanation: 'Custom explanation',
+        domainCode: 'D-CUSTOM',
+      });
       loaderSpy.loadQuestionFile.and.returnValue(of([q]));
       service.getQuestions(params).subscribe();
 
@@ -306,7 +343,7 @@ describe('QuestionBankService', () => {
       };
 
       let result: any;
-      service.validate(payload).subscribe(r => result = r);
+      service.validate(payload).subscribe((r) => (result = r));
 
       expect(result.items[0].explanation).toBe('Custom explanation');
       expect(result.items[0].domainCode).toBe('D-CUSTOM');
@@ -334,7 +371,7 @@ describe('QuestionBankService', () => {
       };
 
       let result: any;
-      service.validate(payload).subscribe(r => result = r);
+      service.validate(payload).subscribe((r) => (result = r));
 
       const weakRec = result.recommendations.find((r: string) => r.includes('WEAK'));
       expect(weakRec).toBeTruthy();
@@ -358,7 +395,7 @@ describe('QuestionBankService', () => {
       };
 
       let result: any;
-      service.validate(payload).subscribe(r => result = r);
+      service.validate(payload).subscribe((r) => (result = r));
 
       expect(result.recommendations[0]).toContain('Buen rendimiento');
     });
@@ -376,10 +413,10 @@ describe('QuestionBankService', () => {
       loaderSpy.loadQuestionFile.and.returnValue(of(questions));
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       const returnedIds = result.questions.map((q: any) => q.id).sort();
-      const sourceIds = questions.map(q => q.id).sort();
+      const sourceIds = questions.map((q) => q.id).sort();
       expect(returnedIds).toEqual(sourceIds);
     });
   });
@@ -397,7 +434,7 @@ describe('QuestionBankService', () => {
 
       expect(loaderSpy.loadQuestionFile).toHaveBeenCalledTimes(1);
       expect(loaderSpy.loadQuestionFile).toHaveBeenCalledWith(
-        'assets/question-bank/academy/foundation/claude-101.json'
+        'assets/question-bank/academy/foundation/claude-101.json',
       );
     });
   });
@@ -416,8 +453,12 @@ describe('QuestionBankService', () => {
       };
 
       const catalog = makeCatalog();
-      const d1Questions = Array.from({ length: 20 }, (_, i) => makeQuestion({ id: `d1-q${i}`, domainCode: 'D1' }));
-      const d2Questions = Array.from({ length: 20 }, (_, i) => makeQuestion({ id: `d2-q${i}`, domainCode: 'D2' }));
+      const d1Questions = Array.from({ length: 20 }, (_, i) =>
+        makeQuestion({ id: `d1-q${i}`, domainCode: 'D1' }),
+      );
+      const d2Questions = Array.from({ length: 20 }, (_, i) =>
+        makeQuestion({ id: `d2-q${i}`, domainCode: 'D2' }),
+      );
 
       loaderSpy.loadCatalog.and.returnValue(of(catalog));
       loaderSpy.loadQuestionFile.and.callFake((path: string) => {
@@ -427,7 +468,7 @@ describe('QuestionBankService', () => {
       });
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       expect(result).toBeTruthy();
       expect(result.examId).toBeTruthy();
@@ -453,14 +494,32 @@ describe('QuestionBankService', () => {
           scenarioCount: 0,
           scenarioPool: [],
           domains: [
-            { code: 'D1', name: 'Domain 1', weight: 0.70, questionBankFile: 'ccaf/d1.json', description: '', totalQuestions: 100 },
-            { code: 'D2', name: 'Domain 2', weight: 0.30, questionBankFile: 'ccaf/d2.json', description: '', totalQuestions: 100 },
+            {
+              code: 'D1',
+              name: 'Domain 1',
+              weight: 0.7,
+              questionBankFile: 'ccaf/d1.json',
+              description: '',
+              totalQuestions: 100,
+            },
+            {
+              code: 'D2',
+              name: 'Domain 2',
+              weight: 0.3,
+              questionBankFile: 'ccaf/d2.json',
+              description: '',
+              totalQuestions: 100,
+            },
           ],
         },
       });
 
-      const d1Questions = Array.from({ length: 100 }, (_, i) => makeQuestion({ id: `d1-q${i}`, domainCode: 'D1' }));
-      const d2Questions = Array.from({ length: 100 }, (_, i) => makeQuestion({ id: `d2-q${i}`, domainCode: 'D2' }));
+      const d1Questions = Array.from({ length: 100 }, (_, i) =>
+        makeQuestion({ id: `d1-q${i}`, domainCode: 'D1' }),
+      );
+      const d2Questions = Array.from({ length: 100 }, (_, i) =>
+        makeQuestion({ id: `d2-q${i}`, domainCode: 'D2' }),
+      );
 
       loaderSpy.loadCatalog.and.returnValue(of(catalog));
       loaderSpy.loadQuestionFile.and.callFake((path: string) => {
@@ -470,7 +529,7 @@ describe('QuestionBankService', () => {
       });
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       // D1 should have ~70 questions, D2 ~30
       const d1Count = result.questions.filter((q: any) => q.domainCode === 'D1').length;
@@ -492,12 +551,12 @@ describe('QuestionBankService', () => {
 
       const catalog = makeCatalog();
       loaderSpy.loadCatalog.and.returnValue(of(catalog));
-      loaderSpy.loadQuestionFile.and.returnValue(of(
-        Array.from({ length: 20 }, (_, i) => makeQuestion({ id: `q${i}` }))
-      ));
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of(Array.from({ length: 20 }, (_, i) => makeQuestion({ id: `q${i}` }))),
+      );
 
       let result: any;
-      service.getQuestions(params).subscribe(r => result = r);
+      service.getQuestions(params).subscribe((r) => (result = r));
 
       expect(result.durationSec).toBe(3600);
     });

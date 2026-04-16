@@ -1,4 +1,5 @@
-import { Component, signal, computed, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, signal, computed, inject, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CurriculumService } from '../../../core/services/curriculum.service';
@@ -17,7 +18,8 @@ import { ProgressService } from '../../../core/services/progress.service';
       <div class="page-header">
         <h1 class="page-header__title">Tracks de Aprendizaje</h1>
         <p class="page-header__desc">
-          Explora rutas de aprendizaje estructuradas para dominar Claude AI — desde cursos introductorios hasta preparacion para certificaciones.
+          Explora rutas de aprendizaje estructuradas para dominar Claude AI — desde cursos
+          introductorios hasta preparacion para certificaciones.
         </p>
       </div>
 
@@ -27,13 +29,17 @@ import { ProgressService } from '../../../core/services/progress.service';
           class="filter-pill"
           [class.active]="selectedLevel() === 0"
           (click)="selectedLevel.set(0)"
-        >Todos los Niveles</button>
+        >
+          Todos los Niveles
+        </button>
         @for (lvl of availableLevels(); track lvl) {
           <button
             class="filter-pill"
             [class.active]="selectedLevel() === lvl"
             (click)="selectedLevel.set(lvl)"
-          >Nivel {{ lvl }}</button>
+          >
+            Nivel {{ lvl }}
+          </button>
         }
       </div>
 
@@ -43,13 +49,17 @@ import { ProgressService } from '../../../core/services/progress.service';
           class="filter-pill"
           [class.active]="selectedPlatform() === 'all'"
           (click)="selectedPlatform.set('all')"
-        >Todas las Plataformas</button>
+        >
+          Todas las Plataformas
+        </button>
         @for (p of availablePlatforms(); track p.key) {
           <button
             class="filter-pill"
             [class.active]="selectedPlatform() === p.key"
             (click)="selectedPlatform.set(p.key)"
-          >{{ p.label }}</button>
+          >
+            {{ p.label }}
+          </button>
         }
       </div>
 
@@ -58,22 +68,44 @@ import { ProgressService } from '../../../core/services/progress.service';
         <div class="grid-cards stagger-children">
           @for (track of filteredTracks(); track track.id) {
             <div class="card hover-lift animate-fadeInUp">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                <span class="badge" [class.badge-active]="isStarted(track.id)" [class.badge-info]="!isStarted(track.id)">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;"
+              >
+                <span
+                  class="badge"
+                  [class.badge-active]="isStarted(track.id)"
+                  [class.badge-info]="!isStarted(track.id)"
+                >
                   Nivel {{ track.level }}
                 </span>
                 <span class="tag font-mono">{{ getPlatformLabel(track.platform) }}</span>
               </div>
 
-              <h3 style="margin: 8px 0 4px; font-weight: 600;" class="text-forest">{{ track.title }}</h3>
-              <p style="margin: 0 0 12px; font-size: 0.875rem;" class="text-pine">{{ track.description }}</p>
+              <h3 style="margin: 8px 0 4px; font-weight: 600;" class="text-forest">
+                {{ track.title }}
+              </h3>
+              <p style="margin: 0 0 12px; font-size: 0.875rem;" class="text-pine">
+                {{ track.description }}
+              </p>
 
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-moss">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polyline points="12 6 12 12 16 14"/>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-moss"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
                 </svg>
-                <span style="font-size: 0.8125rem;" class="text-pine">{{ track.estimatedHours }}h estimadas</span>
+                <span style="font-size: 0.8125rem;" class="text-pine"
+                  >{{ track.estimatedHours }}h estimadas</span
+                >
               </div>
 
               @if (isStarted(track.id) && getProgress(track.id) > 0) {
@@ -104,21 +136,38 @@ import { ProgressService } from '../../../core/services/progress.service';
       } @else {
         <div class="empty-state animate-fadeInUp">
           <div class="empty-state__icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </div>
           <h3 class="empty-state__title">No se encontraron tracks</h3>
-          <p class="empty-state__desc">Intenta ajustar los filtros para encontrar tracks disponibles.</p>
+          <p class="empty-state__desc">
+            Intenta ajustar los filtros para encontrar tracks disponibles.
+          </p>
         </div>
       }
     </div>
   `,
-  styles: [`:host { display: block; }`]
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class TrackListComponent implements OnInit {
-
+  private destroyRef = inject(DestroyRef);
   private curriculum = inject(CurriculumService);
   private progress = inject(ProgressService);
   private router = inject(Router);
@@ -132,25 +181,25 @@ export class TrackListComponent implements OnInit {
 
   /** Available levels derived from actual tracks */
   availableLevels = computed(() => {
-    const levels = this.tracks().map(t => t.level);
+    const levels = this.tracks().map((t) => t.level);
     return [...new Set(levels)].sort((a, b) => a - b);
   });
 
   /** Platform label map */
   private platformLabels: Record<string, string> = {
-    'academy': 'Academy',
-    'coursera': 'Coursera',
+    academy: 'Academy',
+    coursera: 'Coursera',
     'deeplearning-ai': 'DeepLearning.AI',
     'github-courses': 'GitHub Courses',
-    'cca-f': 'CCA-F'
+    'cca-f': 'CCA-F',
   };
 
   /** Platform options derived from actual tracks */
   availablePlatforms = computed(() => {
-    const platforms = [...new Set(this.tracks().map(t => t.platform))];
-    return platforms.map(key => ({
+    const platforms = [...new Set(this.tracks().map((t) => t.platform))];
+    return platforms.map((key) => ({
       key,
-      label: this.platformLabels[key] ?? key
+      label: this.platformLabels[key] ?? key,
     }));
   });
 
@@ -159,7 +208,7 @@ export class TrackListComponent implements OnInit {
     const level = this.selectedLevel();
     const platform = this.selectedPlatform();
 
-    return this.tracks().filter(t => {
+    return this.tracks().filter((t) => {
       const matchLevel = level === 0 || t.level === level;
       const matchPlatform = platform === 'all' || t.platform === platform;
       return matchLevel && matchPlatform;
@@ -167,7 +216,7 @@ export class TrackListComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.curriculum.loadCatalog().subscribe();
+    this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 
   /** Check if a track has been started */

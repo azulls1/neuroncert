@@ -1,13 +1,21 @@
-import { Component, OnInit, OnDestroy, inject, signal, computed, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  DestroyRef,
+  inject,
+  signal,
+  computed,
+  HostListener,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
 import { ExamStateService } from '../../../core/services';
 import { ExamParams, ExamQuestion } from '../../../core/models';
 import {
   TimerBadgeComponent,
   ProgressStepsComponent,
-  QuestionCardComponent
+  QuestionCardComponent,
 } from '../../../shared';
 
 /**
@@ -22,7 +30,9 @@ import {
   template: `
     <!-- Header -->
     <header class="card card-compact" style="margin-bottom: 1rem;">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <div
+        style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;"
+      >
         <div>
           <h1 class="h4">Simulador CCA-F Claude AI</h1>
           <p class="text-muted">Examen en progreso</p>
@@ -32,9 +42,7 @@ import {
             <span class="badge badge-info">
               {{ examState().progress.answered }} / {{ examState().progress.total }} respondidas
             </span>
-            <span class="badge badge-warning">
-              {{ examState().progress.flagged }} marcadas
-            </span>
+            <span class="badge badge-warning"> {{ examState().progress.flagged }} marcadas </span>
           </div>
           <app-timer-badge
             [remainingSeconds]="examState().timer.remainingTime"
@@ -49,21 +57,30 @@ import {
       <div class="progress-bar">
         <div
           class="progress-fill"
-          [style.width.%]="examState().progress.total > 0
-            ? (examState().progress.answered / examState().progress.total) * 100
-            : 0"
+          [style.width.%]="
+            examState().progress.total > 0
+              ? (examState().progress.answered / examState().progress.total) * 100
+              : 0
+          "
         ></div>
       </div>
       <span class="progress-text">
-        {{ examState().progress.total > 0
-            ? ((examState().progress.answered / examState().progress.total) * 100 | number:'1.0-0')
-            : 0 }}% completado
+        {{
+          examState().progress.total > 0
+            ? ((examState().progress.answered / examState().progress.total) * 100 | number: '1.0-0')
+            : 0
+        }}% completado
       </span>
     </div>
 
     <!-- Error messages (assertive for screen readers) -->
     @if (errorMessage()) {
-      <div role="alert" aria-live="assertive" class="badge badge-error" style="margin-bottom: 1rem; display: block; padding: 0.75rem 1rem;">
+      <div
+        role="alert"
+        aria-live="assertive"
+        class="badge badge-error"
+        style="margin-bottom: 1rem; display: block; padding: 0.75rem 1rem;"
+      >
         {{ errorMessage() }}
       </div>
     }
@@ -82,7 +99,10 @@ import {
           ></app-question-card>
 
           <!-- Navigation -->
-          <nav class="pagination" style="margin-top:1.5rem;display:flex;justify-content:space-between;align-items:center;">
+          <nav
+            class="pagination"
+            style="margin-top:1.5rem;display:flex;justify-content:space-between;align-items:center;"
+          >
             <button
               type="button"
               class="btn btn-outline"
@@ -94,7 +114,8 @@ import {
             </button>
 
             <span class="text-muted">
-              <strong>{{ examState().currentIndex + 1 }}</strong> de <strong>{{ examState().questions.length }}</strong>
+              <strong>{{ examState().currentIndex + 1 }}</strong> de
+              <strong>{{ examState().questions.length }}</strong>
             </span>
 
             <button
@@ -108,7 +129,13 @@ import {
             </button>
           </nav>
         } @else {
-          <div class="loading-dots" role="status" aria-busy="true" aria-live="polite" style="padding:2rem;text-align:center;">
+          <div
+            class="loading-dots"
+            role="status"
+            aria-busy="true"
+            aria-live="polite"
+            style="padding:2rem;text-align:center;"
+          >
             <span>Cargando pregunta...</span>
           </div>
         }
@@ -127,7 +154,10 @@ import {
     </div>
 
     <!-- Footer action bar -->
-    <footer class="action-bar" style="margin-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+    <footer
+      class="action-bar"
+      style="margin-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;"
+    >
       <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
         <button
           type="button"
@@ -156,47 +186,51 @@ import {
           <strong>{{ examState().progress.flagged }}</strong> Marcadas
         </span>
         <span class="text-muted">
-          <strong>{{ examState().progress.total - examState().progress.answered }}</strong> Restantes
+          <strong>{{ examState().progress.total - examState().progress.answered }}</strong>
+          Restantes
         </span>
       </div>
     </footer>
   `,
-  styles: [`
-    :host { display: block; }
-    .exam-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    .exam-sidebar {
-      height: fit-content;
-      order: -1;
-    }
-    @media (min-width: 1024px) {
+  styles: [
+    `
+      :host {
+        display: block;
+      }
       .exam-layout {
-        grid-template-columns: 1fr 280px;
-        gap: 2rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
       .exam-sidebar {
-        position: sticky;
-        top: 4.5rem;
-        order: 2;
+        height: fit-content;
+        order: -1;
       }
-    }
-  `]
+      @media (min-width: 1024px) {
+        .exam-layout {
+          grid-template-columns: 1fr 280px;
+          gap: 2rem;
+        }
+        .exam-sidebar {
+          position: sticky;
+          top: 4.5rem;
+          order: 2;
+        }
+      }
+    `,
+  ],
 })
-export class RunComponent implements OnInit, OnDestroy {
-
+export class RunComponent implements OnInit {
   // Dependencies (Angular 20 inject style)
   private examStateService = inject(ExamStateService);
   private router = inject(Router);
+  private destroyRef = inject(DestroyRef);
 
   // Error message signal for accessible error announcements
   errorMessage = signal<string | null>(null);
 
   // Use service signals directly + observable for timer
   private _timerState = signal<{ remainingTime: number }>({ remainingTime: 0 });
-  private examStateSub?: Subscription;
 
   // Expose service signals as a combined state for the template
   examState = computed(() => ({
@@ -205,7 +239,7 @@ export class RunComponent implements OnInit, OnDestroy {
     currentIndex: this.examStateService.currentIndex(),
     progress: this.examStateService.progress(),
     navigation: this.examStateService.navigation(),
-    timer: this._timerState()
+    timer: this._timerState(),
   }));
 
   // Computed signals
@@ -214,13 +248,15 @@ export class RunComponent implements OnInit, OnDestroy {
   });
 
   answeredIndices = computed(() => {
-    return this.examStateService.questions()
+    return this.examStateService
+      .questions()
       .map((q: ExamQuestion, i: number) => (q.selectedOptionId ? i : -1))
       .filter((i: number) => i !== -1);
   });
 
   flaggedIndices = computed(() => {
-    return this.examStateService.questions()
+    return this.examStateService
+      .questions()
       .map((q: ExamQuestion, i: number) => (q.flagged ? i : -1))
       .filter((i: number) => i !== -1);
   });
@@ -242,14 +278,23 @@ export class RunComponent implements OnInit, OnDestroy {
       }
     }
 
-    // Subscribe to timer updates only
-    this.examStateSub = this.examStateService.examState$.subscribe((state) => {
-      this._timerState.set({ remainingTime: state.timer.remainingTime });
-    });
+    // Subscribe to timer updates only (auto-unsubscribed via DestroyRef)
+    this.examStateService.examState$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((state) => {
+        this._timerState.set({ remainingTime: state.timer.remainingTime });
+      });
   }
 
-  ngOnDestroy(): void {
-    this.examStateSub?.unsubscribe();
+  /**
+   * Previene el cierre accidental de la pestana/ventana durante un examen activo
+   */
+  @HostListener('window:beforeunload', ['$event'])
+  onBeforeUnload(event: BeforeUnloadEvent): void {
+    const status = this.examStateService.status();
+    if (status === 'running' || status === 'paused') {
+      event.preventDefault();
+    }
   }
 
   // --- Actions ---
@@ -263,7 +308,7 @@ export class RunComponent implements OnInit, OnDestroy {
         console.error('Error iniciando examen:', error);
         this.errorMessage.set('Error al iniciar el examen. Redirigiendo...');
         this.router.navigate(['/exam/start']);
-      }
+      },
     });
   }
 

@@ -23,7 +23,12 @@ export interface QuestionStatus {
     <div class="card-section" role="navigation" aria-label="Progreso del examen">
       <!-- Header del progreso -->
       <div style="margin-bottom: 12px;">
-        <h3 class="font-display" style="font-size: 14px; font-weight: 700; color: var(--color-text-primary); margin: 0 0 8px 0;">Progreso</h3>
+        <h3
+          class="font-display"
+          style="font-size: 14px; font-weight: 700; color: var(--color-text-primary); margin: 0 0 8px 0;"
+        >
+          Progreso
+        </h3>
         <div class="ps-stats">
           <div class="ps-stat-item">
             <span class="ps-stat-number text-forest">{{ answeredCount() }}</span>
@@ -34,7 +39,9 @@ export interface QuestionStatus {
             <span class="ps-stat-label">Marc.</span>
           </div>
           <div class="ps-stat-item">
-            <span class="ps-stat-number" style="color: var(--color-text-muted);">{{ remainingCount() }}</span>
+            <span class="ps-stat-number" style="color: var(--color-text-muted);">{{
+              remainingCount()
+            }}</span>
             <span class="ps-stat-label">Rest.</span>
           </div>
         </div>
@@ -43,16 +50,19 @@ export interface QuestionStatus {
       <!-- Barra de progreso general -->
       <div class="progress-labeled" style="margin-bottom: 16px;">
         <div class="progress progress--success">
-          <div
-            class="progress__bar"
-            [style.width.%]="progressPercentage()"
-          ></div>
+          <div class="progress__bar" [style.width.%]="progressPercentage()"></div>
         </div>
         <span class="progress-labeled__value">{{ progressPercentage() }}%</span>
       </div>
 
       <!-- Grid de preguntas -->
-      <div class="ps-questions-grid" role="group" aria-label="Navegacion de preguntas" (keydown)="onGridKeydown($event)" style="margin-bottom: 16px;">
+      <div
+        class="ps-questions-grid"
+        role="group"
+        aria-label="Navegacion de preguntas"
+        (keydown)="onGridKeydown($event)"
+        style="margin-bottom: 16px;"
+      >
         @for (status of questionStatuses(); track status.index) {
           <button
             type="button"
@@ -93,147 +103,148 @@ export interface QuestionStatus {
       </div>
     </div>
   `,
-  styles: [`
-    .ps-stats {
-      display: flex;
-      gap: 8px;
-      justify-content: space-between;
-    }
-
-    .ps-stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      flex: 1;
-      padding: 6px 4px;
-      background: var(--color-bg-muted, #F7F8F7);
-      border-radius: 8px;
-    }
-
-    .ps-stat-number {
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .ps-stat-label {
-      font-size: 10px;
-      color: var(--color-text-muted);
-      margin-top: 2px;
-    }
-
-    .ps-questions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
-      gap: 6px;
-      max-height: 192px;
-      overflow-y: auto;
-      padding: 4px;
-    }
-
-    .ps-questions-grid .pagination__btn {
-      position: relative;
-      width: 36px;
-      height: 36px;
-      border: 2px solid var(--color-border);
-      border-radius: var(--radius-md);
-      background: var(--color-bg-surface);
-      color: var(--color-text-accent);
-      cursor: pointer;
-      transition: all var(--duration-normal) var(--ease-apple);
-    }
-
-    .ps-questions-grid .pagination__btn:hover:not(:disabled) {
-      background: var(--color-bg-hover);
-      border-color: var(--color-text-accent);
-    }
-
-    .ps-questions-grid .pagination__btn.ps-answered {
-      background: var(--forest-900);
-      border-color: var(--forest-900);
-      color: white;
-    }
-
-    .ps-questions-grid .pagination__btn.ps-flagged {
-      background: #D97706;
-      border-color: #B45309;
-      color: white;
-    }
-
-    .ps-questions-grid .pagination__btn.ps-current {
-      border-color: var(--forest-900);
-      background: var(--forest-50);
-      color: var(--forest-900);
-      box-shadow: 0 0 0 2px rgba(4, 32, 44, 0.2);
-    }
-
-    .ps-flag-indicator {
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      width: 14px;
-      height: 14px;
-      background: #D97706;
-      color: white;
-      border-radius: 50%;
-      font-size: 9px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-    }
-
-    .ps-legend {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-    }
-
-    .ps-legend-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .ps-legend-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 1px solid var(--color-border);
-    }
-
-    .ps-legend-dot--answered {
-      background: var(--forest-900);
-      border-color: var(--forest-900);
-    }
-
-    .ps-legend-dot--flagged {
-      background: #D97706;
-      border-color: #B45309;
-    }
-
-    .ps-legend-dot--current {
-      background: var(--forest-50);
-      border-color: var(--forest-900);
-    }
-
-    .ps-legend-dot--unanswered {
-      background: white;
-      border-color: var(--color-border);
-    }
-
-    @media (max-width: 1023px) {
-      .ps-questions-grid {
-        grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
-        max-height: 120px;
+  styles: [
+    `
+      .ps-stats {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
       }
-    }
-  `]
+
+      .ps-stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+        padding: 6px 4px;
+        background: var(--color-bg-muted, #f7f8f7);
+        border-radius: 8px;
+      }
+
+      .ps-stat-number {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .ps-stat-label {
+        font-size: 10px;
+        color: var(--color-text-muted);
+        margin-top: 2px;
+      }
+
+      .ps-questions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+        gap: 6px;
+        max-height: 192px;
+        overflow-y: auto;
+        padding: 4px;
+      }
+
+      .ps-questions-grid .pagination__btn {
+        position: relative;
+        width: 36px;
+        height: 36px;
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background: var(--color-bg-surface);
+        color: var(--color-text-accent);
+        cursor: pointer;
+        transition: all var(--duration-normal) var(--ease-apple);
+      }
+
+      .ps-questions-grid .pagination__btn:hover:not(:disabled) {
+        background: var(--color-bg-hover);
+        border-color: var(--color-text-accent);
+      }
+
+      .ps-questions-grid .pagination__btn.ps-answered {
+        background: var(--forest-900);
+        border-color: var(--forest-900);
+        color: white;
+      }
+
+      .ps-questions-grid .pagination__btn.ps-flagged {
+        background: #d97706;
+        border-color: #b45309;
+        color: white;
+      }
+
+      .ps-questions-grid .pagination__btn.ps-current {
+        border-color: var(--forest-900);
+        background: var(--forest-50);
+        color: var(--forest-900);
+        box-shadow: 0 0 0 2px rgba(4, 32, 44, 0.2);
+      }
+
+      .ps-flag-indicator {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 14px;
+        height: 14px;
+        background: #d97706;
+        color: white;
+        border-radius: 50%;
+        font-size: 9px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+
+      .ps-legend {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+
+      .ps-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .ps-legend-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid var(--color-border);
+      }
+
+      .ps-legend-dot--answered {
+        background: var(--forest-900);
+        border-color: var(--forest-900);
+      }
+
+      .ps-legend-dot--flagged {
+        background: #d97706;
+        border-color: #b45309;
+      }
+
+      .ps-legend-dot--current {
+        background: var(--forest-50);
+        border-color: var(--forest-900);
+      }
+
+      .ps-legend-dot--unanswered {
+        background: white;
+        border-color: var(--color-border);
+      }
+
+      @media (max-width: 1023px) {
+        .ps-questions-grid {
+          grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+          max-height: 120px;
+        }
+      }
+    `,
+  ],
 })
 export class ProgressStepsComponent {
-
   // Inputs
   totalQuestions = input.required<number>();
   answeredQuestions = input.required<number[]>();
@@ -254,7 +265,7 @@ export class ProgressStepsComponent {
       index,
       answered: answered.includes(index),
       flagged: flagged.includes(index),
-      current: index === current
+      current: index === current,
     }));
   });
 

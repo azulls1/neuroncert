@@ -2,17 +2,12 @@ import { Injectable, signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
-import {
-  ExamQuestion,
-  ExamParams,
-  ExamPayload,
-  ExamResult,
-  ExamAnswer
-} from '../models';
+import { ExamQuestion, ExamParams, ExamPayload, ExamResult, ExamAnswer } from '../models';
 import { QuestionBankService } from './question-bank.service';
 import { TimerService } from './timer.service';
 import { ConfigService } from './config.service';
 import { SupabaseService } from './supabase.service';
+import { LoggingService } from './logging.service';
 
 /**
  * Estados posibles del examen
@@ -56,16 +51,16 @@ export interface ExamTimerState {
  * Maneja todo el flujo del examen usando signals y RxJS
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ExamStateService {
-
   // Inyección de dependencias
   private questionBank = inject(QuestionBankService);
   private timer = inject(TimerService);
   private config = inject(ConfigService);
   private router = inject(Router);
   private supabase = inject(SupabaseService);
+  private logger = inject(LoggingService);
 
   // Signals para el estado del examen
   private _status = signal<ExamStatus>('idle');
@@ -155,15 +150,15 @@ export class ExamStateService {
    */
   readonly progress = computed<ExamProgress>(() => {
     const questions = this._questions();
-    const answered = questions.filter(q => q.selectedOptionId).length;
-    const flagged = questions.filter(q => q.flagged).length;
+    const answered = questions.filter((q) => q.selectedOptionId).length;
+    const flagged = questions.filter((q) => q.flagged).length;
     const total = questions.length;
 
     return {
       answered,
       flagged,
       total,
-      percentage: total > 0 ? Math.round((answered / total) * 100) : 0
+      percentage: total > 0 ? Math.round((answered / total) * 100) : 0,
     };
   });
 
@@ -180,7 +175,7 @@ export class ExamStateService {
       isFirst: index === 0,
       isLast: index === total - 1,
       current: index + 1,
-      total
+      total,
     };
   });
 
@@ -195,7 +190,7 @@ export class ExamStateService {
     timer: ExamTimerState;
   }> {
     return this.timer.remainingTime$.pipe(
-      map(remainingTime => ({
+      map((remainingTime) => ({
         status: this._status(),
         currentQuestion: this.currentQuestion(),
         progress: this.progress(),
@@ -204,9 +199,9 @@ export class ExamStateService {
           remainingTime,
           formattedTime: this.timer.formatTime(remainingTime),
           isRunning: this.timer.isRunning(),
-          isPaused: this.timer.isPaused()
-        }
-      }))
+          isPaused: this.timer.isPaused(),
+        },
+      })),
     );
   }
 
@@ -214,12 +209,14 @@ export class ExamStateService {
    * Inicia un nuevo examen
    * @param params Parámetros del examen
    */
-  startExam(params: ExamParams): Observable<{ examId: string; questions: ExamQuestion[]; durationSec: number }> {
+  startExam(
+    params: ExamParams,
+  ): Observable<{ examId: string; questions: ExamQuestion[]; durationSec: number }> {
     this._isLoading.set(true);
     this._error.set(null);
 
     return this.questionBank.getQuestions(params).pipe(
-      tap(result => {
+      tap((result) => {
         this._examId.set(result.examId);
         this._questions.set(result.questions);
         this._currentIndex.set(0);
@@ -231,19 +228,19 @@ export class ExamStateService {
         this.timer.start(
           result.durationSec,
           () => this._handleTimeUp(),
-          () => this._handleTimeWarning()
+          () => this._handleTimeWarning(),
         );
 
         // Cargar progreso guardado
         this._loadProgress();
       }),
-      map(result => result), // Retornar el resultado
-      catchError(error => {
+      map((result) => result), // Retornar el resultado
+      catchError((error) => {
         this._error.set('Error al iniciar el examen');
         this._isLoading.set(false);
-        console.error('Error iniciando examen:', error);
+        this.logger.error('Error iniciando examen', 'ExamStateService', error);
         throw error;
-      })
+      }),
     );
   }
 
@@ -259,7 +256,7 @@ export class ExamStateService {
       const updatedQuestions = [...questions];
       updatedQuestions[currentIndex] = {
         ...updatedQuestions[currentIndex],
-        selectedOptionId: optionId
+        selectedOptionId: optionId,
       };
 
       this._questions.set(updatedQuestions);
@@ -278,7 +275,7 @@ export class ExamStateService {
       const updatedQuestions = [...questions];
       updatedQuestions[currentIndex] = {
         ...updatedQuestions[currentIndex],
-        flagged: !updatedQuestions[currentIndex].flagged
+        flagged: !updatedQuestions[currentIndex].flagged,
       };
 
       this._questions.set(updatedQuestions);
@@ -359,11 +356,11 @@ export class ExamStateService {
       examId: this._examId(),
       answers: this._createAnswersPayload(),
       submittedAt: new Date(),
-      totalTimeSpent: this.timer.totalSeconds() - this.timer.remainingSeconds()
+      totalTimeSpent: this.timer.totalSeconds() - this.timer.remainingSeconds(),
     };
 
     return this.questionBank.validate(payload).pipe(
-      tap(result => {
+      tap((result) => {
         this._examResult.set(result);
         this._status.set('completed');
         this._isLoading.set(false);
@@ -371,13 +368,13 @@ export class ExamStateService {
         // Guardar resultado
         this._saveResult(result);
       }),
-      catchError(error => {
+      catchError((error) => {
         this._error.set('Error al enviar el examen');
         this._isLoading.set(false);
         this._status.set('running'); // Revertir estado
-        console.error('Error enviando examen:', error);
+        this.logger.error('Error enviando examen', 'ExamStateService', error);
         throw error;
-      })
+      }),
     );
   }
 
@@ -423,7 +420,7 @@ export class ExamStateService {
       currentIndex: this._currentIndex(),
       progress: this.progress(),
       navigation: this.navigation(),
-      timer: this.timer.getState()
+      timer: this.timer.getState(),
     };
   }
 
@@ -436,9 +433,9 @@ export class ExamStateService {
         this.router.navigate(['/exam/review']);
       },
       error: (error) => {
-        console.error('Error en envio automatico:', error);
+        this.logger.error('Error en envio automatico', 'ExamStateService', error);
         this.router.navigate(['/exam/review']);
-      }
+      },
     });
   }
 
@@ -454,16 +451,16 @@ export class ExamStateService {
    * Crea el payload de respuestas
    */
   private _createAnswersPayload(): ExamAnswer[] {
-    return this._questions().map(question => ({
+    return this._questions().map((question) => ({
       questionId: question.id,
       optionId: question.selectedOptionId || '',
       flagged: question.flagged || false,
-      timeSpent: question.timeSpent || 0
+      timeSpent: question.timeSpent || 0,
     }));
   }
 
   /**
-   * Guarda el progreso en sessionStorage
+   * Guarda el progreso en localStorage (sobrevive cierre de pestana)
    */
   private _saveProgress(): void {
     if (this._status() === 'idle') return;
@@ -473,25 +470,22 @@ export class ExamStateService {
       currentIndex: this._currentIndex(),
       questions: this._questions(),
       remainingTime: this.timer.remainingSeconds(),
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
 
     try {
-      sessionStorage.setItem(
-        this.config.storageKeys.EXAM_PROGRESS,
-        JSON.stringify(progress)
-      );
+      localStorage.setItem(this.config.storageKeys.EXAM_PROGRESS, JSON.stringify(progress));
     } catch (error) {
-      console.error('No se pudo guardar el progreso:', error);
+      this.logger.error('No se pudo guardar el progreso', 'ExamStateService', error);
     }
   }
 
   /**
-   * Carga el progreso desde sessionStorage
+   * Carga el progreso desde localStorage (sobrevive cierre de pestana)
    */
   private _loadProgress(): void {
     try {
-      const saved = sessionStorage.getItem(this.config.storageKeys.EXAM_PROGRESS);
+      const saved = localStorage.getItem(this.config.storageKeys.EXAM_PROGRESS);
       if (saved) {
         const progress = JSON.parse(saved);
 
@@ -504,11 +498,10 @@ export class ExamStateService {
           if (progress.remainingTime > 0) {
             this.timer.addTime(progress.remainingTime - this.timer.remainingSeconds());
           }
-
         }
       }
     } catch (error) {
-      console.error('No se pudo cargar el progreso:', error);
+      this.logger.error('No se pudo cargar el progreso', 'ExamStateService', error);
     }
   }
 
@@ -517,9 +510,9 @@ export class ExamStateService {
    */
   private _clearProgress(): void {
     try {
-      sessionStorage.removeItem(this.config.storageKeys.EXAM_PROGRESS);
+      localStorage.removeItem(this.config.storageKeys.EXAM_PROGRESS);
     } catch (error) {
-      console.error('No se pudo limpiar el progreso:', error);
+      this.logger.error('No se pudo limpiar el progreso', 'ExamStateService', error);
     }
   }
 
@@ -529,35 +522,31 @@ export class ExamStateService {
   private _saveResult(result: ExamResult): void {
     try {
       const lastResults = JSON.parse(
-        localStorage.getItem(this.config.storageKeys.LAST_RESULTS) || '[]'
+        localStorage.getItem(this.config.storageKeys.LAST_RESULTS) || '[]',
       );
 
       lastResults.unshift({
         examId: result.examId,
         score: result.score,
         completedAt: result.completedAt,
-        summary: result.summary
+        summary: result.summary,
       });
 
       // Mantener solo los últimos 10 resultados
       const limitedResults = lastResults.slice(0, 10);
 
-      localStorage.setItem(
-        this.config.storageKeys.LAST_RESULTS,
-        JSON.stringify(limitedResults)
-      );
-
+      localStorage.setItem(this.config.storageKeys.LAST_RESULTS, JSON.stringify(limitedResults));
     } catch (error) {
-      console.error('No se pudo guardar el resultado:', error);
+      this.logger.error('No se pudo guardar el resultado', 'ExamStateService', error);
     }
 
     // Fire-and-forget: persist to Supabase
     try {
-      this.supabase.saveExamResult(result).catch(err =>
-        console.error('[ExamStateService] Supabase saveExamResult error:', err)
-      );
+      this.supabase
+        .saveExamResult(result)
+        .catch((err) => this.logger.error('Supabase saveExamResult error', 'ExamStateService', err));
     } catch (err) {
-      console.error('[ExamStateService] Supabase saveExamResult error:', err);
+      this.logger.error('Supabase saveExamResult error', 'ExamStateService', err);
     }
   }
 }

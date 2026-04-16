@@ -1,4 +1,5 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, signal, computed } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { ExamStateService, ScoreService } from '../../../core/services';
@@ -16,37 +17,75 @@ import { formatTime } from '../../../core/utils/exam.utils';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="page-medium animate-fadeInUp stagger-children">
-
       <!-- Pass / Fail Indicator -->
       @if (passed) {
-        <div class="card-section animate-fadeInUp" style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e;">
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 0;">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12l2 2 4-4"/>
-              <circle cx="12" cy="12" r="10"/>
+        <div
+          class="card-section animate-fadeInUp"
+          style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e;"
+        >
+          <div
+            style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 0;"
+          >
+            <svg
+              width="64"
+              height="64"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#22c55e"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
             </svg>
-            <span class="font-display text-3xl" style="color: #22c55e; font-weight: 700;">APROBADO</span>
+            <span class="font-display text-3xl" style="color: #22c55e; font-weight: 700;"
+              >APROBADO</span
+            >
           </div>
         </div>
       } @else {
-        <div class="card-section animate-fadeInUp" style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444;">
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 0;">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="15" y1="9" x2="9" y2="15"/>
-              <line x1="9" y1="9" x2="15" y2="15"/>
+        <div
+          class="card-section animate-fadeInUp"
+          style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444;"
+        >
+          <div
+            style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 0;"
+          >
+            <svg
+              width="64"
+              height="64"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ef4444"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="15" y1="9" x2="9" y2="15" />
+              <line x1="9" y1="9" x2="15" y2="15" />
             </svg>
-            <span class="font-display text-3xl" style="color: #ef4444; font-weight: 700;">NO APROBADO</span>
+            <span class="font-display text-3xl" style="color: #ef4444; font-weight: 700;"
+              >NO APROBADO</span
+            >
           </div>
         </div>
       }
 
       <!-- Weighted Score Display -->
       <div style="display: flex; justify-content: center; margin: 24px 0;" class="animate-fadeInUp">
-        <div class="card-stat" style="text-align: center; padding: 24px; width: 100%; max-width: 400px;">
+        <div
+          class="card-stat"
+          style="text-align: center; padding: 24px; width: 100%; max-width: 400px;"
+        >
           <div class="card-stat__label">Score Ponderado</div>
-          <div class="card-stat__value font-display" style="font-size: clamp(2rem, 6vw, 3rem);">{{ weightedScore }} / {{ configMaxScore() }}</div>
-          <div class="text-pine text-sm" style="margin-top: 8px;">Score para aprobar: {{ configPassingScore() }} / {{ configMaxScore() }}</div>
+          <div class="card-stat__value font-display" style="font-size: clamp(2rem, 6vw, 3rem);">
+            {{ weightedScore }} / {{ configMaxScore() }}
+          </div>
+          <div class="text-pine text-sm" style="margin-top: 8px;">
+            Score para aprobar: {{ configPassingScore() }} / {{ configMaxScore() }}
+          </div>
         </div>
       </div>
 
@@ -57,12 +96,22 @@ import { formatTime } from '../../../core/utils/exam.utils';
         <div class="stack">
           @for (domain of domainScores; track domain.domainCode) {
             <div class="card-compact" style="padding: 16px;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
-                <span class="font-display text-sm" style="flex: 1; min-width: 120px;">{{ domain.domainName }}</span>
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;"
+              >
+                <span class="font-display text-sm" style="flex: 1; min-width: 120px;">{{
+                  domain.domainName
+                }}</span>
                 <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                  <span class="tag font-mono" style="font-size: 11px;">{{ (domain.weight * 100).toFixed(0) }}%</span>
-                  <span class="font-mono" style="font-size: 12px;">{{ domain.correct }}/{{ domain.total }}</span>
-                  <span class="badge" style="font-size: 11px;">{{ domain.weightedContribution }} pts</span>
+                  <span class="tag font-mono" style="font-size: 11px;"
+                    >{{ (domain.weight * 100).toFixed(0) }}%</span
+                  >
+                  <span class="font-mono" style="font-size: 12px;"
+                    >{{ domain.correct }}/{{ domain.total }}</span
+                  >
+                  <span class="badge" style="font-size: 11px;"
+                    >{{ domain.weightedContribution }} pts</span
+                  >
                 </div>
               </div>
               <div class="progress-labeled">
@@ -100,7 +149,10 @@ import { formatTime } from '../../../core/utils/exam.utils';
               <div class="alert__title">Enfocate en estos dominios:</div>
               <ul style="margin: 8px 0 0; padding-left: 20px;">
                 @for (domain of weakDomains; track domain.domainCode) {
-                  <li>{{ domain.domainName }} ({{ domain.domainCode }}) &mdash; {{ domain.rawPercentage }}%</li>
+                  <li>
+                    {{ domain.domainName }} ({{ domain.domainCode }}) &mdash;
+                    {{ domain.rawPercentage }}%
+                  </li>
                 }
               </ul>
             </div>
@@ -116,21 +168,26 @@ import { formatTime } from '../../../core/utils/exam.utils';
       </div>
 
       <!-- Actions -->
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;" class="animate-fadeInUp">
+      <div
+        style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;"
+        class="animate-fadeInUp"
+      >
         <a routerLink="/ccaf/exam" class="btn btn-primary hover-lift">Intentar de Nuevo</a>
         <a routerLink="/ccaf" class="btn btn-secondary hover-lift">Volver a CCA-F</a>
         <a routerLink="/exam/history" class="btn btn-ghost">Ver Historial</a>
       </div>
-
     </div>
   `,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class CCAFResultsComponent implements OnInit {
+  private destroyRef = inject(DestroyRef);
   private examState = inject(ExamStateService);
   private scoreService = inject(ScoreService);
   private curriculumService = inject(CurriculumService);
@@ -171,24 +228,22 @@ export class CCAFResultsComponent implements OnInit {
     }
 
     // Load CCA-F config from catalog for dynamic score labels
-    this.curriculumService.loadCatalog().subscribe({
+    this.curriculumService.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         const config = this.curriculumService.getCCAFConfig();
         this.ccafConfig.set(config);
         if (config) {
           // Derive weak-domain threshold from passing ratio
-          this.weakDomainThreshold = Math.floor(
-            (config.passingScore / config.maxScore) * 100
-          );
+          this.weakDomainThreshold = Math.floor((config.passingScore / config.maxScore) * 100);
           // Recompute weak domains with the config-based threshold
           this.weakDomains = this.domainScores.filter(
-            (ds) => ds.rawPercentage < this.weakDomainThreshold
+            (ds) => ds.rawPercentage < this.weakDomainThreshold,
           );
         }
       },
       error: (err) => {
         console.error('Failed to load CCA-F catalog for results:', err);
-      }
+      },
     });
 
     // Use pre-computed values from the result if available
@@ -204,13 +259,11 @@ export class CCAFResultsComponent implements OnInit {
       this.examResult.summary.skipped;
     this.timeSpent = this.examResult.summary.totalTimeSpent;
     this.avgTimePerQuestion =
-      this.totalQuestions > 0
-        ? Math.round(this.timeSpent / this.totalQuestions)
-        : 0;
+      this.totalQuestions > 0 ? Math.round(this.timeSpent / this.totalQuestions) : 0;
 
     // Identify weak domains with default threshold (will be recalculated when config loads)
     this.weakDomains = this.domainScores.filter(
-      (ds) => ds.rawPercentage < this.weakDomainThreshold
+      (ds) => ds.rawPercentage < this.weakDomainThreshold,
     );
   }
 

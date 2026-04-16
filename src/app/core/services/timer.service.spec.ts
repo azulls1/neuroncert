@@ -63,7 +63,7 @@ describe('TimerService', () => {
 
     it('should emit the initial value via remainingTime$', () => {
       let emitted = -1;
-      const sub = service.remainingTime$.subscribe(v => emitted = v);
+      const sub = service.remainingTime$.subscribe((v) => (emitted = v));
 
       service.start(90);
       expect(emitted).toBe(90);
@@ -92,7 +92,7 @@ describe('TimerService', () => {
 
     it('should emit decremented values through remainingTime$', () => {
       const values: number[] = [];
-      const sub = service.remainingTime$.subscribe(v => values.push(v));
+      const sub = service.remainingTime$.subscribe((v) => values.push(v));
 
       service.start(5);
       jasmine.clock().tick(3000);
@@ -213,7 +213,7 @@ describe('TimerService', () => {
 
     it('should emit the reset value via remainingTime$', () => {
       let emitted = -1;
-      const sub = service.remainingTime$.subscribe(v => emitted = v);
+      const sub = service.remainingTime$.subscribe((v) => (emitted = v));
 
       service.start(100);
       jasmine.clock().tick(3000);

@@ -44,7 +44,7 @@ export function getDifficultyLabel(difficulty: string): string {
   const labels: Record<string, string> = {
     easy: 'Facil',
     medium: 'Medio',
-    hard: 'Dificil'
+    hard: 'Dificil',
   };
   return labels[difficulty] || difficulty;
 }

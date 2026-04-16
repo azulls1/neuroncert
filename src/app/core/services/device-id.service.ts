@@ -10,7 +10,9 @@ export class DeviceIdService {
   private _deviceId = signal<string>('');
 
   /** The unique device identifier */
-  get deviceId() { return this._deviceId.asReadonly(); }
+  get deviceId() {
+    return this._deviceId.asReadonly();
+  }
 
   constructor() {
     this._initDeviceId();
@@ -52,14 +54,14 @@ export class DeviceIdService {
       screen.colorDepth?.toString(),
       navigator.hardwareConcurrency?.toString(),
       navigator.platform,
-      new Date().getTimezoneOffset().toString()
+      new Date().getTimezoneOffset().toString(),
     ];
 
     // Simple hash function (djb2)
     const str = components.filter(Boolean).join('|');
     let hash = 5381;
     for (let i = 0; i < str.length; i++) {
-      hash = ((hash << 5) + hash) + str.charCodeAt(i);
+      hash = (hash << 5) + hash + str.charCodeAt(i);
       hash = hash & hash; // Convert to 32-bit integer
     }
     return Math.abs(hash).toString(36);

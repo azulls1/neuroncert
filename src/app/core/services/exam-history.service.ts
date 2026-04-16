@@ -1,5 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { SupabaseService, StudySessionRow } from './supabase.service';
+import { LoggingService } from './logging.service';
 
 export interface ExamQuestionHistory {
   id: string;
@@ -29,11 +30,12 @@ export interface ExamSession {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ExamHistoryService {
   private readonly STORAGE_KEY = 'exam_history_sessions';
   private supabase = inject(SupabaseService);
+  private logger = inject(LoggingService);
   private _currentSession = signal<ExamSession | null>(null);
   private _sessions = signal<ExamSession[]>([]);
 
@@ -46,8 +48,12 @@ export class ExamHistoryService {
   }
 
   // Getters
-  get currentSession() { return this._currentSession.asReadonly(); }
-  get sessions() { return this._sessions.asReadonly(); }
+  get currentSession() {
+    return this._currentSession.asReadonly();
+  }
+  get sessions() {
+    return this._sessions.asReadonly();
+  }
 
   /**
    * Inicia una nueva sesión de examen
@@ -60,7 +66,7 @@ export class ExamHistoryService {
       totalQuestions: 0,
       correctAnswers: 0,
       difficulty,
-      questions: []
+      questions: [],
     };
 
     this._currentSession.set(newSession);
@@ -78,7 +84,7 @@ export class ExamHistoryService {
     userAnswer: string,
     correctAnswer: string,
     isCorrect: boolean,
-    difficulty: string
+    difficulty: string,
   ): void {
     const currentSession = this._currentSession();
     if (!currentSession) {
@@ -94,7 +100,7 @@ export class ExamHistoryService {
       isCorrect,
       difficulty,
       timestamp: new Date(),
-      questionNumber: currentSession.questions.length + 1
+      questionNumber: currentSession.questions.length + 1,
     };
 
     // Actualizar la sesión actual
@@ -102,7 +108,7 @@ export class ExamHistoryService {
       ...currentSession,
       totalQuestions: currentSession.totalQuestions + 1,
       correctAnswers: isCorrect ? currentSession.correctAnswers + 1 : currentSession.correctAnswers,
-      questions: [...currentSession.questions, questionHistory]
+      questions: [...currentSession.questions, questionHistory],
     };
 
     this._currentSession.set(updatedSession);
@@ -120,7 +126,7 @@ export class ExamHistoryService {
 
     const endedSession: ExamSession = {
       ...currentSession,
-      endTime: new Date()
+      endTime: new Date(),
     };
 
     // Agregar a la lista de sesiones
@@ -138,7 +144,7 @@ export class ExamHistoryService {
    * Obtiene el historial de una sesión específica
    */
   getSessionHistory(sessionId: string): ExamSession | null {
-    return this._sessions().find(session => session.sessionId === sessionId) || null;
+    return this._sessions().find((session) => session.sessionId === sessionId) || null;
   }
 
   /**
@@ -198,7 +204,7 @@ export class ExamHistoryService {
         // Also skip if a local session matches by timestamp + score (heuristic
         // dedup for sessions saved locally as session_* and remotely as exam_*)
         const remoteTime = new Date(row.completedAt).getTime();
-        const alreadyExists = currentSessions.some(s => {
+        const alreadyExists = currentSessions.some((s) => {
           const localEnd = s.endTime ? new Date(s.endTime).getTime() : 0;
           return (
             Math.abs(localEnd - remoteTime) < 5000 &&
@@ -215,7 +221,7 @@ export class ExamHistoryService {
           totalQuestions: row.summary?.totalQuestions ?? 0,
           correctAnswers: row.summary?.correct ?? 0,
           difficulty: row.mode,
-          questions: []
+          questions: [],
         };
         currentSessions.push(remoteSession);
         existingIds.add(row.examId);
@@ -224,8 +230,8 @@ export class ExamHistoryService {
 
       if (merged) {
         // Sort by start time descending
-        currentSessions.sort((a, b) =>
-          new Date(b.startTime).getTime() - new Date(a.startTime).getTime()
+        currentSessions.sort(
+          (a, b) => new Date(b.startTime).getTime() - new Date(a.startTime).getTime(),
         );
         this._sessions.set(currentSessions);
         this.saveSessionsToStorage();
@@ -269,11 +275,11 @@ export class ExamHistoryService {
     try {
       const dataToSave = {
         sessions: this._sessions(),
-        currentSession: this._currentSession()
+        currentSession: this._currentSession(),
       };
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      console.error('❌ Error al guardar historial en localStorage:', error);
+      this.logger.error('Error al guardar historial en localStorage', 'ExamHistoryService', error);
     }
 
     // Fire-and-forget: persist completed sessions to Supabase
@@ -282,7 +288,8 @@ export class ExamHistoryService {
       if (sessions.length > 0) {
         const lastSession = sessions[sessions.length - 1];
         if (lastSession.endTime) {
-          const durationMs = new Date(lastSession.endTime).getTime() - new Date(lastSession.startTime).getTime();
+          const durationMs =
+            new Date(lastSession.endTime).getTime() - new Date(lastSession.startTime).getTime();
           const row: StudySessionRow = {
             sessionId: lastSession.sessionId,
             trackId: lastSession.difficulty,
@@ -290,7 +297,7 @@ export class ExamHistoryService {
             questionsAnswered: lastSession.totalQuestions,
             correctAnswers: lastSession.correctAnswers,
             durationSec: Math.round(durationMs / 1000),
-            startedAt: new Date(lastSession.startTime).toISOString()
+            startedAt: new Date(lastSession.startTime).toISOString(),
           };
           this.supabase.saveStudySession(row).catch(() => {
             // Supabase persistence failed — session is still saved locally
@@ -314,7 +321,7 @@ export class ExamHistoryService {
         this._currentSession.set(data.currentSession || null);
       }
     } catch (error) {
-      console.error('❌ Error al cargar historial desde localStorage:', error);
+      this.logger.error('Error al cargar historial desde localStorage', 'ExamHistoryService', error);
       this._sessions.set([]);
       this._currentSession.set(null);
     }

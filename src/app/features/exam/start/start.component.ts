@@ -1,4 +1,5 @@
-import { Component, OnInit, signal, computed, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, signal, computed, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import {
   ExamParams,
   ExamDifficulty,
   LearningTrack,
-  CCAFConfig
+  CCAFConfig,
 } from '../../../core/models';
 import { ConfigService, ExamStateService, CurriculumService } from '../../../core/services';
 
@@ -38,20 +39,31 @@ import { ConfigService, ExamStateService, CurriculumService } from '../../../cor
         <!-- Formulario de configuracion -->
         <div class="card-section animate-fadeInUp delay-100">
           <form (ngSubmit)="startExam()" #examForm="ngForm">
-
             <!-- Track context info -->
             @if (currentTrack(); as t) {
               <div class="alert alert-info" style="margin-bottom: 24px;">
                 <div class="alert__icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="16" x2="12" y2="12"/>
-                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
                   </svg>
                 </div>
                 <div class="alert__content">
                   <div class="alert__title">{{ t.title }}</div>
-                  <div style="font-size: 0.875rem; margin-top: 4px;">{{ t.modules.length }} modulos &middot; Nivel {{ t.level }} &middot; {{ t.platform }}</div>
+                  <div style="font-size: 0.875rem; margin-top: 4px;">
+                    {{ t.modules.length }} modulos &middot; Nivel {{ t.level }} &middot;
+                    {{ t.platform }}
+                  </div>
                 </div>
               </div>
             }
@@ -59,10 +71,15 @@ import { ConfigService, ExamStateService, CurriculumService } from '../../../cor
             <!-- Dificultad -->
             <div class="stack-lg">
               <div>
-                <h2 class="label" style="font-size: 16px; margin-bottom: 12px;">Nivel de Dificultad</h2>
+                <h2 class="label" style="font-size: 16px; margin-bottom: 12px;">
+                  Nivel de Dificultad
+                </h2>
                 <div class="form-grid">
                   @for (difficulty of difficultyOptions; track difficulty.value) {
-                    <label class="card-feature hover-lift" style="cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    <label
+                      class="card-feature hover-lift"
+                      style="cursor: pointer; display: flex; align-items: center; gap: 12px;"
+                    >
                       <input
                         type="radio"
                         name="difficulty"
@@ -70,9 +87,14 @@ import { ConfigService, ExamStateService, CurriculumService } from '../../../cor
                         [(ngModel)]="selectedDifficulty"
                         class="input"
                         style="width: 16px; height: 16px; flex-shrink: 0;"
-                      >
+                      />
                       <div>
-                        <div class="card-stat__label" style="text-transform: none; font-size: 14px;">{{ difficulty.label }}</div>
+                        <div
+                          class="card-stat__label"
+                          style="text-transform: none; font-size: 14px;"
+                        >
+                          {{ difficulty.label }}
+                        </div>
                         <div class="card-stat__desc">{{ difficulty.description }}</div>
                       </div>
                     </label>
@@ -82,19 +104,33 @@ import { ConfigService, ExamStateService, CurriculumService } from '../../../cor
 
               <!-- Configuracion del Examen -->
               <div>
-                <h2 class="label" style="font-size: 16px; margin-bottom: 12px;">Configuraci&oacute;n del Examen</h2>
+                <h2 class="label" style="font-size: 16px; margin-bottom: 12px;">
+                  Configuraci&oacute;n del Examen
+                </h2>
 
                 <!-- Alert info -->
                 <div class="alert alert-info">
                   <div class="alert__icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="12" y1="16" x2="12" y2="12"/>
-                      <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="16" x2="12" y2="12" />
+                      <line x1="12" y1="8" x2="12.01" y2="8" />
                     </svg>
                   </div>
                   <div class="alert__content">
-                    <div class="alert__title">{{ examConfigTitle() }}: {{ effectiveQuestionCount() }} preguntas, {{ formatDuration(effectiveDurationSec()) }}</div>
+                    <div class="alert__title">
+                      {{ examConfigTitle() }}: {{ effectiveQuestionCount() }} preguntas,
+                      {{ formatDuration(effectiveDurationSec()) }}
+                    </div>
                     <div style="margin-top: 12px;">
                       <div class="grid-stats">
                         <div class="card-stat">
@@ -102,7 +138,9 @@ import { ConfigService, ExamStateService, CurriculumService } from '../../../cor
                           <div class="card-stat__label">Preguntas</div>
                         </div>
                         <div class="card-stat">
-                          <div class="card-stat__value">{{ formatDuration(effectiveDurationSec()) }}</div>
+                          <div class="card-stat__value">
+                            {{ formatDuration(effectiveDurationSec()) }}
+                          </div>
                           <div class="card-stat__label">Duraci&oacute;n</div>
                         </div>
                         <div class="card-stat">
@@ -117,14 +155,19 @@ import { ConfigService, ExamStateService, CurriculumService } from '../../../cor
 
               <!-- Botones de accion -->
               <div class="flex-row flex-row--between" style="justify-content: flex-end; gap: 12px;">
-                <button
-                  type="button"
-                  (click)="goBack()"
-                  class="btn btn-secondary"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"/>
-                    <polyline points="12 19 5 12 12 5"/>
+                <button type="button" (click)="goBack()" class="btn btn-secondary">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
                   </svg>
                   Cancelar
                 </button>
@@ -134,13 +177,20 @@ import { ConfigService, ExamStateService, CurriculumService } from '../../../cor
                   class="btn btn-primary"
                 >
                   @if (isStarting()) {
-                    <div class="loading-dots">
-                      <span></span><span></span><span></span>
-                    </div>
+                    <div class="loading-dots"><span></span><span></span><span></span></div>
                     Iniciando...
                   } @else {
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 3l14 9-14 9V3z"/>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 3l14 9-14 9V3z" />
                     </svg>
                     Comenzar Simulacro
                   }
@@ -153,17 +203,16 @@ import { ConfigService, ExamStateService, CurriculumService } from '../../../cor
                 </div>
               }
             </div>
-
           </form>
         </div>
       }
     </div>
   `,
-  styles: [``]
+  styles: [``],
 })
 export class StartComponent implements OnInit {
-
   // Inyeccion de dependencias
+  private destroyRef = inject(DestroyRef);
   public config = inject(ConfigService);
   private examState = inject(ExamStateService);
   private router = inject(Router);
@@ -191,10 +240,14 @@ export class StartComponent implements OnInit {
 
   // Opciones de dificultad
   difficultyOptions = [
-    { value: 'any', label: 'Cualquiera', description: 'Dificultad aleatoria (facil, medio o dificil)' },
+    {
+      value: 'any',
+      label: 'Cualquiera',
+      description: 'Dificultad aleatoria (facil, medio o dificil)',
+    },
     { value: 'easy', label: 'Facil', description: 'Preguntas basicas y fundamentales' },
     { value: 'medium', label: 'Medio', description: 'Preguntas intermedias' },
-    { value: 'hard', label: 'Dificil', description: 'Preguntas avanzadas y complejas' }
+    { value: 'hard', label: 'Dificil', description: 'Preguntas avanzadas y complejas' },
   ];
 
   /** Effective question count based on context */
@@ -273,7 +326,7 @@ export class StartComponent implements OnInit {
 
     if (trackId) {
       this.isLoadingCatalog.set(true);
-      this.curriculum.loadCatalog().subscribe({
+      this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: () => {
           const track = this.curriculum.getTrackById(trackId) ?? null;
           this.currentTrack.set(track);
@@ -287,7 +340,7 @@ export class StartComponent implements OnInit {
         },
         error: () => {
           this.isLoadingCatalog.set(false);
-        }
+        },
       });
     }
   }
@@ -296,7 +349,7 @@ export class StartComponent implements OnInit {
    * Obtiene la etiqueta de dificultad
    */
   getDifficultyLabel(difficulty: ExamDifficulty): string {
-    const option = this.difficultyOptions.find(opt => opt.value === difficulty);
+    const option = this.difficultyOptions.find((opt) => opt.value === difficulty);
     return option?.label || difficulty;
   }
 
@@ -338,16 +391,16 @@ export class StartComponent implements OnInit {
     const trackId = this._trackId();
 
     const params: ExamParams = {
-      domains: ccaf ? ccaf.domains.map(d => d.code) : [],
+      domains: ccaf ? ccaf.domains.map((d) => d.code) : [],
       count: this.effectiveQuestionCount(),
       difficulty: this._selectedDifficulty(),
       durationSec: this.effectiveDurationSec(),
       mode: this.effectiveMode(),
       ...(trackId ? { trackId } : {}),
-      ...(ccaf ? { scenarioCount: ccaf.scenarioCount } : {})
+      ...(ccaf ? { scenarioCount: ccaf.scenarioCount } : {}),
     };
 
-    this.examState.startExam(params).subscribe({
+    this.examState.startExam(params).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         this._isStarting.set(false);
         this.router.navigate(['/exam/run']);
@@ -356,7 +409,7 @@ export class StartComponent implements OnInit {
         console.error('Error starting exam:', error);
         this._error.set('Error al iniciar el examen. Intenta de nuevo.');
         this._isStarting.set(false);
-      }
+      },
     });
   }
 
@@ -371,5 +424,4 @@ export class StartComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
-
 }

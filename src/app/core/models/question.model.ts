@@ -44,7 +44,9 @@ export interface Question {
 /**
  * Pregunta de examen con estado del usuario
  */
-export interface ExamQuestion extends Question {
+export interface ExamQuestion extends Omit<Question, 'correctOptionId'> {
+  /** Stripped during exam to prevent cheating; only available during review */
+  correctOptionId?: string;
   selectedOptionId?: string;
   flagged?: boolean;
   timeSpent?: number;

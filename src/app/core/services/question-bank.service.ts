@@ -9,7 +9,7 @@ import {
   ExamResult,
   ExamItemResult,
   ExamSummary,
-  CCAFDomain
+  CCAFDomain,
 } from '../models';
 import { QuestionLoaderService } from './question-loader.service';
 import { shuffleArray } from '../utils/exam.utils';
@@ -20,10 +20,9 @@ import { shuffleArray } from '../utils/exam.utils';
  * Delega la carga HTTP y cache a QuestionLoaderService.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuestionBankService {
-
   private loader = inject(QuestionLoaderService);
 
   /** Mapa de preguntas indexadas por ID (para validacion rapida) */
@@ -52,7 +51,7 @@ export class QuestionBankService {
       : this.loader.loadQuestionFile('assets/question-bank/academy/foundation/claude-101.json');
 
     return trackSource.pipe(
-      map(questions => {
+      map((questions) => {
         let filtered = this._filterQuestions(questions, params);
 
         // Mezclar y seleccionar la cantidad solicitada
@@ -60,13 +59,14 @@ export class QuestionBankService {
         const selected = filtered.slice(0, params.count);
 
         // Indexar para validacion posterior
-        selected.forEach(q => this.questionsById.set(q.id, q));
+        selected.forEach((q) => this.questionsById.set(q.id, q));
 
-        const examQuestions: ExamQuestion[] = selected.map(q => ({
+        const examQuestions: ExamQuestion[] = selected.map((q) => ({
           ...q,
+          correctOptionId: undefined, // Don't expose to client during exam
           selectedOptionId: undefined,
           flagged: false,
-          timeSpent: 0
+          timeSpent: 0,
         }));
 
         const durationSec = params.durationSec ?? 5400;
@@ -74,9 +74,9 @@ export class QuestionBankService {
         return {
           examId: this._generateExamId(),
           questions: examQuestions,
-          durationSec
+          durationSec,
         };
-      })
+      }),
     );
   }
 
@@ -97,9 +97,7 @@ export class QuestionBankService {
         skippedCount++;
       }
 
-      const isCorrect = question
-        ? answer.optionId === question.correctOptionId
-        : false;
+      const isCorrect = question ? answer.optionId === question.correctOptionId : false;
 
       if (isCorrect) {
         correctCount++;
@@ -117,15 +115,14 @@ export class QuestionBankService {
         selectedOptionId: answer.optionId,
         correctOptionId: question?.correctOptionId,
         timeSpent: answer.timeSpent ?? 0,
-        flagged: answer.flagged ?? false
+        flagged: answer.flagged ?? false,
       });
     }
 
     const totalQuestions = payload.answers.length;
     const incorrectCount = totalQuestions - correctCount - skippedCount;
-    const scorePercentage = totalQuestions > 0
-      ? Math.round((correctCount / totalQuestions) * 100)
-      : 0;
+    const scorePercentage =
+      totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
 
     const summary: ExamSummary = {
       correct: correctCount,
@@ -134,10 +131,10 @@ export class QuestionBankService {
       flagged: flaggedCount,
       scorePercentage,
       totalTimeSpent: payload.totalTimeSpent ?? 0,
-      timeLimit: 0
+      timeLimit: 0,
     };
 
-    const uniqueDomains = [...new Set(items.map(i => i.domainCode))];
+    const uniqueDomains = [...new Set(items.map((i) => i.domainCode))];
 
     const result: ExamResult = {
       examId: payload.examId,
@@ -147,7 +144,7 @@ export class QuestionBankService {
       recommendations: this._generateRecommendations(items),
       completedAt: new Date(),
       domains: uniqueDomains,
-      averageDifficulty: this._calculateAverageDifficulty(items)
+      averageDifficulty: this._calculateAverageDifficulty(items),
     };
 
     return of(result);
@@ -163,9 +160,9 @@ export class QuestionBankService {
    */
   getQuestionsByTrack(trackId: string, contentType?: string): Observable<Question[]> {
     return this.loader.loadCatalog().pipe(
-      switchMap(catalog => {
+      switchMap((catalog) => {
         // Buscar el track en el catalog
-        const track = catalog.tracks.find(t => t.id === trackId);
+        const track = catalog.tracks.find((t) => t.id === trackId);
 
         // Recolectar todas las rutas de archivos de preguntas del track
         const filePaths: string[] = [];
@@ -186,22 +183,22 @@ export class QuestionBankService {
             `assets/question-bank/academy/builder/${trackId}.json`,
             `assets/question-bank/coursera/mastering-claude/${trackId}.json`,
             `assets/question-bank/deeplearning-ai/${trackId}.json`,
-            `assets/question-bank/cca-f/${trackId}.json`
+            `assets/question-bank/cca-f/${trackId}.json`,
           ];
           filePaths.push(...possiblePaths);
         }
 
         return this.loader.loadFromMultiplePaths(filePaths);
       }),
-      map(questions => {
+      map((questions) => {
         // Indexar preguntas cargadas para validacion posterior
-        questions.forEach(q => this.questionsById.set(q.id, q));
+        questions.forEach((q) => this.questionsById.set(q.id, q));
 
         if (contentType) {
-          return questions.filter(q => q.contentType === contentType);
+          return questions.filter((q) => q.contentType === contentType);
         }
         return questions;
-      })
+      }),
     );
   }
 
@@ -225,33 +222,31 @@ export class QuestionBankService {
     durationSec: number;
   }> {
     return this.loader.loadCatalog().pipe(
-      switchMap(catalog => {
+      switchMap((catalog) => {
         const ccafConfig = catalog.ccafConfig;
         const domains = ccafConfig.domains;
         const totalQuestions = params.count || ccafConfig.totalQuestions;
 
         // Cargar todos los archivos de preguntas de cada dominio
-        const fileLoads = domains.map(domain =>
-          this.loader.loadQuestionFile(`assets/question-bank/${domain.questionBankFile}`).pipe(
-            map(questions => ({ domain, questions }))
-          )
+        const fileLoads = domains.map((domain) =>
+          this.loader
+            .loadQuestionFile(`assets/question-bank/${domain.questionBankFile}`)
+            .pipe(map((questions) => ({ domain, questions }))),
         );
 
         return forkJoin(fileLoads).pipe(
-          map(domainQuestionSets => {
-            const selected = this._selectWeightedQuestions(
-              domainQuestionSets,
-              totalQuestions
-            );
+          map((domainQuestionSets) => {
+            const selected = this._selectWeightedQuestions(domainQuestionSets, totalQuestions);
 
             // Indexar para validacion posterior
-            selected.forEach(q => this.questionsById.set(q.id, q));
+            selected.forEach((q) => this.questionsById.set(q.id, q));
 
-            const examQuestions: ExamQuestion[] = this._shuffleArray(selected).map(q => ({
+            const examQuestions: ExamQuestion[] = this._shuffleArray(selected).map((q) => ({
               ...q,
+              correctOptionId: undefined, // Don't expose to client during exam
               selectedOptionId: undefined,
               flagged: false,
-              timeSpent: 0
+              timeSpent: 0,
             }));
 
             const durationSec = params.durationSec ?? ccafConfig.durationSec ?? 7200;
@@ -259,11 +254,11 @@ export class QuestionBankService {
             return {
               examId: this._generateExamId(),
               questions: examQuestions,
-              durationSec
+              durationSec,
             };
-          })
+          }),
         );
-      })
+      }),
     );
   }
 
@@ -277,7 +272,7 @@ export class QuestionBankService {
    */
   private _selectWeightedQuestions(
     domainQuestionSets: { domain: CCAFDomain; questions: Question[] }[],
-    totalQuestions: number
+    totalQuestions: number,
   ): Question[] {
     const selected: Question[] = [];
 
@@ -304,22 +299,22 @@ export class QuestionBankService {
 
     // Filtrar por dominios
     if (params.domains && params.domains.length > 0) {
-      filtered = filtered.filter(q => params.domains.includes(q.domainCode));
+      filtered = filtered.filter((q) => params.domains.includes(q.domainCode));
     }
 
     // Filtrar por dificultad
     if (params.difficulty && params.difficulty !== 'any') {
-      filtered = filtered.filter(q => q.difficulty === params.difficulty);
+      filtered = filtered.filter((q) => q.difficulty === params.difficulty);
     }
 
     // Filtrar por nivel de aprendizaje
     if (params.learningLevel) {
-      filtered = filtered.filter(q => q.learningLevel === params.learningLevel);
+      filtered = filtered.filter((q) => q.learningLevel === params.learningLevel);
     }
 
     // Filtrar por tipo de contenido
     if (params.contentType) {
-      filtered = filtered.filter(q => q.contentType === params.contentType);
+      filtered = filtered.filter((q) => q.contentType === params.contentType);
     }
 
     return filtered;
@@ -357,13 +352,15 @@ export class QuestionBankService {
       const pct = stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
       if (pct < 70) {
         recommendations.push(
-          `Refuerza el dominio "${domain}" (${Math.round(pct)}% de aciertos). Revisa la teoria y practica con ejercicios adicionales.`
+          `Refuerza el dominio "${domain}" (${Math.round(pct)}% de aciertos). Revisa la teoria y practica con ejercicios adicionales.`,
         );
       }
     }
 
     if (recommendations.length === 0) {
-      recommendations.push('Buen rendimiento en todos los dominios. Sigue practicando para mantener tu nivel.');
+      recommendations.push(
+        'Buen rendimiento en todos los dominios. Sigue practicando para mantener tu nivel.',
+      );
     }
 
     return recommendations;
@@ -375,13 +372,13 @@ export class QuestionBankService {
   private _calculateAverageDifficulty(items: ExamItemResult[]): 'easy' | 'medium' | 'hard' {
     if (items.length === 0) return 'medium';
 
-    const difficulties = items.map(item => {
+    const difficulties = items.map((item) => {
       const question = this.questionsById.get(item.questionId);
       return question?.difficulty ?? 'medium';
     });
 
-    const easyCount = difficulties.filter(d => d === 'easy').length;
-    const hardCount = difficulties.filter(d => d === 'hard').length;
+    const easyCount = difficulties.filter((d) => d === 'easy').length;
+    const hardCount = difficulties.filter((d) => d === 'hard').length;
 
     if (hardCount > easyCount) return 'hard';
     if (easyCount > hardCount) return 'easy';

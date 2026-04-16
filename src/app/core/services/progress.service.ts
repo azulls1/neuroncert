@@ -1,6 +1,7 @@
 import { Injectable, inject, signal, Signal } from '@angular/core';
 import { CurriculumProgress, OverallProgress, LearningLevelNumber } from '../models';
 import { SupabaseService } from './supabase.service';
+import { LoggingService } from './logging.service';
 
 /** Clave de almacenamiento en localStorage */
 const STORAGE_KEY = 'claude_learning_progress';
@@ -18,11 +19,11 @@ interface StoredProgress {
  * Registra y consulta el avance del usuario en localStorage.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProgressService {
-
   private supabase = inject(SupabaseService);
+  private logger = inject(LoggingService);
 
   /** Progreso por track */
   private trackProgressMap = new Map<string, CurriculumProgress>();
@@ -87,7 +88,7 @@ export class ProgressService {
       ...current,
       ...update,
       trackId, // asegurar que el trackId no se sobreescriba
-      lastAccessedAt: new Date().toISOString()
+      lastAccessedAt: new Date().toISOString(),
     };
     this.trackProgressMap.set(trackId, updated);
     this._recalculateOverall();
@@ -95,11 +96,11 @@ export class ProgressService {
 
     // Fire-and-forget: sync to Supabase
     try {
-      this.supabase.saveProgress(trackId, updated).catch(err =>
-        console.warn('[ProgressService] Supabase saveProgress error:', err)
-      );
+      this.supabase
+        .saveProgress(trackId, updated)
+        .catch((err) => this.logger.warn('Supabase saveProgress error', 'ProgressService', err));
     } catch (err) {
-      console.warn('[ProgressService] Supabase saveProgress error:', err);
+      this.logger.warn('Supabase saveProgress error', 'ProgressService', err);
     }
   }
 
@@ -112,7 +113,7 @@ export class ProgressService {
     completedModules.add(moduleId);
 
     this.updateTrackProgress(trackId, {
-      completedModules: [...completedModules]
+      completedModules: [...completedModules],
     });
   }
 
@@ -124,7 +125,7 @@ export class ProgressService {
 
     this.updateTrackProgress(trackId, {
       examAttempts: current.examAttempts + 1,
-      bestExamScore: Math.max(current.bestExamScore, score)
+      bestExamScore: Math.max(current.bestExamScore, score),
     });
 
     // Actualizar contadores globales de examenes
@@ -132,7 +133,7 @@ export class ProgressService {
     this._overallProgress.set({
       ...overall,
       totalExamsTaken: overall.totalExamsTaken + 1,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     });
 
     this._saveToLocalStorage();
@@ -140,11 +141,13 @@ export class ProgressService {
     // Fire-and-forget: sync updated progress to Supabase
     try {
       const updatedProgress = this.getTrackProgress(trackId);
-      this.supabase.saveProgress(trackId, updatedProgress).catch(err =>
-        console.warn('[ProgressService] Supabase recordExamAttempt sync error:', err)
-      );
+      this.supabase
+        .saveProgress(trackId, updatedProgress)
+        .catch((err) =>
+          this.logger.warn('Supabase recordExamAttempt sync error', 'ProgressService', err),
+        );
     } catch (err) {
-      console.warn('[ProgressService] Supabase recordExamAttempt sync error:', err);
+      this.logger.warn('Supabase recordExamAttempt sync error', 'ProgressService', err);
     }
   }
 
@@ -162,7 +165,7 @@ export class ProgressService {
       ccafAttempts: overall.ccafAttempts + 1,
       ccafBestScore: newBest,
       totalExamsTaken: overall.totalExamsTaken + 1,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     });
 
     this._saveToLocalStorage();
@@ -172,20 +175,22 @@ export class ProgressService {
     // through the existing progress table and can be restored by syncFromSupabase().
     try {
       const overall = this._overallProgress();
-      this.supabase.saveProgress('__ccaf_overall', {
-        trackId: '__ccaf_overall',
-        completedModules: [],
-        theoryCompleted: false,
-        practiceCompleted: false,
-        examAttempts: overall.ccafAttempts,
-        bestExamScore: overall.ccafBestScore,
-        lastAccessedAt: overall.lastUpdated,
-        totalTimeSpentSec: 0
-      }).catch(err =>
-        console.warn('[ProgressService] Supabase recordCCAFAttempt sync error:', err)
-      );
+      this.supabase
+        .saveProgress('__ccaf_overall', {
+          trackId: '__ccaf_overall',
+          completedModules: [],
+          theoryCompleted: false,
+          practiceCompleted: false,
+          examAttempts: overall.ccafAttempts,
+          bestExamScore: overall.ccafBestScore,
+          lastAccessedAt: overall.lastUpdated,
+          totalTimeSpentSec: 0,
+        })
+        .catch((err) =>
+          this.logger.warn('Supabase recordCCAFAttempt sync error', 'ProgressService', err),
+        );
     } catch (err) {
-      console.warn('[ProgressService] Supabase recordCCAFAttempt sync error:', err);
+      this.logger.warn('Supabase recordCCAFAttempt sync error', 'ProgressService', err);
     }
   }
 
@@ -205,12 +210,12 @@ export class ProgressService {
 
       const data: StoredProgress = {
         tracks,
-        overall: this._overallProgress()
+        overall: this._overallProgress(),
       };
 
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch (error) {
-      console.warn('No se pudo guardar el progreso en localStorage:', error);
+      this.logger.warn('No se pudo guardar el progreso en localStorage', 'ProgressService', error);
     }
   }
 
@@ -236,7 +241,7 @@ export class ProgressService {
         }
       }
     } catch (error) {
-      console.warn('No se pudo cargar el progreso desde localStorage:', error);
+      this.logger.warn('No se pudo cargar el progreso desde localStorage', 'ProgressService', error);
     }
 
     // 2. Supabase sync is now handled by syncFromSupabase() called in the constructor.
@@ -271,9 +276,8 @@ export class ProgressService {
             ...current,
             ccafAttempts: Math.max(current.ccafAttempts, row.examAttempts),
             ccafBestScore: Math.max(current.ccafBestScore, row.bestExamScore),
-            lastUpdated: row.lastAccessedAt > current.lastUpdated
-              ? row.lastAccessedAt
-              : current.lastUpdated
+            lastUpdated:
+              row.lastAccessedAt > current.lastUpdated ? row.lastAccessedAt : current.lastUpdated,
           });
           continue;
         }
@@ -289,14 +293,11 @@ export class ProgressService {
             examAttempts: row.examAttempts,
             bestExamScore: row.bestExamScore,
             lastAccessedAt: row.lastAccessedAt,
-            totalTimeSpentSec: row.totalTimeSpentSec
+            totalTimeSpentSec: row.totalTimeSpentSec,
           });
         } else {
           // Merge best-of-both to handle clock skew gracefully
-          const mergedModules = [...new Set([
-            ...local.completedModules,
-            ...row.completedModules
-          ])];
+          const mergedModules = [...new Set([...local.completedModules, ...row.completedModules])];
 
           this.trackProgressMap.set(row.trackId, {
             trackId: row.trackId,
@@ -305,10 +306,9 @@ export class ProgressService {
             practiceCompleted: local.practiceCompleted || row.practiceCompleted,
             examAttempts: Math.max(local.examAttempts, row.examAttempts),
             bestExamScore: Math.max(local.bestExamScore, row.bestExamScore),
-            lastAccessedAt: row.lastAccessedAt > local.lastAccessedAt
-              ? row.lastAccessedAt
-              : local.lastAccessedAt,
-            totalTimeSpentSec: Math.max(local.totalTimeSpentSec, row.totalTimeSpentSec)
+            lastAccessedAt:
+              row.lastAccessedAt > local.lastAccessedAt ? row.lastAccessedAt : local.lastAccessedAt,
+            totalTimeSpentSec: Math.max(local.totalTimeSpentSec, row.totalTimeSpentSec),
           });
         }
       }
@@ -316,7 +316,7 @@ export class ProgressService {
       this._recalculateOverall();
       this._saveToLocalStorage();
     } catch (err) {
-      console.warn('[ProgressService] syncFromSupabase error:', err);
+      this.logger.warn('syncFromSupabase error', 'ProgressService', err);
     }
   }
 
@@ -342,9 +342,7 @@ export class ProgressService {
       }
     }
 
-    const averageScore = tracks.length > 0
-      ? Math.round(totalScore / tracks.length)
-      : 0;
+    const averageScore = tracks.length > 0 ? Math.round(totalScore / tracks.length) : 0;
 
     const current = this._overallProgress();
 
@@ -354,7 +352,7 @@ export class ProgressService {
       tracksCompleted,
       totalExamsTaken: totalExams,
       averageScore,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     });
   }
 
@@ -370,7 +368,7 @@ export class ProgressService {
       examAttempts: 0,
       bestExamScore: 0,
       lastAccessedAt: new Date().toISOString(),
-      totalTimeSpentSec: 0
+      totalTimeSpentSec: 0,
     };
   }
 
@@ -385,7 +383,7 @@ export class ProgressService {
       4: { total: 0, completed: 0 },
       5: { total: 0, completed: 0 },
       6: { total: 0, completed: 0 },
-      7: { total: 0, completed: 0 }
+      7: { total: 0, completed: 0 },
     };
 
     return {
@@ -396,7 +394,7 @@ export class ProgressService {
       ccafBestScore: 0,
       ccafAttempts: 0,
       progressByLevel,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     };
   }
 }

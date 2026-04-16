@@ -7,10 +7,9 @@ import { ConfigService } from './config.service';
  * Maneja el calculo de puntuaciones estandar y ponderadas (CCA-F).
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ScoreService {
-
   private config = inject(ConfigService);
 
   /**
@@ -37,14 +36,11 @@ export class ScoreService {
    */
   calculateCCAFScore(
     items: ExamItemResult[],
-    domains: CCAFDomain[]
+    domains: CCAFDomain[],
   ): { totalScore: number; passed: boolean; domainScores: DomainScore[] } {
     const domainScores = this.calculateDomainScores(items, domains);
 
-    const totalScore = domainScores.reduce(
-      (sum, ds) => sum + ds.weightedContribution,
-      0
-    );
+    const totalScore = domainScores.reduce((sum, ds) => sum + ds.weightedContribution, 0);
 
     const passed = totalScore >= this.config.ccafPassingScore;
 
@@ -54,14 +50,11 @@ export class ScoreService {
   /**
    * Calcula los scores desglosados por dominio.
    */
-  calculateDomainScores(
-    items: ExamItemResult[],
-    domains: CCAFDomain[]
-  ): DomainScore[] {
-    return domains.map(domain => {
-      const domainItems = items.filter(i => i.domainCode === domain.code);
+  calculateDomainScores(items: ExamItemResult[], domains: CCAFDomain[]): DomainScore[] {
+    return domains.map((domain) => {
+      const domainItems = items.filter((i) => i.domainCode === domain.code);
       const total = domainItems.length;
-      const correct = domainItems.filter(i => i.isCorrect).length;
+      const correct = domainItems.filter((i) => i.isCorrect).length;
       const rawPercentage = total > 0 ? (correct / total) * 100 : 0;
       const weightedContribution = (rawPercentage / 100) * domain.weight * 1000;
 
@@ -72,7 +65,7 @@ export class ScoreService {
         correct,
         total,
         rawPercentage: Math.round(rawPercentage * 100) / 100,
-        weightedContribution: Math.round(weightedContribution * 100) / 100
+        weightedContribution: Math.round(weightedContribution * 100) / 100,
       };
     });
   }
@@ -86,19 +79,19 @@ export class ScoreService {
     const threshold = ScoreService.WEAK_DOMAIN_THRESHOLD;
 
     const weakDomains = domainScores
-      .filter(ds => ds.rawPercentage < threshold)
+      .filter((ds) => ds.rawPercentage < threshold)
       .sort((a, b) => a.rawPercentage - b.rawPercentage);
 
     for (const ds of weakDomains) {
       recommendations.push(
         `Estudia el dominio "${ds.domainName}" (${ds.domainCode}): obtuviste ${ds.rawPercentage}% de aciertos. ` +
-        `Este dominio tiene un peso de ${(ds.weight * 100).toFixed(0)}% en el examen.`
+          `Este dominio tiene un peso de ${(ds.weight * 100).toFixed(0)}% en el examen.`,
       );
     }
 
     if (recommendations.length === 0) {
       recommendations.push(
-        'Buen rendimiento en todos los dominios. Mantente al dia revisando las actualizaciones de la plataforma.'
+        'Buen rendimiento en todos los dominios. Mantente al dia revisando las actualizaciones de la plataforma.',
       );
     }
 

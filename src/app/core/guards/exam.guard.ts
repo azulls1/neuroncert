@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { ExamStateService } from '../services/exam-state.service';
+import { LoggingService } from '../services/logging.service';
 
 /**
  * Determina la ruta de resultados segun el modo del examen
@@ -20,9 +21,10 @@ function getResultsRoute(examState: ExamStateService): string {
 export const examRunGuard: CanActivateFn = () => {
   const examState = inject(ExamStateService);
   const router = inject(Router);
+  const logger = inject(LoggingService);
   const status = examState.status();
 
-  console.log(`[ExamRunGuard] status=${status}`);
+  logger.debug(`status=${status}`, 'ExamRunGuard');
 
   if (status === 'running' || status === 'paused') {
     return true;
@@ -30,12 +32,12 @@ export const examRunGuard: CanActivateFn = () => {
 
   if (status === 'submitted' || status === 'completed') {
     const resultsRoute = getResultsRoute(examState);
-    console.log(`[ExamRunGuard] Examen ya enviado, redirigiendo a ${resultsRoute}`);
+    logger.debug(`Examen ya enviado, redirigiendo a ${resultsRoute}`, 'ExamRunGuard');
     return router.createUrlTree([resultsRoute]);
   }
 
   // idle o cualquier otro estado
-  console.log('[ExamRunGuard] No hay examen iniciado, redirigiendo a /exam/start');
+  logger.debug('No hay examen iniciado, redirigiendo a /exam/start', 'ExamRunGuard');
   return router.createUrlTree(['/exam/start']);
 };
 
@@ -46,9 +48,10 @@ export const examRunGuard: CanActivateFn = () => {
 export const examSubmitGuard: CanActivateFn = () => {
   const examState = inject(ExamStateService);
   const router = inject(Router);
+  const logger = inject(LoggingService);
   const status = examState.status();
 
-  console.log(`[ExamSubmitGuard] status=${status}`);
+  logger.debug(`status=${status}`, 'ExamSubmitGuard');
 
   if (status === 'running' || status === 'paused') {
     return true;
@@ -56,11 +59,11 @@ export const examSubmitGuard: CanActivateFn = () => {
 
   if (status === 'submitted' || status === 'completed') {
     const resultsRoute = getResultsRoute(examState);
-    console.log(`[ExamSubmitGuard] Examen ya enviado, redirigiendo a ${resultsRoute}`);
+    logger.debug(`Examen ya enviado, redirigiendo a ${resultsRoute}`, 'ExamSubmitGuard');
     return router.createUrlTree([resultsRoute]);
   }
 
-  console.log('[ExamSubmitGuard] No hay examen iniciado, redirigiendo a /exam/start');
+  logger.debug('No hay examen iniciado, redirigiendo a /exam/start', 'ExamSubmitGuard');
   return router.createUrlTree(['/exam/start']);
 };
 
@@ -71,20 +74,21 @@ export const examSubmitGuard: CanActivateFn = () => {
 export const examReviewGuard: CanActivateFn = () => {
   const examState = inject(ExamStateService);
   const router = inject(Router);
+  const logger = inject(LoggingService);
   const status = examState.status();
 
-  console.log(`[ExamReviewGuard] status=${status}`);
+  logger.debug(`status=${status}`, 'ExamReviewGuard');
 
   if (status === 'completed' || status === 'submitted') {
     return true;
   }
 
   if (status === 'running' || status === 'paused') {
-    console.log('[ExamReviewGuard] Examen aun en progreso, redirigiendo a /exam/run');
+    logger.debug('Examen aun en progreso, redirigiendo a /exam/run', 'ExamReviewGuard');
     return router.createUrlTree(['/exam/run']);
   }
 
-  console.log('[ExamReviewGuard] No hay examen completado, redirigiendo a /');
+  logger.debug('No hay examen completado, redirigiendo a /', 'ExamReviewGuard');
   return router.createUrlTree(['/']);
 };
 
@@ -95,15 +99,16 @@ export const examReviewGuard: CanActivateFn = () => {
 export const examResultsGuard: CanActivateFn = () => {
   const examState = inject(ExamStateService);
   const router = inject(Router);
+  const logger = inject(LoggingService);
   const result = examState.examResult();
 
-  console.log(`[ExamResultsGuard] hasResult=${!!result}`);
+  logger.debug(`hasResult=${!!result}`, 'ExamResultsGuard');
 
   if (result) {
     return true;
   }
 
-  console.log('[ExamResultsGuard] No hay resultado, redirigiendo a /exam/start');
+  logger.debug('No hay resultado, redirigiendo a /exam/start', 'ExamResultsGuard');
   return router.createUrlTree(['/exam/start']);
 };
 
@@ -114,14 +119,18 @@ export const examResultsGuard: CanActivateFn = () => {
 export const ccafResultsGuard: CanActivateFn = () => {
   const examState = inject(ExamStateService);
   const router = inject(Router);
+  const logger = inject(LoggingService);
   const result = examState.examResult();
 
-  console.log(`[CCAFResultsGuard] hasResult=${!!result}, hasDomainScores=${!!(result?.domainScores)}`);
+  logger.debug(
+    `hasResult=${!!result}, hasDomainScores=${!!result?.domainScores}`,
+    'CCAFResultsGuard',
+  );
 
   if (result && result.domainScores) {
     return true;
   }
 
-  console.log('[CCAFResultsGuard] No hay resultado CCA-F, redirigiendo a /ccaf');
+  logger.debug('No hay resultado CCA-F, redirigiendo a /ccaf', 'CCAFResultsGuard');
   return router.createUrlTree(['/ccaf']);
 };

@@ -11,10 +11,9 @@ import { Question, Catalog } from '../models';
  * para que QuestionBankService y CurriculumService no dupliquen logica.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuestionLoaderService {
-
   private http = inject(HttpClient);
 
   /** Cache de archivos de preguntas ya cargados (path -> Question[]) */
@@ -36,13 +35,13 @@ export class QuestionLoaderService {
     }
 
     return this.http.get<Catalog>('assets/question-bank/catalog.json').pipe(
-      tap(catalog => {
+      tap((catalog) => {
         this.catalog = catalog;
       }),
-      catchError(error => {
+      catchError((error) => {
         console.error('Error cargando catalogo:', error);
         throw error;
-      })
+      }),
     );
   }
 
@@ -61,18 +60,20 @@ export class QuestionLoaderService {
     }
 
     return this.http.get<Question[] | { questions: Question[] }>(path).pipe(
-      map(response => {
+      map((response) => {
         // Support both { questions: [...] } wrapper and plain array formats
-        const questions: Question[] = Array.isArray(response) ? response : (response?.questions ?? []);
+        const questions: Question[] = Array.isArray(response)
+          ? response
+          : (response?.questions ?? []);
         return questions;
       }),
-      tap(questions => {
+      tap((questions) => {
         this.questionFileCache.set(path, questions);
       }),
-      catchError(error => {
+      catchError((error) => {
         console.error(`Error cargando archivo de preguntas: ${path}`, error);
         return of([]);
-      })
+      }),
     );
   }
 
@@ -83,13 +84,11 @@ export class QuestionLoaderService {
     if (paths.length === 0) return of([]);
 
     // Intentar cargar todas y combinar las que existan
-    const loads = paths.map(p =>
-      this.loadQuestionFile(p).pipe(catchError(() => of([] as Question[])))
+    const loads = paths.map((p) =>
+      this.loadQuestionFile(p).pipe(catchError(() => of([] as Question[]))),
     );
 
-    return forkJoin(loads).pipe(
-      map(results => results.flat().filter(q => q && q.id))
-    );
+    return forkJoin(loads).pipe(map((results) => results.flat().filter((q) => q && q.id)));
   }
 
   // ---------------------------------------------------------------------------

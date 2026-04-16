@@ -1,4 +1,5 @@
-import { Component, inject, signal, computed, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, signal, computed, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { CurriculumService } from '../../../core/services/curriculum.service';
@@ -41,27 +42,34 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
           <div style="font-size: 3rem; font-weight: 800;" class="font-mono">
             {{ correctCount() }}/{{ questions().length }}
           </div>
-          <div class="text-pine" style="margin-top: 4px;">
-            {{ scorePercent() }}% correctas
-          </div>
+          <div class="text-pine" style="margin-top: 4px;">{{ scorePercent() }}% correctas</div>
 
-          <div class="progress-labeled" style="margin-top: 24px; max-width: 400px; margin-left: auto; margin-right: auto;">
+          <div
+            class="progress-labeled"
+            style="margin-top: 24px; max-width: 400px; margin-left: auto; margin-right: auto;"
+          >
             <div class="progress">
-              <div
-                class="progress__bar"
-                [style.width.%]="scorePercent()"
-              ></div>
+              <div class="progress__bar" [style.width.%]="scorePercent()"></div>
             </div>
             <span class="progress-labeled__value">{{ scorePercent() }}%</span>
           </div>
 
-          <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 24px;">
+          <div
+            style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 24px;"
+          >
             <div>
-              <div class="text-forest font-mono" style="font-size: 1.5rem; font-weight: 700;">{{ correctCount() }}</div>
+              <div class="text-forest font-mono" style="font-size: 1.5rem; font-weight: 700;">
+                {{ correctCount() }}
+              </div>
               <div class="text-pine" style="font-size: 0.8125rem;">Correctas</div>
             </div>
             <div>
-              <div class="font-mono" style="font-size: 1.5rem; font-weight: 700; color: var(--color-red-600, #dc2626);">{{ incorrectCount() }}</div>
+              <div
+                class="font-mono"
+                style="font-size: 1.5rem; font-weight: 700; color: var(--color-red-600, #dc2626);"
+              >
+                {{ incorrectCount() }}
+              </div>
               <div class="text-pine" style="font-size: 0.8125rem;">Incorrectas</div>
             </div>
           </div>
@@ -69,10 +77,14 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
 
         <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
           <button class="btn btn-primary" (click)="retry()">Reintentar Practica</button>
-          <a class="btn btn-secondary" [routerLink]="['/exam/start']" [queryParams]="{ trackId: trackId }">Ir a Modo Examen</a>
+          <a
+            class="btn btn-secondary"
+            [routerLink]="['/exam/start']"
+            [queryParams]="{ trackId: trackId }"
+            >Ir a Modo Examen</a
+          >
           <a class="btn btn-ghost" [routerLink]="['/tracks', trackId]">Volver al Track</a>
         </div>
-
       } @else if (questions().length === 0) {
         <!-- No Questions Available -->
         <div class="page-header">
@@ -83,22 +95,32 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
         <div class="card-section">
           <div class="empty-state">
             <div class="empty-state__icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                />
               </svg>
             </div>
             <h3 class="empty-state__title">Sin Preguntas de Practica Disponibles</h3>
-            <p class="empty-state__desc">
-              Aun no hay preguntas de practica para este track.
-            </p>
+            <p class="empty-state__desc">Aun no hay preguntas de practica para este track.</p>
           </div>
 
           <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
-            <a class="btn btn-primary" [routerLink]="['/study/flashcards', trackId]">Probar Flashcards</a>
+            <a class="btn btn-primary" [routerLink]="['/study/flashcards', trackId]"
+              >Probar Flashcards</a
+            >
             <a class="btn btn-secondary" [routerLink]="['/tracks', trackId]">Volver al Track</a>
           </div>
         </div>
-
       } @else {
         <!-- Practice Mode - Active -->
         <div class="page-header">
@@ -114,12 +136,11 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
         <!-- Progress Bar -->
         <div class="progress-labeled">
           <div class="progress">
-            <div
-              class="progress__bar"
-              [style.width.%]="progressPercent()"
-            ></div>
+            <div class="progress__bar" [style.width.%]="progressPercent()"></div>
           </div>
-          <span class="progress-labeled__value">{{ currentIndex() + 1 }}/{{ questions().length }}</span>
+          <span class="progress-labeled__value"
+            >{{ currentIndex() + 1 }}/{{ questions().length }}</span
+          >
         </div>
 
         <!-- Question Card -->
@@ -141,7 +162,9 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
             {{ currentQuestion()!.text }}
           </p>
           @if (currentQuestion()!.textEs) {
-            <p style="font-size: 14px; color: #5B7065; margin: 0 0 20px; padding: 8px 12px; background: #F7F9F8; border-radius: 8px; border-left: 3px solid #9EADA3; line-height: 1.5;">
+            <p
+              style="font-size: 14px; color: #5B7065; margin: 0 0 20px; padding: 8px 12px; background: #F7F9F8; border-radius: 8px; border-left: 3px solid #9EADA3; line-height: 1.5;"
+            >
               {{ currentQuestion()!.textEs }}
             </p>
           }
@@ -152,24 +175,44 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
               <button
                 class="card-compact"
                 [class.option-selected]="selectedOptionId() === option.id"
-                [class.option-correct]="answered() && option.id === currentQuestion()!.correctOptionId"
-                [class.option-incorrect]="answered() && selectedOptionId() === option.id && option.id !== currentQuestion()!.correctOptionId"
+                [class.option-correct]="
+                  answered() && option.id === currentQuestion()!.correctOptionId
+                "
+                [class.option-incorrect]="
+                  answered() &&
+                  selectedOptionId() === option.id &&
+                  option.id !== currentQuestion()!.correctOptionId
+                "
                 [disabled]="answered()"
                 (click)="selectOption(option.id)"
                 style="width: 100%; text-align: left; cursor: pointer; border: 2px solid transparent; transition: all 0.2s;"
               >
                 <div style="display: flex; align-items: flex-start; gap: 8px;">
                   @if (answered() && option.id === currentQuestion()!.correctOptionId) {
-                    <span style="color: var(--color-forest-500, #22c55e); flex-shrink: 0; font-weight: 700;">&#10003;</span>
-                  } @else if (answered() && selectedOptionId() === option.id && option.id !== currentQuestion()!.correctOptionId) {
-                    <span style="color: var(--color-red-500, #ef4444); flex-shrink: 0; font-weight: 700;">&#10007;</span>
+                    <span
+                      style="color: var(--color-forest-500, #22c55e); flex-shrink: 0; font-weight: 700;"
+                      >&#10003;</span
+                    >
+                  } @else if (
+                    answered() &&
+                    selectedOptionId() === option.id &&
+                    option.id !== currentQuestion()!.correctOptionId
+                  ) {
+                    <span
+                      style="color: var(--color-red-500, #ef4444); flex-shrink: 0; font-weight: 700;"
+                      >&#10007;</span
+                    >
                   } @else {
                     <span style="flex-shrink: 0; visibility: hidden;">&#10003;</span>
                   }
                   <div style="flex: 1;">
                     <span>{{ option.text }}</span>
                     @if (option.textEs) {
-                      <div style="font-size: 12px; color: #5B7065; margin-top: 2px; font-style: italic;">{{ option.textEs }}</div>
+                      <div
+                        style="font-size: 12px; color: #5B7065; margin-top: 2px; font-style: italic;"
+                      >
+                        {{ option.textEs }}
+                      </div>
                     }
                   </div>
                 </div>
@@ -186,7 +229,11 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
                 </div>
                 @if (currentQuestion()!.explanationEs) {
                   <div style="margin-bottom: 8px;">{{ currentQuestion()!.explanationEs }}</div>
-                  <div style="font-size: 12px; color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle, #EFF2F0); padding-top: 8px;"><strong>EN:</strong> {{ currentQuestion()!.explanation }}</div>
+                  <div
+                    style="font-size: 12px; color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle, #EFF2F0); padding-top: 8px;"
+                  >
+                    <strong>EN:</strong> {{ currentQuestion()!.explanation }}
+                  </div>
                 } @else {
                   <span>{{ currentQuestion()!.explanation }}</span>
                 }
@@ -205,7 +252,9 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
           <div>
             @if (answered()) {
               @if (isLastQuestion()) {
-                <button class="btn btn-primary" (click)="finishPractice()">Finalizar Practica</button>
+                <button class="btn btn-primary" (click)="finishPractice()">
+                  Finalizar Practica
+                </button>
               } @else {
                 <button class="btn btn-primary" (click)="goToNext()">Siguiente Pregunta</button>
               }
@@ -215,18 +264,38 @@ import { shuffleArray } from '../../../core/utils/exam.utils';
       }
     </div>
   `,
-  styles: [`
-    :host { display: block; }
-    .stack-sm { display: flex; flex-direction: column; gap: 8px; }
-    .option-selected { border-color: var(--color-forest-300, #86efac) !important; }
-    .option-correct { border-color: var(--color-forest-500, #22c55e) !important; background: var(--color-forest-50, rgba(34,197,94,0.08)) !important; }
-    .option-incorrect { border-color: var(--color-red-500, #ef4444) !important; background: var(--color-red-50, rgba(239,68,68,0.08)) !important; }
-    button.card-compact:hover:not(:disabled) { border-color: var(--color-forest-300, #86efac); }
-    button.card-compact:disabled { cursor: default; }
-  `]
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+      .stack-sm {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .option-selected {
+        border-color: var(--color-forest-300, #86efac) !important;
+      }
+      .option-correct {
+        border-color: var(--color-forest-500, #22c55e) !important;
+        background: var(--color-forest-50, rgba(34, 197, 94, 0.08)) !important;
+      }
+      .option-incorrect {
+        border-color: var(--color-red-500, #ef4444) !important;
+        background: var(--color-red-50, rgba(239, 68, 68, 0.08)) !important;
+      }
+      button.card-compact:hover:not(:disabled) {
+        border-color: var(--color-forest-300, #86efac);
+      }
+      button.card-compact:disabled {
+        cursor: default;
+      }
+    `,
+  ],
 })
 export class TrackPracticeComponent implements OnInit {
-
+  private destroyRef = inject(DestroyRef);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private curriculum = inject(CurriculumService);
@@ -246,7 +315,9 @@ export class TrackPracticeComponent implements OnInit {
   completed = signal(false);
 
   /** Track answers per question index: stores { selectedOptionId, isCorrect } */
-  private answers = signal<Map<number, { selectedOptionId: string; isCorrect: boolean }>>(new Map());
+  private answers = signal<Map<number, { selectedOptionId: string; isCorrect: boolean }>>(
+    new Map(),
+  );
 
   /** Computed values */
   currentQuestion = computed(() => {
@@ -298,7 +369,7 @@ export class TrackPracticeComponent implements OnInit {
     }
 
     // Load catalog first, then track info and questions
-    this.curriculum.loadCatalog().subscribe({
+    this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         const trackInfo = this.curriculum.getTrackById(this.trackId);
         this.track.set(trackInfo);
@@ -308,7 +379,7 @@ export class TrackPracticeComponent implements OnInit {
         console.error('[TrackPractice] loadCatalog error:', err);
         // Still try to load questions even if catalog fails
         this._loadQuestions();
-      }
+      },
     });
   }
 
@@ -361,7 +432,7 @@ export class TrackPracticeComponent implements OnInit {
 
   private _loadQuestions(): void {
     // Load ALL questions for this track (no contentType filter)
-    this.questionBank.getQuestionsByTrack(this.trackId).subscribe({
+    this.questionBank.getQuestionsByTrack(this.trackId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (questions) => {
         if (questions.length > 0) {
           this.questions.set(shuffleArray(questions));
@@ -372,7 +443,7 @@ export class TrackPracticeComponent implements OnInit {
         this.error.set('Error al cargar las preguntas para este track.');
         this.loading.set(false);
         console.error('[TrackPractice] getQuestionsByTrack error:', err);
-      }
+      },
     });
   }
 

@@ -199,7 +199,15 @@ describe('Exam Guards', () => {
         examId: 'ccaf-1',
         score: 750,
         domainScores: [
-          { domainCode: 'D1', domainName: 'Domain 1', weight: 0.5, correct: 5, total: 10, rawPercentage: 50, weightedContribution: 250 },
+          {
+            domainCode: 'D1',
+            domainName: 'Domain 1',
+            weight: 0.5,
+            correct: 5,
+            total: 10,
+            rawPercentage: 50,
+            weightedContribution: 250,
+          },
         ],
       };
       mockExamState.examResult.and.returnValue(mockResult);

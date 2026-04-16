@@ -7,7 +7,7 @@ import {
   CCAFConfig,
   LearningLevelNumber,
   Platform,
-  ContentType
+  ContentType,
 } from '../models';
 import { QuestionLoaderService } from './question-loader.service';
 
@@ -17,10 +17,9 @@ import { QuestionLoaderService } from './question-loader.service';
  * Delega la carga HTTP del catalogo a QuestionLoaderService para evitar duplicacion.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurriculumService {
-
   private loader = inject(QuestionLoaderService);
 
   /** Catalogo completo almacenado como signal */
@@ -41,11 +40,11 @@ export class CurriculumService {
    */
   loadCatalog(): Observable<Catalog> {
     return this.loader.loadCatalog().pipe(
-      tap(catalog => {
+      tap((catalog) => {
         this._catalog.set(catalog);
         this._tracks.set(catalog.tracks ?? []);
         this._levels.set(catalog.levels ?? []);
-      })
+      }),
     );
   }
 
@@ -64,21 +63,21 @@ export class CurriculumService {
    * Obtiene un track por su ID.
    */
   getTrackById(id: string): LearningTrack | undefined {
-    return this._tracks().find(t => t.id === id);
+    return this._tracks().find((t) => t.id === id);
   }
 
   /**
    * Filtra tracks por nivel de aprendizaje.
    */
   getTracksByLevel(level: LearningLevelNumber): LearningTrack[] {
-    return this._tracks().filter(t => t.level === level);
+    return this._tracks().filter((t) => t.level === level);
   }
 
   /**
    * Filtra tracks por plataforma.
    */
   getTracksByPlatform(platform: Platform): LearningTrack[] {
-    return this._tracks().filter(t => t.platform === platform);
+    return this._tracks().filter((t) => t.platform === platform);
   }
 
   // ---------------------------------------------------------------------------
@@ -118,10 +117,10 @@ export class CurriculumService {
 
     const lower = query.toLowerCase().trim();
 
-    return this._tracks().filter(track => {
+    return this._tracks().filter((track) => {
       const titleMatch = track.title.toLowerCase().includes(lower);
       const descMatch = track.description.toLowerCase().includes(lower);
-      const tagMatch = track.tags?.some(tag => tag.toLowerCase().includes(lower)) ?? false;
+      const tagMatch = track.tags?.some((tag) => tag.toLowerCase().includes(lower)) ?? false;
       return titleMatch || descMatch || tagMatch;
     });
   }

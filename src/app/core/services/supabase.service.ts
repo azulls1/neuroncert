@@ -99,10 +99,11 @@ export class SupabaseService {
     const supabaseUrl = environment.supabase.url.startsWith('http')
       ? environment.supabase.url
       : `${window.location.origin}${environment.supabase.url}`;
-    this.supabase = createClient(
-      supabaseUrl,
-      environment.supabase.anonKey,
-    );
+    this.supabase = createClient(supabaseUrl, environment.supabase.anonKey, {
+      global: {
+        headers: { 'x-device-id': this.deviceId.getDeviceId() },
+      },
+    });
     this.verifyConnection();
   }
 
@@ -141,7 +142,9 @@ export class SupabaseService {
    * Returns the inserted row or null on error.
    */
   async saveExamResult(result: ExamResult): Promise<ExamResultRow | null> {
-    if (!this.isBrowser) { return null; }
+    if (!this.isBrowser) {
+      return null;
+    }
     const row: ExamResultRow = {
       examId: result.examId,
       score: result.score,
@@ -151,9 +154,10 @@ export class SupabaseService {
       domains: result.domains,
       summary: result.summary,
       domainScores: result.domainScores ?? null,
-      completedAt: result.completedAt instanceof Date
-        ? result.completedAt.toISOString()
-        : String(result.completedAt),
+      completedAt:
+        result.completedAt instanceof Date
+          ? result.completedAt.toISOString()
+          : String(result.completedAt),
       durationSec: result.summary.totalTimeSpent,
     };
 
@@ -177,7 +181,9 @@ export class SupabaseService {
    * @param limit Maximum number of results to return (default 20).
    */
   async getExamHistory(limit = 20): Promise<ExamResultRow[]> {
-    if (!this.isBrowser) { return []; }
+    if (!this.isBrowser) {
+      return [];
+    }
     const { data, error } = await this.supabase
       .from(TABLE_EXAM_RESULTS)
       .select('*')
@@ -206,7 +212,9 @@ export class SupabaseService {
     trackId: string,
     progress: Partial<CurriculumProgress>,
   ): Promise<ProgressRow | null> {
-    if (!this.isBrowser) { return null; }
+    if (!this.isBrowser) {
+      return null;
+    }
     const row: ProgressRow = {
       trackId,
       completedModules: progress.completedModules ?? [],
@@ -220,7 +228,10 @@ export class SupabaseService {
 
     const { data, error } = await this.supabase
       .from(TABLE_PROGRESS)
-      .upsert({ ...row, device_id: this.deviceId.getDeviceId() }, { onConflict: 'device_id,trackId' })
+      .upsert(
+        { ...row, device_id: this.deviceId.getDeviceId() },
+        { onConflict: 'device_id,trackId' },
+      )
       .select()
       .single();
 
@@ -238,7 +249,9 @@ export class SupabaseService {
    * @param trackId Optional track filter. When omitted, returns all.
    */
   async getProgress(trackId?: string): Promise<ProgressRow[]> {
-    if (!this.isBrowser) { return []; }
+    if (!this.isBrowser) {
+      return [];
+    }
     let query = this.supabase
       .from(TABLE_PROGRESS)
       .select('*')
@@ -270,7 +283,9 @@ export class SupabaseService {
    * @deprecated This method is currently unused — no callers exist in the codebase.
    */
   async getLeaderboard(limit = 10): Promise<LeaderboardRow[]> {
-    if (!this.isBrowser) { return []; }
+    if (!this.isBrowser) {
+      return [];
+    }
     const { data, error } = await this.supabase
       .from(TABLE_LEADERBOARD)
       .select('*')
@@ -294,7 +309,9 @@ export class SupabaseService {
    * Logs a study session to Supabase for analytics.
    */
   async saveStudySession(session: StudySessionRow): Promise<StudySessionRow | null> {
-    if (!this.isBrowser) { return null; }
+    if (!this.isBrowser) {
+      return null;
+    }
     const { data, error } = await this.supabase
       .from(TABLE_STUDY_SESSIONS)
       .insert({ ...session, device_id: this.deviceId.getDeviceId() })
@@ -320,7 +337,9 @@ export class SupabaseService {
    * @deprecated This method is currently unused — no callers exist in the codebase.
    */
   getClient(): SupabaseClient | null {
-    if (!this.isBrowser) { return null; }
+    if (!this.isBrowser) {
+      return null;
+    }
     return this.supabase;
   }
 }

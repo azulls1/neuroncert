@@ -63,11 +63,46 @@ describe('ScoreService', () => {
 
   describe('calculateCCAFScore()', () => {
     const domains: CCAFDomain[] = [
-      { code: 'D1', name: 'Domain 1', weight: 0.30, questionBankFile: '', description: '', totalQuestions: 10 },
-      { code: 'D2', name: 'Domain 2', weight: 0.25, questionBankFile: '', description: '', totalQuestions: 10 },
-      { code: 'D3', name: 'Domain 3', weight: 0.20, questionBankFile: '', description: '', totalQuestions: 10 },
-      { code: 'D4', name: 'Domain 4', weight: 0.15, questionBankFile: '', description: '', totalQuestions: 10 },
-      { code: 'D5', name: 'Domain 5', weight: 0.10, questionBankFile: '', description: '', totalQuestions: 10 },
+      {
+        code: 'D1',
+        name: 'Domain 1',
+        weight: 0.3,
+        questionBankFile: '',
+        description: '',
+        totalQuestions: 10,
+      },
+      {
+        code: 'D2',
+        name: 'Domain 2',
+        weight: 0.25,
+        questionBankFile: '',
+        description: '',
+        totalQuestions: 10,
+      },
+      {
+        code: 'D3',
+        name: 'Domain 3',
+        weight: 0.2,
+        questionBankFile: '',
+        description: '',
+        totalQuestions: 10,
+      },
+      {
+        code: 'D4',
+        name: 'Domain 4',
+        weight: 0.15,
+        questionBankFile: '',
+        description: '',
+        totalQuestions: 10,
+      },
+      {
+        code: 'D5',
+        name: 'Domain 5',
+        weight: 0.1,
+        questionBankFile: '',
+        description: '',
+        totalQuestions: 10,
+      },
     ];
 
     function createItems(domainCode: string, correct: number, total: number): ExamItemResult[] {
@@ -165,14 +200,14 @@ describe('ScoreService', () => {
 
       expect(result.domainScores.length).toBe(5);
 
-      const d1 = result.domainScores.find(ds => ds.domainCode === 'D1')!;
+      const d1 = result.domainScores.find((ds) => ds.domainCode === 'D1')!;
       expect(d1.correct).toBe(9);
       expect(d1.total).toBe(10);
       expect(d1.rawPercentage).toBe(90);
       // 0.90 * 0.30 * 1000 = 270
       expect(d1.weightedContribution).toBe(270);
 
-      const d5 = result.domainScores.find(ds => ds.domainCode === 'D5')!;
+      const d5 = result.domainScores.find((ds) => ds.domainCode === 'D5')!;
       expect(d5.correct).toBe(0);
       expect(d5.rawPercentage).toBe(0);
       expect(d5.weightedContribution).toBe(0);
@@ -203,7 +238,14 @@ describe('ScoreService', () => {
   describe('calculateDomainScores()', () => {
     it('should return empty domain score when no items match a domain', () => {
       const domains: CCAFDomain[] = [
-        { code: 'DX', name: 'Domain X', weight: 0.50, questionBankFile: '', description: '', totalQuestions: 5 },
+        {
+          code: 'DX',
+          name: 'Domain X',
+          weight: 0.5,
+          questionBankFile: '',
+          description: '',
+          totalQuestions: 5,
+        },
       ];
 
       const scores = service.calculateDomainScores([], domains);
@@ -223,8 +265,24 @@ describe('ScoreService', () => {
   describe('generateRecommendations()', () => {
     it('should return a recommendation for domains with rawPercentage < 70', () => {
       const domainScores: DomainScore[] = [
-        { domainCode: 'D1', domainName: 'Domain 1', weight: 0.30, correct: 5, total: 10, rawPercentage: 50, weightedContribution: 150 },
-        { domainCode: 'D2', domainName: 'Domain 2', weight: 0.20, correct: 8, total: 10, rawPercentage: 80, weightedContribution: 160 },
+        {
+          domainCode: 'D1',
+          domainName: 'Domain 1',
+          weight: 0.3,
+          correct: 5,
+          total: 10,
+          rawPercentage: 50,
+          weightedContribution: 150,
+        },
+        {
+          domainCode: 'D2',
+          domainName: 'Domain 2',
+          weight: 0.2,
+          correct: 8,
+          total: 10,
+          rawPercentage: 80,
+          weightedContribution: 160,
+        },
       ];
 
       const recs = service.generateRecommendations(domainScores);
@@ -238,9 +296,33 @@ describe('ScoreService', () => {
 
     it('should sort recommendations by rawPercentage ascending (weakest first)', () => {
       const domainScores: DomainScore[] = [
-        { domainCode: 'D1', domainName: 'Domain 1', weight: 0.30, correct: 6, total: 10, rawPercentage: 60, weightedContribution: 180 },
-        { domainCode: 'D2', domainName: 'Domain 2', weight: 0.20, correct: 3, total: 10, rawPercentage: 30, weightedContribution: 60 },
-        { domainCode: 'D3', domainName: 'Domain 3', weight: 0.25, correct: 4, total: 10, rawPercentage: 40, weightedContribution: 100 },
+        {
+          domainCode: 'D1',
+          domainName: 'Domain 1',
+          weight: 0.3,
+          correct: 6,
+          total: 10,
+          rawPercentage: 60,
+          weightedContribution: 180,
+        },
+        {
+          domainCode: 'D2',
+          domainName: 'Domain 2',
+          weight: 0.2,
+          correct: 3,
+          total: 10,
+          rawPercentage: 30,
+          weightedContribution: 60,
+        },
+        {
+          domainCode: 'D3',
+          domainName: 'Domain 3',
+          weight: 0.25,
+          correct: 4,
+          total: 10,
+          rawPercentage: 40,
+          weightedContribution: 100,
+        },
       ];
 
       const recs = service.generateRecommendations(domainScores);
@@ -254,8 +336,24 @@ describe('ScoreService', () => {
 
     it('should return a positive message when all domains are >= 70%', () => {
       const domainScores: DomainScore[] = [
-        { domainCode: 'D1', domainName: 'Domain 1', weight: 0.50, correct: 8, total: 10, rawPercentage: 80, weightedContribution: 400 },
-        { domainCode: 'D2', domainName: 'Domain 2', weight: 0.50, correct: 9, total: 10, rawPercentage: 90, weightedContribution: 450 },
+        {
+          domainCode: 'D1',
+          domainName: 'Domain 1',
+          weight: 0.5,
+          correct: 8,
+          total: 10,
+          rawPercentage: 80,
+          weightedContribution: 400,
+        },
+        {
+          domainCode: 'D2',
+          domainName: 'Domain 2',
+          weight: 0.5,
+          correct: 9,
+          total: 10,
+          rawPercentage: 90,
+          weightedContribution: 450,
+        },
       ];
 
       const recs = service.generateRecommendations(domainScores);
@@ -272,7 +370,15 @@ describe('ScoreService', () => {
 
     it('should not recommend domains exactly at 70%', () => {
       const domainScores: DomainScore[] = [
-        { domainCode: 'D1', domainName: 'Domain 1', weight: 0.50, correct: 7, total: 10, rawPercentage: 70, weightedContribution: 350 },
+        {
+          domainCode: 'D1',
+          domainName: 'Domain 1',
+          weight: 0.5,
+          correct: 7,
+          total: 10,
+          rawPercentage: 70,
+          weightedContribution: 350,
+        },
       ];
 
       const recs = service.generateRecommendations(domainScores);

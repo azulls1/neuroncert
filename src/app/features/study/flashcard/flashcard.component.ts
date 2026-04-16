@@ -1,4 +1,5 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, signal, computed } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from '../../../core/models';
@@ -32,7 +33,9 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
           <p style="font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px;">
             No se encontraron flashcards para este track.
           </p>
-          <button type="button" class="btn btn-secondary" (click)="goBack()">Volver a Tracks</button>
+          <button type="button" class="btn btn-secondary" (click)="goBack()">
+            Volver a Tracks
+          </button>
         </div>
       } @else {
         <!-- Progress -->
@@ -43,10 +46,7 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
             </span>
           </div>
           <div class="progress" style="margin-top: 8px;">
-            <div
-              class="progress__bar"
-              [style.width.%]="progressPercent()"
-            ></div>
+            <div class="progress__bar" [style.width.%]="progressPercent()"></div>
           </div>
         </div>
 
@@ -65,7 +65,9 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
 
         <!-- Difficulty filter -->
         <div class="animate-fadeInUp" style="margin-top: 28px;">
-          <div style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">
+          <div
+            style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;"
+          >
             Filtrar por dificultad
           </div>
           <div class="filter-pills">
@@ -84,17 +86,26 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
 
         <!-- Stats -->
         <div class="divider" style="margin: 24px 0;"></div>
-        <div class="animate-fadeInUp" style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
+        <div
+          class="animate-fadeInUp"
+          style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;"
+        >
           <div class="card-stat">
-            <span class="font-mono text-forest" style="font-size: 24px; font-weight: 700;">{{ reviewedCount() }}</span>
+            <span class="font-mono text-forest" style="font-size: 24px; font-weight: 700;">{{
+              reviewedCount()
+            }}</span>
             <span style="font-size: 13px; color: var(--color-text-muted);">Revisadas</span>
           </div>
           <div class="card-stat">
-            <span class="font-mono text-pine" style="font-size: 24px; font-weight: 700;">{{ remainingCount() }}</span>
+            <span class="font-mono text-pine" style="font-size: 24px; font-weight: 700;">{{
+              remainingCount()
+            }}</span>
             <span style="font-size: 13px; color: var(--color-text-muted);">Pendientes</span>
           </div>
           <div class="card-stat">
-            <span class="font-mono" style="font-size: 24px; font-weight: 700;">{{ filteredQuestions().length }}</span>
+            <span class="font-mono" style="font-size: 24px; font-weight: 700;">{{
+              filteredQuestions().length
+            }}</span>
             <span style="font-size: 13px; color: var(--color-text-muted);">Total</span>
           </div>
         </div>
@@ -104,23 +115,29 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
       <div style="margin-top: 16px;">
         <button type="button" class="btn btn-secondary" (click)="goBack()">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+            <path
+              fill-rule="evenodd"
+              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+              clip-rule="evenodd"
+            />
           </svg>
           Volver a Tracks
         </button>
       </div>
     </div>
   `,
-  styles: [`
-    .filter-pill--active {
-      background: var(--forest-900) !important;
-      color: white !important;
-      border-color: var(--forest-900) !important;
-    }
-  `]
+  styles: [
+    `
+      .filter-pill--active {
+        background: var(--forest-900) !important;
+        color: white !important;
+        border-color: var(--forest-900) !important;
+      }
+    `,
+  ],
 })
 export class FlashcardComponent implements OnInit {
-
+  private destroyRef = inject(DestroyRef);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private questionBank = inject(QuestionBankService);
@@ -139,7 +156,7 @@ export class FlashcardComponent implements OnInit {
     { value: 'all', label: 'Todas' },
     { value: 'easy', label: 'Facil' },
     { value: 'medium', label: 'Medio' },
-    { value: 'hard', label: 'Dificil' }
+    { value: 'hard', label: 'Dificil' },
   ];
 
   // Computed
@@ -147,7 +164,7 @@ export class FlashcardComponent implements OnInit {
     const diff = this.selectedDifficulty();
     const all = this.allQuestions();
     if (diff === 'all') return all;
-    return all.filter(q => q.difficulty === diff);
+    return all.filter((q) => q.difficulty === diff);
   });
 
   currentQuestion = computed(() => {
@@ -172,7 +189,7 @@ export class FlashcardComponent implements OnInit {
     const trackId = this.route.snapshot.paramMap.get('trackId') ?? '';
     this.trackId.set(trackId);
 
-    this.questionBank.getFlashcards(trackId).subscribe({
+    this.questionBank.getFlashcards(trackId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (questions) => {
         this.allQuestions.set(questions);
         this.loading.set(false);
@@ -180,15 +197,15 @@ export class FlashcardComponent implements OnInit {
       error: () => {
         this.allQuestions.set([]);
         this.loading.set(false);
-      }
+      },
     });
   }
 
   toggleFlip(): void {
-    this.showAnswer.update(v => !v);
+    this.showAnswer.update((v) => !v);
     // Mark card as reviewed when flipped to answer
     if (this.showAnswer()) {
-      this.reviewedSet.update(set => {
+      this.reviewedSet.update((set) => {
         const next = new Set(set);
         next.add(this.currentIndex());
         return next;
@@ -199,14 +216,14 @@ export class FlashcardComponent implements OnInit {
   goNext(): void {
     const max = this.filteredQuestions().length - 1;
     if (this.currentIndex() < max) {
-      this.currentIndex.update(i => i + 1);
+      this.currentIndex.update((i) => i + 1);
       this.showAnswer.set(false);
     }
   }
 
   goPrevious(): void {
     if (this.currentIndex() > 0) {
-      this.currentIndex.update(i => i - 1);
+      this.currentIndex.update((i) => i - 1);
       this.showAnswer.set(false);
     }
   }

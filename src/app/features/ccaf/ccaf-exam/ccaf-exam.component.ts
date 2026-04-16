@@ -1,4 +1,5 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, signal, computed } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ExamStateService } from '../../../core/services/exam-state.service';
@@ -20,8 +21,8 @@ import { CCAFConfig } from '../../../core/models';
       <div class="page-header">
         <h1 class="page-header__title">Configurar Examen CCA-F</h1>
         <p class="page-header__desc">
-          Revisa los parametros del examen a continuacion y comienza cuando estes listo.
-          Esta simulacion replica las condiciones reales del examen de certificacion CCA-F.
+          Revisa los parametros del examen a continuacion y comienza cuando estes listo. Esta
+          simulacion replica las condiciones reales del examen de certificacion CCA-F.
         </p>
       </div>
 
@@ -65,8 +66,14 @@ import { CCAFConfig } from '../../../core/models';
           <div class="stack" style="margin-top: 12px;">
             @for (domain of domainWeights(); track domain.code) {
               <div style="display: flex; align-items: center; gap: 12px;">
-                <span class="badge badge-info font-mono" style="min-width: 36px; text-align: center;">{{ domain.code }}</span>
-                <span style="flex: 1; font-size: 0.875rem;" class="text-forest">{{ domain.name }}</span>
+                <span
+                  class="badge badge-info font-mono"
+                  style="min-width: 36px; text-align: center;"
+                  >{{ domain.code }}</span
+                >
+                <span style="flex: 1; font-size: 0.875rem;" class="text-forest">{{
+                  domain.name
+                }}</span>
                 <div class="progress-labeled" style="flex: 1;">
                   <div class="progress">
                     <div class="progress__bar" [style.width.%]="domain.weight"></div>
@@ -81,15 +88,29 @@ import { CCAFConfig } from '../../../core/models';
         <!-- Warning Alert -->
         <div class="alert alert-warning animate-fadeInUp">
           <div class="alert__icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-              <line x1="12" y1="9" x2="12" y2="13"/>
-              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
+              />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
             </svg>
           </div>
           <div class="alert__content">
             <div class="alert__title">Condiciones del Examen</div>
-            <span>Este examen simula las condiciones reales del CCA-F. No se permite pausar. Asegurate de tener {{ durationHoursLabel() }} ininterrumpidas antes de comenzar.</span>
+            <span
+              >Este examen simula las condiciones reales del CCA-F. No se permite pausar. Asegurate
+              de tener {{ durationHoursLabel() }} ininterrumpidas antes de comenzar.</span
+            >
           </div>
         </div>
       }
@@ -107,9 +128,16 @@ import { CCAFConfig } from '../../../core/models';
       </div>
     </div>
   `,
-  styles: [`:host { display: block; }`]
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class CCAFExamComponent implements OnInit {
+  private destroyRef = inject(DestroyRef);
   private examStateService = inject(ExamStateService);
   private curriculumService = inject(CurriculumService);
   private router = inject(Router);
@@ -134,15 +162,15 @@ export class CCAFExamComponent implements OnInit {
   maxScore = computed(() => this.ccafConfig()?.maxScore ?? 0);
   domainCount = computed(() => this.ccafConfig()?.domains.length ?? 0);
   domainWeights = computed(() =>
-    (this.ccafConfig()?.domains ?? []).map(d => ({
+    (this.ccafConfig()?.domains ?? []).map((d) => ({
       code: d.code,
       name: d.name,
-      weight: d.weight
-    }))
+      weight: d.weight,
+    })),
   );
 
   ngOnInit(): void {
-    this.curriculumService.loadCatalog().subscribe({
+    this.curriculumService.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         this.ccafConfig.set(this.curriculumService.getCCAFConfig());
         this.catalogLoading.set(false);
@@ -150,7 +178,7 @@ export class CCAFExamComponent implements OnInit {
       error: (err) => {
         console.error('Failed to load CCA-F catalog:', err);
         this.catalogLoading.set(false);
-      }
+      },
     });
   }
 
@@ -166,17 +194,17 @@ export class CCAFExamComponent implements OnInit {
       count: config.totalQuestions,
       durationSec: config.durationSec,
       difficulty: 'any',
-      domains: config.domains.map(d => d.code)
+      domains: config.domains.map((d) => d.code),
     };
 
-    this.examStateService.startExam(params).subscribe({
+    this.examStateService.startExam(params).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         this.router.navigate(['/exam/run']);
       },
       error: (err) => {
         console.error('Failed to start CCA-F exam:', err);
         this.isLoading = false;
-      }
+      },
     });
   }
 }

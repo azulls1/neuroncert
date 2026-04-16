@@ -10,7 +10,6 @@ import { ConfigService } from '../../../core/services/config.service';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="page-medium animate-fadeInUp stagger-children">
-
       <!-- Breadcrumb -->
       <div class="breadcrumb animate-fadeInUp">
         <a routerLink="/">Inicio</a>
@@ -21,10 +20,21 @@ import { ConfigService } from '../../../core/services/config.service';
       <!-- Header -->
       <div class="page-header animate-fadeInUp">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
-          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(4, 32, 44, 0.1); display: flex; align-items: center; justify-content: center;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04202C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
+          <div
+            style="width: 40px; height: 40px; border-radius: 10px; background: rgba(4, 32, 44, 0.1); display: flex; align-items: center; justify-content: center;"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#04202C"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
             </svg>
           </div>
           <div>
@@ -49,17 +59,36 @@ import { ConfigService } from '../../../core/services/config.service';
       @if (!loading() && sessions().length === 0) {
         <div class="card-section animate-fadeInUp">
           <div class="empty-state">
-            <svg class="empty-state__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-              <rect x="9" y="3" width="6" height="4" rx="1"/>
-              <line x1="9" y1="12" x2="15" y2="12"/>
-              <line x1="9" y1="16" x2="13" y2="16"/>
+            <svg
+              class="empty-state__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" />
+              <rect x="9" y="3" width="6" height="4" rx="1" />
+              <line x1="9" y1="12" x2="15" y2="12" />
+              <line x1="9" y1="16" x2="13" y2="16" />
             </svg>
             <div class="empty-state__title">No hay examenes registrados</div>
-            <div class="empty-state__desc" style="margin-bottom: 20px;">Realiza tu primer examen para comenzar a ver tu historial aqui.</div>
+            <div class="empty-state__desc" style="margin-bottom: 20px;">
+              Realiza tu primer examen para comenzar a ver tu historial aqui.
+            </div>
             <a routerLink="/exam/start" class="btn btn-primary hover-lift">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="5 3 19 12 5 21 5 3"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
               Iniciar Examen
             </a>
@@ -92,11 +121,14 @@ import { ConfigService } from '../../../core/services/config.service';
         <div class="stack animate-fadeInUp">
           @for (session of sessions(); track session.sessionId) {
             <div class="card hover-lift" style="padding: 20px;">
-              <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-
+              <div
+                style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px;"
+              >
                 <!-- Left: info -->
                 <div style="flex: 1; min-width: 200px;">
-                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
+                  <div
+                    style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;"
+                  >
                     <span class="badge" [ngClass]="getModeBadgeClass(session.difficulty)">
                       {{ getModeLabel(session.difficulty) }}
                     </span>
@@ -110,27 +142,58 @@ import { ConfigService } from '../../../core/services/config.service';
                     }
                   </div>
 
-                  <div style="font-size: 14px; color: var(--color-text-secondary); display: flex; flex-wrap: wrap; gap: 16px;">
+                  <div
+                    style="font-size: 14px; color: var(--color-text-secondary); display: flex; flex-wrap: wrap; gap: 16px;"
+                  >
                     <span style="display: flex; align-items: center; gap: 4px;">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                        <line x1="16" y1="2" x2="16" y2="6"/>
-                        <line x1="8" y1="2" x2="8" y2="6"/>
-                        <line x1="3" y1="10" x2="21" y2="10"/>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
                       </svg>
                       {{ formatDate(session.startTime) }}
                     </span>
                     <span style="display: flex; align-items: center; gap: 4px;">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
                       </svg>
                       {{ getDuration(session) }}
                     </span>
                     <span style="display: flex; align-items: center; gap: 4px;">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-                        <rect x="9" y="3" width="6" height="4" rx="1"/>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"
+                        />
+                        <rect x="9" y="3" width="6" height="4" rx="1" />
                       </svg>
                       {{ session.correctAnswers }}/{{ session.totalQuestions }} correctas
                     </span>
@@ -138,10 +201,14 @@ import { ConfigService } from '../../../core/services/config.service';
                 </div>
 
                 <!-- Right: score circle -->
-                <div style="display: flex; align-items: center; justify-content: center; min-width: 64px;">
-                  <div style="width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;"
+                <div
+                  style="display: flex; align-items: center; justify-content: center; min-width: 64px;"
+                >
+                  <div
+                    style="width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;"
                     [style.background]="getScoreCircleBg(getScorePercent(session))"
-                    [style.color]="getScoreCircleColor(getScorePercent(session))">
+                    [style.color]="getScoreCircleColor(getScorePercent(session))"
+                  >
                     {{ getScorePercent(session) }}%
                   </div>
                 </div>
@@ -159,40 +226,73 @@ import { ConfigService } from '../../../core/services/config.service';
       }
 
       <!-- Actions -->
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;" class="animate-fadeInUp">
+      <div
+        style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;"
+        class="animate-fadeInUp"
+      >
         <a routerLink="/exam/start" class="btn btn-primary hover-lift">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="5 3 19 12 5 21 5 3"/>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
           Nuevo Examen
         </a>
         <a routerLink="/" class="btn btn-secondary hover-lift">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            />
           </svg>
           Volver al Dashboard
         </a>
         @if (sessions().length > 0) {
           <button type="button" (click)="clearHistory()" class="btn btn-ghost">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="3 6 5 6 21 6"/>
-              <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
             </svg>
             Limpiar Historial
           </button>
         }
       </div>
-
     </div>
   `,
-  styles: [`
-    :host {
-      display: block;
-    }
-    .mb-6 {
-      margin-bottom: 24px;
-    }
-  `]
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+      .mb-6 {
+        margin-bottom: 24px;
+      }
+    `,
+  ],
 })
 export class HistoryComponent implements OnInit {
   private historyService = inject(ExamHistoryService);
@@ -202,15 +302,15 @@ export class HistoryComponent implements OnInit {
   sessions = computed(() => {
     const all = this.historyService.sessions();
     // Sort by start time descending (most recent first)
-    return [...all].sort((a, b) =>
-      new Date(b.startTime).getTime() - new Date(a.startTime).getTime()
+    return [...all].sort(
+      (a, b) => new Date(b.startTime).getTime() - new Date(a.startTime).getTime(),
     );
   });
 
   bestScore = computed(() => {
     const s = this.sessions();
     if (s.length === 0) return 0;
-    return Math.max(...s.map(session => this.getScorePercent(session)));
+    return Math.max(...s.map((session) => this.getScorePercent(session)));
   });
 
   averageScore = computed(() => {
@@ -221,7 +321,7 @@ export class HistoryComponent implements OnInit {
   });
 
   passedCount = computed(() => {
-    return this.sessions().filter(s => this.isPassed(s)).length;
+    return this.sessions().filter((s) => this.isPassed(s)).length;
   });
 
   async ngOnInit(): Promise<void> {
@@ -245,20 +345,29 @@ export class HistoryComponent implements OnInit {
 
   getModeLabel(mode: string): string {
     switch (mode) {
-      case 'ccaf': return 'CCA-F';
-      case 'practice': return 'Practica';
-      case 'study': return 'Estudio';
-      case 'standard': return 'Estandar';
-      default: return mode || 'Estandar';
+      case 'ccaf':
+        return 'CCA-F';
+      case 'practice':
+        return 'Practica';
+      case 'study':
+        return 'Estudio';
+      case 'standard':
+        return 'Estandar';
+      default:
+        return mode || 'Estandar';
     }
   }
 
   getModeBadgeClass(mode: string): string {
     switch (mode) {
-      case 'ccaf': return 'badge badge-info';
-      case 'practice': return 'badge badge-warning';
-      case 'study': return 'badge badge-inactive';
-      default: return 'badge badge-inactive';
+      case 'ccaf':
+        return 'badge badge-info';
+      case 'practice':
+        return 'badge badge-warning';
+      case 'study':
+        return 'badge badge-inactive';
+      default:
+        return 'badge badge-inactive';
     }
   }
 
@@ -293,7 +402,7 @@ export class HistoryComponent implements OnInit {
       month: 'short',
       year: 'numeric',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
     });
   }
 
@@ -308,7 +417,11 @@ export class HistoryComponent implements OnInit {
   }
 
   clearHistory(): void {
-    if (confirm('Estas seguro de que quieres eliminar todo el historial? Esta accion no se puede deshacer.')) {
+    if (
+      confirm(
+        'Estas seguro de que quieres eliminar todo el historial? Esta accion no se puede deshacer.',
+      )
+    ) {
       this.historyService.clearAllHistory();
     }
   }

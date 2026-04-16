@@ -25,19 +25,32 @@ import { LearningTrack } from '../../../core/models';
           </div>
 
           <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
-            <a [routerLink]="['/study/flashcards', trackId()]"
-               class="btn btn-primary hover-lift">
+            <a [routerLink]="['/study/flashcards', trackId()]" class="btn btn-primary hover-lift">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
               </svg>
               Estudiar con Flashcards
             </a>
 
             @if (t.externalUrl) {
-              <a [href]="t.externalUrl" target="_blank" rel="noopener"
-                 class="btn btn-secondary hover-lift">
+              <a
+                [href]="t.externalUrl"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-secondary hover-lift"
+              >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  ></path>
                 </svg>
                 Ir al Curso Oficial
               </a>
@@ -53,7 +66,9 @@ import { LearningTrack } from '../../../core/models';
               @for (mod of t.modules; track mod.id; let i = $index) {
                 <div class="card-stat hover-lift" style="padding: 12px 16px;">
                   <div style="display: flex; align-items: center; gap: 12px;">
-                    <span class="badge badge-active" style="min-width: 28px; text-align: center;">{{ i + 1 }}</span>
+                    <span class="badge badge-active" style="min-width: 28px; text-align: center;">{{
+                      i + 1
+                    }}</span>
                     <div>
                       <div style="font-weight: 600; color: #04202C;">{{ mod.title }}</div>
                       @if (mod.description) {
@@ -70,12 +85,20 @@ import { LearningTrack } from '../../../core/models';
         <div class="card-section" style="text-align: center;">
           <h2 class="text-forest" style="margin: 0 0 16px;">Track no encontrado</h2>
           <p style="color: #5B7065;">No se pudo cargar la informacion del track.</p>
-          <a routerLink="/tracks" class="btn btn-secondary" style="margin-top: 16px;">Volver a Tracks</a>
+          <a routerLink="/tracks" class="btn btn-secondary" style="margin-top: 16px;"
+            >Volver a Tracks</a
+          >
         </div>
       }
     </div>
   `,
-  styles: [`:host { display: block; }`]
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class TrackTheoryComponent implements OnInit {
   private route = inject(ActivatedRoute);

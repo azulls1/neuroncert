@@ -58,15 +58,17 @@ describe('ExamStateService', () => {
 
   beforeEach(() => {
     questionBankSpy = jasmine.createSpyObj('QuestionBankService', ['getQuestions', 'validate']);
-    timerSpy = jasmine.createSpyObj('TimerService', [
-      'start', 'pause', 'resume', 'stop', 'addTime', 'formatTime', 'getState'
-    ], {
-      isRunning: jasmine.createSpy().and.returnValue(false),
-      isPaused: jasmine.createSpy().and.returnValue(false),
-      remainingSeconds: jasmine.createSpy().and.returnValue(0),
-      totalSeconds: jasmine.createSpy().and.returnValue(0),
-      remainingTime$: of(0),
-    });
+    timerSpy = jasmine.createSpyObj(
+      'TimerService',
+      ['start', 'pause', 'resume', 'stop', 'addTime', 'formatTime', 'getState'],
+      {
+        isRunning: jasmine.createSpy().and.returnValue(false),
+        isPaused: jasmine.createSpy().and.returnValue(false),
+        remainingSeconds: jasmine.createSpy().and.returnValue(0),
+        totalSeconds: jasmine.createSpy().and.returnValue(0),
+        remainingTime$: of(0),
+      },
+    );
     timerSpy.getState.and.returnValue({
       isRunning: false,
       isPaused: false,
@@ -146,7 +148,11 @@ describe('ExamStateService', () => {
 
     it('should start the timer with the correct duration', () => {
       service.startExam(params).subscribe();
-      expect(timerSpy.start).toHaveBeenCalledWith(3600, jasmine.any(Function), jasmine.any(Function));
+      expect(timerSpy.start).toHaveBeenCalledWith(
+        3600,
+        jasmine.any(Function),
+        jasmine.any(Function),
+      );
     });
 
     it('should set isLoading to false after success', () => {
@@ -158,7 +164,9 @@ describe('ExamStateService', () => {
       questionBankSpy.getQuestions.and.returnValue(throwError(() => new Error('Network error')));
 
       service.startExam(params).subscribe({
-        error: () => { /* expected */ },
+        error: () => {
+          /* expected */
+        },
       });
 
       expect(service.error()).toBe('Error al iniciar el examen');
@@ -389,7 +397,15 @@ describe('ExamStateService', () => {
     const mockResult: ExamResult = {
       examId: 'exam-123',
       score: 80,
-      summary: { correct: 2, incorrect: 1, skipped: 0, flagged: 0, scorePercentage: 67, totalTimeSpent: 120, timeLimit: 3600 },
+      summary: {
+        correct: 2,
+        incorrect: 1,
+        skipped: 0,
+        flagged: 0,
+        scorePercentage: 67,
+        totalTimeSpent: 120,
+        timeLimit: 3600,
+      },
       items: [],
       recommendations: [],
       completedAt: new Date(),
@@ -437,7 +453,9 @@ describe('ExamStateService', () => {
       questionBankSpy.validate.and.returnValue(throwError(() => new Error('Validation failed')));
 
       service.submitExam().subscribe({
-        error: () => { /* expected */ },
+        error: () => {
+          /* expected */
+        },
       });
 
       expect(service.status()).toBe('running');

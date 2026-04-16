@@ -6,7 +6,6 @@ const DEVICE_ID_KEY = 'claude_lp_device_id';
 const DEVICE_FINGERPRINT_KEY = 'claude_lp_device_fp';
 
 describe('DeviceIdService', () => {
-
   beforeEach(() => {
     // Clear localStorage before each test
     localStorage.removeItem(DEVICE_ID_KEY);
@@ -55,7 +54,16 @@ describe('DeviceIdService', () => {
       const service = createService();
       const id = service.getDeviceId();
       // Format: uuid_fingerprint — the uuid part contains dashes
-      const uuidPart = id.split('_')[0] + '_' + id.split('_')[1] + '_' + id.split('_')[2] + '_' + id.split('_')[3] + '_' + id.split('_')[4];
+      const uuidPart =
+        id.split('_')[0] +
+        '_' +
+        id.split('_')[1] +
+        '_' +
+        id.split('_')[2] +
+        '_' +
+        id.split('_')[3] +
+        '_' +
+        id.split('_')[4];
       // UUID v4 regex: 8-4-4-4-12 hex characters
       // The device id format is: <uuid>_<fingerprint>
       // We just check that the ID is not empty and was persisted
