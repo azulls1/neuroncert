@@ -241,7 +241,11 @@ export class ProgressService {
         }
       }
     } catch (error) {
-      this.logger.warn('No se pudo cargar el progreso desde localStorage', 'ProgressService', error);
+      this.logger.warn(
+        'No se pudo cargar el progreso desde localStorage',
+        'ProgressService',
+        error,
+      );
     }
 
     // 2. Supabase sync is now handled by syncFromSupabase() called in the constructor.

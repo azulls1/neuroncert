@@ -612,7 +612,9 @@ export class ExamStateService {
     try {
       this.supabase
         .saveExamResult(result)
-        .catch((err) => this.logger.error('Supabase saveExamResult error', 'ExamStateService', err));
+        .catch((err) =>
+          this.logger.error('Supabase saveExamResult error', 'ExamStateService', err),
+        );
     } catch (err) {
       this.logger.error('Supabase saveExamResult error', 'ExamStateService', err);
     }

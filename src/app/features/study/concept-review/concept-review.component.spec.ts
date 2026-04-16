@@ -77,6 +77,8 @@ describe('ConceptReviewComponent', () => {
     const fixture = TestBed.createComponent(ConceptReviewComponent);
     fixture.componentInstance.ngOnInit();
     fixture.componentInstance.setDomain('D1');
-    expect(fixture.componentInstance.filteredQuestions().every(q => q.domainCode === 'D1')).toBe(true);
+    expect(fixture.componentInstance.filteredQuestions().every((q) => q.domainCode === 'D1')).toBe(
+      true,
+    );
   });
 });

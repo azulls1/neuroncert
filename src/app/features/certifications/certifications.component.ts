@@ -311,9 +311,7 @@ interface RoadmapData {
           }
           @if (summaryPlatforms().length) {
             <div class="cert-card">
-              <h2 class="cert-card__title" style="margin-bottom: 10px;">
-                Resumen por Plataforma
-              </h2>
+              <h2 class="cert-card__title" style="margin-bottom: 10px;">Resumen por Plataforma</h2>
               @for (row of summaryPlatforms(); track row.name) {
                 <div class="cert-row">
                   <span>{{ row.name }}</span
@@ -601,15 +599,20 @@ export class CertificationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<RoadmapData>('/assets/question-bank/roadmap.json').pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (data) => {
-        this.roadmap.set(data);
-        this.loading.set(false);
-      },
-      error: () => {
-        this.error.set('Error al cargar los datos de certificaciones. Por favor intenta de nuevo.');
-        this.loading.set(false);
-      },
-    });
+    this.http
+      .get<RoadmapData>('/assets/question-bank/roadmap.json')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (data) => {
+          this.roadmap.set(data);
+          this.loading.set(false);
+        },
+        error: () => {
+          this.error.set(
+            'Error al cargar los datos de certificaciones. Por favor intenta de nuevo.',
+          );
+          this.loading.set(false);
+        },
+      });
   }
 }

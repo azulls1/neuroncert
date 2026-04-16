@@ -7,10 +7,7 @@ describe('NotFoundComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NotFoundComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-        provideRouter([]),
-      ],
+      providers: [provideZonelessChangeDetection(), provideRouter([])],
     }).compileComponents();
   });
 

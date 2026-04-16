@@ -14,7 +14,9 @@ describe('StartComponent', () => {
   };
 
   const mockExamStateService = {
-    startExam: jasmine.createSpy('startExam').and.returnValue(of({ examId: '1', questions: [], durationSec: 2700 })),
+    startExam: jasmine
+      .createSpy('startExam')
+      .and.returnValue(of({ examId: '1', questions: [], durationSec: 2700 })),
   };
 
   const mockCurriculumService = {

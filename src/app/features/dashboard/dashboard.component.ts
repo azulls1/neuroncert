@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CurriculumService } from '../../core/services/curriculum.service';
 import { ProgressService } from '../../core/services/progress.service';
 import { ExamStateService } from '../../core/services/exam-state.service';
+import { ConfigService } from '../../core/services/config.service';
 import { LearningTrack, LearningLevel } from '../../core/models';
 import { StatCardComponent } from '../../shared';
 import { LoggingService } from '../../core/services/logging.service';
@@ -16,12 +17,26 @@ import { LoggingService } from '../../core/services/logging.service';
   template: `
     <div class="welcome">
       @if (hasResumableExam()) {
-        <div class="alert alert-info" style="margin: 0 0 16px; border-radius: 12px; padding: 16px 20px;">
-          <div class="alert__content" style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div
+          class="alert alert-info"
+          style="margin: 0 0 16px; border-radius: 12px; padding: 16px 20px;"
+        >
+          <div
+            class="alert__content"
+            style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;"
+          >
             <div class="alert__title" style="margin-right: 4px;">Examen en progreso</div>
             <span>Tienes un examen sin terminar.</span>
-            <a routerLink="/exam/run" (click)="resumeExam()" class="btn btn-primary" style="margin-left: 12px;">Continuar Examen</a>
-            <button (click)="dismissResumable()" class="btn btn-ghost" style="margin-left: 8px;">Descartar</button>
+            <a
+              routerLink="/exam/run"
+              (click)="resumeExam()"
+              class="btn btn-primary"
+              style="margin-left: 12px;"
+              >Continuar Examen</a
+            >
+            <button (click)="dismissResumable()" class="btn btn-ghost" style="margin-left: 8px;">
+              Descartar
+            </button>
           </div>
         </div>
       }
@@ -284,7 +299,8 @@ import { LoggingService } from '../../core/services/logging.service';
             iconClass="stat-icon-tracks"
             [barPercent]="tracksPercentage()"
           >
-            <svg slot="icon"
+            <svg
+              slot="icon"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -305,7 +321,8 @@ import { LoggingService } from '../../core/services/logging.service';
             [barPercent]="examsPercentage()"
             barClass="stat-bar-green"
           >
-            <svg slot="icon"
+            <svg
+              slot="icon"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -320,14 +337,17 @@ import { LoggingService } from '../../core/services/logging.service';
           </app-stat-card>
 
           <app-stat-card
-            [value]="overallProgress().ccafBestScore > 0 ? '' + overallProgress().ccafBestScore : '---'"
+            [value]="
+              overallProgress().ccafBestScore > 0 ? '' + overallProgress().ccafBestScore : '---'
+            "
             label="Mejor Score CCA-F"
             iconClass="stat-icon-score"
             [barPercent]="ccafPercentage()"
             barClass="stat-bar-gold"
             [hint]="ccafPassingScore() + ' / ' + ccafMaxScore() + ' para aprobar'"
           >
-            <svg slot="icon"
+            <svg
+              slot="icon"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -348,7 +368,8 @@ import { LoggingService } from '../../core/services/logging.service';
             iconClass="stat-icon-certs"
             [hint]="'En ' + platformCount() + ' plataformas'"
           >
-            <svg slot="icon"
+            <svg
+              slot="icon"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -1061,6 +1082,7 @@ export class DashboardComponent implements OnInit {
   private progress = inject(ProgressService);
   private examState = inject(ExamStateService);
   private logger = inject(LoggingService);
+  private readonly configSvc = inject(ConfigService);
 
   /** Signal refs from services */
   private tracks: Signal<LearningTrack[]> = this.curriculum.getTracks();
@@ -1105,19 +1127,19 @@ export class DashboardComponent implements OnInit {
   /** CCA-F passing score from config */
   ccafPassingScore = computed(() => {
     const ccaf = this.curriculum.getCCAFConfig();
-    return ccaf?.passingScore ?? 720;
+    return ccaf?.passingScore ?? this.configSvc.ccafPassingScore;
   });
 
   /** CCA-F max score from config */
   ccafMaxScore = computed(() => {
     const ccaf = this.curriculum.getCCAFConfig();
-    return ccaf?.maxScore ?? 1000;
+    return ccaf?.maxScore ?? this.configSvc.ccafMaxScore;
   });
 
   /** CCA-F total questions per exam from config */
   ccafTotalQuestions = computed(() => {
     const ccaf = this.curriculum.getCCAFConfig();
-    return ccaf?.totalQuestions ?? 60;
+    return ccaf?.totalQuestions ?? this.configSvc.ccafQuestionCount;
   });
 
   // ---------------------------------------------------------------------------
@@ -1182,11 +1204,14 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      error: (err) => {
-        this.logger.error('Catalog load failed', 'Dashboard', err);
-        this.catalogError.set('No se pudo cargar el catalogo de cursos.');
-      },
-    });
+    this.curriculum
+      .loadCatalog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        error: (err) => {
+          this.logger.error('Catalog load failed', 'Dashboard', err);
+          this.catalogError.set('No se pudo cargar el catalogo de cursos.');
+        },
+      });
   }
 }

@@ -375,18 +375,21 @@ export class TrackPracticeComponent implements OnInit {
     }
 
     // Load catalog first, then track info and questions
-    this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => {
-        const trackInfo = this.curriculum.getTrackById(this.trackId);
-        this.track.set(trackInfo);
-        this._loadQuestions();
-      },
-      error: (err) => {
-        this.logger.error('loadCatalog error', 'TrackPractice', err);
-        // Still try to load questions even if catalog fails
-        this._loadQuestions();
-      },
-    });
+    this.curriculum
+      .loadCatalog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          const trackInfo = this.curriculum.getTrackById(this.trackId);
+          this.track.set(trackInfo);
+          this._loadQuestions();
+        },
+        error: (err) => {
+          this.logger.error('loadCatalog error', 'TrackPractice', err);
+          // Still try to load questions even if catalog fails
+          this._loadQuestions();
+        },
+      });
   }
 
   selectOption(optionId: string): void {
@@ -438,19 +441,22 @@ export class TrackPracticeComponent implements OnInit {
 
   private _loadQuestions(): void {
     // Load ALL questions for this track (no contentType filter)
-    this.questionBank.getQuestionsByTrack(this.trackId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (questions) => {
-        if (questions.length > 0) {
-          this.questions.set(shuffleArray(questions));
-        }
-        this.loading.set(false);
-      },
-      error: (err) => {
-        this.error.set('Error al cargar las preguntas para este track.');
-        this.loading.set(false);
-        this.logger.error('getQuestionsByTrack error', 'TrackPractice', err);
-      },
-    });
+    this.questionBank
+      .getQuestionsByTrack(this.trackId)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (questions) => {
+          if (questions.length > 0) {
+            this.questions.set(shuffleArray(questions));
+          }
+          this.loading.set(false);
+        },
+        error: (err) => {
+          this.error.set('Error al cargar las preguntas para este track.');
+          this.loading.set(false);
+          this.logger.error('getQuestionsByTrack error', 'TrackPractice', err);
+        },
+      });
   }
 
   private _resetQuestionState(): void {

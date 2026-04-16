@@ -34,7 +34,10 @@ describe('CertificationsComponent', () => {
     const count = fixture.componentInstance.countCourses({
       id: 'test',
       name: 'Test',
-      courses: [{ id: 'c1', title: 'C1' }, { id: 'c2', title: 'C2' }],
+      courses: [
+        { id: 'c1', title: 'C1' },
+        { id: 'c2', title: 'C2' },
+      ],
     } as any);
     expect(count).toBe(2);
   });

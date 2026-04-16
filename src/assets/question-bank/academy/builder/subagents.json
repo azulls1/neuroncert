@@ -5,7 +5,7 @@
     "trackId": "academy-subagents",
     "version": "1.0.0",
     "lastUpdated": "2026-04-13",
-    "totalQuestions": 10,
+    "totalQuestions": 25,
     "learningLevel": 4,
     "contentType": "exam"
   },
@@ -209,6 +209,306 @@
         { "id": "sub-010_d", "text": "Have each agent write to a temporary copy of the file, then use a diff tool to manually combine the changes", "textEs": "Hacer que cada agente escriba en una copia temporal del archivo, luego usar una herramienta de diff para combinar manualmente los cambios", "order": 4 }
       ],
       "tags": ["subagents", "parallel-agents", "file-conflicts", "worktrees", "best-practices"]
+    },
+    {
+      "id": "sub-011",
+      "text": "What is the 'pipeline' pattern in multi-agent workflows, and how does it differ from fan-out/fan-in?",
+      "textEs": "Que es el patron 'pipeline' en flujos de trabajo multi-agente, y como difiere de fan-out/fan-in?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-011_a",
+      "explanation": "The pipeline pattern chains agents sequentially where each agent's output becomes the next agent's input. For example: Agent A extracts data -> Agent B transforms it -> Agent C validates it -> Agent D generates the report. Unlike fan-out/fan-in (parallel, then merge), pipeline is purely sequential. Use pipelines when each step depends on the previous step's output and cannot run in parallel.",
+      "explanationEs": "El patron pipeline encadena agentes secuencialmente donde la salida de cada agente se convierte en la entrada del siguiente. Por ejemplo: Agente A extrae datos -> Agente B los transforma -> Agente C los valida -> Agente D genera el reporte. A diferencia de fan-out/fan-in (paralelo, luego fusionar), pipeline es puramente secuencial. Usar pipelines cuando cada paso depende de la salida del paso anterior y no puede ejecutarse en paralelo.",
+      "options": [
+        { "id": "sub-011_a", "text": "Sequential chaining where each agent's output becomes the next agent's input; unlike fan-out/fan-in which runs tasks in parallel", "textEs": "Encadenamiento secuencial donde la salida de cada agente se convierte en la entrada del siguiente; a diferencia de fan-out/fan-in que ejecuta tareas en paralelo", "order": 1 },
+        { "id": "sub-011_b", "text": "A pattern where all agents process the same data simultaneously and the results are averaged", "textEs": "Un patron donde todos los agentes procesan los mismos datos simultaneamente y los resultados se promedian", "order": 2 },
+        { "id": "sub-011_c", "text": "A Linux pipe that sends text between shell processes, not related to agents", "textEs": "Un pipe de Linux que envia texto entre procesos shell, no relacionado con agentes", "order": 3 },
+        { "id": "sub-011_d", "text": "Identical to fan-out/fan-in but with different naming", "textEs": "Identico a fan-out/fan-in pero con nomenclatura diferente", "order": 4 }
+      ],
+      "tags": ["pipeline", "sequential", "pattern", "orchestration"]
+    },
+    {
+      "id": "sub-012",
+      "text": "How can you limit the tools available to a subagent for security purposes?",
+      "textEs": "Como puedes limitar las herramientas disponibles para un subagente por motivos de seguridad?",
+      "domainCode": "subagents",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-012_c",
+      "explanation": "When spawning a subagent via the Task tool or API, you can specify an allowedTools parameter that restricts which tools the subagent can use. For example, a research subagent might be limited to [Read, Grep, Glob] for read-only access, while a code-writing subagent gets [Read, Edit, Write, Bash]. This follows the principle of least privilege and prevents subagents from performing unintended actions like deleting files or running dangerous commands.",
+      "explanationEs": "Al generar un subagente via la herramienta Task o API, puedes especificar un parametro allowedTools que restringe que herramientas puede usar el subagente. Por ejemplo, un subagente de investigacion podria limitarse a [Read, Grep, Glob] para acceso de solo lectura, mientras que un subagente de escritura de codigo obtiene [Read, Edit, Write, Bash]. Esto sigue el principio de minimo privilegio y previene que los subagentes realicen acciones no deseadas como eliminar archivos o ejecutar comandos peligrosos.",
+      "options": [
+        { "id": "sub-012_a", "text": "Subagents always have access to all tools; there is no way to restrict them", "textEs": "Los subagentes siempre tienen acceso a todas las herramientas; no hay forma de restringirlos", "order": 1 },
+        { "id": "sub-012_b", "text": "Remove tools from the host system before spawning the subagent", "textEs": "Eliminar herramientas del sistema host antes de generar el subagente", "order": 2 },
+        { "id": "sub-012_c", "text": "Specify an allowedTools parameter when spawning the subagent, following least privilege (e.g., read-only tools for research agents)", "textEs": "Especificar un parametro allowedTools al generar el subagente, siguiendo minimo privilegio (ej., herramientas de solo lectura para agentes de investigacion)", "order": 3 },
+        { "id": "sub-012_d", "text": "Ask the subagent nicely to not use certain tools in the task prompt", "textEs": "Pedir amablemente al subagente que no use ciertas herramientas en el prompt de tarea", "order": 4 }
+      ],
+      "tags": ["subagents", "allowed-tools", "security", "least-privilege"]
+    },
+    {
+      "id": "sub-013",
+      "text": "What is the 'map-reduce' pattern applied to multi-agent code analysis?",
+      "textEs": "Que es el patron 'map-reduce' aplicado al analisis de codigo multi-agente?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-013_b",
+      "explanation": "The map-reduce pattern in multi-agent code analysis works as: Map phase — the orchestrator assigns each module/directory to a separate subagent that independently analyzes its portion. Reduce phase — a synthesizer agent collects all individual analyses and merges them into a comprehensive report, resolving cross-module issues. This is ideal for large codebases where analyzing everything in one context would exceed limits. Each 'map' agent works in parallel, dramatically speeding up the analysis.",
+      "explanationEs": "El patron map-reduce en analisis de codigo multi-agente funciona como: Fase Map — el orquestador asigna cada modulo/directorio a un subagente separado que analiza independientemente su porcion. Fase Reduce — un agente sintetizador recopila todos los analisis individuales y los fusiona en un reporte integral, resolviendo problemas entre modulos. Esto es ideal para codebases grandes donde analizar todo en un contexto excederia los limites. Cada agente 'map' trabaja en paralelo, acelerando dramaticamente el analisis.",
+      "options": [
+        { "id": "sub-013_a", "text": "A compression algorithm that reduces code size before analysis", "textEs": "Un algoritmo de compresion que reduce el tamano del codigo antes del analisis", "order": 1 },
+        { "id": "sub-013_b", "text": "Map: assign each module to a parallel subagent for independent analysis; Reduce: synthesizer agent merges all analyses into a comprehensive report", "textEs": "Map: asignar cada modulo a un subagente paralelo para analisis independiente; Reduce: agente sintetizador fusiona todos los analisis en un reporte integral", "order": 2 },
+        { "id": "sub-013_c", "text": "A database query pattern where you map fields and reduce results", "textEs": "Un patron de consulta de base de datos donde mapeas campos y reduces resultados", "order": 3 },
+        { "id": "sub-013_d", "text": "Running the same analysis twice and comparing results for consistency", "textEs": "Ejecutar el mismo analisis dos veces y comparar resultados para consistencia", "order": 4 }
+      ],
+      "tags": ["map-reduce", "parallel", "code-analysis", "synthesis"]
+    },
+    {
+      "id": "sub-014",
+      "text": "How do you pass context effectively between a parent agent and its subagents?",
+      "textEs": "Como pasas contexto efectivamente entre un agente padre y sus subagentes?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-014_d",
+      "explanation": "Since subagents have isolated contexts, the parent must explicitly pass relevant information in the task prompt. Best practices: include only essential context (not the entire parent conversation), provide specific file paths and directories to focus on, include relevant decisions or constraints from the parent's conversation, and clearly state what output format the parent expects. Over-sharing context wastes the subagent's context window; under-sharing leads to incorrect or incomplete work.",
+      "explanationEs": "Como los subagentes tienen contextos aislados, el padre debe pasar explicitamente informacion relevante en el prompt de tarea. Mejores practicas: incluir solo contexto esencial (no toda la conversacion del padre), proporcionar rutas de archivos y directorios especificos en los que enfocarse, incluir decisiones o restricciones relevantes de la conversacion del padre, y establecer claramente que formato de salida espera el padre. Compartir demasiado contexto desperdicia la ventana de contexto del subagente; compartir muy poco lleva a trabajo incorrecto o incompleto.",
+      "options": [
+        { "id": "sub-014_a", "text": "Subagents automatically inherit the parent's full conversation history", "textEs": "Los subagentes heredan automaticamente el historial completo de conversacion del padre", "order": 1 },
+        { "id": "sub-014_b", "text": "Write context to a shared database that both parent and subagent access", "textEs": "Escribir contexto en una base de datos compartida que tanto padre como subagente acceden", "order": 2 },
+        { "id": "sub-014_c", "text": "No context sharing is needed; subagents always start fresh", "textEs": "No se necesita compartir contexto; los subagentes siempre empiezan desde cero", "order": 3 },
+        { "id": "sub-014_d", "text": "Include only essential context in the task prompt: specific file paths, relevant decisions, constraints, and expected output format", "textEs": "Incluir solo contexto esencial en el prompt de tarea: rutas de archivos especificas, decisiones relevantes, restricciones y formato de salida esperado", "order": 4 }
+      ],
+      "tags": ["context-passing", "task-prompt", "efficiency", "best-practices"]
+    },
+    {
+      "id": "sub-015",
+      "text": "What monitoring and observability practices should be implemented for multi-agent workflows?",
+      "textEs": "Que practicas de monitoreo y observabilidad deben implementarse para flujos de trabajo multi-agente?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-015_a",
+      "explanation": "Multi-agent observability should track: total token usage across all agents (for cost control), individual agent execution times, success/failure rates per agent, number of tool calls per agent, overall workflow completion time, and error patterns. Use structured logging with correlation IDs that link parent and child agent activities. Set up alerts for runaway agents (excessive iterations/costs) and track workflow outcomes to identify which patterns work best.",
+      "explanationEs": "La observabilidad multi-agente debe rastrear: uso total de tokens entre todos los agentes (para control de costos), tiempos de ejecucion de cada agente, tasas de exito/fallo por agente, numero de llamadas a herramientas por agente, tiempo total de completacion del flujo de trabajo, y patrones de error. Usar logging estructurado con IDs de correlacion que vinculen actividades de agentes padre e hijo. Configurar alertas para agentes desbocados (iteraciones/costos excesivos) y rastrear resultados de flujos de trabajo para identificar que patrones funcionan mejor.",
+      "options": [
+        { "id": "sub-015_a", "text": "Track token usage, execution times, success rates, tool calls per agent, workflow time, errors; structured logging with correlation IDs; alerts for runaway agents", "textEs": "Rastrear uso de tokens, tiempos de ejecucion, tasas de exito, llamadas a herramientas por agente, tiempo de flujo de trabajo, errores; logging estructurado con IDs de correlacion; alertas para agentes desbocados", "order": 1 },
+        { "id": "sub-015_b", "text": "Only monitor total cost; individual agent metrics are not important", "textEs": "Solo monitorear costo total; las metricas de agentes individuales no son importantes", "order": 2 },
+        { "id": "sub-015_c", "text": "Check results manually after each workflow completes", "textEs": "Verificar resultados manualmente despues de que cada flujo de trabajo se complete", "order": 3 },
+        { "id": "sub-015_d", "text": "Monitoring is not needed for subagents since they are short-lived processes", "textEs": "El monitoreo no es necesario para subagentes ya que son procesos de corta duracion", "order": 4 }
+      ],
+      "tags": ["monitoring", "observability", "logging", "correlation-ids", "alerts"]
+    },
+    {
+      "id": "sub-016",
+      "text": "How can subagents be used for automated testing workflows?",
+      "textEs": "Como pueden usarse subagentes para flujos de trabajo de pruebas automatizadas?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-016_c",
+      "explanation": "Subagents enable parallelized testing workflows: one subagent can write tests while another fixes bugs, or multiple subagents can each test a different module simultaneously. A common pattern is: (1) orchestrator identifies files that changed, (2) spawns subagents in parallel to write tests for each changed module, (3) another subagent runs the test suite, (4) if tests fail, a fix subagent addresses the failures. Each subagent has its own worktree to avoid conflicts.",
+      "explanationEs": "Los subagentes habilitan flujos de trabajo de pruebas paralelizados: un subagente puede escribir tests mientras otro corrige bugs, o multiples subagentes pueden cada uno probar un modulo diferente simultaneamente. Un patron comun es: (1) el orquestador identifica archivos que cambiaron, (2) genera subagentes en paralelo para escribir tests para cada modulo cambiado, (3) otro subagente ejecuta el conjunto de tests, (4) si los tests fallan, un subagente de correccion aborda los fallos. Cada subagente tiene su propio worktree para evitar conflictos.",
+      "options": [
+        { "id": "sub-016_a", "text": "Subagents cannot run tests; testing must be done by the main agent", "textEs": "Los subagentes no pueden ejecutar tests; las pruebas deben hacerse por el agente principal", "order": 1 },
+        { "id": "sub-016_b", "text": "Only one subagent can test at a time to avoid race conditions", "textEs": "Solo un subagente puede probar a la vez para evitar condiciones de carrera", "order": 2 },
+        { "id": "sub-016_c", "text": "Parallel subagents write tests per module, another runs the suite, a fix agent addresses failures; each in its own worktree to avoid conflicts", "textEs": "Subagentes paralelos escriben tests por modulo, otro ejecuta el conjunto, un agente de correccion aborda fallos; cada uno en su propio worktree para evitar conflictos", "order": 3 },
+        { "id": "sub-016_d", "text": "Tests must be written manually; AI-generated tests are unreliable", "textEs": "Los tests deben escribirse manualmente; los tests generados por IA no son confiables", "order": 4 }
+      ],
+      "tags": ["testing", "parallel", "worktrees", "automation"]
+    },
+    {
+      "id": "sub-017",
+      "text": "What is the 'specialist rotation' pattern for complex problem-solving?",
+      "textEs": "Que es el patron de 'rotacion de especialistas' para resolucion de problemas complejos?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-017_b",
+      "explanation": "Specialist rotation involves sequentially applying different specialized agents to the same problem, each adding their expertise. For example: (1) an architect agent designs the solution, (2) a developer agent implements it, (3) a security agent reviews for vulnerabilities, (4) a performance agent optimizes hot paths, (5) a documentation agent adds comments and docs. Each specialist has a focused system prompt and appropriate tools. The key advantage is that each agent applies deep expertise without needing to be a generalist.",
+      "explanationEs": "La rotacion de especialistas involucra aplicar secuencialmente diferentes agentes especializados al mismo problema, cada uno agregando su expertise. Por ejemplo: (1) un agente arquitecto disena la solucion, (2) un agente desarrollador la implementa, (3) un agente de seguridad revisa vulnerabilidades, (4) un agente de rendimiento optimiza rutas criticas, (5) un agente de documentacion agrega comentarios y docs. Cada especialista tiene un system prompt enfocado y herramientas apropiadas. La ventaja clave es que cada agente aplica expertise profundo sin necesitar ser generalista.",
+      "options": [
+        { "id": "sub-017_a", "text": "Randomly assigning tasks to agents in round-robin fashion for load distribution", "textEs": "Asignar tareas aleatoriamente a agentes en forma round-robin para distribucion de carga", "order": 1 },
+        { "id": "sub-017_b", "text": "Sequential specialized agents each adding expertise: architect designs, developer implements, security reviews, performance optimizes, documentation writes", "textEs": "Agentes especializados secuenciales cada uno agregando expertise: arquitecto disena, desarrollador implementa, seguridad revisa, rendimiento optimiza, documentacion escribe", "order": 2 },
+        { "id": "sub-017_c", "text": "Replacing one AI model with another when it fails to produce satisfactory results", "textEs": "Reemplazar un modelo de IA con otro cuando falla en producir resultados satisfactorios", "order": 3 },
+        { "id": "sub-017_d", "text": "Having team members take turns using the AI tool on a shared workstation", "textEs": "Hacer que los miembros del equipo se turnen usando la herramienta de IA en una estacion de trabajo compartida", "order": 4 }
+      ],
+      "tags": ["specialist-rotation", "sequential", "expertise", "pattern"]
+    },
+    {
+      "id": "sub-018",
+      "text": "How should you design the output format specification for subagent tasks?",
+      "textEs": "Como debes disenar la especificacion de formato de salida para tareas de subagentes?",
+      "domainCode": "subagents",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-018_d",
+      "explanation": "Specifying clear output formats is essential because the parent agent needs to parse and use subagent results. Best practices: define the exact structure (JSON, markdown with sections, numbered list), specify required fields and their types, provide an example of the expected output, keep the format minimal — only request information the parent actually needs, and include a status field indicating success/partial/failure. This makes result processing reliable and automated.",
+      "explanationEs": "Especificar formatos de salida claros es esencial porque el agente padre necesita parsear y usar los resultados del subagente. Mejores practicas: definir la estructura exacta (JSON, markdown con secciones, lista numerada), especificar campos requeridos y sus tipos, proporcionar un ejemplo de la salida esperada, mantener el formato minimo — solo solicitar informacion que el padre realmente necesita, e incluir un campo de estado indicando exito/parcial/fallo. Esto hace el procesamiento de resultados confiable y automatizado.",
+      "options": [
+        { "id": "sub-018_a", "text": "Let the subagent choose whatever format it prefers; flexibility produces better results", "textEs": "Dejar que el subagente elija el formato que prefiera; la flexibilidad produce mejores resultados", "order": 1 },
+        { "id": "sub-018_b", "text": "Always require JSON output regardless of the task type", "textEs": "Siempre requerir salida JSON independientemente del tipo de tarea", "order": 2 },
+        { "id": "sub-018_c", "text": "No format specification is needed; the parent can parse any output", "textEs": "No se necesita especificacion de formato; el padre puede parsear cualquier salida", "order": 3 },
+        { "id": "sub-018_d", "text": "Define exact structure, required fields with types, provide example, keep minimal, include status field; enables reliable automated parsing by parent", "textEs": "Definir estructura exacta, campos requeridos con tipos, proporcionar ejemplo, mantener minimo, incluir campo de estado; habilita parseo automatizado confiable por el padre", "order": 4 }
+      ],
+      "tags": ["output-format", "specification", "parsing", "structured-results"]
+    },
+    {
+      "id": "sub-019",
+      "text": "What are the cost implications of multi-agent architectures, and how can they be optimized?",
+      "textEs": "Cuales son las implicaciones de costo de arquitecturas multi-agente, y como pueden optimizarse?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-019_a",
+      "explanation": "Multi-agent architectures multiply token costs because each subagent has its own system prompt and conversation context. Optimization strategies: use cheaper models (Haiku) for simple subtasks, minimize context passed to subagents, cache frequently used subagent results, batch similar subtasks, set token budgets per subagent, avoid unnecessary parallelization (parallel saves time but not money), and consider whether a single agent with a well-crafted prompt could replace a multi-agent workflow for simpler tasks.",
+      "explanationEs": "Las arquitecturas multi-agente multiplican los costos de tokens porque cada subagente tiene su propio system prompt y contexto de conversacion. Estrategias de optimizacion: usar modelos mas baratos (Haiku) para subtareas simples, minimizar contexto pasado a subagentes, cachear resultados de subagentes usados frecuentemente, agrupar subtareas similares, establecer presupuestos de tokens por subagente, evitar paralelizacion innecesaria (paralelo ahorra tiempo pero no dinero), y considerar si un solo agente con un prompt bien elaborado podria reemplazar un flujo multi-agente para tareas mas simples.",
+      "options": [
+        { "id": "sub-019_a", "text": "Costs multiply per subagent; optimize with cheaper models for simple tasks, minimize context, cache results, set token budgets, avoid unnecessary parallelization", "textEs": "Los costos se multiplican por subagente; optimizar con modelos mas baratos para tareas simples, minimizar contexto, cachear resultados, establecer presupuestos de tokens, evitar paralelizacion innecesaria", "order": 1 },
+        { "id": "sub-019_b", "text": "Multi-agent is always cheaper because each agent uses fewer tokens", "textEs": "Multi-agente siempre es mas barato porque cada agente usa menos tokens", "order": 2 },
+        { "id": "sub-019_c", "text": "Cost is the same regardless of how many agents are used", "textEs": "El costo es el mismo independientemente de cuantos agentes se usen", "order": 3 },
+        { "id": "sub-019_d", "text": "Only optimize if costs exceed $100 per workflow; smaller amounts are not worth optimizing", "textEs": "Solo optimizar si los costos exceden $100 por flujo de trabajo; cantidades menores no valen la pena optimizar", "order": 4 }
+      ],
+      "tags": ["cost", "optimization", "tokens", "model-selection"]
+    },
+    {
+      "id": "sub-020",
+      "text": "How can you use the Claude Code SDK to build programmatic multi-agent workflows?",
+      "textEs": "Como puedes usar el SDK de Claude Code para construir flujos de trabajo multi-agente programaticos?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-020_c",
+      "explanation": "The Claude Code SDK allows you to programmatically create and manage Claude Code sessions. You can spawn multiple sessions (agents) from your code, each with its own system prompt, allowed tools, and working directory. The orchestrator code manages the workflow logic: deciding which agents to spawn, processing their results, handling errors, and synthesizing outputs. This is more flexible than the interactive Task tool because you control the entire workflow programmatically.",
+      "explanationEs": "El SDK de Claude Code permite crear y gestionar sesiones de Claude Code programaticamente. Puedes generar multiples sesiones (agentes) desde tu codigo, cada una con su propio system prompt, herramientas permitidas y directorio de trabajo. El codigo orquestador gestiona la logica del flujo de trabajo: decidiendo que agentes generar, procesando sus resultados, manejando errores y sintetizando salidas. Esto es mas flexible que la herramienta Task interactiva porque controlas todo el flujo de trabajo programaticamente.",
+      "options": [
+        { "id": "sub-020_a", "text": "The Claude Code SDK only supports single-agent interactions; multi-agent requires the API directly", "textEs": "El SDK de Claude Code solo soporta interacciones de agente unico; multi-agente requiere la API directamente", "order": 1 },
+        { "id": "sub-020_b", "text": "Use shell scripts to launch multiple Claude Code CLI instances manually", "textEs": "Usar scripts de shell para lanzar multiples instancias CLI de Claude Code manualmente", "order": 2 },
+        { "id": "sub-020_c", "text": "Spawn multiple SDK sessions each with own system prompt, tools, and working directory; orchestrator code manages workflow logic, error handling, and result synthesis", "textEs": "Generar multiples sesiones del SDK cada una con su propio system prompt, herramientas y directorio de trabajo; el codigo orquestador gestiona logica del flujo, manejo de errores y sintesis de resultados", "order": 3 },
+        { "id": "sub-020_d", "text": "Multi-agent workflows cannot be built programmatically; they only work interactively", "textEs": "Los flujos de trabajo multi-agente no pueden construirse programaticamente; solo funcionan interactivamente", "order": 4 }
+      ],
+      "tags": ["sdk", "programmatic", "sessions", "orchestration"]
+    },
+    {
+      "id": "sub-021",
+      "text": "What is the 'debate' pattern in multi-agent decision-making?",
+      "textEs": "Que es el patron de 'debate' en la toma de decisiones multi-agente?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-021_b",
+      "explanation": "The debate pattern uses multiple agents with different perspectives or criteria to evaluate the same decision. For example, when choosing an architecture: one agent argues for simplicity, another for scalability, and a third for security. A judge agent evaluates all arguments and makes the final recommendation. This produces more thorough analysis than a single agent because it forces explicit consideration of trade-offs from multiple viewpoints.",
+      "explanationEs": "El patron de debate usa multiples agentes con diferentes perspectivas o criterios para evaluar la misma decision. Por ejemplo, al elegir una arquitectura: un agente argumenta por simplicidad, otro por escalabilidad y un tercero por seguridad. Un agente juez evalua todos los argumentos y hace la recomendacion final. Esto produce analisis mas exhaustivo que un solo agente porque fuerza la consideracion explicita de compensaciones desde multiples puntos de vista.",
+      "options": [
+        { "id": "sub-021_a", "text": "Two agents argue until one gives up; the last agent standing wins", "textEs": "Dos agentes argumentan hasta que uno se rinde; el ultimo agente en pie gana", "order": 1 },
+        { "id": "sub-021_b", "text": "Multiple agents with different perspectives evaluate the same decision; a judge agent synthesizes arguments and makes the final recommendation", "textEs": "Multiples agentes con diferentes perspectivas evaluan la misma decision; un agente juez sintetiza argumentos y hace la recomendacion final", "order": 2 },
+        { "id": "sub-021_c", "text": "A voting system where all agents vote and the majority decides", "textEs": "Un sistema de votacion donde todos los agentes votan y la mayoria decide", "order": 3 },
+        { "id": "sub-021_d", "text": "A competition where agents race to complete the same task and the fastest wins", "textEs": "Una competencia donde los agentes compiten para completar la misma tarea y el mas rapido gana", "order": 4 }
+      ],
+      "tags": ["debate", "decision-making", "perspectives", "judge"]
+    },
+    {
+      "id": "sub-022",
+      "text": "What are the key differences between using the Task tool vs the API for spawning subagents?",
+      "textEs": "Cuales son las diferencias clave entre usar la herramienta Task vs la API para generar subagentes?",
+      "domainCode": "subagents",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-022_d",
+      "explanation": "The Task tool is available within Claude Code sessions and spawns subagents in the same environment. It is simpler but less configurable. The API (SDK) approach spawns separate Claude instances programmatically, offering full control over system prompts, model selection, tool configuration, and workflow logic. Use the Task tool for ad-hoc delegation during interactive sessions; use the API for production multi-agent systems with complex orchestration requirements.",
+      "explanationEs": "La herramienta Task esta disponible dentro de sesiones de Claude Code y genera subagentes en el mismo entorno. Es mas simple pero menos configurable. El enfoque via API (SDK) genera instancias de Claude separadas programaticamente, ofreciendo control total sobre system prompts, seleccion de modelo, configuracion de herramientas y logica del flujo de trabajo. Usar la herramienta Task para delegacion ad-hoc durante sesiones interactivas; usar la API para sistemas multi-agente de produccion con requisitos complejos de orquestacion.",
+      "options": [
+        { "id": "sub-022_a", "text": "They are identical; the Task tool is just a wrapper around the API", "textEs": "Son identicos; la herramienta Task es solo un wrapper alrededor de la API", "order": 1 },
+        { "id": "sub-022_b", "text": "The Task tool is more powerful than the API in all aspects", "textEs": "La herramienta Task es mas poderosa que la API en todos los aspectos", "order": 2 },
+        { "id": "sub-022_c", "text": "The API only supports single-agent workflows", "textEs": "La API solo soporta flujos de trabajo de agente unico", "order": 3 },
+        { "id": "sub-022_d", "text": "Task tool: simpler, same environment, for ad-hoc delegation. API/SDK: full control over models, prompts, tools, workflow logic, for production systems", "textEs": "Herramienta Task: mas simple, mismo entorno, para delegacion ad-hoc. API/SDK: control total sobre modelos, prompts, herramientas, logica de flujo, para sistemas de produccion", "order": 4 }
+      ],
+      "tags": ["task-tool", "api", "sdk", "comparison"]
+    },
+    {
+      "id": "sub-023",
+      "text": "How should you handle conflicting results from parallel subagents?",
+      "textEs": "Como debes manejar resultados conflictivos de subagentes paralelos?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-023_a",
+      "explanation": "When parallel subagents produce conflicting results, the orchestrator should: (1) identify the specific conflicts, (2) evaluate each result's reasoning and evidence, (3) if possible, spawn a reconciliation agent that reviews both results and resolves conflicts, (4) for critical decisions, escalate to the human with both perspectives. Prevention is also important: clearly scope each subagent's responsibility to minimize overlap, and define authoritative ownership for shared areas.",
+      "explanationEs": "Cuando subagentes paralelos producen resultados conflictivos, el orquestador debe: (1) identificar los conflictos especificos, (2) evaluar el razonamiento y evidencia de cada resultado, (3) si es posible, generar un agente de reconciliacion que revise ambos resultados y resuelva conflictos, (4) para decisiones criticas, escalar al humano con ambas perspectivas. La prevencion tambien es importante: delimitar claramente la responsabilidad de cada subagente para minimizar superposicion, y definir propiedad autoritativa para areas compartidas.",
+      "options": [
+        { "id": "sub-023_a", "text": "Identify conflicts, evaluate evidence, spawn reconciliation agent, escalate critical conflicts; prevent by clearly scoping responsibilities", "textEs": "Identificar conflictos, evaluar evidencia, generar agente de reconciliacion, escalar conflictos criticos; prevenir delimitando claramente responsabilidades", "order": 1 },
+        { "id": "sub-023_b", "text": "Always pick the result from the agent that finished first", "textEs": "Siempre elegir el resultado del agente que termino primero", "order": 2 },
+        { "id": "sub-023_c", "text": "Discard all results and restart the entire workflow", "textEs": "Descartar todos los resultados y reiniciar todo el flujo de trabajo", "order": 3 },
+        { "id": "sub-023_d", "text": "Merge all conflicting results together without resolution", "textEs": "Fusionar todos los resultados conflictivos juntos sin resolucion", "order": 4 }
+      ],
+      "tags": ["conflict-resolution", "reconciliation", "parallel", "orchestration"]
+    },
+    {
+      "id": "sub-024",
+      "text": "What is the recommended approach for testing multi-agent workflows?",
+      "textEs": "Cual es el enfoque recomendado para probar flujos de trabajo multi-agente?",
+      "domainCode": "subagents",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-024_c",
+      "explanation": "Testing multi-agent workflows requires a layered approach: (1) Unit test individual agent prompts with representative inputs, (2) Test the orchestration logic with mock agent responses, (3) Integration test with actual agents on small, well-understood codebases, (4) Use deterministic inputs (low temperature, specific test repos) for reproducible results, (5) Compare agent outputs against known-good baselines. Test failure modes by simulating agent errors, timeouts, and conflicting results.",
+      "explanationEs": "Probar flujos de trabajo multi-agente requiere un enfoque por capas: (1) Probar unitariamente prompts de agentes individuales con entradas representativas, (2) Probar la logica de orquestacion con respuestas de agentes simuladas, (3) Pruebas de integracion con agentes reales en codebases pequenas y bien entendidas, (4) Usar entradas deterministicas (baja temperatura, repos de prueba especificos) para resultados reproducibles, (5) Comparar salidas de agentes contra baselines conocidas. Probar modos de fallo simulando errores de agentes, timeouts y resultados conflictivos.",
+      "options": [
+        { "id": "sub-024_a", "text": "Multi-agent workflows cannot be tested; rely on manual verification after each run", "textEs": "Los flujos multi-agente no pueden probarse; depender de verificacion manual despues de cada ejecucion", "order": 1 },
+        { "id": "sub-024_b", "text": "Only test the final output; intermediate agent results do not matter", "textEs": "Solo probar la salida final; los resultados intermedios de agentes no importan", "order": 2 },
+        { "id": "sub-024_c", "text": "Unit test individual prompts, mock orchestration, integration test with real agents on known codebases, deterministic inputs, compare against baselines, test failure modes", "textEs": "Probar unitariamente prompts individuales, simular orquestacion, prueba de integracion con agentes reales en codebases conocidas, entradas deterministicas, comparar contra baselines, probar modos de fallo", "order": 3 },
+        { "id": "sub-024_d", "text": "Run the workflow once and if it succeeds, consider it production-ready", "textEs": "Ejecutar el flujo una vez y si tiene exito, considerarlo listo para produccion", "order": 4 }
+      ],
+      "tags": ["testing", "unit-tests", "integration", "baselines", "failure-modes"]
+    },
+    {
+      "id": "sub-025",
+      "text": "How does the max_turns parameter affect subagent execution in Claude Code?",
+      "textEs": "Como afecta el parametro max_turns la ejecucion de subagentes en Claude Code?",
+      "domainCode": "subagents",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-025_b",
+      "explanation": "The max_turns parameter limits how many conversation turns (request-response pairs) a subagent can execute before being forced to stop. A turn includes the model's response and any tool use. Setting max_turns prevents runaway agents that keep calling tools endlessly. For focused tasks like reading a file and summarizing, a low value (3-5) suffices. For complex coding tasks, a higher value (15-25) may be needed. When max_turns is reached, the agent returns its best result so far.",
+      "explanationEs": "El parametro max_turns limita cuantos turnos de conversacion (pares solicitud-respuesta) puede ejecutar un subagente antes de ser forzado a detenerse. Un turno incluye la respuesta del modelo y cualquier uso de herramientas. Establecer max_turns previene agentes desbocados que siguen llamando herramientas sin fin. Para tareas enfocadas como leer un archivo y resumir, un valor bajo (3-5) es suficiente. Para tareas complejas de codificacion, un valor mas alto (15-25) puede ser necesario. Cuando se alcanza max_turns, el agente devuelve su mejor resultado hasta el momento.",
+      "options": [
+        { "id": "sub-025_a", "text": "max_turns limits the number of characters in the subagent's response", "textEs": "max_turns limita el numero de caracteres en la respuesta del subagente", "order": 1 },
+        { "id": "sub-025_b", "text": "Limits conversation turns (request-response pairs) to prevent runaway agents; low for simple tasks, higher for complex coding; returns best result when reached", "textEs": "Limita turnos de conversacion (pares solicitud-respuesta) para prevenir agentes desbocados; bajo para tareas simples, mas alto para codificacion compleja; devuelve mejor resultado al alcanzarse", "order": 2 },
+        { "id": "sub-025_c", "text": "max_turns controls how many different models the subagent can try", "textEs": "max_turns controla cuantos modelos diferentes puede probar el subagente", "order": 3 },
+        { "id": "sub-025_d", "text": "It limits the total execution time in minutes, not the number of interactions", "textEs": "Limita el tiempo total de ejecucion en minutos, no el numero de interacciones", "order": 4 }
+      ],
+      "tags": ["max-turns", "safety", "limits", "configuration"]
     }
   ]
 }

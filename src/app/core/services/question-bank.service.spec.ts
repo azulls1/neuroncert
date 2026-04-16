@@ -575,7 +575,11 @@ describe('QuestionBankService', () => {
       // D1 has questions, D2 is empty
       loaderSpy.loadQuestionFile.and.callFake((path: string) => {
         if (path.includes('d1.json'))
-          return of(Array.from({ length: 10 }, (_, i) => makeQuestion({ id: `d1-q${i}`, domainCode: 'D1' })));
+          return of(
+            Array.from({ length: 10 }, (_, i) =>
+              makeQuestion({ id: `d1-q${i}`, domainCode: 'D1' }),
+            ),
+          );
         return of([]);
       });
 

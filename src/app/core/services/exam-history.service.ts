@@ -321,7 +321,11 @@ export class ExamHistoryService {
         this._currentSession.set(data.currentSession || null);
       }
     } catch (error) {
-      this.logger.error('Error al cargar historial desde localStorage', 'ExamHistoryService', error);
+      this.logger.error(
+        'Error al cargar historial desde localStorage',
+        'ExamHistoryService',
+        error,
+      );
       this._sessions.set([]);
       this._currentSession.set(null);
     }

@@ -5,7 +5,7 @@
     "trackId": "aws-bedrock",
     "version": "1.0.0",
     "lastUpdated": "2026-04-13",
-    "totalQuestions": 8
+    "totalQuestions": 25
   },
   "questions": [
     {
@@ -167,6 +167,346 @@
         { "id": "awsb-008_d", "text": "La región no afecta al rendimiento ni a la disponibilidad de Claude", "textEs": "La región no afecta al rendimiento ni a la disponibilidad de Claude", "order": 4 }
       ],
       "tags": ["regiones", "disponibilidad", "residencia-datos"]
+    },
+    {
+      "id": "awsb-009",
+      "text": "What is the difference between InvokeModel and InvokeModelWithResponseStream in the Bedrock Runtime API?",
+      "textEs": "Cual es la diferencia entre InvokeModel e InvokeModelWithResponseStream en la API de Bedrock Runtime?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-009_c",
+      "explanation": "InvokeModel sends a request and waits for the complete response before returning it. InvokeModelWithResponseStream returns a stream that delivers response chunks as they are generated, enabling lower time-to-first-token and a better user experience for interactive applications. Streaming is recommended for chatbots and real-time UIs, while synchronous invocation is suitable for batch processing where complete responses are needed before proceeding.",
+      "explanationEs": "InvokeModel envia una solicitud y espera la respuesta completa antes de devolverla. InvokeModelWithResponseStream devuelve un stream que entrega fragmentos de respuesta a medida que se generan, habilitando menor tiempo hasta el primer token y una mejor experiencia de usuario para aplicaciones interactivas. Streaming es recomendado para chatbots e interfaces en tiempo real, mientras que la invocacion sincrona es adecuada para procesamiento por lotes donde se necesitan respuestas completas antes de continuar.",
+      "options": [
+        { "id": "awsb-009_a", "text": "No hay diferencia funcional; son alias para el mismo endpoint", "textEs": "No hay diferencia funcional; son alias para el mismo endpoint", "order": 1 },
+        { "id": "awsb-009_b", "text": "InvokeModel es para texto e InvokeModelWithResponseStream es para imagenes", "textEs": "InvokeModel es para texto e InvokeModelWithResponseStream es para imagenes", "order": 2 },
+        { "id": "awsb-009_c", "text": "InvokeModel espera la respuesta completa; InvokeModelWithResponseStream entrega fragmentos en tiempo real para menor latencia", "textEs": "InvokeModel espera la respuesta completa; InvokeModelWithResponseStream entrega fragmentos en tiempo real para menor latencia", "order": 3 },
+        { "id": "awsb-009_d", "text": "InvokeModelWithResponseStream solo funciona con modelos de Amazon, no con Claude", "textEs": "InvokeModelWithResponseStream solo funciona con modelos de Amazon, no con Claude", "order": 4 }
+      ],
+      "tags": ["streaming", "api", "invocacion"]
+    },
+    {
+      "id": "awsb-010",
+      "text": "What are Bedrock Knowledge Bases and how do they enhance Claude's capabilities?",
+      "textEs": "Que son las Knowledge Bases de Bedrock y como mejoran las capacidades de Claude?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-010_a",
+      "explanation": "Bedrock Knowledge Bases provide managed RAG (Retrieval-Augmented Generation) that connects Claude to your organization's data. You upload documents to S3, Bedrock automatically chunks, embeds, and indexes them in a vector store (like OpenSearch Serverless or Pinecone). When querying, relevant chunks are retrieved and included in Claude's context, enabling accurate answers grounded in your data without fine-tuning the model.",
+      "explanationEs": "Las Knowledge Bases de Bedrock proporcionan RAG (Generacion Aumentada por Recuperacion) gestionado que conecta a Claude con los datos de tu organizacion. Subes documentos a S3, Bedrock automaticamente los fragmenta, embebe e indexa en un almacen vectorial (como OpenSearch Serverless o Pinecone). Al consultar, los fragmentos relevantes se recuperan e incluyen en el contexto de Claude, habilitando respuestas precisas basadas en tus datos sin ajustar el modelo.",
+      "options": [
+        { "id": "awsb-010_a", "text": "RAG gestionado: documentos en S3 se chunkan, embeben e indexan automaticamente; fragmentos relevantes se incluyen en el contexto de Claude al consultar", "textEs": "RAG gestionado: documentos en S3 se chunkan, embeben e indexan automaticamente; fragmentos relevantes se incluyen en el contexto de Claude al consultar", "order": 1 },
+        { "id": "awsb-010_b", "text": "Bases de datos SQL donde Claude almacena sus respuestas para reutilizarlas", "textEs": "Bases de datos SQL donde Claude almacena sus respuestas para reutilizarlas", "order": 2 },
+        { "id": "awsb-010_c", "text": "Un sistema de fine-tuning que entrena a Claude con datos empresariales", "textEs": "Un sistema de fine-tuning que entrena a Claude con datos empresariales", "order": 3 },
+        { "id": "awsb-010_d", "text": "Wikis colaborativas donde los equipos documentan como usar Claude", "textEs": "Wikis colaborativas donde los equipos documentan como usar Claude", "order": 4 }
+      ],
+      "tags": ["knowledge-bases", "rag", "s3", "vectores"]
+    },
+    {
+      "id": "awsb-011",
+      "text": "What are Bedrock Agents and how do they extend Claude's functionality?",
+      "textEs": "Que son los Bedrock Agents y como extienden la funcionalidad de Claude?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-011_d",
+      "explanation": "Bedrock Agents enable Claude to perform multi-step tasks by combining reasoning with action. You define action groups (APIs the agent can call), associate knowledge bases for data access, and write instructions for the agent's behavior. The agent autonomously plans steps, calls APIs, retrieves data, and synthesizes responses. Use cases include customer service automation, data analysis workflows, and process orchestration across AWS services.",
+      "explanationEs": "Los Bedrock Agents permiten a Claude realizar tareas de multiples pasos combinando razonamiento con accion. Defines grupos de acciones (APIs que el agente puede llamar), asocias knowledge bases para acceso a datos y escribes instrucciones para el comportamiento del agente. El agente planifica pasos autonomamente, llama APIs, recupera datos y sintetiza respuestas. Los casos de uso incluyen automatizacion de servicio al cliente, flujos de trabajo de analisis de datos y orquestacion de procesos entre servicios AWS.",
+      "options": [
+        { "id": "awsb-011_a", "text": "Instancias EC2 que ejecutan Claude de forma local para menor latencia", "textEs": "Instancias EC2 que ejecutan Claude de forma local para menor latencia", "order": 1 },
+        { "id": "awsb-011_b", "text": "Trabajadores automaticos que entrenan continuamente el modelo con nuevos datos", "textEs": "Trabajadores automaticos que entrenan continuamente el modelo con nuevos datos", "order": 2 },
+        { "id": "awsb-011_c", "text": "Bots de chat pre-construidos que no se pueden personalizar", "textEs": "Bots de chat pre-construidos que no se pueden personalizar", "order": 3 },
+        { "id": "awsb-011_d", "text": "Claude realiza tareas multi-paso: planifica, llama APIs (action groups), consulta knowledge bases y sintetiza respuestas autonomamente", "textEs": "Claude realiza tareas multi-paso: planifica, llama APIs (action groups), consulta knowledge bases y sintetiza respuestas autonomamente", "order": 4 }
+      ],
+      "tags": ["agents", "action-groups", "autonomo", "orquestacion"]
+    },
+    {
+      "id": "awsb-012",
+      "text": "How does batch inference work in Amazon Bedrock?",
+      "textEs": "Como funciona la inferencia por lotes (batch inference) en Amazon Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-012_b",
+      "explanation": "Batch inference in Bedrock allows you to process large volumes of prompts asynchronously at a lower cost. You prepare a JSONL file with all your prompts, upload it to S3, create a batch inference job specifying the model and S3 paths, and Bedrock processes all prompts and writes results to an output S3 bucket. This is ideal for data classification, content generation, and analysis tasks where real-time responses are not needed.",
+      "explanationEs": "La inferencia por lotes en Bedrock permite procesar grandes volumenes de prompts asincrónicamente a un costo menor. Preparas un archivo JSONL con todos tus prompts, lo subes a S3, creas un trabajo de inferencia por lotes especificando el modelo y rutas S3, y Bedrock procesa todos los prompts y escribe resultados en un bucket S3 de salida. Esto es ideal para clasificacion de datos, generacion de contenido y tareas de analisis donde no se necesitan respuestas en tiempo real.",
+      "options": [
+        { "id": "awsb-012_a", "text": "Enviar muchas solicitudes simultaneas al endpoint de InvokeModel usando hilos paralelos", "textEs": "Enviar muchas solicitudes simultaneas al endpoint de InvokeModel usando hilos paralelos", "order": 1 },
+        { "id": "awsb-012_b", "text": "Preparar archivo JSONL con prompts, subir a S3, crear job de batch, Bedrock procesa asincrónicamente y escribe resultados en S3 a menor costo", "textEs": "Preparar archivo JSONL con prompts, subir a S3, crear job de batch, Bedrock procesa asincronicamente y escribe resultados en S3 a menor costo", "order": 2 },
+        { "id": "awsb-012_c", "text": "Agrupar prompts en un solo prompt gigante separado por delimitadores", "textEs": "Agrupar prompts en un solo prompt gigante separado por delimitadores", "order": 3 },
+        { "id": "awsb-012_d", "text": "Usar AWS Step Functions para orquestar llamadas individuales a Bedrock secuencialmente", "textEs": "Usar AWS Step Functions para orquestar llamadas individuales a Bedrock secuencialmente", "order": 4 }
+      ],
+      "tags": ["batch", "s3", "jsonl", "asincrono"]
+    },
+    {
+      "id": "awsb-013",
+      "text": "What is the structure of the Messages API request body when invoking Claude through Bedrock?",
+      "textEs": "Cual es la estructura del cuerpo de solicitud de la Messages API al invocar Claude a traves de Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-013_c",
+      "explanation": "The Messages API request body includes: 'anthropic_version' (API version string), 'max_tokens' (maximum output tokens), 'messages' (array of user/assistant message objects), and optionally 'system' (system prompt), 'temperature', and 'tools'. The format is the same as the direct Anthropic API Messages format, making migration between Bedrock and direct API straightforward. The model is specified in the Bedrock API path, not in the body.",
+      "explanationEs": "El cuerpo de solicitud de la Messages API incluye: 'anthropic_version' (cadena de version de API), 'max_tokens' (tokens de salida maximos), 'messages' (arreglo de objetos de mensaje usuario/asistente), y opcionalmente 'system' (system prompt), 'temperature' y 'tools'. El formato es el mismo que el formato Messages de la API directa de Anthropic, haciendo la migracion entre Bedrock y la API directa sencilla. El modelo se especifica en la ruta de la API de Bedrock, no en el cuerpo.",
+      "options": [
+        { "id": "awsb-013_a", "text": "Un formato propietario de AWS completamente diferente al de la API de Anthropic", "textEs": "Un formato propietario de AWS completamente diferente al de la API de Anthropic", "order": 1 },
+        { "id": "awsb-013_b", "text": "Solo se requiere un campo 'prompt' con texto plano; no se necesitan otros parametros", "textEs": "Solo se requiere un campo 'prompt' con texto plano; no se necesitan otros parametros", "order": 2 },
+        { "id": "awsb-013_c", "text": "anthropic_version, max_tokens, messages (array), y opcionalmente system, temperature, tools — mismo formato que la API directa de Anthropic", "textEs": "anthropic_version, max_tokens, messages (array), y opcionalmente system, temperature, tools — mismo formato que la API directa de Anthropic", "order": 3 },
+        { "id": "awsb-013_d", "text": "El cuerpo debe incluir el model ID, API key, y la configuracion de la region", "textEs": "El cuerpo debe incluir el model ID, API key, y la configuracion de la region", "order": 4 }
+      ],
+      "tags": ["messages-api", "formato", "solicitud"]
+    },
+    {
+      "id": "awsb-014",
+      "text": "What IAM permissions are required to invoke Claude models in Bedrock?",
+      "textEs": "Que permisos IAM se requieren para invocar modelos de Claude en Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-014_a",
+      "explanation": "The primary IAM action needed is 'bedrock:InvokeModel' (or 'bedrock:InvokeModelWithResponseStream' for streaming). The resource ARN specifies which model(s) the user can invoke. For agents, additional permissions like 'bedrock:InvokeAgent' are needed. For knowledge bases, 'bedrock:Retrieve' is required. Best practice is least-privilege: restrict permissions to specific model ARNs rather than using wildcard (*) for all models.",
+      "explanationEs": "La accion IAM principal necesaria es 'bedrock:InvokeModel' (o 'bedrock:InvokeModelWithResponseStream' para streaming). El ARN del recurso especifica que modelo(s) puede invocar el usuario. Para agentes, se necesitan permisos adicionales como 'bedrock:InvokeAgent'. Para knowledge bases, se requiere 'bedrock:Retrieve'. La mejor practica es minimo privilegio: restringir permisos a ARNs de modelos especificos en lugar de usar comodin (*) para todos los modelos.",
+      "options": [
+        { "id": "awsb-014_a", "text": "bedrock:InvokeModel para modelo especifico por ARN; bedrock:InvokeModelWithResponseStream para streaming; principio de minimo privilegio", "textEs": "bedrock:InvokeModel para modelo especifico por ARN; bedrock:InvokeModelWithResponseStream para streaming; principio de minimo privilegio", "order": 1 },
+        { "id": "awsb-014_b", "text": "Solo se necesita la politica administradora completa de AWS (AdministratorAccess)", "textEs": "Solo se necesita la politica administradora completa de AWS (AdministratorAccess)", "order": 2 },
+        { "id": "awsb-014_c", "text": "Una API key de Anthropic configurada en Secrets Manager; IAM no controla acceso a Bedrock", "textEs": "Una API key de Anthropic configurada en Secrets Manager; IAM no controla acceso a Bedrock", "order": 3 },
+        { "id": "awsb-014_d", "text": "Permisos de EC2 para lanzar instancias que ejecuten el modelo localmente", "textEs": "Permisos de EC2 para lanzar instancias que ejecuten el modelo localmente", "order": 4 }
+      ],
+      "tags": ["iam", "permisos", "seguridad", "minimo-privilegio"]
+    },
+    {
+      "id": "awsb-015",
+      "text": "How does Bedrock Guardrails handle PII detection and redaction?",
+      "textEs": "Como maneja Bedrock Guardrails la deteccion y redaccion de PII?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-015_b",
+      "explanation": "Bedrock Guardrails includes a sensitive information filter that can detect and handle PII in both inputs and outputs. You configure which PII types to detect (names, email addresses, phone numbers, SSNs, credit cards, etc.) and the action to take: BLOCK (reject the request) or ANONYMIZE (replace PII with placeholders like [NAME] or [EMAIL]). This helps enterprises comply with data protection regulations without building custom PII detection systems.",
+      "explanationEs": "Bedrock Guardrails incluye un filtro de informacion sensible que puede detectar y manejar PII tanto en entradas como en salidas. Configuras que tipos de PII detectar (nombres, direcciones de correo, numeros de telefono, SSNs, tarjetas de credito, etc.) y la accion a tomar: BLOCK (rechazar la solicitud) o ANONYMIZE (reemplazar PII con marcadores como [NOMBRE] o [EMAIL]). Esto ayuda a las empresas a cumplir con regulaciones de proteccion de datos sin construir sistemas de deteccion de PII personalizados.",
+      "options": [
+        { "id": "awsb-015_a", "text": "No existe funcionalidad de PII en Guardrails; se debe usar un servicio separado como Amazon Comprehend", "textEs": "No existe funcionalidad de PII en Guardrails; se debe usar un servicio separado como Amazon Comprehend", "order": 1 },
+        { "id": "awsb-015_b", "text": "Configuras tipos de PII a detectar y la accion: BLOCK (rechazar) o ANONYMIZE (reemplazar con marcadores como [NOMBRE]); aplica en entradas y salidas", "textEs": "Configuras tipos de PII a detectar y la accion: BLOCK (rechazar) o ANONYMIZE (reemplazar con marcadores como [NOMBRE]); aplica en entradas y salidas", "order": 2 },
+        { "id": "awsb-015_c", "text": "Guardrails encripta automaticamente todo PII detectado con KMS antes de enviarlo a Claude", "textEs": "Guardrails encripta automaticamente todo PII detectado con KMS antes de enviarlo a Claude", "order": 3 },
+        { "id": "awsb-015_d", "text": "Solo funciona con PII en idioma ingles; otros idiomas no son soportados", "textEs": "Solo funciona con PII en idioma ingles; otros idiomas no son soportados", "order": 4 }
+      ],
+      "tags": ["guardrails", "pii", "anonimizacion", "compliance"]
+    },
+    {
+      "id": "awsb-016",
+      "text": "What is custom model fine-tuning in Bedrock and when should it be considered?",
+      "textEs": "Que es el fine-tuning de modelos personalizados en Bedrock y cuando debe considerarse?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-016_d",
+      "explanation": "Bedrock allows fine-tuning of certain models (including Claude) using your own training data stored in S3. Fine-tuning adjusts model weights to improve performance on domain-specific tasks. It should be considered when prompt engineering alone cannot achieve desired quality for a specialized domain, when you have high-quality labeled training data, and when the task is narrow enough to benefit from specialization. For most use cases, prompt engineering with RAG is more cost-effective.",
+      "explanationEs": "Bedrock permite fine-tuning de ciertos modelos (incluyendo Claude) usando tus propios datos de entrenamiento almacenados en S3. El fine-tuning ajusta los pesos del modelo para mejorar el rendimiento en tareas especificas de dominio. Debe considerarse cuando la ingenieria de prompts por si sola no puede lograr la calidad deseada para un dominio especializado, cuando tienes datos de entrenamiento etiquetados de alta calidad, y cuando la tarea es lo suficientemente especifica para beneficiarse de la especializacion. Para la mayoria de los casos, la ingenieria de prompts con RAG es mas rentable.",
+      "options": [
+        { "id": "awsb-016_a", "text": "Siempre es la primera opcion antes de intentar prompt engineering", "textEs": "Siempre es la primera opcion antes de intentar prompt engineering", "order": 1 },
+        { "id": "awsb-016_b", "text": "Solo esta disponible para modelos de Amazon, no para Claude", "textEs": "Solo esta disponible para modelos de Amazon, no para Claude", "order": 2 },
+        { "id": "awsb-016_c", "text": "Es gratuito y no requiere datos de entrenamiento; el modelo se ajusta automaticamente con el uso", "textEs": "Es gratuito y no requiere datos de entrenamiento; el modelo se ajusta automaticamente con el uso", "order": 3 },
+        { "id": "awsb-016_d", "text": "Ajusta pesos del modelo con datos en S3; considerar cuando prompt engineering + RAG no alcanza la calidad necesaria para tareas de dominio especifico", "textEs": "Ajusta pesos del modelo con datos en S3; considerar cuando prompt engineering + RAG no alcanza la calidad necesaria para tareas de dominio especifico", "order": 4 }
+      ],
+      "tags": ["fine-tuning", "personalizacion", "entrenamiento", "s3"]
+    },
+    {
+      "id": "awsb-017",
+      "text": "How does prompt caching work in Amazon Bedrock and what are its benefits?",
+      "textEs": "Como funciona el prompt caching en Amazon Bedrock y cuales son sus beneficios?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-017_c",
+      "explanation": "Prompt caching in Bedrock allows reusing previously processed prompt prefixes, reducing both latency and cost for repeated requests that share common system prompts or context. When you send a request with the same prefix as a cached request, Bedrock skips re-processing those tokens. This is particularly beneficial for applications with long system prompts, RAG contexts, or few-shot examples that remain constant across requests.",
+      "explanationEs": "El prompt caching en Bedrock permite reutilizar prefijos de prompts previamente procesados, reduciendo tanto latencia como costo para solicitudes repetidas que comparten system prompts o contexto comun. Cuando envias una solicitud con el mismo prefijo que una solicitud cacheada, Bedrock omite el re-procesamiento de esos tokens. Esto es particularmente beneficioso para aplicaciones con system prompts largos, contextos RAG o ejemplos few-shot que permanecen constantes entre solicitudes.",
+      "options": [
+        { "id": "awsb-017_a", "text": "Almacena las respuestas completas de Claude para devolver la misma respuesta si se hace la misma pregunta", "textEs": "Almacena las respuestas completas de Claude para devolver la misma respuesta si se hace la misma pregunta", "order": 1 },
+        { "id": "awsb-017_b", "text": "Es una CDN de AWS que almacena solicitudes en edge locations para menor latencia geografica", "textEs": "Es una CDN de AWS que almacena solicitudes en edge locations para menor latencia geografica", "order": 2 },
+        { "id": "awsb-017_c", "text": "Reutiliza prefijos de prompts previamente procesados, reduciendo latencia y costo; ideal para system prompts largos y contextos RAG constantes", "textEs": "Reutiliza prefijos de prompts previamente procesados, reduciendo latencia y costo; ideal para system prompts largos y contextos RAG constantes", "order": 3 },
+        { "id": "awsb-017_d", "text": "Almacena los pesos del modelo en cache local para acceso mas rapido", "textEs": "Almacena los pesos del modelo en cache local para acceso mas rapido", "order": 4 }
+      ],
+      "tags": ["prompt-caching", "latencia", "costos", "optimizacion"]
+    },
+    {
+      "id": "awsb-018",
+      "text": "What is the model ID format for Claude models in Amazon Bedrock?",
+      "textEs": "Cual es el formato de model ID para los modelos de Claude en Amazon Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-018_a",
+      "explanation": "Claude model IDs in Bedrock follow the format 'anthropic.claude-{version}-{variant}-{date}' — for example, 'anthropic.claude-3-5-sonnet-20241022' or 'anthropic.claude-3-haiku-20240307'. The prefix 'anthropic.' identifies the provider. You need the exact model ID to invoke the model via the API. Available model IDs can be found in the Bedrock console under Model Access or via the ListFoundationModels API.",
+      "explanationEs": "Los model IDs de Claude en Bedrock siguen el formato 'anthropic.claude-{version}-{variante}-{fecha}' — por ejemplo, 'anthropic.claude-3-5-sonnet-20241022' o 'anthropic.claude-3-haiku-20240307'. El prefijo 'anthropic.' identifica al proveedor. Necesitas el model ID exacto para invocar el modelo via la API. Los model IDs disponibles se pueden encontrar en la consola de Bedrock bajo Model Access o via la API ListFoundationModels.",
+      "options": [
+        { "id": "awsb-018_a", "text": "anthropic.claude-{version}-{variante}-{fecha}, por ejemplo 'anthropic.claude-3-5-sonnet-20241022'; el prefijo 'anthropic.' identifica el proveedor", "textEs": "anthropic.claude-{version}-{variante}-{fecha}, por ejemplo 'anthropic.claude-3-5-sonnet-20241022'; el prefijo 'anthropic.' identifica el proveedor", "order": 1 },
+        { "id": "awsb-018_b", "text": "Un UUID aleatorio asignado por AWS al habilitar el modelo en la cuenta", "textEs": "Un UUID aleatorio asignado por AWS al habilitar el modelo en la cuenta", "order": 2 },
+        { "id": "awsb-018_c", "text": "El mismo model ID que usa la API directa de Anthropic, como 'claude-3-5-sonnet'", "textEs": "El mismo model ID que usa la API directa de Anthropic, como 'claude-3-5-sonnet'", "order": 3 },
+        { "id": "awsb-018_d", "text": "Un ARN completo de AWS con cuenta, region y modelo", "textEs": "Un ARN completo de AWS con cuenta, region y modelo", "order": 4 }
+      ],
+      "tags": ["model-id", "formato", "api"]
+    },
+    {
+      "id": "awsb-019",
+      "text": "How can you use Amazon Bedrock with AWS CloudWatch for monitoring Claude usage?",
+      "textEs": "Como puedes usar Amazon Bedrock con AWS CloudWatch para monitorear el uso de Claude?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-019_b",
+      "explanation": "Bedrock automatically publishes metrics to CloudWatch including: invocation count, invocation latency, input/output token counts, and throttling events. You can create CloudWatch dashboards to visualize usage patterns, set alarms for anomalous behavior (sudden cost spikes, high error rates), and use CloudWatch Logs Insights to query detailed request/response logs. CloudTrail provides an audit trail of who invoked which model and when.",
+      "explanationEs": "Bedrock publica automaticamente metricas en CloudWatch incluyendo: conteo de invocaciones, latencia de invocacion, conteo de tokens de entrada/salida y eventos de throttling. Puedes crear dashboards de CloudWatch para visualizar patrones de uso, establecer alarmas para comportamiento anomalo (picos de costos repentinos, altas tasas de error) y usar CloudWatch Logs Insights para consultar logs detallados de solicitudes/respuestas. CloudTrail proporciona un registro de auditoria de quien invoco que modelo y cuando.",
+      "options": [
+        { "id": "awsb-019_a", "text": "CloudWatch no tiene integracion con Bedrock; se necesitan herramientas de terceros", "textEs": "CloudWatch no tiene integracion con Bedrock; se necesitan herramientas de terceros", "order": 1 },
+        { "id": "awsb-019_b", "text": "Bedrock publica metricas automaticamente: invocaciones, latencia, tokens, throttling; crear dashboards, alarmas y usar CloudTrail para auditoria", "textEs": "Bedrock publica metricas automaticamente: invocaciones, latencia, tokens, throttling; crear dashboards, alarmas y usar CloudTrail para auditoria", "order": 2 },
+        { "id": "awsb-019_c", "text": "Solo se pueden ver metricas basicas de facturacion; metricas detalladas requieren plan Enterprise", "textEs": "Solo se pueden ver metricas basicas de facturacion; metricas detalladas requieren plan Enterprise", "order": 3 },
+        { "id": "awsb-019_d", "text": "Se debe instalar un agente de CloudWatch en el servidor de Bedrock manualmente", "textEs": "Se debe instalar un agente de CloudWatch en el servidor de Bedrock manualmente", "order": 4 }
+      ],
+      "tags": ["cloudwatch", "monitoreo", "metricas", "alarmas"]
+    },
+    {
+      "id": "awsb-020",
+      "text": "What are Guardrails content filters and how are they configured in Bedrock?",
+      "textEs": "Que son los filtros de contenido de Guardrails y como se configuran en Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-020_d",
+      "explanation": "Guardrails content filters evaluate inputs and outputs against configurable categories: hate speech, insults, sexual content, violence, and misconduct. For each category, you set a filter strength (NONE, LOW, MEDIUM, HIGH) that determines sensitivity. You can also define denied topics with natural language descriptions, word filters for specific terms, and contextual grounding checks to reduce hallucinations by comparing responses to provided context.",
+      "explanationEs": "Los filtros de contenido de Guardrails evaluan entradas y salidas contra categorias configurables: discurso de odio, insultos, contenido sexual, violencia y mala conducta. Para cada categoria, estableces una intensidad de filtro (NONE, LOW, MEDIUM, HIGH) que determina la sensibilidad. Tambien puedes definir temas denegados con descripciones en lenguaje natural, filtros de palabras para terminos especificos, y verificaciones de anclaje contextual para reducir alucinaciones comparando respuestas con el contexto proporcionado.",
+      "options": [
+        { "id": "awsb-020_a", "text": "Solo existe un interruptor de encendido/apagado para todos los filtros de contenido", "textEs": "Solo existe un interruptor de encendido/apagado para todos los filtros de contenido", "order": 1 },
+        { "id": "awsb-020_b", "text": "Los filtros solo aplican a las respuestas del modelo, no a las entradas del usuario", "textEs": "Los filtros solo aplican a las respuestas del modelo, no a las entradas del usuario", "order": 2 },
+        { "id": "awsb-020_c", "text": "Se escriben reglas en codigo Python que se ejecutan antes y despues de cada invocacion", "textEs": "Se escriben reglas en codigo Python que se ejecutan antes y despues de cada invocacion", "order": 3 },
+        { "id": "awsb-020_d", "text": "Categorias configurables (odio, violencia, etc.) con intensidad por nivel, temas denegados, filtros de palabras y verificacion de anclaje contextual", "textEs": "Categorias configurables (odio, violencia, etc.) con intensidad por nivel, temas denegados, filtros de palabras y verificacion de anclaje contextual", "order": 4 }
+      ],
+      "tags": ["guardrails", "filtros", "categorias", "configuracion"]
+    },
+    {
+      "id": "awsb-021",
+      "text": "How can you use Bedrock's cross-region inference to improve availability?",
+      "textEs": "Como puedes usar la inferencia entre regiones de Bedrock para mejorar la disponibilidad?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-021_a",
+      "explanation": "Bedrock cross-region inference automatically routes requests to alternative regions when the primary region experiences capacity constraints or outages. You configure an inference profile that specifies which regions can process your requests. This increases availability without requiring application-level failover logic. Data is processed within the configured regions, and you maintain control over which regions are acceptable for your compliance requirements.",
+      "explanationEs": "La inferencia entre regiones de Bedrock enruta automaticamente solicitudes a regiones alternativas cuando la region primaria experimenta restricciones de capacidad o caidas. Configuras un perfil de inferencia que especifica que regiones pueden procesar tus solicitudes. Esto aumenta la disponibilidad sin requerir logica de failover a nivel de aplicacion. Los datos se procesan dentro de las regiones configuradas, y mantienes control sobre que regiones son aceptables para tus requisitos de cumplimiento.",
+      "options": [
+        { "id": "awsb-021_a", "text": "Configurar perfil de inferencia multi-region que enruta automaticamente a regiones alternativas ante restricciones de capacidad, sin logica de failover en la app", "textEs": "Configurar perfil de inferencia multi-region que enruta automaticamente a regiones alternativas ante restricciones de capacidad, sin logica de failover en la app", "order": 1 },
+        { "id": "awsb-021_b", "text": "Implementar logica de reintento manual en la aplicacion que cambie de region al recibir errores", "textEs": "Implementar logica de reintento manual en la aplicacion que cambie de region al recibir errores", "order": 2 },
+        { "id": "awsb-021_c", "text": "Desplegar copias del modelo en multiples regiones usando EC2 para inferencia local", "textEs": "Desplegar copias del modelo en multiples regiones usando EC2 para inferencia local", "order": 3 },
+        { "id": "awsb-021_d", "text": "La inferencia entre regiones no esta disponible; Bedrock solo funciona en la region donde se habilita el modelo", "textEs": "La inferencia entre regiones no esta disponible; Bedrock solo funciona en la region donde se habilita el modelo", "order": 4 }
+      ],
+      "tags": ["cross-region", "disponibilidad", "failover", "resiliencia"]
+    },
+    {
+      "id": "awsb-022",
+      "text": "What is the difference between on-demand and provisioned throughput pricing in Bedrock?",
+      "textEs": "Cual es la diferencia entre precios on-demand y provisioned throughput en Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-022_b",
+      "explanation": "On-demand pricing charges per input/output token with no commitment — you pay only for what you use. Provisioned throughput requires purchasing reserved capacity (measured in model units) for a fixed term (1 month or longer), providing guaranteed throughput and potentially lower per-token costs at scale. On-demand is ideal for variable or exploratory workloads; provisioned is better for predictable, high-volume production workloads where consistent performance is critical.",
+      "explanationEs": "Los precios on-demand cobran por token de entrada/salida sin compromiso — pagas solo por lo que usas. El provisioned throughput requiere comprar capacidad reservada (medida en unidades de modelo) por un termino fijo (1 mes o mas), proporcionando rendimiento garantizado y potencialmente menor costo por token a escala. On-demand es ideal para cargas variables o exploratorias; provisioned es mejor para cargas de produccion predecibles y de alto volumen donde el rendimiento consistente es critico.",
+      "options": [
+        { "id": "awsb-022_a", "text": "No hay diferencia de precio; solo cambia la prioridad de procesamiento de las solicitudes", "textEs": "No hay diferencia de precio; solo cambia la prioridad de procesamiento de las solicitudes", "order": 1 },
+        { "id": "awsb-022_b", "text": "On-demand cobra por token sin compromiso; provisioned reserva capacidad por termino fijo con rendimiento garantizado y menor costo a escala", "textEs": "On-demand cobra por token sin compromiso; provisioned reserva capacidad por termino fijo con rendimiento garantizado y menor costo a escala", "order": 2 },
+        { "id": "awsb-022_c", "text": "On-demand es gratuito con limites de uso; provisioned es la unica opcion de pago", "textEs": "On-demand es gratuito con limites de uso; provisioned es la unica opcion de pago", "order": 3 },
+        { "id": "awsb-022_d", "text": "Provisioned throughput proporciona acceso a modelos mas avanzados que no estan disponibles on-demand", "textEs": "Provisioned throughput proporciona acceso a modelos mas avanzados que no estan disponibles on-demand", "order": 4 }
+      ],
+      "tags": ["precios", "on-demand", "provisioned", "costos"]
+    },
+    {
+      "id": "awsb-023",
+      "text": "How does Bedrock integrate with AWS PrivateLink for secure connectivity?",
+      "textEs": "Como se integra Bedrock con AWS PrivateLink para conectividad segura?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-023_c",
+      "explanation": "AWS PrivateLink creates VPC interface endpoints that allow your applications to connect to Bedrock entirely within the AWS network, without traffic traversing the public internet. You create a VPC endpoint for the 'com.amazonaws.{region}.bedrock-runtime' service, and all API calls are routed through the private endpoint. This is essential for organizations with strict network security requirements and is often required for compliance with regulations like HIPAA and PCI DSS.",
+      "explanationEs": "AWS PrivateLink crea endpoints de interfaz VPC que permiten a tus aplicaciones conectarse a Bedrock completamente dentro de la red de AWS, sin que el trafico atraviese la internet publica. Creas un VPC endpoint para el servicio 'com.amazonaws.{region}.bedrock-runtime', y todas las llamadas API se enrutan a traves del endpoint privado. Esto es esencial para organizaciones con requisitos estrictos de seguridad de red y frecuentemente se requiere para cumplimiento con regulaciones como HIPAA y PCI DSS.",
+      "options": [
+        { "id": "awsb-023_a", "text": "PrivateLink no esta soportado con Bedrock; se debe usar una VPN para acceso privado", "textEs": "PrivateLink no esta soportado con Bedrock; se debe usar una VPN para acceso privado", "order": 1 },
+        { "id": "awsb-023_b", "text": "Se instala un agente de PrivateLink en cada instancia EC2 que necesita acceder a Bedrock", "textEs": "Se instala un agente de PrivateLink en cada instancia EC2 que necesita acceder a Bedrock", "order": 2 },
+        { "id": "awsb-023_c", "text": "Crear VPC endpoint para bedrock-runtime; todo trafico se enruta privadamente sin pasar por internet publica; esencial para HIPAA/PCI DSS", "textEs": "Crear VPC endpoint para bedrock-runtime; todo trafico se enruta privadamente sin pasar por internet publica; esencial para HIPAA/PCI DSS", "order": 3 },
+        { "id": "awsb-023_d", "text": "PrivateLink solo funciona con provisioned throughput; on-demand siempre usa internet publica", "textEs": "PrivateLink solo funciona con provisioned throughput; on-demand siempre usa internet publica", "order": 4 }
+      ],
+      "tags": ["privatelink", "vpc", "seguridad", "compliance"]
+    },
+    {
+      "id": "awsb-024",
+      "text": "What tool use capabilities does Claude support when invoked through Bedrock?",
+      "textEs": "Que capacidades de uso de herramientas soporta Claude al ser invocado a traves de Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-024_a",
+      "explanation": "Claude on Bedrock supports the same tool use (function calling) capabilities as the direct API. You define tools in the request with name, description, and JSON Schema for input parameters. Claude can decide to call tools, and you handle the tool execution and return results. The 'tool_choice' parameter controls whether Claude must use a specific tool, any tool, or can choose autonomously. This enables building agentic applications that interact with databases, APIs, and other systems.",
+      "explanationEs": "Claude en Bedrock soporta las mismas capacidades de uso de herramientas (function calling) que la API directa. Defines herramientas en la solicitud con nombre, descripcion y JSON Schema para parametros de entrada. Claude puede decidir llamar herramientas, y tu manejas la ejecucion y devuelves resultados. El parametro 'tool_choice' controla si Claude debe usar una herramienta especifica, cualquiera, o puede elegir autonomamente. Esto habilita construir aplicaciones agenticas que interactuan con bases de datos, APIs y otros sistemas.",
+      "options": [
+        { "id": "awsb-024_a", "text": "Mismas capacidades que la API directa: definir herramientas con nombre/descripcion/schema, Claude decide cuando llamarlas, tool_choice para control", "textEs": "Mismas capacidades que la API directa: definir herramientas con nombre/descripcion/schema, Claude decide cuando llamarlas, tool_choice para control", "order": 1 },
+        { "id": "awsb-024_b", "text": "Tool use no esta disponible en Bedrock; solo funciona con la API directa de Anthropic", "textEs": "Tool use no esta disponible en Bedrock; solo funciona con la API directa de Anthropic", "order": 2 },
+        { "id": "awsb-024_c", "text": "Solo se pueden usar las herramientas predefinidas por AWS; no se pueden crear herramientas personalizadas", "textEs": "Solo se pueden usar las herramientas predefinidas por AWS; no se pueden crear herramientas personalizadas", "order": 3 },
+        { "id": "awsb-024_d", "text": "Las herramientas se definen como funciones Lambda que Bedrock invoca automaticamente", "textEs": "Las herramientas se definen como funciones Lambda que Bedrock invoca automaticamente", "order": 4 }
+      ],
+      "tags": ["tool-use", "function-calling", "herramientas", "agentico"]
+    },
+    {
+      "id": "awsb-025",
+      "text": "How can you estimate and optimize costs when using Claude on Bedrock?",
+      "textEs": "Como puedes estimar y optimizar costos al usar Claude en Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-025_d",
+      "explanation": "Cost optimization strategies include: choosing the right model size (Haiku for simple tasks, Sonnet for balanced quality/cost, Opus for complex tasks), using prompt caching for repeated prefixes, implementing max_tokens limits to control output length, using batch inference for non-real-time workloads, monitoring token usage via CloudWatch to identify waste, and considering provisioned throughput for high-volume predictable workloads. The AWS Pricing Calculator can help estimate monthly costs.",
+      "explanationEs": "Las estrategias de optimizacion de costos incluyen: elegir el tamano de modelo correcto (Haiku para tareas simples, Sonnet para calidad/costo balanceado, Opus para tareas complejas), usar prompt caching para prefijos repetidos, implementar limites de max_tokens para controlar longitud de salida, usar batch inference para cargas no en tiempo real, monitorear uso de tokens via CloudWatch para identificar desperdicio, y considerar provisioned throughput para cargas predecibles de alto volumen. La Calculadora de Precios de AWS puede ayudar a estimar costos mensuales.",
+      "options": [
+        { "id": "awsb-025_a", "text": "Siempre usar el modelo mas barato (Haiku) para todas las tareas sin importar la complejidad", "textEs": "Siempre usar el modelo mas barato (Haiku) para todas las tareas sin importar la complejidad", "order": 1 },
+        { "id": "awsb-025_b", "text": "No hay forma de optimizar costos; el precio por token es fijo e inmutable", "textEs": "No hay forma de optimizar costos; el precio por token es fijo e inmutable", "order": 2 },
+        { "id": "awsb-025_c", "text": "Limitar las conversaciones a 3 turnos maximo para reducir el uso de tokens", "textEs": "Limitar las conversaciones a 3 turnos maximo para reducir el uso de tokens", "order": 3 },
+        { "id": "awsb-025_d", "text": "Elegir modelo adecuado por tarea, prompt caching, limitar max_tokens, batch para no-realtime, monitorear con CloudWatch, provisioned para alto volumen", "textEs": "Elegir modelo adecuado por tarea, prompt caching, limitar max_tokens, batch para no-realtime, monitorear con CloudWatch, provisioned para alto volumen", "order": 4 }
+      ],
+      "tags": ["costos", "optimizacion", "modelos", "estrategia"]
     }
   ]
 }

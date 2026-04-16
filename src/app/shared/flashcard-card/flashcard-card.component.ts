@@ -12,7 +12,15 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="fc-scene" (click)="flip.emit()" role="button" aria-label="Voltear tarjeta" tabindex="0" (keydown.enter)="flip.emit()" (keydown.space)="flip.emit(); $event.preventDefault()">
+    <div
+      class="fc-scene"
+      (click)="flip.emit()"
+      role="button"
+      aria-label="Voltear tarjeta"
+      tabindex="0"
+      (keydown.enter)="flip.emit()"
+      (keydown.space)="flip.emit(); $event.preventDefault()"
+    >
       <div class="fc-card" [class.fc-card--flipped]="showAnswer()" aria-live="polite">
         <!-- Front face: Question -->
         <div class="fc-face fc-face--front card-section">
@@ -207,7 +215,12 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
         Anterior
       </button>
 
-      <span class="font-mono" style="font-size: 14px; color: var(--color-text-secondary);" aria-live="polite" [attr.aria-label]="'Tarjeta ' + (index() + 1) + ' de ' + total()">
+      <span
+        class="font-mono"
+        style="font-size: 14px; color: var(--color-text-secondary);"
+        aria-live="polite"
+        [attr.aria-label]="'Tarjeta ' + (index() + 1) + ' de ' + total()"
+      >
         {{ index() + 1 }} / {{ total() }}
       </span>
 

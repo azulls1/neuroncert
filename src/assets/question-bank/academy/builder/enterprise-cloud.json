@@ -5,7 +5,7 @@
     "trackId": "academy-enterprise-cloud",
     "version": "1.0.0",
     "lastUpdated": "2026-04-13",
-    "totalQuestions": 10,
+    "totalQuestions": 25,
     "learningLevel": 4,
     "contentType": "exam"
   },
@@ -209,6 +209,306 @@
         { "id": "ecloud-010_d", "text": "Route all global traffic through a single regional proxy that handles authentication and forwards to the nearest Claude endpoint", "textEs": "Enrutar todo el tráfico global a través de un proxy regional único que maneja autenticación y reenvía al endpoint de Claude más cercano", "order": 4 }
       ],
       "tags": ["enterprise", "multi-region", "architecture", "high-availability", "failover"]
+    },
+    {
+      "id": "ecloud-011",
+      "text": "What is the role of prompt caching in reducing latency and cost for enterprise Claude deployments?",
+      "textEs": "Cual es el rol del prompt caching en reducir latencia y costo para despliegues empresariales de Claude?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-011_b",
+      "explanation": "Prompt caching allows reusing previously processed prompt prefixes across requests, significantly reducing both latency and cost. For enterprise applications with long system prompts, RAG contexts, or few-shot examples that remain constant, cached tokens are processed much faster and charged at a reduced rate. This is particularly valuable for customer-facing chatbots and internal tools where the system prompt and context are shared across many user sessions.",
+      "explanationEs": "El prompt caching permite reutilizar prefijos de prompts previamente procesados entre solicitudes, reduciendo significativamente latencia y costo. Para aplicaciones empresariales con system prompts largos, contextos RAG o ejemplos few-shot que permanecen constantes, los tokens cacheados se procesan mucho mas rapido y se cobran a tarifa reducida. Esto es particularmente valioso para chatbots orientados al cliente y herramientas internas donde el system prompt y contexto se comparten entre muchas sesiones de usuario.",
+      "options": [
+        { "id": "ecloud-011_a", "text": "Prompt caching stores complete responses to return identical answers for repeated questions", "textEs": "El prompt caching almacena respuestas completas para devolver respuestas identicas a preguntas repetidas", "order": 1 },
+        { "id": "ecloud-011_b", "text": "Reuses processed prompt prefixes across requests, reducing latency and cost for shared system prompts, RAG contexts, and few-shot examples", "textEs": "Reutiliza prefijos de prompts procesados entre solicitudes, reduciendo latencia y costo para system prompts compartidos, contextos RAG y ejemplos few-shot", "order": 2 },
+        { "id": "ecloud-011_c", "text": "A CDN that caches API responses at edge locations worldwide", "textEs": "Un CDN que cachea respuestas de API en ubicaciones edge a nivel mundial", "order": 3 },
+        { "id": "ecloud-011_d", "text": "Only available for on-premise deployments, not cloud-based", "textEs": "Solo disponible para despliegues on-premise, no basados en nube", "order": 4 }
+      ],
+      "tags": ["enterprise", "prompt-caching", "latency", "cost-optimization"]
+    },
+    {
+      "id": "ecloud-012",
+      "text": "What is the recommended pattern for implementing rate limiting in enterprise Claude applications?",
+      "textEs": "Cual es el patron recomendado para implementar limitacion de tasa en aplicaciones empresariales de Claude?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-012_c",
+      "explanation": "Enterprise rate limiting should be implemented at multiple layers: application-level per-user rate limits to prevent abuse, team/department quota allocations, retry logic with exponential backoff for API-level rate limits (429 errors), request queuing for burst traffic, and priority systems that ensure critical workloads get capacity first. Monitor rate limit utilization to request quota increases before hitting limits in production.",
+      "explanationEs": "La limitacion de tasa empresarial debe implementarse en multiples capas: limites de tasa por usuario a nivel de aplicacion para prevenir abuso, asignaciones de cuota por equipo/departamento, logica de reintento con retroceso exponencial para limites de tasa a nivel de API (errores 429), encolamiento de solicitudes para trafico en rafagas, y sistemas de prioridad que aseguren que las cargas criticas obtengan capacidad primero. Monitorear la utilizacion de limites de tasa para solicitar aumentos de cuota antes de alcanzar limites en produccion.",
+      "options": [
+        { "id": "ecloud-012_a", "text": "Rate limiting is handled entirely by the cloud provider; no application-level controls needed", "textEs": "La limitacion de tasa es manejada completamente por el proveedor de nube; no se necesitan controles a nivel de aplicacion", "order": 1 },
+        { "id": "ecloud-012_b", "text": "Implement a single global rate limit for the entire organization", "textEs": "Implementar un unico limite de tasa global para toda la organizacion", "order": 2 },
+        { "id": "ecloud-012_c", "text": "Multi-layer: per-user limits, team quotas, exponential backoff for 429s, request queuing, priority for critical workloads; monitor utilization proactively", "textEs": "Multicapa: limites por usuario, cuotas por equipo, retroceso exponencial para 429s, encolamiento de solicitudes, prioridad para cargas criticas; monitorear utilizacion proactivamente", "order": 3 },
+        { "id": "ecloud-012_d", "text": "Simply retry failed requests immediately without any delay", "textEs": "Simplemente reintentar solicitudes fallidas inmediatamente sin ningún retraso", "order": 4 }
+      ],
+      "tags": ["enterprise", "rate-limiting", "quotas", "backoff", "priority"]
+    },
+    {
+      "id": "ecloud-013",
+      "text": "How should enterprises implement data loss prevention (DLP) when using Claude?",
+      "textEs": "Como deben las empresas implementar prevencion de perdida de datos (DLP) al usar Claude?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-013_a",
+      "explanation": "Enterprise DLP for Claude should include: pre-processing filters that scan inputs for sensitive data patterns before sending to the API, Bedrock Guardrails or custom filters for PII detection and redaction, classification-based routing that prevents restricted data from reaching the model, output scanning to catch accidental sensitive data in responses, and audit logging of all interactions. Combine automated detection with clear employee guidelines about what data categories are permissible.",
+      "explanationEs": "El DLP empresarial para Claude debe incluir: filtros de pre-procesamiento que escaneen entradas para patrones de datos sensibles antes de enviar a la API, Guardrails de Bedrock o filtros personalizados para deteccion y redaccion de PII, enrutamiento basado en clasificacion que prevenga que datos restringidos lleguen al modelo, escaneo de salidas para capturar datos sensibles accidentales en respuestas, y registro de auditoria de todas las interacciones. Combinar deteccion automatizada con directrices claras para empleados sobre que categorias de datos son permisibles.",
+      "options": [
+        { "id": "ecloud-013_a", "text": "Pre-processing input scanning, Guardrails for PII, classification-based routing, output scanning, audit logging; combine automation with employee guidelines", "textEs": "Escaneo de entrada pre-procesamiento, Guardrails para PII, enrutamiento por clasificacion, escaneo de salida, registro de auditoria; combinar automatizacion con directrices de empleados", "order": 1 },
+        { "id": "ecloud-013_b", "text": "DLP is not needed; Claude never stores or retains user data", "textEs": "DLP no es necesario; Claude nunca almacena ni retiene datos del usuario", "order": 2 },
+        { "id": "ecloud-013_c", "text": "Only scan outputs; inputs are the user's responsibility", "textEs": "Solo escanear salidas; las entradas son responsabilidad del usuario", "order": 3 },
+        { "id": "ecloud-013_d", "text": "Use network-level DLP tools only; application-level controls are unnecessary", "textEs": "Usar herramientas DLP a nivel de red solo; los controles a nivel de aplicacion son innecesarios", "order": 4 }
+      ],
+      "tags": ["enterprise", "dlp", "data-loss-prevention", "pii", "security"]
+    },
+    {
+      "id": "ecloud-014",
+      "text": "What is the recommended approach for load testing Claude API integrations before production deployment?",
+      "textEs": "Cual es el enfoque recomendado para pruebas de carga de integraciones de API de Claude antes del despliegue a produccion?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-014_d",
+      "explanation": "Load testing should simulate realistic production traffic patterns: gradually ramp up concurrent requests, test with representative prompt sizes and complexities, measure time-to-first-token and total response time at different concurrency levels, verify error handling under rate-limiting conditions, test streaming vs synchronous endpoints separately, and validate that your application gracefully handles degraded API performance. Always coordinate with your cloud provider to avoid triggering abuse protections during tests.",
+      "explanationEs": "Las pruebas de carga deben simular patrones de trafico de produccion realistas: incrementar gradualmente solicitudes concurrentes, probar con tamanos y complejidades de prompts representativos, medir tiempo al primer token y tiempo de respuesta total a diferentes niveles de concurrencia, verificar manejo de errores bajo condiciones de limitacion de tasa, probar endpoints de streaming vs sincronos por separado, y validar que tu aplicacion maneja graciosamente rendimiento degradado de la API. Siempre coordinar con tu proveedor de nube para evitar activar protecciones contra abuso durante pruebas.",
+      "options": [
+        { "id": "ecloud-014_a", "text": "Send the maximum possible requests simultaneously to find the breaking point", "textEs": "Enviar el maximo posible de solicitudes simultaneamente para encontrar el punto de quiebre", "order": 1 },
+        { "id": "ecloud-014_b", "text": "Load testing is not possible with AI APIs due to variable response times", "textEs": "Las pruebas de carga no son posibles con APIs de IA debido a tiempos de respuesta variables", "order": 2 },
+        { "id": "ecloud-014_c", "text": "Test with a single request and multiply the response time by expected volume", "textEs": "Probar con una sola solicitud y multiplicar el tiempo de respuesta por el volumen esperado", "order": 3 },
+        { "id": "ecloud-014_d", "text": "Gradual ramp-up with realistic prompts, measure TTFT and latency at concurrency levels, test error handling under rate limits, coordinate with cloud provider", "textEs": "Incremento gradual con prompts realistas, medir TTFT y latencia a niveles de concurrencia, probar manejo de errores bajo limites de tasa, coordinar con proveedor de nube", "order": 4 }
+      ],
+      "tags": ["enterprise", "load-testing", "performance", "latency", "production"]
+    },
+    {
+      "id": "ecloud-015",
+      "text": "How should enterprises architect their Claude integration for high availability and disaster recovery?",
+      "textEs": "Como deben las empresas arquitectar su integracion con Claude para alta disponibilidad y recuperacion ante desastres?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-015_b",
+      "explanation": "High availability architecture should include: multi-provider strategy (Bedrock + Vertex + direct API as fallbacks), cross-region deployment with automatic failover, circuit breakers that route to backup providers when primary is down, graceful degradation patterns (simpler model fallback, cached responses), health checks that proactively detect issues, and documented runbooks for manual intervention. Define RTO (Recovery Time Objective) and RPO (Recovery Point Objective) for Claude-dependent services.",
+      "explanationEs": "La arquitectura de alta disponibilidad debe incluir: estrategia multi-proveedor (Bedrock + Vertex + API directa como respaldos), despliegue multi-region con failover automatico, circuit breakers que enruten a proveedores de respaldo cuando el primario esta caido, patrones de degradacion graciosa (respaldo a modelo mas simple, respuestas cacheadas), health checks que detecten problemas proactivamente, y runbooks documentados para intervencion manual. Definir RTO (Objetivo de Tiempo de Recuperacion) y RPO (Objetivo de Punto de Recuperacion) para servicios dependientes de Claude.",
+      "options": [
+        { "id": "ecloud-015_a", "text": "Deploy in a single region with a single provider; outages are rare enough to not plan for", "textEs": "Desplegar en una sola region con un solo proveedor; las caidas son lo suficientemente raras como para no planificar", "order": 1 },
+        { "id": "ecloud-015_b", "text": "Multi-provider fallback (Bedrock/Vertex/direct API), cross-region failover, circuit breakers, graceful degradation, health checks, documented runbooks with RTO/RPO", "textEs": "Respaldo multi-proveedor (Bedrock/Vertex/API directa), failover multi-region, circuit breakers, degradacion graciosa, health checks, runbooks documentados con RTO/RPO", "order": 2 },
+        { "id": "ecloud-015_c", "text": "Simply retry requests until the provider recovers; no additional architecture is needed", "textEs": "Simplemente reintentar solicitudes hasta que el proveedor se recupere; no se necesita arquitectura adicional", "order": 3 },
+        { "id": "ecloud-015_d", "text": "Build a local LLM as the primary system and use Claude only as a backup", "textEs": "Construir un LLM local como sistema primario y usar Claude solo como respaldo", "order": 4 }
+      ],
+      "tags": ["enterprise", "high-availability", "disaster-recovery", "multi-provider", "circuit-breaker"]
+    },
+    {
+      "id": "ecloud-016",
+      "text": "What is the recommended approach for managing Claude API costs across multiple teams in an enterprise?",
+      "textEs": "Cual es el enfoque recomendado para gestionar costos de API de Claude entre multiples equipos en una empresa?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-016_c",
+      "explanation": "Enterprise cost management requires: implementing per-team/project cost attribution using tags or separate API keys, setting budget alerts and hard spending limits, providing dashboards showing real-time usage per team, using model routing (Haiku for simple tasks, Sonnet for complex) to optimize cost-performance, regular cost reviews to identify waste patterns, and establishing a chargeback or showback model. Cloud providers like AWS and GCP natively support cost tagging for Bedrock and Vertex AI usage.",
+      "explanationEs": "La gestion de costos empresarial requiere: implementar atribucion de costos por equipo/proyecto usando etiquetas o API keys separadas, establecer alertas de presupuesto y limites de gasto estrictos, proporcionar dashboards mostrando uso en tiempo real por equipo, usar enrutamiento de modelos (Haiku para tareas simples, Sonnet para complejas) para optimizar costo-rendimiento, revisiones regulares de costos para identificar patrones de desperdicio, y establecer un modelo de contracargo o showback. Proveedores de nube como AWS y GCP soportan nativamente etiquetado de costos para uso de Bedrock y Vertex AI.",
+      "options": [
+        { "id": "ecloud-016_a", "text": "Give all teams a shared API key and split the bill equally at month end", "textEs": "Dar a todos los equipos una API key compartida y dividir la factura equitativamente al fin del mes", "order": 1 },
+        { "id": "ecloud-016_b", "text": "Let each team manage their own API account with no centralized oversight", "textEs": "Dejar que cada equipo gestione su propia cuenta API sin supervision centralizada", "order": 2 },
+        { "id": "ecloud-016_c", "text": "Per-team cost tagging, budget alerts/limits, real-time dashboards, model routing for optimization, regular reviews, chargeback model", "textEs": "Etiquetado de costos por equipo, alertas/limites de presupuesto, dashboards en tiempo real, enrutamiento de modelos para optimizacion, revisiones regulares, modelo de contracargo", "order": 3 },
+        { "id": "ecloud-016_d", "text": "Restrict all teams to the cheapest model to minimize total cost", "textEs": "Restringir todos los equipos al modelo mas barato para minimizar el costo total", "order": 4 }
+      ],
+      "tags": ["enterprise", "cost-management", "tagging", "budgets", "chargeback"]
+    },
+    {
+      "id": "ecloud-017",
+      "text": "How should enterprises handle Claude model version upgrades in production systems?",
+      "textEs": "Como deben las empresas manejar actualizaciones de version del modelo Claude en sistemas de produccion?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-017_a",
+      "explanation": "Production model upgrades should follow a structured process: pin to specific model versions (e.g., claude-3-5-sonnet-20241022), maintain a regression test suite that validates prompt behavior, test new versions in staging first with production-like traffic, use canary deployments routing a small percentage to the new version, monitor quality metrics and error rates during rollout, and maintain rollback capability. Never auto-upgrade production systems without testing, as model behavior changes can affect prompt reliability.",
+      "explanationEs": "Las actualizaciones de modelo en produccion deben seguir un proceso estructurado: fijar a versiones especificas del modelo (ej., claude-3-5-sonnet-20241022), mantener un conjunto de pruebas de regresion que valide el comportamiento de prompts, probar nuevas versiones en staging primero con trafico similar a produccion, usar despliegues canary enrutando un pequeno porcentaje a la nueva version, monitorear metricas de calidad y tasas de error durante el despliegue, y mantener capacidad de rollback. Nunca auto-actualizar sistemas de produccion sin probar, ya que cambios en el comportamiento del modelo pueden afectar la confiabilidad de prompts.",
+      "options": [
+        { "id": "ecloud-017_a", "text": "Pin versions, regression test suite, staging testing, canary deployments, monitor quality/errors, maintain rollback; never auto-upgrade production", "textEs": "Fijar versiones, conjunto de pruebas de regresion, pruebas en staging, despliegues canary, monitorear calidad/errores, mantener rollback; nunca auto-actualizar produccion", "order": 1 },
+        { "id": "ecloud-017_b", "text": "Always use the latest model version; newer versions are always better", "textEs": "Siempre usar la version mas reciente del modelo; las versiones mas nuevas siempre son mejores", "order": 2 },
+        { "id": "ecloud-017_c", "text": "Never upgrade; stay on the original version forever for stability", "textEs": "Nunca actualizar; quedarse en la version original por siempre para estabilidad", "order": 3 },
+        { "id": "ecloud-017_d", "text": "Upgrade all production systems simultaneously to minimize the transition period", "textEs": "Actualizar todos los sistemas de produccion simultaneamente para minimizar el periodo de transicion", "order": 4 }
+      ],
+      "tags": ["enterprise", "model-versioning", "upgrades", "canary", "regression-testing"]
+    },
+    {
+      "id": "ecloud-018",
+      "text": "What is the role of VPC endpoints and private networking in securing enterprise Claude deployments?",
+      "textEs": "Cual es el rol de los endpoints VPC y redes privadas en asegurar despliegues empresariales de Claude?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-018_d",
+      "explanation": "VPC endpoints (AWS PrivateLink, GCP Private Service Connect) enable applications to access Claude via cloud APIs without traffic traversing the public internet. All data stays within the cloud provider's private network, satisfying zero-trust network requirements. Combined with VPC endpoint policies and security groups, organizations can restrict which services and principals can access Claude endpoints. This is essential for regulated industries requiring data to never leave a controlled network perimeter.",
+      "explanationEs": "Los endpoints VPC (AWS PrivateLink, GCP Private Service Connect) permiten a las aplicaciones acceder a Claude via APIs de nube sin que el trafico atraviese la internet publica. Todos los datos permanecen dentro de la red privada del proveedor de nube, satisfaciendo requisitos de redes de confianza cero. Combinados con politicas de endpoint VPC y grupos de seguridad, las organizaciones pueden restringir que servicios y principales pueden acceder a endpoints de Claude. Esto es esencial para industrias reguladas que requieren que los datos nunca abandonen un perimetro de red controlado.",
+      "options": [
+        { "id": "ecloud-018_a", "text": "VPC endpoints are only needed for on-premise deployments, not cloud", "textEs": "Los endpoints VPC solo se necesitan para despliegues on-premise, no en nube", "order": 1 },
+        { "id": "ecloud-018_b", "text": "HTTPS encryption is sufficient; private networking adds no additional security value", "textEs": "La encriptacion HTTPS es suficiente; las redes privadas no agregan valor de seguridad adicional", "order": 2 },
+        { "id": "ecloud-018_c", "text": "VPC endpoints are a performance optimization, not a security feature", "textEs": "Los endpoints VPC son una optimizacion de rendimiento, no una funcion de seguridad", "order": 3 },
+        { "id": "ecloud-018_d", "text": "Traffic stays in cloud private network via PrivateLink/Private Service Connect; combined with endpoint policies for access control; essential for regulated industries", "textEs": "El trafico permanece en la red privada de la nube via PrivateLink/Private Service Connect; combinado con politicas de endpoint para control de acceso; esencial para industrias reguladas", "order": 4 }
+      ],
+      "tags": ["enterprise", "vpc", "private-networking", "privatelink", "zero-trust"]
+    },
+    {
+      "id": "ecloud-019",
+      "text": "What best practices should be followed when integrating Claude into existing enterprise SSO and identity management systems?",
+      "textEs": "Que mejores practicas deben seguirse al integrar Claude en sistemas existentes de SSO y gestion de identidad empresarial?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-019_b",
+      "explanation": "Enterprise SSO integration should: authenticate users through existing identity providers (Okta, Azure AD, Google Workspace) before granting Claude access, use RBAC to control which users/roles can use which Claude features, implement per-user API key or token management tied to corporate identities, log all access with user identity for auditing, automatically revoke access when employees leave, and ensure session management aligns with corporate security policies (timeout, MFA requirements).",
+      "explanationEs": "La integracion empresarial de SSO debe: autenticar usuarios a traves de proveedores de identidad existentes (Okta, Azure AD, Google Workspace) antes de otorgar acceso a Claude, usar RBAC para controlar que usuarios/roles pueden usar que funciones de Claude, implementar gestion de API keys o tokens por usuario vinculada a identidades corporativas, registrar todo el acceso con identidad de usuario para auditoria, revocar automaticamente el acceso cuando empleados se van, y asegurar que la gestion de sesiones se alinee con politicas de seguridad corporativas (timeout, requisitos MFA).",
+      "options": [
+        { "id": "ecloud-019_a", "text": "Share a single API key across all authenticated users; SSO handles identity", "textEs": "Compartir una sola API key entre todos los usuarios autenticados; SSO maneja la identidad", "order": 1 },
+        { "id": "ecloud-019_b", "text": "Authenticate via existing IdP, RBAC for feature access, per-user token management, access logging with identity, auto-revocation on departure, session policy alignment", "textEs": "Autenticar via IdP existente, RBAC para acceso a funciones, gestion de tokens por usuario, registro de acceso con identidad, revocacion automatica al salir, alineacion de politicas de sesion", "order": 2 },
+        { "id": "ecloud-019_c", "text": "Create separate Anthropic accounts for each employee outside the SSO system", "textEs": "Crear cuentas de Anthropic separadas para cada empleado fuera del sistema SSO", "order": 3 },
+        { "id": "ecloud-019_d", "text": "SSO integration is not possible with Claude; use local authentication only", "textEs": "La integracion SSO no es posible con Claude; usar solo autenticacion local", "order": 4 }
+      ],
+      "tags": ["enterprise", "sso", "identity", "rbac", "authentication"]
+    },
+    {
+      "id": "ecloud-020",
+      "text": "What is the recommended architecture for building a Claude-powered chatbot with enterprise-grade features?",
+      "textEs": "Cual es la arquitectura recomendada para construir un chatbot basado en Claude con funciones de nivel empresarial?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-020_c",
+      "explanation": "An enterprise chatbot architecture includes: an API gateway for rate limiting and authentication, a conversation management layer that maintains chat history, a RAG pipeline connecting to enterprise knowledge bases, prompt engineering layer with system prompts and guardrails, the Claude API (via Bedrock/Vertex), response post-processing (PII filtering, format validation), analytics and feedback collection, and admin dashboard for monitoring. Use streaming for real-time user experience.",
+      "explanationEs": "Una arquitectura de chatbot empresarial incluye: un API gateway para limitacion de tasa y autenticacion, una capa de gestion de conversaciones que mantiene el historial de chat, un pipeline RAG conectando a bases de conocimiento empresariales, capa de ingenieria de prompts con system prompts y guardrails, la API de Claude (via Bedrock/Vertex), post-procesamiento de respuestas (filtrado PII, validacion de formato), analiticas y recopilacion de retroalimentacion, y dashboard de administracion para monitoreo. Usar streaming para experiencia de usuario en tiempo real.",
+      "options": [
+        { "id": "ecloud-020_a", "text": "Simply embed the Claude API key in a web page and call it directly from the browser", "textEs": "Simplemente incrustar la API key de Claude en una pagina web y llamarla directamente desde el navegador", "order": 1 },
+        { "id": "ecloud-020_b", "text": "Use a third-party chatbot platform and add Claude as a backend; no custom architecture needed", "textEs": "Usar una plataforma de chatbot de terceros y agregar Claude como backend; no se necesita arquitectura personalizada", "order": 2 },
+        { "id": "ecloud-020_c", "text": "API gateway, conversation management, RAG pipeline, prompt layer with guardrails, Claude API, response post-processing, analytics, admin dashboard; streaming for UX", "textEs": "API gateway, gestion de conversaciones, pipeline RAG, capa de prompts con guardrails, API Claude, post-procesamiento, analiticas, dashboard admin; streaming para UX", "order": 3 },
+        { "id": "ecloud-020_d", "text": "Deploy Claude Desktop on every employee's machine; no server-side architecture needed", "textEs": "Desplegar Claude Desktop en la maquina de cada empleado; no se necesita arquitectura del lado del servidor", "order": 4 }
+      ],
+      "tags": ["enterprise", "chatbot", "architecture", "rag", "streaming"]
+    },
+    {
+      "id": "ecloud-021",
+      "text": "What compliance certifications are relevant when deploying Claude in regulated enterprise environments?",
+      "textEs": "Que certificaciones de cumplimiento son relevantes al desplegar Claude en entornos empresariales regulados?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-021_a",
+      "explanation": "Relevant certifications depend on industry: SOC 2 Type II (security, availability, confidentiality — applicable to most enterprises), HIPAA (healthcare data), PCI DSS (payment card data), GDPR (EU personal data), FedRAMP (US government), and ISO 27001 (information security management). When using Bedrock or Vertex, the cloud provider's certifications extend to Claude usage. Verify which certifications apply to your specific deployment model and data types, and maintain documentation for auditors.",
+      "explanationEs": "Las certificaciones relevantes dependen de la industria: SOC 2 Type II (seguridad, disponibilidad, confidencialidad — aplicable a la mayoria de empresas), HIPAA (datos de salud), PCI DSS (datos de tarjetas de pago), GDPR (datos personales UE), FedRAMP (gobierno EE.UU.), e ISO 27001 (gestion de seguridad de informacion). Al usar Bedrock o Vertex, las certificaciones del proveedor de nube se extienden al uso de Claude. Verificar que certificaciones aplican a tu modelo de despliegue especifico y tipos de datos, y mantener documentacion para auditores.",
+      "options": [
+        { "id": "ecloud-021_a", "text": "SOC 2 Type II, HIPAA, PCI DSS, GDPR, FedRAMP, ISO 27001; cloud provider certs extend to Claude; verify per deployment model and data types", "textEs": "SOC 2 Type II, HIPAA, PCI DSS, GDPR, FedRAMP, ISO 27001; certs del proveedor de nube se extienden a Claude; verificar por modelo de despliegue y tipos de datos", "order": 1 },
+        { "id": "ecloud-021_b", "text": "No certifications are needed for AI deployments; they fall outside traditional compliance frameworks", "textEs": "No se necesitan certificaciones para despliegues de IA; caen fuera de marcos de cumplimiento tradicionales", "order": 2 },
+        { "id": "ecloud-021_c", "text": "Only SOC 2 is relevant; all other certifications are handled by Anthropic", "textEs": "Solo SOC 2 es relevante; todas las demas certificaciones las maneja Anthropic", "order": 3 },
+        { "id": "ecloud-021_d", "text": "Compliance certifications are only needed for on-premise deployments", "textEs": "Las certificaciones de cumplimiento solo se necesitan para despliegues on-premise", "order": 4 }
+      ],
+      "tags": ["enterprise", "compliance", "soc2", "hipaa", "gdpr", "certifications"]
+    },
+    {
+      "id": "ecloud-022",
+      "text": "How should enterprises implement token usage tracking and cost allocation across departments?",
+      "textEs": "Como deben las empresas implementar seguimiento de uso de tokens y asignacion de costos entre departamentos?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-022_b",
+      "explanation": "Token usage tracking should capture: input tokens, output tokens, and cached tokens per request, tagged with the requesting team, project, and use case. Implement a middleware layer that logs all API calls with these metadata. Use cloud-native cost allocation tools (AWS Cost Explorer tags, GCP billing labels) to attribute costs automatically. Provide self-service dashboards for team leads to monitor their usage and optimize spending. Regular usage reviews help identify waste and optimization opportunities.",
+      "explanationEs": "El seguimiento de uso de tokens debe capturar: tokens de entrada, tokens de salida y tokens cacheados por solicitud, etiquetados con el equipo solicitante, proyecto y caso de uso. Implementar una capa middleware que registre todas las llamadas API con estos metadatos. Usar herramientas nativas de asignacion de costos de la nube (etiquetas de AWS Cost Explorer, labels de facturacion de GCP) para atribuir costos automaticamente. Proporcionar dashboards de autoservicio para lideres de equipo para monitorear su uso y optimizar gastos. Revisiones regulares de uso ayudan a identificar desperdicio y oportunidades de optimizacion.",
+      "options": [
+        { "id": "ecloud-022_a", "text": "Split the total monthly bill equally across all departments regardless of usage", "textEs": "Dividir la factura mensual total equitativamente entre todos los departamentos sin importar el uso", "order": 1 },
+        { "id": "ecloud-022_b", "text": "Tag requests with team/project/use-case, log all API calls, use cloud-native cost tools, provide self-service dashboards, conduct regular usage reviews", "textEs": "Etiquetar solicitudes con equipo/proyecto/caso-de-uso, registrar todas las llamadas API, usar herramientas de costo nativas de nube, proporcionar dashboards de autoservicio, realizar revisiones regulares de uso", "order": 2 },
+        { "id": "ecloud-022_c", "text": "Only track costs at the organization level; per-department tracking is too granular", "textEs": "Solo rastrear costos a nivel de organizacion; el seguimiento por departamento es demasiado granular", "order": 3 },
+        { "id": "ecloud-022_d", "text": "Each department should have their own Anthropic account for separate billing", "textEs": "Cada departamento deberia tener su propia cuenta de Anthropic para facturacion separada", "order": 4 }
+      ],
+      "tags": ["enterprise", "token-tracking", "cost-allocation", "dashboards", "tagging"]
+    },
+    {
+      "id": "ecloud-023",
+      "text": "What is the recommended approach for implementing prompt management and versioning in enterprise systems?",
+      "textEs": "Cual es el enfoque recomendado para implementar gestion y versionado de prompts en sistemas empresariales?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-023_c",
+      "explanation": "Enterprise prompt management should include: storing prompts in version control (Git) alongside application code, using a prompt registry/catalog with metadata (owner, use case, model compatibility), implementing A/B testing infrastructure for prompt variants, tracking prompt performance metrics over time, establishing a review process for prompt changes (similar to code review), and maintaining prompt-model version compatibility matrices. Treat prompts as code — they deserve the same rigor as application logic.",
+      "explanationEs": "La gestion empresarial de prompts debe incluir: almacenar prompts en control de versiones (Git) junto con el codigo de la aplicacion, usar un registro/catalogo de prompts con metadatos (propietario, caso de uso, compatibilidad de modelo), implementar infraestructura de pruebas A/B para variantes de prompts, rastrear metricas de rendimiento de prompts a lo largo del tiempo, establecer un proceso de revision para cambios de prompts (similar a revision de codigo), y mantener matrices de compatibilidad prompt-version de modelo. Tratar los prompts como codigo — merecen el mismo rigor que la logica de la aplicacion.",
+      "options": [
+        { "id": "ecloud-023_a", "text": "Store prompts in a shared document that anyone can edit freely", "textEs": "Almacenar prompts en un documento compartido que cualquiera puede editar libremente", "order": 1 },
+        { "id": "ecloud-023_b", "text": "Hard-code prompts directly in application source code with no separate management", "textEs": "Codificar prompts directamente en el codigo fuente de la aplicacion sin gestion separada", "order": 2 },
+        { "id": "ecloud-023_c", "text": "Version control with Git, prompt registry with metadata, A/B testing, performance tracking, review process, compatibility matrices; treat prompts as code", "textEs": "Control de versiones con Git, registro de prompts con metadatos, pruebas A/B, seguimiento de rendimiento, proceso de revision, matrices de compatibilidad; tratar prompts como codigo", "order": 3 },
+        { "id": "ecloud-023_d", "text": "Prompts don't need versioning; they are simple text that rarely changes", "textEs": "Los prompts no necesitan versionado; son texto simple que rara vez cambia", "order": 4 }
+      ],
+      "tags": ["enterprise", "prompt-management", "versioning", "a-b-testing", "registry"]
+    },
+    {
+      "id": "ecloud-024",
+      "text": "What considerations are important when choosing between the Anthropic direct API, Amazon Bedrock, and Google Vertex AI?",
+      "textEs": "Que consideraciones son importantes al elegir entre la API directa de Anthropic, Amazon Bedrock y Google Vertex AI?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-024_d",
+      "explanation": "Key selection factors: existing cloud infrastructure (use Bedrock if already on AWS, Vertex if on GCP), compliance requirements (cloud providers offer certified infrastructure), billing integration (consolidated billing with existing cloud spend), private networking needs (VPC endpoints), feature parity (check if the latest Claude features are available on each platform), support model (enterprise support through cloud provider vs Anthropic), and multi-cloud strategy considerations. Some enterprises use multiple providers for redundancy.",
+      "explanationEs": "Factores clave de seleccion: infraestructura de nube existente (usar Bedrock si ya estas en AWS, Vertex si en GCP), requisitos de cumplimiento (proveedores de nube ofrecen infraestructura certificada), integracion de facturacion (facturacion consolidada con gasto de nube existente), necesidades de red privada (endpoints VPC), paridad de funciones (verificar si las ultimas funciones de Claude estan disponibles en cada plataforma), modelo de soporte (soporte empresarial a traves de proveedor de nube vs Anthropic), y consideraciones de estrategia multi-nube. Algunas empresas usan multiples proveedores para redundancia.",
+      "options": [
+        { "id": "ecloud-024_a", "text": "Always use the direct API; cloud providers add unnecessary middleware", "textEs": "Siempre usar la API directa; los proveedores de nube agregan middleware innecesario", "order": 1 },
+        { "id": "ecloud-024_b", "text": "Choose the provider with the lowest token price; all other factors are secondary", "textEs": "Elegir el proveedor con el menor precio por token; todos los demas factores son secundarios", "order": 2 },
+        { "id": "ecloud-024_c", "text": "All three options are identical; the choice does not matter", "textEs": "Las tres opciones son identicas; la eleccion no importa", "order": 3 },
+        { "id": "ecloud-024_d", "text": "Existing cloud infra, compliance, billing integration, private networking, feature parity, support model, multi-cloud strategy; some use multiple for redundancy", "textEs": "Infra de nube existente, cumplimiento, integracion de facturacion, red privada, paridad de funciones, modelo de soporte, estrategia multi-nube; algunos usan multiples para redundancia", "order": 4 }
+      ],
+      "tags": ["enterprise", "provider-selection", "bedrock", "vertex", "direct-api", "comparison"]
+    },
+    {
+      "id": "ecloud-025",
+      "text": "How should enterprises handle logging and auditing of Claude API interactions for compliance?",
+      "textEs": "Como deben las empresas manejar el registro y auditoria de interacciones con la API de Claude para cumplimiento?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-025_a",
+      "explanation": "Compliance-ready logging should: capture all request/response data with timestamps and user identity, implement PII redaction before logging to avoid storing sensitive data in logs, use immutable log storage (S3 with Object Lock, Cloud Storage with retention policies), maintain logs for the required retention period (varies by regulation), enable efficient search and retrieval for auditor requests, integrate with SIEM systems for anomaly detection, and implement access controls on log data itself. Balance completeness with privacy.",
+      "explanationEs": "El registro preparado para cumplimiento debe: capturar todos los datos de solicitud/respuesta con marcas de tiempo e identidad de usuario, implementar redaccion de PII antes de registrar para evitar almacenar datos sensibles en logs, usar almacenamiento de logs inmutable (S3 con Object Lock, Cloud Storage con politicas de retencion), mantener logs por el periodo de retencion requerido (varia por regulacion), habilitar busqueda y recuperacion eficiente para solicitudes de auditores, integrar con sistemas SIEM para deteccion de anomalias, e implementar controles de acceso en los datos de log mismos. Balancear completitud con privacidad.",
+      "options": [
+        { "id": "ecloud-025_a", "text": "Capture all interactions with PII redaction, immutable storage, required retention, searchable for auditors, SIEM integration, access controls on logs", "textEs": "Capturar todas las interacciones con redaccion PII, almacenamiento inmutable, retencion requerida, buscable para auditores, integracion SIEM, controles de acceso en logs", "order": 1 },
+        { "id": "ecloud-025_b", "text": "Only log errors; successful interactions do not need to be recorded", "textEs": "Solo registrar errores; las interacciones exitosas no necesitan registrarse", "order": 2 },
+        { "id": "ecloud-025_c", "text": "Log everything without any redaction for maximum audit completeness", "textEs": "Registrar todo sin ninguna redaccion para maxima completitud de auditoria", "order": 3 },
+        { "id": "ecloud-025_d", "text": "Rely on the cloud provider's built-in logging; no additional logging is needed", "textEs": "Depender del registro integrado del proveedor de nube; no se necesita registro adicional", "order": 4 }
+      ],
+      "tags": ["enterprise", "logging", "auditing", "compliance", "pii-redaction", "siem"]
     }
   ]
 }

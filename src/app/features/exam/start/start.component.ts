@@ -328,22 +328,25 @@ export class StartComponent implements OnInit {
 
     if (trackId) {
       this.isLoadingCatalog.set(true);
-      this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-        next: () => {
-          const track = this.curriculum.getTrackById(trackId) ?? null;
-          this.currentTrack.set(track);
+      this.curriculum
+        .loadCatalog()
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
+          next: () => {
+            const track = this.curriculum.getTrackById(trackId) ?? null;
+            this.currentTrack.set(track);
 
-          // If the track is CCA-F, also load CCA-F config
-          if (track?.platform === 'cca-f') {
-            this.ccafConfig.set(this.curriculum.getCCAFConfig());
-          }
+            // If the track is CCA-F, also load CCA-F config
+            if (track?.platform === 'cca-f') {
+              this.ccafConfig.set(this.curriculum.getCCAFConfig());
+            }
 
-          this.isLoadingCatalog.set(false);
-        },
-        error: () => {
-          this.isLoadingCatalog.set(false);
-        },
-      });
+            this.isLoadingCatalog.set(false);
+          },
+          error: () => {
+            this.isLoadingCatalog.set(false);
+          },
+        });
     }
   }
 
@@ -402,17 +405,20 @@ export class StartComponent implements OnInit {
       ...(ccaf ? { scenarioCount: ccaf.scenarioCount } : {}),
     };
 
-    this.examState.startExam(params).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => {
-        this._isStarting.set(false);
-        this.router.navigate(['/exam/run']);
-      },
-      error: (error) => {
-        this.logger.error('Error starting exam', 'Start', error);
-        this._error.set('Error al iniciar el examen. Intenta de nuevo.');
-        this._isStarting.set(false);
-      },
-    });
+    this.examState
+      .startExam(params)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this._isStarting.set(false);
+          this.router.navigate(['/exam/run']);
+        },
+        error: (error) => {
+          this.logger.error('Error starting exam', 'Start', error);
+          this._error.set('Error al iniciar el examen. Intenta de nuevo.');
+          this._isStarting.set(false);
+        },
+      });
   }
 
   /**

@@ -20,9 +20,7 @@ describe('CCAFExamComponent', () => {
       durationSec: 7200,
       passingScore: 720,
       maxScore: 1000,
-      domains: [
-        { code: 'D1', name: 'Domain 1', weight: 0.27 },
-      ],
+      domains: [{ code: 'D1', name: 'Domain 1', weight: 0.27 }],
     }),
   };
 

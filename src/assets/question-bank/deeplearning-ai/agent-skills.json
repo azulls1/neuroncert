@@ -5,7 +5,7 @@
     "trackId": "dlai-agent-skills",
     "version": "1.0.0",
     "lastUpdated": "2026-04-12",
-    "totalQuestions": 15,
+    "totalQuestions": 30,
     "learningLevel": 4,
     "contentType": "exam"
   },
@@ -309,6 +309,306 @@
         { "id": "dlai-as-015_d", "text": "Limit projects to 5 skills maximum to avoid confusion", "textEs": "Limitar los proyectos a un maximo de 5 skills para evitar confusion", "order": 4 }
       ],
       "tags": ["organization", "subdirectories", "naming", "large-projects"]
+    },
+    {
+      "id": "dlai-as-016",
+      "text": "What is the 'tool use loop' pattern in agentic applications, and how does it work with Claude?",
+      "textEs": "Que es el patron de 'bucle de uso de herramientas' en aplicaciones agenticas, y como funciona con Claude?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-016_b",
+      "explanation": "The tool use loop is the fundamental pattern in agentic applications: (1) Send a message to Claude with available tools, (2) Claude responds with either a text answer or a tool_use request, (3) Your code executes the requested tool and returns the result, (4) Send the tool result back to Claude, (5) Repeat until Claude responds with a final text answer (stop_reason: 'end_turn'). This loop allows Claude to take multiple actions iteratively to complete complex tasks.",
+      "explanationEs": "El bucle de uso de herramientas es el patron fundamental en aplicaciones agenticas: (1) Enviar un mensaje a Claude con herramientas disponibles, (2) Claude responde con una respuesta de texto o una solicitud tool_use, (3) Tu codigo ejecuta la herramienta solicitada y devuelve el resultado, (4) Enviar el resultado de la herramienta de vuelta a Claude, (5) Repetir hasta que Claude responda con una respuesta de texto final (stop_reason: 'end_turn'). Este bucle permite a Claude tomar multiples acciones iterativamente para completar tareas complejas.",
+      "options": [
+        { "id": "dlai-as-016_a", "text": "A pattern where all tools are executed in parallel before sending any results to Claude", "textEs": "Un patron donde todas las herramientas se ejecutan en paralelo antes de enviar resultados a Claude", "order": 1 },
+        { "id": "dlai-as-016_b", "text": "Send message with tools -> Claude requests tool_use or gives answer -> execute tool -> return result -> repeat until final answer", "textEs": "Enviar mensaje con herramientas -> Claude solicita tool_use o da respuesta -> ejecutar herramienta -> devolver resultado -> repetir hasta respuesta final", "order": 2 },
+        { "id": "dlai-as-016_c", "text": "A one-time tool execution where Claude can only call each tool once per conversation", "textEs": "Una ejecucion de herramienta unica donde Claude solo puede llamar cada herramienta una vez por conversacion", "order": 3 },
+        { "id": "dlai-as-016_d", "text": "The user manually decides which tool to call after each Claude response", "textEs": "El usuario decide manualmente que herramienta llamar despues de cada respuesta de Claude", "order": 4 }
+      ],
+      "tags": ["tool-use-loop", "agentic", "pattern", "iteration"]
+    },
+    {
+      "id": "dlai-as-017",
+      "text": "What is the difference between the 'auto' and 'required' tool_choice modes?",
+      "textEs": "Cual es la diferencia entre los modos de tool_choice 'auto' y 'required'?",
+      "domainCode": "agent-skills",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-017_a",
+      "explanation": "With tool_choice 'auto' (default), Claude decides whether to use a tool or respond with text based on its own judgment. With 'required', Claude MUST use at least one tool in its response — it cannot respond with text only. There is also 'tool' mode where you specify a particular tool name, forcing Claude to use that specific tool. Use 'required' when you know the task needs a tool call, and 'auto' when Claude should decide.",
+      "explanationEs": "Con tool_choice 'auto' (predeterminado), Claude decide si usar una herramienta o responder con texto basandose en su propio juicio. Con 'required', Claude DEBE usar al menos una herramienta en su respuesta — no puede responder solo con texto. Tambien existe el modo 'tool' donde especificas un nombre de herramienta particular, forzando a Claude a usar esa herramienta especifica. Usa 'required' cuando sabes que la tarea necesita una llamada a herramienta, y 'auto' cuando Claude debe decidir.",
+      "options": [
+        { "id": "dlai-as-017_a", "text": "'auto' lets Claude decide whether to use tools or respond with text; 'required' forces at least one tool call in every response", "textEs": "'auto' permite a Claude decidir si usar herramientas o responder con texto; 'required' fuerza al menos una llamada a herramienta en cada respuesta", "order": 1 },
+        { "id": "dlai-as-017_b", "text": "'auto' means tools are used automatically without user confirmation; 'required' means confirmation is needed", "textEs": "'auto' significa que las herramientas se usan automaticamente sin confirmacion del usuario; 'required' significa que se necesita confirmacion", "order": 2 },
+        { "id": "dlai-as-017_c", "text": "'auto' selects the best tool automatically; 'required' requires the user to specify which tool to use", "textEs": "'auto' selecciona la mejor herramienta automaticamente; 'required' requiere que el usuario especifique que herramienta usar", "order": 3 },
+        { "id": "dlai-as-017_d", "text": "There is no difference; both modes behave identically", "textEs": "No hay diferencia; ambos modos se comportan de forma identica", "order": 4 }
+      ],
+      "tags": ["tool-choice", "auto", "required", "configuration"]
+    },
+    {
+      "id": "dlai-as-018",
+      "text": "How should agents handle errors when a tool execution fails during an agentic loop?",
+      "textEs": "Como deben los agentes manejar errores cuando una ejecucion de herramienta falla durante un bucle agentico?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-018_c",
+      "explanation": "When a tool execution fails, the best practice is to return the error information to Claude as a tool_result with 'is_error: true'. This allows Claude to understand what went wrong and try an alternative approach — perhaps calling a different tool, adjusting parameters, or explaining the limitation to the user. Never silently swallow errors, as Claude needs this feedback to make informed decisions. Implement max iteration limits to prevent infinite error-retry loops.",
+      "explanationEs": "Cuando una ejecucion de herramienta falla, la mejor practica es devolver la informacion del error a Claude como un tool_result con 'is_error: true'. Esto permite a Claude entender que salio mal e intentar un enfoque alternativo — quizas llamar a una herramienta diferente, ajustar parametros o explicar la limitacion al usuario. Nunca silenciar errores, ya que Claude necesita esta retroalimentacion para tomar decisiones informadas. Implementar limites maximos de iteraciones para prevenir bucles infinitos de error-reintento.",
+      "options": [
+        { "id": "dlai-as-018_a", "text": "Immediately terminate the entire agent loop and show a generic error message", "textEs": "Terminar inmediatamente todo el bucle del agente y mostrar un mensaje de error generico", "order": 1 },
+        { "id": "dlai-as-018_b", "text": "Return a fake successful result to avoid confusing Claude", "textEs": "Devolver un resultado exitoso falso para no confundir a Claude", "order": 2 },
+        { "id": "dlai-as-018_c", "text": "Return error details to Claude via tool_result with is_error:true so it can adapt; implement max iteration limits to prevent infinite loops", "textEs": "Devolver detalles del error a Claude via tool_result con is_error:true para que pueda adaptarse; implementar limites de iteraciones maximas para prevenir bucles infinitos", "order": 3 },
+        { "id": "dlai-as-018_d", "text": "Automatically retry the exact same tool call 5 times before reporting failure", "textEs": "Reintentar automaticamente la misma llamada a herramienta exacta 5 veces antes de reportar fallo", "order": 4 }
+      ],
+      "tags": ["error-handling", "tool-result", "resilience", "agentic-loop"]
+    },
+    {
+      "id": "dlai-as-019",
+      "text": "What is the orchestrator pattern in multi-agent systems?",
+      "textEs": "Que es el patron de orquestador en sistemas multi-agente?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-019_d",
+      "explanation": "The orchestrator pattern uses a coordinator agent that receives the user's task, decomposes it into subtasks, delegates each to specialized agents (subagents), collects their results, and synthesizes a final response. The orchestrator decides which agents to invoke, in what order, and how to combine results. This pattern enables complex workflows where different agents have different skills, tools, or system prompts optimized for their specific subtask.",
+      "explanationEs": "El patron de orquestador usa un agente coordinador que recibe la tarea del usuario, la descompone en subtareas, delega cada una a agentes especializados (subagentes), recopila sus resultados y sintetiza una respuesta final. El orquestador decide que agentes invocar, en que orden y como combinar resultados. Este patron habilita flujos de trabajo complejos donde diferentes agentes tienen diferentes habilidades, herramientas o system prompts optimizados para su subtarea especifica.",
+      "options": [
+        { "id": "dlai-as-019_a", "text": "A pattern where all agents run the same task and the best result is selected", "textEs": "Un patron donde todos los agentes ejecutan la misma tarea y se selecciona el mejor resultado", "order": 1 },
+        { "id": "dlai-as-019_b", "text": "A load balancer that distributes API calls across multiple Claude instances", "textEs": "Un balanceador de carga que distribuye llamadas API entre multiples instancias de Claude", "order": 2 },
+        { "id": "dlai-as-019_c", "text": "A monitoring system that watches all agents for errors", "textEs": "Un sistema de monitoreo que vigila todos los agentes en busca de errores", "order": 3 },
+        { "id": "dlai-as-019_d", "text": "A coordinator agent decomposes tasks, delegates to specialized subagents, collects results, and synthesizes final responses", "textEs": "Un agente coordinador descompone tareas, delega a subagentes especializados, recopila resultados y sintetiza respuestas finales", "order": 4 }
+      ],
+      "tags": ["orchestrator", "multi-agent", "coordination", "decomposition"]
+    },
+    {
+      "id": "dlai-as-020",
+      "text": "How does memory persistence work across agent sessions, and what patterns enable it?",
+      "textEs": "Como funciona la persistencia de memoria entre sesiones de agentes, y que patrones la habilitan?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-020_b",
+      "explanation": "Claude does not have built-in persistent memory across sessions. Memory patterns include: (1) CLAUDE.md files that agents update with project knowledge, (2) memory bank files (.claude/memory/) for structured information, (3) external databases (SQLite, vector stores) accessed via MCP tools, (4) conversation summarization stored to files. The agent reads memory at session start and writes updates before session end. This enables progressive learning about a project across multiple interactions.",
+      "explanationEs": "Claude no tiene memoria persistente integrada entre sesiones. Los patrones de memoria incluyen: (1) archivos CLAUDE.md que los agentes actualizan con conocimiento del proyecto, (2) archivos de banco de memoria (.claude/memory/) para informacion estructurada, (3) bases de datos externas (SQLite, almacenes vectoriales) accedidas via herramientas MCP, (4) resumen de conversaciones almacenados en archivos. El agente lee la memoria al inicio de la sesion y escribe actualizaciones antes del fin. Esto habilita aprendizaje progresivo sobre un proyecto a traves de multiples interacciones.",
+      "options": [
+        { "id": "dlai-as-020_a", "text": "Claude automatically remembers all previous conversations without any configuration", "textEs": "Claude recuerda automaticamente todas las conversaciones previas sin ninguna configuracion", "order": 1 },
+        { "id": "dlai-as-020_b", "text": "Use CLAUDE.md, memory bank files, external databases via MCP, or conversation summaries; agent reads on start and writes before session end", "textEs": "Usar CLAUDE.md, archivos de banco de memoria, bases de datos externas via MCP, o resumenes de conversacion; el agente lee al inicio y escribe antes del fin de sesion", "order": 2 },
+        { "id": "dlai-as-020_c", "text": "Memory is stored in the Anthropic cloud and automatically loaded in every session", "textEs": "La memoria se almacena en la nube de Anthropic y se carga automaticamente en cada sesion", "order": 3 },
+        { "id": "dlai-as-020_d", "text": "Persistent memory is not possible; each session starts completely fresh", "textEs": "La memoria persistente no es posible; cada sesion empieza completamente nueva", "order": 4 }
+      ],
+      "tags": ["memory", "persistence", "claude-md", "sessions"]
+    },
+    {
+      "id": "dlai-as-021",
+      "text": "What is the 'guard agent' pattern and when should it be used?",
+      "textEs": "Que es el patron de 'agente guardian' y cuando debe usarse?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-021_a",
+      "explanation": "A guard agent is a specialized agent that validates outputs from other agents before they are applied or shown to the user. It reviews proposed code changes for correctness, checks generated content against policies, validates data transformations, or ensures responses meet quality standards. The guard pattern adds a safety layer without slowing down the primary agent's work. Use it for high-stakes outputs like production code changes, customer-facing content, or sensitive data processing.",
+      "explanationEs": "Un agente guardian es un agente especializado que valida las salidas de otros agentes antes de que se apliquen o se muestren al usuario. Revisa cambios de codigo propuestos para correccion, verifica contenido generado contra politicas, valida transformaciones de datos o asegura que las respuestas cumplan estandares de calidad. El patron guardian agrega una capa de seguridad sin ralentizar el trabajo del agente principal. Usarlo para salidas de alto riesgo como cambios de codigo en produccion, contenido orientado al cliente o procesamiento de datos sensibles.",
+      "options": [
+        { "id": "dlai-as-021_a", "text": "A specialized agent that validates other agents' outputs before they are applied; used for high-stakes outputs like production code or customer content", "textEs": "Un agente especializado que valida las salidas de otros agentes antes de que se apliquen; usado para salidas de alto riesgo como codigo de produccion o contenido al cliente", "order": 1 },
+        { "id": "dlai-as-021_b", "text": "A firewall that blocks all outgoing API calls from agents", "textEs": "Un firewall que bloquea todas las llamadas API salientes de los agentes", "order": 2 },
+        { "id": "dlai-as-021_c", "text": "An antivirus scanner that checks code for malware before execution", "textEs": "Un escaner antivirus que verifica el codigo en busca de malware antes de la ejecucion", "order": 3 },
+        { "id": "dlai-as-021_d", "text": "A rate limiter that prevents agents from making too many API calls", "textEs": "Un limitador de tasa que previene que los agentes hagan demasiadas llamadas API", "order": 4 }
+      ],
+      "tags": ["guard-agent", "validation", "safety", "quality"]
+    },
+    {
+      "id": "dlai-as-022",
+      "text": "How can you implement a Skill that generates and sends automated reports?",
+      "textEs": "Como puedes implementar un Skill que genere y envie reportes automatizados?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-022_c",
+      "explanation": "Create a skill command file with: context pointing to data source files, allowed-tools including code execution (Bash) and optionally MCP tools for email/Slack. The instructions guide Claude to: read the data, perform analysis, generate formatted output (HTML, PDF via Python, or markdown), and use a communication tool to send it. For example, a weekly code quality report skill could analyze git logs, calculate metrics, generate an HTML report, and send it via a Slack MCP server.",
+      "explanationEs": "Crear un archivo de comando de skill con: context apuntando a archivos de fuente de datos, allowed-tools incluyendo ejecucion de codigo (Bash) y opcionalmente herramientas MCP para email/Slack. Las instrucciones guian a Claude a: leer los datos, realizar analisis, generar salida formateada (HTML, PDF via Python, o markdown), y usar una herramienta de comunicacion para enviarla. Por ejemplo, un skill de reporte semanal de calidad de codigo podria analizar logs de git, calcular metricas, generar un reporte HTML y enviarlo via un servidor MCP de Slack.",
+      "options": [
+        { "id": "dlai-as-022_a", "text": "Skills cannot generate reports; use a separate business intelligence tool instead", "textEs": "Los Skills no pueden generar reportes; usar una herramienta de inteligencia de negocios separada en su lugar", "order": 1 },
+        { "id": "dlai-as-022_b", "text": "Use Claude's built-in report generation API endpoint", "textEs": "Usar el endpoint de API de generacion de reportes integrado de Claude", "order": 2 },
+        { "id": "dlai-as-022_c", "text": "Skill with context for data sources, allowed-tools for code execution + MCP; instructions to analyze, format output, and send via communication tool", "textEs": "Skill con context para fuentes de datos, allowed-tools para ejecucion de codigo + MCP; instrucciones para analizar, formatear salida y enviar via herramienta de comunicacion", "order": 3 },
+        { "id": "dlai-as-022_d", "text": "Write the report manually and use the skill only to send it via email", "textEs": "Escribir el reporte manualmente y usar el skill solo para enviarlo via email", "order": 4 }
+      ],
+      "tags": ["reports", "automation", "mcp-integration", "code-execution"]
+    },
+    {
+      "id": "dlai-as-023",
+      "text": "What is the 'reflection' pattern in agentic workflows?",
+      "textEs": "Que es el patron de 'reflexion' en flujos de trabajo agenticos?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-023_d",
+      "explanation": "The reflection pattern has the agent evaluate its own output before finalizing it. After generating a response, the agent is asked to critique it: check for errors, identify missing information, assess quality, and suggest improvements. The agent then generates an improved version. This can be implemented as a two-pass system (generate then review) or as a separate reviewer agent. Reflection significantly improves output quality for complex tasks like code generation and analysis.",
+      "explanationEs": "El patron de reflexion hace que el agente evalue su propia salida antes de finalizarla. Despues de generar una respuesta, se le pide al agente que la critique: verificar errores, identificar informacion faltante, evaluar calidad y sugerir mejoras. El agente entonces genera una version mejorada. Esto puede implementarse como un sistema de dos pasadas (generar luego revisar) o como un agente revisor separado. La reflexion mejora significativamente la calidad de salida para tareas complejas como generacion de codigo y analisis.",
+      "options": [
+        { "id": "dlai-as-023_a", "text": "A debugging technique that logs all internal model reasoning steps", "textEs": "Una tecnica de depuracion que registra todos los pasos de razonamiento interno del modelo", "order": 1 },
+        { "id": "dlai-as-023_b", "text": "A caching pattern that stores previous outputs for reuse", "textEs": "Un patron de caching que almacena salidas previas para reutilizacion", "order": 2 },
+        { "id": "dlai-as-023_c", "text": "A pattern where the agent mirrors the user's communication style", "textEs": "Un patron donde el agente refleja el estilo de comunicacion del usuario", "order": 3 },
+        { "id": "dlai-as-023_d", "text": "Agent evaluates its own output by critiquing for errors, missing info, and quality, then generates an improved version; two-pass or separate reviewer", "textEs": "El agente evalua su propia salida criticando errores, informacion faltante y calidad, luego genera una version mejorada; dos pasadas o revisor separado", "order": 4 }
+      ],
+      "tags": ["reflection", "self-evaluation", "quality", "two-pass"]
+    },
+    {
+      "id": "dlai-as-024",
+      "text": "How do you implement max iteration limits and safety bounds in agentic loops?",
+      "textEs": "Como implementas limites de iteraciones maximas y limites de seguridad en bucles agenticos?",
+      "domainCode": "agent-skills",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-024_b",
+      "explanation": "Safety bounds prevent agentic loops from running indefinitely. Implementation includes: a max iteration counter (typically 10-25 iterations), a max token budget that tracks cumulative token usage, a timeout for the overall task, and cost limits. When any bound is reached, the agent should gracefully exit with whatever partial results it has. Include the iteration count in the system prompt so the agent knows its limits and can prioritize accordingly.",
+      "explanationEs": "Los limites de seguridad previenen que los bucles agenticos se ejecuten indefinidamente. La implementacion incluye: un contador de iteraciones maximas (tipicamente 10-25 iteraciones), un presupuesto maximo de tokens que rastrea el uso acumulado, un timeout para la tarea general, y limites de costo. Cuando cualquier limite se alcanza, el agente debe salir graciosamente con los resultados parciales que tenga. Incluir el conteo de iteraciones en el system prompt para que el agente conozca sus limites y pueda priorizar apropiadamente.",
+      "options": [
+        { "id": "dlai-as-024_a", "text": "No limits are needed; Claude naturally stops when the task is complete", "textEs": "No se necesitan limites; Claude naturalmente se detiene cuando la tarea esta completa", "order": 1 },
+        { "id": "dlai-as-024_b", "text": "Max iteration counter, token budget tracking, task timeout, cost limits; graceful exit with partial results; communicate limits to agent via system prompt", "textEs": "Contador de iteraciones maximas, seguimiento de presupuesto de tokens, timeout de tarea, limites de costo; salida graciosa con resultados parciales; comunicar limites al agente via system prompt", "order": 2 },
+        { "id": "dlai-as-024_c", "text": "Simply set max_tokens to a low value; this automatically limits the number of iterations", "textEs": "Simplemente establecer max_tokens a un valor bajo; esto automaticamente limita el numero de iteraciones", "order": 3 },
+        { "id": "dlai-as-024_d", "text": "Kill the process after 60 seconds regardless of progress", "textEs": "Matar el proceso despues de 60 segundos sin importar el progreso", "order": 4 }
+      ],
+      "tags": ["safety-bounds", "max-iterations", "timeout", "cost-limits"]
+    },
+    {
+      "id": "dlai-as-025",
+      "text": "What is the difference between sequential and parallel tool execution in agent workflows?",
+      "textEs": "Cual es la diferencia entre ejecucion secuencial y paralela de herramientas en flujos de trabajo de agentes?",
+      "domainCode": "agent-skills",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-025_c",
+      "explanation": "Sequential execution means the agent calls one tool, waits for the result, then decides the next action based on that result. Parallel execution means the agent requests multiple independent tool calls in a single response, and all are executed simultaneously before results are returned together. Claude can include multiple tool_use blocks in one response for parallel execution. Use parallel for independent operations (reading multiple files) and sequential when each step depends on previous results.",
+      "explanationEs": "La ejecucion secuencial significa que el agente llama una herramienta, espera el resultado, luego decide la siguiente accion basandose en ese resultado. La ejecucion paralela significa que el agente solicita multiples llamadas a herramientas independientes en una sola respuesta, y todas se ejecutan simultaneamente antes de que los resultados se devuelvan juntos. Claude puede incluir multiples bloques tool_use en una respuesta para ejecucion paralela. Usar paralelo para operaciones independientes (leer multiples archivos) y secuencial cuando cada paso depende de resultados previos.",
+      "options": [
+        { "id": "dlai-as-025_a", "text": "There is no difference; Claude always executes tools one at a time", "textEs": "No hay diferencia; Claude siempre ejecuta herramientas una a la vez", "order": 1 },
+        { "id": "dlai-as-025_b", "text": "Sequential is for reading operations; parallel is for writing operations only", "textEs": "Secuencial es para operaciones de lectura; paralelo es solo para operaciones de escritura", "order": 2 },
+        { "id": "dlai-as-025_c", "text": "Sequential: one tool, wait, decide next; Parallel: multiple independent tool_use blocks in one response, all executed simultaneously", "textEs": "Secuencial: una herramienta, esperar, decidir siguiente; Paralelo: multiples bloques tool_use independientes en una respuesta, todos ejecutados simultaneamente", "order": 3 },
+        { "id": "dlai-as-025_d", "text": "Parallel execution requires a special API tier not available on standard plans", "textEs": "La ejecucion paralela requiere un nivel de API especial no disponible en planes estandar", "order": 4 }
+      ],
+      "tags": ["sequential", "parallel", "tool-execution", "efficiency"]
+    },
+    {
+      "id": "dlai-as-026",
+      "text": "How can Skills leverage CLAUDE.md for project-specific context and rules?",
+      "textEs": "Como pueden los Skills aprovechar CLAUDE.md para contexto y reglas especificas del proyecto?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-026_a",
+      "explanation": "CLAUDE.md is automatically loaded into Claude Code's context and provides project-wide instructions. Skills inherit these instructions, so coding standards, architectural decisions, and project conventions documented in CLAUDE.md apply to all skills automatically. Additionally, skills can reference CLAUDE.md in their context field to ensure it is loaded, and they can supplement it with skill-specific instructions. This creates a layered instruction system: CLAUDE.md for global rules, skill instructions for task-specific guidance.",
+      "explanationEs": "CLAUDE.md se carga automaticamente en el contexto de Claude Code y proporciona instrucciones a nivel de proyecto. Los Skills heredan estas instrucciones, asi que los estandares de codificacion, decisiones arquitectonicas y convenciones del proyecto documentadas en CLAUDE.md aplican a todos los skills automaticamente. Adicionalmente, los skills pueden referenciar CLAUDE.md en su campo de contexto para asegurar que se cargue, y pueden suplementarlo con instrucciones especificas del skill. Esto crea un sistema de instrucciones en capas: CLAUDE.md para reglas globales, instrucciones del skill para guia especifica de la tarea.",
+      "options": [
+        { "id": "dlai-as-026_a", "text": "CLAUDE.md is auto-loaded providing global rules; skills inherit these and add task-specific instructions on top, creating a layered instruction system", "textEs": "CLAUDE.md se carga automaticamente proporcionando reglas globales; los skills heredan estas y agregan instrucciones especificas de la tarea encima, creando un sistema de instrucciones en capas", "order": 1 },
+        { "id": "dlai-as-026_b", "text": "Skills cannot access CLAUDE.md; they operate with their own isolated instructions only", "textEs": "Los Skills no pueden acceder a CLAUDE.md; operan con sus propias instrucciones aisladas unicamente", "order": 2 },
+        { "id": "dlai-as-026_c", "text": "CLAUDE.md must be explicitly copied into each skill file for it to apply", "textEs": "CLAUDE.md debe copiarse explicitamente en cada archivo de skill para que aplique", "order": 3 },
+        { "id": "dlai-as-026_d", "text": "CLAUDE.md replaces skill instructions; you cannot have both active simultaneously", "textEs": "CLAUDE.md reemplaza las instrucciones del skill; no puedes tener ambos activos simultaneamente", "order": 4 }
+      ],
+      "tags": ["claude-md", "context", "layered-instructions", "project-rules"]
+    },
+    {
+      "id": "dlai-as-027",
+      "text": "What are the key considerations for designing robust tool schemas for agent use?",
+      "textEs": "Cuales son las consideraciones clave para disenar esquemas de herramientas robustos para uso de agentes?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-027_b",
+      "explanation": "Robust tool schemas should: use descriptive names that clearly indicate the action (get_user vs process), provide detailed descriptions explaining when to use the tool and what it returns, define strict input types with enums for constrained values, mark required vs optional parameters clearly, include parameter descriptions with examples, keep tools focused on a single action rather than multipurpose, and avoid overlapping functionality between tools that would confuse the LLM's selection.",
+      "explanationEs": "Los esquemas de herramientas robustos deben: usar nombres descriptivos que indiquen claramente la accion (get_user vs process), proporcionar descripciones detalladas explicando cuando usar la herramienta y que devuelve, definir tipos de entrada estrictos con enums para valores restringidos, marcar claramente parametros requeridos vs opcionales, incluir descripciones de parametros con ejemplos, mantener herramientas enfocadas en una sola accion en lugar de multiproposito, y evitar funcionalidad superpuesta entre herramientas que confundiria la seleccion del LLM.",
+      "options": [
+        { "id": "dlai-as-027_a", "text": "Keep schemas minimal with no descriptions; the tool name alone is sufficient for Claude", "textEs": "Mantener esquemas minimos sin descripciones; el nombre de la herramienta solo es suficiente para Claude", "order": 1 },
+        { "id": "dlai-as-027_b", "text": "Descriptive names, detailed descriptions with usage guidance, strict types with enums, clear required/optional, examples, single-purpose, no overlapping functionality", "textEs": "Nombres descriptivos, descripciones detalladas con guia de uso, tipos estrictos con enums, requeridos/opcionales claros, ejemplos, proposito unico, sin funcionalidad superpuesta", "order": 2 },
+        { "id": "dlai-as-027_c", "text": "Create one generic tool that accepts any JSON and routes internally", "textEs": "Crear una herramienta generica que acepte cualquier JSON y enrute internamente", "order": 3 },
+        { "id": "dlai-as-027_d", "text": "Use the same schema for all tools and differentiate only by name", "textEs": "Usar el mismo esquema para todas las herramientas y diferenciar solo por nombre", "order": 4 }
+      ],
+      "tags": ["tool-design", "schemas", "descriptions", "best-practices"]
+    },
+    {
+      "id": "dlai-as-028",
+      "text": "How can you use Plan Mode in Claude Code to verify a skill's approach before execution?",
+      "textEs": "Como puedes usar el Modo Plan en Claude Code para verificar el enfoque de un skill antes de la ejecucion?",
+      "domainCode": "agent-skills",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-028_c",
+      "explanation": "Plan Mode (activated with Shift+Tab or by typing 'plan') makes Claude explain what it would do without actually executing any actions. When testing a skill, invoke it in Plan Mode first to see Claude's intended approach: which files it would read, what changes it would make, which tools it would use. This lets you verify the skill's logic is correct before allowing execution. If the plan looks wrong, refine the skill's instructions before running it for real.",
+      "explanationEs": "El Modo Plan (activado con Shift+Tab o escribiendo 'plan') hace que Claude explique lo que haria sin ejecutar realmente ninguna accion. Al probar un skill, invocalo primero en Modo Plan para ver el enfoque previsto de Claude: que archivos leeria, que cambios haria, que herramientas usaria. Esto te permite verificar que la logica del skill es correcta antes de permitir la ejecucion. Si el plan se ve incorrecto, refina las instrucciones del skill antes de ejecutarlo de verdad.",
+      "options": [
+        { "id": "dlai-as-028_a", "text": "Plan Mode is a paid feature not available in the free tier of Claude Code", "textEs": "El Modo Plan es una funcion de pago no disponible en el nivel gratuito de Claude Code", "order": 1 },
+        { "id": "dlai-as-028_b", "text": "Plan Mode only works with the main conversation, not with skills", "textEs": "El Modo Plan solo funciona con la conversacion principal, no con skills", "order": 2 },
+        { "id": "dlai-as-028_c", "text": "Activate with Shift+Tab; Claude explains its approach without executing; verify logic then refine instructions if needed before real execution", "textEs": "Activar con Shift+Tab; Claude explica su enfoque sin ejecutar; verificar logica luego refinar instrucciones si es necesario antes de ejecucion real", "order": 3 },
+        { "id": "dlai-as-028_d", "text": "Plan Mode creates a detailed project plan document in markdown format", "textEs": "El Modo Plan crea un documento detallado de plan de proyecto en formato markdown", "order": 4 }
+      ],
+      "tags": ["plan-mode", "verification", "testing", "iterative-development"]
+    },
+    {
+      "id": "dlai-as-029",
+      "text": "What is the 'routing' pattern in multi-agent systems?",
+      "textEs": "Que es el patron de 'enrutamiento' en sistemas multi-agente?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-029_a",
+      "explanation": "The routing pattern uses a lightweight classifier agent that analyzes the user's request and routes it to the most appropriate specialized agent. Unlike the orchestrator pattern (which decomposes tasks), the router simply selects which single agent should handle the entire request. This is efficient for applications with clearly distinct capabilities — for example, routing between a code-writing agent, a code-review agent, and a documentation agent based on the user's intent.",
+      "explanationEs": "El patron de enrutamiento usa un agente clasificador ligero que analiza la solicitud del usuario y la enruta al agente especializado mas apropiado. A diferencia del patron orquestador (que descompone tareas), el enrutador simplemente selecciona que agente unico debe manejar toda la solicitud. Esto es eficiente para aplicaciones con capacidades claramente distintas — por ejemplo, enrutar entre un agente de escritura de codigo, un agente de revision de codigo y un agente de documentacion basandose en la intencion del usuario.",
+      "options": [
+        { "id": "dlai-as-029_a", "text": "A classifier agent analyzes the request and routes it to the single most appropriate specialized agent, unlike orchestrator which decomposes tasks", "textEs": "Un agente clasificador analiza la solicitud y la enruta al agente especializado mas apropiado, a diferencia del orquestador que descompone tareas", "order": 1 },
+        { "id": "dlai-as-029_b", "text": "A network router that directs API traffic between multiple Claude model endpoints", "textEs": "Un enrutador de red que dirige trafico API entre multiples endpoints de modelos Claude", "order": 2 },
+        { "id": "dlai-as-029_c", "text": "A pattern where tasks are randomly assigned to agents for load distribution", "textEs": "Un patron donde las tareas se asignan aleatoriamente a agentes para distribucion de carga", "order": 3 },
+        { "id": "dlai-as-029_d", "text": "A pipeline pattern where each agent processes the request sequentially before passing it to the next", "textEs": "Un patron de pipeline donde cada agente procesa la solicitud secuencialmente antes de pasarla al siguiente", "order": 4 }
+      ],
+      "tags": ["routing", "classifier", "multi-agent", "specialization"]
+    },
+    {
+      "id": "dlai-as-030",
+      "text": "How can you implement error recovery and fallback strategies in complex agent workflows?",
+      "textEs": "Como puedes implementar recuperacion de errores y estrategias de respaldo en flujos de trabajo de agentes complejos?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "practice",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-030_d",
+      "explanation": "Robust error recovery strategies include: (1) graceful degradation — if a complex approach fails, fall back to a simpler one, (2) model cascade — try a cheaper/faster model first, upgrade to a more capable one on failure, (3) checkpoint-based recovery — save progress at key points so failures don't lose all work, (4) alternative tool selection — if one tool fails, try an equivalent one, (5) human escalation — when automated recovery fails, present the partial results and error to the user with suggestions. All strategies should be bounded by max retries and timeouts.",
+      "explanationEs": "Las estrategias robustas de recuperacion de errores incluyen: (1) degradacion graciosa — si un enfoque complejo falla, recurrir a uno mas simple, (2) cascada de modelos — intentar con un modelo mas barato/rapido primero, actualizar a uno mas capaz ante fallo, (3) recuperacion basada en checkpoints — guardar progreso en puntos clave para que los fallos no pierdan todo el trabajo, (4) seleccion de herramienta alternativa — si una herramienta falla, intentar con una equivalente, (5) escalacion humana — cuando la recuperacion automatizada falla, presentar resultados parciales y error al usuario con sugerencias. Todas las estrategias deben estar limitadas por reintentos maximos y timeouts.",
+      "options": [
+        { "id": "dlai-as-030_a", "text": "Always restart the entire workflow from scratch when any error occurs", "textEs": "Siempre reiniciar todo el flujo de trabajo desde cero cuando ocurre cualquier error", "order": 1 },
+        { "id": "dlai-as-030_b", "text": "Errors are rare enough that no recovery strategy is needed in production", "textEs": "Los errores son lo suficientemente raros como para que no se necesite estrategia de recuperacion en produccion", "order": 2 },
+        { "id": "dlai-as-030_c", "text": "Simply catch all exceptions and return an empty successful result", "textEs": "Simplemente capturar todas las excepciones y devolver un resultado exitoso vacio", "order": 3 },
+        { "id": "dlai-as-030_d", "text": "Graceful degradation, model cascade, checkpoint recovery, alternative tool selection, and human escalation; all bounded by max retries and timeouts", "textEs": "Degradacion graciosa, cascada de modelos, recuperacion por checkpoints, seleccion de herramienta alternativa, y escalacion humana; todo limitado por reintentos maximos y timeouts", "order": 4 }
+      ],
+      "tags": ["error-recovery", "fallback", "resilience", "checkpoints", "escalation"]
     }
   ]
 }

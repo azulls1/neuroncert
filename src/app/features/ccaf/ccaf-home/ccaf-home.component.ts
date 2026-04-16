@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CurriculumService } from '../../../core/services/curriculum.service';
 import { ProgressService } from '../../../core/services/progress.service';
+import { ConfigService } from '../../../core/services/config.service';
 import { CCAFConfig, CCAFDomain } from '../../../core/models';
 import { LoggingService } from '../../../core/services/logging.service';
 
@@ -57,7 +58,9 @@ import { LoggingService } from '../../../core/services/logging.service';
               <div>
                 <span class="text-pine" style="font-size: 0.8125rem;">Mejor Score</span>
                 <div class="text-forest font-mono" style="font-size: 1.5rem; font-weight: 700;">
-                  {{ overallProgress().ccafBestScore }}/{{ ccafConfig()?.maxScore ?? 1000 }}
+                  {{ overallProgress().ccafBestScore }}/{{
+                    ccafConfig()?.maxScore ?? configSvc.ccafMaxScore
+                  }}
                 </div>
               </div>
               <div>
@@ -96,8 +99,8 @@ import { LoggingService } from '../../../core/services/logging.service';
             <div class="alert__title">Formato del Examen CCA-F</div>
             <span
               >{{ examTotalQuestions() }} preguntas, {{ examDurationMin() }} minutos,
-              {{ examPassingScore() }}/{{ ccafConfig()?.maxScore ?? 1000 }} para aprobar. Cubre
-              {{ domains().length }} dominios con puntuacion ponderada.</span
+              {{ examPassingScore() }}/{{ ccafConfig()?.maxScore ?? configSvc.ccafMaxScore }} para
+              aprobar. Cubre {{ domains().length }} dominios con puntuacion ponderada.</span
             >
           </div>
         </div>
@@ -189,6 +192,7 @@ export class CCAFHomeComponent implements OnInit {
   private curriculum = inject(CurriculumService);
   private progress = inject(ProgressService);
   private logger = inject(LoggingService);
+  protected readonly configSvc = inject(ConfigService);
 
   /** Loading/error state */
   loading = signal(true);
@@ -204,27 +208,36 @@ export class CCAFHomeComponent implements OnInit {
   overallProgress = this.progress.getOverallProgress();
 
   /** Exam format info computed from config */
-  examTotalQuestions = computed(() => this.ccafConfig()?.totalQuestions ?? 60);
-  examDurationMin = computed(() => Math.round((this.ccafConfig()?.durationSec ?? 7200) / 60));
-  examPassingScore = computed(() => this.ccafConfig()?.passingScore ?? 720);
+  examTotalQuestions = computed(
+    () => this.ccafConfig()?.totalQuestions ?? this.configSvc.ccafQuestionCount,
+  );
+  examDurationMin = computed(() =>
+    Math.round((this.ccafConfig()?.durationSec ?? this.configSvc.ccafDurationSec) / 60),
+  );
+  examPassingScore = computed(
+    () => this.ccafConfig()?.passingScore ?? this.configSvc.ccafPassingScore,
+  );
 
   ngOnInit(): void {
-    this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => {
-        const config = this.curriculum.getCCAFConfig();
-        if (config) {
-          this.ccafConfig.set(config);
-        } else {
-          this.error.set('Configuracion CCA-F no encontrada en el catalogo.');
-        }
-        this.loading.set(false);
-      },
-      error: (err) => {
-        this.error.set('Error al cargar el catalogo. Por favor intenta de nuevo.');
-        this.loading.set(false);
-        this.logger.error('loadCatalog error', 'CCAFHome', err);
-      },
-    });
+    this.curriculum
+      .loadCatalog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          const config = this.curriculum.getCCAFConfig();
+          if (config) {
+            this.ccafConfig.set(config);
+          } else {
+            this.error.set('Configuracion CCA-F no encontrada en el catalogo.');
+          }
+          this.loading.set(false);
+        },
+        error: (err) => {
+          this.error.set('Error al cargar el catalogo. Por favor intenta de nuevo.');
+          this.loading.set(false);
+          this.logger.error('loadCatalog error', 'CCAFHome', err);
+        },
+      });
   }
 
   /** Convert domain weight (0-1 decimal) to percentage for display */

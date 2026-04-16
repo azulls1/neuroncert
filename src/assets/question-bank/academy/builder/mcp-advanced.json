@@ -5,7 +5,7 @@
     "trackId": "mcp-advanced",
     "version": "1.0.0",
     "lastUpdated": "2026-04-13",
-    "totalQuestions": 10
+    "totalQuestions": 25
   },
   "questions": [
     {
@@ -207,6 +207,306 @@
         { "id": "mcpa-010_d", "text": "Incluir descripciones claras de cuándo usar cada herramienta", "textEs": "Incluir descripciones claras de cuándo usar cada herramienta", "order": 4 }
       ],
       "tags": ["antipatrones", "diseno", "herramientas-especificas"]
+    },
+    {
+      "id": "mcpa-011",
+      "text": "How does dynamic tool registration work in MCP, and when would you use it?",
+      "textEs": "Como funciona el registro dinamico de herramientas en MCP y cuando lo usarias?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-011_c",
+      "explanation": "Dynamic tool registration allows an MCP server to add or remove tools at runtime and notify the client via 'notifications/tools/list_changed'. The client then re-fetches the tool list. This is useful when available tools depend on server state — for example, a database server might expose different query tools after a schema change, or a plugin system might load new tools when plugins are installed.",
+      "explanationEs": "El registro dinamico de herramientas permite a un servidor MCP agregar o eliminar herramientas en tiempo de ejecucion y notificar al cliente via 'notifications/tools/list_changed'. El cliente entonces re-obtiene la lista de herramientas. Esto es util cuando las herramientas disponibles dependen del estado del servidor — por ejemplo, un servidor de base de datos podria exponer diferentes herramientas de consulta tras un cambio de esquema, o un sistema de plugins podria cargar nuevas herramientas cuando se instalan plugins.",
+      "options": [
+        { "id": "mcpa-011_a", "text": "Las herramientas solo pueden definirse al inicio del servidor y no cambian durante la sesion", "textEs": "Las herramientas solo pueden definirse al inicio del servidor y no cambian durante la sesion", "order": 1 },
+        { "id": "mcpa-011_b", "text": "El cliente envia nuevas definiciones de herramientas al servidor para que las registre", "textEs": "El cliente envia nuevas definiciones de herramientas al servidor para que las registre", "order": 2 },
+        { "id": "mcpa-011_c", "text": "El servidor agrega o elimina herramientas en runtime y notifica al cliente con 'notifications/tools/list_changed' para que re-obtenga la lista", "textEs": "El servidor agrega o elimina herramientas en runtime y notifica al cliente con 'notifications/tools/list_changed' para que re-obtenga la lista", "order": 3 },
+        { "id": "mcpa-011_d", "text": "Se requiere reiniciar la conexion MCP completa para que el cliente vea nuevas herramientas", "textEs": "Se requiere reiniciar la conexion MCP completa para que el cliente vea nuevas herramientas", "order": 4 }
+      ],
+      "tags": ["registro-dinamico", "herramientas", "notificaciones"]
+    },
+    {
+      "id": "mcpa-012",
+      "text": "What caching strategies can improve performance in MCP server implementations?",
+      "textEs": "Que estrategias de caching pueden mejorar el rendimiento en implementaciones de servidores MCP?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-012_a",
+      "explanation": "Effective MCP caching strategies include: caching responses from external APIs with TTL-based invalidation, caching resource contents and using 'notifications/resources/updated' when they change, implementing result deduplication for identical tool calls within a session, and using ETag-based caching for resources that rarely change. The key is balancing freshness with performance — stale data can lead to incorrect LLM decisions.",
+      "explanationEs": "Las estrategias efectivas de caching en MCP incluyen: cachear respuestas de APIs externas con invalidacion basada en TTL, cachear contenido de recursos y usar 'notifications/resources/updated' cuando cambian, implementar deduplicacion de resultados para llamadas a herramientas identicas dentro de una sesion, y usar caching basado en ETag para recursos que rara vez cambian. La clave es balancear frescura con rendimiento — datos obsoletos pueden llevar a decisiones incorrectas del LLM.",
+      "options": [
+        { "id": "mcpa-012_a", "text": "Cache de APIs externas con TTL, cache de recursos con notificaciones de cambio, deduplicacion de llamadas identicas y ETags para recursos estaticos", "textEs": "Cache de APIs externas con TTL, cache de recursos con notificaciones de cambio, deduplicacion de llamadas identicas y ETags para recursos estaticos", "order": 1 },
+        { "id": "mcpa-012_b", "text": "Cachear todo indefinidamente para maximizar la velocidad de respuesta", "textEs": "Cachear todo indefinidamente para maximizar la velocidad de respuesta", "order": 2 },
+        { "id": "mcpa-012_c", "text": "No se recomienda ningun tipo de caching en MCP porque invalida la precision de los datos", "textEs": "No se recomienda ningun tipo de caching en MCP porque invalida la precision de los datos", "order": 3 },
+        { "id": "mcpa-012_d", "text": "Solo cachear en el lado del cliente; el servidor nunca debe implementar cache", "textEs": "Solo cachear en el lado del cliente; el servidor nunca debe implementar cache", "order": 4 }
+      ],
+      "tags": ["caching", "rendimiento", "ttl", "etag"]
+    },
+    {
+      "id": "mcpa-013",
+      "text": "What is the recommended error handling pattern for MCP tool execution failures?",
+      "textEs": "Cual es el patron de manejo de errores recomendado para fallos en la ejecucion de herramientas MCP?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-013_b",
+      "explanation": "When a tool execution fails, the server should return a result with 'isError: true' and include a descriptive error message in the content array. This differs from protocol-level JSON-RPC errors. Tool errors are designed to be read by the LLM so it can understand what went wrong and adjust its approach. The error message should be actionable — explaining not just what failed, but why and what the LLM should try instead.",
+      "explanationEs": "Cuando una ejecucion de herramienta falla, el servidor debe devolver un resultado con 'isError: true' e incluir un mensaje de error descriptivo en el arreglo de contenido. Esto difiere de los errores de protocolo JSON-RPC. Los errores de herramientas estan disenados para ser leidos por el LLM para que pueda entender que salio mal y ajustar su enfoque. El mensaje de error debe ser accionable — explicando no solo que fallo, sino por que y que deberia intentar el LLM en su lugar.",
+      "options": [
+        { "id": "mcpa-013_a", "text": "Lanzar una excepcion que termine la conexion MCP para que el cliente reinicie", "textEs": "Lanzar una excepcion que termine la conexion MCP para que el cliente reinicie", "order": 1 },
+        { "id": "mcpa-013_b", "text": "Devolver resultado con 'isError: true' y mensaje descriptivo y accionable en content, para que el LLM entienda el fallo y ajuste su enfoque", "textEs": "Devolver resultado con 'isError: true' y mensaje descriptivo y accionable en content, para que el LLM entienda el fallo y ajuste su enfoque", "order": 2 },
+        { "id": "mcpa-013_c", "text": "Devolver un resultado vacio exitoso para no confundir al LLM con errores", "textEs": "Devolver un resultado vacio exitoso para no confundir al LLM con errores", "order": 3 },
+        { "id": "mcpa-013_d", "text": "Reintentar automaticamente la operacion 10 veces antes de reportar cualquier error", "textEs": "Reintentar automaticamente la operacion 10 veces antes de reportar cualquier error", "order": 4 }
+      ],
+      "tags": ["errores", "isError", "herramientas", "buenas-practicas"]
+    },
+    {
+      "id": "mcpa-014",
+      "text": "How can an MCP server implement resource subscriptions for real-time updates?",
+      "textEs": "Como puede un servidor MCP implementar suscripciones a recursos para actualizaciones en tiempo real?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-014_d",
+      "explanation": "MCP supports resource subscriptions where the client sends 'resources/subscribe' for a specific resource URI. When that resource changes, the server sends 'notifications/resources/updated' to notify the client. The client can then re-read the resource to get the updated content. This is useful for monitoring files, database records, or any data that changes over time. The client can unsubscribe with 'resources/unsubscribe'.",
+      "explanationEs": "MCP soporta suscripciones a recursos donde el cliente envia 'resources/subscribe' para una URI de recurso especifica. Cuando ese recurso cambia, el servidor envia 'notifications/resources/updated' para notificar al cliente. El cliente puede entonces re-leer el recurso para obtener el contenido actualizado. Esto es util para monitorear archivos, registros de base de datos o cualquier dato que cambie con el tiempo. El cliente puede desuscribirse con 'resources/unsubscribe'.",
+      "options": [
+        { "id": "mcpa-014_a", "text": "El cliente hace polling cada segundo al servidor para verificar si el recurso cambio", "textEs": "El cliente hace polling cada segundo al servidor para verificar si el recurso cambio", "order": 1 },
+        { "id": "mcpa-014_b", "text": "Las suscripciones no son posibles en MCP; los recursos solo se leen bajo demanda", "textEs": "Las suscripciones no son posibles en MCP; los recursos solo se leen bajo demanda", "order": 2 },
+        { "id": "mcpa-014_c", "text": "El servidor envia el contenido actualizado automaticamente sin que el cliente lo solicite", "textEs": "El servidor envia el contenido actualizado automaticamente sin que el cliente lo solicite", "order": 3 },
+        { "id": "mcpa-014_d", "text": "El cliente envia 'resources/subscribe' para una URI; el servidor notifica cambios con 'notifications/resources/updated' y el cliente re-lee el recurso", "textEs": "El cliente envia 'resources/subscribe' para una URI; el servidor notifica cambios con 'notifications/resources/updated' y el cliente re-lee el recurso", "order": 4 }
+      ],
+      "tags": ["suscripciones", "recursos", "tiempo-real", "notificaciones"]
+    },
+    {
+      "id": "mcpa-015",
+      "text": "What is the Streamable HTTP transport and why was it introduced to replace SSE?",
+      "textEs": "Que es el transporte Streamable HTTP y por que se introdujo para reemplazar SSE?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-015_a",
+      "explanation": "Streamable HTTP is a newer transport that uses standard HTTP POST requests for client-to-server messages. The server can respond with a single JSON response or upgrade to SSE streaming. It also supports an optional GET endpoint for server-to-client notifications. This is more flexible than the older SSE transport because it works better with firewalls, load balancers, and standard HTTP infrastructure, while still enabling streaming when needed.",
+      "explanationEs": "Streamable HTTP es un transporte mas nuevo que usa solicitudes HTTP POST estandar para mensajes de cliente a servidor. El servidor puede responder con una sola respuesta JSON o actualizar a streaming SSE. Tambien soporta un endpoint GET opcional para notificaciones de servidor a cliente. Esto es mas flexible que el transporte SSE anterior porque funciona mejor con firewalls, balanceadores de carga e infraestructura HTTP estandar, mientras sigue habilitando streaming cuando es necesario.",
+      "options": [
+        { "id": "mcpa-015_a", "text": "Usa HTTP POST para mensajes con upgrade opcional a SSE; mas compatible con firewalls y balanceadores de carga que SSE puro", "textEs": "Usa HTTP POST para mensajes con upgrade opcional a SSE; mas compatible con firewalls y balanceadores de carga que SSE puro", "order": 1 },
+        { "id": "mcpa-015_b", "text": "Es un protocolo de streaming de video adaptado para transferencia de datos MCP", "textEs": "Es un protocolo de streaming de video adaptado para transferencia de datos MCP", "order": 2 },
+        { "id": "mcpa-015_c", "text": "Es identico a SSE pero con un nombre diferente para marketing", "textEs": "Es identico a SSE pero con un nombre diferente para marketing", "order": 3 },
+        { "id": "mcpa-015_d", "text": "Usa WebSocket exclusivamente para streaming bidireccional", "textEs": "Usa WebSocket exclusivamente para streaming bidireccional", "order": 4 }
+      ],
+      "tags": ["streamable-http", "transporte", "sse", "infraestructura"]
+    },
+    {
+      "id": "mcpa-016",
+      "text": "How should you design tool descriptions to maximize the LLM's ability to use them correctly?",
+      "textEs": "Como debes disenar las descripciones de herramientas para maximizar la capacidad del LLM de usarlas correctamente?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-016_c",
+      "explanation": "Tool descriptions are the LLM's only guide for deciding when and how to use a tool. They should: clearly state what the tool does and when to use it, describe the expected input parameters with examples, mention important constraints or limitations, specify what the tool returns, and include examples of valid inputs. Avoid ambiguous descriptions that overlap with other tools. Think of it as writing documentation for an intelligent but unfamiliar user.",
+      "explanationEs": "Las descripciones de herramientas son la unica guia del LLM para decidir cuando y como usar una herramienta. Deben: establecer claramente que hace la herramienta y cuando usarla, describir los parametros de entrada esperados con ejemplos, mencionar restricciones o limitaciones importantes, especificar que devuelve la herramienta e incluir ejemplos de entradas validas. Evitar descripciones ambiguas que se superpongan con otras herramientas. Piensa en ello como escribir documentacion para un usuario inteligente pero no familiarizado.",
+      "options": [
+        { "id": "mcpa-016_a", "text": "Mantener las descripciones lo mas cortas posible (una sola palabra) para no consumir tokens", "textEs": "Mantener las descripciones lo mas cortas posible (una sola palabra) para no consumir tokens", "order": 1 },
+        { "id": "mcpa-016_b", "text": "Copiar la documentacion tecnica completa de la API externa en la descripcion", "textEs": "Copiar la documentacion tecnica completa de la API externa en la descripcion", "order": 2 },
+        { "id": "mcpa-016_c", "text": "Describir claramente que hace, cuando usarla, parametros con ejemplos, restricciones, y que devuelve; sin ambiguedades con otras herramientas", "textEs": "Describir claramente que hace, cuando usarla, parametros con ejemplos, restricciones, y que devuelve; sin ambiguedades con otras herramientas", "order": 3 },
+        { "id": "mcpa-016_d", "text": "Usar terminologia tecnica interna que solo los desarrolladores del servidor entenderian", "textEs": "Usar terminologia tecnica interna que solo los desarrolladores del servidor entenderian", "order": 4 }
+      ],
+      "tags": ["descripciones", "diseno", "llm", "buenas-practicas"]
+    },
+    {
+      "id": "mcpa-017",
+      "text": "What is the correct approach for implementing OAuth 2.0 authentication in a remote MCP server?",
+      "textEs": "Cual es el enfoque correcto para implementar autenticacion OAuth 2.0 en un servidor MCP remoto?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-017_b",
+      "explanation": "For remote MCP servers using Streamable HTTP, OAuth 2.0 is the recommended authentication mechanism. The server should implement standard OAuth flows (authorization code, client credentials) and validate bearer tokens on each request. The MCP specification includes authorization support where the server can return a 401 with authentication details, and the client handles the OAuth flow. Tokens should be stored securely and refreshed before expiry.",
+      "explanationEs": "Para servidores MCP remotos usando Streamable HTTP, OAuth 2.0 es el mecanismo de autenticacion recomendado. El servidor debe implementar flujos OAuth estandar (codigo de autorizacion, credenciales de cliente) y validar tokens bearer en cada solicitud. La especificacion MCP incluye soporte de autorizacion donde el servidor puede devolver un 401 con detalles de autenticacion, y el cliente maneja el flujo OAuth. Los tokens deben almacenarse de forma segura y renovarse antes de su vencimiento.",
+      "options": [
+        { "id": "mcpa-017_a", "text": "Incluir API keys directamente en los parametros de las herramientas MCP", "textEs": "Incluir API keys directamente en los parametros de las herramientas MCP", "order": 1 },
+        { "id": "mcpa-017_b", "text": "Implementar flujos OAuth estandar, validar bearer tokens por solicitud, manejar 401 con detalles de auth, y renovar tokens antes de vencimiento", "textEs": "Implementar flujos OAuth estandar, validar bearer tokens por solicitud, manejar 401 con detalles de auth, y renovar tokens antes de vencimiento", "order": 2 },
+        { "id": "mcpa-017_c", "text": "Usar autenticacion basica HTTP con usuario y contrasena en cada solicitud", "textEs": "Usar autenticacion basica HTTP con usuario y contrasena en cada solicitud", "order": 3 },
+        { "id": "mcpa-017_d", "text": "No implementar autenticacion; MCP maneja la seguridad a nivel de protocolo automaticamente", "textEs": "No implementar autenticacion; MCP maneja la seguridad a nivel de protocolo automaticamente", "order": 4 }
+      ],
+      "tags": ["oauth", "autenticacion", "seguridad", "remoto"]
+    },
+    {
+      "id": "mcpa-018",
+      "text": "How do you implement input validation and sanitization in MCP server tools?",
+      "textEs": "Como implementas validacion y sanitizacion de entrada en herramientas de servidor MCP?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-018_d",
+      "explanation": "Even though the JSON Schema in tool definitions provides basic type validation, servers must implement additional validation: check for SQL injection patterns in database queries, validate file paths to prevent directory traversal, sanitize shell command inputs, enforce length limits on string parameters, validate ranges for numeric inputs, and reject unexpected parameter combinations. Never trust LLM-generated input blindly — it may contain prompt injection attempts from user content.",
+      "explanationEs": "Aunque el JSON Schema en las definiciones de herramientas proporciona validacion basica de tipos, los servidores deben implementar validacion adicional: verificar patrones de inyeccion SQL en consultas de base de datos, validar rutas de archivos para prevenir directory traversal, sanitizar entradas de comandos shell, aplicar limites de longitud en parametros de texto, validar rangos para entradas numericas y rechazar combinaciones de parametros inesperadas. Nunca confiar ciegamente en entradas generadas por el LLM — pueden contener intentos de inyeccion de prompt desde contenido del usuario.",
+      "options": [
+        { "id": "mcpa-018_a", "text": "El JSON Schema de la herramienta es suficiente; no se necesita validacion adicional", "textEs": "El JSON Schema de la herramienta es suficiente; no se necesita validacion adicional", "order": 1 },
+        { "id": "mcpa-018_b", "text": "Confiar en que el LLM siempre enviara parametros correctos ya que entiende el esquema", "textEs": "Confiar en que el LLM siempre enviara parametros correctos ya que entiende el esquema", "order": 2 },
+        { "id": "mcpa-018_c", "text": "Validar solo los tipos de datos; el contenido de los strings no necesita verificacion", "textEs": "Validar solo los tipos de datos; el contenido de los strings no necesita verificacion", "order": 3 },
+        { "id": "mcpa-018_d", "text": "Validar contra inyeccion SQL, directory traversal, comandos shell, limites de longitud, rangos numericos; nunca confiar ciegamente en entradas del LLM", "textEs": "Validar contra inyeccion SQL, directory traversal, comandos shell, limites de longitud, rangos numericos; nunca confiar ciegamente en entradas del LLM", "order": 4 }
+      ],
+      "tags": ["validacion", "sanitizacion", "seguridad", "inyeccion"]
+    },
+    {
+      "id": "mcpa-019",
+      "text": "What is the purpose of 'roots' in MCP and how should servers use them?",
+      "textEs": "Cual es el proposito de los 'roots' en MCP y como deben usarlos los servidores?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-019_a",
+      "explanation": "Roots are URIs declared by the client to inform the server about the relevant workspace boundaries. For example, a client might declare 'file:///home/user/my-project' as a root. Servers should use roots to scope their operations — only reading/writing files within declared roots, only listing resources within those boundaries. Roots are informational and not enforced by the protocol, but well-behaved servers should respect them to maintain security and user expectations.",
+      "explanationEs": "Los roots son URIs declarados por el cliente para informar al servidor sobre los limites relevantes del espacio de trabajo. Por ejemplo, un cliente podria declarar 'file:///home/user/my-project' como root. Los servidores deben usar los roots para delimitar sus operaciones — solo leer/escribir archivos dentro de los roots declarados, solo listar recursos dentro de esos limites. Los roots son informativos y no son aplicados por el protocolo, pero los servidores bien comportados deben respetarlos para mantener la seguridad y las expectativas del usuario.",
+      "options": [
+        { "id": "mcpa-019_a", "text": "URIs declarados por el cliente que delimitan el espacio de trabajo; los servidores deben respetar estos limites para operaciones de archivos y recursos", "textEs": "URIs declarados por el cliente que delimitan el espacio de trabajo; los servidores deben respetar estos limites para operaciones de archivos y recursos", "order": 1 },
+        { "id": "mcpa-019_b", "text": "Credenciales de acceso root/administrador que el servidor usa para ejecutar comandos privilegiados", "textEs": "Credenciales de acceso root/administrador que el servidor usa para ejecutar comandos privilegiados", "order": 2 },
+        { "id": "mcpa-019_c", "text": "El directorio raiz donde se instala el servidor MCP en el sistema de archivos", "textEs": "El directorio raiz donde se instala el servidor MCP en el sistema de archivos", "order": 3 },
+        { "id": "mcpa-019_d", "text": "Certificados raiz SSL necesarios para conexiones seguras entre cliente y servidor", "textEs": "Certificados raiz SSL necesarios para conexiones seguras entre cliente y servidor", "order": 4 }
+      ],
+      "tags": ["roots", "seguridad", "alcance", "workspace"]
+    },
+    {
+      "id": "mcpa-020",
+      "text": "How can you implement tool composition where one MCP tool calls another?",
+      "textEs": "Como puedes implementar composicion de herramientas donde una herramienta MCP llama a otra?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-020_c",
+      "explanation": "Within a single MCP server, tools can share implementation logic by calling the same internal functions. However, tools from different servers cannot call each other directly — the LLM orchestrates cross-server tool composition. If a workflow requires sequencing tools from different servers, the LLM naturally handles this by calling tools in order based on its reasoning. For complex orchestration, the sampling capability lets a server request the LLM to reason and potentially call other tools.",
+      "explanationEs": "Dentro de un solo servidor MCP, las herramientas pueden compartir logica de implementacion llamando a las mismas funciones internas. Sin embargo, herramientas de diferentes servidores no pueden llamarse entre si directamente — el LLM orquesta la composicion de herramientas entre servidores. Si un flujo de trabajo requiere secuenciar herramientas de diferentes servidores, el LLM maneja esto naturalmente llamando herramientas en orden basandose en su razonamiento. Para orquestacion compleja, la capacidad de sampling permite a un servidor solicitar al LLM que razone y potencialmente llame a otras herramientas.",
+      "options": [
+        { "id": "mcpa-020_a", "text": "Las herramientas MCP pueden llamarse directamente entre servidores usando una API interna", "textEs": "Las herramientas MCP pueden llamarse directamente entre servidores usando una API interna", "order": 1 },
+        { "id": "mcpa-020_b", "text": "No es posible componer herramientas; cada una debe ser completamente autocontenida", "textEs": "No es posible componer herramientas; cada una debe ser completamente autocontenida", "order": 2 },
+        { "id": "mcpa-020_c", "text": "Dentro del mismo servidor comparten funciones internas; entre servidores el LLM orquesta la secuencia; sampling permite composicion compleja", "textEs": "Dentro del mismo servidor comparten funciones internas; entre servidores el LLM orquesta la secuencia; sampling permite composicion compleja", "order": 3 },
+        { "id": "mcpa-020_d", "text": "Se necesita un servidor proxy especial que coordine todas las llamadas entre herramientas", "textEs": "Se necesita un servidor proxy especial que coordine todas las llamadas entre herramientas", "order": 4 }
+      ],
+      "tags": ["composicion", "orquestacion", "sampling", "multi-servidor"]
+    },
+    {
+      "id": "mcpa-021",
+      "text": "What are tool annotations in MCP and how do they help host applications make permission decisions?",
+      "textEs": "Que son las anotaciones de herramientas en MCP y como ayudan a las aplicaciones host a tomar decisiones de permisos?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-021_b",
+      "explanation": "Tool annotations are optional metadata hints that describe a tool's behavior, such as whether it is read-only ('readOnlyHint'), destructive ('destructiveHint'), idempotent ('idempotentHint'), or accesses open-world resources ('openWorldHint'). Host applications use these to auto-approve safe operations (like read-only tools) while requiring user confirmation for destructive ones. Annotations are hints — not enforced — so servers must still implement actual safety checks.",
+      "explanationEs": "Las anotaciones de herramientas son metadatos opcionales que describen el comportamiento de una herramienta, como si es de solo lectura ('readOnlyHint'), destructiva ('destructiveHint'), idempotente ('idempotentHint') o accede a recursos del mundo abierto ('openWorldHint'). Las aplicaciones host usan estas para auto-aprobar operaciones seguras (como herramientas de solo lectura) mientras requieren confirmacion del usuario para las destructivas. Las anotaciones son sugerencias — no se aplican — asi que los servidores deben implementar verificaciones de seguridad reales.",
+      "options": [
+        { "id": "mcpa-021_a", "text": "Etiquetas obligatorias que el protocolo MCP aplica para bloquear herramientas peligrosas", "textEs": "Etiquetas obligatorias que el protocolo MCP aplica para bloquear herramientas peligrosas", "order": 1 },
+        { "id": "mcpa-021_b", "text": "Metadatos opcionales (readOnlyHint, destructiveHint, etc.) que ayudan al host a auto-aprobar o solicitar confirmacion; son sugerencias, no obligatorias", "textEs": "Metadatos opcionales (readOnlyHint, destructiveHint, etc.) que ayudan al host a auto-aprobar o solicitar confirmacion; son sugerencias, no obligatorias", "order": 2 },
+        { "id": "mcpa-021_c", "text": "Comentarios en el codigo fuente que documentan la implementacion de la herramienta", "textEs": "Comentarios en el codigo fuente que documentan la implementacion de la herramienta", "order": 3 },
+        { "id": "mcpa-021_d", "text": "Numeros de version que rastrean cuando fue actualizada la herramienta", "textEs": "Numeros de version que rastrean cuando fue actualizada la herramienta", "order": 4 }
+      ],
+      "tags": ["anotaciones", "permisos", "seguridad", "host"]
+    },
+    {
+      "id": "mcpa-022",
+      "text": "What is the correct way to handle concurrent tool calls from the same client session?",
+      "textEs": "Cual es la forma correcta de manejar llamadas concurrentes a herramientas desde la misma sesion de cliente?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-022_d",
+      "explanation": "MCP servers should be prepared to handle concurrent tool calls, especially with Streamable HTTP transport where multiple requests can arrive simultaneously. Use thread-safe data structures, implement proper locking for shared resources, avoid global mutable state, and ensure that each tool call is processed independently. For tools that modify shared state (like a database), implement transaction-level isolation to prevent race conditions.",
+      "explanationEs": "Los servidores MCP deben estar preparados para manejar llamadas concurrentes a herramientas, especialmente con el transporte Streamable HTTP donde multiples solicitudes pueden llegar simultaneamente. Usar estructuras de datos thread-safe, implementar bloqueo adecuado para recursos compartidos, evitar estado mutable global y asegurar que cada llamada a herramienta se procese independientemente. Para herramientas que modifican estado compartido (como una base de datos), implementar aislamiento a nivel de transaccion para prevenir condiciones de carrera.",
+      "options": [
+        { "id": "mcpa-022_a", "text": "MCP garantiza que las llamadas siempre llegan secuencialmente; no hay que preocuparse por concurrencia", "textEs": "MCP garantiza que las llamadas siempre llegan secuencialmente; no hay que preocuparse por concurrencia", "order": 1 },
+        { "id": "mcpa-022_b", "text": "Rechazar todas las solicitudes excepto la primera mientras se procesa una herramienta", "textEs": "Rechazar todas las solicitudes excepto la primera mientras se procesa una herramienta", "order": 2 },
+        { "id": "mcpa-022_c", "text": "Poner todas las solicitudes en una cola y procesarlas una por una", "textEs": "Poner todas las solicitudes en una cola y procesarlas una por una", "order": 3 },
+        { "id": "mcpa-022_d", "text": "Usar estructuras thread-safe, bloqueo para recursos compartidos, evitar estado mutable global y aislamiento transaccional para datos compartidos", "textEs": "Usar estructuras thread-safe, bloqueo para recursos compartidos, evitar estado mutable global y aislamiento transaccional para datos compartidos", "order": 4 }
+      ],
+      "tags": ["concurrencia", "thread-safe", "transacciones", "produccion"]
+    },
+    {
+      "id": "mcpa-023",
+      "text": "What is the sampling flow in MCP and what controls does the human-in-the-loop have?",
+      "textEs": "Cual es el flujo de sampling en MCP y que controles tiene el humano en el ciclo?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-023_a",
+      "explanation": "The sampling flow is: (1) Server sends 'sampling/createMessage' request to the client with a prompt, (2) The host application presents this to the user for approval, (3) The user can approve, modify, or reject the request, (4) If approved, the host sends the prompt to the LLM, (5) The LLM response is returned to the server. The human-in-the-loop can see what the server is asking the LLM, modify the prompt, and reject requests entirely. This prevents servers from making unauthorized AI calls.",
+      "explanationEs": "El flujo de sampling es: (1) El servidor envia solicitud 'sampling/createMessage' al cliente con un prompt, (2) La aplicacion host presenta esto al usuario para aprobacion, (3) El usuario puede aprobar, modificar o rechazar la solicitud, (4) Si se aprueba, el host envia el prompt al LLM, (5) La respuesta del LLM se devuelve al servidor. El humano en el ciclo puede ver que esta pidiendo el servidor al LLM, modificar el prompt y rechazar solicitudes completamente. Esto previene que los servidores hagan llamadas de IA no autorizadas.",
+      "options": [
+        { "id": "mcpa-023_a", "text": "Servidor solicita -> host muestra al usuario -> usuario aprueba/modifica/rechaza -> host envia al LLM -> respuesta al servidor; el usuario controla cada solicitud", "textEs": "Servidor solicita -> host muestra al usuario -> usuario aprueba/modifica/rechaza -> host envia al LLM -> respuesta al servidor; el usuario controla cada solicitud", "order": 1 },
+        { "id": "mcpa-023_b", "text": "El servidor accede directamente al LLM sin ningun control del usuario", "textEs": "El servidor accede directamente al LLM sin ningun control del usuario", "order": 2 },
+        { "id": "mcpa-023_c", "text": "El sampling ocurre automaticamente sin intervencion humana para maximizar velocidad", "textEs": "El sampling ocurre automaticamente sin intervencion humana para maximizar velocidad", "order": 3 },
+        { "id": "mcpa-023_d", "text": "El usuario pre-aprueba todas las solicitudes de sampling al configurar el servidor", "textEs": "El usuario pre-aprueba todas las solicitudes de sampling al configurar el servidor", "order": 4 }
+      ],
+      "tags": ["sampling", "humano-en-ciclo", "aprobacion", "seguridad"]
+    },
+    {
+      "id": "mcpa-024",
+      "text": "What strategies can improve MCP server reliability in production environments?",
+      "textEs": "Que estrategias pueden mejorar la confiabilidad de servidores MCP en entornos de produccion?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-024_c",
+      "explanation": "Production MCP reliability strategies include: graceful error handling that never crashes the process, timeouts for external API calls to prevent hanging, circuit breakers for unreliable dependencies, health monitoring and automatic restart capabilities, structured logging for debugging issues in production, and input validation to reject malformed requests early. The server should degrade gracefully — returning helpful errors rather than crashing when a dependency is unavailable.",
+      "explanationEs": "Las estrategias de confiabilidad en produccion para MCP incluyen: manejo gracioso de errores que nunca cause que el proceso se cierre, timeouts para llamadas a APIs externas para prevenir bloqueos, circuit breakers para dependencias poco confiables, monitoreo de salud y capacidades de reinicio automatico, logging estructurado para depurar problemas en produccion, y validacion de entrada para rechazar solicitudes malformadas temprano. El servidor debe degradarse graciosamente — devolviendo errores utiles en lugar de cerrarse cuando una dependencia no esta disponible.",
+      "options": [
+        { "id": "mcpa-024_a", "text": "Ejecutar el servidor sin ningun manejo de errores para que los fallos sean visibles inmediatamente", "textEs": "Ejecutar el servidor sin ningun manejo de errores para que los fallos sean visibles inmediatamente", "order": 1 },
+        { "id": "mcpa-024_b", "text": "Reiniciar automaticamente el servidor cada hora como medida preventiva", "textEs": "Reiniciar automaticamente el servidor cada hora como medida preventiva", "order": 2 },
+        { "id": "mcpa-024_c", "text": "Manejo gracioso de errores, timeouts para APIs externas, circuit breakers, monitoreo de salud, logging estructurado y validacion de entrada", "textEs": "Manejo gracioso de errores, timeouts para APIs externas, circuit breakers, monitoreo de salud, logging estructurado y validacion de entrada", "order": 3 },
+        { "id": "mcpa-024_d", "text": "Desactivar toda validacion para maximizar el rendimiento del servidor", "textEs": "Desactivar toda validacion para maximizar el rendimiento del servidor", "order": 4 }
+      ],
+      "tags": ["produccion", "confiabilidad", "circuit-breaker", "monitoreo"]
+    },
+    {
+      "id": "mcpa-025",
+      "text": "How do you test MCP servers effectively during development?",
+      "textEs": "Como pruebas servidores MCP efectivamente durante el desarrollo?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-025_b",
+      "explanation": "MCP servers can be tested at multiple levels: unit tests for individual tool handler functions (testing business logic independently), integration tests using the MCP Inspector tool (a visual debugging tool from Anthropic), end-to-end tests by connecting to a real host like Claude Desktop or Claude Code, and automated tests using the SDK's client library to send JSON-RPC messages programmatically. The MCP Inspector is particularly useful during development as it shows all messages exchanged.",
+      "explanationEs": "Los servidores MCP pueden probarse en multiples niveles: pruebas unitarias para funciones individuales de manejo de herramientas (probando logica de negocio independientemente), pruebas de integracion usando la herramienta MCP Inspector (una herramienta de depuracion visual de Anthropic), pruebas de extremo a extremo conectando a un host real como Claude Desktop o Claude Code, y pruebas automatizadas usando la libreria cliente del SDK para enviar mensajes JSON-RPC programaticamente. El MCP Inspector es particularmente util durante el desarrollo ya que muestra todos los mensajes intercambiados.",
+      "options": [
+        { "id": "mcpa-025_a", "text": "Solo probar manualmente conectando el servidor a Claude Desktop y verificando visualmente", "textEs": "Solo probar manualmente conectando el servidor a Claude Desktop y verificando visualmente", "order": 1 },
+        { "id": "mcpa-025_b", "text": "Pruebas unitarias de handlers, integracion con MCP Inspector, end-to-end con host real, y tests automatizados con el SDK cliente", "textEs": "Pruebas unitarias de handlers, integracion con MCP Inspector, end-to-end con host real, y tests automatizados con el SDK cliente", "order": 2 },
+        { "id": "mcpa-025_c", "text": "No hay forma de probar servidores MCP; solo se pueden verificar en produccion", "textEs": "No hay forma de probar servidores MCP; solo se pueden verificar en produccion", "order": 3 },
+        { "id": "mcpa-025_d", "text": "Escribir mocks completos del protocolo MCP para simular toda la comunicacion", "textEs": "Escribir mocks completos del protocolo MCP para simular toda la comunicacion", "order": 4 }
+      ],
+      "tags": ["testing", "mcp-inspector", "desarrollo", "pruebas"]
     }
   ]
 }

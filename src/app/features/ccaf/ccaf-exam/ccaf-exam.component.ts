@@ -172,16 +172,19 @@ export class CCAFExamComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.curriculumService.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => {
-        this.ccafConfig.set(this.curriculumService.getCCAFConfig());
-        this.catalogLoading.set(false);
-      },
-      error: (err) => {
-        this.logger.error('Failed to load CCA-F catalog', 'CCAFExam', err);
-        this.catalogLoading.set(false);
-      },
-    });
+    this.curriculumService
+      .loadCatalog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.ccafConfig.set(this.curriculumService.getCCAFConfig());
+          this.catalogLoading.set(false);
+        },
+        error: (err) => {
+          this.logger.error('Failed to load CCA-F catalog', 'CCAFExam', err);
+          this.catalogLoading.set(false);
+        },
+      });
   }
 
   /** Start the CCA-F exam */
@@ -199,14 +202,17 @@ export class CCAFExamComponent implements OnInit {
       domains: config.domains.map((d) => d.code),
     };
 
-    this.examStateService.startExam(params).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => {
-        this.router.navigate(['/exam/run']);
-      },
-      error: (err) => {
-        this.logger.error('Failed to start CCA-F exam', 'CCAFExam', err);
-        this.isLoading = false;
-      },
-    });
+    this.examStateService
+      .startExam(params)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/exam/run']);
+        },
+        error: (err) => {
+          this.logger.error('Failed to start CCA-F exam', 'CCAFExam', err);
+          this.isLoading = false;
+        },
+      });
   }
 }

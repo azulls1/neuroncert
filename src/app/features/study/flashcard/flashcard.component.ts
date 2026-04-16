@@ -39,13 +39,29 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
         </div>
       } @else {
         <!-- Progress -->
-        <div class="animate-fadeInUp" style="margin-bottom: 24px;" role="status" aria-live="polite" [attr.aria-label]="'Progreso: tarjeta ' + (currentIndex() + 1) + ' de ' + filteredQuestions().length">
+        <div
+          class="animate-fadeInUp"
+          style="margin-bottom: 24px;"
+          role="status"
+          aria-live="polite"
+          [attr.aria-label]="
+            'Progreso: tarjeta ' + (currentIndex() + 1) + ' de ' + filteredQuestions().length
+          "
+        >
           <div class="progress-labeled">
             <span class="progress-labeled__value font-mono">
               {{ currentIndex() + 1 }} de {{ filteredQuestions().length }}
             </span>
           </div>
-          <div class="progress" role="progressbar" [attr.aria-valuenow]="progressPercent()" aria-valuemin="0" aria-valuemax="100" [attr.aria-label]="'Progreso: ' + progressPercent() + '%'" style="margin-top: 8px;">
+          <div
+            class="progress"
+            role="progressbar"
+            [attr.aria-valuenow]="progressPercent()"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [attr.aria-label]="'Progreso: ' + progressPercent() + '%'"
+            style="margin-top: 8px;"
+          >
             <div class="progress__bar" [style.width.%]="progressPercent()"></div>
           </div>
         </div>
@@ -191,16 +207,19 @@ export class FlashcardComponent implements OnInit {
     const trackId = this.route.snapshot.paramMap.get('trackId') ?? '';
     this.trackId.set(trackId);
 
-    this.questionBank.getFlashcards(trackId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (questions) => {
-        this.allQuestions.set(questions);
-        this.loading.set(false);
-      },
-      error: () => {
-        this.allQuestions.set([]);
-        this.loading.set(false);
-      },
-    });
+    this.questionBank
+      .getFlashcards(trackId)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (questions) => {
+          this.allQuestions.set(questions);
+          this.loading.set(false);
+        },
+        error: () => {
+          this.allQuestions.set([]);
+          this.loading.set(false);
+        },
+      });
   }
 
   toggleFlip(): void {

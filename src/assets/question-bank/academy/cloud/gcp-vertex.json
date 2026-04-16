@@ -5,7 +5,7 @@
     "trackId": "gcp-vertex",
     "version": "1.0.0",
     "lastUpdated": "2026-04-13",
-    "totalQuestions": 8
+    "totalQuestions": 25
   },
   "questions": [
     {
@@ -167,6 +167,346 @@
         { "id": "gcpv-008_d", "text": "Habilitar la API de Vertex AI, navegar a Model Garden, solicitar acceso a Claude y aceptar los términos de uso", "textEs": "Habilitar la API de Vertex AI, navegar a Model Garden, solicitar acceso a Claude y aceptar los términos de uso", "order": 4 }
       ],
       "tags": ["setup", "model-garden", "configuracion-inicial"]
+    },
+    {
+      "id": "gcpv-009",
+      "text": "What authentication methods can be used to call Claude on Vertex AI programmatically?",
+      "textEs": "Que metodos de autenticacion se pueden usar para llamar a Claude en Vertex AI programaticamente?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-009_a",
+      "explanation": "Vertex AI supports several authentication methods: Application Default Credentials (ADC) which automatically finds credentials from the environment, service account JSON key files, workload identity federation for non-GCP environments, and gcloud CLI authentication for development. The recommended production approach is using a service account with IAM roles, accessed via ADC or workload identity. API keys from Anthropic are NOT used — GCP handles all authentication.",
+      "explanationEs": "Vertex AI soporta varios metodos de autenticacion: Application Default Credentials (ADC) que encuentra automaticamente credenciales del entorno, archivos de clave JSON de cuentas de servicio, federacion de identidad de carga de trabajo para entornos fuera de GCP, y autenticacion via gcloud CLI para desarrollo. El enfoque de produccion recomendado es usar una cuenta de servicio con roles IAM, accedida via ADC o identidad de carga de trabajo. Las API keys de Anthropic NO se usan — GCP maneja toda la autenticacion.",
+      "options": [
+        { "id": "gcpv-009_a", "text": "ADC (Application Default Credentials), cuentas de servicio con JSON keys, workload identity federation, y gcloud CLI; sin API keys de Anthropic", "textEs": "ADC (Application Default Credentials), cuentas de servicio con JSON keys, workload identity federation, y gcloud CLI; sin API keys de Anthropic", "order": 1 },
+        { "id": "gcpv-009_b", "text": "Solo se puede usar una API key de Anthropic configurada como secreto en GCP", "textEs": "Solo se puede usar una API key de Anthropic configurada como secreto en GCP", "order": 2 },
+        { "id": "gcpv-009_c", "text": "Autenticacion basica HTTP con usuario y contrasena de Google Workspace", "textEs": "Autenticacion basica HTTP con usuario y contrasena de Google Workspace", "order": 3 },
+        { "id": "gcpv-009_d", "text": "Tokens OAuth manuales que se generan una vez y nunca expiran", "textEs": "Tokens OAuth manuales que se generan una vez y nunca expiran", "order": 4 }
+      ],
+      "tags": ["autenticacion", "adc", "service-account", "oauth"]
+    },
+    {
+      "id": "gcpv-010",
+      "text": "What are the key differences in the API request format between the Anthropic direct API and Vertex AI?",
+      "textEs": "Cuales son las diferencias clave en el formato de solicitud API entre la API directa de Anthropic y Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-010_c",
+      "explanation": "The main differences are: (1) the endpoint URL format includes GCP project, region, and publisher path, (2) authentication uses GCP OAuth tokens instead of Anthropic API keys, (3) the 'model' field is NOT in the request body — it is part of the URL path, (4) the method name differs (rawPredict or streamRawPredict). However, the actual request body format (messages, system, tools, etc.) is nearly identical to the Anthropic Messages API, making migration straightforward.",
+      "explanationEs": "Las principales diferencias son: (1) el formato de URL del endpoint incluye proyecto GCP, region y ruta de publisher, (2) la autenticacion usa tokens OAuth de GCP en lugar de API keys de Anthropic, (3) el campo 'model' NO esta en el cuerpo de la solicitud — es parte de la ruta URL, (4) el nombre del metodo difiere (rawPredict o streamRawPredict). Sin embargo, el formato real del cuerpo de solicitud (messages, system, tools, etc.) es casi identico a la API Messages de Anthropic, haciendo la migracion sencilla.",
+      "options": [
+        { "id": "gcpv-010_a", "text": "No hay diferencias; el formato es exactamente el mismo incluyendo la URL", "textEs": "No hay diferencias; el formato es exactamente el mismo incluyendo la URL", "order": 1 },
+        { "id": "gcpv-010_b", "text": "Vertex AI usa un formato de solicitud completamente diferente basado en protobuf", "textEs": "Vertex AI usa un formato de solicitud completamente diferente basado en protobuf", "order": 2 },
+        { "id": "gcpv-010_c", "text": "URL incluye proyecto/region/publisher, auth via OAuth GCP, modelo en la URL no en el body; el cuerpo de solicitud es casi identico a la API directa", "textEs": "URL incluye proyecto/region/publisher, auth via OAuth GCP, modelo en la URL no en el body; el cuerpo de solicitud es casi identico a la API directa", "order": 3 },
+        { "id": "gcpv-010_d", "text": "Vertex AI solo acepta solicitudes en formato XML, no JSON", "textEs": "Vertex AI solo acepta solicitudes en formato XML, no JSON", "order": 4 }
+      ],
+      "tags": ["api", "diferencias", "formato", "migracion"]
+    },
+    {
+      "id": "gcpv-011",
+      "text": "In which GCP regions is Claude available on Vertex AI?",
+      "textEs": "En que regiones de GCP esta disponible Claude en Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-011_b",
+      "explanation": "Claude on Vertex AI is available in select regions, primarily us-central1 (Iowa), europe-west1 (Belgium), and asia-southeast1 (Singapore), though availability expands over time. Not all Claude model versions are available in every region. You must check the Vertex AI Model Garden or documentation for current region availability. Region selection affects data residency compliance, latency to end users, and which model versions are accessible.",
+      "explanationEs": "Claude en Vertex AI esta disponible en regiones selectas, principalmente us-central1 (Iowa), europe-west1 (Belgica) y asia-southeast1 (Singapur), aunque la disponibilidad se expande con el tiempo. No todas las versiones de modelos de Claude estan disponibles en cada region. Debes verificar el Model Garden de Vertex AI o la documentacion para la disponibilidad actual de regiones. La seleccion de region afecta el cumplimiento de residencia de datos, la latencia a usuarios finales y que versiones de modelo son accesibles.",
+      "options": [
+        { "id": "gcpv-011_a", "text": "Claude esta disponible en todas las regiones de GCP sin excepciones", "textEs": "Claude esta disponible en todas las regiones de GCP sin excepciones", "order": 1 },
+        { "id": "gcpv-011_b", "text": "En regiones selectas como us-central1, europe-west1, asia-southeast1; verificar disponibilidad actual ya que se expande; afecta residencia de datos y latencia", "textEs": "En regiones selectas como us-central1, europe-west1, asia-southeast1; verificar disponibilidad actual ya que se expande; afecta residencia de datos y latencia", "order": 2 },
+        { "id": "gcpv-011_c", "text": "Solo en us-east1; no hay planes de expansion a otras regiones", "textEs": "Solo en us-east1; no hay planes de expansion a otras regiones", "order": 3 },
+        { "id": "gcpv-011_d", "text": "En todas las regiones de EE.UU. pero en ninguna region fuera de EE.UU.", "textEs": "En todas las regiones de EE.UU. pero en ninguna region fuera de EE.UU.", "order": 4 }
+      ],
+      "tags": ["regiones", "disponibilidad", "residencia-datos"]
+    },
+    {
+      "id": "gcpv-012",
+      "text": "How can you use the Anthropic Python SDK to call Claude on Vertex AI?",
+      "textEs": "Como puedes usar el SDK de Python de Anthropic para llamar a Claude en Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-012_d",
+      "explanation": "The Anthropic Python SDK provides an AnthropicVertex client that handles authentication and endpoint routing transparently. You install 'anthropic[vertex]', create an AnthropicVertex client with project_id and region, and use the same messages.create() interface as the direct API. The SDK handles OAuth token management, endpoint URL construction, and request formatting automatically, making it the easiest integration path.",
+      "explanationEs": "El SDK de Python de Anthropic proporciona un cliente AnthropicVertex que maneja autenticacion y enrutamiento de endpoints de forma transparente. Instalas 'anthropic[vertex]', creas un cliente AnthropicVertex con project_id y region, y usas la misma interfaz messages.create() que la API directa. El SDK maneja gestion de tokens OAuth, construccion de URL de endpoints y formateo de solicitudes automaticamente, haciendolo la ruta de integracion mas facil.",
+      "options": [
+        { "id": "gcpv-012_a", "text": "El SDK de Anthropic no soporta Vertex AI; se debe usar la libreria google-cloud-aiplatform exclusivamente", "textEs": "El SDK de Anthropic no soporta Vertex AI; se debe usar la libreria google-cloud-aiplatform exclusivamente", "order": 1 },
+        { "id": "gcpv-012_b", "text": "Hacer solicitudes HTTP directas al endpoint de Vertex AI sin usar ningun SDK", "textEs": "Hacer solicitudes HTTP directas al endpoint de Vertex AI sin usar ningun SDK", "order": 2 },
+        { "id": "gcpv-012_c", "text": "Usar el SDK estandar de Anthropic configurando la variable ANTHROPIC_API_URL al endpoint de Vertex", "textEs": "Usar el SDK estandar de Anthropic configurando la variable ANTHROPIC_API_URL al endpoint de Vertex", "order": 3 },
+        { "id": "gcpv-012_d", "text": "Instalar 'anthropic[vertex]', crear AnthropicVertex(project_id, region), y usar messages.create() — el SDK maneja OAuth y endpoints automaticamente", "textEs": "Instalar 'anthropic[vertex]', crear AnthropicVertex(project_id, region), y usar messages.create() — el SDK maneja OAuth y endpoints automaticamente", "order": 4 }
+      ],
+      "tags": ["sdk", "python", "anthropic-vertex", "integracion"]
+    },
+    {
+      "id": "gcpv-013",
+      "text": "What is grounding in Vertex AI and how does it enhance Claude's responses?",
+      "textEs": "Que es el grounding en Vertex AI y como mejora las respuestas de Claude?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-013_a",
+      "explanation": "Grounding in Vertex AI connects Claude to external data sources to provide factual, up-to-date responses. Options include grounding with Google Search (for real-time web information), grounding with custom data stores (for enterprise-specific knowledge), and grounding with Vertex AI Search (for indexed document collections). Grounding reduces hallucinations by providing Claude with actual source data alongside the user's question.",
+      "explanationEs": "El grounding en Vertex AI conecta a Claude con fuentes de datos externas para proporcionar respuestas factuales y actualizadas. Las opciones incluyen grounding con Google Search (para informacion web en tiempo real), grounding con almacenes de datos personalizados (para conocimiento especifico de la empresa), y grounding con Vertex AI Search (para colecciones de documentos indexados). El grounding reduce alucinaciones al proporcionar a Claude datos fuente reales junto con la pregunta del usuario.",
+      "options": [
+        { "id": "gcpv-013_a", "text": "Conectar a Claude con fuentes externas (Google Search, data stores, Vertex AI Search) para respuestas factuales; reduce alucinaciones con datos reales", "textEs": "Conectar a Claude con fuentes externas (Google Search, data stores, Vertex AI Search) para respuestas factuales; reduce alucinaciones con datos reales", "order": 1 },
+        { "id": "gcpv-013_b", "text": "Un proceso de fine-tuning que ancla el modelo a datos especificos del dominio permanentemente", "textEs": "Un proceso de fine-tuning que ancla el modelo a datos especificos del dominio permanentemente", "order": 2 },
+        { "id": "gcpv-013_c", "text": "Una configuracion de seguridad que impide a Claude generar contenido fuera de temas aprobados", "textEs": "Una configuracion de seguridad que impide a Claude generar contenido fuera de temas aprobados", "order": 3 },
+        { "id": "gcpv-013_d", "text": "La conexion fisica del servidor de Vertex AI a la red electrica para maxima disponibilidad", "textEs": "La conexion fisica del servidor de Vertex AI a la red electrica para maxima disponibilidad", "order": 4 }
+      ],
+      "tags": ["grounding", "google-search", "data-stores", "alucinaciones"]
+    },
+    {
+      "id": "gcpv-014",
+      "text": "How does Vertex AI Extensions enable Claude to interact with external services?",
+      "textEs": "Como habilitan las Extensions de Vertex AI a Claude para interactuar con servicios externos?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-014_c",
+      "explanation": "Vertex AI Extensions are pre-built or custom connectors that enable models to interact with external APIs and services. They wrap third-party APIs with an OpenAPI specification that the model can understand. Available extensions include code interpreter (for running Python code), and custom extensions can wrap any REST API. Extensions enable agentic behavior where Claude can take actions beyond text generation, similar to tool use in the direct API.",
+      "explanationEs": "Las Extensions de Vertex AI son conectores pre-construidos o personalizados que permiten a los modelos interactuar con APIs y servicios externos. Envuelven APIs de terceros con una especificacion OpenAPI que el modelo puede entender. Las extensiones disponibles incluyen interprete de codigo (para ejecutar codigo Python), y las extensiones personalizadas pueden envolver cualquier API REST. Las Extensions habilitan comportamiento agentico donde Claude puede tomar acciones mas alla de la generacion de texto, similar al uso de herramientas en la API directa.",
+      "options": [
+        { "id": "gcpv-014_a", "text": "Las Extensions son plugins de Chrome que modifican la interfaz de Vertex AI", "textEs": "Las Extensions son plugins de Chrome que modifican la interfaz de Vertex AI", "order": 1 },
+        { "id": "gcpv-014_b", "text": "Son librerias de codigo que se importan directamente en el prompt de Claude", "textEs": "Son librerias de codigo que se importan directamente en el prompt de Claude", "order": 2 },
+        { "id": "gcpv-014_c", "text": "Conectores que envuelven APIs externas con especificaciones OpenAPI; incluyen code interpreter y extensiones personalizadas para comportamiento agentico", "textEs": "Conectores que envuelven APIs externas con especificaciones OpenAPI; incluyen code interpreter y extensiones personalizadas para comportamiento agentico", "order": 3 },
+        { "id": "gcpv-014_d", "text": "Modulos de hardware adicionales que aceleran la inferencia del modelo", "textEs": "Modulos de hardware adicionales que aceleran la inferencia del modelo", "order": 4 }
+      ],
+      "tags": ["extensions", "openapi", "agentico", "code-interpreter"]
+    },
+    {
+      "id": "gcpv-015",
+      "text": "What pricing model does GCP use for Claude on Vertex AI?",
+      "textEs": "Que modelo de precios usa GCP para Claude en Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-015_b",
+      "explanation": "Claude on Vertex AI uses pay-per-use pricing based on input and output tokens, similar to the direct Anthropic API. Pricing varies by model (Haiku is cheapest, Opus is most expensive). Vertex AI also supports committed use discounts (CUDs) for organizations with predictable, high-volume usage, providing lower per-token rates in exchange for a commitment. Billing is integrated with standard GCP billing, making cost tracking straightforward.",
+      "explanationEs": "Claude en Vertex AI usa precios de pago por uso basado en tokens de entrada y salida, similar a la API directa de Anthropic. Los precios varian por modelo (Haiku es el mas barato, Opus el mas caro). Vertex AI tambien soporta descuentos por uso comprometido (CUDs) para organizaciones con uso predecible y de alto volumen, proporcionando tarifas por token mas bajas a cambio de un compromiso. La facturacion esta integrada con la facturacion estandar de GCP, haciendo el seguimiento de costos sencillo.",
+      "options": [
+        { "id": "gcpv-015_a", "text": "Tarifa mensual fija independiente del uso, con diferentes niveles de plan", "textEs": "Tarifa mensual fija independiente del uso, con diferentes niveles de plan", "order": 1 },
+        { "id": "gcpv-015_b", "text": "Pago por token de entrada/salida (varia por modelo); descuentos por uso comprometido (CUDs) disponibles; facturacion integrada con GCP", "textEs": "Pago por token de entrada/salida (varia por modelo); descuentos por uso comprometido (CUDs) disponibles; facturacion integrada con GCP", "order": 2 },
+        { "id": "gcpv-015_c", "text": "Gratuito con limites de solicitudes; sin opcion de pago premium", "textEs": "Gratuito con limites de solicitudes; sin opcion de pago premium", "order": 3 },
+        { "id": "gcpv-015_d", "text": "Se paga por hora de uso del endpoint, independientemente del numero de tokens procesados", "textEs": "Se paga por hora de uso del endpoint, independientemente del numero de tokens procesados", "order": 4 }
+      ],
+      "tags": ["precios", "tokens", "cuds", "facturacion"]
+    },
+    {
+      "id": "gcpv-016",
+      "text": "How does Cloud Audit Logging work with Claude on Vertex AI?",
+      "textEs": "Como funciona Cloud Audit Logging con Claude en Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-016_d",
+      "explanation": "Cloud Audit Logs automatically records admin activity (model access configuration changes) and optionally data access (who invoked which model, when, and from where). These logs integrate with Cloud Logging for querying and analysis, can be exported to BigQuery for long-term retention, and help meet compliance requirements for regulated industries. Data access logging must be explicitly enabled for Vertex AI in the IAM audit log configuration.",
+      "explanationEs": "Cloud Audit Logs registra automaticamente actividad de administrador (cambios de configuracion de acceso a modelos) y opcionalmente acceso a datos (quien invoco que modelo, cuando y desde donde). Estos logs se integran con Cloud Logging para consultas y analisis, pueden exportarse a BigQuery para retencion a largo plazo, y ayudan a cumplir requisitos de cumplimiento para industrias reguladas. El registro de acceso a datos debe habilitarse explicitamente para Vertex AI en la configuracion de logs de auditoria IAM.",
+      "options": [
+        { "id": "gcpv-016_a", "text": "No existe audit logging para Vertex AI; se debe implementar logging personalizado", "textEs": "No existe audit logging para Vertex AI; se debe implementar logging personalizado", "order": 1 },
+        { "id": "gcpv-016_b", "text": "Los logs solo registran errores; las solicitudes exitosas no se registran", "textEs": "Los logs solo registran errores; las solicitudes exitosas no se registran", "order": 2 },
+        { "id": "gcpv-016_c", "text": "Anthropic gestiona todos los logs y proporciona reportes mensuales", "textEs": "Anthropic gestiona todos los logs y proporciona reportes mensuales", "order": 3 },
+        { "id": "gcpv-016_d", "text": "Registra actividad de admin automaticamente y acceso a datos opcionalmente; integra con Cloud Logging, exportable a BigQuery para retencion y cumplimiento", "textEs": "Registra actividad de admin automaticamente y acceso a datos opcionalmente; integra con Cloud Logging, exportable a BigQuery para retencion y cumplimiento", "order": 4 }
+      ],
+      "tags": ["audit-logs", "logging", "cumplimiento", "bigquery"]
+    },
+    {
+      "id": "gcpv-017",
+      "text": "How can you integrate Claude on Vertex AI with Cloud Functions for serverless applications?",
+      "textEs": "Como puedes integrar Claude en Vertex AI con Cloud Functions para aplicaciones serverless?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-017_a",
+      "explanation": "Cloud Functions can invoke Claude on Vertex AI using the Anthropic SDK or the Google Cloud AI Platform client library. The function's service account needs the 'Vertex AI User' role. For HTTP-triggered functions, the request can include the user's prompt, and the function calls Vertex AI and returns the response. ADC handles authentication automatically within GCP. This is ideal for building API backends, webhook handlers, and event-driven AI processing.",
+      "explanationEs": "Cloud Functions pueden invocar a Claude en Vertex AI usando el SDK de Anthropic o la libreria cliente de Google Cloud AI Platform. La cuenta de servicio de la funcion necesita el rol 'Vertex AI User'. Para funciones activadas por HTTP, la solicitud puede incluir el prompt del usuario, y la funcion llama a Vertex AI y devuelve la respuesta. ADC maneja la autenticacion automaticamente dentro de GCP. Esto es ideal para construir backends de API, manejadores de webhooks y procesamiento de IA basado en eventos.",
+      "options": [
+        { "id": "gcpv-017_a", "text": "Usar SDK de Anthropic o libreria AI Platform; cuenta de servicio con rol 'Vertex AI User'; ADC maneja auth; ideal para APIs y procesamiento de eventos", "textEs": "Usar SDK de Anthropic o libreria AI Platform; cuenta de servicio con rol 'Vertex AI User'; ADC maneja auth; ideal para APIs y procesamiento de eventos", "order": 1 },
+        { "id": "gcpv-017_b", "text": "Cloud Functions no puede llamar a Vertex AI; se necesita Cloud Run como minimo", "textEs": "Cloud Functions no puede llamar a Vertex AI; se necesita Cloud Run como minimo", "order": 2 },
+        { "id": "gcpv-017_c", "text": "Se debe instalar Claude como una dependencia de la funcion y ejecutar inferencia localmente", "textEs": "Se debe instalar Claude como una dependencia de la funcion y ejecutar inferencia localmente", "order": 3 },
+        { "id": "gcpv-017_d", "text": "Solo funciones escritas en Go pueden interactuar con Vertex AI; Python y Node.js no estan soportados", "textEs": "Solo funciones escritas en Go pueden interactuar con Vertex AI; Python y Node.js no estan soportados", "order": 4 }
+      ],
+      "tags": ["cloud-functions", "serverless", "integracion", "adc"]
+    },
+    {
+      "id": "gcpv-018",
+      "text": "What is the rawPredict vs streamRawPredict method difference when calling Claude on Vertex AI?",
+      "textEs": "Cual es la diferencia entre los metodos rawPredict y streamRawPredict al llamar a Claude en Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-018_c",
+      "explanation": "rawPredict sends a synchronous request and returns the complete response at once — ideal for batch processing and non-interactive applications. streamRawPredict returns a Server-Sent Events stream that delivers response tokens as they are generated, providing lower time-to-first-token for interactive applications like chatbots. Both accept the same request body format; only the response delivery mechanism differs.",
+      "explanationEs": "rawPredict envia una solicitud sincrona y devuelve la respuesta completa de una vez — ideal para procesamiento por lotes y aplicaciones no interactivas. streamRawPredict devuelve un stream de Server-Sent Events que entrega tokens de respuesta a medida que se generan, proporcionando menor tiempo al primer token para aplicaciones interactivas como chatbots. Ambos aceptan el mismo formato de cuerpo de solicitud; solo difiere el mecanismo de entrega de respuesta.",
+      "options": [
+        { "id": "gcpv-018_a", "text": "rawPredict es para texto y streamRawPredict es para contenido multimedia", "textEs": "rawPredict es para texto y streamRawPredict es para contenido multimedia", "order": 1 },
+        { "id": "gcpv-018_b", "text": "rawPredict es gratuito y streamRawPredict tiene costo adicional", "textEs": "rawPredict es gratuito y streamRawPredict tiene costo adicional", "order": 2 },
+        { "id": "gcpv-018_c", "text": "rawPredict devuelve respuesta completa sincrona; streamRawPredict devuelve tokens via SSE en tiempo real; mismo formato de solicitud, diferente entrega", "textEs": "rawPredict devuelve respuesta completa sincrona; streamRawPredict devuelve tokens via SSE en tiempo real; mismo formato de solicitud, diferente entrega", "order": 3 },
+        { "id": "gcpv-018_d", "text": "streamRawPredict no es estable y solo debe usarse en entornos de prueba", "textEs": "streamRawPredict no es estable y solo debe usarse en entornos de prueba", "order": 4 }
+      ],
+      "tags": ["rawpredict", "streaming", "api", "metodos"]
+    },
+    {
+      "id": "gcpv-019",
+      "text": "How can you use Vertex AI Pipelines with Claude for automated ML workflows?",
+      "textEs": "Como puedes usar Vertex AI Pipelines con Claude para flujos de trabajo ML automatizados?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-019_b",
+      "explanation": "Vertex AI Pipelines allows you to orchestrate ML workflows that include Claude invocations as pipeline steps. You can create custom components that call Claude for tasks like data labeling, content classification, text extraction, or quality evaluation. The pipeline manages dependencies, parallelism, and retries. This enables building reproducible, automated workflows where Claude processes data at scale as part of a larger ML pipeline.",
+      "explanationEs": "Vertex AI Pipelines permite orquestar flujos de trabajo ML que incluyen invocaciones a Claude como pasos del pipeline. Puedes crear componentes personalizados que llamen a Claude para tareas como etiquetado de datos, clasificacion de contenido, extraccion de texto o evaluacion de calidad. El pipeline gestiona dependencias, paralelismo y reintentos. Esto habilita construir flujos de trabajo reproducibles y automatizados donde Claude procesa datos a escala como parte de un pipeline ML mas grande.",
+      "options": [
+        { "id": "gcpv-019_a", "text": "Vertex AI Pipelines no puede integrar modelos de terceros como Claude", "textEs": "Vertex AI Pipelines no puede integrar modelos de terceros como Claude", "order": 1 },
+        { "id": "gcpv-019_b", "text": "Crear componentes personalizados que llaman a Claude para etiquetado, clasificacion o evaluacion; el pipeline gestiona dependencias y paralelismo", "textEs": "Crear componentes personalizados que llaman a Claude para etiquetado, clasificacion o evaluacion; el pipeline gestiona dependencias y paralelismo", "order": 2 },
+        { "id": "gcpv-019_c", "text": "Solo se puede usar Claude al final del pipeline como paso de evaluacion", "textEs": "Solo se puede usar Claude al final del pipeline como paso de evaluacion", "order": 3 },
+        { "id": "gcpv-019_d", "text": "Se requiere exportar datos de Vertex AI a la API directa de Anthropic para procesarlos", "textEs": "Se requiere exportar datos de Vertex AI a la API directa de Anthropic para procesarlos", "order": 4 }
+      ],
+      "tags": ["pipelines", "automatizacion", "ml-workflows", "orquestacion"]
+    },
+    {
+      "id": "gcpv-020",
+      "text": "What role does Vertex AI Model Garden play in the Claude deployment process?",
+      "textEs": "Que rol juega el Vertex AI Model Garden en el proceso de despliegue de Claude?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-020_d",
+      "explanation": "Model Garden is GCP's marketplace of AI models from various providers. For Claude, it serves as the entry point: you discover available Claude models, compare versions and capabilities, enable access (accept terms), view pricing, and find integration documentation. Model Garden also provides a testing playground where you can try prompts before integrating into your application. It is the single pane of glass for managing third-party model access in GCP.",
+      "explanationEs": "Model Garden es el marketplace de modelos de IA de GCP de varios proveedores. Para Claude, sirve como punto de entrada: descubres modelos de Claude disponibles, comparas versiones y capacidades, habilitas acceso (aceptas terminos), ves precios y encuentras documentacion de integracion. Model Garden tambien proporciona un playground de pruebas donde puedes probar prompts antes de integrar en tu aplicacion. Es el panel unico para gestionar acceso a modelos de terceros en GCP.",
+      "options": [
+        { "id": "gcpv-020_a", "text": "Model Garden almacena los pesos del modelo para descarga e inferencia local", "textEs": "Model Garden almacena los pesos del modelo para descarga e inferencia local", "order": 1 },
+        { "id": "gcpv-020_b", "text": "Es un servicio de fine-tuning automatico que mejora Claude con datos de tu proyecto", "textEs": "Es un servicio de fine-tuning automatico que mejora Claude con datos de tu proyecto", "order": 2 },
+        { "id": "gcpv-020_c", "text": "Solo se usa para modelos de Google; los modelos de Anthropic se acceden por separado", "textEs": "Solo se usa para modelos de Google; los modelos de Anthropic se acceden por separado", "order": 3 },
+        { "id": "gcpv-020_d", "text": "Marketplace de modelos: descubrir versiones de Claude, habilitar acceso, ver precios, probar en playground, y encontrar documentacion de integracion", "textEs": "Marketplace de modelos: descubrir versiones de Claude, habilitar acceso, ver precios, probar en playground, y encontrar documentacion de integracion", "order": 4 }
+      ],
+      "tags": ["model-garden", "marketplace", "descubrimiento", "acceso"]
+    },
+    {
+      "id": "gcpv-021",
+      "text": "What is the recommended way to handle rate limits when using Claude on Vertex AI?",
+      "textEs": "Cual es la forma recomendada de manejar limites de tasa al usar Claude en Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-021_a",
+      "explanation": "Rate limits on Vertex AI are managed through quotas at the project level. When limits are reached, the API returns 429 errors. Best practices include: implementing exponential backoff with jitter, using quota monitoring in the GCP Console to track usage, requesting quota increases for production workloads, distributing requests across multiple projects if needed, and using batch processing for non-urgent requests to spread load over time.",
+      "explanationEs": "Los limites de tasa en Vertex AI se gestionan a traves de cuotas a nivel de proyecto. Cuando se alcanzan los limites, la API devuelve errores 429. Las mejores practicas incluyen: implementar retroceso exponencial con jitter, usar monitoreo de cuotas en la Consola de GCP para rastrear uso, solicitar aumentos de cuota para cargas de produccion, distribuir solicitudes entre multiples proyectos si es necesario, y usar procesamiento por lotes para solicitudes no urgentes para distribuir la carga en el tiempo.",
+      "options": [
+        { "id": "gcpv-021_a", "text": "Backoff exponencial con jitter, monitorear cuotas en consola, solicitar aumentos, distribuir entre proyectos, y batch para no-urgentes", "textEs": "Backoff exponencial con jitter, monitorear cuotas en consola, solicitar aumentos, distribuir entre proyectos, y batch para no-urgentes", "order": 1 },
+        { "id": "gcpv-021_b", "text": "No hay limites de tasa en Vertex AI; puedes enviar solicitudes ilimitadas", "textEs": "No hay limites de tasa en Vertex AI; puedes enviar solicitudes ilimitadas", "order": 2 },
+        { "id": "gcpv-021_c", "text": "Reintentar inmediatamente sin ningun retraso hasta que la solicitud tenga exito", "textEs": "Reintentar inmediatamente sin ningun retraso hasta que la solicitud tenga exito", "order": 3 },
+        { "id": "gcpv-021_d", "text": "Cambiar a la API directa de Anthropic cuando Vertex AI devuelve errores 429", "textEs": "Cambiar a la API directa de Anthropic cuando Vertex AI devuelve errores 429", "order": 4 }
+      ],
+      "tags": ["rate-limits", "cuotas", "backoff", "produccion"]
+    },
+    {
+      "id": "gcpv-022",
+      "text": "How does Vertex AI handle data residency and privacy for Claude requests?",
+      "textEs": "Como maneja Vertex AI la residencia de datos y privacidad para solicitudes de Claude?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-022_c",
+      "explanation": "Data sent to Claude via Vertex AI is processed within the selected GCP region. Anthropic does not use customer data for training. VPC Service Controls can create security perimeters that prevent data exfiltration. Requests and responses stay within GCP's infrastructure, and data access is governed by GCP IAM. Organizations subject to GDPR can use European regions, and those subject to other regulations can choose appropriate regions. Google's data processing terms apply.",
+      "explanationEs": "Los datos enviados a Claude via Vertex AI se procesan dentro de la region GCP seleccionada. Anthropic no usa datos de clientes para entrenamiento. VPC Service Controls pueden crear perimetros de seguridad que previenen la filtracion de datos. Solicitudes y respuestas permanecen dentro de la infraestructura de GCP, y el acceso a datos se rige por IAM de GCP. Organizaciones sujetas a GDPR pueden usar regiones europeas, y aquellas sujetas a otras regulaciones pueden elegir regiones apropiadas. Los terminos de procesamiento de datos de Google aplican.",
+      "options": [
+        { "id": "gcpv-022_a", "text": "Todos los datos se envian a los servidores de Anthropic en EE.UU. independientemente de la region seleccionada", "textEs": "Todos los datos se envian a los servidores de Anthropic en EE.UU. independientemente de la region seleccionada", "order": 1 },
+        { "id": "gcpv-022_b", "text": "No hay garantias de residencia de datos; GCP puede procesar datos en cualquier region", "textEs": "No hay garantias de residencia de datos; GCP puede procesar datos en cualquier region", "order": 2 },
+        { "id": "gcpv-022_c", "text": "Datos procesados en la region seleccionada, sin uso para entrenamiento, VPC Service Controls para perimetros, IAM para acceso; GDPR via regiones europeas", "textEs": "Datos procesados en la region seleccionada, sin uso para entrenamiento, VPC Service Controls para perimetros, IAM para acceso; GDPR via regiones europeas", "order": 3 },
+        { "id": "gcpv-022_d", "text": "La privacidad de datos es responsabilidad exclusiva de Anthropic, no de GCP", "textEs": "La privacidad de datos es responsabilidad exclusiva de Anthropic, no de GCP", "order": 4 }
+      ],
+      "tags": ["residencia-datos", "privacidad", "gdpr", "vpc-service-controls"]
+    },
+    {
+      "id": "gcpv-023",
+      "text": "How can you use Vertex AI's evaluation tools to assess Claude's output quality?",
+      "textEs": "Como puedes usar las herramientas de evaluacion de Vertex AI para evaluar la calidad de salida de Claude?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-023_b",
+      "explanation": "Vertex AI provides Model Evaluation tools that can assess LLM outputs using metrics like BLEU, ROUGE, coherence, fluency, and groundedness. You can create evaluation datasets, run automated evaluations comparing different prompts or model versions, and use autorater (LLM-as-judge) for qualitative assessment. Results are visualized in the Vertex AI console and can be tracked over time to identify prompt or model regression.",
+      "explanationEs": "Vertex AI proporciona herramientas de Evaluacion de Modelos que pueden evaluar salidas de LLM usando metricas como BLEU, ROUGE, coherencia, fluidez y anclaje. Puedes crear datasets de evaluacion, ejecutar evaluaciones automatizadas comparando diferentes prompts o versiones de modelo, y usar autorater (LLM-como-juez) para evaluacion cualitativa. Los resultados se visualizan en la consola de Vertex AI y se pueden rastrear a lo largo del tiempo para identificar regresiones de prompt o modelo.",
+      "options": [
+        { "id": "gcpv-023_a", "text": "Vertex AI no tiene herramientas de evaluacion; se deben usar herramientas de terceros", "textEs": "Vertex AI no tiene herramientas de evaluacion; se deben usar herramientas de terceros", "order": 1 },
+        { "id": "gcpv-023_b", "text": "Metricas automatizadas (BLEU, ROUGE, coherencia), datasets de evaluacion, autorater LLM-como-juez, y visualizacion en consola para seguimiento temporal", "textEs": "Metricas automatizadas (BLEU, ROUGE, coherencia), datasets de evaluacion, autorater LLM-como-juez, y visualizacion en consola para seguimiento temporal", "order": 2 },
+        { "id": "gcpv-023_c", "text": "Solo se puede evaluar pidiendo a usuarios finales que den calificaciones de 1 a 5 estrellas", "textEs": "Solo se puede evaluar pidiendo a usuarios finales que den calificaciones de 1 a 5 estrellas", "order": 3 },
+        { "id": "gcpv-023_d", "text": "La evaluacion solo funciona con modelos de Google, no con modelos de terceros como Claude", "textEs": "La evaluacion solo funciona con modelos de Google, no con modelos de terceros como Claude", "order": 4 }
+      ],
+      "tags": ["evaluacion", "metricas", "autorater", "calidad"]
+    },
+    {
+      "id": "gcpv-024",
+      "text": "What is the recommended approach for migrating from the Anthropic direct API to Vertex AI?",
+      "textEs": "Cual es el enfoque recomendado para migrar de la API directa de Anthropic a Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-024_d",
+      "explanation": "Migration is straightforward because the request body format is nearly identical. Steps: (1) enable Claude in Model Garden, (2) set up GCP service account with Vertex AI User role, (3) replace the Anthropic client with AnthropicVertex client in your code, (4) update the model ID to the Vertex format, (5) test with existing prompts. The Anthropic SDK's AnthropicVertex client handles most differences automatically. No prompt rewriting is needed.",
+      "explanationEs": "La migracion es sencilla porque el formato del cuerpo de solicitud es casi identico. Pasos: (1) habilitar Claude en Model Garden, (2) configurar cuenta de servicio GCP con rol Vertex AI User, (3) reemplazar el cliente Anthropic con el cliente AnthropicVertex en tu codigo, (4) actualizar el model ID al formato de Vertex, (5) probar con prompts existentes. El cliente AnthropicVertex del SDK de Anthropic maneja la mayoria de las diferencias automaticamente. No se necesita reescribir prompts.",
+      "options": [
+        { "id": "gcpv-024_a", "text": "La migracion requiere reescribir todos los prompts y cambiar completamente la logica de la aplicacion", "textEs": "La migracion requiere reescribir todos los prompts y cambiar completamente la logica de la aplicacion", "order": 1 },
+        { "id": "gcpv-024_b", "text": "No es posible migrar; se debe construir la integracion desde cero", "textEs": "No es posible migrar; se debe construir la integracion desde cero", "order": 2 },
+        { "id": "gcpv-024_c", "text": "Se necesita un servicio de proxy intermedio que traduzca entre los formatos de API", "textEs": "Se necesita un servicio de proxy intermedio que traduzca entre los formatos de API", "order": 3 },
+        { "id": "gcpv-024_d", "text": "Habilitar en Model Garden, configurar service account, cambiar a AnthropicVertex client, actualizar model ID, probar; los prompts no cambian", "textEs": "Habilitar en Model Garden, configurar service account, cambiar a AnthropicVertex client, actualizar model ID, probar; los prompts no cambian", "order": 4 }
+      ],
+      "tags": ["migracion", "api-directa", "vertex", "sdk"]
+    },
+    {
+      "id": "gcpv-025",
+      "text": "How can you optimize costs when using Claude on Vertex AI at scale?",
+      "textEs": "Como puedes optimizar costos al usar Claude en Vertex AI a escala?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-025_a",
+      "explanation": "Cost optimization strategies include: selecting the appropriate model tier (Haiku for simple tasks vs Opus for complex reasoning), using prompt caching for repeated system prompts, setting appropriate max_tokens to avoid excessively long responses, using committed use discounts (CUDs) for predictable workloads, monitoring token usage with Cloud Monitoring, implementing request batching where possible, and caching frequent responses at the application level to avoid redundant API calls.",
+      "explanationEs": "Las estrategias de optimizacion de costos incluyen: seleccionar el nivel de modelo apropiado (Haiku para tareas simples vs Opus para razonamiento complejo), usar prompt caching para system prompts repetidos, establecer max_tokens apropiados para evitar respuestas excesivamente largas, usar descuentos por uso comprometido (CUDs) para cargas predecibles, monitorear uso de tokens con Cloud Monitoring, implementar agrupacion de solicitudes donde sea posible, y cachear respuestas frecuentes a nivel de aplicacion para evitar llamadas API redundantes.",
+      "options": [
+        { "id": "gcpv-025_a", "text": "Modelo apropiado por tarea, prompt caching, limitar max_tokens, CUDs para alto volumen, monitorear tokens, batch requests, cache de aplicacion", "textEs": "Modelo apropiado por tarea, prompt caching, limitar max_tokens, CUDs para alto volumen, monitorear tokens, batch requests, cache de aplicacion", "order": 1 },
+        { "id": "gcpv-025_b", "text": "Siempre usar Haiku para todo; la diferencia de calidad es insignificante", "textEs": "Siempre usar Haiku para todo; la diferencia de calidad es insignificante", "order": 2 },
+        { "id": "gcpv-025_c", "text": "No hay forma de optimizar; el costo es fijo por solicitud", "textEs": "No hay forma de optimizar; el costo es fijo por solicitud", "order": 3 },
+        { "id": "gcpv-025_d", "text": "Reducir el tamano de los prompts eliminando instrucciones del system prompt", "textEs": "Reducir el tamano de los prompts eliminando instrucciones del system prompt", "order": 4 }
+      ],
+      "tags": ["costos", "optimizacion", "cuds", "caching"]
     }
   ]
 }

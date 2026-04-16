@@ -169,9 +169,7 @@ describe('CurriculumService', () => {
     });
 
     it('should return empty array when no tracks match the level', () => {
-      loaderSpy.loadCatalog.and.returnValue(
-        of(makeCatalog({ tracks: [makeTrack({ level: 3 })] })),
-      );
+      loaderSpy.loadCatalog.and.returnValue(of(makeCatalog({ tracks: [makeTrack({ level: 3 })] })));
       service.loadCatalog().subscribe();
 
       expect(service.getTracksByLevel(7)).toEqual([]);
@@ -269,7 +267,12 @@ describe('CurriculumService', () => {
 
     it('should handle tracks without tags', () => {
       const tracks = [
-        makeTrack({ id: 'no-tags', title: 'No Tags Track', description: 'desc', tags: undefined as any }),
+        makeTrack({
+          id: 'no-tags',
+          title: 'No Tags Track',
+          description: 'desc',
+          tags: undefined as any,
+        }),
       ];
       loaderSpy.loadCatalog.and.returnValue(of(makeCatalog({ tracks })));
       service.loadCatalog().subscribe();

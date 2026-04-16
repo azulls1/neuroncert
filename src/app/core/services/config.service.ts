@@ -33,8 +33,19 @@ export class ConfigService {
   get ccafPassingScore(): number {
     return environment.CCAF_PASSING_SCORE;
   }
+  get ccafMaxScore(): number {
+    return environment.CCAF_MAX_SCORE;
+  }
   get passingPercent(): number {
     return environment.PASSING_PERCENT;
+  }
+
+  // Timer
+  get timerWarningThreshold(): number {
+    return environment.TIMER.WARNING_THRESHOLD_SEC;
+  }
+  get timerCriticalThreshold(): number {
+    return environment.TIMER.CRITICAL_THRESHOLD_SEC;
   }
 
   // Storage

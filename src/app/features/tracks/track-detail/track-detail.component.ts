@@ -296,19 +296,22 @@ export class TrackDetailComponent implements OnInit {
       return;
     }
 
-    this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => {
-        const found = this.curriculum.getTrackById(trackId) ?? null;
-        this.track.set(found);
-        if (found) {
-          this.completionPercentage.set(this.progress.getCompletionPercentage(trackId));
-        }
-        this.isLoading.set(false);
-      },
-      error: () => {
-        this.track.set(null);
-        this.isLoading.set(false);
-      },
-    });
+    this.curriculum
+      .loadCatalog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          const found = this.curriculum.getTrackById(trackId) ?? null;
+          this.track.set(found);
+          if (found) {
+            this.completionPercentage.set(this.progress.getCompletionPercentage(trackId));
+          }
+          this.isLoading.set(false);
+        },
+        error: () => {
+          this.track.set(null);
+          this.isLoading.set(false);
+        },
+      });
   }
 }

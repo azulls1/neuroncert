@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { ExamStateService, ScoreService } from '../../../core/services';
 import { CurriculumService } from '../../../core/services/curriculum.service';
+import { ConfigService } from '../../../core/services/config.service';
 import { ExamResult, DomainScore, CCAFConfig } from '../../../core/models';
 import { formatTime } from '../../../core/utils/exam.utils';
 import { LoggingService } from '../../../core/services/logging.service';
@@ -194,6 +195,7 @@ export class CCAFResultsComponent implements OnInit {
   private curriculumService = inject(CurriculumService);
   private router = inject(Router);
   private logger = inject(LoggingService);
+  private readonly configSvc = inject(ConfigService);
 
   examResult: ExamResult | null = null;
   domainScores: DomainScore[] = [];
@@ -208,11 +210,13 @@ export class CCAFResultsComponent implements OnInit {
   /** CCA-F config loaded from catalog */
   private ccafConfig = signal<CCAFConfig | null>(null);
 
-  /** Passing score from config (e.g. 720), falls back to 720 */
-  configPassingScore = computed(() => this.ccafConfig()?.passingScore ?? 720);
+  /** Passing score from config (e.g. 720), falls back to environment default */
+  configPassingScore = computed(
+    () => this.ccafConfig()?.passingScore ?? this.configSvc.ccafPassingScore,
+  );
 
-  /** Max score from config (e.g. 1000), falls back to 1000 */
-  configMaxScore = computed(() => this.ccafConfig()?.maxScore ?? 1000);
+  /** Max score from config (e.g. 1000), falls back to environment default */
+  configMaxScore = computed(() => this.ccafConfig()?.maxScore ?? this.configSvc.ccafMaxScore);
 
   /**
    * Threshold percentage below which a domain is considered weak.
@@ -230,23 +234,26 @@ export class CCAFResultsComponent implements OnInit {
     }
 
     // Load CCA-F config from catalog for dynamic score labels
-    this.curriculumService.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => {
-        const config = this.curriculumService.getCCAFConfig();
-        this.ccafConfig.set(config);
-        if (config) {
-          // Derive weak-domain threshold from passing ratio
-          this.weakDomainThreshold = Math.floor((config.passingScore / config.maxScore) * 100);
-          // Recompute weak domains with the config-based threshold
-          this.weakDomains = this.domainScores.filter(
-            (ds) => ds.rawPercentage < this.weakDomainThreshold,
-          );
-        }
-      },
-      error: (err) => {
-        this.logger.error('Failed to load CCA-F catalog for results', 'CCAFResults', err);
-      },
-    });
+    this.curriculumService
+      .loadCatalog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          const config = this.curriculumService.getCCAFConfig();
+          this.ccafConfig.set(config);
+          if (config) {
+            // Derive weak-domain threshold from passing ratio
+            this.weakDomainThreshold = Math.floor((config.passingScore / config.maxScore) * 100);
+            // Recompute weak domains with the config-based threshold
+            this.weakDomains = this.domainScores.filter(
+              (ds) => ds.rawPercentage < this.weakDomainThreshold,
+            );
+          }
+        },
+        error: (err) => {
+          this.logger.error('Failed to load CCA-F catalog for results', 'CCAFResults', err);
+        },
+      });
 
     // Use pre-computed values from the result if available
     this.domainScores = this.examResult.domainScores ?? [];

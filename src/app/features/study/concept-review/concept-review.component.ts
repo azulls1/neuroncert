@@ -398,16 +398,19 @@ export class ConceptReviewComponent implements OnInit {
     const trackId = this.route.snapshot.paramMap.get('trackId') ?? '';
     this.trackId.set(trackId);
 
-    this.questionBank.getQuestionsByTrack(trackId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (questions) => {
-        this.allQuestions.set(questions);
-        this.loading.set(false);
-      },
-      error: () => {
-        this.allQuestions.set([]);
-        this.loading.set(false);
-      },
-    });
+    this.questionBank
+      .getQuestionsByTrack(trackId)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (questions) => {
+          this.allQuestions.set(questions);
+          this.loading.set(false);
+        },
+        error: () => {
+          this.allQuestions.set([]);
+          this.loading.set(false);
+        },
+      });
   }
 
   setDomain(domain: string): void {

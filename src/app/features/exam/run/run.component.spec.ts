@@ -38,7 +38,14 @@ describe('RunComponent', () => {
       questions: mockQuestions(),
       currentIndex: mockCurrentIndex(),
       progress: { answered: 0, flagged: 0, total: 0, percentage: 0 },
-      navigation: { canGoPrevious: false, canGoNext: false, isFirst: true, isLast: true, current: 1, total: 0 },
+      navigation: {
+        canGoPrevious: false,
+        canGoNext: false,
+        isFirst: true,
+        isLast: true,
+        current: 1,
+        total: 0,
+      },
       timer: { remainingTime: 0, formattedTime: '0:00', isRunning: false, isPaused: false },
     }),
     startExam: jasmine.createSpy('startExam'),
@@ -61,9 +68,7 @@ describe('RunComponent', () => {
       imports: [RunComponent],
       providers: [
         provideZonelessChangeDetection(),
-        provideRouter([
-          { path: 'exam/start', component: RunComponent },
-        ]),
+        provideRouter([{ path: 'exam/start', component: RunComponent }]),
         { provide: ExamStateService, useValue: mockExamStateService },
       ],
     }).compileComponents();

@@ -1,7 +1,8 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, inject, signal, computed } from '@angular/core';
 import { interval, Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { map, takeWhile } from 'rxjs/operators';
 import { formatTime } from '../utils/exam.utils';
+import { ConfigService } from './config.service';
 
 /**
  * Servicio de temporizador para el examen
@@ -11,6 +12,8 @@ import { formatTime } from '../utils/exam.utils';
   providedIn: 'root',
 })
 export class TimerService {
+  private readonly configSvc = inject(ConfigService);
+
   // Signals para el estado del temporizador
   private _isRunning = signal(false);
   private _isPaused = signal(false);
@@ -27,8 +30,8 @@ export class TimerService {
   private _onTimeUp?: () => void;
   private _onWarning?: () => void;
 
-  // Configuración
-  private _warningThreshold = 300; // 5 minutos antes del final
+  // Configuración — from environment via ConfigService
+  private _warningThreshold = this.configSvc.timerWarningThreshold;
 
   /**
    * Signal que indica si el temporizador está corriendo

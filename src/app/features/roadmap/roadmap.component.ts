@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CurriculumService } from '../../core/services/curriculum.service';
 import { CCAFDomainsComponent } from './ccaf-domains/ccaf-domains.component';
 import { LoggingService } from '../../core/services/logging.service';
+import { ConfigService } from '../../core/services/config.service';
 
 /* ── Inline interfaces matching roadmap.json ─────────────────────────── */
 
@@ -1362,10 +1363,10 @@ interface PlatformColor {
       <!-- ═══════ CERTIFICATION MODAL ═══════ -->
       <app-ccaf-domains
         [domains]="certData()?.domains ?? []"
-        [totalQuestions]="ccafConfig()?.totalQuestions ?? 60"
-        [durationMin]="(ccafConfig()?.durationSec ?? 7200) / 60"
-        [passingScore]="ccafConfig()?.passingScore ?? 720"
-        [maxScore]="ccafConfig()?.maxScore ?? 1000"
+        [totalQuestions]="ccafConfig()?.totalQuestions ?? config.ccafQuestionCount"
+        [durationMin]="(ccafConfig()?.durationSec ?? config.ccafDurationSec) / 60"
+        [passingScore]="ccafConfig()?.passingScore ?? config.ccafPassingScore"
+        [maxScore]="ccafConfig()?.maxScore ?? config.ccafMaxScore"
         [format]="certData()?.format ?? ''"
         [studyResources]="certData()?.studyResources ?? []"
         [certUrl]="certData()?.url ?? ''"
@@ -1380,6 +1381,7 @@ export class RoadmapComponent implements OnInit {
   private readonly http = inject(HttpClient);
   private readonly curriculumService = inject(CurriculumService);
   private readonly logger = inject(LoggingService);
+  protected readonly config = inject(ConfigService);
 
   /* ── Raw data ──────────────────────────────────────────────────────── */
   private data = signal<RoadmapData | null>(null);
@@ -1455,20 +1457,28 @@ export class RoadmapComponent implements OnInit {
 
   /* ── Lifecycle ─────────────────────────────────────────────────────── */
   ngOnInit(): void {
-    this.http.get<RoadmapData>('/assets/question-bank/roadmap.json').pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (data) => {
-        this.data.set(data);
-        this.buildMaps(data);
-      },
-      error: (err) => {
-        this.logger.error('Failed to load roadmap.json', 'Roadmap', err);
-        this.loadError.set('No se pudo cargar la ruta de aprendizaje. Intenta recargar la pagina.');
-      },
-    });
+    this.http
+      .get<RoadmapData>('/assets/question-bank/roadmap.json')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (data) => {
+          this.data.set(data);
+          this.buildMaps(data);
+        },
+        error: (err) => {
+          this.logger.error('Failed to load roadmap.json', 'Roadmap', err);
+          this.loadError.set(
+            'No se pudo cargar la ruta de aprendizaje. Intenta recargar la pagina.',
+          );
+        },
+      });
     // Load curriculum catalog so ccafConfig() is available
-    this.curriculumService.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      error: (err) => this.logger.error('Catalog load failed', 'Roadmap', err),
-    });
+    this.curriculumService
+      .loadCatalog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        error: (err) => this.logger.error('Catalog load failed', 'Roadmap', err),
+      });
   }
 
   /* ── Public methods ────────────────────────────────────────────────── */

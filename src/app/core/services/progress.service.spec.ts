@@ -13,10 +13,7 @@ describe('ProgressService', () => {
     // Clear localStorage before each test
     localStorage.removeItem('claude_learning_progress');
 
-    supabaseSpy = jasmine.createSpyObj('SupabaseService', [
-      'saveProgress',
-      'getProgress',
-    ]);
+    supabaseSpy = jasmine.createSpyObj('SupabaseService', ['saveProgress', 'getProgress']);
     supabaseSpy.saveProgress.and.returnValue(Promise.resolve(null));
     supabaseSpy.getProgress.and.returnValue(Promise.resolve([]));
 

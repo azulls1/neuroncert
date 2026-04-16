@@ -12,6 +12,7 @@ export const environment = {
   CCAF_QUESTIONS: 60,
   CCAF_DURATION_SEC: 7200, // 120 minutes
   CCAF_PASSING_SCORE: 720, // out of 1000
+  CCAF_MAX_SCORE: 1000,
   PASSING_PERCENT: 70, // minimum passing percentage for exam history
 
   STORAGE_KEYS: {
@@ -26,6 +27,10 @@ export const environment = {
     KEYBOARD_NAVIGATION: true,
     FOCUS_TIMEOUT: 100,
     ANNOUNCE_DELAY: 500,
+  },
+  TIMER: {
+    WARNING_THRESHOLD_SEC: 300, // 5 minutes
+    CRITICAL_THRESHOLD_SEC: 60, // 1 minute
   },
   VALIDATION: {
     MIN_QUESTIONS: 1,

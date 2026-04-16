@@ -12,10 +12,7 @@ describe('ExamHistoryService', () => {
   beforeEach(() => {
     localStorage.removeItem('exam_history_sessions');
 
-    supabaseSpy = jasmine.createSpyObj('SupabaseService', [
-      'getExamHistory',
-      'saveStudySession',
-    ]);
+    supabaseSpy = jasmine.createSpyObj('SupabaseService', ['getExamHistory', 'saveStudySession']);
     supabaseSpy.getExamHistory.and.returnValue(Promise.resolve([]));
     supabaseSpy.saveStudySession.and.returnValue(Promise.resolve(null));
 

@@ -29,9 +29,33 @@ describe('DashboardComponent', () => {
   };
 
   const mockTracks = signal<any[]>([
-    { id: 't1', title: 'Track 1', platform: 'academy', level: 1, tags: [], description: '', modules: [] },
-    { id: 't2', title: 'Track 2', platform: 'coursera', level: 2, tags: [], description: '', modules: [] },
-    { id: 't3', title: 'Track 3', platform: 'deeplearning-ai', level: 1, tags: [], description: '', modules: [] },
+    {
+      id: 't1',
+      title: 'Track 1',
+      platform: 'academy',
+      level: 1,
+      tags: [],
+      description: '',
+      modules: [],
+    },
+    {
+      id: 't2',
+      title: 'Track 2',
+      platform: 'coursera',
+      level: 2,
+      tags: [],
+      description: '',
+      modules: [],
+    },
+    {
+      id: 't3',
+      title: 'Track 3',
+      platform: 'deeplearning-ai',
+      level: 1,
+      tags: [],
+      description: '',
+      modules: [],
+    },
   ]);
 
   const mockLevels = signal<any[]>([

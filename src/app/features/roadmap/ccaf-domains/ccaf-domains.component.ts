@@ -1,6 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ConfigService } from '../../../core/services/config.service';
 
 interface CertDomain {
   name: string;
@@ -116,11 +117,7 @@ interface StudyResource {
 
           <div style="display: flex; gap: 12px;">
             <a routerLink="/ccaf" class="btn btn-cta" (click)="close.emit()">Practicar CCA-F</a>
-            <a
-              [href]="certUrl()"
-              target="_blank"
-              rel="noopener"
-              class="btn btn-secondary"
+            <a [href]="certUrl()" target="_blank" rel="noopener" class="btn btn-secondary"
               >Info oficial &#8599;</a
             >
           </div>
@@ -128,14 +125,22 @@ interface StudyResource {
       </div>
     }
   `,
-  styles: [`:host { display: block; }`],
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class CCAFDomainsComponent {
+  private readonly config = inject(ConfigService);
+
   domains = input<CertDomain[]>([]);
-  totalQuestions = input(60);
-  durationMin = input(120);
-  passingScore = input(720);
-  maxScore = input(1000);
+  totalQuestions = input(this.config.ccafQuestionCount);
+  durationMin = input(Math.round(this.config.ccafDurationSec / 60));
+  passingScore = input(this.config.ccafPassingScore);
+  maxScore = input(this.config.ccafMaxScore);
   format = input('');
   studyResources = input<StudyResource[]>([]);
   certUrl = input('');

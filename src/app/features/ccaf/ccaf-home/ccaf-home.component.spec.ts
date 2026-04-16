@@ -16,15 +16,20 @@ describe('CCAFHomeComponent', () => {
       durationSec: 7200,
       passingScore: 720,
       maxScore: 1000,
-      domains: [
-        { code: 'D1', name: 'Domain 1', description: 'Desc 1', weight: 0.27 },
-      ],
+      domains: [{ code: 'D1', name: 'Domain 1', description: 'Desc 1', weight: 0.27 }],
     }),
   };
 
   const mockProgressService = {
     getOverallProgress: () =>
-      signal({ ccafAttempts: 0, ccafBestScore: 0, totalExams: 0, tracksStarted: 0, tracksCompleted: 0, averageScore: 0 }),
+      signal({
+        ccafAttempts: 0,
+        ccafBestScore: 0,
+        totalExams: 0,
+        tracksStarted: 0,
+        tracksCompleted: 0,
+        averageScore: 0,
+      }),
   };
 
   beforeEach(async () => {
@@ -59,7 +64,21 @@ describe('CCAFHomeComponent', () => {
 
   it('should compute domain weight percent correctly', () => {
     const fixture = TestBed.createComponent(CCAFHomeComponent);
-    expect(fixture.componentInstance.domainWeightPercent({ code: 'D1', name: 'Test', description: '', weight: 0.27 } as any)).toBe(27);
-    expect(fixture.componentInstance.domainWeightPercent({ code: 'D2', name: 'Test', description: '', weight: 27 } as any)).toBe(27);
+    expect(
+      fixture.componentInstance.domainWeightPercent({
+        code: 'D1',
+        name: 'Test',
+        description: '',
+        weight: 0.27,
+      } as any),
+    ).toBe(27);
+    expect(
+      fixture.componentInstance.domainWeightPercent({
+        code: 'D2',
+        name: 'Test',
+        description: '',
+        weight: 27,
+      } as any),
+    ).toBe(27);
   });
 });

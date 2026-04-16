@@ -13,6 +13,7 @@ import {
 } from '../models';
 import { QuestionLoaderService } from './question-loader.service';
 import { SupabaseService } from './supabase.service';
+import { ConfigService } from './config.service';
 import { shuffleArray } from '../utils/exam.utils';
 
 /**
@@ -26,6 +27,7 @@ import { shuffleArray } from '../utils/exam.utils';
 export class QuestionBankService {
   private loader = inject(QuestionLoaderService);
   private supabase = inject(SupabaseService);
+  private readonly configSvc = inject(ConfigService);
 
   /** Mapa de preguntas indexadas por ID (para validacion rapida) */
   private questionsById = new Map<string, Question>();
@@ -356,7 +358,8 @@ export class QuestionBankService {
               timeSpent: 0,
             }));
 
-            const durationSec = params.durationSec ?? ccafConfig.durationSec ?? 7200;
+            const durationSec =
+              params.durationSec ?? ccafConfig.durationSec ?? this.configSvc.ccafDurationSec;
 
             return {
               examId: this._generateExamId(),

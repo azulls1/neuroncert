@@ -250,7 +250,9 @@ describe('QuestionLoaderService', () => {
       const q1 = makeQuestion({ id: 'q1' });
 
       let result: Question[] | undefined;
-      service.loadFromMultiplePaths(['path/ok.json', 'path/bad.json']).subscribe((q) => (result = q));
+      service
+        .loadFromMultiplePaths(['path/ok.json', 'path/bad.json'])
+        .subscribe((q) => (result = q));
 
       httpTestCtrl.expectOne('path/ok.json').flush([q1]);
       httpTestCtrl

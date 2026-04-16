@@ -20,13 +20,14 @@ describe('SubmitComponent', () => {
       timer: { totalTime: 3600, remainingTime: 1800 },
     }),
     examState$: new Subject(),
-    submitExam: () => of({
-      score: 80,
-      passed: true,
-      summary: { correct: 1, incorrect: 0, skipped: 1, flagged: 1, totalTimeSpent: 1800 },
-      items: [],
-      recommendations: [],
-    }),
+    submitExam: () =>
+      of({
+        score: 80,
+        passed: true,
+        summary: { correct: 1, incorrect: 0, skipped: 1, flagged: 1, totalTimeSpent: 1800 },
+        items: [],
+        recommendations: [],
+      }),
     examParams: signal({ mode: 'standard' }),
   };
 

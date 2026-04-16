@@ -1,6 +1,7 @@
 import { Component, input, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimerService } from '../../core/services/timer.service';
+import { ConfigService } from '../../core/services/config.service';
 
 /**
  * Componente TimerBadge - Muestra el tiempo restante del examen
@@ -113,11 +114,13 @@ import { TimerService } from '../../core/services/timer.service';
   ],
 })
 export class TimerBadgeComponent {
+  private readonly config = inject(ConfigService);
+
   // Inputs
   remainingSeconds = input.required<number>();
   showProgress = input<boolean>(true);
-  warningThreshold = input<number>(300); // 5 minutos
-  criticalThreshold = input<number>(60); // 1 minuto
+  warningThreshold = input<number>(this.config.timerWarningThreshold);
+  criticalThreshold = input<number>(this.config.timerCriticalThreshold);
 
   // Inyección de dependencias
   private timer = inject(TimerService);

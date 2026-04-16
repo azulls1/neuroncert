@@ -11,8 +11,24 @@ import { ProgressService } from '../../../core/services/progress.service';
 
 describe('TrackListComponent', () => {
   const mockTracks = signal([
-    { id: 't1', title: 'Track 1', description: 'Desc', level: 1, platform: 'academy', estimatedHours: 5, modules: [] },
-    { id: 't2', title: 'Track 2', description: 'Desc', level: 2, platform: 'coursera', estimatedHours: 10, modules: [] },
+    {
+      id: 't1',
+      title: 'Track 1',
+      description: 'Desc',
+      level: 1,
+      platform: 'academy',
+      estimatedHours: 5,
+      modules: [],
+    },
+    {
+      id: 't2',
+      title: 'Track 2',
+      description: 'Desc',
+      level: 2,
+      platform: 'coursera',
+      estimatedHours: 10,
+      modules: [],
+    },
   ]);
 
   const mockCurriculumService = {

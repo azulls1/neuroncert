@@ -34,6 +34,6 @@ export class App {
   protected readonly menuOpen = signal(false);
 
   protected toggleMenu(): void {
-    this.menuOpen.update(v => !v);
+    this.menuOpen.update((v) => !v);
   }
 }

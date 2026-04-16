@@ -5,7 +5,7 @@
     "trackId": "academy-enterprise-adoption",
     "version": "1.0.0",
     "lastUpdated": "2026-04-13",
-    "totalQuestions": 10,
+    "totalQuestions": 25,
     "learningLevel": 3,
     "contentType": "exam"
   },
@@ -209,6 +209,306 @@
         { "id": "eadopt-010_d", "text": "Simply add a disclaimer to all repositories that some code may be AI-generated; this provides sufficient legal protection", "textEs": "Simplemente agregar un descargo de responsabilidad a todos los repositorios de que parte del código puede ser generado por IA; esto proporciona protección legal suficiente", "order": 4 }
       ],
       "tags": ["adoption", "intellectual-property", "licensing", "legal", "compliance"]
+    },
+    {
+      "id": "eadopt-011",
+      "text": "What is 'shadow AI' and how should enterprises address it during adoption?",
+      "textEs": "Que es la 'IA en la sombra' y como deben las empresas abordarla durante la adopcion?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-011_a",
+      "explanation": "Shadow AI refers to employees using unauthorized AI tools (personal ChatGPT, Claude accounts) for work without IT knowledge or approval. This creates data security risks and compliance gaps. The best response is not to ban AI but to provide approved, enterprise-grade AI tools quickly, establish clear usage policies, educate employees on risks of unauthorized tools, and monitor for shadow usage. Making approved AI easy to use reduces the motivation for shadow AI.",
+      "explanationEs": "La IA en la sombra se refiere a empleados usando herramientas de IA no autorizadas (cuentas personales de ChatGPT, Claude) para trabajo sin conocimiento o aprobacion de TI. Esto crea riesgos de seguridad de datos y brechas de cumplimiento. La mejor respuesta no es prohibir la IA sino proporcionar herramientas de IA aprobadas de nivel empresarial rapidamente, establecer politicas de uso claras, educar a los empleados sobre riesgos de herramientas no autorizadas y monitorear uso en la sombra. Hacer que la IA aprobada sea facil de usar reduce la motivacion para la IA en la sombra.",
+      "options": [
+        { "id": "eadopt-011_a", "text": "Unauthorized AI tool usage by employees; address by providing approved enterprise AI quickly, clear policies, education, and monitoring — not by banning AI", "textEs": "Uso de herramientas de IA no autorizadas por empleados; abordar proporcionando IA empresarial aprobada rapidamente, politicas claras, educacion y monitoreo — no prohibiendo la IA", "order": 1 },
+        { "id": "eadopt-011_b", "text": "AI that operates autonomously without human supervision; always a critical risk", "textEs": "IA que opera autonomamente sin supervision humana; siempre un riesgo critico", "order": 2 },
+        { "id": "eadopt-011_c", "text": "A testing methodology where AI tools run in a sandboxed environment", "textEs": "Una metodologia de pruebas donde las herramientas de IA se ejecutan en un entorno aislado", "order": 3 },
+        { "id": "eadopt-011_d", "text": "AI-generated code that is not visible in code reviews", "textEs": "Codigo generado por IA que no es visible en revisiones de codigo", "order": 4 }
+      ],
+      "tags": ["adoption", "shadow-ai", "security", "policy", "unauthorized"]
+    },
+    {
+      "id": "eadopt-012",
+      "text": "How should an enterprise structure its first AI pilot program for maximum impact?",
+      "textEs": "Como debe una empresa estructurar su primer programa piloto de IA para maximo impacto?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-012_c",
+      "explanation": "A successful pilot should: select a high-visibility use case with measurable outcomes, choose enthusiastic early adopters as participants, define success criteria and metrics upfront, set a fixed timeline (4-8 weeks), provide dedicated support and training, document learnings and collect feedback regularly, and prepare a clear presentation of results for stakeholders. The pilot should be scoped narrowly enough to succeed but impactful enough to justify expansion.",
+      "explanationEs": "Un piloto exitoso debe: seleccionar un caso de uso de alta visibilidad con resultados medibles, elegir adoptadores tempranos entusiastas como participantes, definir criterios de exito y metricas de antemano, establecer un plazo fijo (4-8 semanas), proporcionar soporte y capacitacion dedicados, documentar aprendizajes y recopilar retroalimentacion regularmente, y preparar una presentacion clara de resultados para stakeholders. El piloto debe ser lo suficientemente acotado para tener exito pero lo suficientemente impactante para justificar la expansion.",
+      "options": [
+        { "id": "eadopt-012_a", "text": "Deploy AI across all teams simultaneously to maximize data collection", "textEs": "Desplegar IA en todos los equipos simultaneamente para maximizar la recopilacion de datos", "order": 1 },
+        { "id": "eadopt-012_b", "text": "Choose the most complex use case to prove AI can handle anything", "textEs": "Elegir el caso de uso mas complejo para probar que la IA puede manejar cualquier cosa", "order": 2 },
+        { "id": "eadopt-012_c", "text": "High-visibility use case, enthusiastic early adopters, defined success metrics, fixed timeline (4-8 weeks), dedicated support, documented learnings", "textEs": "Caso de uso de alta visibilidad, adoptadores tempranos entusiastas, metricas de exito definidas, plazo fijo (4-8 semanas), soporte dedicado, aprendizajes documentados", "order": 3 },
+        { "id": "eadopt-012_d", "text": "Run the pilot in secret without management awareness to avoid premature expectations", "textEs": "Ejecutar el piloto en secreto sin conocimiento de la gerencia para evitar expectativas prematuras", "order": 4 }
+      ],
+      "tags": ["adoption", "pilot-program", "structure", "early-adopters"]
+    },
+    {
+      "id": "eadopt-013",
+      "text": "What are 'AI Champions' and why are they critical for enterprise adoption?",
+      "textEs": "Que son los 'Campeones de IA' y por que son criticos para la adopcion empresarial?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-013_b",
+      "explanation": "AI Champions are enthusiastic early adopters within teams who become informal advocates and mentors for AI tools. They provide peer-level support (less intimidating than formal training), share practical tips and success stories, identify new use cases, provide feedback to the adoption team, and create a grassroots adoption movement. Having champions at different levels (developers, managers, leads) creates multi-level advocacy that drives organic adoption.",
+      "explanationEs": "Los Campeones de IA son adoptadores tempranos entusiastas dentro de los equipos que se convierten en defensores y mentores informales de herramientas de IA. Proporcionan soporte a nivel de pares (menos intimidante que la capacitacion formal), comparten consejos practicos e historias de exito, identifican nuevos casos de uso, proporcionan retroalimentacion al equipo de adopcion y crean un movimiento de adopcion desde la base. Tener campeones en diferentes niveles (desarrolladores, gerentes, lideres) crea defensa multinivel que impulsa la adopcion organica.",
+      "options": [
+        { "id": "eadopt-013_a", "text": "External consultants hired specifically to implement AI tools across the organization", "textEs": "Consultores externos contratados especificamente para implementar herramientas de IA en la organizacion", "order": 1 },
+        { "id": "eadopt-013_b", "text": "Enthusiastic early adopters who become informal advocates and mentors, providing peer support and driving grassroots adoption at multiple levels", "textEs": "Adoptadores tempranos entusiastas que se convierten en defensores y mentores informales, proporcionando soporte entre pares e impulsando adopcion desde la base en multiples niveles", "order": 2 },
+        { "id": "eadopt-013_c", "text": "AI models that have been certified by Anthropic for enterprise readiness", "textEs": "Modelos de IA que han sido certificados por Anthropic para preparacion empresarial", "order": 3 },
+        { "id": "eadopt-013_d", "text": "Executive sponsors who provide budget approval for AI initiatives", "textEs": "Patrocinadores ejecutivos que proporcionan aprobacion de presupuesto para iniciativas de IA", "order": 4 }
+      ],
+      "tags": ["adoption", "champions", "advocates", "grassroots", "mentoring"]
+    },
+    {
+      "id": "eadopt-014",
+      "text": "How should enterprises handle the security review process for Claude deployments?",
+      "textEs": "Como deben las empresas manejar el proceso de revision de seguridad para despliegues de Claude?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-014_d",
+      "explanation": "A thorough security review should cover: data flow analysis (what data goes to Claude and where it is processed), network security (VPC endpoints, encryption in transit), access control review (IAM policies, API key management), threat modeling for prompt injection and data exfiltration, compliance assessment against relevant regulations, vendor security evaluation (Anthropic's SOC 2, data retention policies), and penetration testing of the application layer that interfaces with Claude.",
+      "explanationEs": "Una revision de seguridad exhaustiva debe cubrir: analisis de flujo de datos (que datos van a Claude y donde se procesan), seguridad de red (endpoints VPC, encriptacion en transito), revision de control de acceso (politicas IAM, gestion de API keys), modelado de amenazas para inyeccion de prompt y exfiltracion de datos, evaluacion de cumplimiento contra regulaciones relevantes, evaluacion de seguridad del proveedor (SOC 2 de Anthropic, politicas de retencion de datos) y pruebas de penetracion de la capa de aplicacion que interfaz con Claude.",
+      "options": [
+        { "id": "eadopt-014_a", "text": "Security review is not needed; Claude is inherently safe and secure by design", "textEs": "La revision de seguridad no es necesaria; Claude es inherentemente seguro por diseno", "order": 1 },
+        { "id": "eadopt-014_b", "text": "Only review the API key security; all other aspects are handled by Anthropic", "textEs": "Solo revisar la seguridad de la API key; todos los demas aspectos los maneja Anthropic", "order": 2 },
+        { "id": "eadopt-014_c", "text": "Wait for a third-party audit firm to publish a standard Claude security review template", "textEs": "Esperar a que una firma de auditoria externa publique una plantilla estandar de revision de seguridad para Claude", "order": 3 },
+        { "id": "eadopt-014_d", "text": "Data flow analysis, network security, access control, threat modeling for prompt injection, compliance assessment, vendor evaluation, and penetration testing", "textEs": "Analisis de flujo de datos, seguridad de red, control de acceso, modelado de amenazas para inyeccion de prompt, evaluacion de cumplimiento, evaluacion de proveedor y pruebas de penetracion", "order": 4 }
+      ],
+      "tags": ["adoption", "security-review", "threat-modeling", "compliance"]
+    },
+    {
+      "id": "eadopt-015",
+      "text": "What is the role of prompt libraries in enterprise AI adoption?",
+      "textEs": "Cual es el rol de las bibliotecas de prompts en la adopcion empresarial de IA?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-015_a",
+      "explanation": "Prompt libraries are curated collections of tested, optimized prompts for common organizational tasks. They accelerate adoption by giving employees ready-to-use templates (code review, documentation, analysis, email drafting), ensuring consistent quality across the organization, reducing the learning curve for new users, and capturing institutional knowledge about effective prompting. They should be maintained by the AI CoE and updated based on usage feedback.",
+      "explanationEs": "Las bibliotecas de prompts son colecciones curadas de prompts probados y optimizados para tareas organizacionales comunes. Aceleran la adopcion dando a los empleados plantillas listas para usar (revision de codigo, documentacion, analisis, redaccion de correos), asegurando calidad consistente en toda la organizacion, reduciendo la curva de aprendizaje para nuevos usuarios y capturando conocimiento institucional sobre prompting efectivo. Deben ser mantenidas por el CoE de IA y actualizadas basandose en retroalimentacion de uso.",
+      "options": [
+        { "id": "eadopt-015_a", "text": "Curated collections of tested prompts for common tasks; accelerate adoption with ready templates, ensure consistency, reduce learning curve, capture institutional knowledge", "textEs": "Colecciones curadas de prompts probados para tareas comunes; aceleran adopcion con plantillas listas, aseguran consistencia, reducen curva de aprendizaje, capturan conocimiento institucional", "order": 1 },
+        { "id": "eadopt-015_b", "text": "Marketing materials that promote AI tools to potential enterprise customers", "textEs": "Materiales de marketing que promueven herramientas de IA a clientes empresariales potenciales", "order": 2 },
+        { "id": "eadopt-015_c", "text": "Collections of system prompts that Anthropic provides exclusively to enterprise clients", "textEs": "Colecciones de system prompts que Anthropic proporciona exclusivamente a clientes empresariales", "order": 3 },
+        { "id": "eadopt-015_d", "text": "A database of all prompts employees have ever used, stored for compliance auditing", "textEs": "Una base de datos de todos los prompts que los empleados han usado, almacenados para auditoria de cumplimiento", "order": 4 }
+      ],
+      "tags": ["adoption", "prompt-library", "templates", "knowledge-sharing"]
+    },
+    {
+      "id": "eadopt-016",
+      "text": "How should an organization measure developer productivity gains from AI tool adoption?",
+      "textEs": "Como debe una organizacion medir las ganancias de productividad de desarrolladores por adopcion de herramientas de IA?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-016_c",
+      "explanation": "Measure productivity through multiple lenses: quantitative metrics (cycle time reduction, PR throughput, time-to-first-commit on new repos, bug fix turnaround), qualitative metrics (developer satisfaction surveys, self-reported time savings), and comparative metrics (A/B testing teams with and without AI tools). Avoid relying solely on lines of code or commit frequency, as these can be misleading. Track trends over weeks/months, not daily snapshots, to account for learning curves.",
+      "explanationEs": "Medir productividad a traves de multiples lentes: metricas cuantitativas (reduccion de tiempo de ciclo, rendimiento de PRs, tiempo hasta primer commit en repos nuevos, tiempo de resolucion de bugs), metricas cualitativas (encuestas de satisfaccion de desarrolladores, ahorro de tiempo auto-reportado), y metricas comparativas (pruebas A/B de equipos con y sin herramientas de IA). Evitar depender unicamente de lineas de codigo o frecuencia de commits, ya que pueden ser enganosas. Rastrear tendencias a lo largo de semanas/meses, no capturas diarias, para considerar curvas de aprendizaje.",
+      "options": [
+        { "id": "eadopt-016_a", "text": "Count lines of code generated per developer per day as the primary metric", "textEs": "Contar lineas de codigo generadas por desarrollador por dia como la metrica principal", "order": 1 },
+        { "id": "eadopt-016_b", "text": "Ask developers once if they feel more productive and use that as the definitive measure", "textEs": "Preguntar a los desarrolladores una vez si se sienten mas productivos y usar eso como la medida definitiva", "order": 2 },
+        { "id": "eadopt-016_c", "text": "Quantitative (cycle time, PR throughput, fix turnaround), qualitative (satisfaction, self-reported savings), comparative (A/B testing); track trends over months", "textEs": "Cuantitativas (tiempo de ciclo, rendimiento de PRs, tiempo de resolucion), cualitativas (satisfaccion, ahorros auto-reportados), comparativas (pruebas A/B); rastrear tendencias a lo largo de meses", "order": 3 },
+        { "id": "eadopt-016_d", "text": "Monitor only the total API cost; lower cost per developer means higher productivity", "textEs": "Monitorear solo el costo total de API; menor costo por desarrollador significa mayor productividad", "order": 4 }
+      ],
+      "tags": ["adoption", "productivity", "measurement", "metrics", "developer-experience"]
+    },
+    {
+      "id": "eadopt-017",
+      "text": "What data classification guidelines should be established before deploying Claude in an enterprise?",
+      "textEs": "Que directrices de clasificacion de datos deben establecerse antes de desplegar Claude en una empresa?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-017_b",
+      "explanation": "Establish clear data classification tiers: Public (safe to send to any AI), Internal (OK for enterprise-managed Claude with logging), Confidential (requires PII redaction, specific deployment models like Bedrock/Vertex), and Restricted (never send to AI — trade secrets, passwords, customer financial data). Each tier should specify allowed deployment channels, required safeguards, and approval processes. Train employees to classify data before using AI tools.",
+      "explanationEs": "Establecer niveles claros de clasificacion de datos: Publico (seguro para enviar a cualquier IA), Interno (OK para Claude gestionado por la empresa con logging), Confidencial (requiere redaccion de PII, modelos de despliegue especificos como Bedrock/Vertex), y Restringido (nunca enviar a IA — secretos comerciales, contrasenas, datos financieros de clientes). Cada nivel debe especificar canales de despliegue permitidos, salvaguardas requeridas y procesos de aprobacion. Capacitar empleados para clasificar datos antes de usar herramientas de IA.",
+      "options": [
+        { "id": "eadopt-017_a", "text": "All data can be sent to Claude safely; Anthropic ensures data privacy at all levels", "textEs": "Todos los datos pueden enviarse a Claude de forma segura; Anthropic asegura la privacidad de datos en todos los niveles", "order": 1 },
+        { "id": "eadopt-017_b", "text": "Tier system: Public (any AI), Internal (enterprise Claude with logging), Confidential (PII redaction + Bedrock/Vertex), Restricted (never AI); train employees", "textEs": "Sistema de niveles: Publico (cualquier IA), Interno (Claude empresarial con logging), Confidencial (redaccion PII + Bedrock/Vertex), Restringido (nunca IA); capacitar empleados", "order": 2 },
+        { "id": "eadopt-017_c", "text": "Only use AI for publicly available data; all internal data should be excluded", "textEs": "Solo usar IA para datos disponibles publicamente; todos los datos internos deben excluirse", "order": 3 },
+        { "id": "eadopt-017_d", "text": "Data classification is the responsibility of each individual developer", "textEs": "La clasificacion de datos es responsabilidad de cada desarrollador individual", "order": 4 }
+      ],
+      "tags": ["adoption", "data-classification", "security", "tiers", "guidelines"]
+    },
+    {
+      "id": "eadopt-018",
+      "text": "What are common adoption anti-patterns that enterprises should avoid?",
+      "textEs": "Cuales son anti-patrones comunes de adopcion que las empresas deben evitar?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-018_d",
+      "explanation": "Common adoption anti-patterns include: (1) 'Big Bang' deployment without piloting, (2) mandating AI usage without providing training, (3) measuring only cost savings while ignoring quality, (4) treating AI as a replacement for humans rather than augmentation, (5) over-restricting usage with excessive governance that makes AI tools impractical, (6) ignoring change management and cultural resistance, (7) not having clear ownership of the AI initiative, and (8) choosing the wrong use cases for initial deployment.",
+      "explanationEs": "Los anti-patrones comunes de adopcion incluyen: (1) despliegue 'Big Bang' sin piloto, (2) obligar el uso de IA sin proporcionar capacitacion, (3) medir solo ahorros de costos ignorando calidad, (4) tratar la IA como reemplazo de humanos en lugar de aumento, (5) restringir excesivamente el uso con gobernanza excesiva que hace las herramientas de IA impracticas, (6) ignorar gestion del cambio y resistencia cultural, (7) no tener propiedad clara de la iniciativa de IA, y (8) elegir los casos de uso incorrectos para el despliegue inicial.",
+      "options": [
+        { "id": "eadopt-018_a", "text": "Moving too slowly is the only real anti-pattern; speed of deployment is all that matters", "textEs": "Moverse demasiado lento es el unico anti-patron real; la velocidad de despliegue es todo lo que importa", "order": 1 },
+        { "id": "eadopt-018_b", "text": "Having too many governance policies is the main anti-pattern to avoid", "textEs": "Tener demasiadas politicas de gobernanza es el principal anti-patron a evitar", "order": 2 },
+        { "id": "eadopt-018_c", "text": "The only anti-pattern is choosing the wrong AI provider", "textEs": "El unico anti-patron es elegir el proveedor de IA incorrecto", "order": 3 },
+        { "id": "eadopt-018_d", "text": "Big Bang without piloting, mandating without training, measuring only costs, AI as replacement, over-restriction, ignoring change management, no ownership", "textEs": "Big Bang sin piloto, obligar sin capacitar, medir solo costos, IA como reemplazo, restriccion excesiva, ignorar gestion del cambio, sin propiedad", "order": 4 }
+      ],
+      "tags": ["adoption", "anti-patterns", "mistakes", "lessons-learned"]
+    },
+    {
+      "id": "eadopt-019",
+      "text": "How should an enterprise handle versioning and updates of AI models like Claude in production?",
+      "textEs": "Como debe una empresa manejar el versionado y actualizaciones de modelos de IA como Claude en produccion?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-019_a",
+      "explanation": "Enterprise model versioning requires: pinning to specific model versions in production (e.g., claude-3-5-sonnet-20241022), testing new versions against a regression test suite before upgrading, maintaining rollback capability, running canary deployments with a small percentage of traffic on new versions, documenting model changes and their impact on existing prompts, and scheduling upgrade windows. Never auto-upgrade production models without testing, as even minor version changes can affect prompt behavior.",
+      "explanationEs": "El versionado empresarial de modelos requiere: fijar versiones especificas del modelo en produccion (ej., claude-3-5-sonnet-20241022), probar nuevas versiones contra un conjunto de pruebas de regresion antes de actualizar, mantener capacidad de rollback, ejecutar despliegues canary con un pequeno porcentaje de trafico en versiones nuevas, documentar cambios de modelo y su impacto en prompts existentes, y programar ventanas de actualizacion. Nunca auto-actualizar modelos de produccion sin probar, ya que incluso cambios menores de version pueden afectar el comportamiento de prompts.",
+      "options": [
+        { "id": "eadopt-019_a", "text": "Pin specific versions, regression test before upgrading, rollback capability, canary deployments, document changes, scheduled upgrade windows", "textEs": "Fijar versiones especificas, probar regresion antes de actualizar, capacidad de rollback, despliegues canary, documentar cambios, ventanas de actualizacion programadas", "order": 1 },
+        { "id": "eadopt-019_b", "text": "Always use the latest model version automatically; newer is always better", "textEs": "Siempre usar la version mas reciente del modelo automaticamente; lo mas nuevo siempre es mejor", "order": 2 },
+        { "id": "eadopt-019_c", "text": "Never upgrade models once deployed; stability is more important than improvements", "textEs": "Nunca actualizar modelos una vez desplegados; la estabilidad es mas importante que las mejoras", "order": 3 },
+        { "id": "eadopt-019_d", "text": "Let Anthropic manage all versioning decisions for enterprise customers", "textEs": "Dejar que Anthropic gestione todas las decisiones de versionado para clientes empresariales", "order": 4 }
+      ],
+      "tags": ["adoption", "versioning", "model-management", "regression-testing", "production"]
+    },
+    {
+      "id": "eadopt-020",
+      "text": "What is the recommended approach for building internal AI use case catalogs?",
+      "textEs": "Cual es el enfoque recomendado para construir catalogos internos de casos de uso de IA?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-020_c",
+      "explanation": "An internal AI use case catalog documents proven, successful AI applications within the organization. It should include: the use case description, which team implemented it, measured results and ROI, the approach used (prompts, tools, deployment), difficulty and time investment, and lessons learned. This catalog serves as inspiration for other teams, reduces duplicate efforts, and provides evidence for expanding AI investment. It should be continuously updated as new use cases emerge.",
+      "explanationEs": "Un catalogo interno de casos de uso de IA documenta aplicaciones de IA probadas y exitosas dentro de la organizacion. Debe incluir: la descripcion del caso de uso, que equipo lo implemento, resultados medidos y ROI, el enfoque utilizado (prompts, herramientas, despliegue), dificultad e inversion de tiempo, y lecciones aprendidas. Este catalogo sirve como inspiracion para otros equipos, reduce esfuerzos duplicados y proporciona evidencia para expandir la inversion en IA. Debe actualizarse continuamente a medida que emergen nuevos casos de uso.",
+      "options": [
+        { "id": "eadopt-020_a", "text": "Use Anthropic's public case studies; internal documentation is unnecessary", "textEs": "Usar los estudios de caso publicos de Anthropic; la documentacion interna es innecesaria", "order": 1 },
+        { "id": "eadopt-020_b", "text": "Catalog only failed use cases to prevent others from making the same mistakes", "textEs": "Catalogar solo casos de uso fallidos para prevenir que otros cometan los mismos errores", "order": 2 },
+        { "id": "eadopt-020_c", "text": "Document proven use cases with team, results/ROI, approach, difficulty, lessons; serves as inspiration, reduces duplicates, evidence for expansion", "textEs": "Documentar casos de uso probados con equipo, resultados/ROI, enfoque, dificultad, lecciones; sirve como inspiracion, reduce duplicados, evidencia para expansion", "order": 3 },
+        { "id": "eadopt-020_d", "text": "Hire a consultant to create a comprehensive catalog before any team starts using AI", "textEs": "Contratar un consultor para crear un catalogo integral antes de que cualquier equipo comience a usar IA", "order": 4 }
+      ],
+      "tags": ["adoption", "use-case-catalog", "documentation", "knowledge-sharing"]
+    },
+    {
+      "id": "eadopt-021",
+      "text": "How should enterprises approach vendor evaluation when choosing between Claude and other AI models?",
+      "textEs": "Como deben las empresas abordar la evaluacion de proveedores al elegir entre Claude y otros modelos de IA?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-021_b",
+      "explanation": "Vendor evaluation should assess: model capabilities for your specific use cases (run benchmarks on your data), safety and alignment track record, deployment options (direct API, Bedrock, Vertex), pricing and scalability, data handling and privacy policies, compliance certifications (SOC 2, HIPAA, GDPR), enterprise support quality, and ecosystem maturity (tooling, documentation, community). Consider multi-model strategies where different models serve different use cases for cost and quality optimization.",
+      "explanationEs": "La evaluacion de proveedores debe evaluar: capacidades del modelo para tus casos de uso especificos (ejecutar benchmarks con tus datos), historial de seguridad y alineacion, opciones de despliegue (API directa, Bedrock, Vertex), precios y escalabilidad, politicas de manejo de datos y privacidad, certificaciones de cumplimiento (SOC 2, HIPAA, GDPR), calidad de soporte empresarial y madurez del ecosistema (herramientas, documentacion, comunidad). Considerar estrategias multi-modelo donde diferentes modelos sirven diferentes casos de uso para optimizacion de costo y calidad.",
+      "options": [
+        { "id": "eadopt-021_a", "text": "Choose the model with the highest benchmark scores; benchmarks are the only reliable indicator", "textEs": "Elegir el modelo con los puntajes de benchmark mas altos; los benchmarks son el unico indicador confiable", "order": 1 },
+        { "id": "eadopt-021_b", "text": "Evaluate capabilities on your data, safety record, deployment options, pricing, data policies, compliance certs, support, ecosystem; consider multi-model strategy", "textEs": "Evaluar capacidades con tus datos, historial de seguridad, opciones de despliegue, precios, politicas de datos, certificaciones de cumplimiento, soporte, ecosistema; considerar estrategia multi-modelo", "order": 2 },
+        { "id": "eadopt-021_c", "text": "Always choose the cheapest option; model quality differences are negligible", "textEs": "Siempre elegir la opcion mas barata; las diferencias de calidad del modelo son negligibles", "order": 3 },
+        { "id": "eadopt-021_d", "text": "Pick whichever model your cloud provider offers to simplify billing", "textEs": "Elegir el modelo que ofrezca tu proveedor de nube para simplificar la facturacion", "order": 4 }
+      ],
+      "tags": ["adoption", "vendor-evaluation", "selection", "multi-model", "comparison"]
+    },
+    {
+      "id": "eadopt-022",
+      "text": "What is the 'build vs buy' decision for enterprise AI tooling?",
+      "textEs": "Que es la decision 'construir vs comprar' para herramientas de IA empresarial?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-022_d",
+      "explanation": "Enterprises must decide between building custom AI applications on top of Claude's API (maximum flexibility but higher development cost) vs buying pre-built AI tools that use Claude (faster time to value but less customization). Factors include: uniqueness of use cases, available engineering resources, time-to-value requirements, customization needs, and long-term maintenance capacity. Many enterprises use a hybrid approach: buy for common use cases (code review, documentation) and build for unique competitive advantages.",
+      "explanationEs": "Las empresas deben decidir entre construir aplicaciones de IA personalizadas sobre la API de Claude (maxima flexibilidad pero mayor costo de desarrollo) vs comprar herramientas de IA pre-construidas que usan Claude (tiempo a valor mas rapido pero menos personalizacion). Los factores incluyen: unicidad de los casos de uso, recursos de ingenieria disponibles, requisitos de tiempo a valor, necesidades de personalizacion y capacidad de mantenimiento a largo plazo. Muchas empresas usan un enfoque hibrido: comprar para casos de uso comunes (revision de codigo, documentacion) y construir para ventajas competitivas unicas.",
+      "options": [
+        { "id": "eadopt-022_a", "text": "Always build custom solutions; pre-built tools never meet enterprise requirements", "textEs": "Siempre construir soluciones personalizadas; las herramientas pre-construidas nunca cumplen requisitos empresariales", "order": 1 },
+        { "id": "eadopt-022_b", "text": "Always buy pre-built solutions; building custom AI tooling is too risky", "textEs": "Siempre comprar soluciones pre-construidas; construir herramientas de IA personalizadas es demasiado riesgoso", "order": 2 },
+        { "id": "eadopt-022_c", "text": "Wait until open-source alternatives are available for all use cases", "textEs": "Esperar hasta que las alternativas de codigo abierto esten disponibles para todos los casos de uso", "order": 3 },
+        { "id": "eadopt-022_d", "text": "Evaluate based on use case uniqueness, resources, time-to-value, customization needs; hybrid approach — buy for common, build for competitive advantages", "textEs": "Evaluar basandose en unicidad del caso de uso, recursos, tiempo a valor, necesidades de personalizacion; enfoque hibrido — comprar para lo comun, construir para ventajas competitivas", "order": 4 }
+      ],
+      "tags": ["adoption", "build-vs-buy", "strategy", "customization", "hybrid"]
+    },
+    {
+      "id": "eadopt-023",
+      "text": "How should enterprises plan for scaling AI usage from pilot to organization-wide deployment?",
+      "textEs": "Como deben las empresas planificar para escalar el uso de IA de piloto a despliegue organizacional?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-023_a",
+      "explanation": "Scaling from pilot to organization-wide requires: infrastructure planning (API capacity, rate limits, cost projections), expanding the support model (from dedicated pilot support to self-service with documentation), building internal communities of practice, automating onboarding workflows, establishing monitoring and observability at scale, updating governance policies based on pilot learnings, securing adequate budget, and creating a phased rollout schedule with clear milestones. Plan for 3-5x the support needs during rapid scaling.",
+      "explanationEs": "Escalar de piloto a toda la organizacion requiere: planificacion de infraestructura (capacidad de API, limites de tasa, proyecciones de costos), expandir el modelo de soporte (de soporte dedicado de piloto a autoservicio con documentacion), construir comunidades de practica internas, automatizar flujos de trabajo de incorporacion, establecer monitoreo y observabilidad a escala, actualizar politicas de gobernanza basandose en aprendizajes del piloto, asegurar presupuesto adecuado, y crear un cronograma de despliegue por fases con hitos claros. Planificar para 3-5x las necesidades de soporte durante escalado rapido.",
+      "options": [
+        { "id": "eadopt-023_a", "text": "Infrastructure planning, self-service support, communities of practice, automated onboarding, monitoring at scale, updated governance, phased rollout with milestones", "textEs": "Planificacion de infraestructura, soporte autoservicio, comunidades de practica, incorporacion automatizada, monitoreo a escala, gobernanza actualizada, despliegue por fases con hitos", "order": 1 },
+        { "id": "eadopt-023_b", "text": "Simply give everyone access on the same day and let teams figure it out organically", "textEs": "Simplemente dar acceso a todos el mismo dia y dejar que los equipos lo resuelvan organicamente", "order": 2 },
+        { "id": "eadopt-023_c", "text": "Keep the same support model from the pilot; it should scale automatically", "textEs": "Mantener el mismo modelo de soporte del piloto; deberia escalar automaticamente", "order": 3 },
+        { "id": "eadopt-023_d", "text": "Scale only when all governance policies are finalized; never deploy in a learning phase", "textEs": "Escalar solo cuando todas las politicas de gobernanza esten finalizadas; nunca desplegar en una fase de aprendizaje", "order": 4 }
+      ],
+      "tags": ["adoption", "scaling", "pilot-to-production", "infrastructure", "rollout"]
+    },
+    {
+      "id": "eadopt-024",
+      "text": "What cost management strategies should enterprises implement for Claude usage at scale?",
+      "textEs": "Que estrategias de gestion de costos deben implementar las empresas para el uso de Claude a escala?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-024_c",
+      "explanation": "Enterprise cost management includes: setting per-team or per-project cost budgets with alerts, choosing the right model tier per use case (Haiku for simple tasks saves 90%+ vs Opus), implementing prompt optimization to reduce token usage, using caching for repeated system prompts, establishing cost allocation and chargeback models, monitoring usage trends to forecast future costs, negotiating volume commitments for discounts, and educating developers on cost-effective prompting practices.",
+      "explanationEs": "La gestion de costos empresarial incluye: establecer presupuestos de costos por equipo o por proyecto con alertas, elegir el nivel de modelo correcto por caso de uso (Haiku para tareas simples ahorra 90%+ vs Opus), implementar optimizacion de prompts para reducir uso de tokens, usar caching para system prompts repetidos, establecer modelos de asignacion de costos y contracargo, monitorear tendencias de uso para proyectar costos futuros, negociar compromisos de volumen para descuentos, y educar a los desarrolladores sobre practicas de prompting rentables.",
+      "options": [
+        { "id": "eadopt-024_a", "text": "Give every team unlimited budget and optimize later once patterns emerge", "textEs": "Dar a cada equipo presupuesto ilimitado y optimizar despues cuando emerjan patrones", "order": 1 },
+        { "id": "eadopt-024_b", "text": "Use only the cheapest model for everything to minimize costs", "textEs": "Usar solo el modelo mas barato para todo para minimizar costos", "order": 2 },
+        { "id": "eadopt-024_c", "text": "Per-team budgets with alerts, right model tier per task, prompt optimization, caching, cost allocation/chargeback, usage forecasting, volume discounts", "textEs": "Presupuestos por equipo con alertas, nivel de modelo correcto por tarea, optimizacion de prompts, caching, asignacion de costos/contracargo, proyeccion de uso, descuentos por volumen", "order": 3 },
+        { "id": "eadopt-024_d", "text": "Restrict AI usage to specific hours of the day to control costs", "textEs": "Restringir el uso de IA a horas especificas del dia para controlar costos", "order": 4 }
+      ],
+      "tags": ["adoption", "cost-management", "budgets", "optimization", "chargeback"]
+    },
+    {
+      "id": "eadopt-025",
+      "text": "What is the importance of establishing AI ethics guidelines as part of enterprise adoption?",
+      "textEs": "Cual es la importancia de establecer directrices de etica de IA como parte de la adopcion empresarial?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-025_b",
+      "explanation": "AI ethics guidelines define responsible AI use principles: transparency (disclosing AI involvement), fairness (avoiding biased outputs), accountability (human responsibility for AI-assisted decisions), privacy (data handling obligations), and safety (preventing harmful outputs). They build trust with employees, customers, and regulators. Guidelines should be practical — covering real scenarios employees face — not just aspirational. They complement governance by addressing the 'should we' questions, not just the 'can we' questions.",
+      "explanationEs": "Las directrices de etica de IA definen principios de uso responsable de IA: transparencia (revelar la participacion de IA), equidad (evitar salidas sesgadas), responsabilidad (responsabilidad humana por decisiones asistidas por IA), privacidad (obligaciones de manejo de datos) y seguridad (prevenir salidas daninas). Construyen confianza con empleados, clientes y reguladores. Las directrices deben ser practicas — cubriendo escenarios reales que enfrentan los empleados — no solo aspiracionales. Complementan la gobernanza al abordar las preguntas de 'deberiamos' no solo las de 'podemos'.",
+      "options": [
+        { "id": "eadopt-025_a", "text": "Ethics guidelines are unnecessary; legal compliance is sufficient", "textEs": "Las directrices de etica son innecesarias; el cumplimiento legal es suficiente", "order": 1 },
+        { "id": "eadopt-025_b", "text": "Define transparency, fairness, accountability, privacy, safety principles; practical scenarios not just aspirational; build trust; address 'should we' not just 'can we'", "textEs": "Definir principios de transparencia, equidad, responsabilidad, privacidad, seguridad; escenarios practicos no solo aspiracionales; construir confianza; abordar 'deberiamos' no solo 'podemos'", "order": 2 },
+        { "id": "eadopt-025_c", "text": "Wait for Anthropic to publish mandatory ethics guidelines for all enterprise customers", "textEs": "Esperar a que Anthropic publique directrices de etica obligatorias para todos los clientes empresariales", "order": 3 },
+        { "id": "eadopt-025_d", "text": "Ethics are only relevant for consumer-facing AI; internal enterprise use does not need ethics guidelines", "textEs": "La etica solo es relevante para IA orientada al consumidor; el uso empresarial interno no necesita directrices de etica", "order": 4 }
+      ],
+      "tags": ["adoption", "ethics", "responsible-ai", "transparency", "fairness"]
     }
   ]
 }

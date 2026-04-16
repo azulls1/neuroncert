@@ -5,7 +5,7 @@
     "trackId": "claude-code-action",
     "version": "1.0.0",
     "lastUpdated": "2026-04-13",
-    "totalQuestions": 10
+    "totalQuestions": 25
   },
   "questions": [
     {
@@ -207,6 +207,306 @@
         { "id": "cca-010_d", "text": "Siempre crear commits nuevos en lugar de enmendar, especialmente tras fallo de hooks, para no destruir trabajo previo", "textEs": "Siempre crear commits nuevos en lugar de enmendar, especialmente tras fallo de hooks, para no destruir trabajo previo", "order": 4 }
       ],
       "tags": ["git", "commits", "seguridad"]
+    },
+    {
+      "id": "cca-011",
+      "text": "What is the CLAUDE.md file and how does it influence Claude Code's behavior?",
+      "textEs": "Que es el archivo CLAUDE.md y como influye en el comportamiento de Claude Code?",
+      "domainCode": "claude-code-action",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-011_a",
+      "explanation": "CLAUDE.md is a project-level configuration file placed at the root of a repository. Claude Code automatically reads it at the start of every session, treating its contents as persistent instructions. It typically contains coding standards, architectural decisions, project conventions, and behavioral rules. This allows teams to share Claude Code configuration through version control, ensuring consistent AI behavior across all team members.",
+      "explanationEs": "CLAUDE.md es un archivo de configuracion a nivel de proyecto colocado en la raiz de un repositorio. Claude Code lo lee automaticamente al inicio de cada sesion, tratando su contenido como instrucciones persistentes. Tipicamente contiene estandares de codificacion, decisiones arquitectonicas, convenciones del proyecto y reglas de comportamiento. Esto permite a los equipos compartir la configuracion de Claude Code a traves del control de versiones, asegurando comportamiento consistente de la IA entre todos los miembros del equipo.",
+      "options": [
+        { "id": "cca-011_a", "text": "Archivo de configuracion en la raiz del repo, leido automaticamente cada sesion, con estandares y reglas del proyecto compartidas via control de versiones", "textEs": "Archivo de configuracion en la raiz del repo, leido automaticamente cada sesion, con estandares y reglas del proyecto compartidas via control de versiones", "order": 1 },
+        { "id": "cca-011_b", "text": "Un archivo README para documentar como usar Claude Code en el proyecto", "textEs": "Un archivo README para documentar como usar Claude Code en el proyecto", "order": 2 },
+        { "id": "cca-011_c", "text": "Un archivo de log donde Claude Code registra sus acciones", "textEs": "Un archivo de log donde Claude Code registra sus acciones", "order": 3 },
+        { "id": "cca-011_d", "text": "Un archivo que solo el administrador del sistema puede crear y editar", "textEs": "Un archivo que solo el administrador del sistema puede crear y editar", "order": 4 }
+      ],
+      "tags": ["claude-md", "configuracion", "proyecto"]
+    },
+    {
+      "id": "cca-012",
+      "text": "What is the Glob tool in Claude Code and when should it be used instead of Grep?",
+      "textEs": "Que es la herramienta Glob en Claude Code y cuando debe usarse en lugar de Grep?",
+      "domainCode": "claude-code-action",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-012_b",
+      "explanation": "Glob is a fast file pattern matching tool that finds files by name patterns (e.g., '**/*.ts', 'src/**/*.component.ts'). Use Glob when you need to find files by name or extension, and Grep when you need to search file contents for specific text patterns. Glob is for 'where is this file?' questions, while Grep is for 'which files contain this code?' questions. Glob returns file paths sorted by modification time.",
+      "explanationEs": "Glob es una herramienta rapida de coincidencia de patrones de archivos que encuentra archivos por patrones de nombre (ej., '**/*.ts', 'src/**/*.component.ts'). Usar Glob cuando necesitas encontrar archivos por nombre o extension, y Grep cuando necesitas buscar contenido de archivos para patrones de texto especificos. Glob es para preguntas de 'donde esta este archivo?', mientras que Grep es para preguntas de 'que archivos contienen este codigo?'. Glob devuelve rutas de archivos ordenadas por tiempo de modificacion.",
+      "options": [
+        { "id": "cca-012_a", "text": "Glob y Grep son la misma herramienta con nombres diferentes", "textEs": "Glob y Grep son la misma herramienta con nombres diferentes", "order": 1 },
+        { "id": "cca-012_b", "text": "Glob busca archivos por patrones de nombre/extension; Grep busca contenido dentro de archivos. Glob para 'donde esta', Grep para 'que contiene'", "textEs": "Glob busca archivos por patrones de nombre/extension; Grep busca contenido dentro de archivos. Glob para 'donde esta', Grep para 'que contiene'", "order": 2 },
+        { "id": "cca-012_c", "text": "Glob solo funciona en Windows y Grep solo en Linux", "textEs": "Glob solo funciona en Windows y Grep solo en Linux", "order": 3 },
+        { "id": "cca-012_d", "text": "Glob es mas lento pero mas preciso que Grep en todos los casos", "textEs": "Glob es mas lento pero mas preciso que Grep en todos los casos", "order": 4 }
+      ],
+      "tags": ["glob", "grep", "busqueda", "herramientas"]
+    },
+    {
+      "id": "cca-013",
+      "text": "How does Claude Code handle permission requests for potentially destructive operations?",
+      "textEs": "Como maneja Claude Code las solicitudes de permisos para operaciones potencialmente destructivas?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-013_c",
+      "explanation": "Claude Code implements a tiered permission system. Read-only operations (Read, Grep, Glob) run without asking. File modifications (Edit, Write) require user approval by default. Bash commands are evaluated for risk — safe commands may auto-approve while potentially destructive ones require confirmation. Users can configure auto-approve rules in settings to trust specific tools or patterns. This balances productivity with safety.",
+      "explanationEs": "Claude Code implementa un sistema de permisos escalonado. Operaciones de solo lectura (Read, Grep, Glob) se ejecutan sin preguntar. Modificaciones de archivos (Edit, Write) requieren aprobacion del usuario por defecto. Comandos Bash se evaluan por riesgo — comandos seguros pueden auto-aprobarse mientras los potencialmente destructivos requieren confirmacion. Los usuarios pueden configurar reglas de auto-aprobacion en settings para confiar en herramientas o patrones especificos. Esto balancea productividad con seguridad.",
+      "options": [
+        { "id": "cca-013_a", "text": "Claude Code nunca pide permiso; todas las operaciones se ejecutan automaticamente", "textEs": "Claude Code nunca pide permiso; todas las operaciones se ejecutan automaticamente", "order": 1 },
+        { "id": "cca-013_b", "text": "Todas las operaciones requieren aprobacion manual sin excepcion", "textEs": "Todas las operaciones requieren aprobacion manual sin excepcion", "order": 2 },
+        { "id": "cca-013_c", "text": "Sistema escalonado: lectura sin permiso, escritura requiere aprobacion, bash evaluado por riesgo; configurable con reglas de auto-aprobacion", "textEs": "Sistema escalonado: lectura sin permiso, escritura requiere aprobacion, bash evaluado por riesgo; configurable con reglas de auto-aprobacion", "order": 3 },
+        { "id": "cca-013_d", "text": "Los permisos dependen del sistema operativo, no de Claude Code", "textEs": "Los permisos dependen del sistema operativo, no de Claude Code", "order": 4 }
+      ],
+      "tags": ["permisos", "seguridad", "auto-approve"]
+    },
+    {
+      "id": "cca-014",
+      "text": "What is the Task tool in Claude Code and how does it relate to subagents?",
+      "textEs": "Que es la herramienta Task en Claude Code y como se relaciona con subagentes?",
+      "domainCode": "claude-code-action",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-014_d",
+      "explanation": "The Task tool spawns a subagent — a separate Claude Code instance with its own isolated context. The main agent delegates a specific piece of work, the subagent performs it independently (reading files, running commands), and returns only a concise result. This preserves the main agent's context window by keeping intermediate data (like file contents and search results) in the subagent's separate context. It is ideal for research, code analysis, and scoped modifications.",
+      "explanationEs": "La herramienta Task genera un subagente — una instancia separada de Claude Code con su propio contexto aislado. El agente principal delega una pieza especifica de trabajo, el subagente la realiza independientemente (leyendo archivos, ejecutando comandos), y devuelve solo un resultado conciso. Esto preserva la ventana de contexto del agente principal manteniendo datos intermedios (como contenido de archivos y resultados de busqueda) en el contexto separado del subagente. Es ideal para investigacion, analisis de codigo y modificaciones delimitadas.",
+      "options": [
+        { "id": "cca-014_a", "text": "Un gestor de tareas tipo Jira integrado en Claude Code", "textEs": "Un gestor de tareas tipo Jira integrado en Claude Code", "order": 1 },
+        { "id": "cca-014_b", "text": "Un comando que ejecuta scripts bash en segundo plano", "textEs": "Un comando que ejecuta scripts bash en segundo plano", "order": 2 },
+        { "id": "cca-014_c", "text": "Una herramienta para crear recordatorios y alarmas durante la sesion", "textEs": "Una herramienta para crear recordatorios y alarmas durante la sesion", "order": 3 },
+        { "id": "cca-014_d", "text": "Genera un subagente con contexto aislado que realiza trabajo delegado y devuelve resultado conciso, preservando el contexto del agente principal", "textEs": "Genera un subagente con contexto aislado que realiza trabajo delegado y devuelve resultado conciso, preservando el contexto del agente principal", "order": 4 }
+      ],
+      "tags": ["task", "subagentes", "contexto-aislado"]
+    },
+    {
+      "id": "cca-015",
+      "text": "What is the purpose of the .mcp.json file in a Claude Code project?",
+      "textEs": "Cual es el proposito del archivo .mcp.json en un proyecto de Claude Code?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-015_a",
+      "explanation": "The .mcp.json file configures MCP (Model Context Protocol) servers for the project. It specifies which MCP servers to connect to, the commands to launch them, required arguments, and environment variables. When Claude Code starts, it reads this file and connects to the configured servers, making their tools available during the session. This file is committed to the repo so all team members get the same MCP tools.",
+      "explanationEs": "El archivo .mcp.json configura servidores MCP (Model Context Protocol) para el proyecto. Especifica a que servidores MCP conectarse, los comandos para lanzarlos, argumentos requeridos y variables de entorno. Cuando Claude Code inicia, lee este archivo y se conecta a los servidores configurados, haciendo sus herramientas disponibles durante la sesion. Este archivo se sube al repo para que todos los miembros del equipo obtengan las mismas herramientas MCP.",
+      "options": [
+        { "id": "cca-015_a", "text": "Configura servidores MCP del proyecto: servidores, comandos, argumentos, variables de entorno; compartido via repo para consistencia del equipo", "textEs": "Configura servidores MCP del proyecto: servidores, comandos, argumentos, variables de entorno; compartido via repo para consistencia del equipo", "order": 1 },
+        { "id": "cca-015_b", "text": "Un archivo de configuracion de MongoDB para la base de datos del proyecto", "textEs": "Un archivo de configuracion de MongoDB para la base de datos del proyecto", "order": 2 },
+        { "id": "cca-015_c", "text": "Un manifiesto de dependencias similar a package.json", "textEs": "Un manifiesto de dependencias similar a package.json", "order": 3 },
+        { "id": "cca-015_d", "text": "Un archivo que almacena la configuracion de la API key de Anthropic", "textEs": "Un archivo que almacena la configuracion de la API key de Anthropic", "order": 4 }
+      ],
+      "tags": ["mcp-json", "configuracion", "servidores-mcp"]
+    },
+    {
+      "id": "cca-016",
+      "text": "How can you use Claude Code in non-interactive (headless) mode for automation?",
+      "textEs": "Como puedes usar Claude Code en modo no interactivo (headless) para automatizacion?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-016_b",
+      "explanation": "Claude Code's print mode (claude -p 'prompt') runs non-interactively: it sends a single prompt, executes the task, and outputs the result to stdout. This is ideal for CI/CD pipelines, cron jobs, and scripts. Use --allowedTools to restrict capabilities, --output-format for structured output (JSON or stream-json), and pipe the result to other tools. For GitHub Actions, the official Claude Code Action provides a pre-built integration.",
+      "explanationEs": "El modo print de Claude Code (claude -p 'prompt') se ejecuta no interactivamente: envia un solo prompt, ejecuta la tarea y genera el resultado a stdout. Esto es ideal para pipelines CI/CD, cron jobs y scripts. Usar --allowedTools para restringir capacidades, --output-format para salida estructurada (JSON o stream-json), y redirigir el resultado a otras herramientas. Para GitHub Actions, la Claude Code Action oficial proporciona una integracion pre-construida.",
+      "options": [
+        { "id": "cca-016_a", "text": "Claude Code solo funciona en modo interactivo; no tiene modo headless", "textEs": "Claude Code solo funciona en modo interactivo; no tiene modo headless", "order": 1 },
+        { "id": "cca-016_b", "text": "Modo print (claude -p 'prompt') para ejecucion no interactiva; --allowedTools para restriccion, --output-format para JSON; ideal para CI/CD y scripts", "textEs": "Modo print (claude -p 'prompt') para ejecucion no interactiva; --allowedTools para restriccion, --output-format para JSON; ideal para CI/CD y scripts", "order": 2 },
+        { "id": "cca-016_c", "text": "Se necesita una licencia especial para el modo headless de Claude Code", "textEs": "Se necesita una licencia especial para el modo headless de Claude Code", "order": 3 },
+        { "id": "cca-016_d", "text": "Usar la API de Anthropic directamente; Claude Code no puede automatizarse", "textEs": "Usar la API de Anthropic directamente; Claude Code no puede automatizarse", "order": 4 }
+      ],
+      "tags": ["headless", "print-mode", "automatizacion", "ci-cd"]
+    },
+    {
+      "id": "cca-017",
+      "text": "What is the settings.json file in Claude Code and what can be configured there?",
+      "textEs": "Que es el archivo settings.json en Claude Code y que se puede configurar alli?",
+      "domainCode": "claude-code-action",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-017_c",
+      "explanation": "The settings.json file (~/.claude/settings.json for global, .claude/settings.json for project) configures Claude Code behavior. It can include: hooks (scripts triggered on events like pre/post tool execution), permission rules (auto-approve certain tools), model preferences, and custom configurations. Project-level settings override global settings. Hooks are particularly important for automation — they let you run scripts automatically when Claude performs certain actions.",
+      "explanationEs": "El archivo settings.json (~/.claude/settings.json para global, .claude/settings.json para proyecto) configura el comportamiento de Claude Code. Puede incluir: hooks (scripts activados en eventos como pre/post ejecucion de herramientas), reglas de permisos (auto-aprobar ciertas herramientas), preferencias de modelo y configuraciones personalizadas. Los settings a nivel de proyecto sobreescriben los globales. Los hooks son particularmente importantes para automatizacion — permiten ejecutar scripts automaticamente cuando Claude realiza ciertas acciones.",
+      "options": [
+        { "id": "cca-017_a", "text": "Un archivo que almacena las preferencias visuales de la interfaz de Claude Code", "textEs": "Un archivo que almacena las preferencias visuales de la interfaz de Claude Code", "order": 1 },
+        { "id": "cca-017_b", "text": "La configuracion del servidor web para desplegar aplicaciones", "textEs": "La configuracion del servidor web para desplegar aplicaciones", "order": 2 },
+        { "id": "cca-017_c", "text": "Configura hooks (scripts en eventos), permisos de auto-aprobacion, preferencias de modelo; proyecto sobreescribe global", "textEs": "Configura hooks (scripts en eventos), permisos de auto-aprobacion, preferencias de modelo; proyecto sobreescribe global", "order": 3 },
+        { "id": "cca-017_d", "text": "Un archivo JSON que almacena las conversaciones previas con Claude", "textEs": "Un archivo JSON que almacena las conversaciones previas con Claude", "order": 4 }
+      ],
+      "tags": ["settings", "hooks", "configuracion", "permisos"]
+    },
+    {
+      "id": "cca-018",
+      "text": "What best practices should be followed when using Claude Code for code refactoring?",
+      "textEs": "Que mejores practicas deben seguirse al usar Claude Code para refactorizacion de codigo?",
+      "domainCode": "claude-code-action",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-018_d",
+      "explanation": "Best practices for refactoring with Claude Code: (1) ensure tests exist before refactoring (run them first to confirm they pass), (2) refactor in small, incremental steps rather than large rewrites, (3) run tests after each change to catch regressions immediately, (4) use git commits between steps so you can revert individual changes, (5) provide clear CLAUDE.md guidelines about coding standards, and (6) review Claude's proposed changes before approving. Never refactor and add features in the same step.",
+      "explanationEs": "Mejores practicas para refactorizacion con Claude Code: (1) asegurar que existan tests antes de refactorizar (ejecutarlos primero para confirmar que pasan), (2) refactorizar en pasos pequenos e incrementales en lugar de grandes reescrituras, (3) ejecutar tests despues de cada cambio para capturar regresiones inmediatamente, (4) usar commits de git entre pasos para poder revertir cambios individuales, (5) proporcionar directrices claras en CLAUDE.md sobre estandares de codificacion, y (6) revisar los cambios propuestos por Claude antes de aprobar. Nunca refactorizar y agregar funciones en el mismo paso.",
+      "options": [
+        { "id": "cca-018_a", "text": "Refactorizar todo el proyecto de una vez para mayor eficiencia", "textEs": "Refactorizar todo el proyecto de una vez para mayor eficiencia", "order": 1 },
+        { "id": "cca-018_b", "text": "No se necesitan tests; Claude Code genera codigo correcto por defecto", "textEs": "No se necesitan tests; Claude Code genera codigo correcto por defecto", "order": 2 },
+        { "id": "cca-018_c", "text": "Aprobar automaticamente todos los cambios de Claude para mayor velocidad", "textEs": "Aprobar automaticamente todos los cambios de Claude para mayor velocidad", "order": 3 },
+        { "id": "cca-018_d", "text": "Tests antes, cambios incrementales, tests despues de cada paso, commits entre pasos, directrices en CLAUDE.md, revisar cambios; nunca refactorizar y agregar funciones juntos", "textEs": "Tests antes, cambios incrementales, tests despues de cada paso, commits entre pasos, directrices en CLAUDE.md, revisar cambios; nunca refactorizar y agregar funciones juntos", "order": 4 }
+      ],
+      "tags": ["refactorizacion", "buenas-practicas", "tests", "incremental"]
+    },
+    {
+      "id": "cca-019",
+      "text": "How does Claude Code's context window management affect long coding sessions?",
+      "textEs": "Como afecta la gestion de la ventana de contexto de Claude Code las sesiones de codificacion largas?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-019_a",
+      "explanation": "As a session progresses, the context window fills with conversation history, file contents, and tool results. When context usage gets high, Claude Code can automatically compact older messages. Signs of context pressure include: Claude forgetting earlier instructions, repeated reading of the same files, or declining response quality. Best practices: start new sessions for unrelated tasks, use subagents for research-heavy work, keep CLAUDE.md concise, and use the /clear command when context becomes stale.",
+      "explanationEs": "A medida que avanza una sesion, la ventana de contexto se llena con historial de conversacion, contenido de archivos y resultados de herramientas. Cuando el uso de contexto es alto, Claude Code puede compactar automaticamente mensajes antiguos. Senales de presion de contexto incluyen: Claude olvidando instrucciones anteriores, lectura repetida de los mismos archivos, o calidad de respuesta declinante. Mejores practicas: iniciar nuevas sesiones para tareas no relacionadas, usar subagentes para trabajo intensivo en investigacion, mantener CLAUDE.md conciso, y usar el comando /clear cuando el contexto se vuelve obsoleto.",
+      "options": [
+        { "id": "cca-019_a", "text": "El contexto se llena progresivamente; compactacion automatica; nuevas sesiones para tareas distintas, subagentes para investigacion, /clear cuando sea necesario", "textEs": "El contexto se llena progresivamente; compactacion automatica; nuevas sesiones para tareas distintas, subagentes para investigacion, /clear cuando sea necesario", "order": 1 },
+        { "id": "cca-019_b", "text": "Claude Code tiene memoria infinita; las sesiones largas no tienen limitaciones", "textEs": "Claude Code tiene memoria infinita; las sesiones largas no tienen limitaciones", "order": 2 },
+        { "id": "cca-019_c", "text": "Las sesiones se limitan automaticamente a 30 minutos sin posibilidad de extension", "textEs": "Las sesiones se limitan automaticamente a 30 minutos sin posibilidad de extension", "order": 3 },
+        { "id": "cca-019_d", "text": "El contexto no afecta la calidad; Claude siempre produce los mismos resultados", "textEs": "El contexto no afecta la calidad; Claude siempre produce los mismos resultados", "order": 4 }
+      ],
+      "tags": ["contexto", "ventana", "sesiones-largas", "compactacion"]
+    },
+    {
+      "id": "cca-020",
+      "text": "What is the recommended workflow for using Claude Code to fix a failing test?",
+      "textEs": "Cual es el flujo de trabajo recomendado para usar Claude Code para corregir un test fallido?",
+      "domainCode": "claude-code-action",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-020_b",
+      "explanation": "The recommended workflow is: (1) Share the failing test output with Claude (paste or run the test command), (2) Let Claude read the test file and the implementation file, (3) Claude analyzes the error and proposes a fix, (4) Review and approve the fix, (5) Run the test again to verify it passes, (6) Check that other tests still pass. Always let Claude see the actual error message — generic descriptions like 'the test fails' are much less helpful than the full stack trace.",
+      "explanationEs": "El flujo de trabajo recomendado es: (1) Compartir la salida del test fallido con Claude (pegar o ejecutar el comando de test), (2) Dejar que Claude lea el archivo de test y el archivo de implementacion, (3) Claude analiza el error y propone una correccion, (4) Revisar y aprobar la correccion, (5) Ejecutar el test nuevamente para verificar que pase, (6) Verificar que otros tests sigan pasando. Siempre dejar que Claude vea el mensaje de error real — descripciones genericas como 'el test falla' son mucho menos utiles que el stack trace completo.",
+      "options": [
+        { "id": "cca-020_a", "text": "Describir el error con palabras propias; Claude no necesita ver la salida del test", "textEs": "Describir el error con palabras propias; Claude no necesita ver la salida del test", "order": 1 },
+        { "id": "cca-020_b", "text": "Compartir salida del test fallido, dejar que Claude lea test e implementacion, revisar correccion propuesta, re-ejecutar test, verificar que otros tests pasen", "textEs": "Compartir salida del test fallido, dejar que Claude lea test e implementacion, revisar correccion propuesta, re-ejecutar test, verificar que otros tests pasen", "order": 2 },
+        { "id": "cca-020_c", "text": "Eliminar el test fallido y pedir a Claude que escriba uno nuevo que pase", "textEs": "Eliminar el test fallido y pedir a Claude que escriba uno nuevo que pase", "order": 3 },
+        { "id": "cca-020_d", "text": "Pedir a Claude que modifique el test para que coincida con el comportamiento actual del codigo", "textEs": "Pedir a Claude que modifique el test para que coincida con el comportamiento actual del codigo", "order": 4 }
+      ],
+      "tags": ["testing", "debugging", "flujo-trabajo"]
+    },
+    {
+      "id": "cca-021",
+      "text": "How does Claude Code handle multiple file edits as part of a single task?",
+      "textEs": "Como maneja Claude Code ediciones de multiples archivos como parte de una sola tarea?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "practice",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-021_c",
+      "explanation": "Claude Code can edit multiple files in sequence as part of a single task. It reads each file first (mandatory), then applies targeted edits using the Edit tool. For complex changes spanning many files (like renaming a component), Claude plans the changes, identifies all affected files using Grep/Glob, and applies edits systematically. Each Edit operation is atomic — if the old_string is not found, the edit fails safely without modifying the file.",
+      "explanationEs": "Claude Code puede editar multiples archivos en secuencia como parte de una sola tarea. Lee cada archivo primero (obligatorio), luego aplica ediciones dirigidas usando la herramienta Edit. Para cambios complejos que abarcan muchos archivos (como renombrar un componente), Claude planifica los cambios, identifica todos los archivos afectados usando Grep/Glob, y aplica ediciones sistematicamente. Cada operacion Edit es atomica — si el old_string no se encuentra, la edicion falla de forma segura sin modificar el archivo.",
+      "options": [
+        { "id": "cca-021_a", "text": "Claude Code solo puede editar un archivo por turno de conversacion", "textEs": "Claude Code solo puede editar un archivo por turno de conversacion", "order": 1 },
+        { "id": "cca-021_b", "text": "Todos los archivos se editan simultaneamente en una sola operacion atomica", "textEs": "Todos los archivos se editan simultaneamente en una sola operacion atomica", "order": 2 },
+        { "id": "cca-021_c", "text": "Lee cada archivo primero, aplica ediciones Edit atomicas en secuencia; para cambios amplios usa Grep/Glob para identificar archivos afectados sistematicamente", "textEs": "Lee cada archivo primero, aplica ediciones Edit atomicas en secuencia; para cambios amplios usa Grep/Glob para identificar archivos afectados sistematicamente", "order": 3 },
+        { "id": "cca-021_d", "text": "Claude Code solo puede editar archivos que el usuario ha abierto manualmente", "textEs": "Claude Code solo puede editar archivos que el usuario ha abierto manualmente", "order": 4 }
+      ],
+      "tags": ["edicion-multiple", "edit", "archivos", "atomico"]
+    },
+    {
+      "id": "cca-022",
+      "text": "What is the /compact command and when should you use it?",
+      "textEs": "Que es el comando /compact y cuando debes usarlo?",
+      "domainCode": "claude-code-action",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "practice",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-022_d",
+      "explanation": "The /compact command summarizes the current conversation to free up context space. It condenses the conversation history while preserving key information and decisions. Use it when you notice Claude starting to forget earlier context, when context usage is high, or when transitioning to a different aspect of the same task. It is less drastic than /clear (which erases everything) and preserves more continuity.",
+      "explanationEs": "El comando /compact resume la conversacion actual para liberar espacio de contexto. Condensa el historial de conversacion mientras preserva informacion clave y decisiones. Usarlo cuando notas que Claude empieza a olvidar contexto anterior, cuando el uso de contexto es alto, o al transicionar a un aspecto diferente de la misma tarea. Es menos drastico que /clear (que borra todo) y preserva mas continuidad.",
+      "options": [
+        { "id": "cca-022_a", "text": "Comprime archivos del proyecto para reducir espacio en disco", "textEs": "Comprime archivos del proyecto para reducir espacio en disco", "order": 1 },
+        { "id": "cca-022_b", "text": "Minimiza la ventana de Claude Code en la terminal", "textEs": "Minimiza la ventana de Claude Code en la terminal", "order": 2 },
+        { "id": "cca-022_c", "text": "Elimina toda la conversacion y empieza desde cero (igual que /clear)", "textEs": "Elimina toda la conversacion y empieza desde cero (igual que /clear)", "order": 3 },
+        { "id": "cca-022_d", "text": "Resume la conversacion para liberar contexto preservando informacion clave; menos drastico que /clear; usar cuando el contexto esta alto", "textEs": "Resume la conversacion para liberar contexto preservando informacion clave; menos drastico que /clear; usar cuando el contexto esta alto", "order": 4 }
+      ],
+      "tags": ["compact", "contexto", "comandos", "gestion"]
+    },
+    {
+      "id": "cca-023",
+      "text": "How can you use Claude Code effectively for code review?",
+      "textEs": "Como puedes usar Claude Code efectivamente para revision de codigo?",
+      "domainCode": "claude-code-action",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-023_a",
+      "explanation": "Effective code review with Claude Code: share the diff or changed files (using git diff or reading specific files), provide context about the purpose of the changes, ask Claude to review for specific concerns (bugs, security, performance, style). In CI/CD, use claude -p with the diff piped in and --allowedTools restricted to read-only. Create a .claude/commands/review.md skill with specific review criteria. Claude's reviews are most valuable when given clear review guidelines and the full context of what the code should do.",
+      "explanationEs": "Revision de codigo efectiva con Claude Code: compartir el diff o archivos cambiados (usando git diff o leyendo archivos especificos), proporcionar contexto sobre el proposito de los cambios, pedir a Claude que revise para preocupaciones especificas (bugs, seguridad, rendimiento, estilo). En CI/CD, usar claude -p con el diff redirigido y --allowedTools restringido a solo lectura. Crear un skill .claude/commands/review.md con criterios de revision especificos. Las revisiones de Claude son mas valiosas cuando se dan directrices de revision claras y el contexto completo de lo que el codigo debe hacer.",
+      "options": [
+        { "id": "cca-023_a", "text": "Compartir diff/archivos, dar contexto del proposito, pedir revision especifica (bugs, seguridad); en CI/CD usar -p con solo lectura; crear skill de revision", "textEs": "Compartir diff/archivos, dar contexto del proposito, pedir revision especifica (bugs, seguridad); en CI/CD usar -p con solo lectura; crear skill de revision", "order": 1 },
+        { "id": "cca-023_b", "text": "Pedir a Claude que apruebe todos los cambios sin revisarlos para ahorrar tiempo", "textEs": "Pedir a Claude que apruebe todos los cambios sin revisarlos para ahorrar tiempo", "order": 2 },
+        { "id": "cca-023_c", "text": "Claude Code no puede hacer revision de codigo; solo puede escribir codigo nuevo", "textEs": "Claude Code no puede hacer revision de codigo; solo puede escribir codigo nuevo", "order": 3 },
+        { "id": "cca-023_d", "text": "Solo revisar archivos menores de 100 lineas; archivos grandes son imposibles de revisar", "textEs": "Solo revisar archivos menores de 100 lineas; archivos grandes son imposibles de revisar", "order": 4 }
+      ],
+      "tags": ["code-review", "diff", "ci-cd", "skill"]
+    },
+    {
+      "id": "cca-024",
+      "text": "What is the difference between the /clear and /compact commands?",
+      "textEs": "Cual es la diferencia entre los comandos /clear y /compact?",
+      "domainCode": "claude-code-action",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-024_b",
+      "explanation": "/clear completely erases the conversation history, starting a completely fresh session. Claude loses all context about what was discussed or done. /compact summarizes the conversation into a condensed form, preserving key decisions and context while freeing up space. Use /clear when switching to a completely unrelated task. Use /compact when you want to continue the same work but need more context space.",
+      "explanationEs": "/clear borra completamente el historial de conversacion, iniciando una sesion completamente nueva. Claude pierde todo el contexto sobre lo que se discutio o hizo. /compact resume la conversacion en una forma condensada, preservando decisiones clave y contexto mientras libera espacio. Usar /clear cuando cambias a una tarea completamente no relacionada. Usar /compact cuando quieres continuar el mismo trabajo pero necesitas mas espacio de contexto.",
+      "options": [
+        { "id": "cca-024_a", "text": "Son el mismo comando; ambos borran toda la conversacion", "textEs": "Son el mismo comando; ambos borran toda la conversacion", "order": 1 },
+        { "id": "cca-024_b", "text": "/clear borra todo (sesion nueva); /compact resume preservando decisiones clave. /clear para tareas nuevas; /compact para continuar con mas espacio", "textEs": "/clear borra todo (sesion nueva); /compact resume preservando decisiones clave. /clear para tareas nuevas; /compact para continuar con mas espacio", "order": 2 },
+        { "id": "cca-024_c", "text": "/clear es para archivos y /compact es para la conversacion", "textEs": "/clear es para archivos y /compact es para la conversacion", "order": 3 },
+        { "id": "cca-024_d", "text": "/compact es mas agresivo que /clear y elimina mas informacion", "textEs": "/compact es mas agresivo que /clear y elimina mas informacion", "order": 4 }
+      ],
+      "tags": ["clear", "compact", "comandos", "gestion-contexto"]
+    },
+    {
+      "id": "cca-025",
+      "text": "How can you configure Claude Code to work with a custom development environment?",
+      "textEs": "Como puedes configurar Claude Code para trabajar con un entorno de desarrollo personalizado?",
+      "domainCode": "claude-code-action",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "practice",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-025_c",
+      "explanation": "Custom environment configuration involves: CLAUDE.md for project-specific coding standards and conventions, .mcp.json for MCP server integrations (databases, APIs, tools), .claude/settings.json for hooks and permissions, .claude/commands/ for custom skills/workflows, and environment variables for API keys and credentials. Together, these create a comprehensive development environment where Claude Code understands your project's tools, standards, and workflows. Commit all configuration files to the repo for team consistency.",
+      "explanationEs": "La configuracion de entorno personalizado involucra: CLAUDE.md para estandares y convenciones de codificacion del proyecto, .mcp.json para integraciones de servidores MCP (bases de datos, APIs, herramientas), .claude/settings.json para hooks y permisos, .claude/commands/ para skills/flujos de trabajo personalizados, y variables de entorno para API keys y credenciales. Juntos, estos crean un entorno de desarrollo integral donde Claude Code entiende las herramientas, estandares y flujos de trabajo de tu proyecto. Subir todos los archivos de configuracion al repo para consistencia del equipo.",
+      "options": [
+        { "id": "cca-025_a", "text": "Claude Code solo funciona con configuraciones predeterminadas; no es personalizable", "textEs": "Claude Code solo funciona con configuraciones predeterminadas; no es personalizable", "order": 1 },
+        { "id": "cca-025_b", "text": "Instalar plugins desde un marketplace de extensiones de Claude Code", "textEs": "Instalar plugins desde un marketplace de extensiones de Claude Code", "order": 2 },
+        { "id": "cca-025_c", "text": "CLAUDE.md para estandares, .mcp.json para servidores MCP, settings.json para hooks/permisos, commands/ para skills, env vars para credenciales; todo al repo", "textEs": "CLAUDE.md para estandares, .mcp.json para servidores MCP, settings.json para hooks/permisos, commands/ para skills, env vars para credenciales; todo al repo", "order": 3 },
+        { "id": "cca-025_d", "text": "Modificar el codigo fuente de Claude Code directamente para adaptarlo", "textEs": "Modificar el codigo fuente de Claude Code directamente para adaptarlo", "order": 4 }
+      ],
+      "tags": ["configuracion", "entorno", "claude-md", "mcp-json", "settings"]
     }
   ]
 }

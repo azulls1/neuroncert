@@ -13,9 +13,33 @@ describe('ReviewComponent', () => {
     weightedScore: 780,
     summary: { correct: 45, incorrect: 12, skipped: 3, flagged: 2, totalTimeSpent: 3600 },
     items: [
-      { questionId: 'q1', selectedOptionId: 'o1', correctOptionId: 'o1', isCorrect: true, explanation: 'Good', domainCode: 'D1', flagged: false },
-      { questionId: 'q2', selectedOptionId: 'o2', correctOptionId: 'o3', isCorrect: false, explanation: 'Wrong', domainCode: 'D2', flagged: false },
-      { questionId: 'q3', selectedOptionId: '', correctOptionId: 'o1', isCorrect: false, explanation: 'Skipped', domainCode: 'D1', flagged: false },
+      {
+        questionId: 'q1',
+        selectedOptionId: 'o1',
+        correctOptionId: 'o1',
+        isCorrect: true,
+        explanation: 'Good',
+        domainCode: 'D1',
+        flagged: false,
+      },
+      {
+        questionId: 'q2',
+        selectedOptionId: 'o2',
+        correctOptionId: 'o3',
+        isCorrect: false,
+        explanation: 'Wrong',
+        domainCode: 'D2',
+        flagged: false,
+      },
+      {
+        questionId: 'q3',
+        selectedOptionId: '',
+        correctOptionId: 'o1',
+        isCorrect: false,
+        explanation: 'Skipped',
+        domainCode: 'D1',
+        flagged: false,
+      },
     ],
     recommendations: ['Study more D2'],
   };
@@ -24,7 +48,14 @@ describe('ReviewComponent', () => {
     examResult: signal(mockResult),
     questions: signal([
       { id: 'q1', text: 'Q1 text', options: [{ id: 'o1', text: 'Opt1' }] },
-      { id: 'q2', text: 'Q2 text', options: [{ id: 'o2', text: 'Opt2' }, { id: 'o3', text: 'Opt3' }] },
+      {
+        id: 'q2',
+        text: 'Q2 text',
+        options: [
+          { id: 'o2', text: 'Opt2' },
+          { id: 'o3', text: 'Opt3' },
+        ],
+      },
       { id: 'q3', text: 'Q3 text', options: [{ id: 'o1', text: 'Opt1' }] },
     ]),
     resetExam: jasmine.createSpy('resetExam'),
