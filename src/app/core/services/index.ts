@@ -11,3 +11,4 @@ export * from './supabase.service';
 export * from './device-id.service';
 export { LoggingService } from './logging.service';
 export { GlobalErrorHandler } from './global-error-handler';
+export { ConnectivityService } from './connectivity.service';

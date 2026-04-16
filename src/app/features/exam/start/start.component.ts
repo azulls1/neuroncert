@@ -11,6 +11,7 @@ import {
   CCAFConfig,
 } from '../../../core/models';
 import { ConfigService, ExamStateService, CurriculumService } from '../../../core/services';
+import { LoggingService } from '../../../core/services/logging.service';
 
 /**
  * Componente Start - Configuración del examen
@@ -218,6 +219,7 @@ export class StartComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private curriculum = inject(CurriculumService);
+  private logger = inject(LoggingService);
 
   // Signals para el estado del componente
   private _availableDomains = signal<Domain[]>([]);
@@ -406,7 +408,7 @@ export class StartComponent implements OnInit {
         this.router.navigate(['/exam/run']);
       },
       error: (error) => {
-        console.error('Error starting exam:', error);
+        this.logger.error('Error starting exam', 'Start', error);
         this._error.set('Error al iniciar el examen. Intenta de nuevo.');
         this._isStarting.set(false);
       },

@@ -7,3 +7,4 @@ export * from './timer-badge/timer-badge.component';
 export * from './progress-steps/progress-steps.component';
 export * from './question-card/question-card.component';
 export * from './flashcard-card/flashcard-card.component';
+export * from './stat-card/stat-card.component';

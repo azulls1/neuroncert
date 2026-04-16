@@ -6,6 +6,7 @@ import { ExamStateService } from '../../../core/services';
 import { CurriculumService } from '../../../core/services/curriculum.service';
 import { ExamQuestion } from '../../../core/models';
 import { formatTime } from '../../../core/utils/exam.utils';
+import { LoggingService } from '../../../core/services/logging.service';
 
 /**
  * Componente Submit - Confirmación de envío
@@ -225,6 +226,7 @@ export class SubmitComponent implements OnInit, OnDestroy {
   private examStateService = inject(ExamStateService);
   private router = inject(Router);
   private curriculumService = inject(CurriculumService);
+  private logger = inject(LoggingService);
 
   // Signals para el estado del componente
   private _examStats = signal({
@@ -361,11 +363,11 @@ export class SubmitComponent implements OnInit, OnDestroy {
 
     this.examStateService.submitExam().subscribe({
       next: (result) => {
-        console.log('Examen enviado exitosamente');
+        this.logger.info('Examen enviado exitosamente', 'Submit');
         this.router.navigate([resultsRoute]);
       },
       error: (error) => {
-        console.error('Error enviando examen:', error);
+        this.logger.error('Error enviando examen', 'Submit', error);
         this._error.set('Error al enviar el examen. Por favor, inténtalo de nuevo.');
         this._isSubmitting.set(false);
       },

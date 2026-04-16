@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { CurriculumService } from '../../../core/services/curriculum.service';
 import { ProgressService } from '../../../core/services/progress.service';
 import { CCAFConfig, CCAFDomain } from '../../../core/models';
+import { LoggingService } from '../../../core/services/logging.service';
 
 /**
  * CCA-F Home Component - Overview of the CCA-F certification and domain breakdown.
@@ -187,6 +188,7 @@ export class CCAFHomeComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   private curriculum = inject(CurriculumService);
   private progress = inject(ProgressService);
+  private logger = inject(LoggingService);
 
   /** Loading/error state */
   loading = signal(true);
@@ -220,7 +222,7 @@ export class CCAFHomeComponent implements OnInit {
       error: (err) => {
         this.error.set('Error al cargar el catalogo. Por favor intenta de nuevo.');
         this.loading.set(false);
-        console.error('[CCAFHomeComponent] loadCatalog error:', err);
+        this.logger.error('loadCatalog error', 'CCAFHome', err);
       },
     });
   }

@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, of, forkJoin } from 'rxjs';
-import { map, tap, switchMap } from 'rxjs/operators';
+import { Observable, of, from, forkJoin } from 'rxjs';
+import { map, switchMap, catchError } from 'rxjs/operators';
 import {
   Question,
   ExamQuestion,
@@ -12,6 +12,7 @@ import {
   CCAFDomain,
 } from '../models';
 import { QuestionLoaderService } from './question-loader.service';
+import { SupabaseService } from './supabase.service';
 import { shuffleArray } from '../utils/exam.utils';
 
 /**
@@ -24,6 +25,7 @@ import { shuffleArray } from '../utils/exam.utils';
 })
 export class QuestionBankService {
   private loader = inject(QuestionLoaderService);
+  private supabase = inject(SupabaseService);
 
   /** Mapa de preguntas indexadas por ID (para validacion rapida) */
   private questionsById = new Map<string, Question>();
@@ -82,10 +84,115 @@ export class QuestionBankService {
   }
 
   /**
-   * Valida las respuestas del examen comparando answer.optionId
-   * contra question.correctOptionId para scoring real.
+   * Valida las respuestas del examen.
+   * Intenta validacion server-side via Supabase RPC primero (anti-cheat).
+   * Si falla, cae a validacion client-side como respaldo (modo offline).
    */
   validate(payload: ExamPayload): Observable<ExamResult> {
+    // Build the answer key from questionsById: { questionId: correctOptionId }
+    const answerKey: Record<string, string> = {};
+    for (const [id, question] of this.questionsById) {
+      answerKey[id] = question.correctOptionId;
+    }
+
+    // Prepare answers array for the RPC call
+    const rpcAnswers = payload.answers.map((a) => ({
+      questionId: a.questionId,
+      optionId: a.optionId ?? '',
+    }));
+
+    // Try server-side validation first, fall back to client-side on failure
+    return from(this.supabase.validateExamAnswers(payload.examId, rpcAnswers, answerKey)).pipe(
+      switchMap((serverResult) => {
+        if (serverResult) {
+          return of(this._mergeServerResult(payload, serverResult));
+        }
+        // Server validation returned null — fall back to client-side
+        return of(this._validateClientSide(payload));
+      }),
+      catchError(() => {
+        // Any error during server validation — fall back to client-side
+        return of(this._validateClientSide(payload));
+      }),
+    );
+  }
+
+  /**
+   * Merges server-side validation result into the ExamResult format.
+   * The server provides the authoritative scoring; client enriches with
+   * explanation, domain, timing, and flagged metadata.
+   */
+  private _mergeServerResult(
+    payload: ExamPayload,
+    serverResult: {
+      examId: string;
+      correct: number;
+      incorrect: number;
+      skipped: number;
+      total: number;
+      scorePercentage: number;
+      items: {
+        questionId: string;
+        isCorrect: boolean;
+        selectedOptionId: string | null;
+        correctOptionId: string;
+      }[];
+      validatedAt: string;
+    },
+  ): ExamResult {
+    // Build a lookup of payload answers for timing/flagged data
+    const answerLookup = new Map(payload.answers.map((a) => [a.questionId, a]));
+    let flaggedCount = 0;
+
+    const items: ExamItemResult[] = serverResult.items.map((serverItem) => {
+      const question = this.questionsById.get(serverItem.questionId);
+      const payloadAnswer = answerLookup.get(serverItem.questionId);
+
+      if (payloadAnswer?.flagged) {
+        flaggedCount++;
+      }
+
+      return {
+        questionId: serverItem.questionId,
+        isCorrect: serverItem.isCorrect,
+        explanation: question?.explanation ?? '',
+        domainCode: question?.domainCode ?? 'unknown',
+        selectedOptionId: serverItem.selectedOptionId ?? '',
+        correctOptionId: serverItem.correctOptionId,
+        timeSpent: payloadAnswer?.timeSpent ?? 0,
+        flagged: payloadAnswer?.flagged ?? false,
+      };
+    });
+
+    const summary: ExamSummary = {
+      correct: serverResult.correct,
+      incorrect: serverResult.incorrect,
+      skipped: serverResult.skipped,
+      flagged: flaggedCount,
+      scorePercentage: serverResult.scorePercentage,
+      totalTimeSpent: payload.totalTimeSpent ?? 0,
+      timeLimit: 0,
+    };
+
+    const uniqueDomains = [...new Set(items.map((i) => i.domainCode))];
+
+    return {
+      examId: serverResult.examId,
+      score: serverResult.scorePercentage,
+      summary,
+      items,
+      recommendations: this._generateRecommendations(items),
+      completedAt: new Date(serverResult.validatedAt),
+      domains: uniqueDomains,
+      averageDifficulty: this._calculateAverageDifficulty(items),
+    };
+  }
+
+  /**
+   * Client-side validation fallback (original logic).
+   * Used when server-side validation is unavailable (offline, RPC error).
+   */
+  private _validateClientSide(payload: ExamPayload): ExamResult {
     const items: ExamItemResult[] = [];
     let correctCount = 0;
     let flaggedCount = 0;
@@ -137,7 +244,7 @@ export class QuestionBankService {
 
     const uniqueDomains = [...new Set(items.map((i) => i.domainCode))];
 
-    const result: ExamResult = {
+    return {
       examId: payload.examId,
       score: scorePercentage,
       summary,
@@ -147,8 +254,6 @@ export class QuestionBankService {
       domains: uniqueDomains,
       averageDifficulty: this._calculateAverageDifficulty(items),
     };
-
-    return of(result);
   }
 
   // ---------------------------------------------------------------------------

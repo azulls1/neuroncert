@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { environment } from '../environments/environment';
+import { ConnectivityService } from './core/services/connectivity.service';
 
 /**
  * Root component — contains the shell layout, navbar with navigation, and router outlet.
@@ -17,4 +18,14 @@ export class App {
 
   // Application version
   protected readonly version = signal(environment.APP_VERSION);
+
+  // Connectivity status
+  protected readonly connectivity = inject(ConnectivityService);
+
+  // Mobile menu state
+  protected readonly menuOpen = signal(false);
+
+  protected toggleMenu(): void {
+    this.menuOpen.update(v => !v);
+  }
 }

@@ -17,6 +17,7 @@ import {
   ProgressStepsComponent,
   QuestionCardComponent,
 } from '../../../shared';
+import { LoggingService } from '../../../core/services/logging.service';
 
 /**
  * RunComponent - Exam execution screen
@@ -225,6 +226,7 @@ export class RunComponent implements OnInit {
   private examStateService = inject(ExamStateService);
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
+  private logger = inject(LoggingService);
 
   // Error message signal for accessible error announcements
   errorMessage = signal<string | null>(null);
@@ -302,10 +304,10 @@ export class RunComponent implements OnInit {
   private startExam(params: ExamParams): void {
     this.examStateService.startExam(params).subscribe({
       next: () => {
-        console.log('Examen iniciado exitosamente');
+        this.logger.info('Examen iniciado exitosamente', 'Run');
       },
       error: (error) => {
-        console.error('Error iniciando examen:', error);
+        this.logger.error('Error iniciando examen', 'Run', error);
         this.errorMessage.set('Error al iniciar el examen. Redirigiendo...');
         this.router.navigate(['/exam/start']);
       },

@@ -3,6 +3,22 @@
   display: block;
 }
 
+/* ── Offline banner ── */
+.offline-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: #F59E0B;
+  color: #78350F;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
 /* ── Skip-to-content link (WCAG) ── */
 .skip-link {
   position: absolute;
@@ -25,6 +41,29 @@ main {
   flex: 1;
 }
 
+/* ── Header positioning (required for mobile dropdown) ── */
+.navbar {
+  position: relative;
+}
+
+/* ── Hamburger toggle ── */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-toggle__bar {
+  width: 20px;
+  height: 2px;
+  background: var(--color-forest-700, #2D3B35);
+  border-radius: 2px;
+  transition: transform 0.2s;
+}
+
 /* ── Responsive navbar nav ── */
 .app-nav {
   display: flex;
@@ -38,33 +77,40 @@ main {
   white-space: nowrap;
 }
 
-@media (max-width: 639px) {
+/* ── Footer links ── */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+/* ── Mobile breakpoint ── */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
   .app-nav {
-    gap: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    flex: 1;
-    justify-content: center;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 100;
   }
-  .app-nav::-webkit-scrollbar { display: none; }
-  .nav-link {
-    font-size: 11px !important;
-    padding: 4px 8px !important;
-    flex-shrink: 0;
+  .app-nav.nav-open {
+    display: flex;
   }
-}
-
-@media (max-width: 479px) {
-  .nav-link {
-    font-size: 10px !important;
-    padding: 4px 6px !important;
+  .app-nav a {
+    padding: 12px 16px;
+    font-size: 14px;
   }
-}
-
-/* ── Footer responsive ── */
-@media (max-width: 639px) {
-  footer .footer-links {
-    gap: 24px !important;
+  .footer-links {
+    flex-direction: column;
+    gap: 24px;
   }
 }

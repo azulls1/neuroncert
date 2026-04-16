@@ -347,6 +347,56 @@ export class SupabaseService {
   }
 
   // =========================================================================
+  // Exam Answer Validation (server-side anti-cheat)
+  // =========================================================================
+
+  /**
+   * Validates exam answers server-side via Supabase RPC.
+   * Receives the answer key as a parameter since questions come from static JSON.
+   * Returns the validation result or null on error (caller should fall back to client-side).
+   */
+  async validateExamAnswers(
+    examId: string,
+    answers: { questionId: string; optionId: string }[],
+    answerKey: Record<string, string>,
+  ): Promise<{
+    examId: string;
+    correct: number;
+    incorrect: number;
+    skipped: number;
+    total: number;
+    scorePercentage: number;
+    items: {
+      questionId: string;
+      isCorrect: boolean;
+      selectedOptionId: string | null;
+      correctOptionId: string;
+    }[];
+    validatedAt: string;
+  } | null> {
+    if (!this.isBrowser) return null;
+    try {
+      const client = await this.ensureClient();
+      const { data, error } = await client.rpc('validate_exam_answers', {
+        p_exam_id: examId,
+        p_answers: answers,
+        p_answer_key: answerKey,
+        p_device_id: this.deviceId.getDeviceId(),
+      });
+      if (error) {
+        this._lastError.set(`validateExamAnswers: ${error.message}`);
+        return null;
+      }
+      this._lastError.set(null);
+      return data;
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      this._lastError.set(`validateExamAnswers: ${message}`);
+      return null;
+    }
+  }
+
+  // =========================================================================
   // Utility
   // =========================================================================
 

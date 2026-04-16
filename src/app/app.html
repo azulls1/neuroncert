@@ -1,5 +1,8 @@
 <!-- Layout principal — Forest Design System (no sidebar) -->
 <a class="skip-link" href="#main-content">Saltar al contenido</a>
+@if (!connectivity.online()) {
+  <div role="alert" class="offline-banner">Sin conexion a internet — los datos se guardaran localmente</div>
+}
 <div style="min-height: 100vh; display: flex; flex-direction: column; background: var(--color-bg-page, #F7F8F7);">
   <!-- Navbar -->
   <header class="navbar" style="position: sticky; top: 0; z-index: 40;">
@@ -13,16 +16,23 @@
         </div>
       </a>
 
+      <!-- Hamburger toggle (mobile only) -->
+      <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()" aria-label="Menu de navegacion">
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+
       <!-- Navigation -->
-      <nav class="app-nav" aria-label="Navegacion principal">
+      <nav class="app-nav" [class.nav-open]="menuOpen()" aria-label="Navegacion principal">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-           class="btn btn-ghost nav-link">Inicio</a>
+           class="btn btn-ghost nav-link" (click)="menuOpen.set(false)">Inicio</a>
         <a routerLink="/tracks" routerLinkActive="active"
-           class="btn btn-ghost nav-link">Tracks</a>
+           class="btn btn-ghost nav-link" (click)="menuOpen.set(false)">Tracks</a>
         <a routerLink="/roadmap" routerLinkActive="active"
-           class="btn btn-ghost nav-link">Roadmap</a>
+           class="btn btn-ghost nav-link" (click)="menuOpen.set(false)">Roadmap</a>
         <a routerLink="/certifications" routerLinkActive="active"
-           class="btn btn-ghost nav-link">Certs</a>
+           class="btn btn-ghost nav-link" (click)="menuOpen.set(false)">Certs</a>
       </nav>
 
       <!-- Status -->
@@ -63,7 +73,7 @@
       <div style="max-width: 100%; margin: 0 auto; display: grid; padding: 0 32px; grid-template-columns: 1fr; gap: 24px;">
 
         <!-- Row: brand + links + platforms -->
-        <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
+        <div class="footer-links">
 
           <!-- Brand -->
           <div style="min-width: 200px;">

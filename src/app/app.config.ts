@@ -5,8 +5,11 @@ import {
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { resilienceInterceptor } from './core/interceptors/resilience.interceptor';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideServiceWorker } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 import { routes } from './app.routes';
 import { GlobalErrorHandler } from './core/services/global-error-handler';
@@ -31,9 +34,15 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withEnabledBlockingInitialNavigation()),
 
     // HttpClient para llamadas a APIs (usado en DataSourceService)
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withFetch(), withInterceptors([resilienceInterceptor])),
 
     // Client hydration para Server-Side Rendering con event replay
     provideClientHydration(withEventReplay()),
+
+    // Service Worker para PWA offline support
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: environment.production,
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
 };

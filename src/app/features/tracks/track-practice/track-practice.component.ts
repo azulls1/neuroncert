@@ -6,6 +6,7 @@ import { CurriculumService } from '../../../core/services/curriculum.service';
 import { QuestionBankService } from '../../../core/services/question-bank.service';
 import { Question, LearningTrack } from '../../../core/models';
 import { shuffleArray } from '../../../core/utils/exam.utils';
+import { LoggingService } from '../../../core/services/logging.service';
 
 /**
  * Track Practice Component - Interactive practice mode for a learning track.
@@ -300,6 +301,7 @@ export class TrackPracticeComponent implements OnInit {
   private router = inject(Router);
   private curriculum = inject(CurriculumService);
   private questionBank = inject(QuestionBankService);
+  private logger = inject(LoggingService);
 
   /** Route param */
   trackId = this.route.snapshot.paramMap.get('trackId') ?? '';
@@ -376,7 +378,7 @@ export class TrackPracticeComponent implements OnInit {
         this._loadQuestions();
       },
       error: (err) => {
-        console.error('[TrackPractice] loadCatalog error:', err);
+        this.logger.error('loadCatalog error', 'TrackPractice', err);
         // Still try to load questions even if catalog fails
         this._loadQuestions();
       },
@@ -442,7 +444,7 @@ export class TrackPracticeComponent implements OnInit {
       error: (err) => {
         this.error.set('Error al cargar las preguntas para este track.');
         this.loading.set(false);
-        console.error('[TrackPractice] getQuestionsByTrack error:', err);
+        this.logger.error('getQuestionsByTrack error', 'TrackPractice', err);
       },
     });
   }

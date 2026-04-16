@@ -2,8 +2,9 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { QuestionBankService } from './question-bank.service';
 import { QuestionLoaderService } from './question-loader.service';
+import { SupabaseService } from './supabase.service';
 import { Question, ExamParams, ExamPayload, Catalog } from '../models';
-import { of } from 'rxjs';
+import { of, firstValueFrom } from 'rxjs';
 
 /**
  * Helper: crea una pregunta de prueba con valores por defecto.
@@ -71,6 +72,7 @@ function makeCatalog(overrides: Partial<Catalog> = {}): Catalog {
 describe('QuestionBankService', () => {
   let service: QuestionBankService;
   let loaderSpy: jasmine.SpyObj<QuestionLoaderService>;
+  let supabaseSpy: jasmine.SpyObj<SupabaseService>;
 
   beforeEach(() => {
     loaderSpy = jasmine.createSpyObj('QuestionLoaderService', [
@@ -79,11 +81,16 @@ describe('QuestionBankService', () => {
       'loadFromMultiplePaths',
     ]);
 
+    supabaseSpy = jasmine.createSpyObj('SupabaseService', ['validateExamAnswers']);
+    // Default: server validation returns null so tests fall back to client-side
+    supabaseSpy.validateExamAnswers.and.returnValue(Promise.resolve(null));
+
     TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
         QuestionBankService,
         { provide: QuestionLoaderService, useValue: loaderSpy },
+        { provide: SupabaseService, useValue: supabaseSpy },
       ],
     });
 
@@ -258,7 +265,7 @@ describe('QuestionBankService', () => {
   // -------------------------------------------------------------------------
 
   describe('validate()', () => {
-    it('should compare optionId against correctOptionId and return isCorrect', () => {
+    it('should compare optionId against correctOptionId and return isCorrect', async () => {
       // First, load questions so questionsById map is populated
       const params: ExamParams = { mode: 'standard', domains: [], count: 2, difficulty: 'any' };
       const questions = [
@@ -279,8 +286,7 @@ describe('QuestionBankService', () => {
         totalTimeSpent: 120,
       };
 
-      let result: any;
-      service.validate(payload).subscribe((r) => (result = r));
+      const result = await firstValueFrom(service.validate(payload));
 
       expect(result).toBeTruthy();
       expect(result.items[0].isCorrect).toBeTrue();
@@ -290,7 +296,7 @@ describe('QuestionBankService', () => {
       expect(result.score).toBe(50);
     });
 
-    it('should count skipped questions (empty optionId)', () => {
+    it('should count skipped questions (empty optionId)', async () => {
       const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
       loaderSpy.loadQuestionFile.and.returnValue(
         of([makeQuestion({ id: 'q1', correctOptionId: 'opt-a' })]),
@@ -304,14 +310,13 @@ describe('QuestionBankService', () => {
         ],
       };
 
-      let result: any;
-      service.validate(payload).subscribe((r) => (result = r));
+      const result = await firstValueFrom(service.validate(payload));
 
       expect(result.summary.skipped).toBe(1);
       expect(result.summary.correct).toBe(0);
     });
 
-    it('should count flagged questions', () => {
+    it('should count flagged questions', async () => {
       const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
       loaderSpy.loadQuestionFile.and.returnValue(of([makeQuestion({ id: 'q1' })]));
       service.getQuestions(params).subscribe();
@@ -321,13 +326,12 @@ describe('QuestionBankService', () => {
         answers: [{ questionId: 'q1', optionId: 'opt-a', flagged: true }],
       };
 
-      let result: any;
-      service.validate(payload).subscribe((r) => (result = r));
+      const result = await firstValueFrom(service.validate(payload));
 
       expect(result.summary.flagged).toBe(1);
     });
 
-    it('should include explanation and domainCode from the original question', () => {
+    it('should include explanation and domainCode from the original question', async () => {
       const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
       const q = makeQuestion({
         id: 'q1',
@@ -342,14 +346,13 @@ describe('QuestionBankService', () => {
         answers: [{ questionId: 'q1', optionId: 'opt-a' }],
       };
 
-      let result: any;
-      service.validate(payload).subscribe((r) => (result = r));
+      const result = await firstValueFrom(service.validate(payload));
 
       expect(result.items[0].explanation).toBe('Custom explanation');
       expect(result.items[0].domainCode).toBe('D-CUSTOM');
     });
 
-    it('should generate recommendations for weak domains', () => {
+    it('should generate recommendations for weak domains', async () => {
       const params: ExamParams = { mode: 'standard', domains: [], count: 4, difficulty: 'any' };
       const questions = [
         makeQuestion({ id: 'q1', domainCode: 'WEAK', correctOptionId: 'opt-a' }),
@@ -370,14 +373,13 @@ describe('QuestionBankService', () => {
         ],
       };
 
-      let result: any;
-      service.validate(payload).subscribe((r) => (result = r));
+      const result = await firstValueFrom(service.validate(payload));
 
       const weakRec = result.recommendations.find((r: string) => r.includes('WEAK'));
       expect(weakRec).toBeTruthy();
     });
 
-    it('should return good performance message when all domains >= 70%', () => {
+    it('should return good performance message when all domains >= 70%', async () => {
       const params: ExamParams = { mode: 'standard', domains: [], count: 2, difficulty: 'any' };
       const questions = [
         makeQuestion({ id: 'q1', domainCode: 'D1', correctOptionId: 'opt-a' }),
@@ -394,8 +396,7 @@ describe('QuestionBankService', () => {
         ],
       };
 
-      let result: any;
-      service.validate(payload).subscribe((r) => (result = r));
+      const result = await firstValueFrom(service.validate(payload));
 
       expect(result.recommendations[0]).toContain('Buen rendimiento');
     });

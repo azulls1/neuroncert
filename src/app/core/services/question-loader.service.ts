@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, forkJoin } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 import { Question, Catalog } from '../models';
+import { LoggingService } from './logging.service';
 
 /**
  * Servicio de carga de preguntas
@@ -15,6 +16,7 @@ import { Question, Catalog } from '../models';
 })
 export class QuestionLoaderService {
   private http = inject(HttpClient);
+  private logger = inject(LoggingService);
 
   /** Cache de archivos de preguntas ya cargados (path -> Question[]) */
   private questionFileCache = new Map<string, Question[]>();
@@ -39,7 +41,7 @@ export class QuestionLoaderService {
         this.catalog = catalog;
       }),
       catchError((error) => {
-        console.error('Error cargando catalogo:', error);
+        this.logger.error('Error cargando catalogo', 'QuestionLoader', error);
         throw error;
       }),
     );
@@ -71,7 +73,7 @@ export class QuestionLoaderService {
         this.questionFileCache.set(path, questions);
       }),
       catchError((error) => {
-        console.error(`Error cargando archivo de preguntas: ${path}`, error);
+        this.logger.error(`Error cargando archivo de preguntas: ${path}`, 'QuestionLoader', error);
         return of([]);
       }),
     );

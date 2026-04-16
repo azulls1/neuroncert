@@ -6,6 +6,7 @@ import { ExamStateService } from '../../../core/services/exam-state.service';
 import { CurriculumService } from '../../../core/services/curriculum.service';
 import { ExamParams } from '../../../core/models/exam-params.model';
 import { CCAFConfig } from '../../../core/models';
+import { LoggingService } from '../../../core/services/logging.service';
 
 /**
  * CCA-F Exam Config Component - Configure and start a CCA-F certification exam.
@@ -141,6 +142,7 @@ export class CCAFExamComponent implements OnInit {
   private examStateService = inject(ExamStateService);
   private curriculumService = inject(CurriculumService);
   private router = inject(Router);
+  private logger = inject(LoggingService);
 
   isLoading = false;
   catalogLoading = signal(true);
@@ -176,7 +178,7 @@ export class CCAFExamComponent implements OnInit {
         this.catalogLoading.set(false);
       },
       error: (err) => {
-        console.error('Failed to load CCA-F catalog:', err);
+        this.logger.error('Failed to load CCA-F catalog', 'CCAFExam', err);
         this.catalogLoading.set(false);
       },
     });
@@ -202,7 +204,7 @@ export class CCAFExamComponent implements OnInit {
         this.router.navigate(['/exam/run']);
       },
       error: (err) => {
-        console.error('Failed to start CCA-F exam:', err);
+        this.logger.error('Failed to start CCA-F exam', 'CCAFExam', err);
         this.isLoading = false;
       },
     });

@@ -1,9 +1,10 @@
 import { Component, DestroyRef, OnInit, inject, signal, computed } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CurriculumService } from '../../core/services/curriculum.service';
+import { CCAFDomainsComponent } from './ccaf-domains/ccaf-domains.component';
+import { LoggingService } from '../../core/services/logging.service';
 
 /* ── Inline interfaces matching roadmap.json ─────────────────────────── */
 
@@ -169,7 +170,7 @@ interface PlatformColor {
 @Component({
   selector: 'app-roadmap',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, CCAFDomainsComponent],
   styles: [
     `
       :host {
@@ -1359,115 +1360,18 @@ interface PlatformColor {
       <!-- ═══════ COURSE MODAL ═══════ -->
 
       <!-- ═══════ CERTIFICATION MODAL ═══════ -->
-      @if (showCertModal()) {
-        <div class="modal-overlay" (click)="closeCert()">
-          <div class="modal-card modal-wide animate-scaleIn" (click)="$event.stopPropagation()">
-            <button class="modal-close btn btn-icon" (click)="closeCert()">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-
-            <h2
-              class="font-display"
-              style="font-size: 1.2rem; font-weight: 700; color: #04202C; margin: 0 0 8px;"
-            >
-              CCA-F — Arquitecto Certificado Claude: Fundamentos
-            </h2>
-            <p style="font-size: 0.8125rem; color: #5B7065; margin-bottom: 16px;">
-              {{ certData()?.format }}
-            </p>
-
-            <div class="grid-stats" style="margin-bottom: 20px;">
-              <div class="card-stat">
-                <div class="card-stat__value">{{ ccafConfig()?.totalQuestions ?? 60 }}</div>
-                <div class="card-stat__label">Preguntas</div>
-              </div>
-              <div class="card-stat">
-                <div class="card-stat__value">{{ (ccafConfig()?.durationSec ?? 7200) / 60 }}</div>
-                <div class="card-stat__label">Minutos</div>
-              </div>
-              <div class="card-stat">
-                <div class="card-stat__value">{{ ccafConfig()?.passingScore ?? 720 }}</div>
-                <div class="card-stat__label">/ {{ ccafConfig()?.maxScore ?? 1000 }}</div>
-              </div>
-              <div class="card-stat">
-                <div class="card-stat__value">$0-99</div>
-                <div class="card-stat__label">Precio</div>
-              </div>
-            </div>
-
-            <h3
-              class="font-display"
-              style="font-size: 0.875rem; font-weight: 700; color: #04202C; margin-bottom: 14px;"
-            >
-              Dominios del Examen
-            </h3>
-            @for (domain of certData()?.domains; track domain.name) {
-              <div style="margin-bottom: 14px;">
-                <div
-                  style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;"
-                >
-                  <span style="font-size: 0.8125rem; color: #04202C; font-weight: 600;">{{
-                    domain.name
-                  }}</span>
-                  <span class="badge badge-info font-mono">{{ domain.weight }}%</span>
-                </div>
-                <div class="progress progress--sm" style="margin-bottom: 6px;">
-                  <div class="progress__bar" [style.width.%]="domain.weight * 3.7"></div>
-                </div>
-                <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                  @for (topic of domain.topics; track topic) {
-                    <span class="tag font-mono" style="font-size: 10px;">{{ topic }}</span>
-                  }
-                </div>
-              </div>
-            }
-
-            <div class="divider" style="margin: 20px 0;"></div>
-
-            <h3
-              class="font-display"
-              style="font-size: 0.875rem; font-weight: 700; color: #04202C; margin-bottom: 10px;"
-            >
-              Recursos de Estudio
-            </h3>
-            <div class="stack-sm" style="margin-bottom: 20px;">
-              @for (res of certData()?.studyResources; track res.name) {
-                <a
-                  [href]="res.url"
-                  target="_blank"
-                  rel="noopener"
-                  class="card-compact hover-lift"
-                  style="cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 8px;"
-                >
-                  <span style="font-size: 0.8125rem; color: #04202C;">{{ res.name }}</span>
-                  <span style="color: #5B7065; margin-left: auto; font-size: 12px;">&#8599;</span>
-                </a>
-              }
-            </div>
-
-            <div style="display: flex; gap: 12px;">
-              <a routerLink="/ccaf" class="btn btn-cta" (click)="closeCert()">Practicar CCA-F</a>
-              <a
-                [href]="certData()?.url || ''"
-                target="_blank"
-                rel="noopener"
-                class="btn btn-secondary"
-                >Info oficial &#8599;</a
-              >
-            </div>
-          </div>
-        </div>
-      }
+      <app-ccaf-domains
+        [domains]="certData()?.domains ?? []"
+        [totalQuestions]="ccafConfig()?.totalQuestions ?? 60"
+        [durationMin]="(ccafConfig()?.durationSec ?? 7200) / 60"
+        [passingScore]="ccafConfig()?.passingScore ?? 720"
+        [maxScore]="ccafConfig()?.maxScore ?? 1000"
+        [format]="certData()?.format ?? ''"
+        [studyResources]="certData()?.studyResources ?? []"
+        [certUrl]="certData()?.url ?? ''"
+        [visible]="showCertModal()"
+        (close)="closeCert()"
+      />
     </div>
   `,
 })
@@ -1475,6 +1379,7 @@ export class RoadmapComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly http = inject(HttpClient);
   private readonly curriculumService = inject(CurriculumService);
+  private readonly logger = inject(LoggingService);
 
   /* ── Raw data ──────────────────────────────────────────────────────── */
   private data = signal<RoadmapData | null>(null);
@@ -1556,13 +1461,13 @@ export class RoadmapComponent implements OnInit {
         this.buildMaps(data);
       },
       error: (err) => {
-        console.error('[Roadmap] Failed to load roadmap.json:', err);
+        this.logger.error('Failed to load roadmap.json', 'Roadmap', err);
         this.loadError.set('No se pudo cargar la ruta de aprendizaje. Intenta recargar la pagina.');
       },
     });
     // Load curriculum catalog so ccafConfig() is available
     this.curriculumService.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      error: (err) => console.error('[Roadmap] Catalog load failed:', err),
+      error: (err) => this.logger.error('Catalog load failed', 'Roadmap', err),
     });
   }
 

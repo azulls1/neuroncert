@@ -6,6 +6,7 @@ import { ExamStateService, ScoreService } from '../../../core/services';
 import { CurriculumService } from '../../../core/services/curriculum.service';
 import { ExamResult, DomainScore, CCAFConfig } from '../../../core/models';
 import { formatTime } from '../../../core/utils/exam.utils';
+import { LoggingService } from '../../../core/services/logging.service';
 
 /**
  * CCA-F Results Component
@@ -192,6 +193,7 @@ export class CCAFResultsComponent implements OnInit {
   private scoreService = inject(ScoreService);
   private curriculumService = inject(CurriculumService);
   private router = inject(Router);
+  private logger = inject(LoggingService);
 
   examResult: ExamResult | null = null;
   domainScores: DomainScore[] = [];
@@ -242,7 +244,7 @@ export class CCAFResultsComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.error('Failed to load CCA-F catalog for results:', err);
+        this.logger.error('Failed to load CCA-F catalog for results', 'CCAFResults', err);
       },
     });
 
