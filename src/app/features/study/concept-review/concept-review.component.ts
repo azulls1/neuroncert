@@ -50,12 +50,14 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
             >
               Filtrar por dominio
             </div>
-            <div class="filter-pills">
+            <div class="filter-pills" role="group" aria-label="Filtrar por dominio">
               <button
                 type="button"
                 class="filter-pill"
                 [class.filter-pill--active]="selectedDomain() === 'all'"
                 (click)="setDomain('all')"
+                aria-label="Filtrar dominio: Todos"
+                [attr.aria-pressed]="selectedDomain() === 'all'"
               >
                 Todos
               </button>
@@ -65,6 +67,8 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                   class="filter-pill"
                   [class.filter-pill--active]="selectedDomain() === domain"
                   (click)="setDomain(domain)"
+                  [attr.aria-label]="'Filtrar dominio: ' + domain"
+                  [attr.aria-pressed]="selectedDomain() === domain"
                 >
                   {{ domain }}
                 </button>
@@ -79,13 +83,15 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
             >
               Filtrar por dificultad
             </div>
-            <div class="filter-pills">
+            <div class="filter-pills" role="group" aria-label="Filtrar por dificultad">
               @for (pill of difficultyPills; track pill.value) {
                 <button
                   type="button"
                   class="filter-pill"
                   [class.filter-pill--active]="selectedDifficulty() === pill.value"
                   (click)="setDifficulty(pill.value)"
+                  [attr.aria-label]="'Filtrar dificultad: ' + pill.label"
+                  [attr.aria-pressed]="selectedDifficulty() === pill.value"
                 >
                   {{ pill.label }}
                 </button>
@@ -208,12 +214,13 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
 
         <!-- Pagination -->
         @if (totalPages() > 1) {
-          <div class="pagination" style="margin-top: 32px;">
+          <nav class="pagination" style="margin-top: 32px;" aria-label="Paginacion de preguntas">
             <button
               type="button"
               class="pagination__btn"
               [disabled]="currentPage() <= 1"
               (click)="goToPage(currentPage() - 1)"
+              aria-label="Pagina anterior"
             >
               Anterior
             </button>
@@ -224,6 +231,8 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                 class="pagination__btn"
                 [class.pagination__btn--active]="page === currentPage()"
                 (click)="goToPage(page)"
+                [attr.aria-label]="'Ir a pagina ' + page"
+                [attr.aria-current]="page === currentPage() ? 'page' : null"
               >
                 {{ page }}
               </button>
@@ -234,10 +243,11 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
               class="pagination__btn"
               [disabled]="currentPage() >= totalPages()"
               (click)="goToPage(currentPage() + 1)"
+              aria-label="Pagina siguiente"
             >
               Siguiente
             </button>
-          </div>
+          </nav>
         }
       }
 

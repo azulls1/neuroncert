@@ -12,3 +12,5 @@ export * from './device-id.service';
 export { LoggingService } from './logging.service';
 export { GlobalErrorHandler } from './global-error-handler';
 export { ConnectivityService } from './connectivity.service';
+export { I18nService } from './i18n.service';
+export type { Lang } from './i18n.service';

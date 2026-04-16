@@ -1,4 +1,5 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
@@ -55,6 +56,7 @@ export interface ExamTimerState {
 })
 export class ExamStateService {
   // Inyección de dependencias
+  private platformId = inject(PLATFORM_ID);
   private questionBank = inject(QuestionBankService);
   private timer = inject(TimerService);
   private config = inject(ConfigService);
@@ -395,6 +397,71 @@ export class ExamStateService {
   }
 
   /**
+   * Verifica si hay un examen que se puede reanudar desde localStorage
+   */
+  hasResumableExam(): boolean {
+    if (!isPlatformBrowser(this.platformId)) return false;
+    // No mostrar prompt de resume si ya hay un examen activo
+    if (this._status() !== 'idle') return false;
+    try {
+      const saved = localStorage.getItem(this.config.storageKeys.EXAM_PROGRESS);
+      if (!saved) return false;
+      const progress = JSON.parse(saved);
+      // Verificar que tenga datos validos
+      return !!(progress.questions?.length && progress.remainingTime > 0);
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Reanuda un examen guardado en localStorage.
+   * Restaura estado, preguntas, indice y reinicia el temporizador desde el tiempo guardado.
+   */
+  resumeSavedExam(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    try {
+      const saved = localStorage.getItem(this.config.storageKeys.EXAM_PROGRESS);
+      if (!saved) return;
+
+      const progress = JSON.parse(saved);
+      if (!progress.questions?.length || !progress.remainingTime) return;
+
+      // Restaurar estado del examen
+      this._examId.set(progress.examId || '');
+      this._questions.set(progress.questions);
+      this._currentIndex.set(progress.currentIndex || 0);
+      this._examParams.set(progress.examParams || null);
+      this._status.set('paused');
+      this._error.set(null);
+
+      // Iniciar temporizador con el tiempo restante guardado
+      this.timer.start(
+        progress.remainingTime,
+        () => this._handleTimeUp(),
+        () => this._handleTimeWarning(),
+      );
+      // Pausar inmediatamente para que el usuario decida cuando continuar
+      this.timer.pause();
+
+      this.logger.info(
+        `Examen reanudado: ${progress.questions.length} preguntas, ${progress.remainingTime}s restantes`,
+        'ExamStateService',
+      );
+    } catch (error) {
+      this.logger.error('No se pudo reanudar el examen', 'ExamStateService', error);
+    }
+  }
+
+  /**
+   * Limpia el progreso guardado sin afectar el estado actual del examen
+   */
+  clearSavedProgress(): void {
+    this._clearProgress();
+  }
+
+  /**
    * Obtiene el estado actual del examen
    */
   getState(): {
@@ -469,6 +536,7 @@ export class ExamStateService {
       examId: this._examId(),
       currentIndex: this._currentIndex(),
       questions: this._questions(),
+      examParams: this._examParams(),
       remainingTime: this.timer.remainingSeconds(),
       timestamp: Date.now(),
     };

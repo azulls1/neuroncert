@@ -1,10 +1,12 @@
-import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { ExamResult, DomainScore, ExamSummary } from '../models/exam-result.model';
 import { CurriculumProgress } from '../models/curriculum-progress.model';
 import { ExamMode } from '../models/content-type.model';
 import { DeviceIdService } from './device-id.service';
+import { ConnectivityService } from './connectivity.service';
+import { CircuitBreaker } from '../utils/circuit-breaker';
 import { environment } from '../../../environments/environment';
 
 // ---------------------------------------------------------------------------
@@ -75,8 +77,17 @@ export class SupabaseService {
   private supabase!: SupabaseClient;
   private _clientPromise: Promise<SupabaseClient> | null = null;
   private deviceId = inject(DeviceIdService);
+  private connectivity = inject(ConnectivityService);
   private platformId = inject(PLATFORM_ID);
   private isBrowser: boolean;
+
+  // ── Reconnection logic ──
+  private reconnectAttempts = 0;
+  private readonly MAX_RECONNECTS = 3;
+  private readonly RECONNECT_DELAY = 30000; // 30 seconds
+
+  // ── Circuit breaker ──
+  private circuitBreaker = new CircuitBreaker(3, 60000);
 
   /** Reactive connection status */
   private _connected = signal<boolean>(false);
@@ -92,6 +103,16 @@ export class SupabaseService {
 
   constructor() {
     this.isBrowser = isPlatformBrowser(this.platformId);
+
+    // When the browser comes back online, reset attempts and try to reconnect
+    if (this.isBrowser) {
+      effect(() => {
+        if (this.connectivity.online() && !this._connected()) {
+          this.reconnectAttempts = 0;
+          this.verifyConnection();
+        }
+      });
+    }
   }
 
   /**
@@ -122,6 +143,7 @@ export class SupabaseService {
   /**
    * Pings Supabase with a lightweight query to confirm the connection is alive.
    * Sets `_connected` to true only when Supabase responds successfully.
+   * On failure, schedules a reconnect retry (up to MAX_RECONNECTS times).
    */
   private async verifyConnection(): Promise<void> {
     try {
@@ -134,16 +156,29 @@ export class SupabaseService {
       if (error) {
         this._connected.set(false);
         this._lastError.set(`Connection verification failed: ${error.message}`);
+        this.scheduleReconnect();
         return;
       }
 
       this._connected.set(true);
       this._lastError.set(null);
+      this.reconnectAttempts = 0;
     } catch (err: unknown) {
       this._connected.set(false);
       const message = err instanceof Error ? err.message : String(err);
       this._lastError.set(`Connection verification failed: ${message}`);
+      this.scheduleReconnect();
     }
+  }
+
+  /**
+   * Schedules a reconnection attempt after RECONNECT_DELAY ms.
+   * Gives up after MAX_RECONNECTS consecutive failures.
+   */
+  private scheduleReconnect(): void {
+    if (this.reconnectAttempts >= this.MAX_RECONNECTS) return;
+    this.reconnectAttempts++;
+    setTimeout(() => this.verifyConnection(), this.RECONNECT_DELAY);
   }
 
   // =========================================================================
@@ -155,39 +190,51 @@ export class SupabaseService {
    * Returns the inserted row or null on error.
    */
   async saveExamResult(result: ExamResult): Promise<ExamResultRow | null> {
-    if (!this.isBrowser) {
-      return null;
-    }
-    const row: ExamResultRow = {
-      examId: result.examId,
-      score: result.score,
-      weightedScore: result.weightedScore ?? null,
-      passed: result.passed ?? null,
-      mode: result.mode ?? 'standard',
-      domains: result.domains,
-      summary: result.summary,
-      domainScores: result.domainScores ?? null,
-      completedAt:
-        result.completedAt instanceof Date
-          ? result.completedAt.toISOString()
-          : String(result.completedAt),
-      durationSec: result.summary.totalTimeSpent,
-    };
-
-    const client = await this.ensureClient();
-    const { data, error } = await client
-      .from(TABLE_EXAM_RESULTS)
-      .insert({ ...row, device_id: this.deviceId.getDeviceId() })
-      .select()
-      .single();
-
-    if (error) {
-      this._lastError.set(`saveExamResult: ${error.message}`);
+    if (!this.isBrowser) return null;
+    if (!this.circuitBreaker.canExecute()) {
+      this._lastError.set('Circuit breaker open — Supabase temporarily unavailable');
       return null;
     }
 
-    this._lastError.set(null);
-    return data as ExamResultRow;
+    try {
+      const row: ExamResultRow = {
+        examId: result.examId,
+        score: result.score,
+        weightedScore: result.weightedScore ?? null,
+        passed: result.passed ?? null,
+        mode: result.mode ?? 'standard',
+        domains: result.domains,
+        summary: result.summary,
+        domainScores: result.domainScores ?? null,
+        completedAt:
+          result.completedAt instanceof Date
+            ? result.completedAt.toISOString()
+            : String(result.completedAt),
+        durationSec: result.summary.totalTimeSpent,
+      };
+
+      const client = await this.ensureClient();
+      const { data, error } = await client
+        .from(TABLE_EXAM_RESULTS)
+        .insert({ ...row, device_id: this.deviceId.getDeviceId() })
+        .select()
+        .single();
+
+      if (error) {
+        this.circuitBreaker.recordFailure();
+        this._lastError.set(`saveExamResult: ${error.message}`);
+        return null;
+      }
+
+      this.circuitBreaker.recordSuccess();
+      this._lastError.set(null);
+      return data as ExamResultRow;
+    } catch (err) {
+      this.circuitBreaker.recordFailure();
+      const message = err instanceof Error ? err.message : String(err);
+      this._lastError.set(`saveExamResult: ${message}`);
+      return null;
+    }
   }
 
   /**
@@ -195,24 +242,36 @@ export class SupabaseService {
    * @param limit Maximum number of results to return (default 20).
    */
   async getExamHistory(limit = 20): Promise<ExamResultRow[]> {
-    if (!this.isBrowser) {
-      return [];
-    }
-    const client = await this.ensureClient();
-    const { data, error } = await client
-      .from(TABLE_EXAM_RESULTS)
-      .select('*')
-      .eq('device_id', this.deviceId.getDeviceId())
-      .order('completedAt', { ascending: false })
-      .limit(limit);
-
-    if (error) {
-      this._lastError.set(`getExamHistory: ${error.message}`);
+    if (!this.isBrowser) return [];
+    if (!this.circuitBreaker.canExecute()) {
+      this._lastError.set('Circuit breaker open — Supabase temporarily unavailable');
       return [];
     }
 
-    this._lastError.set(null);
-    return (data ?? []) as ExamResultRow[];
+    try {
+      const client = await this.ensureClient();
+      const { data, error } = await client
+        .from(TABLE_EXAM_RESULTS)
+        .select('*')
+        .eq('device_id', this.deviceId.getDeviceId())
+        .order('completedAt', { ascending: false })
+        .limit(limit);
+
+      if (error) {
+        this.circuitBreaker.recordFailure();
+        this._lastError.set(`getExamHistory: ${error.message}`);
+        return [];
+      }
+
+      this.circuitBreaker.recordSuccess();
+      this._lastError.set(null);
+      return (data ?? []) as ExamResultRow[];
+    } catch (err) {
+      this.circuitBreaker.recordFailure();
+      const message = err instanceof Error ? err.message : String(err);
+      this._lastError.set(`getExamHistory: ${message}`);
+      return [];
+    }
   }
 
   // =========================================================================
@@ -227,37 +286,49 @@ export class SupabaseService {
     trackId: string,
     progress: Partial<CurriculumProgress>,
   ): Promise<ProgressRow | null> {
-    if (!this.isBrowser) {
-      return null;
-    }
-    const row: ProgressRow = {
-      trackId,
-      completedModules: progress.completedModules ?? [],
-      theoryCompleted: progress.theoryCompleted ?? false,
-      practiceCompleted: progress.practiceCompleted ?? false,
-      examAttempts: progress.examAttempts ?? 0,
-      bestExamScore: progress.bestExamScore ?? 0,
-      lastAccessedAt: progress.lastAccessedAt ?? new Date().toISOString(),
-      totalTimeSpentSec: progress.totalTimeSpentSec ?? 0,
-    };
-
-    const client = await this.ensureClient();
-    const { data, error } = await client
-      .from(TABLE_PROGRESS)
-      .upsert(
-        { ...row, device_id: this.deviceId.getDeviceId() },
-        { onConflict: 'device_id,trackId' },
-      )
-      .select()
-      .single();
-
-    if (error) {
-      this._lastError.set(`saveProgress: ${error.message}`);
+    if (!this.isBrowser) return null;
+    if (!this.circuitBreaker.canExecute()) {
+      this._lastError.set('Circuit breaker open — Supabase temporarily unavailable');
       return null;
     }
 
-    this._lastError.set(null);
-    return data as ProgressRow;
+    try {
+      const row: ProgressRow = {
+        trackId,
+        completedModules: progress.completedModules ?? [],
+        theoryCompleted: progress.theoryCompleted ?? false,
+        practiceCompleted: progress.practiceCompleted ?? false,
+        examAttempts: progress.examAttempts ?? 0,
+        bestExamScore: progress.bestExamScore ?? 0,
+        lastAccessedAt: progress.lastAccessedAt ?? new Date().toISOString(),
+        totalTimeSpentSec: progress.totalTimeSpentSec ?? 0,
+      };
+
+      const client = await this.ensureClient();
+      const { data, error } = await client
+        .from(TABLE_PROGRESS)
+        .upsert(
+          { ...row, device_id: this.deviceId.getDeviceId() },
+          { onConflict: 'device_id,trackId' },
+        )
+        .select()
+        .single();
+
+      if (error) {
+        this.circuitBreaker.recordFailure();
+        this._lastError.set(`saveProgress: ${error.message}`);
+        return null;
+      }
+
+      this.circuitBreaker.recordSuccess();
+      this._lastError.set(null);
+      return data as ProgressRow;
+    } catch (err) {
+      this.circuitBreaker.recordFailure();
+      const message = err instanceof Error ? err.message : String(err);
+      this._lastError.set(`saveProgress: ${message}`);
+      return null;
+    }
   }
 
   /**
@@ -265,29 +336,41 @@ export class SupabaseService {
    * @param trackId Optional track filter. When omitted, returns all.
    */
   async getProgress(trackId?: string): Promise<ProgressRow[]> {
-    if (!this.isBrowser) {
-      return [];
-    }
-    const client = await this.ensureClient();
-    let query = client
-      .from(TABLE_PROGRESS)
-      .select('*')
-      .eq('device_id', this.deviceId.getDeviceId())
-      .order('lastAccessedAt', { ascending: false });
-
-    if (trackId) {
-      query = query.eq('trackId', trackId);
-    }
-
-    const { data, error } = await query;
-
-    if (error) {
-      this._lastError.set(`getProgress: ${error.message}`);
+    if (!this.isBrowser) return [];
+    if (!this.circuitBreaker.canExecute()) {
+      this._lastError.set('Circuit breaker open — Supabase temporarily unavailable');
       return [];
     }
 
-    this._lastError.set(null);
-    return (data ?? []) as ProgressRow[];
+    try {
+      const client = await this.ensureClient();
+      let query = client
+        .from(TABLE_PROGRESS)
+        .select('*')
+        .eq('device_id', this.deviceId.getDeviceId())
+        .order('lastAccessedAt', { ascending: false });
+
+      if (trackId) {
+        query = query.eq('trackId', trackId);
+      }
+
+      const { data, error } = await query;
+
+      if (error) {
+        this.circuitBreaker.recordFailure();
+        this._lastError.set(`getProgress: ${error.message}`);
+        return [];
+      }
+
+      this.circuitBreaker.recordSuccess();
+      this._lastError.set(null);
+      return (data ?? []) as ProgressRow[];
+    } catch (err) {
+      this.circuitBreaker.recordFailure();
+      const message = err instanceof Error ? err.message : String(err);
+      this._lastError.set(`getProgress: ${message}`);
+      return [];
+    }
   }
 
   // =========================================================================
@@ -300,23 +383,35 @@ export class SupabaseService {
    * @deprecated This method is currently unused — no callers exist in the codebase.
    */
   async getLeaderboard(limit = 10): Promise<LeaderboardRow[]> {
-    if (!this.isBrowser) {
-      return [];
-    }
-    const client = await this.ensureClient();
-    const { data, error } = await client
-      .from(TABLE_LEADERBOARD)
-      .select('*')
-      .order('score', { ascending: false })
-      .limit(limit);
-
-    if (error) {
-      this._lastError.set(`getLeaderboard: ${error.message}`);
+    if (!this.isBrowser) return [];
+    if (!this.circuitBreaker.canExecute()) {
+      this._lastError.set('Circuit breaker open — Supabase temporarily unavailable');
       return [];
     }
 
-    this._lastError.set(null);
-    return (data ?? []) as LeaderboardRow[];
+    try {
+      const client = await this.ensureClient();
+      const { data, error } = await client
+        .from(TABLE_LEADERBOARD)
+        .select('*')
+        .order('score', { ascending: false })
+        .limit(limit);
+
+      if (error) {
+        this.circuitBreaker.recordFailure();
+        this._lastError.set(`getLeaderboard: ${error.message}`);
+        return [];
+      }
+
+      this.circuitBreaker.recordSuccess();
+      this._lastError.set(null);
+      return (data ?? []) as LeaderboardRow[];
+    } catch (err) {
+      this.circuitBreaker.recordFailure();
+      const message = err instanceof Error ? err.message : String(err);
+      this._lastError.set(`getLeaderboard: ${message}`);
+      return [];
+    }
   }
 
   // =========================================================================
@@ -327,23 +422,35 @@ export class SupabaseService {
    * Logs a study session to Supabase for analytics.
    */
   async saveStudySession(session: StudySessionRow): Promise<StudySessionRow | null> {
-    if (!this.isBrowser) {
-      return null;
-    }
-    const client = await this.ensureClient();
-    const { data, error } = await client
-      .from(TABLE_STUDY_SESSIONS)
-      .insert({ ...session, device_id: this.deviceId.getDeviceId() })
-      .select()
-      .single();
-
-    if (error) {
-      this._lastError.set(`saveStudySession: ${error.message}`);
+    if (!this.isBrowser) return null;
+    if (!this.circuitBreaker.canExecute()) {
+      this._lastError.set('Circuit breaker open — Supabase temporarily unavailable');
       return null;
     }
 
-    this._lastError.set(null);
-    return data as StudySessionRow;
+    try {
+      const client = await this.ensureClient();
+      const { data, error } = await client
+        .from(TABLE_STUDY_SESSIONS)
+        .insert({ ...session, device_id: this.deviceId.getDeviceId() })
+        .select()
+        .single();
+
+      if (error) {
+        this.circuitBreaker.recordFailure();
+        this._lastError.set(`saveStudySession: ${error.message}`);
+        return null;
+      }
+
+      this.circuitBreaker.recordSuccess();
+      this._lastError.set(null);
+      return data as StudySessionRow;
+    } catch (err) {
+      this.circuitBreaker.recordFailure();
+      const message = err instanceof Error ? err.message : String(err);
+      this._lastError.set(`saveStudySession: ${message}`);
+      return null;
+    }
   }
 
   // =========================================================================
@@ -375,6 +482,11 @@ export class SupabaseService {
     validatedAt: string;
   } | null> {
     if (!this.isBrowser) return null;
+    if (!this.circuitBreaker.canExecute()) {
+      this._lastError.set('Circuit breaker open — Supabase temporarily unavailable');
+      return null;
+    }
+
     try {
       const client = await this.ensureClient();
       const { data, error } = await client.rpc('validate_exam_answers', {
@@ -384,12 +496,15 @@ export class SupabaseService {
         p_device_id: this.deviceId.getDeviceId(),
       });
       if (error) {
+        this.circuitBreaker.recordFailure();
         this._lastError.set(`validateExamAnswers: ${error.message}`);
         return null;
       }
+      this.circuitBreaker.recordSuccess();
       this._lastError.set(null);
       return data;
     } catch (err: unknown) {
+      this.circuitBreaker.recordFailure();
       const message = err instanceof Error ? err.message : String(err);
       this._lastError.set(`validateExamAnswers: ${message}`);
       return null;

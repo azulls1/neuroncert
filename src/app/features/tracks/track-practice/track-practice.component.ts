@@ -5,7 +5,7 @@ import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { CurriculumService } from '../../../core/services/curriculum.service';
 import { QuestionBankService } from '../../../core/services/question-bank.service';
 import { Question, LearningTrack } from '../../../core/models';
-import { shuffleArray } from '../../../core/utils/exam.utils';
+import { shuffleArray, getOptionLabel } from '../../../core/utils/exam.utils';
 import { LoggingService } from '../../../core/services/logging.service';
 
 /**
@@ -186,6 +186,7 @@ import { LoggingService } from '../../../core/services/logging.service';
                 "
                 [disabled]="answered()"
                 (click)="selectOption(option.id)"
+                [attr.aria-label]="'Opcion ' + getOptionLabel(option.order) + ': ' + option.text"
                 style="width: 100%; text-align: left; cursor: pointer; border: 2px solid transparent; transition: all 0.2s;"
               >
                 <div style="display: flex; align-items: flex-start; gap: 8px;">
@@ -362,6 +363,9 @@ export class TrackPracticeComponent implements OnInit {
   isLastQuestion = computed(() => {
     return this.currentIndex() >= this.questions().length - 1;
   });
+
+  /** Obtiene la etiqueta de la opcion (A, B, C, D) */
+  protected getOptionLabel = getOptionLabel;
 
   ngOnInit(): void {
     if (!this.trackId) {

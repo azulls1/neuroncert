@@ -386,5 +386,178 @@ describe('ScoreService', () => {
       expect(recs.length).toBe(1);
       expect(recs[0]).toContain('Buen rendimiento');
     });
+
+    it('should recommend domain at 69% (just below threshold)', () => {
+      const domainScores: DomainScore[] = [
+        {
+          domainCode: 'D1',
+          domainName: 'Domain 1',
+          weight: 0.4,
+          correct: 69,
+          total: 100,
+          rawPercentage: 69,
+          weightedContribution: 276,
+        },
+      ];
+
+      const recs = service.generateRecommendations(domainScores);
+
+      expect(recs.length).toBe(1);
+      expect(recs[0]).toContain('Domain 1');
+      expect(recs[0]).toContain('69%');
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // Edge cases: 0 questions
+  // -------------------------------------------------------------------------
+
+  describe('edge cases', () => {
+    it('calculateStandardScore should return 0 for 0 correct and 0 total', () => {
+      expect(service.calculateStandardScore(0, 0)).toBe(0);
+    });
+
+    it('calculateCCAFScore with 0 items should return 0 and not pass', () => {
+      const domains: CCAFDomain[] = [
+        {
+          code: 'D1',
+          name: 'Domain 1',
+          weight: 1.0,
+          questionBankFile: '',
+          description: '',
+          totalQuestions: 10,
+        },
+      ];
+
+      const result = service.calculateCCAFScore([], domains);
+
+      expect(result.totalScore).toBe(0);
+      expect(result.passed).toBeFalse();
+      expect(result.domainScores.length).toBe(1);
+      expect(result.domainScores[0].correct).toBe(0);
+      expect(result.domainScores[0].total).toBe(0);
+      expect(result.domainScores[0].rawPercentage).toBe(0);
+    });
+
+    it('calculateCCAFScore with uneven domain distribution', () => {
+      const domains: CCAFDomain[] = [
+        {
+          code: 'D1',
+          name: 'Domain 1',
+          weight: 0.7,
+          questionBankFile: '',
+          description: '',
+          totalQuestions: 10,
+        },
+        {
+          code: 'D2',
+          name: 'Domain 2',
+          weight: 0.3,
+          questionBankFile: '',
+          description: '',
+          totalQuestions: 10,
+        },
+      ];
+
+      // D1: 5 questions, 4 correct (80%)
+      // D2: 2 questions, 1 correct (50%)
+      const items: ExamItemResult[] = [
+        ...Array.from({ length: 4 }, (_, i) => ({
+          questionId: `d1-q${i}`,
+          isCorrect: true,
+          explanation: '',
+          domainCode: 'D1',
+          selectedOptionId: 'opt-a',
+          correctOptionId: 'opt-a',
+        })),
+        {
+          questionId: 'd1-q4',
+          isCorrect: false,
+          explanation: '',
+          domainCode: 'D1',
+          selectedOptionId: 'opt-b',
+          correctOptionId: 'opt-a',
+        },
+        {
+          questionId: 'd2-q0',
+          isCorrect: true,
+          explanation: '',
+          domainCode: 'D2',
+          selectedOptionId: 'opt-a',
+          correctOptionId: 'opt-a',
+        },
+        {
+          questionId: 'd2-q1',
+          isCorrect: false,
+          explanation: '',
+          domainCode: 'D2',
+          selectedOptionId: 'opt-b',
+          correctOptionId: 'opt-a',
+        },
+      ];
+
+      const result = service.calculateCCAFScore(items, domains);
+
+      // D1: 80% * 0.7 * 1000 = 560
+      // D2: 50% * 0.3 * 1000 = 150
+      // Total: 710 -> fail (< 720)
+      expect(result.totalScore).toBe(710);
+      expect(result.passed).toBeFalse();
+    });
+
+    it('calculateStandardScore clamps correct > total gracefully', () => {
+      // Edge case: correct > total (shouldn't happen but should not crash)
+      const result = service.calculateStandardScore(15, 10);
+      expect(result).toBe(150); // 15/10 * 100 = 150
+    });
+
+    it('calculateDomainScores handles items with unknown domain codes', () => {
+      const domains: CCAFDomain[] = [
+        {
+          code: 'D1',
+          name: 'Domain 1',
+          weight: 1.0,
+          questionBankFile: '',
+          description: '',
+          totalQuestions: 5,
+        },
+      ];
+
+      const items: ExamItemResult[] = [
+        {
+          questionId: 'q1',
+          isCorrect: true,
+          explanation: '',
+          domainCode: 'UNKNOWN',
+          selectedOptionId: 'opt-a',
+          correctOptionId: 'opt-a',
+        },
+      ];
+
+      const scores = service.calculateDomainScores(items, domains);
+
+      // Items with UNKNOWN domain don't belong to D1
+      expect(scores.length).toBe(1);
+      expect(scores[0].domainCode).toBe('D1');
+      expect(scores[0].total).toBe(0);
+      expect(scores[0].correct).toBe(0);
+    });
+
+    it('generateRecommendations includes weight percentage in message', () => {
+      const domainScores: DomainScore[] = [
+        {
+          domainCode: 'D1',
+          domainName: 'Security',
+          weight: 0.25,
+          correct: 3,
+          total: 10,
+          rawPercentage: 30,
+          weightedContribution: 75,
+        },
+      ];
+
+      const recs = service.generateRecommendations(domainScores);
+      expect(recs[0]).toContain('25%');
+    });
   });
 });

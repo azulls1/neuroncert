@@ -39,13 +39,13 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
         </div>
       } @else {
         <!-- Progress -->
-        <div class="animate-fadeInUp" style="margin-bottom: 24px;">
+        <div class="animate-fadeInUp" style="margin-bottom: 24px;" role="status" aria-live="polite" [attr.aria-label]="'Progreso: tarjeta ' + (currentIndex() + 1) + ' de ' + filteredQuestions().length">
           <div class="progress-labeled">
             <span class="progress-labeled__value font-mono">
               {{ currentIndex() + 1 }} de {{ filteredQuestions().length }}
             </span>
           </div>
-          <div class="progress" style="margin-top: 8px;">
+          <div class="progress" role="progressbar" [attr.aria-valuenow]="progressPercent()" aria-valuemin="0" aria-valuemax="100" [attr.aria-label]="'Progreso: ' + progressPercent() + '%'" style="margin-top: 8px;">
             <div class="progress__bar" [style.width.%]="progressPercent()"></div>
           </div>
         </div>
@@ -70,13 +70,15 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
           >
             Filtrar por dificultad
           </div>
-          <div class="filter-pills">
+          <div class="filter-pills" role="group" aria-label="Filtrar por dificultad">
             @for (pill of difficultyPills; track pill.value) {
               <button
                 type="button"
                 class="filter-pill"
                 [class.filter-pill--active]="selectedDifficulty() === pill.value"
                 (click)="setDifficulty(pill.value)"
+                [attr.aria-label]="'Filtrar dificultad: ' + pill.label"
+                [attr.aria-pressed]="selectedDifficulty() === pill.value"
               >
                 {{ pill.label }}
               </button>

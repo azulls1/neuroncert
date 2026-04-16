@@ -12,8 +12,8 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="fc-scene" (click)="flip.emit()">
-      <div class="fc-card" [class.fc-card--flipped]="showAnswer()">
+    <div class="fc-scene" (click)="flip.emit()" role="button" aria-label="Voltear tarjeta" tabindex="0" (keydown.enter)="flip.emit()" (keydown.space)="flip.emit(); $event.preventDefault()">
+      <div class="fc-card" [class.fc-card--flipped]="showAnswer()" aria-live="polite">
         <!-- Front face: Question -->
         <div class="fc-face fc-face--front card-section">
           <div class="fc-front-header">
@@ -68,6 +68,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
                 "
                 [disabled]="answered()"
                 (click)="selectOption(option.id)"
+                [attr.aria-label]="'Opcion ' + getOptionLabel(option.order) + ': ' + option.text"
               >
                 <span class="fc-option-label">{{ getOptionLabel(option.order) }}</span>
                 <div style="flex: 1; text-align: left;">
@@ -188,14 +189,15 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
     </div>
 
     <!-- Navigation -->
-    <div class="fc-nav">
+    <div class="fc-nav" role="navigation" aria-label="Navegacion de flashcards">
       <button
         type="button"
         class="btn btn-ghost"
         [disabled]="index() <= 0"
         (click)="previous.emit(); $event.stopPropagation()"
+        aria-label="Tarjeta anterior"
       >
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path
             fill-rule="evenodd"
             d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -205,7 +207,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
         Anterior
       </button>
 
-      <span class="font-mono" style="font-size: 14px; color: var(--color-text-secondary);">
+      <span class="font-mono" style="font-size: 14px; color: var(--color-text-secondary);" aria-live="polite" [attr.aria-label]="'Tarjeta ' + (index() + 1) + ' de ' + total()">
         {{ index() + 1 }} / {{ total() }}
       </span>
 
@@ -214,9 +216,10 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
         class="btn btn-ghost"
         [disabled]="index() >= total() - 1"
         (click)="next.emit(); $event.stopPropagation()"
+        aria-label="Tarjeta siguiente"
       >
         Siguiente
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path
             fill-rule="evenodd"
             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"

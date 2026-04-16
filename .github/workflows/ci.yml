@@ -23,6 +23,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint (Prettier)
+        run: npx prettier --check "src/**/*.ts"
+
       - name: Build (production)
         run: npm run build -- --configuration production
 
@@ -43,8 +46,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests (headless)
-        run: npx ng test --watch=false --browsers=ChromeHeadless
+      - name: Test with coverage
+        run: npx ng test --watch=false --browsers=ChromeHeadless --code-coverage
+
+      - name: Check coverage thresholds
+        run: |
+          node -e "
+            const coverage = require('./coverage/simulador-examen-csa/coverage-summary.json');
+            const total = coverage.total;
+            const minStatements = 70;
+            const minBranches = 60;
+            if (total.statements.pct < minStatements) { console.error('Statements coverage ' + total.statements.pct + '% < ' + minStatements + '%'); process.exit(1); }
+            if (total.branches.pct < minBranches) { console.error('Branch coverage ' + total.branches.pct + '% < ' + minBranches + '%'); process.exit(1); }
+            console.log('Coverage OK: statements=' + total.statements.pct + '%, branches=' + total.branches.pct + '%');
+          "
 
   security:
     name: Security Audit
@@ -91,3 +106,27 @@ jobs:
             exit 1
           fi
           echo "Container responded successfully on port 80"
+
+  docker-push:
+    name: Docker Push Artifact
+    needs: [lint-and-build, test]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build and tag
+        run: |
+          docker build -t simulador-examen-csa:${{ github.sha }} .
+          docker tag simulador-examen-csa:${{ github.sha }} simulador-examen-csa:latest
+
+      - name: Save image artifact
+        run: docker save simulador-examen-csa:latest | gzip > image.tar.gz
+
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-image
+          path: image.tar.gz
+          retention-days: 7

@@ -1,7 +1,10 @@
 <!-- Layout principal — Forest Design System (no sidebar) -->
 <a class="skip-link" href="#main-content">Saltar al contenido</a>
 @if (!connectivity.online()) {
-  <div role="alert" class="offline-banner">Sin conexion a internet — los datos se guardaran localmente</div>
+  <div role="alert" class="offline-banner">{{ i18n.t('offline.banner') }}</div>
+}
+@if (connectivity.online() && !supabase.connected()) {
+  <div class="sync-banner" role="status">Sincronizacion en pausa — los datos se guardan localmente</div>
 }
 <div style="min-height: 100vh; display: flex; flex-direction: column; background: var(--color-bg-page, #F7F8F7);">
   <!-- Navbar -->

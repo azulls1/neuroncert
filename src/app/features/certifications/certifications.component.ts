@@ -161,7 +161,7 @@ interface RoadmapData {
               </div>
             </div>
             <div class="cert-card">
-              <div class="cert-card__title" style="margin-bottom: 8px;">Recursos y Preparacion</div>
+              <h2 class="cert-card__title" style="margin-bottom: 8px;">Recursos y Preparacion</h2>
               @if (cert.studyResources?.length) {
                 @for (resource of cert.studyResources; track resource.name) {
                   <a
@@ -293,9 +293,9 @@ interface RoadmapData {
         <div class="cert-grid-2">
           @if (certSummaryTypes().length) {
             <div class="cert-card">
-              <div class="cert-card__title" style="margin-bottom: 10px;">
+              <h2 class="cert-card__title" style="margin-bottom: 10px;">
                 Resumen de Certificaciones
-              </div>
+              </h2>
               @for (row of certSummaryTypes(); track row.type) {
                 <div class="cert-row">
                   <span>{{ row.type }}</span
@@ -311,9 +311,9 @@ interface RoadmapData {
           }
           @if (summaryPlatforms().length) {
             <div class="cert-card">
-              <div class="cert-card__title" style="margin-bottom: 10px;">
+              <h2 class="cert-card__title" style="margin-bottom: 10px;">
                 Resumen por Plataforma
-              </div>
+              </h2>
               @for (row of summaryPlatforms(); track row.name) {
                 <div class="cert-row">
                   <span>{{ row.name }}</span

@@ -44,7 +44,7 @@ jobs:
         run: npm audit --audit-level=high
 
   budget-check:
-    name: Budget Check
+    name: Budget Check (500kB hard limit)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -63,7 +63,28 @@ jobs:
         run: |
           npm run build -- --configuration production 2>&1 | tee build-output.log
           if grep -q "exceeded maximum budget" build-output.log; then
-            echo "Budget check FAILED: one or more bundles exceeded the configured budget limits."
+            echo "::error::Budget check FAILED: one or more bundles exceeded the configured budget limits."
             exit 1
           fi
-          echo "Budget check passed."
+          echo "Budget check passed (Angular budgets)."
+
+      - name: Enforce 500kB initial bundle limit
+        run: |
+          # Find the main JS bundle in the build output
+          DIST_DIR="dist/simulador-examen-csa/browser"
+          if [ ! -d "$DIST_DIR" ]; then
+            DIST_DIR="dist/simulador-examen-csa"
+          fi
+          TOTAL_SIZE=0
+          for f in $(find "$DIST_DIR" -name "*.js" -type f); do
+            SIZE=$(stat --printf="%s" "$f")
+            TOTAL_SIZE=$((TOTAL_SIZE + SIZE))
+            echo "  $(basename $f): $((SIZE / 1024))kB"
+          done
+          TOTAL_KB=$((TOTAL_SIZE / 1024))
+          echo "Total JS bundle size: ${TOTAL_KB}kB"
+          if [ "$TOTAL_KB" -gt 500 ]; then
+            echo "::error::FAIL: Total JS bundle ${TOTAL_KB}kB exceeds 500kB hard limit."
+            exit 1
+          fi
+          echo "Bundle size OK: ${TOTAL_KB}kB <= 500kB"

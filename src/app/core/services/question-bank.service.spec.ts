@@ -561,5 +561,277 @@ describe('QuestionBankService', () => {
 
       expect(result.durationSec).toBe(3600);
     });
+
+    it('should handle empty question bank for a domain gracefully', () => {
+      const params: ExamParams = {
+        mode: 'ccaf',
+        domains: [],
+        count: 10,
+        difficulty: 'any',
+      };
+
+      const catalog = makeCatalog();
+      loaderSpy.loadCatalog.and.returnValue(of(catalog));
+      // D1 has questions, D2 is empty
+      loaderSpy.loadQuestionFile.and.callFake((path: string) => {
+        if (path.includes('d1.json'))
+          return of(Array.from({ length: 10 }, (_, i) => makeQuestion({ id: `d1-q${i}`, domainCode: 'D1' })));
+        return of([]);
+      });
+
+      let result: any;
+      service.getQuestions(params).subscribe((r) => (result = r));
+
+      expect(result).toBeTruthy();
+      expect(result.questions.length).toBeGreaterThan(0);
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // Additional edge-case tests for branch coverage
+  // -------------------------------------------------------------------------
+
+  describe('getQuestions() — additional edge cases', () => {
+    it('should filter by difficulty and return fewer questions than count', () => {
+      const params: ExamParams = {
+        mode: 'standard',
+        domains: [],
+        count: 50,
+        difficulty: 'easy',
+      };
+
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([
+          makeQuestion({ id: 'q1', difficulty: 'easy' }),
+          makeQuestion({ id: 'q2', difficulty: 'hard' }),
+          makeQuestion({ id: 'q3', difficulty: 'medium' }),
+        ]),
+      );
+
+      let result: any;
+      service.getQuestions(params).subscribe((r) => (result = r));
+
+      expect(result.questions.length).toBe(1);
+      expect(result.questions[0].difficulty).toBe('easy');
+    });
+
+    it('should filter by multiple domain codes', () => {
+      const params: ExamParams = {
+        mode: 'standard',
+        domains: ['D1', 'D3'],
+        count: 10,
+        difficulty: 'any',
+      };
+
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([
+          makeQuestion({ id: 'q1', domainCode: 'D1' }),
+          makeQuestion({ id: 'q2', domainCode: 'D2' }),
+          makeQuestion({ id: 'q3', domainCode: 'D3' }),
+          makeQuestion({ id: 'q4', domainCode: 'D4' }),
+        ]),
+      );
+
+      let result: any;
+      service.getQuestions(params).subscribe((r) => (result = r));
+
+      expect(result.questions.length).toBe(2);
+      result.questions.forEach((q: any) => {
+        expect(['D1', 'D3']).toContain(q.domainCode);
+      });
+    });
+
+    it('should return empty questions when all are filtered out', () => {
+      const params: ExamParams = {
+        mode: 'standard',
+        domains: ['NONEXISTENT'],
+        count: 10,
+        difficulty: 'any',
+      };
+
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([makeQuestion({ id: 'q1', domainCode: 'D1' })]),
+      );
+
+      let result: any;
+      service.getQuestions(params).subscribe((r) => (result = r));
+
+      expect(result.questions.length).toBe(0);
+    });
+
+    it('should handle combined difficulty and domain filters', () => {
+      const params: ExamParams = {
+        mode: 'standard',
+        domains: ['D1'],
+        count: 10,
+        difficulty: 'hard',
+      };
+
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([
+          makeQuestion({ id: 'q1', domainCode: 'D1', difficulty: 'easy' }),
+          makeQuestion({ id: 'q2', domainCode: 'D1', difficulty: 'hard' }),
+          makeQuestion({ id: 'q3', domainCode: 'D2', difficulty: 'hard' }),
+          makeQuestion({ id: 'q4', domainCode: 'D1', difficulty: 'hard' }),
+        ]),
+      );
+
+      let result: any;
+      service.getQuestions(params).subscribe((r) => (result = r));
+
+      expect(result.questions.length).toBe(2);
+      result.questions.forEach((q: any) => {
+        expect(q.domainCode).toBe('D1');
+        expect(q.difficulty).toBe('hard');
+      });
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // validate() — additional edge cases
+  // -------------------------------------------------------------------------
+
+  describe('validate() — additional edge cases', () => {
+    it('should handle all skipped answers (no answers provided)', async () => {
+      const params: ExamParams = { mode: 'standard', domains: [], count: 3, difficulty: 'any' };
+      const questions = [
+        makeQuestion({ id: 'q1', correctOptionId: 'opt-a' }),
+        makeQuestion({ id: 'q2', correctOptionId: 'opt-b' }),
+        makeQuestion({ id: 'q3', correctOptionId: 'opt-c' }),
+      ];
+      loaderSpy.loadQuestionFile.and.returnValue(of(questions));
+      service.getQuestions(params).subscribe();
+
+      const payload: ExamPayload = {
+        examId: 'test-all-skipped',
+        answers: [
+          { questionId: 'q1', optionId: '' },
+          { questionId: 'q2', optionId: '' },
+          { questionId: 'q3', optionId: '' },
+        ],
+      };
+
+      const result = await firstValueFrom(service.validate(payload));
+
+      expect(result.summary.skipped).toBe(3);
+      expect(result.summary.correct).toBe(0);
+      expect(result.summary.incorrect).toBe(0);
+      expect(result.score).toBe(0);
+    });
+
+    it('should handle unknown questionId gracefully', async () => {
+      const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
+      loaderSpy.loadQuestionFile.and.returnValue(
+        of([makeQuestion({ id: 'q1', correctOptionId: 'opt-a' })]),
+      );
+      service.getQuestions(params).subscribe();
+
+      const payload: ExamPayload = {
+        examId: 'test-unknown',
+        answers: [
+          { questionId: 'q1', optionId: 'opt-a' },
+          { questionId: 'q-unknown', optionId: 'opt-a' }, // not in questionsById
+        ],
+      };
+
+      const result = await firstValueFrom(service.validate(payload));
+
+      // q1 is correct, q-unknown should be marked incorrect
+      expect(result.summary.correct).toBe(1);
+      const unknownItem = result.items.find((i) => i.questionId === 'q-unknown');
+      expect(unknownItem).toBeTruthy();
+      expect(unknownItem!.isCorrect).toBeFalse();
+      expect(unknownItem!.domainCode).toBe('unknown');
+    });
+
+    it('should include totalTimeSpent from payload', async () => {
+      const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
+      loaderSpy.loadQuestionFile.and.returnValue(of([makeQuestion({ id: 'q1' })]));
+      service.getQuestions(params).subscribe();
+
+      const payload: ExamPayload = {
+        examId: 'test-time',
+        answers: [{ questionId: 'q1', optionId: 'opt-a' }],
+        totalTimeSpent: 300,
+      };
+
+      const result = await firstValueFrom(service.validate(payload));
+      expect(result.summary.totalTimeSpent).toBe(300);
+    });
+
+    it('should default totalTimeSpent to 0 when not provided', async () => {
+      const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
+      loaderSpy.loadQuestionFile.and.returnValue(of([makeQuestion({ id: 'q1' })]));
+      service.getQuestions(params).subscribe();
+
+      const payload: ExamPayload = {
+        examId: 'test-no-time',
+        answers: [{ questionId: 'q1', optionId: 'opt-a' }],
+      };
+
+      const result = await firstValueFrom(service.validate(payload));
+      expect(result.summary.totalTimeSpent).toBe(0);
+    });
+
+    it('should calculate averageDifficulty correctly', async () => {
+      const params: ExamParams = { mode: 'standard', domains: [], count: 3, difficulty: 'any' };
+      const questions = [
+        makeQuestion({ id: 'q1', difficulty: 'hard' }),
+        makeQuestion({ id: 'q2', difficulty: 'hard' }),
+        makeQuestion({ id: 'q3', difficulty: 'easy' }),
+      ];
+      loaderSpy.loadQuestionFile.and.returnValue(of(questions));
+      service.getQuestions(params).subscribe();
+
+      const payload: ExamPayload = {
+        examId: 'test-diff',
+        answers: [
+          { questionId: 'q1', optionId: 'opt-a' },
+          { questionId: 'q2', optionId: 'opt-a' },
+          { questionId: 'q3', optionId: 'opt-a' },
+        ],
+      };
+
+      const result = await firstValueFrom(service.validate(payload));
+      expect(result.averageDifficulty).toBe('hard');
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // shuffle — options randomization
+  // -------------------------------------------------------------------------
+
+  describe('options shuffling', () => {
+    it('should shuffle options (statistical: at least 1 in 10 runs differs from original order)', () => {
+      const params: ExamParams = { mode: 'standard', domains: [], count: 1, difficulty: 'any' };
+      const originalOptions = [
+        { id: 'opt-a', text: 'A' },
+        { id: 'opt-b', text: 'B' },
+        { id: 'opt-c', text: 'C' },
+        { id: 'opt-d', text: 'D' },
+      ];
+
+      let differentOrderFound = false;
+
+      // Run 20 times - probability of all being identical is (1/24)^20 ~= 0
+      for (let i = 0; i < 20; i++) {
+        loaderSpy.loadQuestionFile.and.returnValue(
+          of([makeQuestion({ id: 'q1', options: [...originalOptions] })]),
+        );
+
+        let result: any;
+        service.getQuestions(params).subscribe((r) => (result = r));
+
+        const returnedOrder = result.questions[0].options.map((o: any) => o.id);
+        const originalOrder = originalOptions.map((o) => o.id);
+
+        if (JSON.stringify(returnedOrder) !== JSON.stringify(originalOrder)) {
+          differentOrderFound = true;
+          break;
+        }
+      }
+
+      expect(differentOrderFound).toBeTrue();
+    });
   });
 });

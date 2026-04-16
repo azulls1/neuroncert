@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { CurriculumService } from '../../core/services/curriculum.service';
 import { ProgressService } from '../../core/services/progress.service';
+import { ExamStateService } from '../../core/services/exam-state.service';
 import { LearningTrack, LearningLevel } from '../../core/models';
 import { StatCardComponent } from '../../shared';
 import { LoggingService } from '../../core/services/logging.service';
@@ -14,6 +15,16 @@ import { LoggingService } from '../../core/services/logging.service';
   imports: [CommonModule, RouterLink, StatCardComponent],
   template: `
     <div class="welcome">
+      @if (hasResumableExam()) {
+        <div class="alert alert-info" style="margin: 0 0 16px; border-radius: 12px; padding: 16px 20px;">
+          <div class="alert__content" style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div class="alert__title" style="margin-right: 4px;">Examen en progreso</div>
+            <span>Tienes un examen sin terminar.</span>
+            <a routerLink="/exam/run" (click)="resumeExam()" class="btn btn-primary" style="margin-left: 12px;">Continuar Examen</a>
+            <button (click)="dismissResumable()" class="btn btn-ghost" style="margin-left: 8px;">Descartar</button>
+          </div>
+        </div>
+      }
       <!-- HERO -- Full-width gradient with animated elements -->
       <section class="hero">
         <div class="hero-bg">
@@ -1048,6 +1059,7 @@ export class DashboardComponent implements OnInit {
   private router = inject(Router);
   private curriculum = inject(CurriculumService);
   private progress = inject(ProgressService);
+  private examState = inject(ExamStateService);
   private logger = inject(LoggingService);
 
   /** Signal refs from services */
@@ -1155,6 +1167,19 @@ export class DashboardComponent implements OnInit {
 
   /** Error state for catalog loading */
   catalogError = signal<string | null>(null);
+
+  /** Whether there's a resumable exam in localStorage */
+  hasResumableExam = computed(() => this.examState.hasResumableExam());
+
+  /** Resumes the saved exam and navigates to the run screen */
+  resumeExam(): void {
+    this.examState.resumeSavedExam();
+  }
+
+  /** Discards the saved exam progress */
+  dismissResumable(): void {
+    this.examState.clearSavedProgress();
+  }
 
   ngOnInit(): void {
     this.curriculum.loadCatalog().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({

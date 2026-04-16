@@ -81,9 +81,9 @@ import { ProgressService } from '../../../core/services/progress.service';
                 <span class="tag font-mono">{{ getPlatformLabel(track.platform) }}</span>
               </div>
 
-              <h3 style="margin: 8px 0 4px; font-weight: 600;" class="text-forest">
+              <h2 style="margin: 8px 0 4px; font-weight: 600; font-size: 1rem;" class="text-forest">
                 {{ track.title }}
-              </h3>
+              </h2>
               <p style="margin: 0 0 12px; font-size: 0.875rem;" class="text-pine">
                 {{ track.description }}
               </p>
@@ -150,7 +150,7 @@ import { ProgressService } from '../../../core/services/progress.service';
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </div>
-          <h3 class="empty-state__title">No se encontraron tracks</h3>
+          <h2 class="empty-state__title">No se encontraron tracks</h2>
           <p class="empty-state__desc">
             Intenta ajustar los filtros para encontrar tracks disponibles.
           </p>
