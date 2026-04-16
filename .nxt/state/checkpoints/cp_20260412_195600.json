@@ -1,0 +1,53 @@
+{
+  "checkpoint_id": "cp_20260412_195600",
+  "timestamp": "2026-04-12T19:56:00Z",
+  "type": "manual",
+  "trigger": "on_session_start",
+  "description": "Checkpoint inicial - Inicializacion de agentes de contexto NXT en simulador-examen-csa",
+
+  "state": {
+    "orchestrator": {
+      "active": true,
+      "current_task": "Inicializacion de agentes de contexto NXT",
+      "progress": {
+        "phase": "construir",
+        "percentage": 60.0
+      }
+    },
+    "agents": {
+      "active": ["nxt-context", "nxt-multicontext"],
+      "pending": ["nxt-changelog", "nxt-ralph"]
+    },
+    "decisions_count": 5,
+    "artifacts_count": 25
+  },
+
+  "summary": {
+    "task": "Aplicar framework NXT (agentes de contexto) al proyecto simulador-examen-csa",
+    "progress": "60% - Context y MultiContext completados, falta Changelog y configs",
+    "current_action": "Creando estado MultiContext y checkpoint inicial",
+    "next_action": "Generar CHANGELOG.md y configuraciones YAML de agentes",
+    "blockers": []
+  },
+
+  "recovery_instructions": [
+    "1. El proyecto es un Simulador CSA ServiceNow en Angular 20 standalone",
+    "2. Stack: Angular 20 + Signals + RxJS + n8n webhooks + SSR",
+    "3. Se estan aplicando los 4 agentes de contexto NXT: Clio, Nova, Logan, Ralph",
+    "4. Ya completado: .nxt/state.json, session-context.json, 5 ADRs, patterns, preferences",
+    "5. Siguiente: Crear CHANGELOG.md, configuraciones YAML de agentes",
+    "6. Framework NXT esta en: nxt-ai-development/ (mismo directorio padre)",
+    "7. Proyecto real esta en: simulador-examen-csa/"
+  ],
+
+  "project_snapshot": {
+    "name": "simulador-examen-csa",
+    "version": "1.0.0",
+    "stack": "Angular 20 + TypeScript 5.8 + RxJS 7.8 + Express 5",
+    "total_ts_files": 37,
+    "components": 8,
+    "services": 7,
+    "models": 7,
+    "routes": 7
+  }
+}

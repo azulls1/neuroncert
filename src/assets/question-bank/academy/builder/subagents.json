@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "domain": "subagents",
+    "domainName": "Subagents & Advanced Patterns",
+    "trackId": "academy-subagents",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10,
+    "learningLevel": 4,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "sub-001",
+      "text": "What is a subagent in the context of Claude Code, and how does it differ from the main agent?",
+      "textEs": "¿Qué es un subagente en el contexto de Claude Code y en qué se diferencia del agente principal?",
+      "domainCode": "subagents",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-001_c",
+      "explanation": "A subagent is a separate Claude Code instance spawned by the main agent (via the Task tool) to handle a specific, scoped piece of work. Subagents have their own isolated conversation context and cannot see or modify the parent agent's context. They return a result to the parent when done. This enables delegation of complex subtasks without polluting the main conversation's context window.",
+      "explanationEs": "Un subagente es una instancia separada de Claude Code generada por el agente principal (a través de la herramienta Task) para manejar un trabajo específico y delimitado. Los subagentes tienen su propio contexto de conversación aislado y no pueden ver ni modificar el contexto del agente padre. Devuelven un resultado al padre cuando terminan. Esto permite delegar subtareas complejas sin contaminar la ventana de contexto de la conversación principal.",
+      "options": [
+        { "id": "sub-001_a", "text": "A subagent is simply a different Claude model (e.g., Haiku) called by the main agent for cheaper processing", "textEs": "Un subagente es simplemente un modelo de Claude diferente (por ejemplo, Haiku) llamado por el agente principal para un procesamiento más económico", "order": 1 },
+        { "id": "sub-001_b", "text": "A subagent is a background process that monitors file changes while the main agent works", "textEs": "Un subagente es un proceso en segundo plano que monitorea cambios de archivos mientras el agente principal trabaja", "order": 2 },
+        { "id": "sub-001_c", "text": "A separate Claude Code instance with isolated context, spawned via the Task tool to handle scoped work and return results to the parent", "textEs": "Una instancia separada de Claude Code con contexto aislado, generada mediante la herramienta Task para manejar trabajo delimitado y devolver resultados al padre", "order": 3 },
+        { "id": "sub-001_d", "text": "A subagent is a human reviewer who must approve the main agent's actions before they are applied", "textEs": "Un subagente es un revisor humano que debe aprobar las acciones del agente principal antes de que se apliquen", "order": 4 }
+      ],
+      "tags": ["subagents", "task-tool", "delegation", "context-isolation"]
+    },
+    {
+      "id": "sub-002",
+      "text": "Why is context isolation important when using subagents, and what problem does it solve?",
+      "textEs": "¿Por qué es importante el aislamiento de contexto al usar subagentes y qué problema resuelve?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-002_b",
+      "explanation": "Context isolation prevents the parent agent's context window from being consumed by large amounts of intermediate data (like reading many files or running many searches). Without isolation, delegated research tasks would fill the main context with irrelevant details, reducing the agent's effectiveness on the primary task. Subagents process all intermediate steps internally and only return the synthesized result.",
+      "explanationEs": "El aislamiento de contexto evita que la ventana de contexto del agente padre sea consumida por grandes cantidades de datos intermedios (como leer muchos archivos o ejecutar muchas búsquedas). Sin aislamiento, las tareas de investigación delegadas llenarían el contexto principal con detalles irrelevantes, reduciendo la efectividad del agente en la tarea principal. Los subagentes procesan todos los pasos intermedios internamente y solo devuelven el resultado sintetizado.",
+      "options": [
+        { "id": "sub-002_a", "text": "Context isolation exists purely for security, ensuring subagents cannot access sensitive data in the parent's conversation", "textEs": "El aislamiento de contexto existe puramente por seguridad, asegurando que los subagentes no puedan acceder a datos sensibles en la conversación del padre", "order": 1 },
+        { "id": "sub-002_b", "text": "It prevents the parent's context window from being consumed by intermediate data; subagents process internally and return only synthesized results", "textEs": "Evita que la ventana de contexto del padre sea consumida por datos intermedios; los subagentes procesan internamente y devuelven solo resultados sintetizados", "order": 2 },
+        { "id": "sub-002_c", "text": "Context isolation is needed because multiple Claude instances cannot share the same API key simultaneously", "textEs": "El aislamiento de contexto es necesario porque múltiples instancias de Claude no pueden compartir la misma clave API simultáneamente", "order": 3 },
+        { "id": "sub-002_d", "text": "It ensures that if a subagent crashes, the parent agent's state is not corrupted and can continue", "textEs": "Asegura que si un subagente falla, el estado del agente padre no se corrompe y puede continuar", "order": 4 }
+      ],
+      "tags": ["subagents", "context-isolation", "context-window", "efficiency"]
+    },
+    {
+      "id": "sub-003",
+      "text": "What is the 'scratchpad pattern' in multi-agent workflows with Claude Code?",
+      "textEs": "¿Qué es el 'patrón de bloc de notas' (scratchpad pattern) en flujos de trabajo multi-agente con Claude Code?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-003_a",
+      "explanation": "The scratchpad pattern uses a shared file (like a Markdown or JSON file on disk) as a communication channel between agents. Multiple parallel agents write their findings to the scratchpad file, and a coordinating agent later reads and synthesizes the results. This works because the filesystem is the shared medium -- agents cannot communicate directly but can all read/write to files in the worktree.",
+      "explanationEs": "El patrón de bloc de notas utiliza un archivo compartido (como un archivo Markdown o JSON en disco) como canal de comunicación entre agentes. Múltiples agentes paralelos escriben sus hallazgos en el archivo de bloc de notas, y un agente coordinador luego lee y sintetiza los resultados. Esto funciona porque el sistema de archivos es el medio compartido -- los agentes no pueden comunicarse directamente pero todos pueden leer/escribir archivos en el worktree.",
+      "options": [
+        { "id": "sub-003_a", "text": "A shared file on disk used as a communication channel where parallel agents write findings and a coordinator synthesizes results", "textEs": "Un archivo compartido en disco usado como canal de comunicación donde agentes paralelos escriben hallazgos y un coordinador sintetiza resultados", "order": 1 },
+        { "id": "sub-003_b", "text": "A temporary in-memory buffer where Claude stores intermediate reasoning steps before producing a final answer", "textEs": "Un buffer temporal en memoria donde Claude almacena pasos de razonamiento intermedios antes de producir una respuesta final", "order": 2 },
+        { "id": "sub-003_c", "text": "A special CLAUDE.md section marked [scratchpad] where agents can store notes that persist across sessions", "textEs": "Una sección especial de CLAUDE.md marcada [scratchpad] donde los agentes pueden almacenar notas que persisten entre sesiones", "order": 3 },
+        { "id": "sub-003_d", "text": "A Redis-backed message queue that Claude Code uses to coordinate work between subagents", "textEs": "Una cola de mensajes respaldada por Redis que Claude Code usa para coordinar trabajo entre subagentes", "order": 4 }
+      ],
+      "tags": ["subagents", "scratchpad", "coordination", "parallel-agents", "patterns"]
+    },
+    {
+      "id": "sub-004",
+      "text": "When should you escalate a task to the human user instead of delegating to a subagent?",
+      "textEs": "¿Cuándo deberías escalar una tarea al usuario humano en lugar de delegarla a un subagente?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-004_d",
+      "explanation": "Escalation to the human is appropriate when the task involves ambiguous requirements that need clarification, irreversible actions with high impact (like deploying to production or deleting data), decisions that require business judgment or domain expertise beyond the agent's knowledge, or when the agent has encountered repeated failures and cannot make progress. Subagents are better suited for well-defined, scoped, and reversible subtasks.",
+      "explanationEs": "La escalación al humano es apropiada cuando la tarea involucra requisitos ambiguos que necesitan clarificación, acciones irreversibles con alto impacto (como desplegar a producción o eliminar datos), decisiones que requieren juicio de negocio o experiencia de dominio más allá del conocimiento del agente, o cuando el agente ha encontrado fallos repetidos y no puede avanzar. Los subagentes son más adecuados para subtareas bien definidas, delimitadas y reversibles.",
+      "options": [
+        { "id": "sub-004_a", "text": "Always escalate to the human; subagents should never make decisions autonomously", "textEs": "Siempre escalar al humano; los subagentes nunca deberían tomar decisiones autónomamente", "order": 1 },
+        { "id": "sub-004_b", "text": "Escalate only when the task requires writing more than 500 lines of code", "textEs": "Escalar solo cuando la tarea requiere escribir más de 500 líneas de código", "order": 2 },
+        { "id": "sub-004_c", "text": "Never escalate; the main agent should always be able to resolve issues by spawning more subagents", "textEs": "Nunca escalar; el agente principal siempre debería poder resolver problemas generando más subagentes", "order": 3 },
+        { "id": "sub-004_d", "text": "Escalate for ambiguous requirements, irreversible high-impact actions, decisions needing business judgment, or after repeated failures", "textEs": "Escalar para requisitos ambiguos, acciones irreversibles de alto impacto, decisiones que necesitan juicio de negocio, o después de fallos repetidos", "order": 4 }
+      ],
+      "tags": ["subagents", "escalation", "human-in-the-loop", "decision-making"]
+    },
+    {
+      "id": "sub-005",
+      "text": "How can you run multiple Claude Code subagents in parallel using git worktrees?",
+      "textEs": "¿Cómo puedes ejecutar múltiples subagentes de Claude Code en paralelo usando git worktrees?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-005_b",
+      "explanation": "Each parallel subagent is assigned its own git worktree (a separate checkout of the same repository on a different branch). This prevents file conflicts since each agent has an isolated working directory. The orchestrator spawns subagents with their worktree path, each works independently, and the results are merged back. This pattern is particularly powerful for tackling multiple independent changes across a codebase simultaneously.",
+      "explanationEs": "Cada subagente paralelo se asigna a su propio git worktree (un checkout separado del mismo repositorio en una rama diferente). Esto evita conflictos de archivos ya que cada agente tiene un directorio de trabajo aislado. El orquestador genera subagentes con la ruta de su worktree, cada uno trabaja independientemente, y los resultados se fusionan de vuelta. Este patrón es particularmente poderoso para abordar múltiples cambios independientes en un código base simultáneamente.",
+      "options": [
+        { "id": "sub-005_a", "text": "All parallel agents work in the same directory but use file locking to prevent conflicts", "textEs": "Todos los agentes paralelos trabajan en el mismo directorio pero usan bloqueo de archivos para prevenir conflictos", "order": 1 },
+        { "id": "sub-005_b", "text": "Each subagent gets its own worktree (separate directory and branch), works independently, and results are merged back by the orchestrator", "textEs": "Cada subagente obtiene su propio worktree (directorio y rama separados), trabaja independientemente, y los resultados se fusionan de vuelta por el orquestador", "order": 2 },
+        { "id": "sub-005_c", "text": "Parallel agents share a single worktree but operate on different file extensions to avoid overlap", "textEs": "Los agentes paralelos comparten un solo worktree pero operan en diferentes extensiones de archivo para evitar superposición", "order": 3 },
+        { "id": "sub-005_d", "text": "Claude Code automatically creates Docker containers for each subagent to provide filesystem isolation", "textEs": "Claude Code crea automáticamente contenedores Docker para cada subagente para proporcionar aislamiento del sistema de archivos", "order": 4 }
+      ],
+      "tags": ["subagents", "parallel-agents", "git-worktrees", "orchestration", "isolation"]
+    },
+    {
+      "id": "sub-006",
+      "text": "What is the recommended way to structure a task prompt when delegating work to a subagent?",
+      "textEs": "¿Cuál es la forma recomendada de estructurar un prompt de tarea al delegar trabajo a un subagente?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-006_a",
+      "explanation": "An effective subagent task prompt should include: a clear objective describing what to accomplish, specific scope boundaries (which files/directories to work in), explicit constraints (what NOT to do), the expected output format, and any relevant context the subagent needs. Being overly vague leads to subagents wandering off-task, while being overly prescriptive removes the agent's ability to problem-solve effectively.",
+      "explanationEs": "Un prompt de tarea efectivo para un subagente debe incluir: un objetivo claro describiendo qué lograr, límites de alcance específicos (en qué archivos/directorios trabajar), restricciones explícitas (qué NO hacer), el formato de salida esperado, y cualquier contexto relevante que el subagente necesite. Ser demasiado vago lleva a que los subagentes se desvíen de la tarea, mientras que ser demasiado prescriptivo elimina la capacidad del agente para resolver problemas efectivamente.",
+      "options": [
+        { "id": "sub-006_a", "text": "Include a clear objective, scope boundaries, explicit constraints, expected output format, and relevant context", "textEs": "Incluir un objetivo claro, límites de alcance, restricciones explícitas, formato de salida esperado y contexto relevante", "order": 1 },
+        { "id": "sub-006_b", "text": "Keep the prompt as minimal as possible (under 20 words) so the subagent has maximum creative freedom", "textEs": "Mantener el prompt lo más mínimo posible (menos de 20 palabras) para que el subagente tenga máxima libertad creativa", "order": 2 },
+        { "id": "sub-006_c", "text": "Provide the complete step-by-step implementation with exact code to write, leaving no decisions to the subagent", "textEs": "Proporcionar la implementación completa paso a paso con el código exacto a escribir, sin dejar decisiones al subagente", "order": 3 },
+        { "id": "sub-006_d", "text": "Simply paste the entire parent conversation history so the subagent has full context", "textEs": "Simplemente pegar todo el historial de conversación del padre para que el subagente tenga contexto completo", "order": 4 }
+      ],
+      "tags": ["subagents", "prompt-engineering", "task-delegation", "best-practices"]
+    },
+    {
+      "id": "sub-007",
+      "text": "What is the 'fan-out / fan-in' pattern in multi-agent architectures?",
+      "textEs": "¿Qué es el patrón 'fan-out / fan-in' en arquitecturas multi-agente?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-007_c",
+      "explanation": "Fan-out / fan-in is a coordination pattern where an orchestrator agent decomposes a large task into independent subtasks (fan-out), spawns parallel subagents for each subtask, waits for all to complete, then collects and synthesizes their results into a unified output (fan-in). For example, reviewing a large codebase by assigning each module to a separate subagent, then combining their findings into a single report.",
+      "explanationEs": "Fan-out / fan-in es un patrón de coordinación donde un agente orquestador descompone una tarea grande en subtareas independientes (fan-out), genera subagentes paralelos para cada subtarea, espera a que todos completen, luego recopila y sintetiza sus resultados en una salida unificada (fan-in). Por ejemplo, revisar una base de código grande asignando cada módulo a un subagente separado, luego combinando sus hallazgos en un solo informe.",
+      "options": [
+        { "id": "sub-007_a", "text": "A pattern where the main agent processes tasks sequentially, passing the output of each step as input to the next", "textEs": "Un patrón donde el agente principal procesa tareas secuencialmente, pasando la salida de cada paso como entrada al siguiente", "order": 1 },
+        { "id": "sub-007_b", "text": "A pattern where subagents are organized in a tree hierarchy, each delegating to smaller sub-subagents", "textEs": "Un patrón donde los subagentes se organizan en una jerarquía de árbol, cada uno delegando a sub-subagentes más pequeños", "order": 2 },
+        { "id": "sub-007_c", "text": "The orchestrator decomposes a task into independent subtasks (fan-out), runs them in parallel, then collects and synthesizes all results (fan-in)", "textEs": "El orquestador descompone una tarea en subtareas independientes (fan-out), las ejecuta en paralelo, luego recopila y sintetiza todos los resultados (fan-in)", "order": 3 },
+        { "id": "sub-007_d", "text": "A load-balancing pattern that distributes API requests across multiple Claude model endpoints", "textEs": "Un patrón de balanceo de carga que distribuye solicitudes API entre múltiples endpoints de modelos de Claude", "order": 4 }
+      ],
+      "tags": ["subagents", "fan-out-fan-in", "orchestration", "parallel-processing", "patterns"]
+    },
+    {
+      "id": "sub-008",
+      "text": "How should you handle errors and failures in subagent workflows?",
+      "textEs": "¿Cómo deberías manejar errores y fallos en flujos de trabajo de subagentes?",
+      "domainCode": "subagents",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-008_a",
+      "explanation": "Robust subagent error handling involves: having the orchestrator check subagent results for success/failure indicators, implementing retry logic for transient failures, providing fallback strategies (like assigning the task to a different approach), and escalating to the human when automated recovery fails. The orchestrator should never assume subagent success -- always validate returned results against expected criteria.",
+      "explanationEs": "El manejo robusto de errores en subagentes involucra: que el orquestador verifique los resultados de los subagentes buscando indicadores de éxito/fallo, implementar lógica de reintentos para fallos transitorios, proporcionar estrategias de respaldo (como asignar la tarea con un enfoque diferente), y escalar al humano cuando la recuperación automatizada falla. El orquestador nunca debe asumir el éxito del subagente -- siempre validar los resultados devueltos contra los criterios esperados.",
+      "options": [
+        { "id": "sub-008_a", "text": "Validate subagent results, retry on transient failures, provide fallback strategies, and escalate to the human when automated recovery fails", "textEs": "Validar resultados de subagentes, reintentar ante fallos transitorios, proporcionar estrategias de respaldo y escalar al humano cuando la recuperación automatizada falla", "order": 1 },
+        { "id": "sub-008_b", "text": "Ignore subagent failures since they are isolated and cannot affect the parent agent's work", "textEs": "Ignorar fallos de subagentes ya que están aislados y no pueden afectar el trabajo del agente padre", "order": 2 },
+        { "id": "sub-008_c", "text": "Immediately abort the entire workflow when any subagent reports an error", "textEs": "Abortar inmediatamente todo el flujo de trabajo cuando cualquier subagente reporta un error", "order": 3 },
+        { "id": "sub-008_d", "text": "Always have two subagents do the same task and use the result that completes first", "textEs": "Siempre tener dos subagentes haciendo la misma tarea y usar el resultado que se complete primero", "order": 4 }
+      ],
+      "tags": ["subagents", "error-handling", "resilience", "orchestration", "best-practices"]
+    },
+    {
+      "id": "sub-009",
+      "text": "What is the key advantage of using the Task tool over simply including research steps in the main agent's prompt?",
+      "textEs": "¿Cuál es la ventaja clave de usar la herramienta Task sobre simplemente incluir pasos de investigación en el prompt del agente principal?",
+      "domainCode": "subagents",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-009_d",
+      "explanation": "The Task tool's main advantage is context window preservation. When the main agent reads dozens of files or runs many searches as part of research, all that intermediate content fills the context window, reducing capacity for the actual task. A subagent via the Task tool handles all that research in its own context and returns only a concise summary, keeping the main agent's context clean and focused.",
+      "explanationEs": "La ventaja principal de la herramienta Task es la preservación de la ventana de contexto. Cuando el agente principal lee docenas de archivos o ejecuta muchas búsquedas como parte de la investigación, todo ese contenido intermedio llena la ventana de contexto, reduciendo la capacidad para la tarea real. Un subagente a través de la herramienta Task maneja toda esa investigación en su propio contexto y devuelve solo un resumen conciso, manteniendo el contexto del agente principal limpio y enfocado.",
+      "options": [
+        { "id": "sub-009_a", "text": "The Task tool runs on a faster model that completes research more quickly", "textEs": "La herramienta Task se ejecuta en un modelo más rápido que completa la investigación más rápidamente", "order": 1 },
+        { "id": "sub-009_b", "text": "The Task tool has access to additional tools that the main agent does not have", "textEs": "La herramienta Task tiene acceso a herramientas adicionales que el agente principal no tiene", "order": 2 },
+        { "id": "sub-009_c", "text": "The Task tool automatically caches results so repeated research is free", "textEs": "La herramienta Task almacena en caché los resultados automáticamente para que la investigación repetida sea gratuita", "order": 3 },
+        { "id": "sub-009_d", "text": "It preserves the main agent's context window by handling research in an isolated context and returning only a concise summary", "textEs": "Preserva la ventana de contexto del agente principal al manejar la investigación en un contexto aislado y devolver solo un resumen conciso", "order": 4 }
+      ],
+      "tags": ["subagents", "task-tool", "context-window", "efficiency"]
+    },
+    {
+      "id": "sub-010",
+      "text": "In a multi-agent coding workflow, what is the recommended approach when two parallel subagents need to modify the same file?",
+      "textEs": "En un flujo de trabajo de codificación multi-agente, ¿cuál es el enfoque recomendado cuando dos subagentes paralelos necesitan modificar el mismo archivo?",
+      "domainCode": "subagents",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-subagents",
+      "correctOptionId": "sub-010_b",
+      "explanation": "When two subagents must modify the same file, the best practice is to restructure the work so that tasks operating on the same files are handled sequentially by a single agent, or to decompose the work so each agent modifies different files. If overlap is unavoidable, use git worktrees with separate branches and merge the changes afterward, resolving any conflicts. Running parallel agents on the same file in the same worktree risks race conditions and lost writes.",
+      "explanationEs": "Cuando dos subagentes deben modificar el mismo archivo, la mejor práctica es reestructurar el trabajo para que las tareas que operan sobre los mismos archivos sean manejadas secuencialmente por un solo agente, o descomponer el trabajo para que cada agente modifique archivos diferentes. Si la superposición es inevitable, usar git worktrees con ramas separadas y fusionar los cambios después, resolviendo cualquier conflicto. Ejecutar agentes paralelos sobre el mismo archivo en el mismo worktree arriesga condiciones de carrera y escrituras perdidas.",
+      "options": [
+        { "id": "sub-010_a", "text": "Let both agents modify the file simultaneously; Claude Code has built-in conflict resolution that merges changes automatically", "textEs": "Dejar que ambos agentes modifiquen el archivo simultáneamente; Claude Code tiene resolución de conflictos integrada que fusiona cambios automáticamente", "order": 1 },
+        { "id": "sub-010_b", "text": "Restructure work so same-file tasks run sequentially in one agent, or use separate worktrees/branches and merge afterward", "textEs": "Reestructurar el trabajo para que las tareas del mismo archivo se ejecuten secuencialmente en un agente, o usar worktrees/ramas separados y fusionar después", "order": 2 },
+        { "id": "sub-010_c", "text": "Use file locking APIs to ensure only one agent can write to the file at a time while the other waits", "textEs": "Usar APIs de bloqueo de archivos para asegurar que solo un agente pueda escribir en el archivo a la vez mientras el otro espera", "order": 3 },
+        { "id": "sub-010_d", "text": "Have each agent write to a temporary copy of the file, then use a diff tool to manually combine the changes", "textEs": "Hacer que cada agente escriba en una copia temporal del archivo, luego usar una herramienta de diff para combinar manualmente los cambios", "order": 4 }
+      ],
+      "tags": ["subagents", "parallel-agents", "file-conflicts", "worktrees", "best-practices"]
+    }
+  ]
+}

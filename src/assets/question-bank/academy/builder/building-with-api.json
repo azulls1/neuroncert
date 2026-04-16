@@ -1,0 +1,814 @@
+{
+  "meta": {
+    "domain": "building-with-api",
+    "domainName": "Building with the Claude API",
+    "trackId": "academy-building-api",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 40,
+    "learningLevel": 3,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "api-001",
+      "text": "What is the correct endpoint and HTTP method for sending a message to Claude via the Messages API?",
+      "textEs": "¿Cuál es el endpoint correcto y el método HTTP para enviar un mensaje a Claude a través de la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-001_b",
+      "explanation": "The Messages API uses a POST request to https://api.anthropic.com/v1/messages. The request body includes the model identifier, an optional system prompt, and an array of messages. This is the primary endpoint for all interactions with Claude through the API.",
+      "explanationEs": "La API de Mensajes utiliza una solicitud POST a https://api.anthropic.com/v1/messages. El cuerpo de la solicitud incluye el identificador del modelo, un prompt de sistema opcional y un arreglo de mensajes. Este es el endpoint principal para todas las interacciones con Claude a través de la API.",
+      "options": [
+        { "id": "api-001_a", "text": "GET https://api.anthropic.com/v1/chat", "textEs": "GET https://api.anthropic.com/v1/chat", "order": 1 },
+        { "id": "api-001_b", "text": "POST https://api.anthropic.com/v1/messages", "textEs": "POST https://api.anthropic.com/v1/messages", "order": 2 },
+        { "id": "api-001_c", "text": "POST https://api.anthropic.com/v1/completions", "textEs": "POST https://api.anthropic.com/v1/completions", "order": 3 },
+        { "id": "api-001_d", "text": "PUT https://api.anthropic.com/v1/conversations", "textEs": "PUT https://api.anthropic.com/v1/conversations", "order": 4 }
+      ],
+      "tags": ["messages-api", "endpoint", "http-method", "basics"]
+    },
+    {
+      "id": "api-002",
+      "text": "How is authentication handled in the Anthropic API?",
+      "textEs": "¿Cómo se gestiona la autenticación en la API de Anthropic?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-002_a",
+      "explanation": "Authentication to the Anthropic API is done via the x-api-key header containing your API key. The key is prefixed with 'sk-ant-' and should be kept secret. It should never be exposed in client-side code. For production applications, store the key in environment variables or a secrets manager.",
+      "explanationEs": "La autenticación en la API de Anthropic se realiza a través del encabezado x-api-key que contiene tu clave API. La clave tiene el prefijo 'sk-ant-' y debe mantenerse en secreto. Nunca debe exponerse en código del lado del cliente. Para aplicaciones en producción, almacena la clave en variables de entorno o en un gestor de secretos.",
+      "options": [
+        { "id": "api-002_a", "text": "Via the x-api-key header with a secret API key (prefixed sk-ant-); stored in environment variables, never in client code", "textEs": "A través del encabezado x-api-key con una clave API secreta (con prefijo sk-ant-); almacenada en variables de entorno, nunca en código del cliente", "order": 1 },
+        { "id": "api-002_b", "text": "Via OAuth 2.0 bearer tokens obtained from an authorization server", "textEs": "A través de tokens de portador OAuth 2.0 obtenidos de un servidor de autorización", "order": 2 },
+        { "id": "api-002_c", "text": "Via a username and password in the request body", "textEs": "A través de un nombre de usuario y contraseña en el cuerpo de la solicitud", "order": 3 },
+        { "id": "api-002_d", "text": "Via a JWT token in the Authorization header with the Bearer scheme", "textEs": "A través de un token JWT en el encabezado Authorization con el esquema Bearer", "order": 4 }
+      ],
+      "tags": ["authentication", "api-key", "security", "x-api-key"]
+    },
+    {
+      "id": "api-003",
+      "text": "What are the required fields in a Messages API request body?",
+      "textEs": "¿Cuáles son los campos obligatorios en el cuerpo de una solicitud a la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-003_c",
+      "explanation": "The required fields are 'model' (which Claude model to use, e.g., 'claude-sonnet-4-20250514'), 'messages' (an array of conversation messages with role and content), and 'max_tokens' (the maximum number of tokens in the response). The 'system' prompt is optional but recommended. Other optional fields include temperature, tools, and metadata.",
+      "explanationEs": "Los campos obligatorios son 'model' (qué modelo de Claude usar, por ejemplo, 'claude-sonnet-4-20250514'), 'messages' (un arreglo de mensajes de conversación con rol y contenido) y 'max_tokens' (el número máximo de tokens en la respuesta). El prompt de 'system' es opcional pero recomendado. Otros campos opcionales incluyen temperature, tools y metadata.",
+      "options": [
+        { "id": "api-003_a", "text": "model, prompt, and temperature", "textEs": "model, prompt y temperature", "order": 1 },
+        { "id": "api-003_b", "text": "model, system, messages, and api_key", "textEs": "model, system, messages y api_key", "order": 2 },
+        { "id": "api-003_c", "text": "model, messages, and max_tokens", "textEs": "model, messages y max_tokens", "order": 3 },
+        { "id": "api-003_d", "text": "model, messages, max_tokens, and system (all four are required)", "textEs": "model, messages, max_tokens y system (los cuatro son obligatorios)", "order": 4 }
+      ],
+      "tags": ["messages-api", "required-fields", "request-body", "basics"]
+    },
+    {
+      "id": "api-004",
+      "text": "How does streaming work with the Claude Messages API?",
+      "textEs": "¿Cómo funciona el streaming con la API de Mensajes de Claude?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-004_b",
+      "explanation": "Streaming is enabled by setting 'stream: true' in the request body. The API then returns Server-Sent Events (SSE) instead of a single JSON response. Events include message_start, content_block_start, content_block_delta (incremental text), content_block_stop, and message_stop. This allows displaying tokens to the user as they are generated, providing a better experience for long responses.",
+      "explanationEs": "El streaming se habilita estableciendo 'stream: true' en el cuerpo de la solicitud. La API entonces devuelve Server-Sent Events (SSE) en lugar de una única respuesta JSON. Los eventos incluyen message_start, content_block_start, content_block_delta (texto incremental), content_block_stop y message_stop. Esto permite mostrar los tokens al usuario a medida que se generan, brindando una mejor experiencia para respuestas largas.",
+      "options": [
+        { "id": "api-004_a", "text": "Use a WebSocket connection to wss://stream.anthropic.com for real-time bidirectional communication", "textEs": "Usar una conexión WebSocket a wss://stream.anthropic.com para comunicación bidireccional en tiempo real", "order": 1 },
+        { "id": "api-004_b", "text": "Set 'stream: true' in the request; the API returns Server-Sent Events (SSE) with incremental content_block_delta events", "textEs": "Establecer 'stream: true' en la solicitud; la API devuelve Server-Sent Events (SSE) con eventos incrementales content_block_delta", "order": 2 },
+        { "id": "api-004_c", "text": "Poll the /v1/messages/{id}/status endpoint repeatedly until the response is complete", "textEs": "Consultar repetidamente el endpoint /v1/messages/{id}/status hasta que la respuesta esté completa", "order": 3 },
+        { "id": "api-004_d", "text": "Use the /v1/messages/stream endpoint with a long-polling HTTP connection", "textEs": "Usar el endpoint /v1/messages/stream con una conexión HTTP de long-polling", "order": 4 }
+      ],
+      "tags": ["streaming", "sse", "server-sent-events", "real-time"]
+    },
+    {
+      "id": "api-005",
+      "text": "What HTTP status code does the Anthropic API return when you exceed the rate limit?",
+      "textEs": "¿Qué código de estado HTTP devuelve la API de Anthropic cuando se excede el límite de tasa?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-005_d",
+      "explanation": "The Anthropic API returns HTTP 429 (Too Many Requests) when rate limits are exceeded. The response includes retry-after headers indicating when you can retry. Rate limits are applied per API key and are based on requests per minute and tokens per minute. The recommended handling is exponential backoff with jitter.",
+      "explanationEs": "La API de Anthropic devuelve HTTP 429 (Too Many Requests) cuando se exceden los límites de tasa. La respuesta incluye encabezados retry-after que indican cuándo puedes reintentar. Los límites de tasa se aplican por clave API y se basan en solicitudes por minuto y tokens por minuto. El manejo recomendado es retroceso exponencial con variación aleatoria (jitter).",
+      "options": [
+        { "id": "api-005_a", "text": "400 Bad Request with a rate_limit error type", "textEs": "400 Bad Request con un tipo de error rate_limit", "order": 1 },
+        { "id": "api-005_b", "text": "403 Forbidden with an access_denied error", "textEs": "403 Forbidden con un error access_denied", "order": 2 },
+        { "id": "api-005_c", "text": "503 Service Unavailable with a retry-after header", "textEs": "503 Service Unavailable con un encabezado retry-after", "order": 3 },
+        { "id": "api-005_d", "text": "429 Too Many Requests with retry-after headers; handle with exponential backoff", "textEs": "429 Too Many Requests con encabezados retry-after; manejar con retroceso exponencial", "order": 4 }
+      ],
+      "tags": ["rate-limiting", "http-status", "429", "error-handling"]
+    },
+    {
+      "id": "api-006",
+      "text": "How does the Anthropic Message Batches API work, and what is its primary benefit?",
+      "textEs": "¿Cómo funciona la API de Lotes de Mensajes de Anthropic y cuál es su beneficio principal?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-006_a",
+      "explanation": "The Message Batches API lets you submit up to 10,000 message requests as a single batch. These are processed asynchronously within 24 hours. The primary benefit is a 50% cost reduction compared to standard API calls. You submit the batch, receive a batch ID, and poll for results or use a webhook. Ideal for non-time-sensitive workloads like data processing, classification at scale, and content generation.",
+      "explanationEs": "La API de Lotes de Mensajes permite enviar hasta 10,000 solicitudes de mensajes como un solo lote. Estas se procesan de forma asíncrona en un plazo de 24 horas. El beneficio principal es una reducción de costos del 50% en comparación con las llamadas estándar a la API. Envías el lote, recibes un ID de lote y consultas los resultados o usas un webhook. Ideal para cargas de trabajo no urgentes como procesamiento de datos, clasificación a escala y generación de contenido.",
+      "options": [
+        { "id": "api-006_a", "text": "Submit up to 10,000 requests as a batch for async processing within 24 hours at 50% cost reduction", "textEs": "Enviar hasta 10,000 solicitudes como un lote para procesamiento asíncrono en 24 horas con una reducción de costos del 50%", "order": 1 },
+        { "id": "api-006_b", "text": "Send multiple messages in one API call for a multi-turn conversation at normal pricing", "textEs": "Enviar múltiples mensajes en una sola llamada a la API para una conversación multi-turno a precio normal", "order": 2 },
+        { "id": "api-006_c", "text": "Process batch uploads of files (PDFs, images) with a single request at 25% discount", "textEs": "Procesar cargas masivas de archivos (PDFs, imágenes) con una sola solicitud con un 25% de descuento", "order": 3 },
+        { "id": "api-006_d", "text": "Automatically retry failed requests in batch mode with guaranteed delivery", "textEs": "Reintentar automáticamente solicitudes fallidas en modo lote con entrega garantizada", "order": 4 }
+      ],
+      "tags": ["batch-api", "async", "cost-reduction", "large-scale"]
+    },
+    {
+      "id": "api-007",
+      "text": "How do you define and use tools (function calling) in the Messages API?",
+      "textEs": "¿Cómo se definen y usan las herramientas (llamada a funciones) en la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-007_c",
+      "explanation": "Tools are defined in the 'tools' array of the request body. Each tool has a 'name', 'description', and 'input_schema' (a JSON Schema defining the parameters). When Claude decides to use a tool, it returns a response with a tool_use content block containing the tool name and input. Your code executes the tool and returns the result as a tool_result content block in the next message.",
+      "explanationEs": "Las herramientas se definen en el arreglo 'tools' del cuerpo de la solicitud. Cada herramienta tiene un 'name', 'description' e 'input_schema' (un JSON Schema que define los parámetros). Cuando Claude decide usar una herramienta, devuelve una respuesta con un bloque de contenido tool_use que contiene el nombre de la herramienta y la entrada. Tu código ejecuta la herramienta y devuelve el resultado como un bloque de contenido tool_result en el siguiente mensaje.",
+      "options": [
+        { "id": "api-007_a", "text": "Register tools via a separate /v1/tools endpoint, then reference them by ID in messages", "textEs": "Registrar herramientas a través de un endpoint separado /v1/tools, luego referenciarlas por ID en los mensajes", "order": 1 },
+        { "id": "api-007_b", "text": "Include tool code as strings in the system prompt; Claude executes them directly", "textEs": "Incluir el código de las herramientas como cadenas de texto en el prompt de sistema; Claude las ejecuta directamente", "order": 2 },
+        { "id": "api-007_c", "text": "Define tools in the 'tools' array with name, description, and input_schema; Claude returns tool_use blocks, you return tool_result blocks", "textEs": "Definir herramientas en el arreglo 'tools' con name, description e input_schema; Claude devuelve bloques tool_use, tú devuelves bloques tool_result", "order": 3 },
+        { "id": "api-007_d", "text": "Use the 'functions' parameter with OpenAI-compatible function definitions", "textEs": "Usar el parámetro 'functions' con definiciones de funciones compatibles con OpenAI", "order": 4 }
+      ],
+      "tags": ["tools", "function-calling", "tool-use", "tool-result", "input-schema"]
+    },
+    {
+      "id": "api-008",
+      "text": "How can you send images to Claude through the Messages API?",
+      "textEs": "¿Cómo puedes enviar imágenes a Claude a través de la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-008_b",
+      "explanation": "Images are sent as content blocks with type 'image' in the messages array. You can provide images either as base64-encoded data (with media_type and data fields in a 'source' object with type 'base64') or as a URL (with type 'url' in the source object). Supported formats include JPEG, PNG, GIF, and WebP. Images can be mixed with text content blocks in the same message.",
+      "explanationEs": "Las imágenes se envían como bloques de contenido con tipo 'image' en el arreglo de mensajes. Puedes proporcionar imágenes como datos codificados en base64 (con los campos media_type y data en un objeto 'source' con tipo 'base64') o como una URL (con tipo 'url' en el objeto source). Los formatos soportados incluyen JPEG, PNG, GIF y WebP. Las imágenes pueden mezclarse con bloques de contenido de texto en el mismo mensaje.",
+      "options": [
+        { "id": "api-008_a", "text": "Upload images to a separate /v1/files endpoint and reference them by file ID", "textEs": "Subir imágenes a un endpoint separado /v1/files y referenciarlas por ID de archivo", "order": 1 },
+        { "id": "api-008_b", "text": "Include image content blocks with base64-encoded data or URL source in the messages array, supporting JPEG, PNG, GIF, and WebP", "textEs": "Incluir bloques de contenido de imagen con datos codificados en base64 o fuente URL en el arreglo de mensajes, soportando JPEG, PNG, GIF y WebP", "order": 2 },
+        { "id": "api-008_c", "text": "Attach images as multipart/form-data alongside the JSON request body", "textEs": "Adjuntar imágenes como multipart/form-data junto con el cuerpo de la solicitud JSON", "order": 3 },
+        { "id": "api-008_d", "text": "Convert images to text descriptions using a separate API and include the description as text", "textEs": "Convertir imágenes a descripciones de texto usando una API separada e incluir la descripción como texto", "order": 4 }
+      ],
+      "tags": ["vision", "multimodal", "images", "base64", "content-blocks"]
+    },
+    {
+      "id": "api-009",
+      "text": "What information does the 'usage' field in the API response provide?",
+      "textEs": "¿Qué información proporciona el campo 'usage' en la respuesta de la API?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-009_a",
+      "explanation": "The 'usage' field in the API response contains 'input_tokens' (the number of tokens in the input, including system prompt, messages, and tools) and 'output_tokens' (the number of tokens in Claude's response). When prompt caching is used, it also includes 'cache_creation_input_tokens' and 'cache_read_input_tokens'. This is essential for cost tracking and context window management.",
+      "explanationEs": "El campo 'usage' en la respuesta de la API contiene 'input_tokens' (el número de tokens en la entrada, incluyendo el prompt de sistema, mensajes y herramientas) y 'output_tokens' (el número de tokens en la respuesta de Claude). Cuando se usa caché de prompts, también incluye 'cache_creation_input_tokens' y 'cache_read_input_tokens'. Es esencial para el seguimiento de costos y la gestión de la ventana de contexto.",
+      "options": [
+        { "id": "api-009_a", "text": "input_tokens and output_tokens counts, plus cache token counts when prompt caching is used", "textEs": "Conteos de input_tokens y output_tokens, más conteos de tokens de caché cuando se usa caché de prompts", "order": 1 },
+        { "id": "api-009_b", "text": "The total cost in dollars for the API call", "textEs": "El costo total en dólares de la llamada a la API", "order": 2 },
+        { "id": "api-009_c", "text": "The number of API calls remaining in the current billing period", "textEs": "El número de llamadas a la API restantes en el período de facturación actual", "order": 3 },
+        { "id": "api-009_d", "text": "The processing time in milliseconds and the model version used", "textEs": "El tiempo de procesamiento en milisegundos y la versión del modelo utilizada", "order": 4 }
+      ],
+      "tags": ["usage", "tokens", "cost-tracking", "response-fields"]
+    },
+    {
+      "id": "api-010",
+      "text": "What are the different error types returned by the Anthropic API, and how should they be handled?",
+      "textEs": "¿Cuáles son los diferentes tipos de error que devuelve la API de Anthropic y cómo deben manejarse?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-010_d",
+      "explanation": "The Anthropic API returns errors with a 'type' and 'message'. Key error types include: 'invalid_request_error' (400 - fix the request), 'authentication_error' (401 - check API key), 'permission_error' (403 - check access), 'rate_limit_error' (429 - back off and retry), 'api_error' (500 - retry with backoff), and 'overloaded_error' (529 - retry later). Client errors (4xx) should not be retried without fixing the issue; server errors (5xx) and 429 should be retried with exponential backoff.",
+      "explanationEs": "La API de Anthropic devuelve errores con un 'type' y un 'message'. Los tipos de error principales incluyen: 'invalid_request_error' (400 - corregir la solicitud), 'authentication_error' (401 - verificar la clave API), 'permission_error' (403 - verificar el acceso), 'rate_limit_error' (429 - esperar y reintentar), 'api_error' (500 - reintentar con retroceso) y 'overloaded_error' (529 - reintentar más tarde). Los errores del cliente (4xx) no deben reintentarse sin corregir el problema; los errores del servidor (5xx) y el 429 deben reintentarse con retroceso exponencial.",
+      "options": [
+        { "id": "api-010_a", "text": "All errors return 500 status with different error codes; retry all errors with the same backoff strategy", "textEs": "Todos los errores devuelven estado 500 con diferentes códigos de error; reintentar todos los errores con la misma estrategia de retroceso", "order": 1 },
+        { "id": "api-010_b", "text": "Errors are only returned in the response body as warnings; HTTP status is always 200", "textEs": "Los errores solo se devuelven en el cuerpo de la respuesta como advertencias; el estado HTTP siempre es 200", "order": 2 },
+        { "id": "api-010_c", "text": "Only two error types exist: 'client_error' and 'server_error'; handle both with identical retry logic", "textEs": "Solo existen dos tipos de error: 'client_error' y 'server_error'; manejar ambos con lógica de reintento idéntica", "order": 3 },
+        { "id": "api-010_d", "text": "Specific error types (invalid_request, authentication, rate_limit, api_error, overloaded); fix client errors, retry server/rate errors with backoff", "textEs": "Tipos de error específicos (invalid_request, authentication, rate_limit, api_error, overloaded); corregir errores del cliente, reintentar errores de servidor/tasa con retroceso", "order": 4 }
+      ],
+      "tags": ["error-handling", "error-types", "retry", "backoff", "api"]
+    },
+    {
+      "id": "api-011",
+      "text": "How do you implement multi-turn conversations with the stateless Messages API?",
+      "textEs": "¿Cómo se implementan conversaciones multi-turno con la API de Mensajes sin estado?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-011_b",
+      "explanation": "The Messages API is stateless -- there is no server-side session. To implement multi-turn conversations, you must maintain the full conversation history on the client side and include it in every request. Each request's 'messages' array should contain all previous user and assistant messages in chronological order. This means the entire conversation is resent with every API call.",
+      "explanationEs": "La API de Mensajes no tiene estado -- no existe una sesión del lado del servidor. Para implementar conversaciones multi-turno, debes mantener el historial completo de la conversación en el lado del cliente e incluirlo en cada solicitud. El arreglo 'messages' de cada solicitud debe contener todos los mensajes previos de usuario y asistente en orden cronológico. Esto significa que toda la conversación se reenvía con cada llamada a la API.",
+      "options": [
+        { "id": "api-011_a", "text": "Use a conversation_id parameter to reference a server-side session that maintains history", "textEs": "Usar un parámetro conversation_id para referenciar una sesión del lado del servidor que mantiene el historial", "order": 1 },
+        { "id": "api-011_b", "text": "Maintain the full messages array client-side and include all previous user and assistant messages in each request", "textEs": "Mantener el arreglo completo de mensajes del lado del cliente e incluir todos los mensajes previos de usuario y asistente en cada solicitud", "order": 2 },
+        { "id": "api-011_c", "text": "Send only the latest user message; the API automatically retrieves the conversation from the session store", "textEs": "Enviar solo el último mensaje del usuario; la API recupera automáticamente la conversación del almacén de sesiones", "order": 3 },
+        { "id": "api-011_d", "text": "Use the /v1/conversations endpoint to create a persistent conversation, then add messages to it", "textEs": "Usar el endpoint /v1/conversations para crear una conversación persistente, luego agregar mensajes a ella", "order": 4 }
+      ],
+      "tags": ["multi-turn", "stateless", "conversation-history", "messages-array"]
+    },
+    {
+      "id": "api-012",
+      "text": "What is the system prompt field in the Messages API, and how does it differ from regular messages?",
+      "textEs": "¿Qué es el campo de prompt de sistema en la API de Mensajes y en qué se diferencia de los mensajes regulares?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-012_c",
+      "explanation": "The 'system' field is a top-level parameter in the request (not inside the messages array) that provides instructions, context, and constraints for Claude. It is processed before any messages and influences the entire conversation. Unlike user messages, it does not participate in the alternating user/assistant turn structure. The system prompt is ideal for persona definitions, output format requirements, and persistent rules.",
+      "explanationEs": "El campo 'system' es un parámetro de nivel superior en la solicitud (no dentro del arreglo de mensajes) que proporciona instrucciones, contexto y restricciones para Claude. Se procesa antes que cualquier mensaje e influye en toda la conversación. A diferencia de los mensajes de usuario, no participa en la estructura de turnos alternados usuario/asistente. El prompt de sistema es ideal para definiciones de personalidad, requisitos de formato de salida y reglas persistentes.",
+      "options": [
+        { "id": "api-012_a", "text": "It is the first message in the messages array with role 'system'", "textEs": "Es el primer mensaje en el arreglo de mensajes con rol 'system'", "order": 1 },
+        { "id": "api-012_b", "text": "It is identical to a user message but with higher priority in the model's attention", "textEs": "Es idéntico a un mensaje de usuario pero con mayor prioridad en la atención del modelo", "order": 2 },
+        { "id": "api-012_c", "text": "A top-level request parameter processed before messages, providing persistent instructions outside the turn structure", "textEs": "Un parámetro de nivel superior en la solicitud procesado antes de los mensajes, proporcionando instrucciones persistentes fuera de la estructura de turnos", "order": 3 },
+        { "id": "api-012_d", "text": "An optional HTTP header (X-System-Prompt) that is cached across requests", "textEs": "Un encabezado HTTP opcional (X-System-Prompt) que se almacena en caché entre solicitudes", "order": 4 }
+      ],
+      "tags": ["system-prompt", "messages-api", "top-level", "configuration"]
+    },
+    {
+      "id": "api-013",
+      "text": "How does the anthropic-version header work, and why is it important?",
+      "textEs": "¿Cómo funciona el encabezado anthropic-version y por qué es importante?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-013_a",
+      "explanation": "The anthropic-version header specifies which version of the API specification to use (e.g., '2023-06-01'). This ensures your application continues to work even when Anthropic releases new API versions with breaking changes. If you omit it, the latest version is used, which could break your integration. Always pin to a specific version in production code.",
+      "explanationEs": "El encabezado anthropic-version especifica qué versión de la especificación de la API usar (por ejemplo, '2023-06-01'). Esto asegura que tu aplicación continúe funcionando incluso cuando Anthropic lance nuevas versiones de la API con cambios incompatibles. Si lo omites, se usa la versión más reciente, lo que podría romper tu integración. Siempre fija una versión específica en código de producción.",
+      "options": [
+        { "id": "api-013_a", "text": "Specifies the API specification version (e.g., '2023-06-01') to ensure backward compatibility; always pin in production", "textEs": "Especifica la versión de la especificación de la API (por ejemplo, '2023-06-01') para garantizar compatibilidad hacia atrás; siempre fijar en producción", "order": 1 },
+        { "id": "api-013_b", "text": "Specifies which Claude model version to use, overriding the 'model' field in the body", "textEs": "Especifica qué versión del modelo Claude usar, sobreescribiendo el campo 'model' en el cuerpo", "order": 2 },
+        { "id": "api-013_c", "text": "A debug header that enables verbose logging when set to 'debug'", "textEs": "Un encabezado de depuración que habilita registro detallado cuando se establece en 'debug'", "order": 3 },
+        { "id": "api-013_d", "text": "An optional header that is only needed when using deprecated features", "textEs": "Un encabezado opcional que solo es necesario al usar funcionalidades obsoletas", "order": 4 }
+      ],
+      "tags": ["api-version", "header", "backward-compatibility", "production"]
+    },
+    {
+      "id": "api-014",
+      "text": "When using tool_use with the API, what is the correct structure for returning a tool result to Claude?",
+      "textEs": "Al usar tool_use con la API, ¿cuál es la estructura correcta para devolver el resultado de una herramienta a Claude?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-014_b",
+      "explanation": "After Claude returns a tool_use block, you execute the tool and send the result back as a new message with role 'user' containing a content block of type 'tool_result'. The tool_result must include the 'tool_use_id' matching the original tool_use block, and a 'content' field with the result. If the tool failed, set 'is_error: true' and include the error message in content.",
+      "explanationEs": "Después de que Claude devuelve un bloque tool_use, ejecutas la herramienta y envías el resultado de vuelta como un nuevo mensaje con rol 'user' que contiene un bloque de contenido de tipo 'tool_result'. El tool_result debe incluir el 'tool_use_id' que coincida con el bloque tool_use original, y un campo 'content' con el resultado. Si la herramienta falló, establece 'is_error: true' e incluye el mensaje de error en content.",
+      "options": [
+        { "id": "api-014_a", "text": "Send a new message with role 'tool' and the result as plain text", "textEs": "Enviar un nuevo mensaje con rol 'tool' y el resultado como texto plano", "order": 1 },
+        { "id": "api-014_b", "text": "Send a user message with a content block of type 'tool_result', matching tool_use_id, content, and optional is_error flag", "textEs": "Enviar un mensaje de usuario con un bloque de contenido de tipo 'tool_result', con tool_use_id coincidente, content y la bandera opcional is_error", "order": 2 },
+        { "id": "api-014_c", "text": "Append the tool result to the assistant's previous message as an additional content block", "textEs": "Agregar el resultado de la herramienta al mensaje previo del asistente como un bloque de contenido adicional", "order": 3 },
+        { "id": "api-014_d", "text": "POST to /v1/tools/{tool_use_id}/result with the result payload", "textEs": "POST a /v1/tools/{tool_use_id}/result con el payload del resultado", "order": 4 }
+      ],
+      "tags": ["tool-result", "tool-use-id", "is-error", "message-structure"]
+    },
+    {
+      "id": "api-015",
+      "text": "What are the Anthropic SDK options for different programming languages?",
+      "textEs": "¿Cuáles son las opciones de SDK de Anthropic para diferentes lenguajes de programación?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-015_d",
+      "explanation": "Anthropic provides official SDKs for Python (@anthropic-ai/sdk via pip install anthropic) and TypeScript/JavaScript (@anthropic-ai/sdk via npm). Both SDKs handle authentication, request building, streaming, retries, and type safety. For other languages, you can use the REST API directly. The SDKs provide methods like client.messages.create() that mirror the API structure.",
+      "explanationEs": "Anthropic proporciona SDKs oficiales para Python (@anthropic-ai/sdk mediante pip install anthropic) y TypeScript/JavaScript (@anthropic-ai/sdk mediante npm). Ambos SDKs manejan autenticación, construcción de solicitudes, streaming, reintentos y seguridad de tipos. Para otros lenguajes, puedes usar la API REST directamente. Los SDKs proporcionan métodos como client.messages.create() que reflejan la estructura de la API.",
+      "options": [
+        { "id": "api-015_a", "text": "Only Python is officially supported; all other languages must use the REST API", "textEs": "Solo Python tiene soporte oficial; todos los demás lenguajes deben usar la API REST", "order": 1 },
+        { "id": "api-015_b", "text": "Python, TypeScript, Java, Go, and Ruby with full feature parity", "textEs": "Python, TypeScript, Java, Go y Ruby con paridad completa de funcionalidades", "order": 2 },
+        { "id": "api-015_c", "text": "A universal SDK that works with any language through WebAssembly", "textEs": "Un SDK universal que funciona con cualquier lenguaje a través de WebAssembly", "order": 3 },
+        { "id": "api-015_d", "text": "Official SDKs for Python and TypeScript/JavaScript; other languages can use the REST API directly", "textEs": "SDKs oficiales para Python y TypeScript/JavaScript; otros lenguajes pueden usar la API REST directamente", "order": 4 }
+      ],
+      "tags": ["sdk", "python", "typescript", "official-libraries"]
+    },
+    {
+      "id": "api-016",
+      "text": "How do you handle context window overflow when the conversation history exceeds the model's token limit?",
+      "textEs": "¿Cómo manejas el desbordamiento de la ventana de contexto cuando el historial de conversación excede el límite de tokens del modelo?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-016_c",
+      "explanation": "When conversation history approaches the context limit, you must manage it proactively. Strategies include: summarizing older messages and replacing them with a condensed version, implementing a sliding window that drops the oldest messages while keeping the system prompt, or using the token counting endpoint to monitor usage and trigger compaction at a threshold. The API returns a 400 error if the total input exceeds the model's context limit.",
+      "explanationEs": "Cuando el historial de la conversación se acerca al límite de contexto, debes gestionarlo de forma proactiva. Las estrategias incluyen: resumir mensajes antiguos y reemplazarlos con una versión condensada, implementar una ventana deslizante que descarte los mensajes más antiguos manteniendo el prompt de sistema, o usar el endpoint de conteo de tokens para monitorear el uso y activar la compactación en un umbral. La API devuelve un error 400 si la entrada total excede el límite de contexto del modelo.",
+      "options": [
+        { "id": "api-016_a", "text": "The API automatically truncates older messages; no handling needed", "textEs": "La API trunca automáticamente los mensajes más antiguos; no se necesita manejo", "order": 1 },
+        { "id": "api-016_b", "text": "Switch to a model with a larger context window when the limit is reached", "textEs": "Cambiar a un modelo con una ventana de contexto más grande cuando se alcanza el límite", "order": 2 },
+        { "id": "api-016_c", "text": "Proactively summarize older messages, implement a sliding window, or use token counting to trigger compaction before the limit", "textEs": "Resumir proactivamente mensajes antiguos, implementar una ventana deslizante o usar conteo de tokens para activar la compactación antes del límite", "order": 3 },
+        { "id": "api-016_d", "text": "Split the conversation into multiple parallel API calls and merge the results", "textEs": "Dividir la conversación en múltiples llamadas paralelas a la API y combinar los resultados", "order": 4 }
+      ],
+      "tags": ["context-overflow", "token-management", "sliding-window", "summarization"]
+    },
+    {
+      "id": "api-017",
+      "text": "What is the correct way to use structured output (JSON mode) with Claude?",
+      "textEs": "¿Cuál es la forma correcta de usar salida estructurada (modo JSON) con Claude?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-017_a",
+      "explanation": "The most reliable way to get structured JSON output from Claude is to define a tool with the desired output schema and force its use with tool_choice set to the tool name. This guarantees the output matches the schema. Alternatively, you can use prefilling (starting the assistant response with '{') and explicit instructions for JSON output. The tool approach is more reliable because the API validates the output against the schema.",
+      "explanationEs": "La forma más confiable de obtener salida JSON estructurada de Claude es definir una herramienta con el esquema de salida deseado y forzar su uso con tool_choice configurado con el nombre de la herramienta. Esto garantiza que la salida coincida con el esquema. Alternativamente, puedes usar prefilling (comenzar la respuesta del asistente con '{') e instrucciones explícitas para salida JSON. El enfoque de herramientas es más confiable porque la API valida la salida contra el esquema.",
+      "options": [
+        { "id": "api-017_a", "text": "Define a tool with the desired JSON schema and force it with tool_choice; or use assistant prefilling with '{'", "textEs": "Definir una herramienta con el esquema JSON deseado y forzarla con tool_choice; o usar prefilling del asistente con '{'", "order": 1 },
+        { "id": "api-017_b", "text": "Set 'response_format: json' in the request body, similar to other APIs", "textEs": "Establecer 'response_format: json' en el cuerpo de la solicitud, similar a otras APIs", "order": 2 },
+        { "id": "api-017_c", "text": "Include 'Respond only in JSON' in the system prompt; Claude always complies with format instructions", "textEs": "Incluir 'Responde solo en JSON' en el prompt de sistema; Claude siempre cumple con las instrucciones de formato", "order": 3 },
+        { "id": "api-017_d", "text": "Use the /v1/messages/json endpoint specifically designed for JSON responses", "textEs": "Usar el endpoint /v1/messages/json diseñado específicamente para respuestas JSON", "order": 4 }
+      ],
+      "tags": ["structured-output", "json", "tool-choice", "prefilling"]
+    },
+    {
+      "id": "api-018",
+      "text": "What is the purpose of the 'stop_sequences' parameter in the Messages API?",
+      "textEs": "¿Cuál es el propósito del parámetro 'stop_sequences' en la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-018_c",
+      "explanation": "The 'stop_sequences' parameter accepts an array of strings that, when generated by Claude, cause it to stop producing output immediately. The stop sequence itself is not included in the response. This is useful for controlling output boundaries (e.g., stopping at '</answer>'), implementing turn-based systems, or preventing the model from generating beyond a certain point. When triggered, the stop_reason is 'stop_sequence'.",
+      "explanationEs": "El parámetro 'stop_sequences' acepta un arreglo de cadenas que, cuando son generadas por Claude, hacen que deje de producir salida inmediatamente. La secuencia de parada en sí no se incluye en la respuesta. Esto es útil para controlar los límites de la salida (por ejemplo, detenerse en '</answer>'), implementar sistemas basados en turnos o evitar que el modelo genere más allá de cierto punto. Cuando se activa, el stop_reason es 'stop_sequence'.",
+      "options": [
+        { "id": "api-018_a", "text": "A list of forbidden words that Claude must never include in its response", "textEs": "Una lista de palabras prohibidas que Claude nunca debe incluir en su respuesta", "order": 1 },
+        { "id": "api-018_b", "text": "A list of error codes that should trigger automatic retries", "textEs": "Una lista de códigos de error que deben activar reintentos automáticos", "order": 2 },
+        { "id": "api-018_c", "text": "Strings that cause Claude to stop generating immediately when produced; used for output boundaries and turn control", "textEs": "Cadenas que hacen que Claude deje de generar inmediatamente al producirlas; usadas para límites de salida y control de turnos", "order": 3 },
+        { "id": "api-018_d", "text": "Sequences of tokens that indicate the end of the context window", "textEs": "Secuencias de tokens que indican el fin de la ventana de contexto", "order": 4 }
+      ],
+      "tags": ["stop-sequences", "output-control", "stop-reason", "boundaries"]
+    },
+    {
+      "id": "api-019",
+      "text": "How do you send a PDF document to Claude for analysis through the Messages API?",
+      "textEs": "¿Cómo envías un documento PDF a Claude para su análisis a través de la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-019_b",
+      "explanation": "PDF documents can be sent to Claude as content blocks with type 'document' in the messages array. The source can be base64-encoded data with media_type 'application/pdf', or a URL. Claude can analyze the text and visual content of PDFs, including charts, tables, and images within the document. This enables document Q&A, summarization, and data extraction workflows.",
+      "explanationEs": "Los documentos PDF se pueden enviar a Claude como bloques de contenido con tipo 'document' en el arreglo de mensajes. La fuente puede ser datos codificados en base64 con media_type 'application/pdf', o una URL. Claude puede analizar el texto y el contenido visual de los PDFs, incluyendo gráficos, tablas e imágenes dentro del documento. Esto permite flujos de trabajo de preguntas y respuestas sobre documentos, resúmenes y extracción de datos.",
+      "options": [
+        { "id": "api-019_a", "text": "Convert the PDF to plain text first, then send as a text content block", "textEs": "Convertir primero el PDF a texto plano, luego enviar como un bloque de contenido de texto", "order": 1 },
+        { "id": "api-019_b", "text": "Send as a content block with type 'document' using base64-encoded data or URL source with media_type 'application/pdf'", "textEs": "Enviar como un bloque de contenido con tipo 'document' usando datos codificados en base64 o fuente URL con media_type 'application/pdf'", "order": 2 },
+        { "id": "api-019_c", "text": "Upload to Anthropic's file storage via /v1/files and reference the file_id", "textEs": "Subir al almacenamiento de archivos de Anthropic vía /v1/files y referenciar el file_id", "order": 3 },
+        { "id": "api-019_d", "text": "PDFs are not supported; convert to images first and send as image content blocks", "textEs": "Los PDFs no son soportados; convertir primero a imágenes y enviar como bloques de contenido de imagen", "order": 4 }
+      ],
+      "tags": ["pdf", "documents", "multimodal", "content-blocks"]
+    },
+    {
+      "id": "api-020",
+      "text": "What is the recommended retry strategy for handling transient API errors?",
+      "textEs": "¿Cuál es la estrategia de reintento recomendada para manejar errores transitorios de la API?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-020_a",
+      "explanation": "The recommended strategy is exponential backoff with jitter: start with a short delay (e.g., 1 second), double it with each retry, and add random jitter to prevent thundering herd. Only retry on 429 (rate limit), 500 (server error), and 529 (overloaded) status codes. Do not retry 400 (invalid request) or 401 (auth) errors -- these require code fixes. The Anthropic SDKs implement automatic retries with this strategy by default.",
+      "explanationEs": "La estrategia recomendada es retroceso exponencial con variación aleatoria (jitter): comenzar con un retraso corto (por ejemplo, 1 segundo), duplicarlo con cada reintento y agregar variación aleatoria para evitar el efecto de manada. Solo reintentar en códigos de estado 429 (límite de tasa), 500 (error del servidor) y 529 (sobrecargado). No reintentar errores 400 (solicitud inválida) o 401 (autenticación) -- estos requieren correcciones en el código. Los SDKs de Anthropic implementan reintentos automáticos con esta estrategia por defecto.",
+      "options": [
+        { "id": "api-020_a", "text": "Exponential backoff with jitter; retry only 429/500/529 errors; SDKs implement this automatically", "textEs": "Retroceso exponencial con jitter; reintentar solo errores 429/500/529; los SDKs lo implementan automáticamente", "order": 1 },
+        { "id": "api-020_b", "text": "Fixed 5-second delay between retries for all error types, up to 10 attempts", "textEs": "Retraso fijo de 5 segundos entre reintentos para todos los tipos de error, hasta 10 intentos", "order": 2 },
+        { "id": "api-020_c", "text": "Immediate retry without delay for the first 3 attempts, then give up", "textEs": "Reintento inmediato sin retraso para los primeros 3 intentos, luego desistir", "order": 3 },
+        { "id": "api-020_d", "text": "No retries needed; all errors are permanent and indicate bugs in the request", "textEs": "No se necesitan reintentos; todos los errores son permanentes e indican errores en la solicitud", "order": 4 }
+      ],
+      "tags": ["retry-strategy", "exponential-backoff", "jitter", "transient-errors"]
+    },
+    {
+      "id": "api-021",
+      "text": "What is the 'anthropic-version' header and why is it required?",
+      "textEs": "¿Qué es el encabezado 'anthropic-version' y por qué es requerido?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-021_a",
+      "explanation": "The 'anthropic-version' header specifies which version of the Anthropic API you want to use (e.g., '2023-06-01'). It is required in every request. This ensures your code continues to work even when Anthropic releases breaking changes, as the API behavior is locked to the version you specify. The Anthropic SDKs set this automatically.",
+      "explanationEs": "El encabezado 'anthropic-version' especifica qué versión de la API de Anthropic quieres usar (ej., '2023-06-01'). Es requerido en cada solicitud. Esto asegura que tu código continúe funcionando incluso cuando Anthropic lance cambios incompatibles, ya que el comportamiento de la API se bloquea a la versión que especifiques. Los SDKs de Anthropic establecen esto automáticamente.",
+      "options": [
+        { "id": "api-021_a", "text": "A required header specifying the API version (e.g., '2023-06-01') to ensure consistent behavior; SDKs set it automatically", "textEs": "Un encabezado requerido que especifica la versión de la API (ej., '2023-06-01') para asegurar comportamiento consistente; los SDKs lo establecen automáticamente", "order": 1 },
+        { "id": "api-021_b", "text": "An optional header that specifies which Claude model version to use", "textEs": "Un encabezado opcional que especifica qué versión del modelo Claude usar", "order": 2 },
+        { "id": "api-021_c", "text": "A security header that verifies the client's SDK version is up to date", "textEs": "Un encabezado de seguridad que verifica que la versión del SDK del cliente esté actualizada", "order": 3 },
+        { "id": "api-021_d", "text": "A deprecated header that is no longer used in current API versions", "textEs": "Un encabezado obsoleto que ya no se usa en las versiones actuales de la API", "order": 4 }
+      ],
+      "tags": ["anthropic-version", "headers", "api-versioning", "compatibility"]
+    },
+    {
+      "id": "api-022",
+      "text": "What are the available Anthropic SDKs and what advantages do they provide over raw HTTP requests?",
+      "textEs": "¿Cuáles son los SDKs de Anthropic disponibles y qué ventajas proporcionan sobre solicitudes HTTP raw?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-022_c",
+      "explanation": "Anthropic provides official SDKs for Python (@anthropic-ai/anthropic) and TypeScript/JavaScript (@anthropic-ai/sdk). They provide type safety, automatic retries with exponential backoff, streaming helpers, automatic header management (version, auth), and convenient methods for features like tool use and message batching. They abstract away the HTTP details while providing full access to all API features.",
+      "explanationEs": "Anthropic proporciona SDKs oficiales para Python (@anthropic-ai/anthropic) y TypeScript/JavaScript (@anthropic-ai/sdk). Proporcionan seguridad de tipos, reintentos automáticos con retroceso exponencial, helpers de streaming, gestión automática de encabezados (versión, autenticación) y métodos convenientes para funciones como uso de herramientas y batching de mensajes. Abstraen los detalles HTTP mientras proporcionan acceso completo a todas las funciones de la API.",
+      "options": [
+        { "id": "api-022_a", "text": "Only Python is supported; JavaScript developers must use raw HTTP", "textEs": "Solo Python es soportado; los desarrolladores de JavaScript deben usar HTTP raw", "order": 1 },
+        { "id": "api-022_b", "text": "SDKs are wrappers that limit functionality compared to raw HTTP for simplicity", "textEs": "Los SDKs son wrappers que limitan funcionalidad comparado con HTTP raw por simplicidad", "order": 2 },
+        { "id": "api-022_c", "text": "Python and TypeScript/JS SDKs providing type safety, automatic retries, streaming helpers, header management, and full API feature access", "textEs": "SDKs de Python y TypeScript/JS que proporcionan seguridad de tipos, reintentos automáticos, helpers de streaming, gestión de encabezados y acceso completo a funciones de la API", "order": 3 },
+        { "id": "api-022_d", "text": "SDKs for all major languages (Python, JS, Java, Go, Ruby, C#) with identical feature sets", "textEs": "SDKs para todos los lenguajes principales (Python, JS, Java, Go, Ruby, C#) con conjuntos de funciones idénticos", "order": 4 }
+      ],
+      "tags": ["sdks", "python", "typescript", "type-safety", "retries"]
+    },
+    {
+      "id": "api-023",
+      "text": "How do you implement tool use (function calling) with the Messages API?",
+      "textEs": "¿Cómo implementas el uso de herramientas (function calling) con la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-023_b",
+      "explanation": "Tool use involves: (1) Define tools in the 'tools' array with name, description, and input_schema (JSON Schema). (2) Send the request; if Claude wants to use a tool, it returns a response with stop_reason 'tool_use' and a tool_use content block containing the tool name and input. (3) Execute the tool locally and return results in a 'tool_result' content block in the next user message. (4) Claude processes the result and generates its final response.",
+      "explanationEs": "El uso de herramientas involucra: (1) Definir herramientas en el arreglo 'tools' con nombre, descripción e input_schema (JSON Schema). (2) Enviar la solicitud; si Claude quiere usar una herramienta, devuelve una respuesta con stop_reason 'tool_use' y un bloque de contenido tool_use con el nombre y entrada de la herramienta. (3) Ejecutar la herramienta localmente y devolver resultados en un bloque de contenido 'tool_result' en el siguiente mensaje del usuario. (4) Claude procesa el resultado y genera su respuesta final.",
+      "options": [
+        { "id": "api-023_a", "text": "Register tools on the Anthropic dashboard; Claude calls them directly via webhook", "textEs": "Registrar herramientas en el dashboard de Anthropic; Claude las llama directamente vía webhook", "order": 1 },
+        { "id": "api-023_b", "text": "Define tools with name/description/schema, Claude returns 'tool_use' blocks, you execute locally and return 'tool_result', Claude gives final response", "textEs": "Definir herramientas con nombre/descripción/esquema, Claude devuelve bloques 'tool_use', tú ejecutas localmente y devuelves 'tool_result', Claude da respuesta final", "order": 2 },
+        { "id": "api-023_c", "text": "Pass a URL to a running server; Claude sends HTTP requests to it directly", "textEs": "Pasar una URL a un servidor en ejecución; Claude envía solicitudes HTTP directamente", "order": 3 },
+        { "id": "api-023_d", "text": "Upload tool code as a Lambda function; Anthropic hosts and runs it for you", "textEs": "Subir código de herramienta como una función Lambda; Anthropic la aloja y ejecuta por ti", "order": 4 }
+      ],
+      "tags": ["tool-use", "function-calling", "tool-result", "workflow"]
+    },
+    {
+      "id": "api-024",
+      "text": "What is the 'tool_choice' parameter and how does it control tool usage behavior?",
+      "textEs": "¿Qué es el parámetro 'tool_choice' y cómo controla el comportamiento de uso de herramientas?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-024_d",
+      "explanation": "The 'tool_choice' parameter controls how Claude uses tools. 'auto' (default) lets Claude decide whether to use tools. 'any' forces Claude to use at least one tool. '{type: \"tool\", name: \"specific_tool\"}' forces Claude to use a specific named tool. 'none' prevents tool use entirely. This is useful for ensuring Claude calls a tool when needed, or for routing workflows where a specific tool must be invoked.",
+      "explanationEs": "El parámetro 'tool_choice' controla cómo Claude usa las herramientas. 'auto' (predeterminado) deja que Claude decida si usar herramientas. 'any' obliga a Claude a usar al menos una herramienta. '{type: \"tool\", name: \"specific_tool\"}' obliga a Claude a usar una herramienta específica nombrada. 'none' previene el uso de herramientas completamente. Esto es útil para asegurar que Claude llame a una herramienta cuando sea necesario, o para flujos de trabajo de enrutamiento donde se debe invocar una herramienta específica.",
+      "options": [
+        { "id": "api-024_a", "text": "It selects which programming language the tool code should be written in", "textEs": "Selecciona en qué lenguaje de programación debe estar escrito el código de la herramienta", "order": 1 },
+        { "id": "api-024_b", "text": "It sets the maximum number of tools Claude can use in a single response", "textEs": "Establece el número máximo de herramientas que Claude puede usar en una sola respuesta", "order": 2 },
+        { "id": "api-024_c", "text": "It controls whether tools run synchronously or asynchronously", "textEs": "Controla si las herramientas se ejecutan sincrónicamente o asincrónicamente", "order": 3 },
+        { "id": "api-024_d", "text": "'auto' (Claude decides), 'any' (must use a tool), specific tool name (forced), 'none' (no tools) — controls when and which tools are used", "textEs": "'auto' (Claude decide), 'any' (debe usar una herramienta), nombre de herramienta específico (forzado), 'none' (sin herramientas) — controla cuándo y qué herramientas se usan", "order": 4 }
+      ],
+      "tags": ["tool-choice", "tool-use", "routing", "control-flow"]
+    },
+    {
+      "id": "api-025",
+      "text": "How does prompt caching work in the Anthropic API?",
+      "textEs": "¿Cómo funciona el prompt caching en la API de Anthropic?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-025_a",
+      "explanation": "Prompt caching is enabled by adding 'cache_control: {type: \"ephemeral\"}' to content blocks (system prompt, messages, tool definitions). The API caches the prefix up to the cache breakpoint. Subsequent requests with the same prefix reuse the cache, reducing input token costs by 90% and latency significantly. The cache has a 5-minute TTL that refreshes on each hit. Minimum cacheable tokens vary by model (e.g., 1024 for Sonnet).",
+      "explanationEs": "El prompt caching se habilita agregando 'cache_control: {type: \"ephemeral\"}' a bloques de contenido (system prompt, mensajes, definiciones de herramientas). La API almacena en cache el prefijo hasta el punto de cache. Las solicitudes posteriores con el mismo prefijo reutilizan el cache, reduciendo costos de tokens de entrada en 90% y la latencia significativamente. El cache tiene un TTL de 5 minutos que se renueva con cada uso. Los tokens mínimos cacheables varían por modelo (ej., 1024 para Sonnet).",
+      "options": [
+        { "id": "api-025_a", "text": "Add 'cache_control: {type: \"ephemeral\"}' to content blocks; 90% cost reduction on cached tokens with 5-min TTL; minimum tokens vary by model", "textEs": "Agregar 'cache_control: {type: \"ephemeral\"}' a bloques de contenido; 90% de reducción de costo en tokens cacheados con TTL de 5 min; tokens mínimos varían por modelo", "order": 1 },
+        { "id": "api-025_b", "text": "Caching is automatic for all requests; no configuration needed", "textEs": "El caching es automático para todas las solicitudes; no se necesita configuración", "order": 2 },
+        { "id": "api-025_c", "text": "Upload documents to a caching endpoint first, then reference them by ID", "textEs": "Subir documentos a un endpoint de caching primero, luego referenciarlos por ID", "order": 3 },
+        { "id": "api-025_d", "text": "Use the 'cached: true' flag in the request body to enable server-side caching", "textEs": "Usar la bandera 'cached: true' en el cuerpo de la solicitud para habilitar caching del lado del servidor", "order": 4 }
+      ],
+      "tags": ["prompt-caching", "cache-control", "cost-optimization", "ttl"]
+    },
+    {
+      "id": "api-026",
+      "text": "What is the Message Batches API and how does it differ from the standard Messages API?",
+      "textEs": "¿Qué es la API de Message Batches y cómo difiere de la API de Mensajes estándar?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-026_c",
+      "explanation": "The Message Batches API (POST /v1/messages/batches) accepts up to 100,000 requests in a single batch and processes them asynchronously within 24 hours at a 50% discount. You create a batch with a JSONL file of requests, poll for completion, and retrieve results. It is designed for non-time-sensitive workloads like bulk processing, evaluations, and data analysis where the 50% cost savings outweigh the latency.",
+      "explanationEs": "La API de Message Batches (POST /v1/messages/batches) acepta hasta 100,000 solicitudes en un solo lote y las procesa asincrónicamente dentro de 24 horas con un 50% de descuento. Creas un lote con un archivo JSONL de solicitudes, consultas el progreso y recuperas resultados. Está diseñada para cargas de trabajo no sensibles al tiempo como procesamiento masivo, evaluaciones y análisis de datos donde el 50% de ahorro compensa la latencia.",
+      "options": [
+        { "id": "api-026_a", "text": "It groups multiple messages into a single conversation turn for efficiency", "textEs": "Agrupa múltiples mensajes en un solo turno de conversación para eficiencia", "order": 1 },
+        { "id": "api-026_b", "text": "It is a real-time API that processes multiple requests in parallel for lower latency", "textEs": "Es una API en tiempo real que procesa múltiples solicitudes en paralelo para menor latencia", "order": 2 },
+        { "id": "api-026_c", "text": "Accepts up to 100K async requests processed within 24 hours at 50% discount; ideal for bulk processing and evaluations", "textEs": "Acepta hasta 100K solicitudes asíncronas procesadas en 24 horas con 50% de descuento; ideal para procesamiento masivo y evaluaciones", "order": 3 },
+        { "id": "api-026_d", "text": "A queuing system that ensures requests are processed in strict order", "textEs": "Un sistema de colas que asegura que las solicitudes se procesen en orden estricto", "order": 4 }
+      ],
+      "tags": ["batches-api", "async", "bulk-processing", "cost-optimization"]
+    },
+    {
+      "id": "api-027",
+      "text": "How do you send images to Claude through the Messages API?",
+      "textEs": "¿Cómo envías imágenes a Claude a través de la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-027_b",
+      "explanation": "Images are sent as content blocks with type 'image' in the messages array. The source can be base64-encoded data (with media_type like 'image/jpeg', 'image/png', 'image/gif', 'image/webp') or a URL. Multiple images can be sent in a single message. Images are converted to tokens for billing. Place images before text for best results, and Claude can handle up to 20 images per request.",
+      "explanationEs": "Las imágenes se envían como bloques de contenido con tipo 'image' en el arreglo de mensajes. La fuente puede ser datos codificados en base64 (con media_type como 'image/jpeg', 'image/png', 'image/gif', 'image/webp') o una URL. Se pueden enviar múltiples imágenes en un solo mensaje. Las imágenes se convierten a tokens para facturación. Coloca las imágenes antes del texto para mejores resultados, y Claude puede manejar hasta 20 imágenes por solicitud.",
+      "options": [
+        { "id": "api-027_a", "text": "Upload to a separate /v1/images endpoint and reference by file_id", "textEs": "Subir a un endpoint separado /v1/images y referenciar por file_id", "order": 1 },
+        { "id": "api-027_b", "text": "As 'image' content blocks with base64 data or URL source; supports jpeg/png/gif/webp; up to 20 per request; place before text", "textEs": "Como bloques de contenido 'image' con datos base64 o fuente URL; soporta jpeg/png/gif/webp; hasta 20 por solicitud; colocar antes del texto", "order": 2 },
+        { "id": "api-027_c", "text": "Convert images to text descriptions using an OCR tool, then send as text", "textEs": "Convertir imágenes a descripciones de texto usando una herramienta OCR, luego enviar como texto", "order": 3 },
+        { "id": "api-027_d", "text": "Send image URLs in the text content; Claude fetches and processes them automatically", "textEs": "Enviar URLs de imágenes en el contenido de texto; Claude las obtiene y procesa automáticamente", "order": 4 }
+      ],
+      "tags": ["images", "multimodal", "base64", "content-blocks"]
+    },
+    {
+      "id": "api-028",
+      "text": "What is extended thinking in the API and how do you enable it?",
+      "textEs": "¿Qué es el pensamiento extendido en la API y cómo lo habilitas?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-028_d",
+      "explanation": "Extended thinking is enabled by adding 'thinking: {type: \"enabled\", budget_tokens: N}' to the request. The budget_tokens parameter sets the maximum tokens Claude can use for its thinking process. The response includes 'thinking' content blocks (the reasoning) followed by 'text' content blocks (the answer). Note: when extended thinking is enabled, temperature must be set to 1, and the thinking content is billed as output tokens.",
+      "explanationEs": "El pensamiento extendido se habilita agregando 'thinking: {type: \"enabled\", budget_tokens: N}' a la solicitud. El parámetro budget_tokens establece los tokens máximos que Claude puede usar para su proceso de pensamiento. La respuesta incluye bloques de contenido 'thinking' (el razonamiento) seguidos de bloques de contenido 'text' (la respuesta). Nota: cuando el pensamiento extendido está habilitado, la temperatura debe ser 1, y el contenido de pensamiento se factura como tokens de salida.",
+      "options": [
+        { "id": "api-028_a", "text": "Set temperature to 0 and max_tokens to a very high number", "textEs": "Establecer temperatura en 0 y max_tokens en un número muy alto", "order": 1 },
+        { "id": "api-028_b", "text": "Use the /v1/messages/think endpoint instead of the standard endpoint", "textEs": "Usar el endpoint /v1/messages/think en lugar del endpoint estándar", "order": 2 },
+        { "id": "api-028_c", "text": "Add 'chain_of_thought: true' to the request body", "textEs": "Agregar 'chain_of_thought: true' al cuerpo de la solicitud", "order": 3 },
+        { "id": "api-028_d", "text": "Add 'thinking: {type: \"enabled\", budget_tokens: N}'; response includes thinking + text blocks; temperature must be 1; thinking billed as output", "textEs": "Agregar 'thinking: {type: \"enabled\", budget_tokens: N}'; la respuesta incluye bloques thinking + text; temperatura debe ser 1; thinking se factura como salida", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "budget-tokens", "reasoning", "api-parameters"]
+    },
+    {
+      "id": "api-029",
+      "text": "What is the 'content' field structure in a Messages API response?",
+      "textEs": "¿Cuál es la estructura del campo 'content' en una respuesta de la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-029_a",
+      "explanation": "The 'content' field in the response is an array of content blocks. Each block has a 'type' field: 'text' (with a 'text' field containing the response text), 'tool_use' (with 'id', 'name', 'input' for tool calls), or 'thinking' (with 'thinking' text when extended thinking is enabled). A single response can contain multiple blocks — for example, text + tool_use when Claude explains and calls a tool in the same turn.",
+      "explanationEs": "El campo 'content' en la respuesta es un arreglo de bloques de contenido. Cada bloque tiene un campo 'type': 'text' (con un campo 'text' conteniendo el texto de respuesta), 'tool_use' (con 'id', 'name', 'input' para llamadas a herramientas), o 'thinking' (con texto 'thinking' cuando el pensamiento extendido está habilitado). Una sola respuesta puede contener múltiples bloques — por ejemplo, text + tool_use cuando Claude explica y llama una herramienta en el mismo turno.",
+      "options": [
+        { "id": "api-029_a", "text": "An array of content blocks with types 'text', 'tool_use', or 'thinking'; a response can contain multiple blocks of different types", "textEs": "Un arreglo de bloques de contenido con tipos 'text', 'tool_use' o 'thinking'; una respuesta puede contener múltiples bloques de diferentes tipos", "order": 1 },
+        { "id": "api-029_b", "text": "A single string field containing the full response text", "textEs": "Un solo campo de cadena que contiene el texto completo de la respuesta", "order": 2 },
+        { "id": "api-029_c", "text": "A nested object with 'text', 'code', and 'metadata' subfields", "textEs": "Un objeto anidado con subcampos 'text', 'code' y 'metadata'", "order": 3 },
+        { "id": "api-029_d", "text": "An HTML-formatted string with embedded tags for different content types", "textEs": "Una cadena formateada en HTML con etiquetas incrustadas para diferentes tipos de contenido", "order": 4 }
+      ],
+      "tags": ["content-blocks", "response-structure", "text", "tool-use", "thinking"]
+    },
+    {
+      "id": "api-030",
+      "text": "How do you handle multi-turn conversations with the Messages API?",
+      "textEs": "¿Cómo manejas conversaciones de múltiples turnos con la API de Mensajes?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-030_c",
+      "explanation": "The Messages API is stateless — each request must include the full conversation history. For multi-turn conversations, maintain the messages array on the client side. After each response, append the assistant's message (role: 'assistant') to the array, then append the next user message (role: 'user') and send the complete array. Messages must alternate between user and assistant roles. The system prompt remains the same across turns.",
+      "explanationEs": "La API de Mensajes es sin estado — cada solicitud debe incluir el historial completo de la conversación. Para conversaciones de múltiples turnos, mantén el arreglo de mensajes en el lado del cliente. Después de cada respuesta, agrega el mensaje del asistente (role: 'assistant') al arreglo, luego agrega el siguiente mensaje del usuario (role: 'user') y envía el arreglo completo. Los mensajes deben alternar entre roles de usuario y asistente. El system prompt permanece igual entre turnos.",
+      "options": [
+        { "id": "api-030_a", "text": "Use a session_id to reference previous turns; the server maintains conversation state", "textEs": "Usar un session_id para referenciar turnos anteriores; el servidor mantiene el estado de la conversación", "order": 1 },
+        { "id": "api-030_b", "text": "Send only the latest message; the API remembers previous messages automatically", "textEs": "Enviar solo el último mensaje; la API recuerda mensajes anteriores automáticamente", "order": 2 },
+        { "id": "api-030_c", "text": "Maintain the full messages array client-side, alternating user/assistant roles; send complete history with each request (API is stateless)", "textEs": "Mantener el arreglo completo de mensajes del lado del cliente, alternando roles usuario/asistente; enviar historial completo con cada solicitud (la API es sin estado)", "order": 3 },
+        { "id": "api-030_d", "text": "Open a WebSocket connection that persists across multiple turns", "textEs": "Abrir una conexión WebSocket que persiste entre múltiples turnos", "order": 4 }
+      ],
+      "tags": ["multi-turn", "conversation", "stateless", "messages-array"]
+    },
+    {
+      "id": "api-031",
+      "text": "What is the difference between 'stop_reason: end_turn' and 'stop_reason: max_tokens'?",
+      "textEs": "¿Cuál es la diferencia entre 'stop_reason: end_turn' y 'stop_reason: max_tokens'?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-031_b",
+      "explanation": "'end_turn' means Claude finished its response naturally — it said everything it needed to say. 'max_tokens' means Claude's response was truncated because it hit the max_tokens limit before finishing. When you see 'max_tokens', the response is likely incomplete. Other stop_reasons include 'tool_use' (Claude wants to call a tool) and 'stop_sequence' (hit a custom stop sequence).",
+      "explanationEs": "'end_turn' significa que Claude terminó su respuesta naturalmente — dijo todo lo que necesitaba decir. 'max_tokens' significa que la respuesta de Claude fue truncada porque alcanzó el límite de max_tokens antes de terminar. Cuando ves 'max_tokens', la respuesta probablemente está incompleta. Otros stop_reasons incluyen 'tool_use' (Claude quiere llamar una herramienta) y 'stop_sequence' (alcanzó una secuencia de parada personalizada).",
+      "options": [
+        { "id": "api-031_a", "text": "They mean the same thing; both indicate the response is complete", "textEs": "Significan lo mismo; ambos indican que la respuesta está completa", "order": 1 },
+        { "id": "api-031_b", "text": "'end_turn' = Claude finished naturally; 'max_tokens' = response truncated at the limit (likely incomplete). Also 'tool_use' and 'stop_sequence'", "textEs": "'end_turn' = Claude terminó naturalmente; 'max_tokens' = respuesta truncada en el límite (probablemente incompleta). También 'tool_use' y 'stop_sequence'", "order": 2 },
+        { "id": "api-031_c", "text": "'end_turn' means the user ended the conversation; 'max_tokens' means the model quota was exhausted", "textEs": "'end_turn' significa que el usuario terminó la conversación; 'max_tokens' significa que la cuota del modelo se agotó", "order": 3 },
+        { "id": "api-031_d", "text": "'end_turn' is for streaming responses; 'max_tokens' is for non-streaming responses", "textEs": "'end_turn' es para respuestas en streaming; 'max_tokens' es para respuestas sin streaming", "order": 4 }
+      ],
+      "tags": ["stop-reason", "end-turn", "max-tokens", "truncation"]
+    },
+    {
+      "id": "api-032",
+      "text": "How do you implement the tool use loop for agentic workflows?",
+      "textEs": "¿Cómo implementas el bucle de uso de herramientas para flujos de trabajo agénticos?",
+      "domainCode": "building-with-api",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-032_c",
+      "explanation": "The agentic tool use loop: (1) Send initial request with tools defined. (2) Check stop_reason — if 'tool_use', extract tool name and input from tool_use content blocks. (3) Execute each tool call locally. (4) Append both the assistant message and a user message containing tool_result blocks. (5) Send the updated messages back to Claude. (6) Repeat until stop_reason is 'end_turn'. Implement a maximum iteration limit to prevent infinite loops.",
+      "explanationEs": "El bucle agéntico de uso de herramientas: (1) Enviar solicitud inicial con herramientas definidas. (2) Verificar stop_reason — si es 'tool_use', extraer nombre y entrada de herramienta de los bloques de contenido tool_use. (3) Ejecutar cada llamada a herramienta localmente. (4) Agregar tanto el mensaje del asistente como un mensaje del usuario conteniendo bloques tool_result. (5) Enviar los mensajes actualizados de vuelta a Claude. (6) Repetir hasta que stop_reason sea 'end_turn'. Implementar un límite máximo de iteraciones para prevenir bucles infinitos.",
+      "options": [
+        { "id": "api-032_a", "text": "Claude handles the loop automatically; just send one request and wait for the final result", "textEs": "Claude maneja el bucle automáticamente; solo envía una solicitud y espera el resultado final", "order": 1 },
+        { "id": "api-032_b", "text": "Use a WebSocket connection that maintains a persistent tool execution session", "textEs": "Usar una conexión WebSocket que mantiene una sesión persistente de ejecución de herramientas", "order": 2 },
+        { "id": "api-032_c", "text": "Loop: send request -> check for 'tool_use' stop_reason -> execute tools -> append tool_results -> resend -> repeat until 'end_turn'; add max iteration limit", "textEs": "Bucle: enviar solicitud -> verificar stop_reason 'tool_use' -> ejecutar herramientas -> agregar tool_results -> reenviar -> repetir hasta 'end_turn'; agregar límite máximo de iteraciones", "order": 3 },
+        { "id": "api-032_d", "text": "Register a callback URL where the API sends tool results directly", "textEs": "Registrar una URL de callback donde la API envía resultados de herramientas directamente", "order": 4 }
+      ],
+      "tags": ["agentic", "tool-use-loop", "iteration", "workflow"]
+    },
+    {
+      "id": "api-033",
+      "text": "What is the purpose of the 'metadata' field in API requests?",
+      "textEs": "¿Cuál es el propósito del campo 'metadata' en las solicitudes de la API?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-033_a",
+      "explanation": "The 'metadata' field allows you to attach a 'user_id' string to API requests for abuse detection and tracking purposes. This helps Anthropic identify and mitigate misuse at the user level. It is recommended for applications where multiple end-users interact with Claude through your application. The user_id should be a unique identifier for the end user (but not personally identifiable information).",
+      "explanationEs": "El campo 'metadata' permite adjuntar una cadena 'user_id' a las solicitudes de la API para propósitos de detección de abuso y seguimiento. Esto ayuda a Anthropic a identificar y mitigar el mal uso a nivel de usuario. Se recomienda para aplicaciones donde múltiples usuarios finales interactúan con Claude a través de tu aplicación. El user_id debe ser un identificador único para el usuario final (pero no información personalmente identificable).",
+      "options": [
+        { "id": "api-033_a", "text": "Attach a 'user_id' for abuse detection and per-user tracking; recommended for multi-user applications", "textEs": "Adjuntar un 'user_id' para detección de abuso y seguimiento por usuario; recomendado para aplicaciones multiusuario", "order": 1 },
+        { "id": "api-033_b", "text": "Store arbitrary key-value pairs that are returned in the response for your application logic", "textEs": "Almacenar pares clave-valor arbitrarios que se devuelven en la respuesta para tu lógica de aplicación", "order": 2 },
+        { "id": "api-033_c", "text": "Configure model behavior parameters that override the default settings", "textEs": "Configurar parámetros de comportamiento del modelo que anulan la configuración predeterminada", "order": 3 },
+        { "id": "api-033_d", "text": "Add billing tags that route charges to different cost centers", "textEs": "Agregar etiquetas de facturación que dirigen cargos a diferentes centros de costo", "order": 4 }
+      ],
+      "tags": ["metadata", "user-id", "abuse-detection", "tracking"]
+    },
+    {
+      "id": "api-034",
+      "text": "How do you implement streaming with the Python SDK?",
+      "textEs": "¿Cómo implementas streaming con el SDK de Python?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-034_b",
+      "explanation": "The Python SDK provides a 'client.messages.stream()' context manager that yields events as they arrive. You can use 'with client.messages.stream(...) as stream: for text in stream.text_stream:' to iterate over text chunks. The stream also provides event-based access via 'stream.on(\"text\", callback)'. For the response, 'stream.get_final_message()' returns the complete message after streaming finishes.",
+      "explanationEs": "El SDK de Python proporciona un gestor de contexto 'client.messages.stream()' que produce eventos a medida que llegan. Puedes usar 'with client.messages.stream(...) as stream: for text in stream.text_stream:' para iterar sobre fragmentos de texto. El stream también proporciona acceso basado en eventos vía 'stream.on(\"text\", callback)'. Para la respuesta, 'stream.get_final_message()' devuelve el mensaje completo después de que el streaming termine.",
+      "options": [
+        { "id": "api-034_a", "text": "Pass stream=True to client.messages.create() and parse the raw SSE events manually", "textEs": "Pasar stream=True a client.messages.create() y parsear los eventos SSE raw manualmente", "order": 1 },
+        { "id": "api-034_b", "text": "Use 'client.messages.stream()' context manager with 'stream.text_stream' for text chunks or event callbacks; 'get_final_message()' for complete result", "textEs": "Usar el gestor de contexto 'client.messages.stream()' con 'stream.text_stream' para fragmentos de texto o callbacks de eventos; 'get_final_message()' para resultado completo", "order": 2 },
+        { "id": "api-034_c", "text": "Use an async generator: 'async for chunk in client.messages.generate():'", "textEs": "Usar un generador asíncrono: 'async for chunk in client.messages.generate():'", "order": 3 },
+        { "id": "api-034_d", "text": "Call client.messages.create() with a callback parameter for each token", "textEs": "Llamar client.messages.create() con un parámetro callback para cada token", "order": 4 }
+      ],
+      "tags": ["streaming", "python-sdk", "text-stream", "context-manager"]
+    },
+    {
+      "id": "api-035",
+      "text": "What are the key differences between using the Anthropic API directly vs. through Amazon Bedrock?",
+      "textEs": "¿Cuáles son las diferencias clave entre usar la API de Anthropic directamente vs. a través de Amazon Bedrock?",
+      "domainCode": "building-with-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-035_d",
+      "explanation": "Through Bedrock: authentication uses AWS IAM instead of API keys, the endpoint URL is different (Bedrock endpoints), model IDs use a different format (e.g., 'anthropic.claude-sonnet-4-20250514-v1:0'), billing goes through AWS, and data stays within your AWS account. The request/response format is largely the same (Messages API compatible), but the SDK usage differs (use AnthropicBedrock client). Some features may have slight timing differences in availability.",
+      "explanationEs": "A través de Bedrock: la autenticación usa AWS IAM en lugar de claves API, la URL del endpoint es diferente (endpoints de Bedrock), los IDs de modelo usan un formato diferente (ej., 'anthropic.claude-sonnet-4-20250514-v1:0'), la facturación va a través de AWS, y los datos permanecen en tu cuenta de AWS. El formato de solicitud/respuesta es mayormente el mismo (compatible con la API de Mensajes), pero el uso del SDK difiere (usar cliente AnthropicBedrock). Algunas funciones pueden tener ligeras diferencias en la disponibilidad.",
+      "options": [
+        { "id": "api-035_a", "text": "No differences; Bedrock is just a mirror of the Anthropic API with the same authentication", "textEs": "Sin diferencias; Bedrock es solo un espejo de la API de Anthropic con la misma autenticación", "order": 1 },
+        { "id": "api-035_b", "text": "Bedrock only supports older Claude models; newest models require the direct API", "textEs": "Bedrock solo soporta modelos Claude más antiguos; los modelos más nuevos requieren la API directa", "order": 2 },
+        { "id": "api-035_c", "text": "Bedrock uses a completely different request format that is incompatible with the Messages API", "textEs": "Bedrock usa un formato de solicitud completamente diferente que es incompatible con la API de Mensajes", "order": 3 },
+        { "id": "api-035_d", "text": "Bedrock uses AWS IAM auth, different endpoints/model IDs, AWS billing, and data stays in your AWS account; Messages API format is mostly compatible", "textEs": "Bedrock usa autenticación AWS IAM, diferentes endpoints/IDs de modelo, facturación AWS, y los datos permanecen en tu cuenta AWS; el formato de la API de Mensajes es mayormente compatible", "order": 4 }
+      ],
+      "tags": ["bedrock", "aws", "authentication", "deployment", "comparison"]
+    },
+    {
+      "id": "api-036",
+      "text": "What is the 'system' parameter in the Messages API and what types of content can it contain?",
+      "textEs": "¿Qué es el parámetro 'system' en la API de Mensajes y qué tipos de contenido puede contener?",
+      "domainCode": "building-with-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-036_a",
+      "explanation": "The 'system' parameter sets Claude's behavior for the entire conversation. It can be a simple string or an array of content blocks. When using an array, you can include text blocks and cache_control markers. This is useful for combining a base system prompt with cached instructions or context. The system prompt has higher priority than user messages for behavioral instructions.",
+      "explanationEs": "El parámetro 'system' establece el comportamiento de Claude para toda la conversación. Puede ser una cadena simple o un arreglo de bloques de contenido. Cuando usas un arreglo, puedes incluir bloques de texto y marcadores cache_control. Esto es útil para combinar un system prompt base con instrucciones o contexto cacheados. El system prompt tiene mayor prioridad que los mensajes del usuario para instrucciones de comportamiento.",
+      "options": [
+        { "id": "api-036_a", "text": "Sets conversation-wide behavior; can be a string or array of content blocks (text + cache_control); has higher priority than user messages", "textEs": "Establece comportamiento para toda la conversación; puede ser cadena o arreglo de bloques de contenido (text + cache_control); tiene mayor prioridad que mensajes del usuario", "order": 1 },
+        { "id": "api-036_b", "text": "A required field that specifies the operating system where the API request originates", "textEs": "Un campo requerido que especifica el sistema operativo desde donde se origina la solicitud de la API", "order": 2 },
+        { "id": "api-036_c", "text": "A read-only field returned by the API containing system diagnostics", "textEs": "Un campo de solo lectura devuelto por la API que contiene diagnósticos del sistema", "order": 3 },
+        { "id": "api-036_d", "text": "A security setting that controls which API features are available for the request", "textEs": "Una configuración de seguridad que controla qué funciones de la API están disponibles para la solicitud", "order": 4 }
+      ],
+      "tags": ["system-prompt", "parameters", "content-blocks", "configuration"]
+    },
+    {
+      "id": "api-037",
+      "text": "What are rate limits in the Anthropic API and how are they structured?",
+      "textEs": "¿Qué son los límites de tasa en la API de Anthropic y cómo están estructurados?",
+      "domainCode": "building-with-api",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-037_c",
+      "explanation": "Anthropic API rate limits are structured in three dimensions: requests per minute (RPM), input tokens per minute (ITPM), and output tokens per minute (OTPM). Rate limit headers (anthropic-ratelimit-*) are returned with every response, showing your limits and remaining quota. Limits vary by model tier and usage plan. When exceeded, the API returns 429 with retry-after header. Limits can be increased by contacting Anthropic.",
+      "explanationEs": "Los límites de tasa de la API de Anthropic están estructurados en tres dimensiones: solicitudes por minuto (RPM), tokens de entrada por minuto (ITPM) y tokens de salida por minuto (OTPM). Los encabezados de límite de tasa (anthropic-ratelimit-*) se devuelven con cada respuesta, mostrando tus límites y cuota restante. Los límites varían por nivel de modelo y plan de uso. Cuando se exceden, la API devuelve 429 con encabezado retry-after. Los límites pueden aumentarse contactando a Anthropic.",
+      "options": [
+        { "id": "api-037_a", "text": "A single requests-per-day limit that applies equally to all models", "textEs": "Un solo límite de solicitudes por día que se aplica igualmente a todos los modelos", "order": 1 },
+        { "id": "api-037_b", "text": "No rate limits exist; you can send unlimited requests if you have billing set up", "textEs": "No existen límites de tasa; puedes enviar solicitudes ilimitadas si tienes facturación configurada", "order": 2 },
+        { "id": "api-037_c", "text": "Three dimensions: RPM, input tokens/min, output tokens/min; tracked via response headers; vary by model/plan; 429 when exceeded", "textEs": "Tres dimensiones: RPM, tokens de entrada/min, tokens de salida/min; rastreados vía encabezados de respuesta; varían por modelo/plan; 429 cuando se exceden", "order": 3 },
+        { "id": "api-037_d", "text": "Rate limits are only applied during peak hours (9 AM - 5 PM UTC)", "textEs": "Los límites de tasa solo se aplican durante horas pico (9 AM - 5 PM UTC)", "order": 4 }
+      ],
+      "tags": ["rate-limits", "rpm", "tokens-per-minute", "headers", "429"]
+    },
+    {
+      "id": "api-038",
+      "text": "How do you use the Anthropic API to create a simple chatbot with conversation history?",
+      "textEs": "¿Cómo usas la API de Anthropic para crear un chatbot simple con historial de conversación?",
+      "domainCode": "building-with-api",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-038_b",
+      "explanation": "A chatbot implementation: (1) Initialize an empty messages array and a system prompt. (2) When the user sends a message, append it as {role: 'user', content: text}. (3) Call the Messages API with the system prompt and full messages array. (4) Extract the response text and append {role: 'assistant', content: response.content}. (5) Display the response and repeat. For token management, implement conversation summarization or sliding window when the context gets too long.",
+      "explanationEs": "Una implementación de chatbot: (1) Inicializar un arreglo de mensajes vacío y un system prompt. (2) Cuando el usuario envía un mensaje, agregarlo como {role: 'user', content: texto}. (3) Llamar a la API de Mensajes con el system prompt y el arreglo completo de mensajes. (4) Extraer el texto de respuesta y agregar {role: 'assistant', content: response.content}. (5) Mostrar la respuesta y repetir. Para gestión de tokens, implementar resumen de conversación o ventana deslizante cuando el contexto sea muy largo.",
+      "options": [
+        { "id": "api-038_a", "text": "Use the /v1/conversations endpoint that manages state automatically", "textEs": "Usar el endpoint /v1/conversations que gestiona el estado automáticamente", "order": 1 },
+        { "id": "api-038_b", "text": "Maintain messages array client-side, append user/assistant messages alternately, send full history each turn; summarize when context gets long", "textEs": "Mantener arreglo de mensajes del lado del cliente, agregar mensajes usuario/asistente alternadamente, enviar historial completo cada turno; resumir cuando el contexto sea largo", "order": 2 },
+        { "id": "api-038_c", "text": "Store conversation in a database and send only the database URL to the API", "textEs": "Almacenar conversación en una base de datos y enviar solo la URL de la base de datos a la API", "order": 3 },
+        { "id": "api-038_d", "text": "Use long-polling on the /v1/chat endpoint that maintains a persistent session", "textEs": "Usar long-polling en el endpoint /v1/chat que mantiene una sesión persistente", "order": 4 }
+      ],
+      "tags": ["chatbot", "conversation-history", "implementation", "token-management"]
+    },
+    {
+      "id": "api-039",
+      "text": "What is the 'usage' object in the API response and how do you use it for cost tracking?",
+      "textEs": "¿Qué es el objeto 'usage' en la respuesta de la API y cómo lo usas para rastreo de costos?",
+      "domainCode": "building-with-api",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-039_d",
+      "explanation": "The 'usage' object in each response contains 'input_tokens' and 'output_tokens' counts. When prompt caching is used, it also includes 'cache_creation_input_tokens' and 'cache_read_input_tokens'. To calculate cost: multiply each token count by the model's per-token price (different for input, output, cache-write, and cache-read tokens). Aggregate usage data across requests for billing dashboards and budget alerts.",
+      "explanationEs": "El objeto 'usage' en cada respuesta contiene conteos de 'input_tokens' y 'output_tokens'. Cuando se usa prompt caching, también incluye 'cache_creation_input_tokens' y 'cache_read_input_tokens'. Para calcular costo: multiplicar cada conteo de tokens por el precio por token del modelo (diferente para tokens de entrada, salida, escritura de cache y lectura de cache). Agregar datos de uso entre solicitudes para dashboards de facturación y alertas de presupuesto.",
+      "options": [
+        { "id": "api-039_a", "text": "It shows a dollar amount for the request cost; no calculation needed", "textEs": "Muestra un monto en dólares por el costo de la solicitud; no se necesita cálculo", "order": 1 },
+        { "id": "api-039_b", "text": "It only tracks output tokens; input tokens are not metered", "textEs": "Solo rastrea tokens de salida; los tokens de entrada no se miden", "order": 2 },
+        { "id": "api-039_c", "text": "It is only available via the billing dashboard; not in API responses", "textEs": "Solo está disponible vía el dashboard de facturación; no en respuestas de la API", "order": 3 },
+        { "id": "api-039_d", "text": "Contains input_tokens, output_tokens, and cache token counts; multiply by model-specific per-token prices to calculate cost", "textEs": "Contiene conteos de input_tokens, output_tokens y tokens de cache; multiplicar por precios por token específicos del modelo para calcular costo", "order": 4 }
+      ],
+      "tags": ["usage", "cost-tracking", "tokens", "billing", "cache-tokens"]
+    },
+    {
+      "id": "api-040",
+      "text": "What are best practices for building production applications with the Claude API?",
+      "textEs": "¿Cuáles son las mejores prácticas para construir aplicaciones de producción con la API de Claude?",
+      "domainCode": "building-with-api",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-building-api",
+      "correctOptionId": "api-040_a",
+      "explanation": "Production best practices include: use the official SDK (not raw HTTP), implement exponential backoff with retries, set appropriate max_tokens limits, use prompt caching for repeated content, implement streaming for better UX, validate and sanitize inputs to prevent prompt injection, track usage for cost management, use the metadata.user_id for multi-user apps, implement circuit breakers for API failures, and version your prompts alongside your code.",
+      "explanationEs": "Las mejores prácticas de producción incluyen: usar el SDK oficial (no HTTP raw), implementar retroceso exponencial con reintentos, establecer límites apropiados de max_tokens, usar prompt caching para contenido repetido, implementar streaming para mejor UX, validar y sanitizar entradas para prevenir inyección de prompt, rastrear uso para gestión de costos, usar metadata.user_id para aplicaciones multiusuario, implementar circuit breakers para fallos de la API y versionar tus prompts junto con tu código.",
+      "options": [
+        { "id": "api-040_a", "text": "Use SDKs, implement retries with backoff, cache prompts, stream responses, validate inputs, track usage, use metadata.user_id, version prompts", "textEs": "Usar SDKs, implementar reintentos con retroceso, cachear prompts, hacer streaming de respuestas, validar entradas, rastrear uso, usar metadata.user_id, versionar prompts", "order": 1 },
+        { "id": "api-040_b", "text": "Always use the largest model (Opus) for maximum quality in all use cases", "textEs": "Siempre usar el modelo más grande (Opus) para máxima calidad en todos los casos de uso", "order": 2 },
+        { "id": "api-040_c", "text": "Store API keys in the frontend code for simplicity; client-side calls are faster", "textEs": "Almacenar claves API en el código frontend por simplicidad; las llamadas del lado del cliente son más rápidas", "order": 3 },
+        { "id": "api-040_d", "text": "Avoid streaming; always wait for complete responses for simpler code", "textEs": "Evitar streaming; siempre esperar respuestas completas para código más simple", "order": 4 }
+      ],
+      "tags": ["best-practices", "production", "reliability", "security", "cost-management"]
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "domain": "aws-bedrock",
+    "domainName": "AWS Bedrock",
+    "trackId": "aws-bedrock",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 8
+  },
+  "questions": [
+    {
+      "id": "awsb-001",
+      "text": "¿Qué es Amazon Bedrock y cómo se relaciona con Claude?",
+      "textEs": "¿Qué es Amazon Bedrock y cómo se relaciona con Claude?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-001_a",
+      "explanation": "Amazon Bedrock es un servicio completamente gestionado de AWS que proporciona acceso a modelos fundacionales de diversas empresas de IA, incluyendo Claude de Anthropic, a través de una API unificada. Permite usar Claude sin gestionar infraestructura, con integración nativa al ecosistema AWS (IAM, VPC, CloudWatch, etc.).",
+      "explanationEs": "Amazon Bedrock es un servicio completamente gestionado de AWS que proporciona acceso a modelos fundacionales de diversas empresas de IA, incluyendo Claude de Anthropic, a través de una API unificada. Permite usar Claude sin gestionar infraestructura, con integración nativa al ecosistema AWS (IAM, VPC, CloudWatch, etc.).",
+      "options": [
+        { "id": "awsb-001_a", "text": "Un servicio gestionado de AWS que provee acceso a modelos fundacionales como Claude a través de una API unificada con integración al ecosistema AWS", "textEs": "Un servicio gestionado de AWS que provee acceso a modelos fundacionales como Claude a través de una API unificada con integración al ecosistema AWS", "order": 1 },
+        { "id": "awsb-001_b", "text": "Un servicio de entrenamiento de modelos de IA personalizados exclusivos de Amazon", "textEs": "Un servicio de entrenamiento de modelos de IA personalizados exclusivos de Amazon", "order": 2 },
+        { "id": "awsb-001_c", "text": "Una base de datos NoSQL optimizada para almacenar embeddings de IA", "textEs": "Una base de datos NoSQL optimizada para almacenar embeddings de IA", "order": 3 },
+        { "id": "awsb-001_d", "text": "Un competidor directo de Claude que ofrece modelos propios de Amazon", "textEs": "Un competidor directo de Claude que ofrece modelos propios de Amazon", "order": 4 }
+      ],
+      "tags": ["bedrock", "aws", "servicio-gestionado"]
+    },
+    {
+      "id": "awsb-002",
+      "text": "¿Qué servicio de AWS se usa para controlar el acceso a los modelos de Claude en Bedrock?",
+      "textEs": "¿Qué servicio de AWS se usa para controlar el acceso a los modelos de Claude en Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-002_b",
+      "explanation": "AWS IAM (Identity and Access Management) controla quién puede acceder a los modelos en Bedrock. Se crean políticas IAM que especifican qué acciones de Bedrock (como bedrock:InvokeModel) están permitidas, para qué modelos y desde qué recursos. Esto permite control granular sobre quién puede usar Claude y con qué parámetros.",
+      "explanationEs": "AWS IAM (Identity and Access Management) controla quién puede acceder a los modelos en Bedrock. Se crean políticas IAM que especifican qué acciones de Bedrock (como bedrock:InvokeModel) están permitidas, para qué modelos y desde qué recursos. Esto permite control granular sobre quién puede usar Claude y con qué parámetros.",
+      "options": [
+        { "id": "awsb-002_a", "text": "Amazon Cognito exclusivamente", "textEs": "Amazon Cognito exclusivamente", "order": 1 },
+        { "id": "awsb-002_b", "text": "AWS IAM con políticas que especifican acciones como bedrock:InvokeModel para modelos específicos", "textEs": "AWS IAM con políticas que especifican acciones como bedrock:InvokeModel para modelos específicos", "order": 2 },
+        { "id": "awsb-002_c", "text": "AWS Shield, que protege contra accesos no autorizados", "textEs": "AWS Shield, que protege contra accesos no autorizados", "order": 3 },
+        { "id": "awsb-002_d", "text": "Amazon GuardDuty, que detecta amenazas de seguridad", "textEs": "Amazon GuardDuty, que detecta amenazas de seguridad", "order": 4 }
+      ],
+      "tags": ["iam", "seguridad", "acceso"]
+    },
+    {
+      "id": "awsb-003",
+      "text": "¿Cuáles son los dos modelos de precios principales para Claude en Amazon Bedrock?",
+      "textEs": "¿Cuáles son los dos modelos de precios principales para Claude en Amazon Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-003_c",
+      "explanation": "Bedrock ofrece dos modelos de precios: On-Demand (pago por uso basado en tokens de entrada/salida procesados, sin compromiso) y Provisioned Throughput (capacidad reservada con rendimiento garantizado por un periodo fijo, ideal para cargas predecibles con descuentos por volumen). La elección depende del volumen y predictibilidad del uso.",
+      "explanationEs": "Bedrock ofrece dos modelos de precios: On-Demand (pago por uso basado en tokens de entrada/salida procesados, sin compromiso) y Provisioned Throughput (capacidad reservada con rendimiento garantizado por un periodo fijo, ideal para cargas predecibles con descuentos por volumen). La elección depende del volumen y predictibilidad del uso.",
+      "options": [
+        { "id": "awsb-003_a", "text": "Gratuito para desarrollo y premium para producción", "textEs": "Gratuito para desarrollo y premium para producción", "order": 1 },
+        { "id": "awsb-003_b", "text": "Por hora de cómputo y por almacenamiento", "textEs": "Por hora de cómputo y por almacenamiento", "order": 2 },
+        { "id": "awsb-003_c", "text": "On-Demand (pago por tokens procesados) y Provisioned Throughput (capacidad reservada con rendimiento garantizado)", "textEs": "On-Demand (pago por tokens procesados) y Provisioned Throughput (capacidad reservada con rendimiento garantizado)", "order": 3 },
+        { "id": "awsb-003_d", "text": "Licencia mensual fija y pago por consulta", "textEs": "Licencia mensual fija y pago por consulta", "order": 4 }
+      ],
+      "tags": ["precios", "on-demand", "provisioned-throughput"]
+    },
+    {
+      "id": "awsb-004",
+      "text": "¿Cómo se puede invocar Claude desde una función AWS Lambda a través de Bedrock?",
+      "textEs": "¿Cómo se puede invocar Claude desde una función AWS Lambda a través de Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-004_a",
+      "explanation": "Desde Lambda, se usa el AWS SDK (boto3 para Python o @aws-sdk para Node.js) con el cliente de Bedrock Runtime para invocar el modelo. La función Lambda necesita un rol IAM con permisos bedrock:InvokeModel. El modelo se especifica por su ID (como anthropic.claude-3-5-sonnet) y se envía el payload en el formato Messages API.",
+      "explanationEs": "Desde Lambda, se usa el AWS SDK (boto3 para Python o @aws-sdk para Node.js) con el cliente de Bedrock Runtime para invocar el modelo. La función Lambda necesita un rol IAM con permisos bedrock:InvokeModel. El modelo se especifica por su ID (como anthropic.claude-3-5-sonnet) y se envía el payload en el formato Messages API.",
+      "options": [
+        { "id": "awsb-004_a", "text": "Usando el AWS SDK con el cliente Bedrock Runtime, especificando el model ID de Claude y enviando el payload en formato Messages API", "textEs": "Usando el AWS SDK con el cliente Bedrock Runtime, especificando el model ID de Claude y enviando el payload en formato Messages API", "order": 1 },
+        { "id": "awsb-004_b", "text": "Llamando directamente a la API de Anthropic desde Lambda sin usar Bedrock", "textEs": "Llamando directamente a la API de Anthropic desde Lambda sin usar Bedrock", "order": 2 },
+        { "id": "awsb-004_c", "text": "Instalando Claude como una capa (layer) de Lambda", "textEs": "Instalando Claude como una capa (layer) de Lambda", "order": 3 },
+        { "id": "awsb-004_d", "text": "Usando Amazon SQS como intermediario obligatorio entre Lambda y Bedrock", "textEs": "Usando Amazon SQS como intermediario obligatorio entre Lambda y Bedrock", "order": 4 }
+      ],
+      "tags": ["lambda", "sdk", "integracion"]
+    },
+    {
+      "id": "awsb-005",
+      "text": "¿Qué son los Guardrails de Amazon Bedrock y cómo protegen el uso de Claude?",
+      "textEs": "¿Qué son los Guardrails de Amazon Bedrock y cómo protegen el uso de Claude?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-005_d",
+      "explanation": "Los Guardrails de Bedrock son políticas configurables que filtran tanto las entradas del usuario como las respuestas del modelo. Permiten bloquear temas prohibidos, filtrar contenido dañino, redactar información sensible (PII) y aplicar filtros de toxicidad. Se aplican como una capa adicional de seguridad sobre las protecciones nativas de Claude.",
+      "explanationEs": "Los Guardrails de Bedrock son políticas configurables que filtran tanto las entradas del usuario como las respuestas del modelo. Permiten bloquear temas prohibidos, filtrar contenido dañino, redactar información sensible (PII) y aplicar filtros de toxicidad. Se aplican como una capa adicional de seguridad sobre las protecciones nativas de Claude.",
+      "options": [
+        { "id": "awsb-005_a", "text": "Firewalls de red que protegen los endpoints de Bedrock", "textEs": "Firewalls de red que protegen los endpoints de Bedrock", "order": 1 },
+        { "id": "awsb-005_b", "text": "Límites de gasto que evitan facturación excesiva", "textEs": "Límites de gasto que evitan facturación excesiva", "order": 2 },
+        { "id": "awsb-005_c", "text": "Backups automáticos de las conversaciones con Claude", "textEs": "Backups automáticos de las conversaciones con Claude", "order": 3 },
+        { "id": "awsb-005_d", "text": "Políticas configurables que filtran entradas y salidas, bloqueando temas prohibidos, contenido dañino y redactando información sensible", "textEs": "Políticas configurables que filtran entradas y salidas, bloqueando temas prohibidos, contenido dañino y redactando información sensible", "order": 4 }
+      ],
+      "tags": ["guardrails", "seguridad", "filtrado"]
+    },
+    {
+      "id": "awsb-006",
+      "text": "¿Cuál es el primer paso necesario para habilitar el acceso a Claude en una cuenta de AWS Bedrock?",
+      "textEs": "¿Cuál es el primer paso necesario para habilitar el acceso a Claude en una cuenta de AWS Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-006_c",
+      "explanation": "Antes de poder usar Claude en Bedrock, se debe solicitar acceso al modelo en la consola de AWS Bedrock (Model Access). No todos los modelos están habilitados por defecto. Anthropic requiere que el usuario acepte los términos de uso (EULA). Una vez aprobado el acceso, el modelo queda disponible para invocar en la región seleccionada.",
+      "explanationEs": "Antes de poder usar Claude en Bedrock, se debe solicitar acceso al modelo en la consola de AWS Bedrock (Model Access). No todos los modelos están habilitados por defecto. Anthropic requiere que el usuario acepte los términos de uso (EULA). Una vez aprobado el acceso, el modelo queda disponible para invocar en la región seleccionada.",
+      "options": [
+        { "id": "awsb-006_a", "text": "Crear una cuenta directamente en Anthropic y vincularla a AWS", "textEs": "Crear una cuenta directamente en Anthropic y vincularla a AWS", "order": 1 },
+        { "id": "awsb-006_b", "text": "Descargar e instalar el modelo de Claude en una instancia EC2", "textEs": "Descargar e instalar el modelo de Claude en una instancia EC2", "order": 2 },
+        { "id": "awsb-006_c", "text": "Solicitar acceso al modelo en la consola de Bedrock (Model Access) y aceptar los términos de uso", "textEs": "Solicitar acceso al modelo en la consola de Bedrock (Model Access) y aceptar los términos de uso", "order": 3 },
+        { "id": "awsb-006_d", "text": "Contactar al equipo de ventas de AWS para obtener una licencia especial", "textEs": "Contactar al equipo de ventas de AWS para obtener una licencia especial", "order": 4 }
+      ],
+      "tags": ["setup", "model-access", "configuracion-inicial"]
+    },
+    {
+      "id": "awsb-007",
+      "text": "¿Qué ventaja ofrece usar Claude a través de Bedrock en comparación con la API directa de Anthropic para una empresa que ya usa AWS?",
+      "textEs": "¿Qué ventaja ofrece usar Claude a través de Bedrock en comparación con la API directa de Anthropic para una empresa que ya usa AWS?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-007_a",
+      "explanation": "Para empresas con infraestructura AWS existente, Bedrock ofrece integración nativa con servicios como IAM (control de acceso), VPC (aislamiento de red), CloudWatch (monitoreo), CloudTrail (auditoría) y facturación consolidada. Los datos no salen de la infraestructura AWS, cumpliendo con requisitos de residencia de datos y compliance.",
+      "explanationEs": "Para empresas con infraestructura AWS existente, Bedrock ofrece integración nativa con servicios como IAM (control de acceso), VPC (aislamiento de red), CloudWatch (monitoreo), CloudTrail (auditoría) y facturación consolidada. Los datos no salen de la infraestructura AWS, cumpliendo con requisitos de residencia de datos y compliance.",
+      "options": [
+        { "id": "awsb-007_a", "text": "Integración nativa con IAM, VPC, CloudWatch, CloudTrail y facturación consolidada, con datos dentro del ecosistema AWS", "textEs": "Integración nativa con IAM, VPC, CloudWatch, CloudTrail y facturación consolidada, con datos dentro del ecosistema AWS", "order": 1 },
+        { "id": "awsb-007_b", "text": "Claude en Bedrock es más inteligente que Claude en la API directa", "textEs": "Claude en Bedrock es más inteligente que Claude en la API directa", "order": 2 },
+        { "id": "awsb-007_c", "text": "Bedrock ofrece acceso exclusivo a modelos de Claude no disponibles en la API directa", "textEs": "Bedrock ofrece acceso exclusivo a modelos de Claude no disponibles en la API directa", "order": 3 },
+        { "id": "awsb-007_d", "text": "Bedrock siempre es más económico que la API directa de Anthropic", "textEs": "Bedrock siempre es más económico que la API directa de Anthropic", "order": 4 }
+      ],
+      "tags": ["ventajas", "integracion-aws", "compliance"]
+    },
+    {
+      "id": "awsb-008",
+      "text": "¿Qué consideración de región es importante al usar Claude en Amazon Bedrock?",
+      "textEs": "¿Qué consideración de región es importante al usar Claude en Amazon Bedrock?",
+      "domainCode": "aws-bedrock",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "aws-bedrock",
+      "correctOptionId": "awsb-008_b",
+      "explanation": "No todos los modelos de Claude están disponibles en todas las regiones de AWS. La disponibilidad varía por región y por modelo (Haiku, Sonnet, Opus). Además, para cumplir con regulaciones de residencia de datos, es crucial seleccionar una región donde los datos se procesen dentro de la jurisdicción requerida. Se debe verificar la disponibilidad del modelo específico en la región deseada.",
+      "explanationEs": "No todos los modelos de Claude están disponibles en todas las regiones de AWS. La disponibilidad varía por región y por modelo (Haiku, Sonnet, Opus). Además, para cumplir con regulaciones de residencia de datos, es crucial seleccionar una región donde los datos se procesen dentro de la jurisdicción requerida. Se debe verificar la disponibilidad del modelo específico en la región deseada.",
+      "options": [
+        { "id": "awsb-008_a", "text": "Claude está disponible en todas las regiones de AWS sin excepciones", "textEs": "Claude está disponible en todas las regiones de AWS sin excepciones", "order": 1 },
+        { "id": "awsb-008_b", "text": "La disponibilidad de modelos varía por región; se debe verificar que el modelo deseado esté disponible y considerar requisitos de residencia de datos", "textEs": "La disponibilidad de modelos varía por región; se debe verificar que el modelo deseado esté disponible y considerar requisitos de residencia de datos", "order": 2 },
+        { "id": "awsb-008_c", "text": "Solo se puede usar Claude en la región us-east-1", "textEs": "Solo se puede usar Claude en la región us-east-1", "order": 3 },
+        { "id": "awsb-008_d", "text": "La región no afecta al rendimiento ni a la disponibilidad de Claude", "textEs": "La región no afecta al rendimiento ni a la disponibilidad de Claude", "order": 4 }
+      ],
+      "tags": ["regiones", "disponibilidad", "residencia-datos"]
+    }
+  ]
+}

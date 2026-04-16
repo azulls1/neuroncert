@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "coursera-python-ai-agents",
+    "domainName": "Python AI Agents",
+    "trackId": "coursera-python-ai-agents",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "PYAGENT-001",
+      "text": "When building an autonomous Python agent with Claude, what is the fundamental loop pattern that enables the agent to take multiple actions to complete a task?",
+      "textEs": "Al construir un agente autonomo en Python con Claude, ¿cual es el patron de bucle fundamental que permite al agente tomar multiples acciones para completar una tarea?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-001_c",
+      "explanation": "The agentic loop pattern sends a message to Claude, checks if the response contains a tool_use stop_reason, executes the requested tool, appends the tool_result to the conversation, and sends the updated conversation back to Claude. This loop continues until Claude returns an end_turn stop_reason (meaning it has finished) or a maximum iteration limit is reached. This is the core pattern that makes agents autonomous.",
+      "explanationEs": "El patron de bucle agentico envia un mensaje a Claude, verifica si la respuesta contiene un stop_reason de tool_use, ejecuta la herramienta solicitada, agrega el tool_result a la conversacion, y envia la conversacion actualizada de vuelta a Claude. Este bucle continua hasta que Claude devuelve un stop_reason de end_turn (significando que ha terminado) o se alcanza un limite maximo de iteraciones. Este es el patron central que hace a los agentes autonomos.",
+      "options": [
+        { "id": "PYAGENT-001_a", "text": "A single API call with all instructions; Claude completes the entire task in one response", "textEs": "Una sola llamada a la API con todas las instrucciones; Claude completa toda la tarea en una respuesta", "order": 1 },
+        { "id": "PYAGENT-001_b", "text": "A scheduled cron job that calls Claude at fixed intervals to check for pending tasks", "textEs": "Un trabajo cron programado que llama a Claude a intervalos fijos para verificar tareas pendientes", "order": 2 },
+        { "id": "PYAGENT-001_c", "text": "A while loop: send message, check for tool_use stop_reason, execute tool, append result, repeat until end_turn or max iterations", "textEs": "Un bucle while: enviar mensaje, verificar stop_reason de tool_use, ejecutar herramienta, agregar resultado, repetir hasta end_turn o maximo de iteraciones", "order": 3 },
+        { "id": "PYAGENT-001_d", "text": "A callback-based event system where Claude pushes notifications when it needs a tool executed", "textEs": "Un sistema de eventos basado en callbacks donde Claude envia notificaciones cuando necesita que se ejecute una herramienta", "order": 4 }
+      ],
+      "tags": ["agentic-loop", "tool-use", "stop-reason", "autonomous-agent"]
+    },
+    {
+      "id": "PYAGENT-002",
+      "text": "A Python agent needs to analyze a collection of PDF documents and extract structured data. Which approach is most appropriate for processing documents that exceed Claude's context window?",
+      "textEs": "Un agente de Python necesita analizar una coleccion de documentos PDF y extraer datos estructurados. ¿Que enfoque es mas apropiado para procesar documentos que exceden la ventana de contexto de Claude?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-002_b",
+      "explanation": "For documents exceeding the context window, a map-reduce pattern is most effective. First, split the document into manageable chunks. Then, 'map' each chunk through Claude to extract relevant data (the map step). Finally, combine the partial results into a unified output (the reduce step). This allows the agent to process arbitrarily large documents while maintaining accuracy. Each chunk gets focused attention from the model.",
+      "explanationEs": "Para documentos que exceden la ventana de contexto, un patron map-reduce es mas efectivo. Primero, dividir el documento en fragmentos manejables. Luego, pasar cada fragmento por Claude para extraer datos relevantes (el paso map). Finalmente, combinar los resultados parciales en una salida unificada (el paso reduce). Esto permite al agente procesar documentos arbitrariamente grandes manteniendo la precision. Cada fragmento recibe atencion enfocada del modelo.",
+      "options": [
+        { "id": "PYAGENT-002_a", "text": "Send the entire document in one API call regardless of size; Claude will automatically paginate", "textEs": "Enviar el documento completo en una sola llamada a la API sin importar el tamaño; Claude paginara automaticamente", "order": 1 },
+        { "id": "PYAGENT-002_b", "text": "Use a map-reduce pattern: split into chunks, extract data from each chunk (map), then combine partial results (reduce)", "textEs": "Usar un patron map-reduce: dividir en fragmentos, extraer datos de cada fragmento (map), luego combinar resultados parciales (reduce)", "order": 2 },
+        { "id": "PYAGENT-002_c", "text": "Only process the first and last pages since they contain the most important information", "textEs": "Solo procesar las primeras y ultimas paginas ya que contienen la informacion mas importante", "order": 3 },
+        { "id": "PYAGENT-002_d", "text": "Convert the PDF to a vector database first and only query specific sections as needed", "textEs": "Convertir el PDF a una base de datos vectorial primero y solo consultar secciones especificas segun sea necesario", "order": 4 }
+      ],
+      "tags": ["document-analysis", "map-reduce", "large-documents", "chunking"]
+    },
+    {
+      "id": "PYAGENT-003",
+      "text": "When implementing tool calling in a Python agent, what is the correct way to define a tool that allows Claude to read a file from the local filesystem?",
+      "textEs": "Al implementar llamadas a herramientas en un agente de Python, ¿cual es la forma correcta de definir una herramienta que permita a Claude leer un archivo del sistema de archivos local?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-003_d",
+      "explanation": "A tool definition includes a name, description, and input_schema (JSON Schema). The description should clearly explain what the tool does and when to use it. The input_schema defines the parameters (e.g., file_path as a required string). When Claude calls the tool, your Python code receives the input, executes the file read operation, and returns the content as a tool_result. The tool definition does not contain the implementation, only the interface.",
+      "explanationEs": "Una definicion de herramienta incluye un nombre, descripcion, e input_schema (JSON Schema). La descripcion debe explicar claramente que hace la herramienta y cuando usarla. El input_schema define los parametros (por ejemplo, file_path como una cadena requerida). Cuando Claude llama a la herramienta, tu codigo Python recibe la entrada, ejecuta la operacion de lectura del archivo, y devuelve el contenido como un tool_result. La definicion de herramienta no contiene la implementacion, solo la interfaz.",
+      "options": [
+        { "id": "PYAGENT-003_a", "text": "Pass the Python function directly to Claude; it will execute the code internally", "textEs": "Pasar la funcion Python directamente a Claude; ejecutara el codigo internamente", "order": 1 },
+        { "id": "PYAGENT-003_b", "text": "Include the file contents in the system prompt so Claude does not need a tool", "textEs": "Incluir el contenido del archivo en el system prompt para que Claude no necesite una herramienta", "order": 2 },
+        { "id": "PYAGENT-003_c", "text": "Use the built-in 'file_reader' tool that comes with the Anthropic SDK", "textEs": "Usar la herramienta incorporada 'file_reader' que viene con el SDK de Anthropic", "order": 3 },
+        { "id": "PYAGENT-003_d", "text": "Define a tool with name, description, and input_schema specifying the file_path parameter; implement the read logic in your Python code", "textEs": "Definir una herramienta con nombre, descripcion, e input_schema especificando el parametro file_path; implementar la logica de lectura en tu codigo Python", "order": 4 }
+      ],
+      "tags": ["tool-calling", "tool-definition", "file-operations", "input-schema"]
+    },
+    {
+      "id": "PYAGENT-004",
+      "text": "A Python agent needs to maintain memory across multiple tasks within a session. Which approach provides persistent short-term memory without external dependencies?",
+      "textEs": "Un agente de Python necesita mantener memoria a traves de multiples tareas dentro de una sesion. ¿Que enfoque proporciona memoria persistente a corto plazo sin dependencias externas?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-004_a",
+      "explanation": "A scratchpad file (e.g., a local JSON or text file) that the agent reads at the start of each task and writes to after completing it provides simple persistent memory. The agent can store task results, intermediate findings, and context notes. This approach requires no external database, works with the file read/write tools the agent already has, and survives across multiple conversation turns. The scratchpad content can be included in the system message or loaded via a tool.",
+      "explanationEs": "Un archivo scratchpad (por ejemplo, un archivo JSON o de texto local) que el agente lee al inicio de cada tarea y escribe despues de completarla proporciona memoria persistente simple. El agente puede almacenar resultados de tareas, hallazgos intermedios y notas de contexto. Este enfoque no requiere base de datos externa, funciona con las herramientas de lectura/escritura de archivos que el agente ya tiene, y sobrevive a traves de multiples turnos de conversacion. El contenido del scratchpad puede incluirse en el mensaje de sistema o cargarse via una herramienta.",
+      "options": [
+        { "id": "PYAGENT-004_a", "text": "Use a scratchpad file that the agent reads at task start and writes to after task completion, storing findings and context", "textEs": "Usar un archivo scratchpad que el agente lee al inicio de la tarea y escribe despues de completarla, almacenando hallazgos y contexto", "order": 1 },
+        { "id": "PYAGENT-004_b", "text": "Rely on Claude's built-in session memory which automatically persists data between API calls", "textEs": "Confiar en la memoria de sesion incorporada de Claude que automaticamente persiste datos entre llamadas a la API", "order": 2 },
+        { "id": "PYAGENT-004_c", "text": "Store everything in Python global variables that persist across agent loop iterations", "textEs": "Almacenar todo en variables globales de Python que persisten a traves de iteraciones del bucle del agente", "order": 3 },
+        { "id": "PYAGENT-004_d", "text": "Increase max_tokens to infinity so the full conversation history is always maintained", "textEs": "Aumentar max_tokens a infinito para que el historial completo de conversacion siempre se mantenga", "order": 4 }
+      ],
+      "tags": ["agent-memory", "scratchpad", "persistence", "session-management"]
+    },
+    {
+      "id": "PYAGENT-005",
+      "text": "What is the recommended error handling strategy when a tool execution fails inside a Python agent's agentic loop?",
+      "textEs": "¿Cual es la estrategia recomendada de manejo de errores cuando la ejecucion de una herramienta falla dentro del bucle agentico de un agente de Python?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-005_c",
+      "explanation": "When a tool execution fails, you should return the error message as a tool_result with is_error set to true. This tells Claude that the tool call failed and provides the error details. Claude can then decide to retry with different parameters, try an alternative approach, or inform the user about the failure. Silently dropping the error or crashing the loop breaks the agent's ability to recover and adapt.",
+      "explanationEs": "Cuando la ejecucion de una herramienta falla, debes devolver el mensaje de error como un tool_result con is_error establecido en true. Esto le dice a Claude que la llamada a la herramienta fallo y proporciona los detalles del error. Claude puede entonces decidir reintentar con diferentes parametros, probar un enfoque alternativo, o informar al usuario sobre la falla. Ocultar silenciosamente el error o romper el bucle quiebra la capacidad del agente de recuperarse y adaptarse.",
+      "options": [
+        { "id": "PYAGENT-005_a", "text": "Crash the agent loop immediately and raise a Python exception to the user", "textEs": "Romper el bucle del agente inmediatamente y lanzar una excepcion de Python al usuario", "order": 1 },
+        { "id": "PYAGENT-005_b", "text": "Silently ignore the error and continue the loop without sending any tool result to Claude", "textEs": "Ignorar silenciosamente el error y continuar el bucle sin enviar ningun resultado de herramienta a Claude", "order": 2 },
+        { "id": "PYAGENT-005_c", "text": "Return the error as a tool_result with is_error=true so Claude can adapt its strategy or retry with different parameters", "textEs": "Devolver el error como un tool_result con is_error=true para que Claude pueda adaptar su estrategia o reintentar con parametros diferentes", "order": 3 },
+        { "id": "PYAGENT-005_d", "text": "Retry the exact same tool call 10 times before giving up, without informing Claude about the failures", "textEs": "Reintentar la misma llamada a herramienta exacta 10 veces antes de rendirse, sin informar a Claude sobre las fallas", "order": 4 }
+      ],
+      "tags": ["error-handling", "tool-result", "is-error", "agent-resilience"]
+    },
+    {
+      "id": "PYAGENT-006",
+      "text": "When building a data processing pipeline agent in Python, how should you structure the tools to allow Claude to transform a CSV file into a cleaned, analyzed dataset?",
+      "textEs": "Al construir un agente de pipeline de procesamiento de datos en Python, ¿como debes estructurar las herramientas para permitir que Claude transforme un archivo CSV en un dataset limpio y analizado?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-006_b",
+      "explanation": "Providing granular, composable tools (read_csv, filter_rows, compute_statistics, write_output) gives Claude the flexibility to chain operations as needed for the specific task. Claude can inspect the data first, decide which cleaning steps are needed, apply transformations incrementally, and verify results between steps. A single monolithic tool cannot adapt to different datasets, while code execution tools introduce security risks.",
+      "explanationEs": "Proporcionar herramientas granulares y componibles (read_csv, filter_rows, compute_statistics, write_output) da a Claude la flexibilidad de encadenar operaciones segun sea necesario para la tarea especifica. Claude puede inspeccionar los datos primero, decidir que pasos de limpieza son necesarios, aplicar transformaciones incrementalmente, y verificar resultados entre pasos. Una sola herramienta monolitica no puede adaptarse a diferentes datasets, mientras que las herramientas de ejecucion de codigo introducen riesgos de seguridad.",
+      "options": [
+        { "id": "PYAGENT-006_a", "text": "Provide a single 'process_data' tool that takes the CSV path and returns the final result in one step", "textEs": "Proporcionar una sola herramienta 'process_data' que tome la ruta del CSV y devuelva el resultado final en un paso", "order": 1 },
+        { "id": "PYAGENT-006_b", "text": "Provide granular, composable tools (read_csv, filter_rows, compute_statistics, write_output) so Claude can chain them adaptively", "textEs": "Proporcionar herramientas granulares y componibles (read_csv, filter_rows, compute_statistics, write_output) para que Claude pueda encadenarlas adaptativamente", "order": 2 },
+        { "id": "PYAGENT-006_c", "text": "Give Claude a 'run_python_code' tool to write and execute arbitrary pandas scripts", "textEs": "Dar a Claude una herramienta 'run_python_code' para escribir y ejecutar scripts arbitrarios de pandas", "order": 3 },
+        { "id": "PYAGENT-006_d", "text": "Pre-process the CSV entirely in Python before sending it to Claude; no tools needed", "textEs": "Pre-procesar el CSV completamente en Python antes de enviarlo a Claude; no se necesitan herramientas", "order": 4 }
+      ],
+      "tags": ["data-processing", "composable-tools", "pipeline", "csv-analysis"]
+    },
+    {
+      "id": "PYAGENT-007",
+      "text": "What is the purpose of setting a maximum iteration limit in a Python agent's agentic loop?",
+      "textEs": "¿Cual es el proposito de establecer un limite maximo de iteraciones en el bucle agentico de un agente de Python?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-007_a",
+      "explanation": "A maximum iteration limit prevents the agent from running indefinitely in case it enters an infinite tool-calling loop (e.g., repeatedly trying a failing approach). Without a limit, the agent could consume unlimited API tokens and never complete. The limit acts as a safety guardrail. When reached, the agent should gracefully return whatever partial results it has gathered and inform the user that the task could not be completed within the allowed steps.",
+      "explanationEs": "Un limite maximo de iteraciones previene que el agente se ejecute indefinidamente en caso de que entre en un bucle infinito de llamadas a herramientas (por ejemplo, intentando repetidamente un enfoque fallido). Sin un limite, el agente podria consumir tokens de API ilimitados y nunca completar. El limite actua como una barrera de seguridad. Cuando se alcanza, el agente debe devolver graciosamente los resultados parciales que ha reunido e informar al usuario que la tarea no pudo completarse dentro de los pasos permitidos.",
+      "options": [
+        { "id": "PYAGENT-007_a", "text": "To prevent infinite loops, control API costs, and ensure the agent fails gracefully with partial results if it cannot complete the task", "textEs": "Para prevenir bucles infinitos, controlar costos de API, y asegurar que el agente falle graciosamente con resultados parciales si no puede completar la tarea", "order": 1 },
+        { "id": "PYAGENT-007_b", "text": "To force Claude to give shorter responses so the output is more concise", "textEs": "Para forzar a Claude a dar respuestas mas cortas para que la salida sea mas concisa", "order": 2 },
+        { "id": "PYAGENT-007_c", "text": "To comply with API rate limits; each iteration counts as a separate rate limit bucket", "textEs": "Para cumplir con los limites de tasa de la API; cada iteracion cuenta como un bucket de limite de tasa separado", "order": 3 },
+        { "id": "PYAGENT-007_d", "text": "It is only needed for debugging; production agents should run without iteration limits", "textEs": "Solo se necesita para depuracion; los agentes en produccion deben ejecutarse sin limites de iteracion", "order": 4 }
+      ],
+      "tags": ["iteration-limit", "safety", "infinite-loop", "cost-control"]
+    },
+    {
+      "id": "PYAGENT-008",
+      "text": "A Python agent is designed to automate a workflow that involves reading emails, extracting action items, and creating tasks in a project management tool. What design pattern best structures this multi-step workflow?",
+      "textEs": "Un agente de Python esta diseñado para automatizar un flujo de trabajo que involucra leer correos electronicos, extraer items de accion, y crear tareas en una herramienta de gestion de proyectos. ¿Que patron de diseño estructura mejor este flujo de trabajo de multiples pasos?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-008_d",
+      "explanation": "An orchestrator pattern with prompt chaining works best for multi-step workflows. The orchestrator breaks the task into discrete steps: (1) read emails using a tool, (2) extract action items from the email content with a focused prompt, (3) create tasks using another tool. Each step has a clear input/output contract. The orchestrator manages the flow, handles errors at each step, and can retry individual steps without restarting the entire workflow. This is more reliable than a single prompt trying to do everything.",
+      "explanationEs": "Un patron orquestador con encadenamiento de prompts funciona mejor para flujos de trabajo de multiples pasos. El orquestador divide la tarea en pasos discretos: (1) leer correos usando una herramienta, (2) extraer items de accion del contenido del correo con un prompt enfocado, (3) crear tareas usando otra herramienta. Cada paso tiene un contrato claro de entrada/salida. El orquestador gestiona el flujo, maneja errores en cada paso, y puede reintentar pasos individuales sin reiniciar todo el flujo de trabajo. Esto es mas confiable que un solo prompt intentando hacer todo.",
+      "options": [
+        { "id": "PYAGENT-008_a", "text": "A single prompt that describes the entire workflow and lets Claude figure out all the steps autonomously", "textEs": "Un solo prompt que describe todo el flujo de trabajo y deja que Claude descifre todos los pasos autonomamente", "order": 1 },
+        { "id": "PYAGENT-008_b", "text": "Three separate independent agents that run in parallel without coordination", "textEs": "Tres agentes independientes separados que se ejecutan en paralelo sin coordinacion", "order": 2 },
+        { "id": "PYAGENT-008_c", "text": "A cron job that runs each step at fixed time intervals regardless of the previous step's completion", "textEs": "Un trabajo cron que ejecuta cada paso a intervalos de tiempo fijos sin importar si el paso anterior se completo", "order": 3 },
+        { "id": "PYAGENT-008_d", "text": "An orchestrator with prompt chaining: discrete steps with clear input/output contracts, error handling per step, and retry capability", "textEs": "Un orquestador con encadenamiento de prompts: pasos discretos con contratos claros de entrada/salida, manejo de errores por paso, y capacidad de reintento", "order": 4 }
+      ],
+      "tags": ["orchestrator", "prompt-chaining", "workflow-automation", "multi-step"]
+    },
+    {
+      "id": "PYAGENT-009",
+      "text": "When implementing a Python agent that calls Claude's API, what is the benefit of using async/await with the Anthropic Python SDK?",
+      "textEs": "Al implementar un agente de Python que llama a la API de Claude, ¿cual es el beneficio de usar async/await con el SDK de Python de Anthropic?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-009_b",
+      "explanation": "The Anthropic SDK provides an AsyncAnthropic client that supports async/await. This is beneficial when the agent needs to make concurrent API calls (e.g., processing multiple documents in parallel), handle I/O-bound operations efficiently (network requests, file I/O), or integrate with async web frameworks. Async allows other code to run while waiting for Claude's response, improving throughput for agents that manage multiple concurrent tasks.",
+      "explanationEs": "El SDK de Anthropic proporciona un cliente AsyncAnthropic que soporta async/await. Esto es beneficioso cuando el agente necesita hacer llamadas concurrentes a la API (por ejemplo, procesar multiples documentos en paralelo), manejar operaciones limitadas por I/O eficientemente (solicitudes de red, I/O de archivos), o integrarse con frameworks web asincronos. Async permite que otro codigo se ejecute mientras espera la respuesta de Claude, mejorando el rendimiento para agentes que gestionan multiples tareas concurrentes.",
+      "options": [
+        { "id": "PYAGENT-009_a", "text": "It makes Claude respond faster by sending requests with higher priority", "textEs": "Hace que Claude responda mas rapido enviando solicitudes con mayor prioridad", "order": 1 },
+        { "id": "PYAGENT-009_b", "text": "It enables concurrent API calls and efficient I/O handling, allowing the agent to process multiple tasks in parallel without blocking", "textEs": "Permite llamadas concurrentes a la API y manejo eficiente de I/O, permitiendo al agente procesar multiples tareas en paralelo sin bloquear", "order": 2 },
+        { "id": "PYAGENT-009_c", "text": "It is required by the SDK; synchronous calls are not supported", "textEs": "Es requerido por el SDK; las llamadas sincronas no estan soportadas", "order": 3 },
+        { "id": "PYAGENT-009_d", "text": "It reduces the token count of each request, lowering API costs", "textEs": "Reduce el conteo de tokens de cada solicitud, reduciendo los costos de API", "order": 4 }
+      ],
+      "tags": ["async-await", "concurrency", "python-sdk", "performance"]
+    },
+    {
+      "id": "PYAGENT-010",
+      "text": "A Python agent must process sensitive financial data. Which security measure is MOST critical when designing the agent's tool set?",
+      "textEs": "Un agente de Python debe procesar datos financieros sensibles. ¿Que medida de seguridad es MAS critica al diseñar el conjunto de herramientas del agente?",
+      "domainCode": "coursera-python-ai-agents",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-python-ai-agents",
+      "correctOptionId": "PYAGENT-010_c",
+      "explanation": "The principle of least privilege is the most critical security measure. Tools should only have the minimum permissions needed: read-only access to financial data (no write/delete), scoped to specific directories or databases, with input validation to prevent injection attacks. Human-in-the-loop approval for destructive or high-risk actions adds another safety layer. Even though Claude may request broader operations, the tool implementation must enforce boundaries.",
+      "explanationEs": "El principio de menor privilegio es la medida de seguridad mas critica. Las herramientas solo deben tener los permisos minimos necesarios: acceso de solo lectura a datos financieros (sin escribir/eliminar), limitado a directorios o bases de datos especificas, con validacion de entrada para prevenir ataques de inyeccion. La aprobacion humana en el bucle para acciones destructivas o de alto riesgo agrega otra capa de seguridad. Aunque Claude pueda solicitar operaciones mas amplias, la implementacion de la herramienta debe imponer limites.",
+      "options": [
+        { "id": "PYAGENT-010_a", "text": "Encrypt the API key in environment variables; this protects all data the agent processes", "textEs": "Cifrar la clave de API en variables de entorno; esto protege todos los datos que el agente procesa", "order": 1 },
+        { "id": "PYAGENT-010_b", "text": "Run the agent on a dedicated server with a firewall; no additional tool-level restrictions needed", "textEs": "Ejecutar el agente en un servidor dedicado con firewall; no se necesitan restricciones adicionales a nivel de herramienta", "order": 2 },
+        { "id": "PYAGENT-010_c", "text": "Apply least privilege: read-only tools, scoped access, input validation, and human-in-the-loop approval for high-risk actions", "textEs": "Aplicar menor privilegio: herramientas de solo lectura, acceso limitado, validacion de entrada, y aprobacion humana en el bucle para acciones de alto riesgo", "order": 3 },
+        { "id": "PYAGENT-010_d", "text": "Add a disclaimer in the system prompt asking Claude not to access unauthorized data", "textEs": "Agregar un descargo en el system prompt pidiendo a Claude que no acceda a datos no autorizados", "order": 4 }
+      ],
+      "tags": ["security", "least-privilege", "sensitive-data", "human-in-the-loop"]
+    }
+  ]
+}

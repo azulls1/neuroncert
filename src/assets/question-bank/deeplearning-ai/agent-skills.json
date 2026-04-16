@@ -1,0 +1,314 @@
+{
+  "meta": {
+    "domain": "agent-skills",
+    "domainName": "Agent Skills",
+    "trackId": "dlai-agent-skills",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 15,
+    "learningLevel": 4,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "dlai-as-001",
+      "text": "What are Skills in the context of Claude Code?",
+      "textEs": "Que son los Skills en el contexto de Claude Code?",
+      "domainCode": "agent-skills",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-001_b",
+      "explanation": "Skills in Claude Code are reusable command files (markdown with optional YAML frontmatter) stored in .claude/commands/ (project-shared) or ~/.claude/commands/ (personal). They encapsulate a specific workflow or capability that can be invoked via /command-name syntax. Skills can specify which files to load as context, which tools are allowed, and include detailed instructions for Claude to follow.",
+      "explanationEs": "Los Skills en Claude Code son archivos de comandos reutilizables (markdown con frontmatter YAML opcional) almacenados en .claude/commands/ (compartidos en el proyecto) o ~/.claude/commands/ (personales). Encapsulan un flujo de trabajo o capacidad especifica que se puede invocar mediante la sintaxis /nombre-del-comando. Los Skills pueden especificar que archivos cargar como contexto, que herramientas estan permitidas, e incluir instrucciones detalladas para que Claude las siga.",
+      "options": [
+        { "id": "dlai-as-001_a", "text": "Pre-trained model adaptations that modify Claude's weights for specific tasks", "textEs": "Adaptaciones de modelos preentrenados que modifican los pesos de Claude para tareas especificas", "order": 1 },
+        { "id": "dlai-as-001_b", "text": "Reusable command files with instructions and optional frontmatter (context, allowed-tools) invoked via /command-name syntax", "textEs": "Archivos de comandos reutilizables con instrucciones y frontmatter opcional (contexto, herramientas permitidas) invocados mediante la sintaxis /nombre-del-comando", "order": 2 },
+        { "id": "dlai-as-001_c", "text": "Third-party plugins installed from a marketplace that extend Claude's capabilities", "textEs": "Plugins de terceros instalados desde un marketplace que amplian las capacidades de Claude", "order": 3 },
+        { "id": "dlai-as-001_d", "text": "API endpoints that Claude can call to access external services", "textEs": "Endpoints de API que Claude puede llamar para acceder a servicios externos", "order": 4 }
+      ],
+      "tags": ["skills", "custom-commands", "claude-code", "fundamentals"]
+    },
+    {
+      "id": "dlai-as-002",
+      "text": "What fields are available in the YAML frontmatter of a Skill file (SKILL.md)?",
+      "textEs": "Que campos estan disponibles en el frontmatter YAML de un archivo de Skill (SKILL.md)?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-002_a",
+      "explanation": "The YAML frontmatter in a Skill file supports: 'context' (a list of file paths or glob patterns to automatically load into context when the skill is invoked), 'allowed-tools' (a list of tools the skill is permitted to use, restricting it from using others), 'description' (a brief description shown in the skills list), and 'argument-hint' (text describing what argument the skill expects, shown in the UI as a placeholder).",
+      "explanationEs": "El frontmatter YAML de un archivo de Skill soporta: 'context' (una lista de rutas de archivos o patrones glob que se cargan automaticamente en el contexto cuando se invoca el skill), 'allowed-tools' (una lista de herramientas que el skill puede usar, restringiendo el uso de otras), 'description' (una breve descripcion que se muestra en la lista de skills), y 'argument-hint' (texto que describe que argumento espera el skill, mostrado como placeholder en la interfaz).",
+      "options": [
+        { "id": "dlai-as-002_a", "text": "context (files to load), allowed-tools (permitted tools), description (brief summary), and argument-hint (expected input description)", "textEs": "context (archivos a cargar), allowed-tools (herramientas permitidas), description (resumen breve), y argument-hint (descripcion de la entrada esperada)", "order": 1 },
+        { "id": "dlai-as-002_b", "text": "name, version, author, dependencies, and entrypoint", "textEs": "name, version, author, dependencies, y entrypoint", "order": 2 },
+        { "id": "dlai-as-002_c", "text": "model, temperature, max-tokens, and system-prompt", "textEs": "model, temperature, max-tokens, y system-prompt", "order": 3 },
+        { "id": "dlai-as-002_d", "text": "trigger-on, schedule, timeout, and retry-policy", "textEs": "trigger-on, schedule, timeout, y retry-policy", "order": 4 }
+      ],
+      "tags": ["skill-frontmatter", "context", "allowed-tools", "yaml"]
+    },
+    {
+      "id": "dlai-as-003",
+      "text": "How does the 'context' field in Skill frontmatter work?",
+      "textEs": "Como funciona el campo 'context' en el frontmatter de un Skill?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-003_c",
+      "explanation": "The 'context' field accepts a list of file paths or glob patterns (e.g., 'src/config/*.ts', 'README.md'). When the skill is invoked, these files are automatically read and included in Claude's context before the skill's instructions are processed. This ensures Claude has the relevant code, documentation, or data files it needs without the user manually providing them. Paths are relative to the project root.",
+      "explanationEs": "El campo 'context' acepta una lista de rutas de archivos o patrones glob (por ejemplo, 'src/config/*.ts', 'README.md'). Cuando se invoca el skill, estos archivos se leen automaticamente y se incluyen en el contexto de Claude antes de que se procesen las instrucciones del skill. Esto asegura que Claude tenga el codigo, la documentacion o los archivos de datos relevantes que necesita sin que el usuario los proporcione manualmente. Las rutas son relativas a la raiz del proyecto.",
+      "options": [
+        { "id": "dlai-as-003_a", "text": "It defines environment variables available to the skill during execution", "textEs": "Define variables de entorno disponibles para el skill durante la ejecucion", "order": 1 },
+        { "id": "dlai-as-003_b", "text": "It links to external documentation URLs that Claude should reference", "textEs": "Enlaza a URLs de documentacion externa que Claude debe consultar", "order": 2 },
+        { "id": "dlai-as-003_c", "text": "It lists file paths or glob patterns that are automatically read and loaded into Claude's context when the skill is invoked", "textEs": "Lista rutas de archivos o patrones glob que se leen automaticamente y se cargan en el contexto de Claude cuando se invoca el skill", "order": 3 },
+        { "id": "dlai-as-003_d", "text": "It specifies the conversation history from previous skill invocations to maintain continuity", "textEs": "Especifica el historial de conversacion de invocaciones previas del skill para mantener la continuidad", "order": 4 }
+      ],
+      "tags": ["context-field", "file-loading", "glob-patterns", "auto-context"]
+    },
+    {
+      "id": "dlai-as-004",
+      "text": "How does the 'allowed-tools' field restrict a Skill's capabilities?",
+      "textEs": "Como restringe el campo 'allowed-tools' las capacidades de un Skill?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-004_d",
+      "explanation": "The 'allowed-tools' field is a whitelist of tools the skill can use. When specified, Claude can ONLY use the listed tools during that skill's execution. For example, a review skill with 'allowed-tools: [Read, Grep]' can read and search files but cannot edit or execute commands. This is a security and scoping mechanism that prevents skills from performing unintended actions and makes their behavior predictable.",
+      "explanationEs": "El campo 'allowed-tools' es una lista blanca de herramientas que el skill puede usar. Cuando se especifica, Claude SOLO puede usar las herramientas listadas durante la ejecucion de ese skill. Por ejemplo, un skill de revision con 'allowed-tools: [Read, Grep]' puede leer y buscar archivos pero no puede editar ni ejecutar comandos. Es un mecanismo de seguridad y alcance que evita que los skills realicen acciones no deseadas y hace que su comportamiento sea predecible.",
+      "options": [
+        { "id": "dlai-as-004_a", "text": "It lists tools that must be installed before the skill can run", "textEs": "Lista herramientas que deben instalarse antes de que el skill pueda ejecutarse", "order": 1 },
+        { "id": "dlai-as-004_b", "text": "It specifies tools that are blocked; all other tools remain available", "textEs": "Especifica herramientas que estan bloqueadas; todas las demas herramientas permanecen disponibles", "order": 2 },
+        { "id": "dlai-as-004_c", "text": "It defines MCP servers that should be connected when the skill starts", "textEs": "Define servidores MCP que deben conectarse cuando el skill se inicia", "order": 3 },
+        { "id": "dlai-as-004_d", "text": "It is a whitelist restricting Claude to ONLY use listed tools during the skill, preventing unintended actions", "textEs": "Es una lista blanca que restringe a Claude a usar SOLO las herramientas listadas durante el skill, evitando acciones no deseadas", "order": 4 }
+      ],
+      "tags": ["allowed-tools", "whitelist", "security", "restriction"]
+    },
+    {
+      "id": "dlai-as-005",
+      "text": "How would you create a Skill that generates Excel spreadsheets from data?",
+      "textEs": "Como crearias un Skill que genere hojas de calculo Excel a partir de datos?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-005_b",
+      "explanation": "To create an Excel-generating skill, you would write a command file that instructs Claude to use a code execution tool (like Bash or an MCP-connected code runner) to run Python with the openpyxl or xlsxwriter library. The skill's frontmatter would specify allowed-tools including Bash/code execution, and the instructions would describe how to structure the data, apply formatting, and save the file. The skill takes data description as its argument.",
+      "explanationEs": "Para crear un skill que genere archivos Excel, escribirias un archivo de comando que instruya a Claude a usar una herramienta de ejecucion de codigo (como Bash o un ejecutor de codigo conectado por MCP) para ejecutar Python con la libreria openpyxl o xlsxwriter. El frontmatter del skill especificaria allowed-tools incluyendo Bash/ejecucion de codigo, y las instrucciones describirian como estructurar los datos, aplicar formato y guardar el archivo. El skill recibe la descripcion de los datos como argumento.",
+      "options": [
+        { "id": "dlai-as-005_a", "text": "Install an Excel MCP plugin that provides native spreadsheet tools Claude can call directly", "textEs": "Instalar un plugin MCP de Excel que proporcione herramientas nativas de hojas de calculo que Claude pueda llamar directamente", "order": 1 },
+        { "id": "dlai-as-005_b", "text": "Create a command file with instructions to use code execution (Bash/Python with openpyxl) to generate the Excel file, with allowed-tools including execution tools", "textEs": "Crear un archivo de comando con instrucciones para usar ejecucion de codigo (Bash/Python con openpyxl) para generar el archivo Excel, con allowed-tools que incluyan herramientas de ejecucion", "order": 2 },
+        { "id": "dlai-as-005_c", "text": "Use Claude's built-in Excel generation capability by specifying 'output-format: xlsx' in the frontmatter", "textEs": "Usar la capacidad integrada de generacion de Excel de Claude especificando 'output-format: xlsx' en el frontmatter", "order": 3 },
+        { "id": "dlai-as-005_d", "text": "Convert Claude's text output to Excel format using a separate post-processing script", "textEs": "Convertir la salida de texto de Claude a formato Excel usando un script de postprocesamiento separado", "order": 4 }
+      ],
+      "tags": ["excel", "code-execution", "openpyxl", "skill-creation"]
+    },
+    {
+      "id": "dlai-as-006",
+      "text": "How would you create a Skill for generating PowerPoint presentations?",
+      "textEs": "Como crearias un Skill para generar presentaciones de PowerPoint?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-006_a",
+      "explanation": "A PowerPoint-generating skill follows a similar pattern to Excel: the skill's command file instructs Claude to write and execute Python code using the python-pptx library. The frontmatter includes allowed-tools for code execution and file operations. The instructions guide Claude on slide structure, layout selection, text formatting, and image inclusion. The user provides the presentation topic and content as the skill argument.",
+      "explanationEs": "Un skill para generar PowerPoint sigue un patron similar al de Excel: el archivo de comando del skill instruye a Claude a escribir y ejecutar codigo Python usando la libreria python-pptx. El frontmatter incluye allowed-tools para ejecucion de codigo y operaciones de archivos. Las instrucciones guian a Claude sobre la estructura de diapositivas, seleccion de diseño, formato de texto e inclusion de imagenes. El usuario proporciona el tema y contenido de la presentacion como argumento del skill.",
+      "options": [
+        { "id": "dlai-as-006_a", "text": "A command file instructing Claude to write and execute Python code using python-pptx, with allowed-tools for code execution and file I/O", "textEs": "Un archivo de comando que instruye a Claude a escribir y ejecutar codigo Python usando python-pptx, con allowed-tools para ejecucion de codigo y operaciones de archivos", "order": 1 },
+        { "id": "dlai-as-006_b", "text": "Use the built-in /powerpoint command that comes pre-installed with Claude Code", "textEs": "Usar el comando integrado /powerpoint que viene preinstalado con Claude Code", "order": 2 },
+        { "id": "dlai-as-006_c", "text": "Connect to Microsoft's PowerPoint API via an MCP server and use native slide-creation tools", "textEs": "Conectarse a la API de PowerPoint de Microsoft mediante un servidor MCP y usar herramientas nativas de creacion de diapositivas", "order": 3 },
+        { "id": "dlai-as-006_d", "text": "Generate markdown and use a markdown-to-pptx converter as a post-processing step", "textEs": "Generar markdown y usar un convertidor de markdown a pptx como paso de postprocesamiento", "order": 4 }
+      ],
+      "tags": ["powerpoint", "python-pptx", "code-execution", "presentations"]
+    },
+    {
+      "id": "dlai-as-007",
+      "text": "What is the difference between project-level skills (.claude/commands/) and personal skills (~/.claude/commands/)?",
+      "textEs": "Cual es la diferencia entre los skills a nivel de proyecto (.claude/commands/) y los skills personales (~/.claude/commands/)?",
+      "domainCode": "agent-skills",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-007_c",
+      "explanation": "Project-level skills in .claude/commands/ are committed to the repository and shared with all team members. They are specific to that project and should contain workflow automations relevant to the team's codebase. Personal skills in ~/.claude/commands/ are available only to the individual user across all their projects. They are ideal for personal productivity commands that are not project-specific.",
+      "explanationEs": "Los skills a nivel de proyecto en .claude/commands/ se suben al repositorio y se comparten con todos los miembros del equipo. Son especificos de ese proyecto y deben contener automatizaciones de flujo de trabajo relevantes para el codigo del equipo. Los skills personales en ~/.claude/commands/ estan disponibles solo para el usuario individual en todos sus proyectos. Son ideales para comandos de productividad personal que no son especificos de un proyecto.",
+      "options": [
+        { "id": "dlai-as-007_a", "text": "Project skills have higher priority; personal skills are only used as fallbacks", "textEs": "Los skills de proyecto tienen mayor prioridad; los skills personales solo se usan como respaldo", "order": 1 },
+        { "id": "dlai-as-007_b", "text": "Project skills can use any tools; personal skills are restricted to read-only tools", "textEs": "Los skills de proyecto pueden usar cualquier herramienta; los skills personales estan restringidos a herramientas de solo lectura", "order": 2 },
+        { "id": "dlai-as-007_c", "text": "Project skills are in the repo for the team; personal skills are user-specific and available across all projects", "textEs": "Los skills de proyecto estan en el repositorio para el equipo; los skills personales son especificos del usuario y estan disponibles en todos los proyectos", "order": 3 },
+        { "id": "dlai-as-007_d", "text": "No functional difference; both locations are treated identically by Claude Code", "textEs": "No hay diferencia funcional; ambas ubicaciones son tratadas de forma identica por Claude Code", "order": 4 }
+      ],
+      "tags": ["project-skills", "personal-skills", "team-sharing", "scope"]
+    },
+    {
+      "id": "dlai-as-008",
+      "text": "How can you create a custom Skill that reviews code for security vulnerabilities?",
+      "textEs": "Como puedes crear un Skill personalizado que revise el codigo en busca de vulnerabilidades de seguridad?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-008_b",
+      "explanation": "Create a file like .claude/commands/security-review.md with frontmatter specifying context (e.g., '**/*.py' or specific source directories) and allowed-tools restricted to read-only tools (Read, Grep, Glob). The body contains detailed instructions about what security patterns to look for (SQL injection, XSS, hardcoded secrets, insecure dependencies, etc.), the format for reporting findings (severity, location, recommendation), and any project-specific security requirements.",
+      "explanationEs": "Crea un archivo como .claude/commands/security-review.md con frontmatter que especifique context (por ejemplo, '**/*.py' o directorios fuente especificos) y allowed-tools restringido a herramientas de solo lectura (Read, Grep, Glob). El cuerpo contiene instrucciones detalladas sobre que patrones de seguridad buscar (inyeccion SQL, XSS, secretos hardcodeados, dependencias inseguras, etc.), el formato para reportar hallazgos (severidad, ubicacion, recomendacion), y cualquier requisito de seguridad especifico del proyecto.",
+      "options": [
+        { "id": "dlai-as-008_a", "text": "Install a third-party security scanning MCP server and let it handle everything", "textEs": "Instalar un servidor MCP de escaneo de seguridad de terceros y dejar que se encargue de todo", "order": 1 },
+        { "id": "dlai-as-008_b", "text": "Create a command file with read-only allowed-tools, context pointing to source files, and instructions listing security patterns to check and reporting format", "textEs": "Crear un archivo de comando con allowed-tools de solo lectura, context apuntando a archivos fuente, e instrucciones que listen patrones de seguridad a verificar y formato de reporte", "order": 2 },
+        { "id": "dlai-as-008_c", "text": "Write a Python script that performs the scan and wrap it as a Claude Code plugin", "textEs": "Escribir un script de Python que realice el escaneo y envolverlo como un plugin de Claude Code", "order": 3 },
+        { "id": "dlai-as-008_d", "text": "Add security review instructions to CLAUDE.md so they apply to all interactions", "textEs": "Agregar instrucciones de revision de seguridad a CLAUDE.md para que apliquen a todas las interacciones", "order": 4 }
+      ],
+      "tags": ["security-review", "custom-skill", "read-only", "code-analysis"]
+    },
+    {
+      "id": "dlai-as-009",
+      "text": "How do Skills integrate with MCP servers to extend their capabilities?",
+      "textEs": "Como se integran los Skills con servidores MCP para extender sus capacidades?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-009_a",
+      "explanation": "Skills can reference MCP server tools in their allowed-tools list using the format 'mcp__servername__toolname'. When the skill is invoked and the MCP server is configured (in .mcp.json or ~/.claude/mcp.json), Claude can use those MCP tools during the skill's execution. This enables skills that interact with external systems -- databases, APIs, cloud services -- through the standardized MCP interface.",
+      "explanationEs": "Los Skills pueden referenciar herramientas de servidores MCP en su lista de allowed-tools usando el formato 'mcp__nombreservidor__nombreherramienta'. Cuando se invoca el skill y el servidor MCP esta configurado (en .mcp.json o ~/.claude/mcp.json), Claude puede usar esas herramientas MCP durante la ejecucion del skill. Esto habilita skills que interactuan con sistemas externos -- bases de datos, APIs, servicios en la nube -- a traves de la interfaz estandarizada MCP.",
+      "options": [
+        { "id": "dlai-as-009_a", "text": "Skills reference MCP tools in allowed-tools using 'mcp__servername__toolname' format, enabling interaction with configured MCP servers", "textEs": "Los Skills referencian herramientas MCP en allowed-tools usando el formato 'mcp__nombreservidor__nombreherramienta', habilitando la interaccion con servidores MCP configurados", "order": 1 },
+        { "id": "dlai-as-009_b", "text": "Skills automatically discover and connect to all available MCP servers without configuration", "textEs": "Los Skills descubren y se conectan automaticamente a todos los servidores MCP disponibles sin configuracion", "order": 2 },
+        { "id": "dlai-as-009_c", "text": "Skills cannot use MCP tools; they are limited to Claude Code's built-in tools only", "textEs": "Los Skills no pueden usar herramientas MCP; estan limitados unicamente a las herramientas integradas de Claude Code", "order": 3 },
+        { "id": "dlai-as-009_d", "text": "Skills embed MCP server code directly in the skill file for self-contained execution", "textEs": "Los Skills incrustan codigo del servidor MCP directamente en el archivo del skill para ejecucion autocontenida", "order": 4 }
+      ],
+      "tags": ["mcp-integration", "allowed-tools", "external-systems", "skill-extension"]
+    },
+    {
+      "id": "dlai-as-010",
+      "text": "What is the argument-hint field in Skill frontmatter, and how is it used?",
+      "textEs": "Que es el campo argument-hint en el frontmatter de un Skill y como se utiliza?",
+      "domainCode": "agent-skills",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-010_c",
+      "explanation": "The argument-hint field provides a description of what argument the skill expects, which is shown as placeholder text in the Claude Code UI when the user selects the skill. For example, a /review skill might have argument-hint: 'file path or description of what to review'. The argument is then available to Claude as the user's input when the skill runs. It helps users understand what information to provide when invoking the skill.",
+      "explanationEs": "El campo argument-hint proporciona una descripcion de que argumento espera el skill, que se muestra como texto de placeholder en la interfaz de Claude Code cuando el usuario selecciona el skill. Por ejemplo, un skill /review podria tener argument-hint: 'ruta del archivo o descripcion de lo que se debe revisar'. El argumento queda disponible para Claude como la entrada del usuario cuando el skill se ejecuta. Ayuda a los usuarios a entender que informacion proporcionar al invocar el skill.",
+      "options": [
+        { "id": "dlai-as-010_a", "text": "It validates the argument type and rejects non-matching inputs", "textEs": "Valida el tipo de argumento y rechaza las entradas que no coinciden", "order": 1 },
+        { "id": "dlai-as-010_b", "text": "It defines default argument values when the user provides no input", "textEs": "Define valores de argumento por defecto cuando el usuario no proporciona entrada", "order": 2 },
+        { "id": "dlai-as-010_c", "text": "It describes the expected argument and shows as placeholder text in the UI, guiding users on what to provide", "textEs": "Describe el argumento esperado y se muestra como texto de placeholder en la interfaz, guiando a los usuarios sobre que proporcionar", "order": 3 },
+        { "id": "dlai-as-010_d", "text": "It defines command-line flags that the skill accepts (e.g., --verbose, --output)", "textEs": "Define flags de linea de comandos que el skill acepta (por ejemplo, --verbose, --output)", "order": 4 }
+      ],
+      "tags": ["argument-hint", "ui", "user-guidance", "skill-invocation"]
+    },
+    {
+      "id": "dlai-as-011",
+      "text": "How can Skills be used with the Claude API for code execution in agentic workflows?",
+      "textEs": "Como se pueden usar los Skills con la API de Claude para ejecucion de codigo en flujos de trabajo agenticos?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-011_d",
+      "explanation": "In API-based agentic workflows, the concept of Skills translates to tool bundles with focused system prompts. You create a specialized agent by combining: a focused system prompt (equivalent to the skill's instruction body), a restricted tool set (equivalent to allowed-tools), and pre-loaded context (equivalent to the context field). The Agent SDK can spawn subagents configured this way, effectively running a 'skill' as a self-contained agent within a larger workflow.",
+      "explanationEs": "En flujos de trabajo agenticos basados en la API, el concepto de Skills se traduce en conjuntos de herramientas con system prompts enfocados. Se crea un agente especializado combinando: un system prompt enfocado (equivalente al cuerpo de instrucciones del skill), un conjunto restringido de herramientas (equivalente a allowed-tools), y contexto precargado (equivalente al campo context). El Agent SDK puede crear subagentes configurados de esta manera, ejecutando efectivamente un 'skill' como un agente autocontenido dentro de un flujo de trabajo mayor.",
+      "options": [
+        { "id": "dlai-as-011_a", "text": "Upload skill files to the API and reference them by skill_id in the request", "textEs": "Subir archivos de skills a la API y referenciarlos por skill_id en la solicitud", "order": 1 },
+        { "id": "dlai-as-011_b", "text": "Skills only work in Claude Code CLI; they have no equivalent in the API", "textEs": "Los Skills solo funcionan en la CLI de Claude Code; no tienen equivalente en la API", "order": 2 },
+        { "id": "dlai-as-011_c", "text": "Use the /v1/skills endpoint to register and invoke skills programmatically", "textEs": "Usar el endpoint /v1/skills para registrar e invocar skills programaticamente", "order": 3 },
+        { "id": "dlai-as-011_d", "text": "Translate skills into focused system prompts + restricted tool sets + pre-loaded context, running as specialized subagents in the workflow", "textEs": "Traducir los skills en system prompts enfocados + conjuntos restringidos de herramientas + contexto precargado, ejecutandolos como subagentes especializados en el flujo de trabajo", "order": 4 }
+      ],
+      "tags": ["api-integration", "subagents", "tool-bundles", "agentic-workflows"]
+    },
+    {
+      "id": "dlai-as-012",
+      "text": "How does the Agent SDK support equipping subagents with specific skills?",
+      "textEs": "Como soporta el Agent SDK equipar a subagentes con skills especificos?",
+      "domainCode": "agent-skills",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-012_a",
+      "explanation": "In the Agent SDK, each agent (or subagent) is configured with its own system prompt, tool set, and model. This maps directly to the Skills concept: the system prompt contains the skill's instructions, the tools array contains the skill's allowed tools, and any context files are loaded and included in the initial messages. The coordinator agent spawns subagents with these configurations, effectively giving each subagent a specific 'skill'.",
+      "explanationEs": "En el Agent SDK, cada agente (o subagente) se configura con su propio system prompt, conjunto de herramientas y modelo. Esto se mapea directamente al concepto de Skills: el system prompt contiene las instrucciones del skill, el array de herramientas contiene las herramientas permitidas del skill, y cualquier archivo de contexto se carga e incluye en los mensajes iniciales. El agente coordinador crea subagentes con estas configuraciones, dandole efectivamente a cada subagente un 'skill' especifico.",
+      "options": [
+        { "id": "dlai-as-012_a", "text": "Configure each subagent with a focused system prompt (instructions), specific tool set (allowed-tools), and pre-loaded context (files)", "textEs": "Configurar cada subagente con un system prompt enfocado (instrucciones), un conjunto especifico de herramientas (allowed-tools), y contexto precargado (archivos)", "order": 1 },
+        { "id": "dlai-as-012_b", "text": "Install skill packages from npm/pip and import them into the agent's runtime", "textEs": "Instalar paquetes de skills desde npm/pip e importarlos en el runtime del agente", "order": 2 },
+        { "id": "dlai-as-012_c", "text": "Reference skill IDs from a central skill registry that Anthropic maintains", "textEs": "Referenciar IDs de skills de un registro central de skills que mantiene Anthropic", "order": 3 },
+        { "id": "dlai-as-012_d", "text": "Skills are automatically distributed to subagents based on the task content", "textEs": "Los skills se distribuyen automaticamente a los subagentes segun el contenido de la tarea", "order": 4 }
+      ],
+      "tags": ["agent-sdk", "subagent-configuration", "skill-mapping", "system-prompt"]
+    },
+    {
+      "id": "dlai-as-013",
+      "text": "What is the recommended approach for testing and iterating on custom Skills?",
+      "textEs": "Cual es el enfoque recomendado para probar e iterar sobre Skills personalizados?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-013_b",
+      "explanation": "The recommended approach is iterative: (1) start with a simple skill with basic instructions, (2) test it with representative inputs, (3) identify failure cases, (4) refine instructions with more specific guidance for those cases, (5) add few-shot examples if needed, (6) adjust allowed-tools if the skill needs more or fewer capabilities. Use Plan Mode first to verify the skill's approach before allowing execution. Version control the skill file to track changes.",
+      "explanationEs": "El enfoque recomendado es iterativo: (1) comenzar con un skill simple con instrucciones basicas, (2) probarlo con entradas representativas, (3) identificar casos de fallo, (4) refinar las instrucciones con guia mas especifica para esos casos, (5) agregar ejemplos few-shot si es necesario, (6) ajustar allowed-tools si el skill necesita mas o menos capacidades. Usar el Modo Plan primero para verificar el enfoque del skill antes de permitir la ejecucion. Controlar versiones del archivo del skill para rastrear cambios.",
+      "options": [
+        { "id": "dlai-as-013_a", "text": "Write the complete skill once and deploy; skills should not need iteration", "textEs": "Escribir el skill completo una vez y desplegarlo; los skills no deberian necesitar iteracion", "order": 1 },
+        { "id": "dlai-as-013_b", "text": "Start simple, test with representative inputs, identify failures, refine instructions, add examples, adjust tools; use Plan Mode for verification", "textEs": "Comenzar simple, probar con entradas representativas, identificar fallos, refinar instrucciones, agregar ejemplos, ajustar herramientas; usar el Modo Plan para verificacion", "order": 2 },
+        { "id": "dlai-as-013_c", "text": "Use a dedicated testing framework provided by Anthropic for skill validation", "textEs": "Usar un framework de pruebas dedicado proporcionado por Anthropic para validacion de skills", "order": 3 },
+        { "id": "dlai-as-013_d", "text": "Write unit tests in Python that call the skill programmatically and assert outputs", "textEs": "Escribir pruebas unitarias en Python que llamen al skill programaticamente y verifiquen las salidas", "order": 4 }
+      ],
+      "tags": ["testing", "iteration", "plan-mode", "refinement"]
+    },
+    {
+      "id": "dlai-as-014",
+      "text": "How can a Skill use the $ARGUMENTS variable to accept user input?",
+      "textEs": "Como puede un Skill usar la variable $ARGUMENTS para aceptar entrada del usuario?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-014_c",
+      "explanation": "When a user invokes a skill with an argument (e.g., '/review src/app.ts'), the argument text ('src/app.ts') is available as $ARGUMENTS in the skill's markdown body. The skill template can reference it like: 'Review the following file: $ARGUMENTS'. Claude Code substitutes the variable with the actual argument before processing. This enables skills to be parameterized and reusable across different inputs.",
+      "explanationEs": "Cuando un usuario invoca un skill con un argumento (por ejemplo, '/review src/app.ts'), el texto del argumento ('src/app.ts') esta disponible como $ARGUMENTS en el cuerpo markdown del skill. La plantilla del skill puede referenciarlo asi: 'Revisa el siguiente archivo: $ARGUMENTS'. Claude Code sustituye la variable con el argumento real antes de procesar. Esto permite que los skills sean parametrizables y reutilizables con diferentes entradas.",
+      "options": [
+        { "id": "dlai-as-014_a", "text": "$ARGUMENTS is an environment variable read via a Bash tool call during execution", "textEs": "$ARGUMENTS es una variable de entorno leida mediante una llamada a la herramienta Bash durante la ejecucion", "order": 1 },
+        { "id": "dlai-as-014_b", "text": "$ARGUMENTS is a JSON object with named parameters parsed from the command line", "textEs": "$ARGUMENTS es un objeto JSON con parametros nombrados parseados de la linea de comandos", "order": 2 },
+        { "id": "dlai-as-014_c", "text": "$ARGUMENTS is substituted in the skill's markdown body with the text the user provided after the command name", "textEs": "$ARGUMENTS se sustituye en el cuerpo markdown del skill con el texto que el usuario proporciono despues del nombre del comando", "order": 3 },
+        { "id": "dlai-as-014_d", "text": "$ARGUMENTS is passed as a system prompt override that replaces the skill's default instructions", "textEs": "$ARGUMENTS se pasa como una sobreescritura del system prompt que reemplaza las instrucciones por defecto del skill", "order": 4 }
+      ],
+      "tags": ["arguments", "variable-substitution", "parameterized", "user-input"]
+    },
+    {
+      "id": "dlai-as-015",
+      "text": "What is the best practice for organizing multiple Skills in a large project?",
+      "textEs": "Cual es la mejor practica para organizar multiples Skills en un proyecto grande?",
+      "domainCode": "agent-skills",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "dlai-agent-skills",
+      "correctOptionId": "dlai-as-015_a",
+      "explanation": "For large projects, organize skills by domain or workflow using subdirectories within .claude/commands/ (e.g., .claude/commands/review/, .claude/commands/deploy/, .claude/commands/docs/). Each skill file should have a descriptive name and a clear description in its frontmatter. Keep skills focused on a single task, and compose complex workflows by having skills reference or chain with each other. Document available skills in the project README or CLAUDE.md.",
+      "explanationEs": "Para proyectos grandes, organiza los skills por dominio o flujo de trabajo usando subdirectorios dentro de .claude/commands/ (por ejemplo, .claude/commands/review/, .claude/commands/deploy/, .claude/commands/docs/). Cada archivo de skill debe tener un nombre descriptivo y una descripcion clara en su frontmatter. Manten los skills enfocados en una sola tarea, y compone flujos de trabajo complejos haciendo que los skills se referencien o encadenen entre si. Documenta los skills disponibles en el README del proyecto o en CLAUDE.md.",
+      "options": [
+        { "id": "dlai-as-015_a", "text": "Use subdirectories by domain (.claude/commands/review/, /deploy/), keep each skill focused, use descriptive names and descriptions", "textEs": "Usar subdirectorios por dominio (.claude/commands/review/, /deploy/), mantener cada skill enfocado, usar nombres y descripciones descriptivos", "order": 1 },
+        { "id": "dlai-as-015_b", "text": "Put all skills in a single file with sections separated by --- delimiters", "textEs": "Poner todos los skills en un solo archivo con secciones separadas por delimitadores ---", "order": 2 },
+        { "id": "dlai-as-015_c", "text": "Store skills in a separate skills repository and import them via git submodules", "textEs": "Almacenar los skills en un repositorio separado e importarlos mediante git submodules", "order": 3 },
+        { "id": "dlai-as-015_d", "text": "Limit projects to 5 skills maximum to avoid confusion", "textEs": "Limitar los proyectos a un maximo de 5 skills para evitar confusion", "order": 4 }
+      ],
+      "tags": ["organization", "subdirectories", "naming", "large-projects"]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+# NXT Changelog Agent (Logan) - Configuracion
+# Proyecto: simulador-examen-csa
+
+changelog:
+  # Archivo de salida
+  output: CHANGELOG.md
+
+  # Formato de fecha
+  date_format: "YYYY-MM-DD"
+
+  # Incluir en changelog
+  include:
+    - feat
+    - fix
+    - perf
+    - refactor
+    - security
+    - deprecate
+    - remove
+
+  # Excluir del changelog
+  exclude:
+    - docs
+    - style
+    - test
+    - chore
+    - ci
+
+  # Agrupar por scope
+  group_by_scope: false
+
+  # Incluir links a commits
+  include_commit_links: false  # No hay repositorio remoto configurado aun
+
+  # Incluir links a issues/PRs
+  include_issue_links: false
+
+  # Repositorio para links (configurar cuando se tenga repo remoto)
+  repository: null
+
+  # Validacion
+  validation:
+    require_conventional_commits: true
+    require_issue_reference: false
+    max_subject_length: 72

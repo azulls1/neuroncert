@@ -1,0 +1,44 @@
+# NXT Ralph Agent - Configuracion
+# Proyecto: simulador-examen-csa
+
+ralph:
+  # Limites
+  max_iterations: 50
+  timeout_per_iteration: 300  # segundos
+
+  # Recuperacion
+  retry_on_error: 3
+  recovery_strategies:
+    - retry
+    - fix_direct
+    - alternative
+    - decompose
+    - escalate
+
+  # Checkpoints
+  checkpoint_enabled: true
+  checkpoint_interval: 5  # cada 5 iteraciones
+  checkpoint_dir: .nxt/checkpoints/ralph
+
+  # Auto-acciones
+  auto_commit: false
+  auto_test: true
+  auto_lint: true
+
+  # Notificaciones
+  notify_on_complete: true
+  notify_on_block: true
+
+  # Criterios de exito default para este proyecto Angular
+  success_criteria:
+    - code_compiles      # ng build sin errores
+    - tests_pass         # ng test sin fallos
+    - no_lint_errors     # prettier --check
+    - types_valid        # tsc --noEmit
+
+  # Comandos de verificacion para este proyecto
+  verify_commands:
+    build: "npm run build"
+    test: "npm run test -- --watch=false"
+    lint: "npx prettier --check 'src/**/*.ts'"
+    types: "npx tsc --noEmit"

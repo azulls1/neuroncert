@@ -1,0 +1,31 @@
+services:
+  claude-learning-platform:
+    build: .
+    container_name: claude-learning-platform
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    labels:
+      - "com.docker.desktop.name=Claude AI Learning Platform"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: "0.5"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

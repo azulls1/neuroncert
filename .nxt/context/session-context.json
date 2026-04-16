@@ -1,0 +1,194 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-04-12T19:56:00Z",
+  "agent": "nxt-context (Clio)",
+  "project": {
+    "name": "simulador-examen-csa",
+    "display_name": "Simulador Examen CSA ServiceNow",
+    "type": "web-app",
+    "domain": "educacion / certificacion IT",
+    "purpose": "Simulador de practica para el examen de certificacion ServiceNow Certified System Administrator (CSA)",
+    "stack": {
+      "framework": "Angular 20.1.0 (standalone components, zoneless change detection)",
+      "language": "TypeScript 5.8.2",
+      "reactive": "RxJS 7.8.0 + Angular Signals",
+      "ssr": "@angular/ssr + Express 5",
+      "build": "Angular CLI 20.1.6 + Vite",
+      "testing": "Karma + Jasmine",
+      "formatting": "Prettier (100 char line width)",
+      "styling": "CSS3 custom properties (no framework CSS)"
+    },
+    "external_services": {
+      "n8n_webhooks": {
+        "base_url": "https://devwebhook.personalizzimo.com",
+        "start_exam": "/webhook/3e9b5e81-fe3e-4ef0-bd38-caf997756a07",
+        "validate_answer": "/webhook/59dcb81e-60cf-4549-90a1-ee59fd9172fb",
+        "purpose": "Generacion dinamica de preguntas y validacion de respuestas en tiempo real"
+      }
+    },
+    "exam_config": {
+      "total_questions": 120,
+      "duration_minutes": 90,
+      "duration_seconds": 5400,
+      "options_per_question": 4,
+      "difficulties": ["easy", "medium", "hard", "any"],
+      "passing_score": "Not explicitly defined (CSA real: ~70%)"
+    }
+  },
+  "architecture": {
+    "pattern": "Feature-based Architecture + Clean Architecture layers",
+    "component_model": "Angular Standalone Components (no NgModules)",
+    "state_management": "Angular Signals (primary) + RxJS BehaviorSubject (secondary)",
+    "rendering": "SSR via @angular/ssr + Express server",
+    "lazy_loading": "All feature components are lazy-loaded via loadComponent()",
+    "layers": {
+      "core": "Business logic - guards, models, services (no UI)",
+      "features": "Smart components organized by domain (home, exam/*)",
+      "shared": "Reusable dumb/presentational components"
+    },
+    "decisions": [
+      {
+        "id": "ADR-001",
+        "title": "Angular Standalone Components sin NgModules",
+        "date": "2026-04-01",
+        "status": "accepted",
+        "context": "Angular 20 soporta standalone components como primera opcion",
+        "decision": "Usar standalone components exclusivamente, sin NgModules",
+        "consequences": ["Menor boilerplate", "Lazy loading simplificado", "Tree-shaking mejorado"]
+      },
+      {
+        "id": "ADR-002",
+        "title": "Angular Signals para State Management",
+        "date": "2026-04-01",
+        "status": "accepted",
+        "context": "Necesidad de state management reactivo para estado del examen",
+        "decision": "Usar Angular Signals (signal, computed, effect) como mecanismo primario de estado",
+        "consequences": ["Sin dependencia externa (no NgRx/Zustand)", "Mejor performance zoneless", "RxJS solo para HTTP y streams"]
+      },
+      {
+        "id": "ADR-003",
+        "title": "n8n Webhooks para generacion de preguntas",
+        "date": "2026-04-01",
+        "status": "accepted",
+        "context": "Las preguntas del examen deben generarse dinamicamente, no estar hardcodeadas",
+        "decision": "Usar n8n como backend de logica via webhooks REST",
+        "consequences": ["Preguntas dinamicas", "Validacion server-side", "Respuestas correctas nunca expuestas al cliente", "Dependencia de servicio externo n8n"]
+      },
+      {
+        "id": "ADR-004",
+        "title": "CSS custom properties sin framework CSS",
+        "date": "2026-04-01",
+        "status": "accepted",
+        "context": "Necesidad de tema visual consistente (navy blue + gold)",
+        "decision": "CSS3 puro con custom properties para theming, sin Tailwind ni Bootstrap",
+        "consequences": ["Control total del diseno", "Sin dependencias CSS", "Mas CSS manual pero mas ligero"]
+      },
+      {
+        "id": "ADR-005",
+        "title": "SessionStorage para estado de examen en progreso",
+        "date": "2026-04-01",
+        "status": "accepted",
+        "context": "El progreso del examen debe sobrevivir page refresh pero no persistir entre sesiones",
+        "decision": "sessionStorage para examen en curso, localStorage para historial",
+        "consequences": ["Progreso no se pierde en refresh", "Historial persiste", "No requiere backend para persistencia"]
+      }
+    ]
+  },
+  "code_patterns": {
+    "naming": {
+      "components": "PascalCase (e.g., HomeComponent, WebhookExamComponent)",
+      "services": "PascalCase con sufijo Service (e.g., ExamStateService)",
+      "models": "PascalCase interfaces (e.g., ExamQuestion, ExamResult)",
+      "files_components": "kebab-case.component.ts (e.g., webhook-exam.component.ts)",
+      "files_services": "kebab-case.service.ts (e.g., exam-state.service.ts)",
+      "files_models": "kebab-case.model.ts (e.g., exam-result.model.ts)",
+      "files_guards": "kebab-case.guard.ts (e.g., exam.guard.ts)",
+      "constants": "UPPER_SNAKE_CASE (e.g., DEFAULT_QUESTIONS_COUNT)",
+      "signals": "_prefixed private (e.g., _status, _questions), public computed without prefix"
+    },
+    "file_structure": {
+      "components": "src/app/features/{feature}/{component}.component.ts",
+      "services": "src/app/core/services/{name}.service.ts",
+      "models": "src/app/core/models/{name}.model.ts",
+      "guards": "src/app/core/guards/{name}.guard.ts",
+      "shared": "src/app/shared/{component}/{component}.component.ts",
+      "barrel_exports": "index.ts en core/models/ y core/services/"
+    },
+    "angular_patterns": {
+      "signals_for_state": "signal() para estado mutable, computed() para derivados",
+      "rxjs_for_http": "HttpClient con observables para webhooks",
+      "inject_function": "inject() en lugar de constructor injection",
+      "standalone_imports": "Imports directos en @Component decorator"
+    }
+  },
+  "preferences": {
+    "testing": "Karma + Jasmine (configurado en angular.json)",
+    "styling": "CSS3 puro con custom properties, paleta navy blue (#0F172A) + gold (#B17B20)",
+    "fonts": "Inter (UI) + JetBrains Mono (code)",
+    "formatting": "Prettier con printWidth: 100, singleQuote: true",
+    "data_mode": "remote (n8n webhooks) con fallback a local-seed",
+    "security": "Respuestas correctas NUNCA expuestas al cliente, validacion server-side"
+  },
+  "features_map": {
+    "home": {
+      "component": "HomeComponent",
+      "path": "/",
+      "description": "Landing page con overview del simulador CSA"
+    },
+    "exam_start": {
+      "component": "StartComponent",
+      "path": "/exam/start",
+      "description": "Configuracion de examen: dificultad (easy/medium/hard/any)"
+    },
+    "exam_run": {
+      "component": "WebhookExamComponent",
+      "path": "/exam/run",
+      "description": "Ejecucion del examen: preguntas, timer, navegacion, flagging"
+    },
+    "exam_submit": {
+      "component": "SubmitComponent",
+      "path": "/exam/submit",
+      "description": "Confirmacion de envio con resumen de preguntas sin responder",
+      "guard": "ExamGuard (solo si examen running/paused)"
+    },
+    "exam_review": {
+      "component": "ReviewComponent",
+      "path": "/exam/review",
+      "description": "Revision de resultados y feedback por pregunta",
+      "guard": "ExamGuard (solo si examen completed)"
+    },
+    "exam_results": {
+      "component": "ResultsComponent",
+      "path": "/exam/results",
+      "description": "Resultados webhook con score, breakdown y recomendaciones"
+    },
+    "exam_history": {
+      "component": "HistoryComponent",
+      "path": "/exam/history",
+      "description": "Historial de examenes pasados (ultimos 10, localStorage)"
+    }
+  },
+  "services_map": {
+    "ExamStateService": "Estado central del examen via Signals (status, questions, progress, navigation)",
+    "WebhookService": "Integracion n8n: startExam, validateAnswerAndGetNext, finishExam",
+    "TimerService": "Countdown 90min con Signals, auto-submit, warning 5min",
+    "ExamHistoryService": "Persistencia localStorage de sesiones de examen",
+    "ConfigService": "Configuracion centralizada (environment, defaults, validation rules)",
+    "DataSourceService": "Carga de datos seed local (Phase 1 fallback)",
+    "SeedValidatorService": "Validacion de estructura seed JSON"
+  },
+  "history": {
+    "recent_tasks": [],
+    "common_patterns": [
+      "Standalone Angular components con lazy loading",
+      "Signals para estado, computed para derivados",
+      "Barrel exports (index.ts) en core/",
+      "Webhook-driven exam flow (start -> validate -> next -> finish)"
+    ],
+    "learned_preferences": [
+      "Tema navy blue + gold para UI",
+      "Security-first: never expose correct answers client-side",
+      "90 min / 120 questions es el estandar CSA"
+    ]
+  }
+}

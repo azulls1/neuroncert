@@ -1,0 +1,612 @@
+{
+  "meta": {
+    "domain": "mcp-intro",
+    "domainName": "Intro to MCP",
+    "trackId": "mcp-intro",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 30
+  },
+  "questions": [
+    {
+      "id": "MCPI-001",
+      "text": "What is the Model Context Protocol (MCP)?",
+      "textEs": "¿Qué es el Model Context Protocol (MCP)?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-001_b",
+      "explanation": "The Model Context Protocol (MCP) is an open standard that defines how AI applications (clients/hosts) connect to external data sources and tools (servers). It provides a universal protocol — analogous to USB-C for hardware — that standardizes the interface between LLM applications and the integrations they need, replacing fragmented, custom connector code with a single interoperable protocol.",
+      "explanationEs": "El Model Context Protocol (MCP) es un estándar abierto que define cómo las aplicaciones de IA (clientes/hosts) se conectan a fuentes de datos y herramientas externas (servidores). Proporciona un protocolo universal — análogo al USB-C para hardware — que estandariza la interfaz entre aplicaciones LLM y las integraciones que necesitan, reemplazando código de conectores fragmentados y personalizados con un solo protocolo interoperable.",
+      "options": [
+        { "id": "MCPI-001_a", "text": "A proprietary Anthropic API for fine-tuning Claude models on custom datasets", "textEs": "Una API propietaria de Anthropic para ajustar modelos Claude con conjuntos de datos personalizados", "order": 1 },
+        { "id": "MCPI-001_b", "text": "An open standard that defines how AI applications connect to external data sources and tools via a universal protocol", "textEs": "Un estándar abierto que define cómo las aplicaciones de IA se conectan a fuentes de datos y herramientas externas mediante un protocolo universal", "order": 2 },
+        { "id": "MCPI-001_c", "text": "A messaging queue protocol similar to AMQP, designed for microservices communication", "textEs": "Un protocolo de cola de mensajes similar a AMQP, diseñado para comunicación de microservicios", "order": 3 },
+        { "id": "MCPI-001_d", "text": "A database schema standard for storing AI-generated content in relational databases", "textEs": "Un estándar de esquema de base de datos para almacenar contenido generado por IA en bases de datos relacionales", "order": 4 }
+      ],
+      "tags": ["mcp", "definition", "open-standard", "protocol"]
+    },
+    {
+      "id": "MCPI-002",
+      "text": "What are the three core primitives that an MCP server can expose to clients?",
+      "textEs": "¿Cuáles son las tres primitivas fundamentales que un servidor MCP puede exponer a los clientes?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-002_c",
+      "explanation": "MCP servers expose three core primitives: Tools (executable functions the model can call to perform actions, like querying a database or sending an email), Resources (data sources the client can read, like files or API responses, similar to GET endpoints), and Prompts (reusable prompt templates that guide interactions for specific tasks). Each primitive serves a different purpose in connecting AI to external capabilities.",
+      "explanationEs": "Los servidores MCP exponen tres primitivas fundamentales: Tools (funciones ejecutables que el modelo puede llamar para realizar acciones, como consultar una base de datos o enviar un correo), Resources (fuentes de datos que el cliente puede leer, como archivos o respuestas de API, similar a endpoints GET) y Prompts (plantillas de prompts reutilizables que guían las interacciones para tareas específicas). Cada primitiva sirve un propósito diferente al conectar la IA con capacidades externas.",
+      "options": [
+        { "id": "MCPI-002_a", "text": "Models, Datasets, and Endpoints", "textEs": "Modelos, Conjuntos de datos y Endpoints", "order": 1 },
+        { "id": "MCPI-002_b", "text": "Queries, Mutations, and Subscriptions", "textEs": "Consultas, Mutaciones y Suscripciones", "order": 2 },
+        { "id": "MCPI-002_c", "text": "Tools (executable functions), Resources (readable data), and Prompts (reusable templates)", "textEs": "Tools (funciones ejecutables), Resources (datos legibles) y Prompts (plantillas reutilizables)", "order": 3 },
+        { "id": "MCPI-002_d", "text": "Input, Process, and Output", "textEs": "Entrada, Proceso y Salida", "order": 4 }
+      ],
+      "tags": ["primitives", "tools", "resources", "prompts"]
+    },
+    {
+      "id": "MCPI-003",
+      "text": "What is the relationship between an MCP host, client, and server?",
+      "textEs": "¿Cuál es la relación entre un host, cliente y servidor MCP?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-003_a",
+      "explanation": "In MCP architecture, the Host is the user-facing application (like Claude Desktop or an IDE). It contains one or more MCP Clients, each of which maintains a 1:1 connection with an MCP Server. The Server provides tools, resources, and prompts from a specific external system. This architecture allows a single host to connect to many different servers simultaneously through separate client instances.",
+      "explanationEs": "En la arquitectura MCP, el Host es la aplicación orientada al usuario (como Claude Desktop o un IDE). Contiene uno o más Clientes MCP, cada uno de los cuales mantiene una conexión 1:1 con un Servidor MCP. El Servidor proporciona herramientas, recursos y prompts de un sistema externo específico. Esta arquitectura permite que un solo host se conecte a muchos servidores diferentes simultáneamente a través de instancias de cliente separadas.",
+      "options": [
+        { "id": "MCPI-003_a", "text": "The Host is the user-facing app containing Clients, each Client has a 1:1 connection to a Server, and each Server exposes tools/resources/prompts from an external system", "textEs": "El Host es la aplicación orientada al usuario que contiene Clientes, cada Cliente tiene una conexión 1:1 con un Servidor, y cada Servidor expone tools/resources/prompts de un sistema externo", "order": 1 },
+        { "id": "MCPI-003_b", "text": "The Host is a load balancer, the Client is the AI model, and the Server is the user's browser", "textEs": "El Host es un balanceador de carga, el Cliente es el modelo de IA y el Servidor es el navegador del usuario", "order": 2 },
+        { "id": "MCPI-003_c", "text": "All three are different names for the same component in different deployment environments", "textEs": "Los tres son nombres diferentes para el mismo componente en diferentes entornos de despliegue", "order": 3 },
+        { "id": "MCPI-003_d", "text": "The Host stores data, the Client processes it, and the Server displays it to the user", "textEs": "El Host almacena datos, el Cliente los procesa y el Servidor los muestra al usuario", "order": 4 }
+      ],
+      "tags": ["architecture", "host", "client", "server", "design"]
+    },
+    {
+      "id": "MCPI-004",
+      "text": "How are MCP servers typically configured in a host application like Claude Desktop?",
+      "textEs": "¿Cómo se configuran típicamente los servidores MCP en una aplicación host como Claude Desktop?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-004_d",
+      "explanation": "MCP servers are configured in the host application's configuration file (e.g., claude_desktop_config.json for Claude Desktop). Each server entry specifies the command to launch the server, any required arguments, and optional environment variables. For local (stdio) servers, this typically includes the runtime (like 'npx' or 'python') and the server package name. The host reads this config and starts the specified servers on launch.",
+      "explanationEs": "Los servidores MCP se configuran en el archivo de configuración de la aplicación host (ej., claude_desktop_config.json para Claude Desktop). Cada entrada de servidor especifica el comando para lanzar el servidor, los argumentos requeridos y variables de entorno opcionales. Para servidores locales (stdio), esto típicamente incluye el runtime (como 'npx' o 'python') y el nombre del paquete del servidor. El host lee esta configuración e inicia los servidores especificados al arrancar.",
+      "options": [
+        { "id": "MCPI-004_a", "text": "By installing them from an app store and clicking an 'Enable' button in the UI", "textEs": "Instalándolos desde una tienda de aplicaciones y haciendo clic en un botón 'Habilitar' en la UI", "order": 1 },
+        { "id": "MCPI-004_b", "text": "By writing the server code directly inside the host application's source code", "textEs": "Escribiendo el código del servidor directamente dentro del código fuente de la aplicación host", "order": 2 },
+        { "id": "MCPI-004_c", "text": "By setting environment variables on the operating system; no config file is needed", "textEs": "Estableciendo variables de entorno en el sistema operativo; no se necesita archivo de configuración", "order": 3 },
+        { "id": "MCPI-004_d", "text": "By editing a JSON configuration file that specifies the command, arguments, and environment variables for each server", "textEs": "Editando un archivo de configuración JSON que especifica el comando, argumentos y variables de entorno para cada servidor", "order": 4 }
+      ],
+      "tags": ["configuration", "claude-desktop", "json-config", "setup"]
+    },
+    {
+      "id": "MCPI-005",
+      "text": "What is the lifecycle of an MCP connection from initialization to shutdown?",
+      "textEs": "¿Cuál es el ciclo de vida de una conexión MCP desde la inicialización hasta el apagado?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-005_b",
+      "explanation": "The MCP connection lifecycle has three phases: (1) Initialization — the client sends an 'initialize' request with its protocol version and capabilities, the server responds with its own capabilities, and the client confirms with an 'initialized' notification. (2) Operation — normal message exchange occurs, with the client calling tools and reading resources. (3) Shutdown — either side can cleanly close the connection. This handshake ensures both sides agree on supported features before exchanging data.",
+      "explanationEs": "El ciclo de vida de una conexión MCP tiene tres fases: (1) Inicialización — el cliente envía una solicitud 'initialize' con su versión de protocolo y capacidades, el servidor responde con sus propias capacidades, y el cliente confirma con una notificación 'initialized'. (2) Operación — ocurre el intercambio normal de mensajes, con el cliente llamando herramientas y leyendo recursos. (3) Apagado — cualquier lado puede cerrar limpiamente la conexión. Este handshake asegura que ambos lados acuerden las características soportadas antes de intercambiar datos.",
+      "options": [
+        { "id": "MCPI-005_a", "text": "The server starts, immediately begins sending data, and stops when the host application closes", "textEs": "El servidor inicia, inmediatamente comienza a enviar datos y se detiene cuando la aplicación host se cierra", "order": 1 },
+        { "id": "MCPI-005_b", "text": "Initialize (capability handshake between client and server), Operate (normal message exchange), and Shutdown (clean disconnection)", "textEs": "Inicializar (handshake de capacidades entre cliente y servidor), Operar (intercambio normal de mensajes) y Apagar (desconexión limpia)", "order": 2 },
+        { "id": "MCPI-005_c", "text": "Authenticate, Authorize, Connect, Transfer, and Disconnect — following a five-step security protocol", "textEs": "Autenticar, Autorizar, Conectar, Transferir y Desconectar — siguiendo un protocolo de seguridad de cinco pasos", "order": 3 },
+        { "id": "MCPI-005_d", "text": "There is no lifecycle; MCP connections are stateless like HTTP requests", "textEs": "No hay ciclo de vida; las conexiones MCP son sin estado como las solicitudes HTTP", "order": 4 }
+      ],
+      "tags": ["lifecycle", "initialization", "handshake", "connection"]
+    },
+    {
+      "id": "MCPI-006",
+      "text": "What transport mechanisms does MCP support for communication between client and server?",
+      "textEs": "¿Qué mecanismos de transporte admite MCP para la comunicación entre cliente y servidor?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-006_a",
+      "explanation": "MCP supports two main transport mechanisms: stdio (standard input/output), where the client launches the server as a subprocess and communicates through stdin/stdout, ideal for local integrations; and SSE (Server-Sent Events) over HTTP, which enables remote server connections over the network. The stdio transport is simpler to set up for local tools, while SSE enables connecting to servers running on remote machines or in the cloud.",
+      "explanationEs": "MCP admite dos mecanismos de transporte principales: stdio (entrada/salida estándar), donde el cliente lanza el servidor como un subproceso y se comunica a través de stdin/stdout, ideal para integraciones locales; y SSE (Server-Sent Events) sobre HTTP, que permite conexiones remotas al servidor a través de la red. El transporte stdio es más simple de configurar para herramientas locales, mientras que SSE permite conectarse a servidores que se ejecutan en máquinas remotas o en la nube.",
+      "options": [
+        { "id": "MCPI-006_a", "text": "stdio (local subprocess communication via stdin/stdout) and SSE over HTTP (for remote network connections)", "textEs": "stdio (comunicación de subproceso local vía stdin/stdout) y SSE sobre HTTP (para conexiones de red remotas)", "order": 1 },
+        { "id": "MCPI-006_b", "text": "Only WebSocket connections; no other transport is supported", "textEs": "Solo conexiones WebSocket; no se admite ningún otro transporte", "order": 2 },
+        { "id": "MCPI-006_c", "text": "gRPC exclusively, using protocol buffers for serialization", "textEs": "gRPC exclusivamente, usando protocol buffers para serialización", "order": 3 },
+        { "id": "MCPI-006_d", "text": "Raw TCP sockets with a custom binary protocol", "textEs": "Sockets TCP raw con un protocolo binario personalizado", "order": 4 }
+      ],
+      "tags": ["transport", "stdio", "sse", "http", "networking"]
+    },
+    {
+      "id": "MCPI-007",
+      "text": "How does an MCP 'Tool' differ from an MCP 'Resource'?",
+      "textEs": "¿En qué se diferencia una 'Tool' MCP de un 'Resource' MCP?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-007_c",
+      "explanation": "Tools are model-controlled functions that perform actions and may have side effects — like sending an email, creating a file, or querying a database with parameters. They are similar to POST endpoints in REST. Resources, on the other hand, are application-controlled data sources that provide read-only information — like fetching a file's content or retrieving a list of records. They are similar to GET endpoints. The key distinction is that tools perform actions while resources provide data.",
+      "explanationEs": "Las Tools son funciones controladas por el modelo que realizan acciones y pueden tener efectos secundarios — como enviar un correo, crear un archivo o consultar una base de datos con parámetros. Son similares a endpoints POST en REST. Los Resources, por otro lado, son fuentes de datos controladas por la aplicación que proporcionan información de solo lectura — como obtener el contenido de un archivo o recuperar una lista de registros. Son similares a endpoints GET. La distinción clave es que las tools realizan acciones mientras que los resources proporcionan datos.",
+      "options": [
+        { "id": "MCPI-007_a", "text": "They are the same thing; the terms are used interchangeably in the MCP specification", "textEs": "Son lo mismo; los términos se usan indistintamente en la especificación MCP", "order": 1 },
+        { "id": "MCPI-007_b", "text": "Tools are free to use while Resources require a paid subscription", "textEs": "Las Tools son gratuitas mientras que los Resources requieren una suscripción de pago", "order": 2 },
+        { "id": "MCPI-007_c", "text": "Tools are executable functions that perform actions (like POST), while Resources are read-only data sources (like GET)", "textEs": "Las Tools son funciones ejecutables que realizan acciones (como POST), mientras que los Resources son fuentes de datos de solo lectura (como GET)", "order": 3 },
+        { "id": "MCPI-007_d", "text": "Tools run on the client side while Resources run on the server side", "textEs": "Las Tools se ejecutan en el lado del cliente mientras que los Resources se ejecutan en el lado del servidor", "order": 4 }
+      ],
+      "tags": ["tools", "resources", "primitives", "comparison"]
+    },
+    {
+      "id": "MCPI-008",
+      "text": "What is required to build a minimal MCP server using the Python SDK?",
+      "textEs": "¿Qué se requiere para construir un servidor MCP mínimo usando el SDK de Python?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-008_a",
+      "explanation": "To build a minimal MCP server in Python, you need to install the 'mcp' package, create a Server instance, define at least one tool or resource using decorators (@server.tool() or @server.resource()), and run the server with a transport (typically stdio for local use). The tool decorator takes a function, infers its JSON schema from type hints, and exposes it to clients. A simple server can be just 10-15 lines of code.",
+      "explanationEs": "Para construir un servidor MCP mínimo en Python, necesitas instalar el paquete 'mcp', crear una instancia de Server, definir al menos una tool o resource usando decoradores (@server.tool() o @server.resource()), y ejecutar el servidor con un transporte (típicamente stdio para uso local). El decorador de tool toma una función, infiere su esquema JSON de las anotaciones de tipo y la expone a los clientes. Un servidor simple puede ser de solo 10-15 líneas de código.",
+      "options": [
+        { "id": "MCPI-008_a", "text": "Install the mcp package, create a Server instance, define tools/resources with decorators, and run with a transport like stdio", "textEs": "Instalar el paquete mcp, crear una instancia de Server, definir tools/resources con decoradores y ejecutar con un transporte como stdio", "order": 1 },
+        { "id": "MCPI-008_b", "text": "Set up a Docker container, configure a Kubernetes cluster, and deploy through a CI/CD pipeline", "textEs": "Configurar un contenedor Docker, configurar un clúster de Kubernetes y desplegar a través de un pipeline de CI/CD", "order": 2 },
+        { "id": "MCPI-008_c", "text": "Write a REST API with Flask or FastAPI and register it with an MCP registry service", "textEs": "Escribir una API REST con Flask o FastAPI y registrarla con un servicio de registro MCP", "order": 3 },
+        { "id": "MCPI-008_d", "text": "Compile a binary from C++ source code and link it against the MCP system library", "textEs": "Compilar un binario desde código fuente C++ y enlazarlo con la biblioteca del sistema MCP", "order": 4 }
+      ],
+      "tags": ["python-sdk", "server-setup", "decorators", "minimal-server"]
+    },
+    {
+      "id": "MCPI-009",
+      "text": "What role does JSON-RPC play in the MCP protocol?",
+      "textEs": "¿Qué papel juega JSON-RPC en el protocolo MCP?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-009_d",
+      "explanation": "MCP uses JSON-RPC 2.0 as its message format for all communication between clients and servers. Every request, response, and notification follows the JSON-RPC specification, which provides a standardized structure with method names, parameters, result/error fields, and message IDs for matching responses to requests. This choice ensures interoperability and makes it easy to implement MCP in any programming language that can parse JSON.",
+      "explanationEs": "MCP usa JSON-RPC 2.0 como su formato de mensaje para toda la comunicación entre clientes y servidores. Cada solicitud, respuesta y notificación sigue la especificación JSON-RPC, que proporciona una estructura estandarizada con nombres de método, parámetros, campos de resultado/error e IDs de mensaje para emparejar respuestas con solicitudes. Esta elección asegura interoperabilidad y facilita implementar MCP en cualquier lenguaje de programación que pueda parsear JSON.",
+      "options": [
+        { "id": "MCPI-009_a", "text": "JSON-RPC is optional and only used for debugging; production uses binary protocol buffers", "textEs": "JSON-RPC es opcional y solo se usa para depuración; producción usa protocol buffers binarios", "order": 1 },
+        { "id": "MCPI-009_b", "text": "JSON-RPC is used only for the initial handshake; data transfer uses a different format", "textEs": "JSON-RPC se usa solo para el handshake inicial; la transferencia de datos usa un formato diferente", "order": 2 },
+        { "id": "MCPI-009_c", "text": "JSON-RPC is an alternative to MCP, not a part of it", "textEs": "JSON-RPC es una alternativa a MCP, no parte de él", "order": 3 },
+        { "id": "MCPI-009_d", "text": "JSON-RPC 2.0 is the message format for all MCP communication, providing standardized request/response structure with method names, parameters, and IDs", "textEs": "JSON-RPC 2.0 es el formato de mensaje para toda la comunicación MCP, proporcionando una estructura estandarizada de solicitud/respuesta con nombres de método, parámetros e IDs", "order": 4 }
+      ],
+      "tags": ["json-rpc", "message-format", "protocol", "communication"]
+    },
+    {
+      "id": "MCPI-010",
+      "text": "Why was MCP created, and what problem does it solve for the AI ecosystem?",
+      "textEs": "¿Por qué se creó MCP y qué problema resuelve para el ecosistema de IA?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-010_c",
+      "explanation": "Before MCP, every AI application had to build custom integrations for each data source and tool — resulting in an M x N problem where M applications each needed N separate connectors. MCP solves this by providing a single standard protocol: each tool or data source implements one MCP server, and each AI application implements one MCP client, making everything interoperable. This dramatically reduces integration effort and enables a shared ecosystem of connectors.",
+      "explanationEs": "Antes de MCP, cada aplicación de IA tenía que construir integraciones personalizadas para cada fuente de datos y herramienta — resultando en un problema M x N donde M aplicaciones cada una necesitaba N conectores separados. MCP resuelve esto proporcionando un solo protocolo estándar: cada herramienta o fuente de datos implementa un servidor MCP, y cada aplicación de IA implementa un cliente MCP, haciendo todo interoperable. Esto reduce drásticamente el esfuerzo de integración y habilita un ecosistema compartido de conectores.",
+      "options": [
+        { "id": "MCPI-010_a", "text": "It was created to replace REST APIs entirely in all web development", "textEs": "Fue creado para reemplazar las APIs REST por completo en todo el desarrollo web", "order": 1 },
+        { "id": "MCPI-010_b", "text": "It solves the problem of AI models being too slow by providing a faster inference engine", "textEs": "Resuelve el problema de que los modelos de IA son demasiado lentos proporcionando un motor de inferencia más rápido", "order": 2 },
+        { "id": "MCPI-010_c", "text": "It eliminates the M x N integration problem by standardizing one protocol so tools build one server and apps build one client", "textEs": "Elimina el problema de integración M x N estandarizando un protocolo para que las herramientas construyan un servidor y las aplicaciones construyan un cliente", "order": 3 },
+        { "id": "MCPI-010_d", "text": "It provides a way to train new AI models without requiring GPU hardware", "textEs": "Proporciona una forma de entrenar nuevos modelos de IA sin requerir hardware GPU", "order": 4 }
+      ],
+      "tags": ["motivation", "integration", "ecosystem", "standardization"]
+    },
+    {
+      "id": "MCPI-011",
+      "text": "What is the difference between a 'notification' and a 'request' in MCP's JSON-RPC communication?",
+      "textEs": "¿Cuál es la diferencia entre una 'notificación' y una 'solicitud' en la comunicación JSON-RPC de MCP?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-011_b",
+      "explanation": "In MCP's JSON-RPC communication, a request includes an 'id' field and expects a response from the other side. A notification has no 'id' field and does not expect a response — it is fire-and-forget. Requests are used for operations like tool calls where you need a result, while notifications are used for events like 'initialized' or progress updates where no response is needed.",
+      "explanationEs": "En la comunicación JSON-RPC de MCP, una solicitud incluye un campo 'id' y espera una respuesta del otro lado. Una notificación no tiene campo 'id' y no espera respuesta — es de tipo disparar y olvidar. Las solicitudes se usan para operaciones como llamadas a herramientas donde necesitas un resultado, mientras que las notificaciones se usan para eventos como 'initialized' o actualizaciones de progreso donde no se necesita respuesta.",
+      "options": [
+        { "id": "MCPI-011_a", "text": "They are the same thing; the terms are used interchangeably in MCP", "textEs": "Son lo mismo; los términos se usan indistintamente en MCP", "order": 1 },
+        { "id": "MCPI-011_b", "text": "Requests have an 'id' and expect a response; notifications have no 'id' and are fire-and-forget", "textEs": "Las solicitudes tienen un 'id' y esperan respuesta; las notificaciones no tienen 'id' y son de tipo disparar y olvidar", "order": 2 },
+        { "id": "MCPI-011_c", "text": "Requests are sent by servers; notifications are sent by clients only", "textEs": "Las solicitudes son enviadas por servidores; las notificaciones son enviadas solo por clientes", "order": 3 },
+        { "id": "MCPI-011_d", "text": "Notifications are encrypted while requests are sent in plaintext", "textEs": "Las notificaciones están encriptadas mientras que las solicitudes se envían en texto plano", "order": 4 }
+      ],
+      "tags": ["json-rpc", "notification", "request", "communication"]
+    },
+    {
+      "id": "MCPI-012",
+      "text": "What is the 'Streamable HTTP' transport in MCP and how does it differ from SSE?",
+      "textEs": "¿Qué es el transporte 'Streamable HTTP' en MCP y cómo difiere de SSE?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-012_c",
+      "explanation": "Streamable HTTP is a newer transport that replaces SSE. It uses standard HTTP POST requests for client-to-server messages, and the server can respond with either a single JSON response or upgrade to a stream using SSE. It also supports an optional GET endpoint for server-to-client notifications. This is more flexible and firewall-friendly than the older SSE transport while maintaining streaming capabilities.",
+      "explanationEs": "Streamable HTTP es un transporte más nuevo que reemplaza a SSE. Usa solicitudes HTTP POST estándar para mensajes de cliente a servidor, y el servidor puede responder con una sola respuesta JSON o actualizar a un stream usando SSE. También soporta un endpoint GET opcional para notificaciones de servidor a cliente. Esto es más flexible y amigable con firewalls que el transporte SSE anterior mientras mantiene capacidades de streaming.",
+      "options": [
+        { "id": "MCPI-012_a", "text": "It is the same as SSE but with a different name for marketing purposes", "textEs": "Es lo mismo que SSE pero con un nombre diferente por propósitos de marketing", "order": 1 },
+        { "id": "MCPI-012_b", "text": "It uses WebSocket exclusively for bidirectional streaming", "textEs": "Usa WebSocket exclusivamente para streaming bidireccional", "order": 2 },
+        { "id": "MCPI-012_c", "text": "Uses HTTP POST for messages with optional SSE upgrade for streaming; more flexible and firewall-friendly than pure SSE", "textEs": "Usa HTTP POST para mensajes con actualización SSE opcional para streaming; más flexible y amigable con firewalls que SSE puro", "order": 3 },
+        { "id": "MCPI-012_d", "text": "A video streaming protocol adapted for MCP data transfer", "textEs": "Un protocolo de streaming de video adaptado para transferencia de datos MCP", "order": 4 }
+      ],
+      "tags": ["streamable-http", "transport", "sse", "http"]
+    },
+    {
+      "id": "MCPI-013",
+      "text": "How does an MCP server define and expose a tool to clients?",
+      "textEs": "¿Cómo define y expone un servidor MCP una herramienta a los clientes?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-013_a",
+      "explanation": "An MCP server defines tools by providing a name, description, and a JSON Schema for the input parameters. When a client sends a 'tools/list' request, the server returns all available tools with their schemas. The client (or the LLM) can then call a tool via 'tools/call' with the tool name and parameters. The description is critical because the LLM uses it to decide when and how to use the tool.",
+      "explanationEs": "Un servidor MCP define herramientas proporcionando un nombre, descripción y un JSON Schema para los parámetros de entrada. Cuando un cliente envía una solicitud 'tools/list', el servidor devuelve todas las herramientas disponibles con sus esquemas. El cliente (o el LLM) puede entonces llamar a una herramienta vía 'tools/call' con el nombre de la herramienta y parámetros. La descripción es crítica porque el LLM la usa para decidir cuándo y cómo usar la herramienta.",
+      "options": [
+        { "id": "MCPI-013_a", "text": "Provide a name, description, and JSON Schema for input parameters; clients discover tools via 'tools/list' and call via 'tools/call'", "textEs": "Proporcionar un nombre, descripción y JSON Schema para parámetros de entrada; los clientes descubren herramientas vía 'tools/list' y llaman vía 'tools/call'", "order": 1 },
+        { "id": "MCPI-013_b", "text": "Register tools in a central MCP registry using a YAML manifest file", "textEs": "Registrar herramientas en un registro central MCP usando un archivo de manifiesto YAML", "order": 2 },
+        { "id": "MCPI-013_c", "text": "Expose an OpenAPI specification endpoint that clients auto-discover", "textEs": "Exponer un endpoint de especificación OpenAPI que los clientes auto-descubren", "order": 3 },
+        { "id": "MCPI-013_d", "text": "Hard-code the tool definitions in the client application before deployment", "textEs": "Codificar las definiciones de herramientas en la aplicación cliente antes del despliegue", "order": 4 }
+      ],
+      "tags": ["tools", "json-schema", "tools-list", "tools-call", "definition"]
+    },
+    {
+      "id": "MCPI-014",
+      "text": "What is a 'sampling' capability in MCP, and how does it enable more powerful server behaviors?",
+      "textEs": "¿Qué es la capacidad de 'sampling' en MCP y cómo habilita comportamientos de servidor más potentes?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-014_d",
+      "explanation": "Sampling allows MCP servers to request LLM completions through the client (host). Instead of the server having its own LLM access, it can ask the host to generate text using its LLM, enabling agentic behaviors where the server uses AI reasoning as part of its tool execution. The human-in-the-loop approval ensures the user controls when the LLM is invoked by the server.",
+      "explanationEs": "El sampling permite a los servidores MCP solicitar completions del LLM a través del cliente (host). En lugar de que el servidor tenga su propio acceso al LLM, puede pedir al host que genere texto usando su LLM, habilitando comportamientos agénticos donde el servidor usa razonamiento de IA como parte de la ejecución de sus herramientas. La aprobación humana en el ciclo asegura que el usuario controle cuándo el LLM es invocado por el servidor.",
+      "options": [
+        { "id": "MCPI-014_a", "text": "A debugging feature that logs random samples of MCP messages for analysis", "textEs": "Una función de depuración que registra muestras aleatorias de mensajes MCP para análisis", "order": 1 },
+        { "id": "MCPI-014_b", "text": "A rate-limiting mechanism that allows only a sample of requests to pass through", "textEs": "Un mecanismo de limitación de tasa que permite que solo una muestra de solicitudes pase", "order": 2 },
+        { "id": "MCPI-014_c", "text": "A method for collecting training data from MCP interactions", "textEs": "Un método para recopilar datos de entrenamiento de interacciones MCP", "order": 3 },
+        { "id": "MCPI-014_d", "text": "Servers can request LLM completions through the host/client, enabling agentic behaviors with human-in-the-loop approval", "textEs": "Los servidores pueden solicitar completions del LLM a través del host/cliente, habilitando comportamientos agénticos con aprobación humana en el ciclo", "order": 4 }
+      ],
+      "tags": ["sampling", "agentic", "llm-completions", "human-in-the-loop"]
+    },
+    {
+      "id": "MCPI-015",
+      "text": "What are MCP 'Prompts' and how do they differ from system prompts in the API?",
+      "textEs": "¿Qué son los 'Prompts' de MCP y cómo difieren de los system prompts en la API?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-015_b",
+      "explanation": "MCP Prompts are reusable, parameterized templates that servers expose to help users or clients interact with the server's capabilities effectively. They are discovered via 'prompts/list' and retrieved via 'prompts/get'. Unlike system prompts (which configure the LLM), MCP Prompts are workflow templates — for example, a Git server might expose a 'summarize_changes' prompt template that generates a commit message prompt from staged changes.",
+      "explanationEs": "Los Prompts de MCP son plantillas reutilizables y parametrizadas que los servidores exponen para ayudar a usuarios o clientes a interactuar con las capacidades del servidor efectivamente. Se descubren vía 'prompts/list' y se obtienen vía 'prompts/get'. A diferencia de los system prompts (que configuran el LLM), los Prompts de MCP son plantillas de flujo de trabajo — por ejemplo, un servidor Git podría exponer una plantilla de prompt 'summarize_changes' que genera un prompt de mensaje de commit a partir de cambios staged.",
+      "options": [
+        { "id": "MCPI-015_a", "text": "They are identical to API system prompts but hosted remotely on the MCP server", "textEs": "Son idénticos a los system prompts de la API pero alojados remotamente en el servidor MCP", "order": 1 },
+        { "id": "MCPI-015_b", "text": "Reusable, parameterized workflow templates exposed by servers via 'prompts/list' and 'prompts/get', guiding specific interactions", "textEs": "Plantillas de flujo de trabajo reutilizables y parametrizadas expuestas por servidores vía 'prompts/list' y 'prompts/get', guiando interacciones específicas", "order": 2 },
+        { "id": "MCPI-015_c", "text": "Auto-generated instructions that the MCP protocol creates based on available tools", "textEs": "Instrucciones autogeneradas que el protocolo MCP crea basándose en las herramientas disponibles", "order": 3 },
+        { "id": "MCPI-015_d", "text": "Security rules that determine which users can access which MCP tools", "textEs": "Reglas de seguridad que determinan qué usuarios pueden acceder a qué herramientas MCP", "order": 4 }
+      ],
+      "tags": ["prompts", "templates", "workflow", "primitives"]
+    },
+    {
+      "id": "MCPI-016",
+      "text": "What is the purpose of 'capability negotiation' during MCP initialization?",
+      "textEs": "¿Cuál es el propósito de la 'negociación de capacidades' durante la inicialización de MCP?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-016_a",
+      "explanation": "During initialization, the client and server exchange their supported capabilities. The client declares which features it supports (e.g., sampling, roots), and the server declares what it provides (e.g., tools, resources, prompts). This ensures both sides know what features are available before starting the operation phase. If a client doesn't support sampling, the server won't attempt to use it.",
+      "explanationEs": "Durante la inicialización, el cliente y el servidor intercambian sus capacidades soportadas. El cliente declara qué funciones soporta (ej., sampling, roots), y el servidor declara qué proporciona (ej., tools, resources, prompts). Esto asegura que ambos lados sepan qué funciones están disponibles antes de comenzar la fase de operación. Si un cliente no soporta sampling, el servidor no intentará usarlo.",
+      "options": [
+        { "id": "MCPI-016_a", "text": "Client and server exchange supported features so both sides know what is available before the operation phase begins", "textEs": "Cliente y servidor intercambian funciones soportadas para que ambos lados sepan qué está disponible antes de que comience la fase de operación", "order": 1 },
+        { "id": "MCPI-016_b", "text": "The server tests the client's network bandwidth to determine optimal data transfer rates", "textEs": "El servidor prueba el ancho de banda de red del cliente para determinar tasas óptimas de transferencia de datos", "order": 2 },
+        { "id": "MCPI-016_c", "text": "Both sides agree on an encryption protocol for securing data in transit", "textEs": "Ambos lados acuerdan un protocolo de encriptación para asegurar datos en tránsito", "order": 3 },
+        { "id": "MCPI-016_d", "text": "The server uploads its code to the client for local execution", "textEs": "El servidor sube su código al cliente para ejecución local", "order": 4 }
+      ],
+      "tags": ["capability-negotiation", "initialization", "handshake", "features"]
+    },
+    {
+      "id": "MCPI-017",
+      "text": "How do MCP Resources use URIs to identify data sources?",
+      "textEs": "¿Cómo usan los Resources de MCP URIs para identificar fuentes de datos?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-017_c",
+      "explanation": "MCP Resources are identified by URIs with custom schemes. For example, a file server might use 'file:///path/to/doc.txt', a database server might use 'postgres://table/users', or a Git server might use 'git://repo/branch/main'. Resources can be static (listed via 'resources/list') or dynamic using URI templates (e.g., 'users://{user_id}/profile'). The URI scheme is defined by the server.",
+      "explanationEs": "Los Resources de MCP se identifican por URIs con esquemas personalizados. Por ejemplo, un servidor de archivos podría usar 'file:///path/to/doc.txt', un servidor de base de datos podría usar 'postgres://table/users', o un servidor Git podría usar 'git://repo/branch/main'. Los Resources pueden ser estáticos (listados vía 'resources/list') o dinámicos usando plantillas URI (ej., 'users://{user_id}/profile'). El esquema URI es definido por el servidor.",
+      "options": [
+        { "id": "MCPI-017_a", "text": "Resources only use HTTP/HTTPS URLs; custom URI schemes are not supported", "textEs": "Los Resources solo usan URLs HTTP/HTTPS; los esquemas URI personalizados no son soportados", "order": 1 },
+        { "id": "MCPI-017_b", "text": "Resources use numeric IDs assigned sequentially by the server", "textEs": "Los Resources usan IDs numéricos asignados secuencialmente por el servidor", "order": 2 },
+        { "id": "MCPI-017_c", "text": "URIs with custom schemes (e.g., file://, postgres://, git://); can be static or dynamic via URI templates", "textEs": "URIs con esquemas personalizados (ej., file://, postgres://, git://); pueden ser estáticos o dinámicos vía plantillas URI", "order": 3 },
+        { "id": "MCPI-017_d", "text": "Resources are referenced by file paths on the local filesystem only", "textEs": "Los Resources se referencian por rutas de archivo en el sistema de archivos local únicamente", "order": 4 }
+      ],
+      "tags": ["resources", "uri", "schemes", "templates", "identification"]
+    },
+    {
+      "id": "MCPI-018",
+      "text": "What security considerations are important when building and deploying MCP servers?",
+      "textEs": "¿Qué consideraciones de seguridad son importantes al construir y desplegar servidores MCP?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-018_b",
+      "explanation": "Key MCP security considerations include: input validation (never trust tool inputs blindly), rate limiting, access control and authentication for remote servers, sandboxing tool execution, following the principle of least privilege, protecting sensitive data in tool responses, and ensuring that tool descriptions accurately represent capabilities. Servers should also handle errors gracefully without exposing internal details.",
+      "explanationEs": "Las consideraciones clave de seguridad de MCP incluyen: validación de entrada (nunca confiar ciegamente en las entradas de herramientas), limitación de tasa, control de acceso y autenticación para servidores remotos, sandboxing de ejecución de herramientas, seguir el principio de menor privilegio, proteger datos sensibles en respuestas de herramientas, y asegurar que las descripciones de herramientas representen con precisión las capacidades. Los servidores también deben manejar errores con gracia sin exponer detalles internos.",
+      "options": [
+        { "id": "MCPI-018_a", "text": "Security is handled entirely by the MCP protocol; server developers don't need to worry about it", "textEs": "La seguridad es manejada enteramente por el protocolo MCP; los desarrolladores de servidores no necesitan preocuparse por ello", "order": 1 },
+        { "id": "MCPI-018_b", "text": "Input validation, rate limiting, auth for remote servers, sandboxing, least privilege, protecting sensitive data, and accurate tool descriptions", "textEs": "Validación de entrada, limitación de tasa, autenticación para servidores remotos, sandboxing, menor privilegio, protección de datos sensibles y descripciones precisas de herramientas", "order": 2 },
+        { "id": "MCPI-018_c", "text": "Only use HTTPS; no other security measures are needed", "textEs": "Solo usar HTTPS; no se necesitan otras medidas de seguridad", "order": 3 },
+        { "id": "MCPI-018_d", "text": "Run all MCP servers as root/administrator to ensure they have access to everything they need", "textEs": "Ejecutar todos los servidores MCP como root/administrador para asegurar que tengan acceso a todo lo que necesiten", "order": 4 }
+      ],
+      "tags": ["security", "input-validation", "authentication", "sandboxing", "best-practices"]
+    },
+    {
+      "id": "MCPI-019",
+      "text": "What programming languages have official or well-maintained MCP SDKs?",
+      "textEs": "¿Qué lenguajes de programación tienen SDKs de MCP oficiales o bien mantenidos?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-019_a",
+      "explanation": "MCP has official SDKs for TypeScript/JavaScript and Python, which are the most commonly used for building MCP servers. Community-maintained SDKs exist for other languages like Kotlin, C#, Go, Rust, and Java. Since MCP is an open standard using JSON-RPC, it can be implemented in any language that supports JSON parsing and standard I/O or HTTP communication.",
+      "explanationEs": "MCP tiene SDKs oficiales para TypeScript/JavaScript y Python, que son los más comúnmente usados para construir servidores MCP. Existen SDKs mantenidos por la comunidad para otros lenguajes como Kotlin, C#, Go, Rust y Java. Como MCP es un estándar abierto que usa JSON-RPC, puede implementarse en cualquier lenguaje que soporte parsing de JSON y comunicación de I/O estándar o HTTP.",
+      "options": [
+        { "id": "MCPI-019_a", "text": "Official SDKs for TypeScript/JavaScript and Python; community SDKs for Kotlin, C#, Go, Rust, Java, and others", "textEs": "SDKs oficiales para TypeScript/JavaScript y Python; SDKs de la comunidad para Kotlin, C#, Go, Rust, Java y otros", "order": 1 },
+        { "id": "MCPI-019_b", "text": "Only Python is supported; all MCP servers must be written in Python", "textEs": "Solo Python es soportado; todos los servidores MCP deben escribirse en Python", "order": 2 },
+        { "id": "MCPI-019_c", "text": "Only TypeScript is supported because MCP is built on Node.js", "textEs": "Solo TypeScript es soportado porque MCP está construido sobre Node.js", "order": 3 },
+        { "id": "MCPI-019_d", "text": "MCP requires a custom language called MCPLang for server development", "textEs": "MCP requiere un lenguaje personalizado llamado MCPLang para desarrollo de servidores", "order": 4 }
+      ],
+      "tags": ["sdks", "typescript", "python", "languages", "community"]
+    },
+    {
+      "id": "MCPI-020",
+      "text": "How does an MCP client discover what tools and resources a server provides?",
+      "textEs": "¿Cómo descubre un cliente MCP qué herramientas y recursos proporciona un servidor?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-020_d",
+      "explanation": "After the initialization handshake, the client sends discovery requests to the server: 'tools/list' to get available tools, 'resources/list' for resources, and 'prompts/list' for prompts. Each response includes the full metadata (names, descriptions, schemas) needed for the client or LLM to use them. Servers can also notify clients of changes via 'notifications/tools/list_changed'.",
+      "explanationEs": "Después del handshake de inicialización, el cliente envía solicitudes de descubrimiento al servidor: 'tools/list' para obtener herramientas disponibles, 'resources/list' para recursos y 'prompts/list' para prompts. Cada respuesta incluye los metadatos completos (nombres, descripciones, esquemas) necesarios para que el cliente o LLM los use. Los servidores también pueden notificar a los clientes de cambios vía 'notifications/tools/list_changed'.",
+      "options": [
+        { "id": "MCPI-020_a", "text": "The client reads a static manifest file from the server's filesystem", "textEs": "El cliente lee un archivo de manifiesto estático del sistema de archivos del servidor", "order": 1 },
+        { "id": "MCPI-020_b", "text": "The server pushes all available tools to the client at startup automatically", "textEs": "El servidor envía automáticamente todas las herramientas disponibles al cliente al arrancar", "order": 2 },
+        { "id": "MCPI-020_c", "text": "The client queries a central registry that indexes all MCP servers globally", "textEs": "El cliente consulta un registro central que indexa todos los servidores MCP globalmente", "order": 3 },
+        { "id": "MCPI-020_d", "text": "Client sends 'tools/list', 'resources/list', 'prompts/list' requests; server responds with full metadata including schemas and descriptions", "textEs": "El cliente envía solicitudes 'tools/list', 'resources/list', 'prompts/list'; el servidor responde con metadatos completos incluyendo esquemas y descripciones", "order": 4 }
+      ],
+      "tags": ["discovery", "tools-list", "resources-list", "prompts-list", "metadata"]
+    },
+    {
+      "id": "MCPI-021",
+      "text": "What is a 'tool annotation' in MCP and why is it important for the LLM?",
+      "textEs": "¿Qué es una 'anotación de herramienta' en MCP y por qué es importante para el LLM?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-021_c",
+      "explanation": "Tool annotations are metadata hints provided by the server that describe a tool's behavior characteristics — for example, whether it is read-only or has side effects, whether it is idempotent, or whether it accesses sensitive data. While not enforced by the protocol, annotations help the host/client make informed decisions about tool usage, such as auto-approving read-only tools while requiring confirmation for destructive ones.",
+      "explanationEs": "Las anotaciones de herramientas son metadatos proporcionados por el servidor que describen las características de comportamiento de una herramienta — por ejemplo, si es de solo lectura o tiene efectos secundarios, si es idempotente, o si accede a datos sensibles. Aunque no son aplicadas por el protocolo, las anotaciones ayudan al host/cliente a tomar decisiones informadas sobre el uso de herramientas, como auto-aprobar herramientas de solo lectura mientras se requiere confirmación para las destructivas.",
+      "options": [
+        { "id": "MCPI-021_a", "text": "Comments in the source code that explain how the tool was implemented", "textEs": "Comentarios en el código fuente que explican cómo fue implementada la herramienta", "order": 1 },
+        { "id": "MCPI-021_b", "text": "Mandatory compliance tags required by government regulations", "textEs": "Etiquetas de cumplimiento obligatorias requeridas por regulaciones gubernamentales", "order": 2 },
+        { "id": "MCPI-021_c", "text": "Metadata hints about tool behavior (read-only, side effects, idempotent) that help hosts make informed permission decisions", "textEs": "Metadatos sobre el comportamiento de herramientas (solo lectura, efectos secundarios, idempotente) que ayudan a los hosts a tomar decisiones informadas de permisos", "order": 3 },
+        { "id": "MCPI-021_d", "text": "Version numbers that track when a tool's implementation was last updated", "textEs": "Números de versión que rastrean cuándo fue actualizada por última vez la implementación de una herramienta", "order": 4 }
+      ],
+      "tags": ["annotations", "metadata", "permissions", "behavior"]
+    },
+    {
+      "id": "MCPI-022",
+      "text": "What is a common pattern for building an MCP server that wraps a REST API?",
+      "textEs": "¿Cuál es un patrón común para construir un servidor MCP que envuelve una API REST?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-022_b",
+      "explanation": "A common pattern is to create an MCP server where each REST API endpoint becomes an MCP tool. GET endpoints can be exposed as Resources (read-only data), POST/PUT/DELETE endpoints as Tools (actions with side effects). The tool descriptions should explain what each endpoint does in natural language so the LLM can choose the right one. Authentication tokens for the wrapped API are stored in environment variables passed to the server.",
+      "explanationEs": "Un patrón común es crear un servidor MCP donde cada endpoint de la API REST se convierte en una herramienta MCP. Los endpoints GET pueden exponerse como Resources (datos de solo lectura), los endpoints POST/PUT/DELETE como Tools (acciones con efectos secundarios). Las descripciones de herramientas deben explicar qué hace cada endpoint en lenguaje natural para que el LLM pueda elegir el correcto. Los tokens de autenticación para la API envuelta se almacenan en variables de entorno pasadas al servidor.",
+      "options": [
+        { "id": "MCPI-022_a", "text": "Convert the REST API to GraphQL first, then wrap the GraphQL layer with MCP", "textEs": "Convertir primero la API REST a GraphQL, luego envolver la capa GraphQL con MCP", "order": 1 },
+        { "id": "MCPI-022_b", "text": "Map GET endpoints to Resources, POST/PUT/DELETE to Tools with natural language descriptions; store API auth tokens in environment variables", "textEs": "Mapear endpoints GET a Resources, POST/PUT/DELETE a Tools con descripciones en lenguaje natural; almacenar tokens de autenticación de la API en variables de entorno", "order": 2 },
+        { "id": "MCPI-022_c", "text": "Forward all MCP requests directly to the REST API without any transformation", "textEs": "Reenviar todas las solicitudes MCP directamente a la API REST sin ninguna transformación", "order": 3 },
+        { "id": "MCPI-022_d", "text": "Replace the REST API entirely with MCP; both cannot coexist", "textEs": "Reemplazar la API REST completamente con MCP; ambos no pueden coexistir", "order": 4 }
+      ],
+      "tags": ["rest-api", "wrapper", "pattern", "tools", "resources"]
+    },
+    {
+      "id": "MCPI-023",
+      "text": "What is the role of 'roots' in MCP and how do they restrict server access?",
+      "textEs": "¿Cuál es el papel de los 'roots' en MCP y cómo restringen el acceso del servidor?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-023_a",
+      "explanation": "Roots are URIs that the client declares to inform the server about relevant locations it should operate within. For example, a client might declare a root of 'file:///home/user/project' to tell a filesystem server which directory it should focus on. Roots are informational and help scope the server's behavior, but they are not enforced access controls — servers are expected to respect them voluntarily.",
+      "explanationEs": "Los roots son URIs que el cliente declara para informar al servidor sobre ubicaciones relevantes dentro de las cuales debe operar. Por ejemplo, un cliente podría declarar un root de 'file:///home/user/project' para decirle a un servidor de sistema de archivos en qué directorio debe enfocarse. Los roots son informativos y ayudan a delimitar el comportamiento del servidor, pero no son controles de acceso aplicados — se espera que los servidores los respeten voluntariamente.",
+      "options": [
+        { "id": "MCPI-023_a", "text": "URIs declared by the client to scope server behavior to relevant locations; informational, not enforced access controls", "textEs": "URIs declarados por el cliente para delimitar el comportamiento del servidor a ubicaciones relevantes; informativos, no controles de acceso aplicados", "order": 1 },
+        { "id": "MCPI-023_b", "text": "Administrator accounts with root-level privileges on the MCP server", "textEs": "Cuentas de administrador con privilegios de nivel root en el servidor MCP", "order": 2 },
+        { "id": "MCPI-023_c", "text": "DNS root certificates used for authenticating MCP connections", "textEs": "Certificados raíz DNS usados para autenticar conexiones MCP", "order": 3 },
+        { "id": "MCPI-023_d", "text": "The top-level namespace for organizing tools into hierarchical categories", "textEs": "El espacio de nombres de nivel superior para organizar herramientas en categorías jerárquicas", "order": 4 }
+      ],
+      "tags": ["roots", "scoping", "filesystem", "access-control"]
+    },
+    {
+      "id": "MCPI-024",
+      "text": "How can MCP servers notify clients about changes to their available tools or resources?",
+      "textEs": "¿Cómo pueden los servidores MCP notificar a los clientes sobre cambios en sus herramientas o recursos disponibles?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-024_c",
+      "explanation": "MCP servers can send change notifications using 'notifications/tools/list_changed', 'notifications/resources/list_changed', or 'notifications/prompts/list_changed'. When the client receives these notifications, it re-fetches the updated list by calling the respective list method. For resources, 'notifications/resources/updated' can notify that a specific resource's content has changed.",
+      "explanationEs": "Los servidores MCP pueden enviar notificaciones de cambio usando 'notifications/tools/list_changed', 'notifications/resources/list_changed' o 'notifications/prompts/list_changed'. Cuando el cliente recibe estas notificaciones, re-obtiene la lista actualizada llamando al método de lista respectivo. Para recursos, 'notifications/resources/updated' puede notificar que el contenido de un recurso específico ha cambiado.",
+      "options": [
+        { "id": "MCPI-024_a", "text": "Servers cannot notify clients; clients must poll at regular intervals", "textEs": "Los servidores no pueden notificar a clientes; los clientes deben consultar a intervalos regulares", "order": 1 },
+        { "id": "MCPI-024_b", "text": "Servers restart the entire connection to refresh the tool list", "textEs": "Los servidores reinician toda la conexión para actualizar la lista de herramientas", "order": 2 },
+        { "id": "MCPI-024_c", "text": "Send 'notifications/{tools,resources,prompts}/list_changed'; client re-fetches the updated list. 'resources/updated' for content changes", "textEs": "Enviar 'notifications/{tools,resources,prompts}/list_changed'; el cliente re-obtiene la lista actualizada. 'resources/updated' para cambios de contenido", "order": 3 },
+        { "id": "MCPI-024_d", "text": "Update a shared database that both client and server read from", "textEs": "Actualizar una base de datos compartida de la que leen tanto cliente como servidor", "order": 4 }
+      ],
+      "tags": ["notifications", "list-changed", "dynamic-updates", "resources-updated"]
+    },
+    {
+      "id": "MCPI-025",
+      "text": "What is the 'npx' pattern for running MCP servers and why is it popular?",
+      "textEs": "¿Qué es el patrón 'npx' para ejecutar servidores MCP y por qué es popular?",
+      "domainCode": "mcp-intro",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-025_a",
+      "explanation": "The 'npx' pattern means configuring MCP servers to run via 'npx @package/mcp-server' in the configuration. npx downloads and executes the package on-demand without requiring a global install. This is popular because it simplifies setup (users don't need to pre-install anything), always runs the latest version, and works across platforms. Similarly, 'uvx' serves the same purpose for Python-based MCP servers.",
+      "explanationEs": "El patrón 'npx' significa configurar servidores MCP para ejecutarse vía 'npx @package/mcp-server' en la configuración. npx descarga y ejecuta el paquete bajo demanda sin requerir una instalación global. Esto es popular porque simplifica la configuración (los usuarios no necesitan pre-instalar nada), siempre ejecuta la última versión y funciona en todas las plataformas. Similarmente, 'uvx' sirve el mismo propósito para servidores MCP basados en Python.",
+      "options": [
+        { "id": "MCPI-025_a", "text": "Running servers via 'npx @package/server' for on-demand download and execution without global install; 'uvx' for Python equivalents", "textEs": "Ejecutar servidores vía 'npx @package/server' para descarga y ejecución bajo demanda sin instalación global; 'uvx' para equivalentes en Python", "order": 1 },
+        { "id": "MCPI-025_b", "text": "A special MCP proxy server called NPX that routes requests between multiple servers", "textEs": "Un servidor proxy MCP especial llamado NPX que enruta solicitudes entre múltiples servidores", "order": 2 },
+        { "id": "MCPI-025_c", "text": "A Docker container orchestration pattern for scaling MCP servers", "textEs": "Un patrón de orquestación de contenedores Docker para escalar servidores MCP", "order": 3 },
+        { "id": "MCPI-025_d", "text": "A networking protocol extension that enables faster MCP communication", "textEs": "Una extensión de protocolo de red que permite comunicación MCP más rápida", "order": 4 }
+      ],
+      "tags": ["npx", "uvx", "deployment", "setup", "package-management"]
+    },
+    {
+      "id": "MCPI-026",
+      "text": "How can multiple MCP servers work together in a single host application?",
+      "textEs": "¿Cómo pueden múltiples servidores MCP trabajar juntos en una sola aplicación host?",
+      "domainCode": "mcp-intro",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-026_b",
+      "explanation": "A host application can connect to multiple MCP servers simultaneously through separate client instances. Each client maintains a 1:1 connection with its server. The host aggregates all tools, resources, and prompts from all connected servers and presents them to the LLM as a unified set. The LLM can then use tools from different servers in a single conversation — for example, reading from a database server and writing to a Slack server.",
+      "explanationEs": "Una aplicación host puede conectarse a múltiples servidores MCP simultáneamente a través de instancias de cliente separadas. Cada cliente mantiene una conexión 1:1 con su servidor. El host agrega todas las herramientas, recursos y prompts de todos los servidores conectados y los presenta al LLM como un conjunto unificado. El LLM puede entonces usar herramientas de diferentes servidores en una sola conversación — por ejemplo, leyendo de un servidor de base de datos y escribiendo a un servidor de Slack.",
+      "options": [
+        { "id": "MCPI-026_a", "text": "Only one MCP server can be active at a time; switching requires restarting the host", "textEs": "Solo un servidor MCP puede estar activo a la vez; cambiar requiere reiniciar el host", "order": 1 },
+        { "id": "MCPI-026_b", "text": "The host connects to each server via separate clients, aggregates all tools/resources into a unified set, and the LLM can use any tool from any server", "textEs": "El host se conecta a cada servidor vía clientes separados, agrega todas las herramientas/recursos en un conjunto unificado, y el LLM puede usar cualquier herramienta de cualquier servidor", "order": 2 },
+        { "id": "MCPI-026_c", "text": "Servers must be daisy-chained, with each server forwarding requests to the next", "textEs": "Los servidores deben estar encadenados, con cada servidor reenviando solicitudes al siguiente", "order": 3 },
+        { "id": "MCPI-026_d", "text": "A special orchestrator server must coordinate communication between all other servers", "textEs": "Un servidor orquestador especial debe coordinar la comunicación entre todos los demás servidores", "order": 4 }
+      ],
+      "tags": ["multi-server", "aggregation", "host", "client", "unified"]
+    },
+    {
+      "id": "MCPI-027",
+      "text": "What are some widely used community MCP servers available in the ecosystem?",
+      "textEs": "¿Cuáles son algunos servidores MCP de la comunidad ampliamente usados disponibles en el ecosistema?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-027_d",
+      "explanation": "The MCP ecosystem has a growing library of community servers. Popular ones include: filesystem server (file operations), GitHub server (repos, issues, PRs), Slack server (messaging), PostgreSQL/SQLite servers (database queries), Brave Search server (web search), Puppeteer server (browser automation), and Google Drive server (document access). The modelcontextprotocol GitHub organization maintains many reference implementations.",
+      "explanationEs": "El ecosistema MCP tiene una librería creciente de servidores comunitarios. Los populares incluyen: servidor de filesystem (operaciones de archivos), servidor de GitHub (repos, issues, PRs), servidor de Slack (mensajería), servidores de PostgreSQL/SQLite (consultas de base de datos), servidor de Brave Search (búsqueda web), servidor de Puppeteer (automatización de navegador) y servidor de Google Drive (acceso a documentos). La organización GitHub modelcontextprotocol mantiene muchas implementaciones de referencia.",
+      "options": [
+        { "id": "MCPI-027_a", "text": "No community servers exist yet; MCP is too new for ecosystem adoption", "textEs": "No existen servidores comunitarios aún; MCP es demasiado nuevo para adopción del ecosistema", "order": 1 },
+        { "id": "MCPI-027_b", "text": "Only Anthropic-built servers are available; third-party servers are not allowed", "textEs": "Solo están disponibles servidores construidos por Anthropic; servidores de terceros no son permitidos", "order": 2 },
+        { "id": "MCPI-027_c", "text": "Community servers are available but only for Python-based host applications", "textEs": "Los servidores comunitarios están disponibles pero solo para aplicaciones host basadas en Python", "order": 3 },
+        { "id": "MCPI-027_d", "text": "Filesystem, GitHub, Slack, PostgreSQL, SQLite, Brave Search, Puppeteer, Google Drive, and many more from the modelcontextprotocol GitHub org", "textEs": "Filesystem, GitHub, Slack, PostgreSQL, SQLite, Brave Search, Puppeteer, Google Drive y muchos más de la org GitHub modelcontextprotocol", "order": 4 }
+      ],
+      "tags": ["ecosystem", "community-servers", "github", "slack", "database"]
+    },
+    {
+      "id": "MCPI-028",
+      "text": "How does error handling work in MCP when a tool call fails?",
+      "textEs": "¿Cómo funciona el manejo de errores en MCP cuando una llamada a herramienta falla?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-028_a",
+      "explanation": "When a tool call fails, the server should return a result with 'isError: true' and include the error description in the content array. This is different from a JSON-RPC protocol error (which indicates a transport or protocol issue). Tool-level errors are designed to be shown to the LLM so it can understand what went wrong and try a different approach. Protocol errors use the standard JSON-RPC error response format with error codes.",
+      "explanationEs": "Cuando una llamada a herramienta falla, el servidor debe devolver un resultado con 'isError: true' e incluir la descripción del error en el arreglo de contenido. Esto es diferente de un error de protocolo JSON-RPC (que indica un problema de transporte o protocolo). Los errores a nivel de herramienta están diseñados para mostrarse al LLM para que pueda entender qué salió mal e intentar un enfoque diferente. Los errores de protocolo usan el formato estándar de respuesta de error JSON-RPC con códigos de error.",
+      "options": [
+        { "id": "MCPI-028_a", "text": "Return 'isError: true' with error description in content for tool failures (shown to LLM); use JSON-RPC error format for protocol-level issues", "textEs": "Devolver 'isError: true' con descripción de error en contenido para fallos de herramientas (mostrado al LLM); usar formato de error JSON-RPC para problemas de nivel de protocolo", "order": 1 },
+        { "id": "MCPI-028_b", "text": "All errors crash the connection and require reinitializing", "textEs": "Todos los errores causan que la conexión se cierre y requieren reinicializar", "order": 2 },
+        { "id": "MCPI-028_c", "text": "Errors are suppressed and the server returns an empty successful response", "textEs": "Los errores se suprimen y el servidor devuelve una respuesta exitosa vacía", "order": 3 },
+        { "id": "MCPI-028_d", "text": "The client automatically retries failed tool calls up to 5 times before reporting an error", "textEs": "El cliente automáticamente reintenta llamadas a herramientas fallidas hasta 5 veces antes de reportar un error", "order": 4 }
+      ],
+      "tags": ["error-handling", "isError", "json-rpc", "tool-failures"]
+    },
+    {
+      "id": "MCPI-029",
+      "text": "What is the TypeScript/Node.js SDK pattern for creating an MCP server with tools?",
+      "textEs": "¿Cuál es el patrón del SDK de TypeScript/Node.js para crear un servidor MCP con herramientas?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-029_c",
+      "explanation": "Using the TypeScript SDK (@modelcontextprotocol/sdk), you create a Server instance with name and version, use server.setRequestHandler to handle 'tools/list' (return tool definitions) and 'tools/call' (execute tools based on name and arguments). Then connect the server to a transport (StdioServerTransport for local, or an HTTP server for remote). The tool's inputSchema is defined using JSON Schema format.",
+      "explanationEs": "Usando el SDK de TypeScript (@modelcontextprotocol/sdk), creas una instancia de Server con nombre y versión, usas server.setRequestHandler para manejar 'tools/list' (devolver definiciones de herramientas) y 'tools/call' (ejecutar herramientas basado en nombre y argumentos). Luego conectas el servidor a un transporte (StdioServerTransport para local, o un servidor HTTP para remoto). El inputSchema de la herramienta se define usando formato JSON Schema.",
+      "options": [
+        { "id": "MCPI-029_a", "text": "Use Express.js routes to map each tool to an HTTP endpoint", "textEs": "Usar rutas de Express.js para mapear cada herramienta a un endpoint HTTP", "order": 1 },
+        { "id": "MCPI-029_b", "text": "Write a TypeScript class extending MCPTool for each tool and register them in a manifest", "textEs": "Escribir una clase TypeScript extendiendo MCPTool para cada herramienta y registrarlas en un manifiesto", "order": 2 },
+        { "id": "MCPI-029_c", "text": "Create Server instance, handle 'tools/list' and 'tools/call' with setRequestHandler, define inputSchema as JSON Schema, connect to transport", "textEs": "Crear instancia de Server, manejar 'tools/list' y 'tools/call' con setRequestHandler, definir inputSchema como JSON Schema, conectar al transporte", "order": 3 },
+        { "id": "MCPI-029_d", "text": "Compile TypeScript to WASM and load it into the MCP runtime engine", "textEs": "Compilar TypeScript a WASM y cargarlo en el motor de runtime MCP", "order": 4 }
+      ],
+      "tags": ["typescript-sdk", "server-setup", "tools-list", "tools-call", "transport"]
+    },
+    {
+      "id": "MCPI-030",
+      "text": "What is the difference between 'model-controlled' and 'application-controlled' primitives in MCP?",
+      "textEs": "¿Cuál es la diferencia entre primitivas 'controladas por el modelo' y 'controladas por la aplicación' en MCP?",
+      "domainCode": "mcp-intro",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "mcp-intro",
+      "correctOptionId": "MCPI-030_b",
+      "explanation": "In MCP, Tools are model-controlled — the LLM decides when and how to use them based on context and user requests. Resources are application-controlled — the host application (not the model) decides when to read or subscribe to resources based on application logic. Prompts are user-controlled — the user selects which prompt templates to use. This distinction determines who initiates the interaction with each primitive.",
+      "explanationEs": "En MCP, las Tools son controladas por el modelo — el LLM decide cuándo y cómo usarlas basándose en el contexto y las solicitudes del usuario. Los Resources son controlados por la aplicación — la aplicación host (no el modelo) decide cuándo leer o suscribirse a recursos basándose en la lógica de la aplicación. Los Prompts son controlados por el usuario — el usuario selecciona qué plantillas de prompt usar. Esta distinción determina quién inicia la interacción con cada primitiva.",
+      "options": [
+        { "id": "MCPI-030_a", "text": "Model-controlled runs on GPU; application-controlled runs on CPU", "textEs": "Controlado por modelo se ejecuta en GPU; controlado por aplicación se ejecuta en CPU", "order": 1 },
+        { "id": "MCPI-030_b", "text": "Tools are model-controlled (LLM decides usage), Resources are application-controlled (host decides), Prompts are user-controlled (user selects)", "textEs": "Las Tools son controladas por el modelo (LLM decide el uso), los Resources son controlados por la aplicación (host decide), los Prompts son controlados por el usuario (usuario selecciona)", "order": 2 },
+        { "id": "MCPI-030_c", "text": "Model-controlled means the primitive runs during inference; application-controlled means it runs at deployment time", "textEs": "Controlado por modelo significa que la primitiva se ejecuta durante la inferencia; controlado por aplicación significa que se ejecuta en tiempo de despliegue", "order": 3 },
+        { "id": "MCPI-030_d", "text": "There is no distinction; all MCP primitives are controlled by the server", "textEs": "No hay distinción; todas las primitivas MCP son controladas por el servidor", "order": 4 }
+      ],
+      "tags": ["model-controlled", "application-controlled", "user-controlled", "primitives", "design"]
+    }
+  ]
+}

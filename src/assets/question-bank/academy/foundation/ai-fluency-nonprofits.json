@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "domain": "ai-fluency-nonprofits",
+    "domainName": "AI Fluency for Nonprofits",
+    "trackId": "ai-fluency-nonprofits",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 8
+  },
+  "questions": [
+    {
+      "id": "aifn-001",
+      "text": "What is a high-impact application of Claude for a nonprofit organization with limited resources?",
+      "textEs": "¿Cuál es una aplicación de alto impacto de Claude para una organización sin fines de lucro con recursos limitados?",
+      "domainCode": "ai-fluency-nonprofits",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "ai-fluency-nonprofits",
+      "correctOptionId": "aifn-001_b",
+      "explanation": "Drafting grant proposals is a task that consumes a lot of NGO staff time. Claude can generate initial drafts based on the organization's data and mission, which the team then refines. This multiplies the application capacity without the need to hire additional staff.",
+      "explanationEs": "Redactar borradores de propuestas de financiamiento (grants) es una tarea que consume mucho tiempo del personal de ONGs. Claude puede generar borradores iniciales basados en los datos y la misión de la organización, que luego el equipo refina. Esto multiplica la capacidad de postulación sin necesidad de contratar personal adicional.",
+      "options": [
+        { "id": "aifn-001_a", "text": "Replace the volunteer team with AI chatbots", "textEs": "Reemplazar al equipo de voluntarios con chatbots de IA", "order": 1 },
+        { "id": "aifn-001_b", "text": "Generate draft grant proposals that the team refines and personalizes", "textEs": "Generar borradores de propuestas de financiamiento (grants) que el equipo refina y personaliza", "order": 2 },
+        { "id": "aifn-001_c", "text": "Fully automate decision-making about beneficiaries", "textEs": "Automatizar completamente la toma de decisiones sobre beneficiarios", "order": 3 },
+        { "id": "aifn-001_d", "text": "Create deepfakes for awareness campaigns", "textEs": "Crear deep fakes para campañas de concientización", "order": 4 }
+      ],
+      "tags": ["grants", "fundraising", "eficiencia"]
+    },
+    {
+      "id": "aifn-002",
+      "text": "What is a crucial ethical consideration when using AI in an NGO that works with vulnerable populations?",
+      "textEs": "¿Cuál es una consideración ética crucial al usar IA en una ONG que trabaja con poblaciones vulnerables?",
+      "domainCode": "ai-fluency-nonprofits",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "ai-fluency-nonprofits",
+      "correctOptionId": "aifn-002_c",
+      "explanation": "Vulnerable populations can be disproportionately affected by biases in AI systems. If a model has biases in its training data, decisions based on its results could perpetuate or amplify existing inequalities. NGOs have a special responsibility to evaluate these risks given their mandate to serve marginalized communities.",
+      "explanationEs": "Las poblaciones vulnerables pueden verse desproporcionadamente afectadas por sesgos en los sistemas de IA. Si un modelo tiene sesgos en sus datos de entrenamiento, las decisiones basadas en sus resultados podrían perpetuar o amplificar desigualdades existentes. Las ONGs tienen una responsabilidad especial de evaluar estos riesgos dado su mandato de servir a comunidades marginalizadas.",
+      "options": [
+        { "id": "aifn-002_a", "text": "That the AI could make the organization appear less human to donors", "textEs": "Que la IA podría hacer que la organización parezca menos humana ante los donantes", "order": 1 },
+        { "id": "aifn-002_b", "text": "That the cost of AI tools reduces the budget for programs", "textEs": "Que el costo de las herramientas de IA reduce el presupuesto para programas", "order": 2 },
+        { "id": "aifn-002_c", "text": "That biases in AI models can perpetuate or amplify inequalities affecting beneficiaries", "textEs": "Que los sesgos en los modelos de IA pueden perpetuar o amplificar desigualdades que afectan a los beneficiarios", "order": 3 },
+        { "id": "aifn-002_d", "text": "That volunteers might resist the technological change", "textEs": "Que los voluntarios podrían resistirse al cambio tecnológico", "order": 4 }
+      ],
+      "tags": ["etica", "sesgos", "poblaciones-vulnerables"]
+    },
+    {
+      "id": "aifn-003",
+      "text": "How can an NGO use Claude to improve its fundraising strategy without compromising authenticity?",
+      "textEs": "¿Cómo puede una ONG usar Claude para mejorar su estrategia de fundraising sin comprometer la autenticidad?",
+      "domainCode": "ai-fluency-nonprofits",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "ai-fluency-nonprofits",
+      "correctOptionId": "aifn-003_a",
+      "explanation": "Claude can personalize fundraising communications by analyzing donor data to adapt the message, tone, and value proposition to each segment. The team provides the real stories and impact data, and Claude helps express them convincingly for each audience, maintaining content authenticity.",
+      "explanationEs": "Claude puede personalizar comunicaciones de fundraising analizando datos de donantes para adaptar el mensaje, tono y propuesta de valor a cada segmento. El equipo proporciona las historias reales y datos de impacto, y Claude ayuda a expresarlos de manera convincente para cada audiencia, manteniendo la autenticidad del contenido.",
+      "options": [
+        { "id": "aifn-003_a", "text": "Use Claude to personalize donor communications based on real impact data from the organization", "textEs": "Usar Claude para personalizar comunicaciones a donantes basándose en datos reales de impacto de la organización", "order": 1 },
+        { "id": "aifn-003_b", "text": "Generate fictional beneficiary stories to make campaigns more emotional", "textEs": "Generar historias ficticias de beneficiarios para hacer las campañas más emotivas", "order": 2 },
+        { "id": "aifn-003_c", "text": "Fully automate thank-you emails without human personalization", "textEs": "Automatizar completamente los correos de agradecimiento sin personalización humana", "order": 3 },
+        { "id": "aifn-003_d", "text": "Use AI to inflate impact metrics in donor reports", "textEs": "Usar IA para inflar las métricas de impacto en los reportes a donantes", "order": 4 }
+      ],
+      "tags": ["fundraising", "personalizacion", "autenticidad"]
+    },
+    {
+      "id": "aifn-004",
+      "text": "Which operational process of an NGO benefits most from AI automation?",
+      "textEs": "¿Qué proceso operativo de una ONG se beneficia más de la automatización con IA?",
+      "domainCode": "ai-fluency-nonprofits",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "ai-fluency-nonprofits",
+      "correctOptionId": "aifn-004_d",
+      "explanation": "Generating impact reports is a repetitive but critical task that consumes a lot of time. Claude can analyze program data, summarize achievements, and draft reports in the formats required by different donors. This frees the team to focus on higher-value programmatic work.",
+      "explanationEs": "La generación de reportes de impacto es una tarea repetitiva pero crítica que consume mucho tiempo. Claude puede analizar datos de programas, resumir logros y redactar borradores de reportes en formatos requeridos por diferentes donantes. Esto libera al equipo para enfocarse en el trabajo programático de mayor valor.",
+      "options": [
+        { "id": "aifn-004_a", "text": "Staff hiring decisions", "textEs": "Las decisiones de contratación de personal", "order": 1 },
+        { "id": "aifn-004_b", "text": "Beneficiary selection for social programs", "textEs": "La selección de beneficiarios para programas sociales", "order": 2 },
+        { "id": "aifn-004_c", "text": "Budget expenditure approval", "textEs": "La aprobación de gastos del presupuesto", "order": 3 },
+        { "id": "aifn-004_d", "text": "Impact report generation and program data summaries", "textEs": "La generación de reportes de impacto y resúmenes de datos de programas", "order": 4 }
+      ],
+      "tags": ["automatizacion", "reportes", "operaciones"]
+    },
+    {
+      "id": "aifn-005",
+      "text": "An NGO wants to use AI to analyze data from its social programs. What essential precaution must be taken regarding beneficiary privacy?",
+      "textEs": "Una ONG quiere usar IA para analizar datos de sus programas sociales. ¿Qué precaución es esencial respecto a la privacidad de los beneficiarios?",
+      "domainCode": "ai-fluency-nonprofits",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "ai-fluency-nonprofits",
+      "correctOptionId": "aifn-005_b",
+      "explanation": "When using external AI tools like Claude, beneficiary data is sent to third-party servers. It is essential to anonymize or de-identify data before processing it with AI, especially when dealing with sensitive information from vulnerable populations. This complies with data protection regulations and ethical principles of confidentiality.",
+      "explanationEs": "Al usar herramientas de IA externas como Claude, los datos de beneficiarios se envían a servidores de terceros. Es esencial anonimizar o desidentificar los datos antes de procesarlos con IA, especialmente cuando se trata de información sensible de poblaciones vulnerables. Esto cumple con regulaciones de protección de datos y principios éticos de confidencialidad.",
+      "options": [
+        { "id": "aifn-005_a", "text": "Only use AI during office hours when there is supervision", "textEs": "Solo usar IA durante horario de oficina cuando hay supervisión", "order": 1 },
+        { "id": "aifn-005_b", "text": "Anonymize and de-identify personal beneficiary data before sending it to external AI tools", "textEs": "Anonimizar y desidentificar los datos personales de beneficiarios antes de enviarlos a herramientas de IA externas", "order": 2 },
+        { "id": "aifn-005_c", "text": "Obtain a corporate discount on the AI tool", "textEs": "Obtener un descuento corporativo en la herramienta de IA", "order": 3 },
+        { "id": "aifn-005_d", "text": "Ask beneficiaries to sign a generic consent form when entering the program", "textEs": "Pedir a los beneficiarios que firmen un consentimiento genérico al ingresar al programa", "order": 4 }
+      ],
+      "tags": ["privacidad", "datos-sensibles", "anonimizacion"]
+    },
+    {
+      "id": "aifn-006",
+      "text": "What is an appropriate use case for Claude for social impact in an environmental NGO?",
+      "textEs": "¿Cuál es un caso de uso apropiado de Claude para el impacto social en una ONG ambiental?",
+      "domainCode": "ai-fluency-nonprofits",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "ai-fluency-nonprofits",
+      "correctOptionId": "aifn-006_c",
+      "explanation": "Claude can analyze and synthesize large volumes of scientific literature, reports, and data on environmental topics to create accessible summaries that inform public policy and advocacy campaigns. This helps NGOs translate complex information into clear messages for different audiences.",
+      "explanationEs": "Claude puede analizar y sintetizar grandes volúmenes de literatura científica, informes y datos sobre temas ambientales para crear resúmenes accesibles que informen políticas públicas y campañas de incidencia. Esto ayuda a las ONGs a traducir información compleja en mensajes claros para diferentes audiencias.",
+      "options": [
+        { "id": "aifn-006_a", "text": "Replace field scientists with AI sensors", "textEs": "Reemplazar a los científicos de campo con sensores de IA", "order": 1 },
+        { "id": "aifn-006_b", "text": "Generate biodiversity data without actual field research", "textEs": "Generar datos de biodiversidad sin investigación de campo real", "order": 2 },
+        { "id": "aifn-006_c", "text": "Synthesize complex scientific literature into accessible summaries to inform advocacy campaigns", "textEs": "Sintetizar literatura científica compleja en resúmenes accesibles para informar campañas de incidencia", "order": 3 },
+        { "id": "aifn-006_d", "text": "Automate environmental violation reporting without human verification", "textEs": "Automatizar la denuncia de violaciones ambientales sin verificación humana", "order": 4 }
+      ],
+      "tags": ["impacto-social", "medio-ambiente", "sintesis-informacion"]
+    },
+    {
+      "id": "aifn-007",
+      "text": "What factor should an NGO consider before adopting AI tools for its operations?",
+      "textEs": "¿Qué factor debe considerar una ONG antes de adoptar herramientas de IA para sus operaciones?",
+      "domainCode": "ai-fluency-nonprofits",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "ai-fluency-nonprofits",
+      "correctOptionId": "aifn-007_a",
+      "explanation": "The team's technical capacity is fundamental for successful AI adoption. Without people who can use the tools effectively, critically evaluate their results, and maintain the integrations, the AI investment will not generate the expected return. A training plan should accompany any technology adoption initiative.",
+      "explanationEs": "La capacidad técnica del equipo es fundamental para una adopción exitosa de IA. Sin personas que puedan usar las herramientas efectivamente, evaluar sus resultados críticamente y mantener las integraciones, la inversión en IA no generará el retorno esperado. Un plan de capacitación debe acompañar cualquier iniciativa de adopción tecnológica.",
+      "options": [
+        { "id": "aifn-007_a", "text": "The team's current technical capacity and a realistic training plan", "textEs": "La capacidad técnica actual del equipo y un plan realista de capacitación", "order": 1 },
+        { "id": "aifn-007_b", "text": "That the AI tool is the most expensive on the market to ensure quality", "textEs": "Que la herramienta de IA sea la más cara del mercado para asegurar calidad", "order": 2 },
+        { "id": "aifn-007_c", "text": "That the AI can completely replace at least three job positions", "textEs": "Que la IA pueda reemplazar completamente al menos tres puestos de trabajo", "order": 3 },
+        { "id": "aifn-007_d", "text": "That the organization's CEO is a technology expert", "textEs": "Que el CEO de la organización sea un experto en tecnología", "order": 4 }
+      ],
+      "tags": ["adopcion", "capacitacion", "planificacion"]
+    },
+    {
+      "id": "aifn-008",
+      "text": "How can a small NGO justify the investment in AI tools to its board of directors?",
+      "textEs": "¿Cómo puede una ONG pequeña justificar la inversión en herramientas de IA ante su junta directiva?",
+      "domainCode": "ai-fluency-nonprofits",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "ai-fluency-nonprofits",
+      "correctOptionId": "aifn-008_d",
+      "explanation": "Demonstrating with concrete data how much time is saved on specific tasks and how that time is redirected to higher-impact activities is the most convincing justification. For example, if Claude reduces grant writing time by 60%, that allows applying for more funding or dedicating more hours to direct work with beneficiaries.",
+      "explanationEs": "Demostrar con datos concretos cuánto tiempo se ahorra en tareas específicas y cómo ese tiempo se redirige a actividades de mayor impacto es la justificación más convincente. Por ejemplo, si Claude reduce el tiempo de escritura de grants en un 60%, eso permite postular a más fondos o dedicar más horas a trabajo directo con beneficiarios.",
+      "options": [
+        { "id": "aifn-008_a", "text": "Argue that all modern organizations use AI", "textEs": "Argumentar que todas las organizaciones modernas usan IA", "order": 1 },
+        { "id": "aifn-008_b", "text": "Show that AI can replace staff and reduce payroll costs", "textEs": "Mostrar que la IA puede reemplazar personal y reducir costos de nómina", "order": 2 },
+        { "id": "aifn-008_c", "text": "Promise that AI will double donation revenue", "textEs": "Prometer que la IA duplicará los ingresos de donaciones", "order": 3 },
+        { "id": "aifn-008_d", "text": "Demonstrate with pilot data the time saved on specific tasks and how it is redirected to impact work", "textEs": "Demostrar con datos piloto el tiempo ahorrado en tareas específicas y cómo se redirige al trabajo de impacto", "order": 4 }
+      ],
+      "tags": ["roi", "junta-directiva", "justificacion"]
+    }
+  ]
+}

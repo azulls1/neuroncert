@@ -1,0 +1,1112 @@
+{
+  "meta": {
+    "domain": "context-reliability",
+    "domainName": "Context & Reliability",
+    "trackId": "cca-f",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-15",
+    "totalQuestions": 55
+  },
+  "questions": [
+    {
+      "id": "ccaf-cr-001",
+      "text": "What is the 'progressive summarization trap' in long-running agentic conversations?",
+      "textEs": "¿Qué es la 'trampa de resumen progresivo' en conversaciones agentes de larga duración?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-001_c",
+      "explanation": "The progressive summarization trap occurs when a system repeatedly summarizes conversation history to save context space. Each summarization pass loses some detail, and after multiple rounds of summarizing summaries, critical information (nuances, specific numbers, conditions) is gradually eroded. The system appears to work but silently loses accuracy over time. The fix is to keep persistent 'case facts' blocks that are never summarized.",
+      "explanationEs": "La trampa de resumen progresivo ocurre cuando un sistema resume repetidamente el historial de conversación para ahorrar espacio de contexto. Cada pasada de resumen pierde algunos detalles, y después de múltiples rondas de resumir resúmenes, la información crítica (matices, números específicos, condiciones) se erosiona gradualmente. El sistema parece funcionar pero pierde precisión silenciosamente con el tiempo. La solución es mantener bloques persistentes de 'hechos del caso' que nunca se resumen.",
+      "options": [
+        { "id": "ccaf-cr-001_a", "text": "The model generates increasingly long summaries that consume more tokens than the original content", "textEs": "El modelo genera resúmenes cada vez más largos que consumen más tokens que el contenido original", "order": 1 },
+        { "id": "ccaf-cr-001_b", "text": "The model refuses to summarize content after a certain conversation length", "textEs": "El modelo se niega a resumir contenido después de cierta longitud de conversación", "order": 2 },
+        { "id": "ccaf-cr-001_c", "text": "Repeated summarization of summaries gradually erodes critical details and nuances, silently reducing accuracy", "textEs": "El resumen repetido de resúmenes erosiona gradualmente detalles y matices críticos, reduciendo la precisión silenciosamente", "order": 3 },
+        { "id": "ccaf-cr-001_d", "text": "The model hallucinates new information when asked to summarize long conversations", "textEs": "El modelo alucina nueva información cuando se le pide resumir conversaciones largas", "order": 4 }
+      ],
+      "tags": ["summarization-trap", "context-management", "information-loss", "long-running"]
+    },
+    {
+      "id": "ccaf-cr-002",
+      "text": "What are 'persistent case facts blocks' and how do they mitigate information loss?",
+      "textEs": "¿Qué son los 'bloques de hechos persistentes del caso' y cómo mitigan la pérdida de información?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-002_a",
+      "explanation": "Persistent case facts blocks are clearly delineated sections in the conversation (often in the system prompt or a pinned message) that contain critical factual information that must never be summarized or removed. They include specific names, numbers, dates, conditions, and constraints that are essential for correct task execution. By keeping these outside the summarization cycle, they are preserved across the entire conversation.",
+      "explanationEs": "Los bloques de hechos persistentes del caso son secciones claramente delimitadas en la conversación (frecuentemente en el prompt del sistema o un mensaje fijado) que contienen información factual crítica que nunca debe resumirse ni eliminarse. Incluyen nombres específicos, números, fechas, condiciones y restricciones esenciales para la ejecución correcta de la tarea. Al mantenerlos fuera del ciclo de resumen, se preservan durante toda la conversación.",
+      "options": [
+        { "id": "ccaf-cr-002_a", "text": "Delineated sections of critical facts kept outside the summarization cycle so they are preserved across the entire conversation", "textEs": "Secciones delimitadas de hechos críticos mantenidas fuera del ciclo de resumen para que se preserven durante toda la conversación", "order": 1 },
+        { "id": "ccaf-cr-002_b", "text": "A database table that stores facts extracted during the conversation for later retrieval", "textEs": "Una tabla de base de datos que almacena hechos extraídos durante la conversación para recuperación posterior", "order": 2 },
+        { "id": "ccaf-cr-002_c", "text": "A caching mechanism that stores the first 1000 tokens of every tool result", "textEs": "Un mecanismo de caché que almacena los primeros 1000 tokens de cada resultado de herramienta", "order": 3 },
+        { "id": "ccaf-cr-002_d", "text": "A version control system for conversation history that allows rolling back to earlier states", "textEs": "Un sistema de control de versiones para el historial de conversación que permite retroceder a estados anteriores", "order": 4 }
+      ],
+      "tags": ["case-facts", "persistence", "summarization", "context-preservation"]
+    },
+    {
+      "id": "ccaf-cr-003",
+      "text": "What is the 'lost-in-the-middle' effect and how does it impact information retrieval in long contexts?",
+      "textEs": "¿Qué es el efecto 'perdido en el medio' y cómo impacta la recuperación de información en contextos largos?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-003_b",
+      "explanation": "The lost-in-the-middle effect is a well-documented phenomenon where language models have stronger recall for information at the beginning and end of their context window, but weaker recall for information in the middle. This means critical information placed in the middle of a long context may be overlooked. Mitigations include placing important information at the beginning or end, using structured sections with clear headers, and repeating critical facts.",
+      "explanationEs": "El efecto 'perdido en el medio' es un fenómeno bien documentado donde los modelos de lenguaje tienen mayor capacidad de recordar información al inicio y al final de su ventana de contexto, pero menor capacidad para la información en el medio. Esto significa que información crítica colocada en el medio de un contexto largo puede pasarse por alto. Las mitigaciones incluyen colocar información importante al inicio o al final, usar secciones estructuradas con encabezados claros y repetir hechos críticos.",
+      "options": [
+        { "id": "ccaf-cr-003_a", "text": "The model processes the middle of the context more slowly, increasing latency", "textEs": "El modelo procesa el medio del contexto más lentamente, aumentando la latencia", "order": 1 },
+        { "id": "ccaf-cr-003_b", "text": "The model has weaker recall for information in the middle of long contexts compared to the beginning and end", "textEs": "El modelo tiene menor capacidad de recordar información en el medio de contextos largos comparado con el inicio y el final", "order": 2 },
+        { "id": "ccaf-cr-003_c", "text": "The model truncates the middle section when the context window is nearly full", "textEs": "El modelo trunca la sección del medio cuando la ventana de contexto está casi llena", "order": 3 },
+        { "id": "ccaf-cr-003_d", "text": "The model generates less coherent text when the middle of its output is longest", "textEs": "El modelo genera texto menos coherente cuando el medio de su salida es más largo", "order": 4 }
+      ],
+      "tags": ["lost-in-middle", "context-window", "recall", "information-retrieval"]
+    },
+    {
+      "id": "ccaf-cr-004",
+      "text": "When should tool results be trimmed before appending them to the conversation, and what is the recommended approach?",
+      "textEs": "¿Cuándo deben recortarse los resultados de herramientas antes de agregarlos a la conversación, y cuál es el enfoque recomendado?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-004_d",
+      "explanation": "Tool results should be trimmed when they are large relative to the context budget and contain information beyond what the model needs for its next step. The recommended approach is to extract only the relevant fields/data from the tool result, summarize large result sets, and include a note about what was trimmed so the model knows more data exists. Never silently truncate -- indicate that trimming occurred.",
+      "explanationEs": "Los resultados de herramientas deben recortarse cuando son grandes en relación al presupuesto de contexto y contienen información más allá de lo que el modelo necesita para su siguiente paso. El enfoque recomendado es extraer solo los campos/datos relevantes del resultado de la herramienta, resumir conjuntos de resultados grandes e incluir una nota sobre lo que se recortó para que el modelo sepa que existen más datos. Nunca truncar silenciosamente; indicar que ocurrió un recorte.",
+      "options": [
+        { "id": "ccaf-cr-004_a", "text": "Always trim to 500 tokens regardless of content", "textEs": "Siempre recortar a 500 tokens independientemente del contenido", "order": 1 },
+        { "id": "ccaf-cr-004_b", "text": "Never trim tool results as this causes data loss", "textEs": "Nunca recortar resultados de herramientas ya que esto causa pérdida de datos", "order": 2 },
+        { "id": "ccaf-cr-004_c", "text": "Only trim if the API returns a 413 error", "textEs": "Solo recortar si la API devuelve un error 413", "order": 3 },
+        { "id": "ccaf-cr-004_d", "text": "Trim when results are large relative to context budget; extract relevant fields, summarize, and indicate that trimming occurred", "textEs": "Recortar cuando los resultados son grandes en relación al presupuesto de contexto; extraer campos relevantes, resumir e indicar que ocurrió un recorte", "order": 4 }
+      ],
+      "tags": ["tool-results", "trimming", "context-budget", "best-practices"]
+    },
+    {
+      "id": "ccaf-cr-005",
+      "text": "What are the 3 valid triggers for escalation from a subagent back to the coordinator?",
+      "textEs": "¿Cuáles son los 3 disparadores válidos para escalamiento de un subagente de vuelta al coordinador?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-005_a",
+      "explanation": "The three valid escalation triggers are: (1) the task is outside the subagent's defined scope, (2) the subagent has encountered an error it cannot recover from after reasonable retries, and (3) the subagent needs information or a decision that only the coordinator or user can provide. Invalid triggers include 'low confidence' (subjective and unreliable) and 'task too complex' (ambiguous -- decompose further instead).",
+      "explanationEs": "Los tres disparadores válidos de escalamiento son: (1) la tarea está fuera del alcance definido del subagente, (2) el subagente ha encontrado un error del que no puede recuperarse después de reintentos razonables, y (3) el subagente necesita información o una decisión que solo el coordinador o el usuario pueden proporcionar. Los disparadores inválidos incluyen 'baja confianza' (subjetivo y poco fiable) y 'tarea demasiado compleja' (ambiguo; mejor descomponer más).",
+      "options": [
+        { "id": "ccaf-cr-005_a", "text": "Out of scope, unrecoverable error after retries, and needs information only the coordinator/user can provide", "textEs": "Fuera de alcance, error irrecuperable después de reintentos, y necesita información que solo el coordinador/usuario puede proporcionar", "order": 1 },
+        { "id": "ccaf-cr-005_b", "text": "Low confidence, high token usage, and slow response time", "textEs": "Baja confianza, alto uso de tokens y tiempo de respuesta lento", "order": 2 },
+        { "id": "ccaf-cr-005_c", "text": "First failure, third failure, and context window at 80%", "textEs": "Primer fallo, tercer fallo y ventana de contexto al 80%", "order": 3 },
+        { "id": "ccaf-cr-005_d", "text": "User request, timeout, and model version mismatch", "textEs": "Solicitud del usuario, timeout y discrepancia de versión del modelo", "order": 4 }
+      ],
+      "tags": ["escalation", "valid-triggers", "subagent", "coordinator"]
+    },
+    {
+      "id": "ccaf-cr-006",
+      "text": "Why are 'low confidence' and 'task too complex' considered unreliable escalation triggers?",
+      "textEs": "¿Por qué 'baja confianza' y 'tarea demasiado compleja' se consideran disparadores de escalamiento poco fiables?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-006_b",
+      "explanation": "'Low confidence' is unreliable because the model's self-reported confidence does not correlate well with actual accuracy -- models can be confidently wrong or uncertain when they are actually correct. 'Task too complex' is ambiguous because complexity is subjective and the model may escalate tasks it could handle with better decomposition. Both lead to either over-escalation (unnecessary coordinator involvement) or under-escalation (missing truly problematic cases).",
+      "explanationEs": "'Baja confianza' es poco fiable porque la confianza auto-reportada del modelo no se correlaciona bien con la precisión real; los modelos pueden estar confidencialmente equivocados o inciertos cuando en realidad son correctos. 'Tarea demasiado compleja' es ambiguo porque la complejidad es subjetiva y el modelo puede escalar tareas que podría manejar con mejor descomposición. Ambos llevan a sobre-escalamiento (involucramiento innecesario del coordinador) o sub-escalamiento (perderse casos verdaderamente problemáticos).",
+      "options": [
+        { "id": "ccaf-cr-006_a", "text": "They are too slow to evaluate and add latency to the pipeline", "textEs": "Son demasiado lentos de evaluar y agregan latencia al pipeline", "order": 1 },
+        { "id": "ccaf-cr-006_b", "text": "Model self-reported confidence is poorly calibrated, and 'too complex' is subjective; both lead to inconsistent escalation behavior", "textEs": "La confianza auto-reportada del modelo está mal calibrada, y 'demasiado compleja' es subjetiva; ambos llevan a comportamiento de escalamiento inconsistente", "order": 2 },
+        { "id": "ccaf-cr-006_c", "text": "They require additional API calls to evaluate, increasing costs", "textEs": "Requieren llamadas adicionales a la API para evaluar, aumentando los costos", "order": 3 },
+        { "id": "ccaf-cr-006_d", "text": "They are valid triggers but only for Haiku models, not Sonnet or Opus", "textEs": "Son disparadores válidos pero solo para modelos Haiku, no para Sonnet u Opus", "order": 4 }
+      ],
+      "tags": ["escalation", "unreliable-triggers", "confidence", "calibration"]
+    },
+    {
+      "id": "ccaf-cr-007",
+      "text": "What is the difference between silent error suppression and workflow termination in error propagation, and which is generally preferred?",
+      "textEs": "¿Cuál es la diferencia entre la supresión silenciosa de errores y la terminación del flujo de trabajo en la propagación de errores, y cuál se prefiere generalmente?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-007_c",
+      "explanation": "Silent error suppression catches errors and continues execution (often returning a default or partial result), while workflow termination stops execution and surfaces the error. Silent suppression is dangerous because downstream steps receive incorrect or partial data without knowing it, leading to cascading silent failures. Workflow termination is generally preferred because it fails loudly, allowing the issue to be identified and fixed rather than producing quietly incorrect results.",
+      "explanationEs": "La supresión silenciosa de errores captura errores y continúa la ejecución (frecuentemente devolviendo un resultado predeterminado o parcial), mientras que la terminación del flujo de trabajo detiene la ejecución y muestra el error. La supresión silenciosa es peligrosa porque los pasos posteriores reciben datos incorrectos o parciales sin saberlo, llevando a fallos silenciosos en cascada. La terminación del flujo de trabajo generalmente se prefiere porque falla de manera visible, permitiendo que el problema sea identificado y corregido en lugar de producir resultados silenciosamente incorrectos.",
+      "options": [
+        { "id": "ccaf-cr-007_a", "text": "Silent suppression is preferred as it provides better user experience; termination is too disruptive", "textEs": "La supresión silenciosa es preferible ya que proporciona mejor experiencia de usuario; la terminación es demasiado disruptiva", "order": 1 },
+        { "id": "ccaf-cr-007_b", "text": "Both are equally valid depending on the error type; there is no general preference", "textEs": "Ambos son igualmente válidos dependiendo del tipo de error; no hay preferencia general", "order": 2 },
+        { "id": "ccaf-cr-007_c", "text": "Workflow termination is generally preferred because it fails loudly; silent suppression causes cascading silent failures", "textEs": "La terminación del flujo de trabajo generalmente se prefiere porque falla de manera visible; la supresión silenciosa causa fallos silenciosos en cascada", "order": 3 },
+        { "id": "ccaf-cr-007_d", "text": "Silent suppression handles API errors; termination handles logic errors; use both in every system", "textEs": "La supresión silenciosa maneja errores de API; la terminación maneja errores de lógica; usar ambos en cada sistema", "order": 4 }
+      ],
+      "tags": ["error-propagation", "silent-suppression", "workflow-termination", "reliability"]
+    },
+    {
+      "id": "ccaf-cr-008",
+      "text": "How do scratchpad files and subagent delegation help manage context in complex agentic tasks?",
+      "textEs": "¿Cómo ayudan los archivos de borrador (scratchpad) y la delegación a subagentes a gestionar el contexto en tareas agentes complejas?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-008_a",
+      "explanation": "Scratchpad files allow an agent to write intermediate results, plans, and notes to the filesystem rather than keeping everything in the conversation context. This frees up context window space for active reasoning. Subagent delegation offloads self-contained subtasks to a fresh context, and the result is returned as a compact summary. Together, they keep the main agent's context focused and within budget.",
+      "explanationEs": "Los archivos de borrador permiten a un agente escribir resultados intermedios, planes y notas en el sistema de archivos en lugar de mantener todo en el contexto de la conversación. Esto libera espacio de la ventana de contexto para razonamiento activo. La delegación a subagentes descarga subtareas autónomas a un contexto nuevo, y el resultado se devuelve como un resumen compacto. Juntos, mantienen el contexto del agente principal enfocado y dentro del presupuesto.",
+      "options": [
+        { "id": "ccaf-cr-008_a", "text": "Scratchpads offload intermediate data to the filesystem; subagents process subtasks in fresh contexts, returning compact results", "textEs": "Los scratchpads descargan datos intermedios al sistema de archivos; los subagentes procesan subtareas en contextos nuevos, devolviendo resultados compactos", "order": 1 },
+        { "id": "ccaf-cr-008_b", "text": "Scratchpads provide persistent memory across sessions; subagents share a common memory space", "textEs": "Los scratchpads proporcionan memoria persistente entre sesiones; los subagentes comparten un espacio de memoria común", "order": 2 },
+        { "id": "ccaf-cr-008_c", "text": "Scratchpads are encrypted storage for sensitive data; subagents provide redundancy for critical operations", "textEs": "Los scratchpads son almacenamiento encriptado para datos sensibles; los subagentes proporcionan redundancia para operaciones críticas", "order": 3 },
+        { "id": "ccaf-cr-008_d", "text": "Scratchpads cache API responses; subagents process cached responses in parallel", "textEs": "Los scratchpads almacenan en caché las respuestas de la API; los subagentes procesan las respuestas cacheadas en paralelo", "order": 4 }
+      ],
+      "tags": ["scratchpad", "subagent-delegation", "context-management", "filesystem"]
+    },
+    {
+      "id": "ccaf-cr-009",
+      "text": "What is stratified sampling in the context of question selection for an exam, and why is it important?",
+      "textEs": "¿Qué es el muestreo estratificado en el contexto de selección de preguntas para un examen, y por qué es importante?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-009_d",
+      "explanation": "Stratified sampling ensures that questions are selected proportionally across defined categories (domains, difficulty levels, content types) rather than randomly from the entire pool. This guarantees representative coverage -- for example, in CCA-F, it ensures each domain contributes questions proportional to its weight. Without stratification, random selection could over-represent easy questions or skip entire domains.",
+      "explanationEs": "El muestreo estratificado asegura que las preguntas se seleccionen proporcionalmente entre categorías definidas (dominios, niveles de dificultad, tipos de contenido) en lugar de aleatoriamente de todo el conjunto. Esto garantiza cobertura representativa; por ejemplo, en CCA-F, asegura que cada dominio contribuya preguntas proporcionales a su peso. Sin estratificación, la selección aleatoria podría sobre-representar preguntas fáciles u omitir dominios enteros.",
+      "options": [
+        { "id": "ccaf-cr-009_a", "text": "Selecting only the hardest questions to challenge the test-taker", "textEs": "Seleccionar solo las preguntas más difíciles para desafiar al examinado", "order": 1 },
+        { "id": "ccaf-cr-009_b", "text": "Randomly shuffling all questions and picking the first N", "textEs": "Mezclar aleatoriamente todas las preguntas y elegir las primeras N", "order": 2 },
+        { "id": "ccaf-cr-009_c", "text": "Selecting questions based on the test-taker's previous performance", "textEs": "Seleccionar preguntas basándose en el rendimiento previo del examinado", "order": 3 },
+        { "id": "ccaf-cr-009_d", "text": "Selecting questions proportionally across categories (domains, difficulty) to ensure representative coverage", "textEs": "Seleccionar preguntas proporcionalmente entre categorías (dominios, dificultad) para asegurar cobertura representativa", "order": 4 }
+      ],
+      "tags": ["stratified-sampling", "question-selection", "exam-design", "coverage"]
+    },
+    {
+      "id": "ccaf-cr-010",
+      "text": "What is 'information provenance' and why is it critical in agentic systems that extract or transform data?",
+      "textEs": "¿Qué es la 'procedencia de la información' y por qué es crítica en sistemas agentes que extraen o transforman datos?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-010_b",
+      "explanation": "Information provenance tracks where each piece of extracted or generated information came from -- the source document, page number, tool call, or agent that produced it. This is critical because agentic systems process data through multiple steps, and without provenance, you cannot verify whether an output is based on actual source data or was hallucinated. It enables auditing, debugging, and trust in the system's outputs.",
+      "explanationEs": "La procedencia de la información rastrea de dónde proviene cada pieza de información extraída o generada: el documento fuente, número de página, llamada a herramienta o agente que la produjo. Esto es crítico porque los sistemas agentes procesan datos a través de múltiples pasos, y sin procedencia, no puedes verificar si una salida se basa en datos reales de origen o fue alucinada. Permite auditoría, depuración y confianza en las salidas del sistema.",
+      "options": [
+        { "id": "ccaf-cr-010_a", "text": "A versioning system that tracks changes to prompts over time", "textEs": "Un sistema de versionado que rastrea cambios en los prompts a lo largo del tiempo", "order": 1 },
+        { "id": "ccaf-cr-010_b", "text": "Tracking the source of each piece of information through the pipeline, enabling verification that outputs are grounded in actual data", "textEs": "Rastrear la fuente de cada pieza de información a través del pipeline, permitiendo verificar que las salidas se basan en datos reales", "order": 2 },
+        { "id": "ccaf-cr-010_c", "text": "A copyright mechanism that attributes generated content to the correct model version", "textEs": "Un mecanismo de derechos de autor que atribuye el contenido generado a la versión correcta del modelo", "order": 3 },
+        { "id": "ccaf-cr-010_d", "text": "A caching strategy that stores the provenance of API responses for faster retrieval", "textEs": "Una estrategia de caché que almacena la procedencia de las respuestas de la API para recuperación más rápida", "order": 4 }
+      ],
+      "tags": ["information-provenance", "traceability", "auditing", "verification"]
+    },
+    {
+      "id": "ccaf-cr-011",
+      "text": "How can you estimate token count for a given text before sending it to the Claude API?",
+      "textEs": "¿Cómo puedes estimar la cantidad de tokens para un texto dado antes de enviarlo a la API de Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-011_a",
+      "explanation": "The Anthropic API provides a token counting endpoint that returns the exact token count for a given message payload without processing it. You can also use the Anthropic tokenizer (Claude uses a BPE tokenizer). A rough heuristic is that 1 token is approximately 3-4 characters in English, or about 3/4 of a word. For precise budgeting in agentic systems, use the counting endpoint to know exactly how much context space remains.",
+      "explanationEs": "La API de Anthropic proporciona un endpoint de conteo de tokens que devuelve la cantidad exacta de tokens para un payload de mensajes dado sin procesarlo. También puedes usar el tokenizador de Anthropic (Claude usa un tokenizador BPE). Una heurística aproximada es que 1 token equivale a aproximadamente 3-4 caracteres en inglés, o cerca de 3/4 de una palabra. Para presupuestos precisos en sistemas agentes, usa el endpoint de conteo para saber exactamente cuánto espacio de contexto queda.",
+      "options": [
+        { "id": "ccaf-cr-011_a", "text": "Use the API's token counting endpoint for exact counts, or estimate at ~3-4 characters per token in English", "textEs": "Usar el endpoint de conteo de tokens de la API para conteos exactos, o estimar ~3-4 caracteres por token en inglés", "order": 1 },
+        { "id": "ccaf-cr-011_b", "text": "Count the number of words and multiply by 2 to get the token count", "textEs": "Contar el número de palabras y multiplicar por 2 para obtener la cantidad de tokens", "order": 2 },
+        { "id": "ccaf-cr-011_c", "text": "Token count equals the number of characters divided by 10", "textEs": "La cantidad de tokens es igual al número de caracteres dividido por 10", "order": 3 },
+        { "id": "ccaf-cr-011_d", "text": "There is no way to estimate tokens; you must send the request and check the usage field in the response", "textEs": "No hay forma de estimar tokens; debes enviar la solicitud y verificar el campo de uso en la respuesta", "order": 4 }
+      ],
+      "tags": ["token-counting", "estimation", "context-budget", "api"]
+    },
+    {
+      "id": "ccaf-cr-012",
+      "text": "What is conversation compaction, and when should it be triggered in an agentic system?",
+      "textEs": "¿Qué es la compactación de conversación, y cuándo debe activarse en un sistema agente?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-012_c",
+      "explanation": "Conversation compaction is the process of summarizing or condensing the conversation history to free up context window space. It should be triggered when the conversation reaches a certain percentage of the context window (typically 70-80%), leaving enough room for the next response and tool results. The compaction should preserve critical facts, recent context, and the current task state while condensing older exchanges.",
+      "explanationEs": "La compactación de conversación es el proceso de resumir o condensar el historial de conversación para liberar espacio de la ventana de contexto. Debe activarse cuando la conversación alcanza cierto porcentaje de la ventana de contexto (típicamente 70-80%), dejando suficiente espacio para la siguiente respuesta y resultados de herramientas. La compactación debe preservar hechos críticos, contexto reciente y el estado actual de la tarea mientras condensa intercambios más antiguos.",
+      "options": [
+        { "id": "ccaf-cr-012_a", "text": "Deleting the oldest messages when the conversation exceeds 50 messages", "textEs": "Eliminar los mensajes más antiguos cuando la conversación excede 50 mensajes", "order": 1 },
+        { "id": "ccaf-cr-012_b", "text": "Restarting the conversation with a fresh system prompt when context is full", "textEs": "Reiniciar la conversación con un prompt del sistema nuevo cuando el contexto está lleno", "order": 2 },
+        { "id": "ccaf-cr-012_c", "text": "Summarizing older conversation history while preserving critical facts, triggered at 70-80% context usage", "textEs": "Resumir el historial de conversación más antiguo preservando hechos críticos, activado al 70-80% de uso del contexto", "order": 3 },
+        { "id": "ccaf-cr-012_d", "text": "Compressing message text using gzip before sending to the API", "textEs": "Comprimir el texto de mensajes usando gzip antes de enviar a la API", "order": 4 }
+      ],
+      "tags": ["compaction", "summarization", "context-management", "threshold"]
+    },
+    {
+      "id": "ccaf-cr-013",
+      "text": "How should citations be verified when Claude extracts information from provided documents?",
+      "textEs": "¿Cómo deben verificarse las citas cuando Claude extrae información de documentos proporcionados?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-013_b",
+      "explanation": "Citation verification involves asking Claude to include specific source references (page numbers, section headers, direct quotes) alongside extracted claims, and then programmatically checking these references against the source documents. The Anthropic API also supports a citations feature that can automatically track which parts of the input context each part of the response comes from, providing source attribution at the sentence level.",
+      "explanationEs": "La verificación de citas implica pedir a Claude que incluya referencias específicas a fuentes (números de página, encabezados de sección, citas directas) junto con las afirmaciones extraídas, y luego verificar programáticamente estas referencias contra los documentos fuente. La API de Anthropic también soporta una función de citas que puede rastrear automáticamente de qué partes del contexto de entrada proviene cada parte de la respuesta, proporcionando atribución de fuentes a nivel de oración.",
+      "options": [
+        { "id": "ccaf-cr-013_a", "text": "Trust Claude's citations implicitly since the model has high recall for document content", "textEs": "Confiar implícitamente en las citas de Claude ya que el modelo tiene alta capacidad de recordar contenido de documentos", "order": 1 },
+        { "id": "ccaf-cr-013_b", "text": "Ask Claude to include specific source references and programmatically verify them; use the API's citations feature for automatic attribution", "textEs": "Pedir a Claude que incluya referencias específicas a fuentes y verificarlas programáticamente; usar la función de citas de la API para atribución automática", "order": 2 },
+        { "id": "ccaf-cr-013_c", "text": "Run a separate plagiarism checker on Claude's output to detect fabricated citations", "textEs": "Ejecutar un verificador de plagio separado en la salida de Claude para detectar citas fabricadas", "order": 3 },
+        { "id": "ccaf-cr-013_d", "text": "Only use Claude for summarization, not citation-requiring tasks, since it cannot cite reliably", "textEs": "Solo usar Claude para resúmenes, no para tareas que requieren citas, ya que no puede citar de manera confiable", "order": 4 }
+      ],
+      "tags": ["citations", "verification", "source-attribution", "document-extraction"]
+    },
+    {
+      "id": "ccaf-cr-014",
+      "text": "What are common hallucination patterns in Claude, and how can they be detected?",
+      "textEs": "¿Cuáles son los patrones comunes de alucinación en Claude, y cómo pueden detectarse?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-014_d",
+      "explanation": "Common hallucination patterns include: fabricating specific numbers/dates/names not in the source, inventing plausible-sounding but nonexistent citations, confidently filling in gaps when information is missing, and generating entity confusion (mixing attributes of similar entities). Detection strategies include: cross-referencing extracted data against source text, using a second model pass to verify claims, checking for specificity without source support, and including 'unknown/unclear' options in schemas.",
+      "explanationEs": "Los patrones comunes de alucinación incluyen: fabricar números/fechas/nombres específicos que no están en la fuente, inventar citas que suenan plausibles pero no existen, llenar vacíos con confianza cuando falta información y generar confusión de entidades (mezclar atributos de entidades similares). Las estrategias de detección incluyen: cruzar datos extraídos contra el texto fuente, usar una segunda pasada del modelo para verificar afirmaciones, verificar especificidad sin soporte de la fuente e incluir opciones de 'desconocido/poco claro' en los esquemas.",
+      "options": [
+        { "id": "ccaf-cr-014_a", "text": "Hallucinations only occur with Haiku; using Opus eliminates them entirely", "textEs": "Las alucinaciones solo ocurren con Haiku; usar Opus las elimina por completo", "order": 1 },
+        { "id": "ccaf-cr-014_b", "text": "Hallucinations are random and unpredictable; they can only be detected by human review", "textEs": "Las alucinaciones son aleatorias e impredecibles; solo pueden detectarse por revisión humana", "order": 2 },
+        { "id": "ccaf-cr-014_c", "text": "Hallucinations are always preceded by hedging language like 'I think' or 'possibly'", "textEs": "Las alucinaciones siempre van precedidas de lenguaje vacilante como 'Creo que' o 'posiblemente'", "order": 3 },
+        { "id": "ccaf-cr-014_d", "text": "Fabricated details, fake citations, gap-filling, entity confusion; detect via source cross-referencing, verification passes, and 'unknown' options", "textEs": "Detalles fabricados, citas falsas, llenado de vacíos, confusión de entidades; detectar mediante cruce con fuentes, pasadas de verificación y opciones de 'desconocido'", "order": 4 }
+      ],
+      "tags": ["hallucination", "detection", "patterns", "verification", "reliability"]
+    },
+    {
+      "id": "ccaf-cr-015",
+      "text": "What is confidence calibration in AI systems, and why is Claude's self-reported confidence often unreliable?",
+      "textEs": "¿Qué es la calibración de confianza en sistemas de IA, y por qué la confianza auto-reportada de Claude es frecuentemente poco fiable?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-015_a",
+      "explanation": "Confidence calibration measures how well a model's stated confidence matches its actual accuracy (e.g., when it says it is 90% confident, it should be correct 90% of the time). Claude's self-reported confidence is often poorly calibrated: it may express high confidence when wrong or low confidence when correct. This is because the model generates confidence scores as text tokens, not from actual probability distributions. Use explicit verification criteria instead of asking Claude how confident it is.",
+      "explanationEs": "La calibración de confianza mide qué tan bien la confianza declarada de un modelo coincide con su precisión real (por ejemplo, cuando dice que tiene 90% de confianza, debería ser correcto el 90% del tiempo). La confianza auto-reportada de Claude frecuentemente está mal calibrada: puede expresar alta confianza cuando está equivocado o baja confianza cuando es correcto. Esto se debe a que el modelo genera puntuaciones de confianza como tokens de texto, no a partir de distribuciones de probabilidad reales. Usa criterios de verificación explícitos en lugar de preguntar a Claude qué tan seguro está.",
+      "options": [
+        { "id": "ccaf-cr-015_a", "text": "The alignment between stated confidence and actual accuracy; Claude's is unreliable because confidence is generated as text, not from probabilities", "textEs": "La alineación entre la confianza declarada y la precisión real; la de Claude es poco fiable porque la confianza se genera como texto, no a partir de probabilidades", "order": 1 },
+        { "id": "ccaf-cr-015_b", "text": "A post-training technique that makes Claude always report 50% confidence; unreliable because it is too conservative", "textEs": "Una técnica post-entrenamiento que hace que Claude siempre reporte 50% de confianza; poco fiable porque es demasiado conservadora", "order": 2 },
+        { "id": "ccaf-cr-015_c", "text": "The model's ability to refuse questions it cannot answer; unreliable because it never refuses", "textEs": "La capacidad del modelo de rechazar preguntas que no puede responder; poco fiable porque nunca rechaza", "order": 3 },
+        { "id": "ccaf-cr-015_d", "text": "A hardware metric that measures GPU utilization during inference; unreliable due to variable load", "textEs": "Una métrica de hardware que mide la utilización de GPU durante la inferencia; poco fiable debido a la carga variable", "order": 4 }
+      ],
+      "tags": ["confidence-calibration", "reliability", "self-reported", "verification"]
+    },
+    {
+      "id": "ccaf-cr-016",
+      "text": "How should context window budget be allocated across system prompt, tools, conversation history, and output in an agentic system?",
+      "textEs": "¿Cómo debe asignarse el presupuesto de la ventana de contexto entre prompt del sistema, herramientas, historial de conversación y salida en un sistema agente?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-016_b",
+      "explanation": "Context budget allocation should reserve fixed space for the system prompt and tool definitions (which are constant), allocate a portion for expected output (max_tokens), and use the remaining space for conversation history and tool results. A common allocation is: 10-15% for system prompt/tools, 10-20% for output, and 65-80% for conversation. Monitor usage and trigger compaction before the conversation portion overflows into the output reservation.",
+      "explanationEs": "La asignación del presupuesto de contexto debe reservar espacio fijo para el prompt del sistema y las definiciones de herramientas (que son constantes), asignar una porción para la salida esperada (max_tokens) y usar el espacio restante para el historial de conversación y resultados de herramientas. Una asignación común es: 10-15% para prompt del sistema/herramientas, 10-20% para salida y 65-80% para conversación. Monitorear el uso y activar la compactación antes de que la porción de conversación desborde la reserva de salida.",
+      "options": [
+        { "id": "ccaf-cr-016_a", "text": "Give 90% to conversation history and 10% to output; system prompt and tools are free", "textEs": "Dar 90% al historial de conversación y 10% a la salida; el prompt del sistema y las herramientas son gratis", "order": 1 },
+        { "id": "ccaf-cr-016_b", "text": "Reserve fixed space for system prompt/tools, allocate for output (max_tokens), use the rest for conversation; trigger compaction before overflow", "textEs": "Reservar espacio fijo para prompt del sistema/herramientas, asignar para salida (max_tokens), usar el resto para conversación; activar compactación antes del desborde", "order": 2 },
+        { "id": "ccaf-cr-016_c", "text": "Split equally: 25% each for system, tools, conversation, and output", "textEs": "Dividir equitativamente: 25% cada uno para sistema, herramientas, conversación y salida", "order": 3 },
+        { "id": "ccaf-cr-016_d", "text": "Budget allocation is automatic; the API handles it without developer intervention", "textEs": "La asignación de presupuesto es automática; la API lo maneja sin intervención del desarrollador", "order": 4 }
+      ],
+      "tags": ["context-budget", "allocation", "system-prompt", "max-tokens", "planning"]
+    },
+    {
+      "id": "ccaf-cr-017",
+      "text": "What is the 'recency bias' problem in long conversations, and how does it affect agentic reliability?",
+      "textEs": "¿Qué es el problema del 'sesgo de recencia' en conversaciones largas, y cómo afecta la fiabilidad agente?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-017_c",
+      "explanation": "Recency bias means the model gives disproportionate weight to information from recent messages compared to older ones in the conversation. In agentic systems, this can cause the model to ignore or contradict earlier tool results, forget initial task requirements, or change its approach mid-stream based on the latest tool output. Mitigations include repeating critical instructions, using persistent fact blocks, and structuring prompts to reiterate key constraints.",
+      "explanationEs": "El sesgo de recencia significa que el modelo da un peso desproporcionado a la información de mensajes recientes comparada con los más antiguos en la conversación. En sistemas agentes, esto puede causar que el modelo ignore o contradiga resultados de herramientas anteriores, olvide requisitos iniciales de la tarea o cambie su enfoque a mitad de camino basándose en la última salida de herramienta. Las mitigaciones incluyen repetir instrucciones críticas, usar bloques de hechos persistentes y estructurar prompts para reiterar restricciones clave.",
+      "options": [
+        { "id": "ccaf-cr-017_a", "text": "The model preferring newer API versions over older ones; affects which tools are selected", "textEs": "El modelo prefiriendo versiones de API más nuevas sobre las antiguas; afecta qué herramientas se seleccionan", "order": 1 },
+        { "id": "ccaf-cr-017_b", "text": "Users only reading the most recent response; affects perceived quality", "textEs": "Los usuarios solo leen la respuesta más reciente; afecta la calidad percibida", "order": 2 },
+        { "id": "ccaf-cr-017_c", "text": "The model giving disproportionate weight to recent messages, potentially ignoring earlier tool results or requirements", "textEs": "El modelo dando peso desproporcionado a mensajes recientes, potencialmente ignorando resultados de herramientas o requisitos anteriores", "order": 3 },
+        { "id": "ccaf-cr-017_d", "text": "Recent API calls being slower due to cache expiration; affects latency", "textEs": "Las llamadas recientes a la API son más lentas debido a la expiración del caché; afecta la latencia", "order": 4 }
+      ],
+      "tags": ["recency-bias", "long-conversations", "context-reliability", "mitigation"]
+    },
+    {
+      "id": "ccaf-cr-018",
+      "text": "What is the difference between the 'context window limit' and the 'effective context window' in practice?",
+      "textEs": "¿Cuál es la diferencia entre el 'límite de ventana de contexto' y la 'ventana de contexto efectiva' en la práctica?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-018_a",
+      "explanation": "The context window limit is the maximum tokens the model can technically process (e.g., 200K tokens for Claude). The effective context window is smaller in practice because: (1) recall quality degrades for information in the middle of very long contexts, (2) the model must reserve space for output, (3) system prompts and tools consume a fixed portion, and (4) very long contexts increase latency and cost. Design for the effective window, not the theoretical maximum.",
+      "explanationEs": "El límite de ventana de contexto es el máximo de tokens que el modelo puede procesar técnicamente (por ejemplo, 200K tokens para Claude). La ventana de contexto efectiva es más pequeña en la práctica porque: (1) la calidad de recordar se degrada para información en el medio de contextos muy largos, (2) el modelo debe reservar espacio para la salida, (3) los prompts del sistema y las herramientas consumen una porción fija, y (4) los contextos muy largos aumentan la latencia y el costo. Diseña para la ventana efectiva, no para el máximo teórico.",
+      "options": [
+        { "id": "ccaf-cr-018_a", "text": "The limit is the technical maximum; the effective window is smaller due to recall degradation, output reservation, and fixed overheads", "textEs": "El límite es el máximo técnico; la ventana efectiva es más pequeña debido a la degradación de recordación, reserva de salida y costos fijos", "order": 1 },
+        { "id": "ccaf-cr-018_b", "text": "They are the same; 'effective context window' is just a synonym", "textEs": "Son lo mismo; 'ventana de contexto efectiva' es solo un sinónimo", "order": 2 },
+        { "id": "ccaf-cr-018_c", "text": "The effective window is always exactly 80% of the limit; the remaining 20% is reserved by the API", "textEs": "La ventana efectiva es siempre exactamente el 80% del límite; el 20% restante está reservado por la API", "order": 3 },
+        { "id": "ccaf-cr-018_d", "text": "The effective window depends on the user's subscription tier; free users get 50% of the limit", "textEs": "La ventana efectiva depende del nivel de suscripción del usuario; los usuarios gratuitos obtienen el 50% del límite", "order": 4 }
+      ],
+      "tags": ["context-window", "effective-context", "recall-degradation", "practical-limits"]
+    },
+    {
+      "id": "ccaf-cr-019",
+      "text": "How can you implement a 'fact preservation' strategy when summarizing conversation history?",
+      "textEs": "¿Cómo puedes implementar una estrategia de 'preservación de hechos' al resumir el historial de conversación?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-019_d",
+      "explanation": "Fact preservation during summarization involves maintaining a separate, structured 'facts' section that is never summarized. Before compacting, extract key facts (names, numbers, dates, decisions, constraints) into this persistent section. Then summarize the conversational exchanges while keeping the facts section intact. This way, each compaction pass reduces verbose exchanges without losing critical data points.",
+      "explanationEs": "La preservación de hechos durante el resumen implica mantener una sección de 'hechos' separada y estructurada que nunca se resume. Antes de compactar, extrae los hechos clave (nombres, números, fechas, decisiones, restricciones) a esta sección persistente. Luego resume los intercambios conversacionales manteniendo la sección de hechos intacta. De esta manera, cada pasada de compactación reduce los intercambios verbosos sin perder puntos de datos críticos.",
+      "options": [
+        { "id": "ccaf-cr-019_a", "text": "Store all facts in an external database and query them via a tool when needed", "textEs": "Almacenar todos los hechos en una base de datos externa y consultarlos mediante una herramienta cuando sea necesario", "order": 1 },
+        { "id": "ccaf-cr-019_b", "text": "Never summarize; instead, drop the oldest messages entirely", "textEs": "Nunca resumir; en su lugar, eliminar los mensajes más antiguos por completo", "order": 2 },
+        { "id": "ccaf-cr-019_c", "text": "Ask Claude to highlight important facts in bold so they survive summarization", "textEs": "Pedir a Claude que resalte hechos importantes en negrita para que sobrevivan al resumen", "order": 3 },
+        { "id": "ccaf-cr-019_d", "text": "Maintain a separate persistent 'facts' section that is never summarized; extract key data into it before each compaction", "textEs": "Mantener una sección de 'hechos' persistente separada que nunca se resume; extraer datos clave a ella antes de cada compactación", "order": 4 }
+      ],
+      "tags": ["fact-preservation", "summarization", "persistent-facts", "compaction"]
+    },
+    {
+      "id": "ccaf-cr-020",
+      "text": "What is the 'grounding' technique, and how does it reduce hallucinations in extraction tasks?",
+      "textEs": "¿Qué es la técnica de 'anclaje' (grounding), y cómo reduce las alucinaciones en tareas de extracción?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-020_b",
+      "explanation": "Grounding constrains Claude to only use information present in the provided context, explicitly instructing it not to use prior knowledge. Techniques include: providing all relevant documents in the context, adding instructions like 'only extract information explicitly stated in the text', including an 'evidence' field in the output schema for source quotes, and using the API's citations feature. This dramatically reduces hallucination for extraction and QA tasks.",
+      "explanationEs": "El anclaje restringe a Claude a usar solo información presente en el contexto proporcionado, instruyéndolo explícitamente a no usar conocimiento previo. Las técnicas incluyen: proporcionar todos los documentos relevantes en el contexto, agregar instrucciones como 'solo extraer información explícitamente declarada en el texto', incluir un campo de 'evidencia' en el esquema de salida para citas de la fuente y usar la función de citas de la API. Esto reduce dramáticamente las alucinaciones en tareas de extracción y preguntas y respuestas.",
+      "options": [
+        { "id": "ccaf-cr-020_a", "text": "Connecting Claude to a real-time internet search engine for fact-checking", "textEs": "Conectar a Claude a un motor de búsqueda en internet en tiempo real para verificación de hechos", "order": 1 },
+        { "id": "ccaf-cr-020_b", "text": "Constraining Claude to only use information in the provided context, with explicit 'only from text' instructions and evidence fields", "textEs": "Restringir a Claude a solo usar información en el contexto proporcionado, con instrucciones explícitas de 'solo del texto' y campos de evidencia", "order": 2 },
+        { "id": "ccaf-cr-020_c", "text": "Training a custom model fine-tuned on your specific domain data", "textEs": "Entrenar un modelo personalizado ajustado con datos específicos de tu dominio", "order": 3 },
+        { "id": "ccaf-cr-020_d", "text": "Using temperature 0 to eliminate all randomness from the output", "textEs": "Usar temperatura 0 para eliminar toda la aleatoriedad de la salida", "order": 4 }
+      ],
+      "tags": ["grounding", "hallucination-reduction", "extraction", "evidence-field"]
+    },
+    {
+      "id": "ccaf-cr-021",
+      "text": "What is the maximum context window size for Claude, and how should you plan around it?",
+      "textEs": "¿Cuál es el tamaño máximo de ventana de contexto para Claude, y cómo deberías planificar alrededor de ello?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-021_b",
+      "explanation": "Claude supports up to 200K tokens in its context window. However, you should plan for an effective capacity lower than the maximum: reserve space for the system prompt, tool definitions, and the expected output (max_tokens). In practice, aim to use 70-80% of the window for input content and trigger compaction or summarization before hitting the limit. The 200K window is large but not infinite -- agentic systems that accumulate tool results can fill it faster than expected.",
+      "explanationEs": "Claude soporta hasta 200K tokens en su ventana de contexto. Sin embargo, deberías planificar para una capacidad efectiva menor que el máximo: reservar espacio para el prompt del sistema, definiciones de herramientas y la salida esperada (max_tokens). En la práctica, intenta usar el 70-80% de la ventana para contenido de entrada y activa compactación o resumen antes de alcanzar el límite. La ventana de 200K es grande pero no infinita; los sistemas agentes que acumulan resultados de herramientas pueden llenarla más rápido de lo esperado.",
+      "options": [
+        { "id": "ccaf-cr-021_a", "text": "1 million tokens; it is large enough that context management is unnecessary", "textEs": "1 millón de tokens; es lo suficientemente grande como para que la gestión de contexto sea innecesaria", "order": 1 },
+        { "id": "ccaf-cr-021_b", "text": "200K tokens; plan for 70-80% effective usage, reserving space for system prompt, tools, and output", "textEs": "200K tokens; planificar para 70-80% de uso efectivo, reservando espacio para prompt del sistema, herramientas y salida", "order": 2 },
+        { "id": "ccaf-cr-021_c", "text": "32K tokens; must use RAG for anything larger than a few pages", "textEs": "32K tokens; debe usar RAG para cualquier cosa más grande que unas pocas páginas", "order": 3 },
+        { "id": "ccaf-cr-021_d", "text": "Unlimited; the context window scales automatically with the API tier", "textEs": "Ilimitado; la ventana de contexto escala automáticamente con el nivel de API", "order": 4 }
+      ],
+      "tags": ["context-window", "200k-tokens", "capacity-planning", "limits"]
+    },
+    {
+      "id": "ccaf-cr-022",
+      "text": "What is the best practice for placing critical information within a long context?",
+      "textEs": "¿Cuál es la mejor práctica para colocar información crítica dentro de un contexto largo?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-022_a",
+      "explanation": "Place critical information at the beginning or end of the context, not in the middle. This addresses the 'lost-in-the-middle' effect where models have weaker recall for content in the middle of long contexts. Additionally, use clear headers and structural markers (XML tags) to make important sections stand out. For very critical constraints, repeat them at multiple positions including the end of the context.",
+      "explanationEs": "Coloca la información crítica al inicio o al final del contexto, no en el medio. Esto aborda el efecto 'perdido en el medio' donde los modelos tienen menor capacidad de recordar contenido en el medio de contextos largos. Además, usa encabezados claros y marcadores estructurales (etiquetas XML) para hacer que las secciones importantes destaquen. Para restricciones muy críticas, repítelas en múltiples posiciones incluyendo el final del contexto.",
+      "options": [
+        { "id": "ccaf-cr-022_a", "text": "Place at the beginning or end, not the middle; use structural markers; repeat critical constraints at multiple positions", "textEs": "Colocar al inicio o final, no en el medio; usar marcadores estructurales; repetir restricciones críticas en múltiples posiciones", "order": 1 },
+        { "id": "ccaf-cr-022_b", "text": "Place in the exact middle of the context for balanced attention", "textEs": "Colocar en el medio exacto del contexto para atención equilibrada", "order": 2 },
+        { "id": "ccaf-cr-022_c", "text": "Distribute evenly throughout the context for maximum coverage", "textEs": "Distribuir uniformemente a lo largo del contexto para máxima cobertura", "order": 3 },
+        { "id": "ccaf-cr-022_d", "text": "Position does not matter; Claude processes all positions equally", "textEs": "La posición no importa; Claude procesa todas las posiciones por igual", "order": 4 }
+      ],
+      "tags": ["context-placement", "lost-in-middle", "best-practices", "long-context"]
+    },
+    {
+      "id": "ccaf-cr-023",
+      "text": "What is RAG (Retrieval-Augmented Generation), and when should it be used with Claude?",
+      "textEs": "¿Qué es RAG (Generación Aumentada por Recuperación), y cuándo debe usarse con Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-023_c",
+      "explanation": "RAG retrieves relevant documents or chunks from an external knowledge base and includes them in the prompt context before Claude generates a response. Use it when: the total knowledge base exceeds the context window, you need up-to-date information beyond Claude's training data, you want to ground responses in specific documents, or you need to search across large document collections. RAG combines the retrieval precision of search with Claude's generation capabilities.",
+      "explanationEs": "RAG recupera documentos o fragmentos relevantes de una base de conocimiento externa y los incluye en el contexto del prompt antes de que Claude genere una respuesta. Úsalo cuando: la base de conocimiento total excede la ventana de contexto, necesitas información actualizada más allá de los datos de entrenamiento de Claude, quieres anclar respuestas en documentos específicos o necesitas buscar a través de grandes colecciones de documentos. RAG combina la precisión de recuperación de la búsqueda con las capacidades de generación de Claude.",
+      "options": [
+        { "id": "ccaf-cr-023_a", "text": "A technique for compressing the context window to fit more content", "textEs": "Una técnica para comprimir la ventana de contexto para ajustar más contenido", "order": 1 },
+        { "id": "ccaf-cr-023_b", "text": "A fine-tuning method that trains Claude on your specific documents", "textEs": "Un método de ajuste fino que entrena a Claude con tus documentos específicos", "order": 2 },
+        { "id": "ccaf-cr-023_c", "text": "Retrieving relevant documents from a knowledge base to include in the prompt; used when data exceeds context window or needs to be current", "textEs": "Recuperar documentos relevantes de una base de conocimiento para incluir en el prompt; usado cuando los datos exceden la ventana de contexto o necesitan estar actualizados", "order": 3 },
+        { "id": "ccaf-cr-023_d", "text": "An API feature that automatically searches the internet for relevant information", "textEs": "Una función de la API que busca automáticamente en internet información relevante", "order": 4 }
+      ],
+      "tags": ["rag", "retrieval", "knowledge-base", "document-search"]
+    },
+    {
+      "id": "ccaf-cr-024",
+      "text": "How does the cache_control feature work for prompt caching, and what is the TTL?",
+      "textEs": "¿Cómo funciona la función cache_control para caché de prompts, y cuál es el TTL?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-024_d",
+      "explanation": "cache_control breakpoints mark the end of cacheable content in your API request. The cached prefix is stored and reused when subsequent requests have the exact same prefix. The default TTL (Time To Live) is 5 minutes, which resets each time the cache is accessed. This means active agentic loops keep the cache warm, but idle periods longer than 5 minutes require a fresh cache write. Cache reads are 90% cheaper than regular input tokens.",
+      "explanationEs": "Los puntos de control cache_control marcan el final del contenido cacheable en tu solicitud de API. El prefijo cacheado se almacena y reutiliza cuando solicitudes posteriores tienen exactamente el mismo prefijo. El TTL (Tiempo de Vida) predeterminado es 5 minutos, que se reinicia cada vez que se accede al caché. Esto significa que los bucles agentes activos mantienen el caché activo, pero períodos inactivos mayores a 5 minutos requieren una escritura de caché nueva. Las lecturas de caché son 90% más baratas que los tokens de entrada regulares.",
+      "options": [
+        { "id": "ccaf-cr-024_a", "text": "Caches are permanent and never expire; they persist across all API keys in your organization", "textEs": "Los cachés son permanentes y nunca expiran; persisten a través de todas las claves API en tu organización", "order": 1 },
+        { "id": "ccaf-cr-024_b", "text": "TTL is 24 hours; caches are shared across all users making the same request", "textEs": "El TTL es 24 horas; los cachés se comparten entre todos los usuarios que hacen la misma solicitud", "order": 2 },
+        { "id": "ccaf-cr-024_c", "text": "TTL is 1 hour; caches are invalidated when the model version changes", "textEs": "El TTL es 1 hora; los cachés se invalidan cuando la versión del modelo cambia", "order": 3 },
+        { "id": "ccaf-cr-024_d", "text": "Default 5-minute TTL that resets on access; cached prefix must match exactly; reads are 90% cheaper than regular input", "textEs": "TTL predeterminado de 5 minutos que se reinicia al acceder; el prefijo cacheado debe coincidir exactamente; las lecturas son 90% más baratas que entrada regular", "order": 4 }
+      ],
+      "tags": ["cache-control", "ttl", "prompt-caching", "cost-optimization"]
+    },
+    {
+      "id": "ccaf-cr-025",
+      "text": "What is the economics of prompt caching -- when does it save money versus cost more?",
+      "textEs": "¿Cuál es la economía del caché de prompts -- cuándo ahorra dinero versus cuándo cuesta más?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-025_b",
+      "explanation": "Cache writes cost 25% more than regular input tokens, but cache reads cost 90% less. This means caching saves money when the same prefix is reused at least 2 times (the savings from reads offset the write premium). Caching is most cost-effective for: agentic loops with many turns, high-volume classification with the same system prompt, and any pattern where a large stable prefix is reused frequently within the 5-minute TTL window.",
+      "explanationEs": "Las escrituras de caché cuestan 25% más que los tokens de entrada regulares, pero las lecturas de caché cuestan 90% menos. Esto significa que el caché ahorra dinero cuando el mismo prefijo se reutiliza al menos 2 veces (los ahorros de las lecturas compensan la prima de escritura). El caché es más rentable para: bucles agentes con muchos turnos, clasificación de alto volumen con el mismo prompt del sistema y cualquier patrón donde un prefijo estable grande se reutiliza frecuentemente dentro de la ventana de TTL de 5 minutos.",
+      "options": [
+        { "id": "ccaf-cr-025_a", "text": "Caching always saves money regardless of usage patterns", "textEs": "El caché siempre ahorra dinero independientemente de los patrones de uso", "order": 1 },
+        { "id": "ccaf-cr-025_b", "text": "Write premium is 25%, read discount is 90%; saves money when prefix is reused 2+ times within 5-minute TTL", "textEs": "La prima de escritura es 25%, el descuento de lectura es 90%; ahorra dinero cuando el prefijo se reutiliza 2+ veces dentro del TTL de 5 minutos", "order": 2 },
+        { "id": "ccaf-cr-025_c", "text": "Caching is free; there is no additional cost for cache writes or reads", "textEs": "El caché es gratis; no hay costo adicional por escrituras o lecturas de caché", "order": 3 },
+        { "id": "ccaf-cr-025_d", "text": "Caching always costs more but provides faster response times", "textEs": "El caché siempre cuesta más pero proporciona tiempos de respuesta más rápidos", "order": 4 }
+      ],
+      "tags": ["prompt-caching", "economics", "cost-optimization", "write-premium"]
+    },
+    {
+      "id": "ccaf-cr-026",
+      "text": "What is exponential backoff, and how should it be implemented for Claude API retries?",
+      "textEs": "¿Qué es el retroceso exponencial, y cómo debe implementarse para reintentos de la API de Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-026_a",
+      "explanation": "Exponential backoff increases the wait time between retries exponentially (e.g., 1s, 2s, 4s, 8s...) with jitter (random variation) to prevent thundering herd problems. For Claude API retries: start with a base delay (1 second), double the delay on each retry, add random jitter, set a maximum retry count (3-5), and only retry on transient errors (529 overloaded, 429 rate limit). Do not retry on 4xx client errors (bad request, auth failure) as they will keep failing.",
+      "explanationEs": "El retroceso exponencial aumenta el tiempo de espera entre reintentos de forma exponencial (por ejemplo, 1s, 2s, 4s, 8s...) con jitter (variación aleatoria) para prevenir problemas de avalancha. Para reintentos de la API de Claude: comenzar con un retraso base (1 segundo), duplicar el retraso en cada reintento, agregar jitter aleatorio, establecer un conteo máximo de reintentos (3-5) y solo reintentar en errores transitorios (529 sobrecargado, 429 límite de tasa). No reintentar en errores 4xx del cliente (solicitud incorrecta, falla de auth) ya que seguirán fallando.",
+      "options": [
+        { "id": "ccaf-cr-026_a", "text": "Double wait time each retry with jitter; retry only transient errors (529, 429); max 3-5 retries; do not retry client errors", "textEs": "Duplicar tiempo de espera en cada reintento con jitter; reintentar solo errores transitorios (529, 429); máximo 3-5 reintentos; no reintentar errores del cliente", "order": 1 },
+        { "id": "ccaf-cr-026_b", "text": "Wait a fixed 5 seconds between all retries for simplicity", "textEs": "Esperar 5 segundos fijos entre todos los reintentos por simplicidad", "order": 2 },
+        { "id": "ccaf-cr-026_c", "text": "Retry immediately without waiting; speed is more important than server load", "textEs": "Reintentar inmediatamente sin esperar; la velocidad es más importante que la carga del servidor", "order": 3 },
+        { "id": "ccaf-cr-026_d", "text": "Always retry exactly 10 times regardless of the error type", "textEs": "Siempre reintentar exactamente 10 veces independientemente del tipo de error", "order": 4 }
+      ],
+      "tags": ["exponential-backoff", "retries", "rate-limiting", "reliability"]
+    },
+    {
+      "id": "ccaf-cr-027",
+      "text": "What is the difference between RPM (Requests Per Minute) and TPM (Tokens Per Minute) rate limits?",
+      "textEs": "¿Cuál es la diferencia entre los límites de tasa RPM (Solicitudes Por Minuto) y TPM (Tokens Por Minuto)?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-027_c",
+      "explanation": "RPM limits the total number of API requests per minute regardless of their size. TPM limits the total tokens (input + output) processed per minute. You can hit either limit independently: many small requests may hit RPM before TPM, while few large requests may hit TPM before RPM. Both return 429 rate_limit_error responses. Design your system to respect both limits, and implement request queuing if you approach either threshold.",
+      "explanationEs": "RPM limita el número total de solicitudes API por minuto independientemente de su tamaño. TPM limita los tokens totales (entrada + salida) procesados por minuto. Puedes alcanzar cualquier límite independientemente: muchas solicitudes pequeñas pueden alcanzar RPM antes de TPM, mientras que pocas solicitudes grandes pueden alcanzar TPM antes de RPM. Ambos devuelven respuestas 429 rate_limit_error. Diseña tu sistema para respetar ambos límites e implementa cola de solicitudes si te acercas a cualquier umbral.",
+      "options": [
+        { "id": "ccaf-cr-027_a", "text": "RPM measures response speed; TPM measures throughput capacity", "textEs": "RPM mide la velocidad de respuesta; TPM mide la capacidad de rendimiento", "order": 1 },
+        { "id": "ccaf-cr-027_b", "text": "They are the same limit expressed in different units", "textEs": "Son el mismo límite expresado en diferentes unidades", "order": 2 },
+        { "id": "ccaf-cr-027_c", "text": "RPM limits total requests per minute; TPM limits total tokens per minute; either can be hit independently", "textEs": "RPM limita solicitudes totales por minuto; TPM limita tokens totales por minuto; cualquiera puede alcanzarse independientemente", "order": 3 },
+        { "id": "ccaf-cr-027_d", "text": "RPM applies to input only; TPM applies to output only", "textEs": "RPM aplica solo a entrada; TPM aplica solo a salida", "order": 4 }
+      ],
+      "tags": ["rate-limiting", "rpm", "tpm", "api-limits"]
+    },
+    {
+      "id": "ccaf-cr-028",
+      "text": "What is the overloaded_error (529) response, and how should it be handled?",
+      "textEs": "¿Qué es la respuesta overloaded_error (529), y cómo debe manejarse?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-028_d",
+      "explanation": "The 529 overloaded_error occurs when the Anthropic API is experiencing high load and temporarily cannot process your request. Unlike rate limiting (429), this is a server-side capacity issue. Handle it with exponential backoff retries, as the condition is transient. The Anthropic SDK handles this automatically with built-in retry logic. Do not treat it as a permanent failure -- it typically resolves within seconds to minutes.",
+      "explanationEs": "El error 529 overloaded_error ocurre cuando la API de Anthropic está experimentando alta carga y temporalmente no puede procesar tu solicitud. A diferencia del limitado de tasa (429), este es un problema de capacidad del servidor. Manéjalo con reintentos de retroceso exponencial, ya que la condición es transitoria. El SDK de Anthropic maneja esto automáticamente con lógica de reintento integrada. No lo trates como un fallo permanente; típicamente se resuelve en segundos a minutos.",
+      "options": [
+        { "id": "ccaf-cr-028_a", "text": "A permanent error indicating your API key is suspended; contact support", "textEs": "Un error permanente que indica que tu clave API está suspendida; contacta a soporte", "order": 1 },
+        { "id": "ccaf-cr-028_b", "text": "An error indicating the request is too large; reduce the context size", "textEs": "Un error que indica que la solicitud es muy grande; reduce el tamaño del contexto", "order": 2 },
+        { "id": "ccaf-cr-028_c", "text": "An authentication error; refresh your API key", "textEs": "Un error de autenticación; renueva tu clave API", "order": 3 },
+        { "id": "ccaf-cr-028_d", "text": "A transient server overload; retry with exponential backoff; the SDK handles it automatically; typically resolves quickly", "textEs": "Una sobrecarga transitoria del servidor; reintentar con retroceso exponencial; el SDK lo maneja automáticamente; típicamente se resuelve rápidamente", "order": 4 }
+      ],
+      "tags": ["overloaded-error", "529", "transient", "retry"]
+    },
+    {
+      "id": "ccaf-cr-029",
+      "text": "How does the rate_limit_error (429) differ from overloaded_error (529)?",
+      "textEs": "¿Cómo difiere el rate_limit_error (429) del overloaded_error (529)?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-029_b",
+      "explanation": "429 rate_limit_error means YOUR usage has exceeded the allowed limits (RPM or TPM). It is specific to your API key/organization. The response includes headers telling you when the limit resets. 529 overloaded_error means the SERVER is too busy regardless of your usage. The key difference: 429 is your problem (reduce request rate or upgrade tier), while 529 is a system-wide condition (just retry). Both should use exponential backoff, but 429 may require adjusting your request patterns.",
+      "explanationEs": "429 rate_limit_error significa que TU uso ha excedido los límites permitidos (RPM o TPM). Es específico de tu clave API/organización. La respuesta incluye headers que te dicen cuándo se reinicia el límite. 529 overloaded_error significa que el SERVIDOR está demasiado ocupado independientemente de tu uso. La diferencia clave: 429 es tu problema (reduce la tasa de solicitudes o actualiza tu nivel), mientras que 529 es una condición del sistema (solo reintenta). Ambos deben usar retroceso exponencial, pero 429 puede requerir ajustar tus patrones de solicitudes.",
+      "options": [
+        { "id": "ccaf-cr-029_a", "text": "They are the same error with different codes for backwards compatibility", "textEs": "Son el mismo error con diferentes códigos por compatibilidad retroactiva", "order": 1 },
+        { "id": "ccaf-cr-029_b", "text": "429 is YOUR rate limit exceeded (reduce requests/upgrade); 529 is server overload (just retry); both use backoff", "textEs": "429 es TU límite de tasa excedido (reduce solicitudes/actualiza); 529 es sobrecarga del servidor (solo reintenta); ambos usan retroceso", "order": 2 },
+        { "id": "ccaf-cr-029_c", "text": "429 applies to input tokens; 529 applies to output tokens", "textEs": "429 aplica a tokens de entrada; 529 aplica a tokens de salida", "order": 3 },
+        { "id": "ccaf-cr-029_d", "text": "429 is recoverable; 529 means the service is down and requires manual intervention", "textEs": "429 es recuperable; 529 significa que el servicio está caído y requiere intervención manual", "order": 4 }
+      ],
+      "tags": ["rate-limit-error", "429", "529", "error-handling"]
+    },
+    {
+      "id": "ccaf-cr-030",
+      "text": "What content does Anthropic's usage policy prohibit sending to Claude?",
+      "textEs": "¿Qué contenido prohíbe enviar a Claude la política de uso de Anthropic?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-030_a",
+      "explanation": "Anthropic's usage policy prohibits using Claude for: generating CSAM or content sexualizing minors, creating weapons of mass destruction instructions, generating targeted harassment, creating disinformation campaigns, mass surveillance, and other activities that cause serious harm. The policy also covers content filtering rules -- Claude will refuse requests that violate these policies regardless of prompt engineering. Understanding these boundaries is important for designing compliant applications.",
+      "explanationEs": "La política de uso de Anthropic prohíbe usar Claude para: generar CSAM o contenido que sexualice menores, crear instrucciones de armas de destrucción masiva, generar acoso dirigido, crear campañas de desinformación, vigilancia masiva y otras actividades que causen daño grave. La política también cubre reglas de filtrado de contenido; Claude rechazará solicitudes que violen estas políticas independientemente de la ingeniería de prompts. Entender estos límites es importante para diseñar aplicaciones que cumplan las normas.",
+      "options": [
+        { "id": "ccaf-cr-030_a", "text": "CSAM, weapons of mass destruction, targeted harassment, disinformation campaigns, mass surveillance, and other serious harms", "textEs": "CSAM, armas de destrucción masiva, acoso dirigido, campañas de desinformación, vigilancia masiva y otros daños graves", "order": 1 },
+        { "id": "ccaf-cr-030_b", "text": "Only copyrighted content; all other content types are allowed", "textEs": "Solo contenido con derechos de autor; todos los demás tipos de contenido están permitidos", "order": 2 },
+        { "id": "ccaf-cr-030_c", "text": "Any content longer than 100K tokens per request", "textEs": "Cualquier contenido mayor a 100K tokens por solicitud", "order": 3 },
+        { "id": "ccaf-cr-030_d", "text": "Content in non-English languages", "textEs": "Contenido en idiomas que no sean inglés", "order": 4 }
+      ],
+      "tags": ["usage-policy", "content-filtering", "safety", "compliance"]
+    },
+    {
+      "id": "ccaf-cr-031",
+      "text": "How can you implement a RAG system that works effectively with Claude?",
+      "textEs": "¿Cómo puedes implementar un sistema RAG que funcione efectivamente con Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-031_c",
+      "explanation": "An effective RAG system for Claude includes: (1) chunk documents into semantically meaningful segments (not arbitrary splits), (2) use embeddings for semantic search to find relevant chunks, (3) include metadata (source, page, date) with each chunk, (4) place retrieved chunks in tagged sections (e.g., <retrieved_documents>), (5) instruct Claude to only use information from the provided documents, and (6) request citations pointing back to specific chunks.",
+      "explanationEs": "Un sistema RAG efectivo para Claude incluye: (1) fragmentar documentos en segmentos semánticamente significativos (no divisiones arbitrarias), (2) usar embeddings para búsqueda semántica para encontrar fragmentos relevantes, (3) incluir metadatos (fuente, página, fecha) con cada fragmento, (4) colocar fragmentos recuperados en secciones etiquetadas (por ejemplo, <retrieved_documents>), (5) instruir a Claude para que solo use información de los documentos proporcionados y (6) solicitar citas que apunten a fragmentos específicos.",
+      "options": [
+        { "id": "ccaf-cr-031_a", "text": "Pass the entire knowledge base as context in every request", "textEs": "Pasar toda la base de conocimiento como contexto en cada solicitud", "order": 1 },
+        { "id": "ccaf-cr-031_b", "text": "Use keyword search only; embeddings are not compatible with Claude", "textEs": "Usar solo búsqueda por palabras clave; los embeddings no son compatibles con Claude", "order": 2 },
+        { "id": "ccaf-cr-031_c", "text": "Semantic chunking, embedding-based search, metadata-enriched chunks in tagged sections, grounding instructions, and citation requests", "textEs": "Fragmentación semántica, búsqueda basada en embeddings, fragmentos enriquecidos con metadatos en secciones etiquetadas, instrucciones de anclaje y solicitudes de citas", "order": 3 },
+        { "id": "ccaf-cr-031_d", "text": "Fine-tune Claude on your document corpus for built-in knowledge retrieval", "textEs": "Ajustar Claude con tu corpus de documentos para recuperación de conocimiento integrada", "order": 4 }
+      ],
+      "tags": ["rag", "semantic-search", "embeddings", "chunking"]
+    },
+    {
+      "id": "ccaf-cr-032",
+      "text": "What summarization strategies are recommended for managing long agentic conversations?",
+      "textEs": "¿Qué estrategias de resumen se recomiendan para gestionar conversaciones agentes largas?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-032_d",
+      "explanation": "Recommended strategies include: (1) extract and persist key facts in a separate block before summarizing, (2) summarize conversational exchanges while keeping tool results and decisions intact, (3) use hierarchical summarization (summarize sections, not the entire history at once), (4) trigger at 70-80% context usage, not when full, (5) maintain a 'current task state' section that is always up-to-date, and (6) never summarize the system prompt or most recent turns.",
+      "explanationEs": "Las estrategias recomendadas incluyen: (1) extraer y persistir hechos clave en un bloque separado antes de resumir, (2) resumir intercambios conversacionales mientras se mantienen resultados de herramientas y decisiones intactos, (3) usar resumen jerárquico (resumir secciones, no todo el historial de una vez), (4) activar al 70-80% de uso del contexto, no cuando está lleno, (5) mantener una sección de 'estado actual de la tarea' siempre actualizada y (6) nunca resumir el prompt del sistema ni los turnos más recientes.",
+      "options": [
+        { "id": "ccaf-cr-032_a", "text": "Delete the oldest 50% of messages when context is full", "textEs": "Eliminar el 50% más antiguo de los mensajes cuando el contexto está lleno", "order": 1 },
+        { "id": "ccaf-cr-032_b", "text": "Summarize everything into a single paragraph and restart the conversation", "textEs": "Resumir todo en un solo párrafo y reiniciar la conversación", "order": 2 },
+        { "id": "ccaf-cr-032_c", "text": "Never summarize; start a new session when context is full", "textEs": "Nunca resumir; iniciar una nueva sesión cuando el contexto está lleno", "order": 3 },
+        { "id": "ccaf-cr-032_d", "text": "Persist key facts separately, summarize exchanges hierarchically at 70-80% usage, keep task state and recent turns intact", "textEs": "Persistir hechos clave separadamente, resumir intercambios jerárquicamente al 70-80% de uso, mantener estado de tarea y turnos recientes intactos", "order": 4 }
+      ],
+      "tags": ["summarization", "agentic-conversations", "context-management", "strategies"]
+    },
+    {
+      "id": "ccaf-cr-033",
+      "text": "How should error responses from the Claude API be categorized for handling?",
+      "textEs": "¿Cómo deben categorizarse las respuestas de error de la API de Claude para su manejo?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-033_a",
+      "explanation": "API errors should be categorized as: (1) Retryable transient errors (429 rate limit, 529 overloaded) -- retry with backoff, (2) Client errors (400 bad request, 401 unauthorized, 403 forbidden) -- fix the request, do not retry, (3) Content errors (flagged by safety systems) -- adjust content, and (4) Server errors (500 internal) -- retry a few times, then escalate. Each category requires a different handling strategy. The Anthropic SDK provides built-in error types for easy categorization.",
+      "explanationEs": "Los errores de la API deben categorizarse como: (1) Errores transitorios reintentables (429 límite de tasa, 529 sobrecargado) -- reintentar con retroceso, (2) Errores del cliente (400 solicitud incorrecta, 401 no autorizado, 403 prohibido) -- corregir la solicitud, no reintentar, (3) Errores de contenido (marcados por sistemas de seguridad) -- ajustar contenido, y (4) Errores del servidor (500 interno) -- reintentar algunas veces, luego escalar. Cada categoría requiere una estrategia de manejo diferente. El SDK de Anthropic proporciona tipos de error integrados para fácil categorización.",
+      "options": [
+        { "id": "ccaf-cr-033_a", "text": "Retryable transient (429, 529), client errors (400, 401, 403 -- fix, don't retry), content errors (adjust), server errors (500 -- retry then escalate)", "textEs": "Transitorios reintentables (429, 529), errores del cliente (400, 401, 403 -- corregir, no reintentar), errores de contenido (ajustar), errores del servidor (500 -- reintentar luego escalar)", "order": 1 },
+        { "id": "ccaf-cr-033_b", "text": "All errors should be retried 3 times before failing", "textEs": "Todos los errores deben reintentarse 3 veces antes de fallar", "order": 2 },
+        { "id": "ccaf-cr-033_c", "text": "No errors should be retried; all should be reported to the user immediately", "textEs": "Ningún error debe reintentarse; todos deben reportarse al usuario inmediatamente", "order": 3 },
+        { "id": "ccaf-cr-033_d", "text": "Errors are categorized by HTTP status code only; no semantic categorization is needed", "textEs": "Los errores se categorizan solo por código de estado HTTP; no se necesita categorización semántica", "order": 4 }
+      ],
+      "tags": ["error-handling", "categorization", "retryable", "client-errors"]
+    },
+    {
+      "id": "ccaf-cr-034",
+      "text": "What is the role of constitutional AI principles in Claude's content filtering?",
+      "textEs": "¿Cuál es el rol de los principios de IA constitucional en el filtrado de contenido de Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-034_c",
+      "explanation": "Constitutional AI principles are embedded in Claude's training, creating built-in content filtering that operates independently of prompt instructions. Claude will refuse harmful content even if the prompt explicitly asks for it. These principles guide Claude to be helpful while avoiding harm, acknowledge limitations, decline to assist with dangerous activities, and maintain honesty. This means developers cannot override safety filters through prompt engineering alone -- the filtering is at the model level.",
+      "explanationEs": "Los principios de IA constitucional están integrados en el entrenamiento de Claude, creando filtrado de contenido incorporado que opera independientemente de las instrucciones del prompt. Claude rechazará contenido dañino incluso si el prompt lo pide explícitamente. Estos principios guían a Claude a ser útil mientras evita el daño, reconoce limitaciones, se niega a asistir con actividades peligrosas y mantiene la honestidad. Esto significa que los desarrolladores no pueden anular los filtros de seguridad solo a través de ingeniería de prompts; el filtrado está a nivel del modelo.",
+      "options": [
+        { "id": "ccaf-cr-034_a", "text": "They are configurable rules that developers can adjust per API key", "textEs": "Son reglas configurables que los desarrolladores pueden ajustar por clave API", "order": 1 },
+        { "id": "ccaf-cr-034_b", "text": "They only apply to the free tier; paid users can disable content filtering", "textEs": "Solo aplican al nivel gratuito; los usuarios pagados pueden deshabilitar el filtrado de contenido", "order": 2 },
+        { "id": "ccaf-cr-034_c", "text": "Embedded in training, creating model-level filtering that cannot be overridden by prompts; Claude refuses harmful content regardless of instructions", "textEs": "Integrados en el entrenamiento, creando filtrado a nivel de modelo que no puede anularse por prompts; Claude rechaza contenido dañino independientemente de las instrucciones", "order": 3 },
+        { "id": "ccaf-cr-034_d", "text": "They are a post-processing layer applied after Claude generates its response", "textEs": "Son una capa de post-procesamiento aplicada después de que Claude genera su respuesta", "order": 4 }
+      ],
+      "tags": ["constitutional-ai", "content-filtering", "safety", "model-level"]
+    },
+    {
+      "id": "ccaf-cr-035",
+      "text": "How should you design a model evaluation framework for Claude-based applications?",
+      "textEs": "¿Cómo deberías diseñar un framework de evaluación de modelos para aplicaciones basadas en Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-035_b",
+      "explanation": "An effective evaluation framework includes: (1) define clear, measurable success criteria for your specific use case, (2) create a diverse test set covering normal cases and edge cases, (3) use both automated metrics (accuracy, F1 score, format compliance) and human evaluation, (4) test across different inputs that represent production distribution, (5) evaluate for hallucination, instruction adherence, and safety, (6) run evaluations on model upgrades before deploying, and (7) track metrics over time for regression detection.",
+      "explanationEs": "Un framework de evaluación efectivo incluye: (1) definir criterios de éxito claros y medibles para tu caso de uso específico, (2) crear un conjunto de pruebas diverso cubriendo casos normales y límite, (3) usar tanto métricas automatizadas (precisión, puntuación F1, cumplimiento de formato) como evaluación humana, (4) probar a través de diferentes entradas que representen la distribución de producción, (5) evaluar alucinaciones, adherencia a instrucciones y seguridad, (6) ejecutar evaluaciones en actualizaciones de modelo antes de desplegar y (7) rastrear métricas a lo largo del tiempo para detección de regresiones.",
+      "options": [
+        { "id": "ccaf-cr-035_a", "text": "Only test with 5-10 examples; larger test sets are unnecessary for AI evaluation", "textEs": "Solo probar con 5-10 ejemplos; conjuntos de prueba más grandes son innecesarios para evaluación de IA", "order": 1 },
+        { "id": "ccaf-cr-035_b", "text": "Clear success criteria, diverse test set, automated + human metrics, edge case coverage, hallucination testing, and regression tracking over time", "textEs": "Criterios de éxito claros, conjunto de pruebas diverso, métricas automatizadas + humanas, cobertura de casos límite, pruebas de alucinación y rastreo de regresiones a lo largo del tiempo", "order": 2 },
+        { "id": "ccaf-cr-035_c", "text": "Rely on Claude's self-reported confidence scores as the primary evaluation metric", "textEs": "Confiar en las puntuaciones de confianza auto-reportadas de Claude como métrica de evaluación principal", "order": 3 },
+        { "id": "ccaf-cr-035_d", "text": "Compare Claude's output to GPT-4's output; whichever matches the other more closely is correct", "textEs": "Comparar la salida de Claude con la de GPT-4; la que más coincida con la otra es la correcta", "order": 4 }
+      ],
+      "tags": ["model-evaluation", "testing", "metrics", "regression"]
+    },
+    {
+      "id": "ccaf-cr-036",
+      "text": "What techniques reduce hallucinations in Claude's responses for factual tasks?",
+      "textEs": "¿Qué técnicas reducen las alucinaciones en las respuestas de Claude para tareas factuales?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-036_d",
+      "explanation": "Key techniques include: (1) provide all relevant source documents in the context (grounding), (2) instruct Claude to only use provided information, not prior knowledge, (3) include 'unknown/unclear' options in output schemas, (4) request citations/evidence for each claim, (5) use the API citations feature for automatic source attribution, (6) implement a verification pass that checks extracted facts against sources, (7) lower temperature for deterministic extraction, and (8) use chain-of-thought to make reasoning auditable.",
+      "explanationEs": "Las técnicas clave incluyen: (1) proporcionar todos los documentos fuente relevantes en el contexto (anclaje), (2) instruir a Claude para que solo use información proporcionada, no conocimiento previo, (3) incluir opciones 'unknown/unclear' en esquemas de salida, (4) solicitar citas/evidencia para cada afirmación, (5) usar la función de citas de la API para atribución automática de fuentes, (6) implementar una pasada de verificación que compruebe hechos extraídos contra las fuentes, (7) reducir la temperatura para extracción determinista y (8) usar cadena de pensamiento para hacer el razonamiento auditable.",
+      "options": [
+        { "id": "ccaf-cr-036_a", "text": "Use only the most expensive model (Opus); smaller models always hallucinate more", "textEs": "Usar solo el modelo más costoso (Opus); los modelos más pequeños siempre alucinan más", "order": 1 },
+        { "id": "ccaf-cr-036_b", "text": "Set temperature to exactly 0.42 for optimal accuracy", "textEs": "Establecer temperatura en exactamente 0.42 para precisión óptima", "order": 2 },
+        { "id": "ccaf-cr-036_c", "text": "Ask Claude 'Are you sure?' after each response to trigger self-correction", "textEs": "Preguntar a Claude '¿Estás seguro?' después de cada respuesta para activar auto-corrección", "order": 3 },
+        { "id": "ccaf-cr-036_d", "text": "Ground in source documents, use 'unknown' options, request citations, enable API citations, verify against sources, and lower temperature", "textEs": "Anclar en documentos fuente, usar opciones 'unknown', solicitar citas, habilitar citas de API, verificar contra fuentes y reducir temperatura", "order": 4 }
+      ],
+      "tags": ["hallucination-reduction", "grounding", "citations", "verification"]
+    },
+    {
+      "id": "ccaf-cr-037",
+      "text": "What is citation verification, and how should it be implemented programmatically?",
+      "textEs": "¿Qué es la verificación de citas, y cómo debe implementarse programáticamente?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-037_a",
+      "explanation": "Citation verification checks that Claude's cited sources actually support the claims made. Implement it by: (1) requiring Claude to output an 'evidence' field with direct quotes from the source, (2) programmatically searching the source document for the quoted text, (3) flagging claims where the quote cannot be found or does not support the claim, (4) using the API citations feature to get automatic source pointers, and (5) implementing a second-pass verification where another Claude call checks if the evidence supports the claim.",
+      "explanationEs": "La verificación de citas comprueba que las fuentes citadas por Claude realmente respaldan las afirmaciones hechas. Impleméntala: (1) requiriendo que Claude produzca un campo 'evidence' con citas directas de la fuente, (2) buscando programáticamente el texto citado en el documento fuente, (3) marcando afirmaciones donde la cita no se encuentra o no respalda la afirmación, (4) usando la función de citas de la API para obtener punteros automáticos a fuentes y (5) implementando una pasada de verificación secundaria donde otra llamada a Claude verifica si la evidencia respalda la afirmación.",
+      "options": [
+        { "id": "ccaf-cr-037_a", "text": "Require evidence fields, programmatically search sources for quotes, flag unsupported claims, use API citations, and implement verification passes", "textEs": "Requerir campos de evidencia, buscar programáticamente fuentes por citas, marcar afirmaciones no respaldadas, usar citas de API e implementar pasadas de verificación", "order": 1 },
+        { "id": "ccaf-cr-037_b", "text": "Trust Claude's citations implicitly; they are generated from the same context", "textEs": "Confiar implícitamente en las citas de Claude; se generan del mismo contexto", "order": 2 },
+        { "id": "ccaf-cr-037_c", "text": "Use a third-party plagiarism checker to verify all citations", "textEs": "Usar un verificador de plagio de terceros para verificar todas las citas", "order": 3 },
+        { "id": "ccaf-cr-037_d", "text": "Citation verification is unnecessary when using grounding instructions", "textEs": "La verificación de citas es innecesaria cuando se usan instrucciones de anclaje", "order": 4 }
+      ],
+      "tags": ["citation-verification", "evidence", "programmatic", "reliability"]
+    },
+    {
+      "id": "ccaf-cr-038",
+      "text": "How do you handle context window overflow in a production agentic system?",
+      "textEs": "¿Cómo manejas el desbordamiento de la ventana de contexto en un sistema agente de producción?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-038_c",
+      "explanation": "Handle context overflow with a multi-layered approach: (1) monitor token usage and trigger compaction at 70-80% threshold, (2) implement hierarchical summarization that preserves facts, (3) use subagent delegation to offload subtasks to fresh contexts, (4) write intermediate results to files (scratchpad) instead of keeping them in context, (5) have a graceful degradation path (save state and start a new session if needed), and (6) use prompt caching to reduce the cost of large contexts.",
+      "explanationEs": "Maneja el desbordamiento de contexto con un enfoque de múltiples capas: (1) monitorear uso de tokens y activar compactación al umbral de 70-80%, (2) implementar resumen jerárquico que preserve hechos, (3) usar delegación a subagentes para descargar subtareas a contextos nuevos, (4) escribir resultados intermedios en archivos (scratchpad) en lugar de mantenerlos en contexto, (5) tener una ruta de degradación controlada (guardar estado e iniciar nueva sesión si es necesario) y (6) usar caché de prompts para reducir el costo de contextos grandes.",
+      "options": [
+        { "id": "ccaf-cr-038_a", "text": "Simply truncate the conversation from the beginning; oldest messages are least important", "textEs": "Simplemente truncar la conversación desde el inicio; los mensajes más antiguos son menos importantes", "order": 1 },
+        { "id": "ccaf-cr-038_b", "text": "Request a larger context window from Anthropic for your specific use case", "textEs": "Solicitar una ventana de contexto más grande a Anthropic para tu caso de uso específico", "order": 2 },
+        { "id": "ccaf-cr-038_c", "text": "Monitor and compact at 70-80%, hierarchical summarization, subagent delegation, scratchpad files, graceful degradation, and prompt caching", "textEs": "Monitorear y compactar al 70-80%, resumen jerárquico, delegación a subagentes, archivos scratchpad, degradación controlada y caché de prompts", "order": 3 },
+        { "id": "ccaf-cr-038_d", "text": "Stop the agent and display an error message to the user", "textEs": "Detener el agente y mostrar un mensaje de error al usuario", "order": 4 }
+      ],
+      "tags": ["context-overflow", "production", "compaction", "graceful-degradation"]
+    },
+    {
+      "id": "ccaf-cr-039",
+      "text": "What is the minimum token length for a cacheable prefix in prompt caching?",
+      "textEs": "¿Cuál es la longitud mínima de tokens para un prefijo cacheable en el caché de prompts?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-039_b",
+      "explanation": "The minimum cacheable prefix length is 1,024 tokens for Claude Sonnet and Opus, and 2,048 tokens for Claude Haiku. Prefixes shorter than this threshold cannot be cached. This means very short system prompts alone may not reach the minimum; you may need to include tool definitions or reference documents in the cacheable prefix to meet the threshold. The minimum exists because the overhead of caching very small prefixes outweighs the savings.",
+      "explanationEs": "La longitud mínima de prefijo cacheable es 1,024 tokens para Claude Sonnet y Opus, y 2,048 tokens para Claude Haiku. Los prefijos más cortos que este umbral no pueden cachearse. Esto significa que prompts de sistema muy cortos solos pueden no alcanzar el mínimo; podrías necesitar incluir definiciones de herramientas o documentos de referencia en el prefijo cacheable para alcanzar el umbral. El mínimo existe porque el costo de cachear prefijos muy pequeños supera los ahorros.",
+      "options": [
+        { "id": "ccaf-cr-039_a", "text": "Any prefix can be cached regardless of length", "textEs": "Cualquier prefijo puede cachearse independientemente de la longitud", "order": 1 },
+        { "id": "ccaf-cr-039_b", "text": "1,024 tokens for Sonnet/Opus and 2,048 for Haiku; shorter prefixes cannot be cached", "textEs": "1,024 tokens para Sonnet/Opus y 2,048 para Haiku; prefijos más cortos no pueden cachearse", "order": 2 },
+        { "id": "ccaf-cr-039_c", "text": "10,000 tokens minimum for all models", "textEs": "10,000 tokens mínimo para todos los modelos", "order": 3 },
+        { "id": "ccaf-cr-039_d", "text": "100 tokens minimum; smaller caches are rounded up", "textEs": "100 tokens mínimo; cachés más pequeños se redondean hacia arriba", "order": 4 }
+      ],
+      "tags": ["prompt-caching", "minimum-length", "tokens", "threshold"]
+    },
+    {
+      "id": "ccaf-cr-040",
+      "text": "What are the retry-after headers in rate limit responses, and how should they be used?",
+      "textEs": "¿Qué son los headers retry-after en respuestas de límite de tasa, y cómo deben usarse?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-040_a",
+      "explanation": "When the API returns a 429 rate limit response, it includes headers indicating when the limit resets. The key headers are: 'retry-after' (seconds to wait before retrying), 'anthropic-ratelimit-requests-remaining' (remaining RPM), and 'anthropic-ratelimit-tokens-remaining' (remaining TPM). Use these headers to implement intelligent rate limiting: wait at least the retry-after duration, and proactively slow down when remaining limits are low.",
+      "explanationEs": "Cuando la API devuelve una respuesta 429 de límite de tasa, incluye headers indicando cuándo se reinicia el límite. Los headers clave son: 'retry-after' (segundos a esperar antes de reintentar), 'anthropic-ratelimit-requests-remaining' (RPM restante) y 'anthropic-ratelimit-tokens-remaining' (TPM restante). Usa estos headers para implementar limitación de tasa inteligente: esperar al menos la duración de retry-after y reducir proactivamente la velocidad cuando los límites restantes son bajos.",
+      "options": [
+        { "id": "ccaf-cr-040_a", "text": "Headers include retry-after seconds and remaining RPM/TPM counts; use them to wait the right duration and proactively slow down", "textEs": "Los headers incluyen segundos de retry-after y conteos restantes de RPM/TPM; usarlos para esperar la duración correcta y reducir velocidad proactivamente", "order": 1 },
+        { "id": "ccaf-cr-040_b", "text": "There are no specific headers; you must calculate the wait time yourself", "textEs": "No hay headers específicos; debes calcular el tiempo de espera tú mismo", "order": 2 },
+        { "id": "ccaf-cr-040_c", "text": "Headers only indicate the error type; they do not provide timing information", "textEs": "Los headers solo indican el tipo de error; no proporcionan información de tiempo", "order": 3 },
+        { "id": "ccaf-cr-040_d", "text": "Headers provide a URL to a dashboard where you can monitor your usage", "textEs": "Los headers proporcionan una URL a un dashboard donde puedes monitorear tu uso", "order": 4 }
+      ],
+      "tags": ["rate-limiting", "retry-after", "headers", "intelligent-throttling"]
+    },
+    {
+      "id": "ccaf-cr-041",
+      "text": "How does the Anthropic SDK handle retries and error recovery automatically?",
+      "textEs": "¿Cómo maneja el SDK de Anthropic los reintentos y la recuperación de errores automáticamente?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-041_c",
+      "explanation": "The official Anthropic SDK (Python and TypeScript) includes built-in retry logic with exponential backoff for transient errors (429 and 529). It automatically detects retryable errors, respects retry-after headers, applies jitter to prevent thundering herd, and allows configuration of max retries and timeouts. The SDK raises specific exception types for different error categories, making error handling cleaner than raw HTTP.",
+      "explanationEs": "El SDK oficial de Anthropic (Python y TypeScript) incluye lógica de reintento incorporada con retroceso exponencial para errores transitorios (429 y 529). Detecta automáticamente errores reintentables, respeta los headers retry-after, aplica jitter para prevenir problemas de avalancha y permite configuración de máximo de reintentos y timeouts. El SDK lanza tipos de excepción específicos para diferentes categorías de error, haciendo el manejo de errores más limpio que HTTP directo.",
+      "options": [
+        { "id": "ccaf-cr-041_a", "text": "The SDK does not handle retries; you must implement all retry logic manually", "textEs": "El SDK no maneja reintentos; debes implementar toda la lógica de reintentos manualmente", "order": 1 },
+        { "id": "ccaf-cr-041_b", "text": "The SDK retries all errors indefinitely until they succeed", "textEs": "El SDK reintenta todos los errores indefinidamente hasta que tengan éxito", "order": 2 },
+        { "id": "ccaf-cr-041_c", "text": "Built-in exponential backoff with jitter for 429/529, respects retry-after headers, configurable max retries, specific exception types", "textEs": "Retroceso exponencial incorporado con jitter para 429/529, respeta headers retry-after, máximo de reintentos configurable, tipos de excepción específicos", "order": 3 },
+        { "id": "ccaf-cr-041_d", "text": "The SDK queues all requests and processes them sequentially to avoid any errors", "textEs": "El SDK encola todas las solicitudes y las procesa secuencialmente para evitar cualquier error", "order": 4 }
+      ],
+      "tags": ["anthropic-sdk", "retries", "error-recovery", "automatic"]
+    },
+    {
+      "id": "ccaf-cr-042",
+      "text": "What is the 'sliding window' approach to context management, and what are its limitations?",
+      "textEs": "¿Qué es el enfoque de 'ventana deslizante' para gestión de contexto, y cuáles son sus limitaciones?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-042_d",
+      "explanation": "The sliding window approach keeps only the most recent N messages (or tokens) in the context, dropping the oldest as new ones are added. It is simple to implement but has significant limitations: it loses important context from early in the conversation, it may drop the original task description, it does not distinguish between important and unimportant messages, and decisions made early in the conversation are lost. Better alternatives include summarization with fact preservation and hierarchical compaction.",
+      "explanationEs": "El enfoque de ventana deslizante mantiene solo los N mensajes (o tokens) más recientes en el contexto, descartando los más antiguos conforme se agregan nuevos. Es simple de implementar pero tiene limitaciones significativas: pierde contexto importante del inicio de la conversación, puede descartar la descripción original de la tarea, no distingue entre mensajes importantes y no importantes, y las decisiones tomadas al inicio de la conversación se pierden. Mejores alternativas incluyen resumen con preservación de hechos y compactación jerárquica.",
+      "options": [
+        { "id": "ccaf-cr-042_a", "text": "It is the recommended approach for all agentic systems due to its simplicity", "textEs": "Es el enfoque recomendado para todos los sistemas agentes debido a su simplicidad", "order": 1 },
+        { "id": "ccaf-cr-042_b", "text": "It works well because the most recent messages are always the most important", "textEs": "Funciona bien porque los mensajes más recientes son siempre los más importantes", "order": 2 },
+        { "id": "ccaf-cr-042_c", "text": "It has no limitations when combined with a large enough context window", "textEs": "No tiene limitaciones cuando se combina con una ventana de contexto lo suficientemente grande", "order": 3 },
+        { "id": "ccaf-cr-042_d", "text": "Keeps only recent messages; limited because it loses early context, task descriptions, and cannot distinguish important from unimportant messages", "textEs": "Mantiene solo mensajes recientes; limitado porque pierde contexto inicial, descripciones de tareas y no puede distinguir mensajes importantes de no importantes", "order": 4 }
+      ],
+      "tags": ["sliding-window", "context-management", "limitations", "alternatives"]
+    },
+    {
+      "id": "ccaf-cr-043",
+      "text": "How do you implement request queuing to stay within rate limits for high-throughput applications?",
+      "textEs": "¿Cómo implementas cola de solicitudes para mantenerte dentro de los límites de tasa para aplicaciones de alto rendimiento?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-043_b",
+      "explanation": "Implement request queuing with: (1) a request queue that holds pending requests, (2) a rate limiter that tracks RPM and TPM usage, (3) token estimation before sending to predict TPM impact, (4) priority levels so critical requests go first, (5) monitoring of rate limit headers from responses to adjust throughput dynamically, and (6) fallback to the Batch API for non-urgent requests to save costs. Use a leaky bucket or token bucket algorithm for smooth rate control.",
+      "explanationEs": "Implementa cola de solicitudes con: (1) una cola de solicitudes que mantiene solicitudes pendientes, (2) un limitador de tasa que rastrea uso de RPM y TPM, (3) estimación de tokens antes de enviar para predecir impacto de TPM, (4) niveles de prioridad para que las solicitudes críticas vayan primero, (5) monitoreo de headers de límite de tasa de respuestas para ajustar el rendimiento dinámicamente y (6) recurrir a la API de lotes para solicitudes no urgentes para ahorrar costos. Usar un algoritmo de cubo con fugas o cubo de tokens para control de tasa suave.",
+      "options": [
+        { "id": "ccaf-cr-043_a", "text": "Simply retry immediately when rate limited; the API will process requests in order", "textEs": "Simplemente reintentar inmediatamente cuando se limite la tasa; la API procesará solicitudes en orden", "order": 1 },
+        { "id": "ccaf-cr-043_b", "text": "Request queue with rate limiter, token estimation, priority levels, dynamic adjustment from headers, and Batch API fallback", "textEs": "Cola de solicitudes con limitador de tasa, estimación de tokens, niveles de prioridad, ajuste dinámico desde headers y recurso a API de lotes", "order": 2 },
+        { "id": "ccaf-cr-043_c", "text": "Create multiple API keys to multiply the available rate limits", "textEs": "Crear múltiples claves API para multiplicar los límites de tasa disponibles", "order": 3 },
+        { "id": "ccaf-cr-043_d", "text": "Add sleep(1) between every request to ensure you never hit the limit", "textEs": "Agregar sleep(1) entre cada solicitud para asegurar que nunca alcances el límite", "order": 4 }
+      ],
+      "tags": ["request-queuing", "rate-limiting", "high-throughput", "token-bucket"]
+    },
+    {
+      "id": "ccaf-cr-044",
+      "text": "What is the role of content filtering in maintaining safety when building applications with Claude?",
+      "textEs": "¿Cuál es el rol del filtrado de contenido para mantener la seguridad al construir aplicaciones con Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-044_a",
+      "explanation": "Content filtering operates at multiple levels: (1) Claude's built-in constitutional AI training (model-level), (2) API-level filtering that blocks policy-violating inputs, (3) application-level input validation that sanitizes user content before it reaches Claude, and (4) output filtering that screens Claude's responses before they reach end users. Defense in depth is important -- do not rely solely on one layer. Each layer catches different types of problematic content.",
+      "explanationEs": "El filtrado de contenido opera a múltiples niveles: (1) el entrenamiento de IA constitucional incorporado de Claude (nivel de modelo), (2) filtrado a nivel de API que bloquea entradas que violan políticas, (3) validación de entrada a nivel de aplicación que sanitiza contenido del usuario antes de que llegue a Claude y (4) filtrado de salida que examina las respuestas de Claude antes de que lleguen a los usuarios finales. La defensa en profundidad es importante; no dependas solo de una capa. Cada capa captura diferentes tipos de contenido problemático.",
+      "options": [
+        { "id": "ccaf-cr-044_a", "text": "Multi-layered: model training, API filtering, application input validation, and output screening; defense in depth across all layers", "textEs": "Multi-capa: entrenamiento del modelo, filtrado de API, validación de entrada de aplicación y examen de salida; defensa en profundidad a través de todas las capas", "order": 1 },
+        { "id": "ccaf-cr-044_b", "text": "Claude handles all safety filtering automatically; no additional application-level filtering is needed", "textEs": "Claude maneja todo el filtrado de seguridad automáticamente; no se necesita filtrado adicional a nivel de aplicación", "order": 2 },
+        { "id": "ccaf-cr-044_c", "text": "Content filtering is the user's responsibility; Claude and the API provide no safety measures", "textEs": "El filtrado de contenido es responsabilidad del usuario; Claude y la API no proporcionan medidas de seguridad", "order": 3 },
+        { "id": "ccaf-cr-044_d", "text": "Only input filtering matters; Claude's output is always safe by design", "textEs": "Solo el filtrado de entrada importa; la salida de Claude siempre es segura por diseño", "order": 4 }
+      ],
+      "tags": ["content-filtering", "safety", "defense-in-depth", "multi-layer"]
+    },
+    {
+      "id": "ccaf-cr-045",
+      "text": "What are the key differences between using full context (sending all data) versus RAG (retrieving relevant chunks)?",
+      "textEs": "¿Cuáles son las diferencias clave entre usar contexto completo (enviar todos los datos) versus RAG (recuperar fragmentos relevantes)?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-045_c",
+      "explanation": "Full context provides all data directly (pros: no retrieval errors, Claude sees everything, simpler architecture; cons: limited by context window, higher cost, lost-in-middle effect). RAG retrieves only relevant chunks (pros: scales beyond context window, lower cost per request, focuses attention; cons: retrieval errors may miss relevant content, requires embedding infrastructure, chunk boundaries may lose context). Use full context when data fits; use RAG when data exceeds the window or when cost matters at scale.",
+      "explanationEs": "Contexto completo proporciona todos los datos directamente (pros: sin errores de recuperación, Claude ve todo, arquitectura más simple; contras: limitado por ventana de contexto, mayor costo, efecto perdido en el medio). RAG recupera solo fragmentos relevantes (pros: escala más allá de la ventana de contexto, menor costo por solicitud, enfoca la atención; contras: errores de recuperación pueden omitir contenido relevante, requiere infraestructura de embeddings, los límites de fragmentos pueden perder contexto). Usar contexto completo cuando los datos caben; usar RAG cuando los datos exceden la ventana o cuando el costo importa a escala.",
+      "options": [
+        { "id": "ccaf-cr-045_a", "text": "RAG is always better because it reduces costs", "textEs": "RAG siempre es mejor porque reduce costos", "order": 1 },
+        { "id": "ccaf-cr-045_b", "text": "Full context is always better because Claude sees all data", "textEs": "Contexto completo siempre es mejor porque Claude ve todos los datos", "order": 2 },
+        { "id": "ccaf-cr-045_c", "text": "Full context: complete data but limited by window and cost; RAG: scalable and cheaper but may miss relevant content; choose based on data size", "textEs": "Contexto completo: datos completos pero limitado por ventana y costo; RAG: escalable y más barato pero puede omitir contenido relevante; elegir según tamaño de datos", "order": 3 },
+        { "id": "ccaf-cr-045_d", "text": "They are the same thing; RAG is just a technique for loading full context", "textEs": "Son lo mismo; RAG es solo una técnica para cargar contexto completo", "order": 4 }
+      ],
+      "tags": ["full-context", "rag", "comparison", "tradeoffs"]
+    },
+    {
+      "id": "ccaf-cr-046",
+      "text": "How should you handle the case where Claude's response is truncated due to max_tokens?",
+      "textEs": "¿Cómo deberías manejar el caso donde la respuesta de Claude se trunca debido a max_tokens?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-046_b",
+      "explanation": "When stop_reason is 'max_tokens', the response was cut off. Handle it by: (1) detecting the truncation via the stop_reason field, (2) sending a continuation request that includes the truncated response and asks Claude to continue, (3) increasing max_tokens if the expected output is consistently larger, or (4) asking Claude to produce more concise output. For structured output (JSON), truncation can produce invalid JSON -- use tool_use instead which guarantees complete, valid output.",
+      "explanationEs": "Cuando stop_reason es 'max_tokens', la respuesta fue cortada. Manéjalo: (1) detectando la truncación via el campo stop_reason, (2) enviando una solicitud de continuación que incluya la respuesta truncada y pida a Claude que continúe, (3) aumentando max_tokens si la salida esperada es consistentemente más grande, o (4) pidiendo a Claude que produzca salida más concisa. Para salida estructurada (JSON), la truncación puede producir JSON inválido; usar tool_use en su lugar que garantiza salida completa y válida.",
+      "options": [
+        { "id": "ccaf-cr-046_a", "text": "Ignore the truncation; the important content is always at the beginning", "textEs": "Ignorar la truncación; el contenido importante siempre está al inicio", "order": 1 },
+        { "id": "ccaf-cr-046_b", "text": "Detect via stop_reason, request continuation, increase max_tokens, or use tool_use for guaranteed complete structured output", "textEs": "Detectar via stop_reason, solicitar continuación, aumentar max_tokens o usar tool_use para salida estructurada completa garantizada", "order": 2 },
+        { "id": "ccaf-cr-046_c", "text": "Retry the same request; truncation is random and may not occur again", "textEs": "Reintentar la misma solicitud; la truncación es aleatoria y puede no ocurrir de nuevo", "order": 3 },
+        { "id": "ccaf-cr-046_d", "text": "Truncation never occurs if you set max_tokens to the maximum allowed value", "textEs": "La truncación nunca ocurre si estableces max_tokens al valor máximo permitido", "order": 4 }
+      ],
+      "tags": ["max-tokens", "truncation", "stop-reason", "continuation"]
+    },
+    {
+      "id": "ccaf-cr-047",
+      "text": "What is the 'semantic chunking' strategy for RAG, and how does it differ from fixed-size chunking?",
+      "textEs": "¿Qué es la estrategia de 'fragmentación semántica' para RAG, y cómo difiere de la fragmentación de tamaño fijo?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-047_a",
+      "explanation": "Semantic chunking splits documents at natural boundaries (paragraphs, sections, topic changes) rather than at arbitrary token/character counts. This preserves the meaning of each chunk because ideas are not split mid-sentence or mid-paragraph. Fixed-size chunking may cut through a sentence, leaving incomplete thoughts in both chunks. Semantic chunking produces better retrieval results because each chunk is a complete, coherent unit of information. The tradeoff is that chunk sizes vary, requiring more careful token budgeting.",
+      "explanationEs": "La fragmentación semántica divide documentos en límites naturales (párrafos, secciones, cambios de tema) en lugar de conteos arbitrarios de tokens/caracteres. Esto preserva el significado de cada fragmento porque las ideas no se cortan a mitad de oración o párrafo. La fragmentación de tamaño fijo puede cortar a través de una oración, dejando pensamientos incompletos en ambos fragmentos. La fragmentación semántica produce mejores resultados de recuperación porque cada fragmento es una unidad de información completa y coherente. La compensación es que los tamaños de fragmentos varían, requiriendo un presupuesto de tokens más cuidadoso.",
+      "options": [
+        { "id": "ccaf-cr-047_a", "text": "Splits at natural boundaries (paragraphs, sections) preserving meaning; fixed-size splits at token counts potentially breaking ideas", "textEs": "Divide en límites naturales (párrafos, secciones) preservando significado; tamaño fijo divide en conteos de tokens potencialmente rompiendo ideas", "order": 1 },
+        { "id": "ccaf-cr-047_b", "text": "They produce identical results; semantic chunking is just a marketing term for fixed-size chunking with overlap", "textEs": "Producen resultados idénticos; fragmentación semántica es solo un término de marketing para fragmentación de tamaño fijo con superposición", "order": 2 },
+        { "id": "ccaf-cr-047_c", "text": "Semantic chunking uses AI to summarize each chunk; fixed-size uses the original text", "textEs": "La fragmentación semántica usa IA para resumir cada fragmento; tamaño fijo usa el texto original", "order": 3 },
+        { "id": "ccaf-cr-047_d", "text": "Semantic chunking is only for code; fixed-size is for natural language documents", "textEs": "La fragmentación semántica es solo para código; tamaño fijo es para documentos de lenguaje natural", "order": 4 }
+      ],
+      "tags": ["semantic-chunking", "rag", "fixed-size", "document-processing"]
+    },
+    {
+      "id": "ccaf-cr-048",
+      "text": "What is the purpose of the 'anthropic-ratelimit-tokens-reset' response header?",
+      "textEs": "¿Cuál es el propósito del header de respuesta 'anthropic-ratelimit-tokens-reset'?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-048_d",
+      "explanation": "The 'anthropic-ratelimit-tokens-reset' header provides a timestamp indicating when the token-based rate limit (TPM) will reset. This allows your application to know exactly when it can resume sending requests at full capacity. By reading this header from every response (not just 429 errors), you can proactively manage throughput and schedule requests optimally, preventing rate limit errors before they occur.",
+      "explanationEs": "El header 'anthropic-ratelimit-tokens-reset' proporciona una marca de tiempo indicando cuándo se reiniciará el límite de tasa basado en tokens (TPM). Esto permite a tu aplicación saber exactamente cuándo puede reanudar el envío de solicitudes a capacidad completa. Al leer este header de cada respuesta (no solo de errores 429), puedes gestionar proactivamente el rendimiento y programar solicitudes de manera óptima, previniendo errores de límite de tasa antes de que ocurran.",
+      "options": [
+        { "id": "ccaf-cr-048_a", "text": "It indicates the total number of tokens used in the current billing period", "textEs": "Indica el número total de tokens usados en el período de facturación actual", "order": 1 },
+        { "id": "ccaf-cr-048_b", "text": "It provides the maximum token limit for your API tier", "textEs": "Proporciona el límite máximo de tokens para tu nivel de API", "order": 2 },
+        { "id": "ccaf-cr-048_c", "text": "It resets the token cache and forces a fresh computation", "textEs": "Reinicia el caché de tokens y fuerza una computación nueva", "order": 3 },
+        { "id": "ccaf-cr-048_d", "text": "A timestamp indicating when the TPM rate limit resets; enables proactive throughput management", "textEs": "Una marca de tiempo indicando cuándo se reinicia el límite de tasa TPM; permite gestión proactiva del rendimiento", "order": 4 }
+      ],
+      "tags": ["rate-limiting", "headers", "tokens-reset", "proactive-management"]
+    },
+    {
+      "id": "ccaf-cr-049",
+      "text": "What is 'defense in depth' as applied to LLM application safety?",
+      "textEs": "¿Qué es 'defensa en profundidad' aplicada a la seguridad de aplicaciones LLM?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-049_c",
+      "explanation": "Defense in depth means implementing multiple overlapping safety layers so that if one fails, others catch the problem. For LLM applications: (1) input validation (filter/sanitize user content), (2) system prompt guardrails (explicit behavioral constraints), (3) model-level safety (constitutional AI), (4) output filtering (check response for policy violations), (5) human review for critical actions, and (6) monitoring and logging for pattern detection. No single layer is sufficient alone.",
+      "explanationEs": "La defensa en profundidad significa implementar múltiples capas de seguridad superpuestas para que si una falla, las otras atrapen el problema. Para aplicaciones LLM: (1) validación de entrada (filtrar/sanitizar contenido del usuario), (2) guardarrailes del prompt del sistema (restricciones de comportamiento explícitas), (3) seguridad a nivel de modelo (IA constitucional), (4) filtrado de salida (verificar respuesta por violaciones de política), (5) revisión humana para acciones críticas y (6) monitoreo y registro para detección de patrones. Ninguna capa individual es suficiente por sí sola.",
+      "options": [
+        { "id": "ccaf-cr-049_a", "text": "Using the strongest possible encryption for all API communications", "textEs": "Usar la encriptación más fuerte posible para todas las comunicaciones de API", "order": 1 },
+        { "id": "ccaf-cr-049_b", "text": "Running Claude in a Docker container with restricted network access", "textEs": "Ejecutar Claude en un contenedor Docker con acceso de red restringido", "order": 2 },
+        { "id": "ccaf-cr-049_c", "text": "Multiple overlapping safety layers (input validation, system guardrails, model safety, output filtering, human review, monitoring)", "textEs": "Múltiples capas de seguridad superpuestas (validación de entrada, guardarrailes del sistema, seguridad del modelo, filtrado de salida, revisión humana, monitoreo)", "order": 3 },
+        { "id": "ccaf-cr-049_d", "text": "Choosing the most expensive API tier for maximum security features", "textEs": "Elegir el nivel de API más costoso para máximas funcionalidades de seguridad", "order": 4 }
+      ],
+      "tags": ["defense-in-depth", "safety", "multi-layer", "security"]
+    },
+    {
+      "id": "ccaf-cr-050",
+      "text": "How can you detect and mitigate entity confusion hallucinations in extraction tasks?",
+      "textEs": "¿Cómo puedes detectar y mitigar alucinaciones de confusión de entidades en tareas de extracción?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-050_b",
+      "explanation": "Entity confusion occurs when Claude mixes attributes of similar entities (e.g., swapping details between two people mentioned in the same document). Detect it by: requiring source citations for each extracted field, comparing extracted entity attributes against the source document programmatically, using separate extraction passes for each entity, and including entity identifiers (names, IDs) alongside extracted attributes. Mitigate by structuring prompts to process one entity at a time when possible.",
+      "explanationEs": "La confusión de entidades ocurre cuando Claude mezcla atributos de entidades similares (por ejemplo, intercambiando detalles entre dos personas mencionadas en el mismo documento). Detéctala: requiriendo citas de fuente para cada campo extraído, comparando atributos de entidades extraídas contra el documento fuente programáticamente, usando pasadas de extracción separadas para cada entidad e incluyendo identificadores de entidad (nombres, IDs) junto con atributos extraídos. Mitiga estructurando prompts para procesar una entidad a la vez cuando sea posible.",
+      "options": [
+        { "id": "ccaf-cr-050_a", "text": "Entity confusion cannot be detected or mitigated; it is an inherent model limitation", "textEs": "La confusión de entidades no puede detectarse ni mitigarse; es una limitación inherente del modelo", "order": 1 },
+        { "id": "ccaf-cr-050_b", "text": "Require source citations per field, programmatic verification, separate extraction passes per entity, and include entity identifiers", "textEs": "Requerir citas de fuente por campo, verificación programática, pasadas de extracción separadas por entidad e incluir identificadores de entidad", "order": 2 },
+        { "id": "ccaf-cr-050_c", "text": "Use temperature 0 to eliminate all entity confusion", "textEs": "Usar temperatura 0 para eliminar toda confusión de entidades", "order": 3 },
+        { "id": "ccaf-cr-050_d", "text": "Only extract one attribute per API call to prevent any mixing", "textEs": "Solo extraer un atributo por llamada API para prevenir cualquier mezcla", "order": 4 }
+      ],
+      "tags": ["entity-confusion", "hallucination", "extraction", "verification"]
+    },
+    {
+      "id": "ccaf-cr-051",
+      "text": "What monitoring metrics are essential for a production Claude API integration?",
+      "textEs": "¿Qué métricas de monitoreo son esenciales para una integración de producción con la API de Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-051_d",
+      "explanation": "Essential monitoring metrics include: (1) latency (time to first token, total response time), (2) error rates by type (429, 529, 400, 500), (3) token usage (input and output per request, daily totals), (4) cost tracking (per request and aggregate), (5) cache hit rates for prompt caching, (6) stop_reason distribution (tracking truncations), (7) quality metrics specific to your use case (accuracy, hallucination rate), and (8) rate limit headroom (remaining RPM/TPM from headers).",
+      "explanationEs": "Las métricas de monitoreo esenciales incluyen: (1) latencia (tiempo al primer token, tiempo total de respuesta), (2) tasas de error por tipo (429, 529, 400, 500), (3) uso de tokens (entrada y salida por solicitud, totales diarios), (4) seguimiento de costos (por solicitud y agregado), (5) tasas de acierto de caché para caché de prompts, (6) distribución de stop_reason (seguimiento de truncaciones), (7) métricas de calidad específicas de tu caso de uso (precisión, tasa de alucinación) y (8) margen de límite de tasa (RPM/TPM restante de headers).",
+      "options": [
+        { "id": "ccaf-cr-051_a", "text": "Only monitor error rates; all other metrics are optional", "textEs": "Solo monitorear tasas de error; todas las demás métricas son opcionales", "order": 1 },
+        { "id": "ccaf-cr-051_b", "text": "Only monitor cost; the API handles everything else automatically", "textEs": "Solo monitorear costos; la API maneja todo lo demás automáticamente", "order": 2 },
+        { "id": "ccaf-cr-051_c", "text": "Monitor response time only; it is the best proxy for all other issues", "textEs": "Monitorear solo tiempo de respuesta; es el mejor proxy para todos los demás problemas", "order": 3 },
+        { "id": "ccaf-cr-051_d", "text": "Latency, error rates by type, token usage, cost, cache hit rates, stop_reason distribution, quality metrics, and rate limit headroom", "textEs": "Latencia, tasas de error por tipo, uso de tokens, costo, tasas de acierto de caché, distribución de stop_reason, métricas de calidad y margen de límite de tasa", "order": 4 }
+      ],
+      "tags": ["monitoring", "production", "metrics", "observability"]
+    },
+    {
+      "id": "ccaf-cr-052",
+      "text": "How does the 'lost-in-the-middle' effect impact long-context RAG systems, and what mitigations exist?",
+      "textEs": "¿Cómo impacta el efecto 'perdido en el medio' a los sistemas RAG de contexto largo, y qué mitigaciones existen?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-052_a",
+      "explanation": "In long-context RAG, retrieved documents placed in the middle of the context may be overlooked. Mitigations: (1) rank retrieved chunks by relevance and place the most relevant ones first and last, (2) use section headers and XML tags to create clear visual boundaries, (3) add a summary of key points from each document at the beginning, (4) limit the number of retrieved chunks to avoid overwhelming the context, and (5) instruct Claude explicitly to consider all provided documents, mentioning them by identifier.",
+      "explanationEs": "En RAG de contexto largo, los documentos recuperados colocados en el medio del contexto pueden pasarse por alto. Mitigaciones: (1) clasificar fragmentos recuperados por relevancia y colocar los más relevantes primero y último, (2) usar encabezados de sección y etiquetas XML para crear límites visuales claros, (3) agregar un resumen de puntos clave de cada documento al inicio, (4) limitar el número de fragmentos recuperados para evitar sobrecargar el contexto y (5) instruir a Claude explícitamente a considerar todos los documentos proporcionados, mencionándolos por identificador.",
+      "options": [
+        { "id": "ccaf-cr-052_a", "text": "Middle documents may be overlooked; mitigate by relevance ranking (most relevant first/last), headers, summaries, limiting chunks, and explicit document referencing", "textEs": "Los documentos del medio pueden pasarse por alto; mitigar con clasificación por relevancia (más relevante primero/último), encabezados, resúmenes, limitar fragmentos y referencia explícita a documentos", "order": 1 },
+        { "id": "ccaf-cr-052_b", "text": "The effect does not apply to RAG because retrieved chunks are always short", "textEs": "El efecto no aplica a RAG porque los fragmentos recuperados siempre son cortos", "order": 2 },
+        { "id": "ccaf-cr-052_c", "text": "Always place the most relevant document in the middle for maximum attention", "textEs": "Siempre colocar el documento más relevante en el medio para máxima atención", "order": 3 },
+        { "id": "ccaf-cr-052_d", "text": "Use only 3 retrieved chunks maximum; more than 3 always causes information loss", "textEs": "Usar solo 3 fragmentos recuperados máximo; más de 3 siempre causa pérdida de información", "order": 4 }
+      ],
+      "tags": ["lost-in-middle", "rag", "context-placement", "mitigation"]
+    },
+    {
+      "id": "ccaf-cr-053",
+      "text": "What is the correct way to handle the 400 'invalid_request_error' when the context exceeds the model's limit?",
+      "textEs": "¿Cuál es la forma correcta de manejar el error 400 'invalid_request_error' cuando el contexto excede el límite del modelo?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-053_c",
+      "explanation": "When the total input tokens exceed the model's context limit, the API returns a 400 error. Handle it by: (1) checking token count before sending using the counting endpoint, (2) implementing automatic context trimming (remove oldest non-essential messages), (3) triggering conversation compaction to summarize older history, (4) removing large tool results and replacing with summaries, or (5) splitting the request into smaller chunks. Do not retry -- the same request will fail again.",
+      "explanationEs": "Cuando los tokens de entrada totales exceden el límite de contexto del modelo, la API devuelve un error 400. Manéjalo: (1) verificando el conteo de tokens antes de enviar usando el endpoint de conteo, (2) implementando recorte automático de contexto (eliminar mensajes más antiguos no esenciales), (3) activando compactación de conversación para resumir historial más antiguo, (4) eliminando resultados de herramientas grandes y reemplazándolos con resúmenes o (5) dividiendo la solicitud en fragmentos más pequeños. No reintentar; la misma solicitud fallará de nuevo.",
+      "options": [
+        { "id": "ccaf-cr-053_a", "text": "Retry with the same request; the error is transient and will resolve", "textEs": "Reintentar con la misma solicitud; el error es transitorio y se resolverá", "order": 1 },
+        { "id": "ccaf-cr-053_b", "text": "Upgrade your API tier to get a larger context window", "textEs": "Actualizar tu nivel de API para obtener una ventana de contexto más grande", "order": 2 },
+        { "id": "ccaf-cr-053_c", "text": "Pre-check token count, auto-trim context, compact conversation, summarize tool results, or split into chunks; do not retry unchanged", "textEs": "Pre-verificar conteo de tokens, auto-recortar contexto, compactar conversación, resumir resultados de herramientas o dividir en fragmentos; no reintentar sin cambios", "order": 3 },
+        { "id": "ccaf-cr-053_d", "text": "Switch to a model with a larger context window automatically", "textEs": "Cambiar a un modelo con una ventana de contexto más grande automáticamente", "order": 4 }
+      ],
+      "tags": ["context-overflow", "invalid-request", "error-handling", "token-management"]
+    },
+    {
+      "id": "ccaf-cr-054",
+      "text": "How can you use a 'verification pass' to improve the reliability of Claude's outputs?",
+      "textEs": "¿Cómo puedes usar una 'pasada de verificación' para mejorar la fiabilidad de las salidas de Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-054_b",
+      "explanation": "A verification pass is a separate Claude API call that reviews the output of the first call. It receives the original context, the generated output, and instructions to verify specific aspects (factual accuracy, schema compliance, safety, etc.). The verification prompt asks Claude to identify errors, unsupported claims, or policy violations. This catches errors the generation pass missed. For critical applications, use different prompts or even different models for generation and verification to reduce correlated failures.",
+      "explanationEs": "Una pasada de verificación es una llamada separada a la API de Claude que revisa la salida de la primera llamada. Recibe el contexto original, la salida generada e instrucciones para verificar aspectos específicos (precisión factual, cumplimiento de esquema, seguridad, etc.). El prompt de verificación pide a Claude que identifique errores, afirmaciones no respaldadas o violaciones de política. Esto atrapa errores que la pasada de generación omitió. Para aplicaciones críticas, usar diferentes prompts o incluso diferentes modelos para generación y verificación para reducir fallas correlacionadas.",
+      "options": [
+        { "id": "ccaf-cr-054_a", "text": "Send the same prompt twice and compare outputs; if they match, the output is reliable", "textEs": "Enviar el mismo prompt dos veces y comparar salidas; si coinciden, la salida es confiable", "order": 1 },
+        { "id": "ccaf-cr-054_b", "text": "A separate API call reviewing the first output for errors, unsupported claims, and violations; use different prompts/models to reduce correlated failures", "textEs": "Una llamada API separada que revisa la primera salida por errores, afirmaciones no respaldadas y violaciones; usar diferentes prompts/modelos para reducir fallas correlacionadas", "order": 2 },
+        { "id": "ccaf-cr-054_c", "text": "Ask Claude 'Is this correct?' at the end of the same conversation", "textEs": "Preguntar a Claude '¿Esto es correcto?' al final de la misma conversación", "order": 3 },
+        { "id": "ccaf-cr-054_d", "text": "Use a spell-checker and grammar tool on Claude's output", "textEs": "Usar un corrector ortográfico y gramatical en la salida de Claude", "order": 4 }
+      ],
+      "tags": ["verification-pass", "reliability", "quality-assurance", "multi-pass"]
+    },
+    {
+      "id": "ccaf-cr-055",
+      "text": "What is the importance of idempotency in agentic systems that use Claude for tool calls?",
+      "textEs": "¿Cuál es la importancia de la idempotencia en sistemas agentes que usan Claude para llamadas a herramientas?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cr-055_c",
+      "explanation": "Idempotency ensures that executing the same operation multiple times produces the same result as executing it once. This is critical in agentic systems because: retries after network failures may re-execute tool calls, the model might request the same action twice in a conversation, and race conditions in parallel tool use can cause duplicates. Implement idempotency keys for state-changing operations (database writes, API calls, file modifications), and design tools to check for existing results before acting.",
+      "explanationEs": "La idempotencia asegura que ejecutar la misma operación múltiples veces produce el mismo resultado que ejecutarla una vez. Esto es crítico en sistemas agentes porque: los reintentos después de fallos de red pueden re-ejecutar llamadas a herramientas, el modelo podría solicitar la misma acción dos veces en una conversación y las condiciones de carrera en uso paralelo de herramientas pueden causar duplicados. Implementa claves de idempotencia para operaciones que cambian estado (escrituras de base de datos, llamadas API, modificaciones de archivos) y diseña herramientas para verificar resultados existentes antes de actuar.",
+      "options": [
+        { "id": "ccaf-cr-055_a", "text": "Idempotency is not relevant for AI systems; it only applies to database transactions", "textEs": "La idempotencia no es relevante para sistemas de IA; solo aplica a transacciones de base de datos", "order": 1 },
+        { "id": "ccaf-cr-055_b", "text": "It means each tool call should have a unique ID for tracking purposes only", "textEs": "Significa que cada llamada a herramienta debe tener un ID único solo para propósitos de seguimiento", "order": 2 },
+        { "id": "ccaf-cr-055_c", "text": "Ensures repeated operations produce the same result; critical for retries, duplicate calls, and race conditions; implement idempotency keys for state-changing tools", "textEs": "Asegura que operaciones repetidas produzcan el mismo resultado; crítico para reintentos, llamadas duplicadas y condiciones de carrera; implementar claves de idempotencia para herramientas que cambian estado", "order": 3 },
+        { "id": "ccaf-cr-055_d", "text": "It prevents Claude from calling the same tool more than once per conversation", "textEs": "Previene que Claude llame a la misma herramienta más de una vez por conversación", "order": 4 }
+      ],
+      "tags": ["idempotency", "reliability", "tool-calls", "retries"]
+    }
+  ]
+}

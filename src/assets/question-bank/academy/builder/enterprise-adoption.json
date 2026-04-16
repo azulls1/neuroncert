@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "domain": "enterprise-adoption",
+    "domainName": "Driving Enterprise Adoption",
+    "trackId": "academy-enterprise-adoption",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10,
+    "learningLevel": 3,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "eadopt-001",
+      "text": "What is the most effective way to demonstrate ROI when proposing AI adoption to executive stakeholders?",
+      "textEs": "¿Cuál es la forma más efectiva de demostrar el ROI al proponer la adopción de IA a los stakeholders ejecutivos?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-001_b",
+      "explanation": "The most effective ROI demonstration uses pilot programs with measurable outcomes. Start with a specific, high-impact use case, measure before-and-after metrics (time saved, error reduction, throughput increase), and calculate dollar-value impact. Executives respond to concrete data from their own organization rather than generic industry statistics. A successful pilot with clear metrics creates an evidence-based case for broader rollout.",
+      "explanationEs": "La demostración de ROI más efectiva utiliza programas piloto con resultados medibles. Comienza con un caso de uso específico y de alto impacto, mide métricas antes y después (tiempo ahorrado, reducción de errores, aumento de rendimiento) y calcula el impacto en valor monetario. Los ejecutivos responden a datos concretos de su propia organización en lugar de estadísticas genéricas de la industria. Un piloto exitoso con métricas claras crea un caso basado en evidencia para un despliegue más amplio.",
+      "options": [
+        { "id": "eadopt-001_a", "text": "Present industry analyst reports showing average ROI percentages from other companies' AI deployments", "textEs": "Presentar informes de analistas de la industria mostrando porcentajes promedio de ROI de despliegues de IA de otras empresas", "order": 1 },
+        { "id": "eadopt-001_b", "text": "Run a pilot program on a specific use case, measure before-and-after metrics, and present concrete dollar-value impact from your own organization", "textEs": "Ejecutar un programa piloto en un caso de uso específico, medir métricas antes y después, y presentar impacto concreto en valor monetario de tu propia organización", "order": 2 },
+        { "id": "eadopt-001_c", "text": "Focus primarily on cost savings from reducing headcount, as this resonates most with financial stakeholders", "textEs": "Enfocarse principalmente en ahorros de costos por reducción de personal, ya que esto resuena más con los stakeholders financieros", "order": 3 },
+        { "id": "eadopt-001_d", "text": "Emphasize the technology's capabilities and benchmarks rather than business outcomes, since executives trust technical evidence", "textEs": "Enfatizar las capacidades y benchmarks de la tecnología en lugar de resultados de negocio, ya que los ejecutivos confían en la evidencia técnica", "order": 4 }
+      ],
+      "tags": ["adoption", "roi", "executive-stakeholders", "pilot-programs", "metrics"]
+    },
+    {
+      "id": "eadopt-002",
+      "text": "What is the primary challenge of change management when introducing AI tools like Claude into an established engineering organization?",
+      "textEs": "¿Cuál es el desafío principal de la gestión del cambio al introducir herramientas de IA como Claude en una organización de ingeniería establecida?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-002_c",
+      "explanation": "The primary challenge is overcoming resistance rooted in fear of job displacement and skepticism about AI reliability. Developers may worry that AI tools will replace them or produce low-quality code they must then debug. Effective change management addresses these concerns directly by framing AI as an augmentation tool that handles routine tasks, allowing developers to focus on higher-value work like architecture and complex problem-solving.",
+      "explanationEs": "El desafío principal es superar la resistencia arraigada en el miedo al desplazamiento laboral y el escepticismo sobre la confiabilidad de la IA. Los desarrolladores pueden preocuparse de que las herramientas de IA los reemplazarán o producirán código de baja calidad que luego deben depurar. La gestión del cambio efectiva aborda estas preocupaciones directamente, enmarcando la IA como una herramienta de aumento que maneja tareas rutinarias, permitiendo a los desarrolladores enfocarse en trabajo de mayor valor como arquitectura y resolución de problemas complejos.",
+      "options": [
+        { "id": "eadopt-002_a", "text": "The main challenge is technical infrastructure; most organizations lack the hardware to run AI models locally", "textEs": "El desafío principal es la infraestructura técnica; la mayoría de las organizaciones carecen del hardware para ejecutar modelos de IA localmente", "order": 1 },
+        { "id": "eadopt-002_b", "text": "The main challenge is budget; AI tools are prohibitively expensive for most engineering organizations", "textEs": "El desafío principal es el presupuesto; las herramientas de IA son prohibitivamente costosas para la mayoría de las organizaciones de ingeniería", "order": 2 },
+        { "id": "eadopt-002_c", "text": "Overcoming resistance from fear of job displacement and skepticism about AI reliability, addressed by framing AI as augmentation rather than replacement", "textEs": "Superar la resistencia por miedo al desplazamiento laboral y escepticismo sobre la confiabilidad de la IA, abordado enmarcando la IA como aumento en lugar de reemplazo", "order": 3 },
+        { "id": "eadopt-002_d", "text": "The main challenge is regulatory; most industries prohibit the use of AI in software development", "textEs": "El desafío principal es regulatorio; la mayoría de las industrias prohíben el uso de IA en desarrollo de software", "order": 4 }
+      ],
+      "tags": ["adoption", "change-management", "resistance", "augmentation", "culture"]
+    },
+    {
+      "id": "eadopt-003",
+      "text": "What elements should an enterprise AI governance framework include to ensure responsible use of Claude?",
+      "textEs": "¿Qué elementos debe incluir un marco de gobernanza de IA empresarial para asegurar el uso responsable de Claude?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-003_d",
+      "explanation": "A comprehensive AI governance framework should include: an acceptable use policy defining permitted and prohibited use cases, data handling guidelines specifying what data can be processed by AI, access controls and role-based permissions, mandatory human review requirements for high-stakes outputs, incident response procedures for AI-related issues, regular compliance audits, an ethics review board or committee, and vendor management criteria for AI providers.",
+      "explanationEs": "Un marco integral de gobernanza de IA debe incluir: una política de uso aceptable que defina casos de uso permitidos y prohibidos, directrices de manejo de datos especificando qué datos pueden ser procesados por IA, controles de acceso y permisos basados en roles, requisitos de revisión humana obligatoria para resultados de alto riesgo, procedimientos de respuesta a incidentes para problemas relacionados con IA, auditorías de cumplimiento regulares, un comité o junta de revisión ética, y criterios de gestión de proveedores de IA.",
+      "options": [
+        { "id": "eadopt-003_a", "text": "Only a simple acceptable use policy is needed; detailed governance creates too much friction for adoption", "textEs": "Solo se necesita una política de uso aceptable simple; la gobernanza detallada crea demasiada fricción para la adopción", "order": 1 },
+        { "id": "eadopt-003_b", "text": "Governance should be delegated entirely to the IT security team with no involvement from business units", "textEs": "La gobernanza debe delegarse completamente al equipo de seguridad de TI sin participación de las unidades de negocio", "order": 2 },
+        { "id": "eadopt-003_c", "text": "Wait for industry-standard AI governance frameworks to be published and adopt them verbatim", "textEs": "Esperar a que se publiquen marcos de gobernanza de IA estándar de la industria y adoptarlos textualmente", "order": 3 },
+        { "id": "eadopt-003_d", "text": "Acceptable use policy, data handling guidelines, access controls, human review for high-stakes outputs, incident response, audits, ethics review, and vendor management", "textEs": "Política de uso aceptable, directrices de manejo de datos, controles de acceso, revisión humana para resultados de alto riesgo, respuesta a incidentes, auditorías, revisión ética y gestión de proveedores", "order": 4 }
+      ],
+      "tags": ["adoption", "governance", "compliance", "policy", "responsible-ai"]
+    },
+    {
+      "id": "eadopt-004",
+      "text": "How should compliance requirements (GDPR, HIPAA, SOC 2) influence the design of an enterprise Claude deployment?",
+      "textEs": "¿Cómo deben influir los requisitos de cumplimiento (GDPR, HIPAA, SOC 2) en el diseño de un despliegue empresarial de Claude?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-004_a",
+      "explanation": "Compliance requirements should be integrated from the design phase (compliance by design). This means: selecting deployment regions that satisfy data residency requirements, implementing PII detection and redaction before sending data to Claude, configuring audit logging that meets retention requirements, ensuring data processing agreements are in place with Anthropic or cloud providers, choosing deployment options (Bedrock/Vertex) that have the relevant certifications, and documenting the data flow for compliance auditors.",
+      "explanationEs": "Los requisitos de cumplimiento deben integrarse desde la fase de diseño (cumplimiento por diseño). Esto significa: seleccionar regiones de despliegue que satisfagan requisitos de residencia de datos, implementar detección y redacción de PII antes de enviar datos a Claude, configurar registro de auditoría que cumpla requisitos de retención, asegurar que existan acuerdos de procesamiento de datos con Anthropic o proveedores de nube, elegir opciones de despliegue (Bedrock/Vertex) que tengan las certificaciones relevantes, y documentar el flujo de datos para auditores de cumplimiento.",
+      "options": [
+        { "id": "eadopt-004_a", "text": "Integrate compliance from design: data residency, PII redaction, audit logging, data processing agreements, certified deployment options, and documented data flows", "textEs": "Integrar cumplimiento desde el diseño: residencia de datos, redacción de PII, registro de auditoría, acuerdos de procesamiento de datos, opciones de despliegue certificadas y flujos de datos documentados", "order": 1 },
+        { "id": "eadopt-004_b", "text": "Compliance is handled entirely by the AI provider; enterprises do not need to implement additional controls", "textEs": "El cumplimiento lo maneja completamente el proveedor de IA; las empresas no necesitan implementar controles adicionales", "order": 2 },
+        { "id": "eadopt-004_c", "text": "Avoid using Claude for any workload that involves regulated data; restrict AI to non-sensitive use cases only", "textEs": "Evitar usar Claude para cualquier carga de trabajo que involucre datos regulados; restringir la IA solo a casos de uso no sensibles", "order": 3 },
+        { "id": "eadopt-004_d", "text": "Add compliance controls after deployment during the audit phase; designing for compliance upfront is premature optimization", "textEs": "Agregar controles de cumplimiento después del despliegue durante la fase de auditoría; diseñar para cumplimiento desde el inicio es optimización prematura", "order": 4 }
+      ],
+      "tags": ["adoption", "compliance", "gdpr", "hipaa", "soc2", "data-residency"]
+    },
+    {
+      "id": "eadopt-005",
+      "text": "What is the recommended approach for gaining stakeholder buy-in across different organizational levels?",
+      "textEs": "¿Cuál es el enfoque recomendado para obtener el respaldo de los stakeholders en los diferentes niveles organizacionales?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-005_c",
+      "explanation": "Different stakeholders need different messages. Executives care about ROI, competitive advantage, and strategic alignment. Middle managers care about team productivity, project timelines, and manageable risk. Individual contributors care about how AI helps their daily work, learning opportunities, and job security. A multi-level stakeholder strategy tailors the value proposition to each group's concerns and involves champions at each level to drive grassroots and top-down adoption simultaneously.",
+      "explanationEs": "Diferentes stakeholders necesitan mensajes diferentes. Los ejecutivos se preocupan por el ROI, la ventaja competitiva y la alineación estratégica. Los mandos medios se preocupan por la productividad del equipo, los plazos del proyecto y el riesgo manejable. Los contribuidores individuales se preocupan por cómo la IA ayuda en su trabajo diario, oportunidades de aprendizaje y seguridad laboral. Una estrategia de stakeholders multinivel adapta la propuesta de valor a las preocupaciones de cada grupo e involucra campeones en cada nivel para impulsar la adopción desde la base y desde arriba simultáneamente.",
+      "options": [
+        { "id": "eadopt-005_a", "text": "Focus exclusively on executive buy-in; once leadership mandates AI adoption, all other levels will follow", "textEs": "Enfocarse exclusivamente en el respaldo ejecutivo; una vez que el liderazgo ordene la adopción de IA, todos los demás niveles seguirán", "order": 1 },
+        { "id": "eadopt-005_b", "text": "Start with a company-wide announcement and mandatory training for all employees simultaneously", "textEs": "Comenzar con un anuncio a toda la empresa y capacitación obligatoria para todos los empleados simultáneamente", "order": 2 },
+        { "id": "eadopt-005_c", "text": "Tailor the value proposition per level (ROI for executives, productivity for managers, daily workflow improvement for ICs) with champions at each level", "textEs": "Adaptar la propuesta de valor por nivel (ROI para ejecutivos, productividad para gerentes, mejora del flujo de trabajo diario para ICs) con campeones en cada nivel", "order": 3 },
+        { "id": "eadopt-005_d", "text": "Let adoption happen organically; developers who find value will naturally spread usage without formal buy-in programs", "textEs": "Dejar que la adopción suceda orgánicamente; los desarrolladores que encuentren valor naturalmente difundirán el uso sin programas formales de respaldo", "order": 4 }
+      ],
+      "tags": ["adoption", "stakeholder-buy-in", "strategy", "change-management", "communication"]
+    },
+    {
+      "id": "eadopt-006",
+      "text": "How should an enterprise structure its AI training program to maximize adoption across engineering teams?",
+      "textEs": "¿Cómo debe una empresa estructurar su programa de capacitación en IA para maximizar la adopción en los equipos de ingeniería?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-006_b",
+      "explanation": "Effective AI training programs use a tiered approach: foundational training for all staff (what AI can do, company policies), role-specific training (developers learn prompt engineering and tool usage, managers learn to evaluate AI-generated work), hands-on workshops with real project scenarios, ongoing office hours and communities of practice, and advanced sessions for power users. Training should be continuous rather than a one-time event, with content updated as tools evolve.",
+      "explanationEs": "Los programas de capacitación en IA efectivos usan un enfoque escalonado: capacitación fundamental para todo el personal (qué puede hacer la IA, políticas de la empresa), capacitación específica por rol (los desarrolladores aprenden ingeniería de prompts y uso de herramientas, los gerentes aprenden a evaluar trabajo generado por IA), talleres prácticos con escenarios de proyectos reales, horas de consulta continuas y comunidades de práctica, y sesiones avanzadas para usuarios expertos. La capacitación debe ser continua en lugar de un evento único, con contenido actualizado a medida que las herramientas evolucionan.",
+      "options": [
+        { "id": "eadopt-006_a", "text": "Provide a single comprehensive training session for all roles and consider training complete", "textEs": "Proporcionar una única sesión de capacitación integral para todos los roles y considerar la capacitación completa", "order": 1 },
+        { "id": "eadopt-006_b", "text": "Tiered approach: foundational for all, role-specific training, hands-on workshops, ongoing office hours, and continuous updates as tools evolve", "textEs": "Enfoque escalonado: fundamental para todos, capacitación específica por rol, talleres prácticos, horas de consulta continuas y actualizaciones continuas a medida que las herramientas evolucionan", "order": 2 },
+        { "id": "eadopt-006_c", "text": "Share documentation links and let developers self-train at their own pace with no structured program", "textEs": "Compartir enlaces de documentación y dejar que los desarrolladores se auto-capaciten a su propio ritmo sin un programa estructurado", "order": 3 },
+        { "id": "eadopt-006_d", "text": "Train only a small group of AI specialists who then act as a service team for the rest of the organization", "textEs": "Capacitar solo a un pequeño grupo de especialistas en IA que luego actúan como un equipo de servicio para el resto de la organización", "order": 4 }
+      ],
+      "tags": ["adoption", "training", "education", "tiered-approach", "continuous-learning"]
+    },
+    {
+      "id": "eadopt-007",
+      "text": "What metrics should an enterprise track to measure the success of its AI adoption initiative?",
+      "textEs": "¿Qué métricas debe rastrear una empresa para medir el éxito de su iniciativa de adopción de IA?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-007_d",
+      "explanation": "A comprehensive measurement framework includes: adoption metrics (active users, usage frequency, feature utilization), productivity metrics (time saved, cycle time reduction, throughput increase), quality metrics (defect rates, code review findings, rework reduction), satisfaction metrics (developer NPS, user feedback surveys), and business impact metrics (cost savings, time-to-market improvement, revenue impact). These should be tracked over time to show trends rather than point-in-time snapshots.",
+      "explanationEs": "Un marco de medición integral incluye: métricas de adopción (usuarios activos, frecuencia de uso, utilización de funciones), métricas de productividad (tiempo ahorrado, reducción de tiempo de ciclo, aumento de rendimiento), métricas de calidad (tasas de defectos, hallazgos de revisión de código, reducción de retrabajo), métricas de satisfacción (NPS de desarrolladores, encuestas de retroalimentación) y métricas de impacto de negocio (ahorros de costos, mejora del tiempo de comercialización, impacto en ingresos). Deben rastrearse a lo largo del tiempo para mostrar tendencias en lugar de capturas puntuales.",
+      "options": [
+        { "id": "eadopt-007_a", "text": "Track only the number of API calls made; higher volume indicates successful adoption", "textEs": "Rastrear solo el número de llamadas API realizadas; un mayor volumen indica adopción exitosa", "order": 1 },
+        { "id": "eadopt-007_b", "text": "Measure only cost savings, since that is the only metric executives and stakeholders care about", "textEs": "Medir solo ahorros de costos, ya que es la única métrica que importa a ejecutivos y stakeholders", "order": 2 },
+        { "id": "eadopt-007_c", "text": "Conduct an annual survey asking employees if they find AI tools useful; qualitative feedback is sufficient", "textEs": "Realizar una encuesta anual preguntando a los empleados si encuentran útiles las herramientas de IA; la retroalimentación cualitativa es suficiente", "order": 3 },
+        { "id": "eadopt-007_d", "text": "Track adoption metrics, productivity metrics, quality metrics, satisfaction metrics, and business impact metrics over time to show trends", "textEs": "Rastrear métricas de adopción, productividad, calidad, satisfacción e impacto de negocio a lo largo del tiempo para mostrar tendencias", "order": 4 }
+      ],
+      "tags": ["adoption", "metrics", "measurement", "kpis", "success-tracking"]
+    },
+    {
+      "id": "eadopt-008",
+      "text": "What is the role of an 'AI Center of Excellence' (CoE) in enterprise adoption, and what should it focus on?",
+      "textEs": "¿Cuál es el rol de un 'Centro de Excelencia de IA' (CoE) en la adopción empresarial y en qué debe enfocarse?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-008_a",
+      "explanation": "An AI Center of Excellence is a cross-functional team that provides centralized expertise, governance, and enablement for AI adoption across the organization. It should focus on: establishing best practices and reusable patterns, maintaining the governance framework, providing training and support, evaluating new AI tools and models, sharing success stories across teams, managing vendor relationships, and tracking organization-wide adoption metrics. It should be an enabler, not a bottleneck.",
+      "explanationEs": "Un Centro de Excelencia de IA es un equipo multifuncional que proporciona experiencia centralizada, gobernanza y habilitación para la adopción de IA en toda la organización. Debe enfocarse en: establecer mejores prácticas y patrones reutilizables, mantener el marco de gobernanza, proporcionar capacitación y soporte, evaluar nuevas herramientas y modelos de IA, compartir historias de éxito entre equipos, gestionar relaciones con proveedores y rastrear métricas de adopción a nivel organizacional. Debe ser un habilitador, no un cuello de botella.",
+      "options": [
+        { "id": "eadopt-008_a", "text": "A cross-functional team providing centralized best practices, governance, training, tool evaluation, success sharing, and adoption tracking -- acting as an enabler", "textEs": "Un equipo multifuncional que proporciona mejores prácticas centralizadas, gobernanza, capacitación, evaluación de herramientas, compartición de éxitos y rastreo de adopción -- actuando como habilitador", "order": 1 },
+        { "id": "eadopt-008_b", "text": "A gatekeeper team that must approve every AI use case before a team can start using Claude", "textEs": "Un equipo de control que debe aprobar cada caso de uso de IA antes de que un equipo pueda comenzar a usar Claude", "order": 2 },
+        { "id": "eadopt-008_c", "text": "A technical team that builds and maintains all AI-powered features, so individual teams do not need to learn AI tools", "textEs": "Un equipo técnico que construye y mantiene todas las funcionalidades basadas en IA, para que los equipos individuales no necesiten aprender herramientas de IA", "order": 3 },
+        { "id": "eadopt-008_d", "text": "A temporary committee that disbands after the initial rollout phase is complete", "textEs": "Un comité temporal que se disuelve después de que la fase de despliegue inicial se completa", "order": 4 }
+      ],
+      "tags": ["adoption", "center-of-excellence", "governance", "enablement", "organization"]
+    },
+    {
+      "id": "eadopt-009",
+      "text": "What is the 'crawl-walk-run' approach to enterprise AI adoption?",
+      "textEs": "¿Qué es el enfoque 'gatear-caminar-correr' para la adopción empresarial de IA?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-009_c",
+      "explanation": "The crawl-walk-run approach is a phased adoption strategy. Crawl: start with low-risk, simple use cases like code documentation or test generation with a small pilot team. Walk: expand to more complex use cases like code review and bug fixing across multiple teams with established guidelines. Run: deploy advanced patterns like autonomous agents, CI/CD integration, and enterprise-wide adoption with full governance. Each phase builds confidence and learnings for the next.",
+      "explanationEs": "El enfoque gatear-caminar-correr es una estrategia de adopción por fases. Gatear: comenzar con casos de uso simples y de bajo riesgo como documentación de código o generación de pruebas con un equipo piloto pequeño. Caminar: expandir a casos de uso más complejos como revisión de código y corrección de errores en múltiples equipos con directrices establecidas. Correr: desplegar patrones avanzados como agentes autónomos, integración CI/CD y adopción a nivel empresarial con gobernanza completa. Cada fase construye confianza y aprendizajes para la siguiente.",
+      "options": [
+        { "id": "eadopt-009_a", "text": "A speed-based deployment strategy where AI tools are rolled out as quickly as possible to gain first-mover advantage", "textEs": "Una estrategia de despliegue basada en velocidad donde las herramientas de IA se despliegan lo más rápido posible para obtener ventaja de primer movimiento", "order": 1 },
+        { "id": "eadopt-009_b", "text": "A training methodology where employees practice with increasingly difficult AI prompts", "textEs": "Una metodología de capacitación donde los empleados practican con prompts de IA cada vez más difíciles", "order": 2 },
+        { "id": "eadopt-009_c", "text": "Phased adoption: crawl (low-risk pilots), walk (expand use cases with guidelines), run (advanced patterns with full governance at enterprise scale)", "textEs": "Adopción por fases: gatear (pilotos de bajo riesgo), caminar (expandir casos de uso con directrices), correr (patrones avanzados con gobernanza completa a escala empresarial)", "order": 3 },
+        { "id": "eadopt-009_d", "text": "A risk assessment framework that categorizes AI use cases into three urgency tiers", "textEs": "Un marco de evaluación de riesgos que categoriza los casos de uso de IA en tres niveles de urgencia", "order": 4 }
+      ],
+      "tags": ["adoption", "crawl-walk-run", "phased-approach", "strategy", "rollout"]
+    },
+    {
+      "id": "eadopt-010",
+      "text": "How should an enterprise handle the concern that AI-generated code may introduce intellectual property or licensing risks?",
+      "textEs": "¿Cómo debe una empresa manejar la preocupación de que el código generado por IA pueda introducir riesgos de propiedad intelectual o licencias?",
+      "domainCode": "enterprise-adoption",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-adoption",
+      "correctOptionId": "eadopt-010_b",
+      "explanation": "Enterprises should address IP risks through multiple layers: review the AI provider's terms of service regarding output ownership and indemnification, establish internal policies requiring developers to review and understand all AI-generated code before committing it, implement automated license scanning tools in CI/CD pipelines that check for potential licensing conflicts, document AI usage in code provenance records, and work with legal counsel to understand the evolving legal landscape around AI-generated content.",
+      "explanationEs": "Las empresas deben abordar los riesgos de PI a través de múltiples capas: revisar los términos de servicio del proveedor de IA respecto a la propiedad de resultados e indemnización, establecer políticas internas que requieran a los desarrolladores revisar y entender todo el código generado por IA antes de confirmarlo, implementar herramientas de escaneo de licencias automatizadas en pipelines de CI/CD que verifiquen posibles conflictos de licencias, documentar el uso de IA en registros de procedencia del código, y trabajar con asesoría legal para entender el panorama legal en evolución sobre contenido generado por IA.",
+      "options": [
+        { "id": "eadopt-010_a", "text": "Ban all AI-generated code from production codebases until courts establish clear legal precedent on AI-generated IP", "textEs": "Prohibir todo código generado por IA de las bases de código de producción hasta que los tribunales establezcan precedente legal claro sobre PI generada por IA", "order": 1 },
+        { "id": "eadopt-010_b", "text": "Review provider terms, require developer review of all AI code, run automated license scanning in CI/CD, document AI provenance, and consult legal counsel", "textEs": "Revisar términos del proveedor, requerir revisión del desarrollador de todo código IA, ejecutar escaneo de licencias automatizado en CI/CD, documentar procedencia de IA y consultar asesoría legal", "order": 2 },
+        { "id": "eadopt-010_c", "text": "IP risk is not a concern since AI models generate original code that does not infringe on any existing licenses", "textEs": "El riesgo de PI no es una preocupación ya que los modelos de IA generan código original que no infringe licencias existentes", "order": 3 },
+        { "id": "eadopt-010_d", "text": "Simply add a disclaimer to all repositories that some code may be AI-generated; this provides sufficient legal protection", "textEs": "Simplemente agregar un descargo de responsabilidad a todos los repositorios de que parte del código puede ser generado por IA; esto proporciona protección legal suficiente", "order": 4 }
+      ],
+      "tags": ["adoption", "intellectual-property", "licensing", "legal", "compliance"]
+    }
+  ]
+}

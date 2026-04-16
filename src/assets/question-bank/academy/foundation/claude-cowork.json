@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "domain": "claude-cowork",
+    "domainName": "Claude Cowork",
+    "trackId": "claude-cowork",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 8
+  },
+  "questions": [
+    {
+      "id": "ccw-001",
+      "text": "What is Cowork mode in Claude and what is its main purpose?",
+      "textEs": "¿Qué es el modo Cowork en Claude y cuál es su propósito principal?",
+      "domainCode": "claude-cowork",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "claude-cowork",
+      "correctOptionId": "ccw-001_a",
+      "explanation": "Cowork mode allows Claude to work autonomously on complex tasks while the user focuses on other things. Claude can iterate on problems, execute commands, read files, and make changes independently, reporting its progress to the user when finished or when guidance is needed.",
+      "explanationEs": "El modo Cowork permite que Claude trabaje de forma autónoma en tareas complejas mientras el usuario se enfoca en otras cosas. Claude puede iterar sobre problemas, ejecutar comandos, leer archivos y hacer cambios de forma independiente, reportando su progreso al usuario cuando termina o cuando necesita orientación.",
+      "options": [
+        { "id": "ccw-001_a", "text": "A mode where Claude works autonomously on complex tasks, iterating and reporting progress without needing constant supervision", "textEs": "Un modo donde Claude trabaja de forma autónoma en tareas complejas, iterando y reportando progreso sin necesidad de supervisión constante", "order": 1 },
+        { "id": "ccw-001_b", "text": "A video conferencing mode to collaborate with other Claude users in real time", "textEs": "Un modo de videoconferencia para colaborar con otros usuarios de Claude en tiempo real", "order": 2 },
+        { "id": "ccw-001_c", "text": "A feature that allows multiple Claude users to edit the same document simultaneously", "textEs": "Una función que permite a múltiples usuarios de Claude editar el mismo documento simultáneamente", "order": 3 },
+        { "id": "ccw-001_d", "text": "An offline mode where Claude works without an internet connection", "textEs": "Un modo offline donde Claude funciona sin conexión a internet", "order": 4 }
+      ],
+      "tags": ["cowork-mode", "autonomia", "fundamentals"]
+    },
+    {
+      "id": "ccw-002",
+      "text": "What are 'task loops' in the context of Claude and how do they benefit the user?",
+      "textEs": "¿Qué son los 'task loops' en el contexto de Claude y cómo benefician al usuario?",
+      "domainCode": "claude-cowork",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-cowork",
+      "correctOptionId": "ccw-002_b",
+      "explanation": "Task loops are autonomous work cycles where Claude executes a series of steps iteratively to complete a task: reads the current state, performs an action, evaluates the result, and decides the next step. This allows tackling complex tasks that require multiple steps without manual intervention at each step.",
+      "explanationEs": "Los task loops son ciclos de trabajo autónomo donde Claude ejecuta una serie de pasos iterativamente para completar una tarea: lee el estado actual, realiza una acción, evalúa el resultado y decide el siguiente paso. Esto permite abordar tareas complejas que requieren múltiples pasos sin intervención manual en cada paso.",
+      "options": [
+        { "id": "ccw-002_a", "text": "Infinite code loops that Claude generates automatically", "textEs": "Bucles infinitos de código que Claude genera automáticamente", "order": 1 },
+        { "id": "ccw-002_b", "text": "Autonomous work cycles where Claude executes, evaluates, and decides steps iteratively to complete complex tasks", "textEs": "Ciclos de trabajo autónomo donde Claude ejecuta, evalúa y decide pasos iterativamente para completar tareas complejas", "order": 2 },
+        { "id": "ccw-002_c", "text": "Scheduled tasks that repeat at regular intervals like a cron job", "textEs": "Tareas programadas que se repiten a intervalos regulares como un cron job", "order": 3 },
+        { "id": "ccw-002_d", "text": "A function that allows repeating the last conversation with Claude", "textEs": "Una función que permite repetir la última conversación con Claude", "order": 4 }
+      ],
+      "tags": ["task-loops", "automatizacion", "trabajo-autonomo"]
+    },
+    {
+      "id": "ccw-003",
+      "text": "What is the main function of 'plugins' in the Claude ecosystem?",
+      "textEs": "¿Cuál es la función principal de los 'plugins' en el ecosistema de Claude?",
+      "domainCode": "claude-cowork",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "claude-cowork",
+      "correctOptionId": "ccw-003_c",
+      "explanation": "Plugins (implemented through MCP - Model Context Protocol) extend Claude's capabilities by connecting it with external tools and services. This allows Claude to interact with databases, APIs, file systems, and other applications, significantly expanding what it can do beyond text generation.",
+      "explanationEs": "Los plugins (implementados a través de MCP - Model Context Protocol) extienden las capacidades de Claude conectándolo con herramientas y servicios externos. Esto permite que Claude interactúe con bases de datos, APIs, sistemas de archivos y otras aplicaciones, ampliando significativamente lo que puede hacer más allá de la generación de texto.",
+      "options": [
+        { "id": "ccw-003_a", "text": "Language modules that allow Claude to respond in different languages", "textEs": "Módulos de idioma que permiten a Claude responder en diferentes lenguas", "order": 1 },
+        { "id": "ccw-003_b", "text": "Visual extensions that change the appearance of the Claude interface", "textEs": "Extensiones visuales que cambian la apariencia de la interfaz de Claude", "order": 2 },
+        { "id": "ccw-003_c", "text": "Extensions that connect Claude with external tools and services to expand its capabilities", "textEs": "Extensiones que conectan a Claude con herramientas y servicios externos para ampliar sus capacidades", "order": 3 },
+        { "id": "ccw-003_d", "text": "Firmware updates that improve Claude's response speed", "textEs": "Actualizaciones de firmware que mejoran la velocidad de respuesta de Claude", "order": 4 }
+      ],
+      "tags": ["plugins", "mcp", "extensibilidad"]
+    },
+    {
+      "id": "ccw-004",
+      "text": "How do 'skills' work in Claude and what advantage do they offer?",
+      "textEs": "¿Cómo funcionan los 'skills' (habilidades) en Claude y qué ventaja ofrecen?",
+      "domainCode": "claude-cowork",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-cowork",
+      "correctOptionId": "ccw-004_a",
+      "explanation": "Skills are predefined sets of instructions and tools that are activated with slash commands (like /commit or /review-pr). They encapsulate complex workflows into simple actions, allowing Claude to execute specialized tasks with context and tools optimized for each specific use case.",
+      "explanationEs": "Los skills son conjuntos de instrucciones y herramientas predefinidas que se activan con comandos slash (como /commit o /review-pr). Encapsulan flujos de trabajo complejos en acciones simples, permitiendo que Claude ejecute tareas especializadas con contexto y herramientas optimizados para cada caso de uso específico.",
+      "options": [
+        { "id": "ccw-004_a", "text": "Predefined sets of instructions and tools activated with slash commands to execute specialized workflows", "textEs": "Conjuntos de instrucciones y herramientas predefinidas que se activan con comandos slash para ejecutar flujos de trabajo especializados", "order": 1 },
+        { "id": "ccw-004_b", "text": "Experience levels that Claude unlocks after a certain number of conversations", "textEs": "Niveles de experiencia que Claude desbloquea después de cierto número de conversaciones", "order": 2 },
+        { "id": "ccw-004_c", "text": "Certifications that users obtain upon completing Anthropic courses", "textEs": "Certificaciones que los usuarios obtienen al completar cursos de Anthropic", "order": 3 },
+        { "id": "ccw-004_d", "text": "Premium features available only in the enterprise version of Claude", "textEs": "Funciones premium disponibles solo en la versión empresarial de Claude", "order": 4 }
+      ],
+      "tags": ["skills", "slash-commands", "flujos-trabajo"]
+    },
+    {
+      "id": "ccw-005",
+      "text": "In a file workflow with Claude, what is the recommended practice for making changes to an existing file?",
+      "textEs": "En un flujo de trabajo de archivos (file workflow) con Claude, ¿cuál es la práctica recomendada para hacer cambios a un archivo existente?",
+      "domainCode": "claude-cowork",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-cowork",
+      "correctOptionId": "ccw-005_d",
+      "explanation": "The recommended practice is to first read the file to understand its current content, then use surgical edits (specific text replacements) instead of rewriting the entire file. This preserves existing content that does not need changes, reduces the risk of errors, and makes changes easier to review.",
+      "explanationEs": "La práctica recomendada es leer primero el archivo para entender su contenido actual, luego usar ediciones quirúrgicas (reemplazos específicos de texto) en lugar de reescribir el archivo completo. Esto preserva el contenido existente que no necesita cambios, reduce el riesgo de errores y hace que los cambios sean más fáciles de revisar.",
+      "options": [
+        { "id": "ccw-005_a", "text": "Delete the entire file and create a new one from scratch", "textEs": "Borrar el archivo completo y crear uno nuevo desde cero", "order": 1 },
+        { "id": "ccw-005_b", "text": "Make changes directly without reading the file first", "textEs": "Hacer cambios directamente sin leer el archivo primero", "order": 2 },
+        { "id": "ccw-005_c", "text": "Copy the file to a backup and then edit it freely", "textEs": "Copiar el archivo a un backup y luego editarlo libremente", "order": 3 },
+        { "id": "ccw-005_d", "text": "Read the file first, then apply surgical edits (specific replacements) instead of rewriting everything", "textEs": "Leer el archivo primero, luego aplicar ediciones quirúrgicas (reemplazos específicos) en lugar de reescribir todo", "order": 4 }
+      ],
+      "tags": ["file-workflows", "edicion", "buenas-practicas"]
+    },
+    {
+      "id": "ccw-006",
+      "text": "What is an effective research workflow with Claude?",
+      "textEs": "¿Cuál es un flujo de trabajo de investigación (research workflow) efectivo con Claude?",
+      "domainCode": "claude-cowork",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-cowork",
+      "correctOptionId": "ccw-006_b",
+      "explanation": "An effective research workflow with Claude combines a broad initial search to explore the problem space, followed by deep analysis of relevant sources, and culminates in an organized synthesis. Claude can search files, read documentation, and combine information from multiple sources to generate structured findings.",
+      "explanationEs": "Un flujo de investigación efectivo con Claude combina búsqueda amplia inicial para explorar el espacio del problema, seguida de análisis profundo de fuentes relevantes, y culmina con una síntesis organizada. Claude puede buscar en archivos, leer documentación y combinar información de múltiples fuentes para generar hallazgos estructurados.",
+      "options": [
+        { "id": "ccw-006_a", "text": "Ask Claude for a direct answer without prior exploration", "textEs": "Pedir a Claude una respuesta directa sin exploración previa", "order": 1 },
+        { "id": "ccw-006_b", "text": "Search broadly first, then analyze relevant sources in depth, and synthesize findings in a structured way", "textEs": "Buscar ampliamente primero, luego analizar fuentes relevantes en profundidad y sintetizar hallazgos de forma estructurada", "order": 2 },
+        { "id": "ccw-006_c", "text": "Limit the research to a single file or source to avoid confusion", "textEs": "Limitar la investigación a un solo archivo o fuente para evitar confusión", "order": 3 },
+        { "id": "ccw-006_d", "text": "Generate all the research without consulting any file or external source", "textEs": "Generar toda la investigación sin consultar ningún archivo o fuente externa", "order": 4 }
+      ],
+      "tags": ["research-workflows", "investigacion", "sintesis"]
+    },
+    {
+      "id": "ccw-007",
+      "text": "What important precaution should be taken when using Claude's Cowork mode for tasks involving command execution?",
+      "textEs": "¿Qué precaución importante debe tomarse al usar el modo Cowork de Claude para tareas que involucran ejecución de comandos?",
+      "domainCode": "claude-cowork",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "claude-cowork",
+      "correctOptionId": "ccw-007_c",
+      "explanation": "Although Cowork mode allows autonomous work, it is crucial to review the commands Claude executes, especially destructive ones (deleting files, pushing to repositories, configuration changes). Appropriate permissions should be configured and confirmation mechanisms used for high-risk operations to avoid unwanted changes.",
+      "explanationEs": "Aunque el modo Cowork permite trabajo autónomo, es crucial revisar los comandos que Claude ejecuta, especialmente los destructivos (borrar archivos, push a repositorios, cambios en configuración). Se deben configurar permisos apropiados y usar mecanismos de confirmación para operaciones de alto riesgo para evitar cambios no deseados.",
+      "options": [
+        { "id": "ccw-007_a", "text": "Never allow Claude to execute any command", "textEs": "Nunca permitir que Claude ejecute ningún comando", "order": 1 },
+        { "id": "ccw-007_b", "text": "Give root/administrator access so Claude can work without interruptions", "textEs": "Dar acceso root/administrador para que Claude trabaje sin interrupciones", "order": 2 },
+        { "id": "ccw-007_c", "text": "Review destructive operations, configure appropriate permissions, and use confirmation for high-risk actions", "textEs": "Revisar operaciones destructivas, configurar permisos apropiados y usar confirmación para acciones de alto riesgo", "order": 3 },
+        { "id": "ccw-007_d", "text": "Only execute commands during work hours when there is human supervision", "textEs": "Solo ejecutar comandos durante horario laboral cuando hay supervisión humana", "order": 4 }
+      ],
+      "tags": ["seguridad", "permisos", "comandos"]
+    },
+    {
+      "id": "ccw-008",
+      "text": "What is the main advantage of using predefined skills instead of writing detailed instructions every time you need Claude to perform a recurring task?",
+      "textEs": "¿Cuál es la ventaja principal de usar skills predefinidos en lugar de escribir instrucciones detalladas cada vez que necesitas que Claude realice una tarea recurrente?",
+      "domainCode": "claude-cowork",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "claude-cowork",
+      "correctOptionId": "ccw-008_a",
+      "explanation": "Skills encapsulate proven and optimized instructions for specific tasks, guaranteeing consistency in execution and saving time. Instead of writing detailed instructions each time (with the risk of forgetting steps), a skill standardizes the workflow and ensures all steps are executed correctly.",
+      "explanationEs": "Los skills encapsulan instrucciones probadas y optimizadas para tareas específicas, garantizando consistencia en la ejecución y ahorrando tiempo. En lugar de redactar instrucciones detalladas cada vez (con riesgo de olvidar pasos), un skill estandariza el flujo de trabajo y asegura que todos los pasos se ejecuten correctamente.",
+      "options": [
+        { "id": "ccw-008_a", "text": "They guarantee consistency in execution, save time, and reduce errors by standardizing workflows", "textEs": "Garantizan consistencia en la ejecución, ahorran tiempo y reducen errores al estandarizar flujos de trabajo", "order": 1 },
+        { "id": "ccw-008_b", "text": "They reduce token cost because skills use less context", "textEs": "Reducen el costo de tokens porque los skills usan menos contexto", "order": 2 },
+        { "id": "ccw-008_c", "text": "They make Claude respond faster because skills have priority in the processing queue", "textEs": "Hacen que Claude responda más rápido porque los skills tienen prioridad en la cola de procesamiento", "order": 3 },
+        { "id": "ccw-008_d", "text": "They allow Claude to work without an internet connection", "textEs": "Permiten que Claude funcione sin conexión a internet", "order": 4 }
+      ],
+      "tags": ["skills", "consistencia", "eficiencia"]
+    }
+  ]
+}

@@ -1,0 +1,612 @@
+{
+  "meta": {
+    "domain": "claude-101",
+    "domainName": "Claude 101",
+    "trackId": "claude-101",
+    "version": "1.2.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 30
+  },
+  "questions": [
+    {
+      "id": "c101-001",
+      "text": "What are the three main model tiers in the Claude family, ordered from smallest to largest?",
+      "textEs": "Cuales son los tres niveles principales de modelos en la familia Claude, ordenados de menor a mayor?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-001_b",
+      "explanation": "The Claude model family has three main tiers: Haiku (smallest, fastest, cheapest), Sonnet (mid-range, balanced performance and cost), and Opus (largest, most capable, highest cost).",
+      "explanationEs": "La familia de modelos Claude tiene tres niveles principales: Haiku (el mas pequeno, rapido y economico), Sonnet (rango medio, equilibrio entre rendimiento y costo) y Opus (el mas grande, capaz y costoso).",
+      "options": [
+        { "id": "c101-001_a", "text": "Mini, Standard, Premium", "textEs": "Mini, Estandar, Premium", "order": 1 },
+        { "id": "c101-001_b", "text": "Haiku, Sonnet, Opus", "textEs": "Haiku, Sonnet, Opus", "order": 2 },
+        { "id": "c101-001_c", "text": "Lite, Pro, Ultra", "textEs": "Lite, Pro, Ultra", "order": 3 },
+        { "id": "c101-001_d", "text": "Base, Advanced, Expert", "textEs": "Base, Avanzado, Experto", "order": 4 }
+      ],
+      "tags": ["models", "haiku", "sonnet", "opus"]
+    },
+    {
+      "id": "c101-002",
+      "text": "What is a 'context window' in the context of large language models like Claude?",
+      "textEs": "Que es una 'ventana de contexto' en el contexto de modelos de lenguaje como Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-002_a",
+      "explanation": "The context window is the maximum amount of text (measured in tokens) that the model can process in a single conversation. It includes both the input and output. Claude's context window is up to 200K tokens.",
+      "explanationEs": "La ventana de contexto es la cantidad maxima de texto (medida en tokens) que el modelo puede procesar en una sola conversacion. Incluye tanto la entrada como la salida. La ventana de contexto de Claude es de hasta 200K tokens.",
+      "options": [
+        { "id": "c101-002_a", "text": "The maximum amount of text (in tokens) the model can process in a single conversation", "textEs": "La cantidad maxima de texto (en tokens) que el modelo puede procesar en una sola conversacion", "order": 1 },
+        { "id": "c101-002_b", "text": "The time window during which a conversation session remains active", "textEs": "El periodo de tiempo durante el cual una sesion de conversacion permanece activa", "order": 2 },
+        { "id": "c101-002_c", "text": "The number of simultaneous conversations the model can handle", "textEs": "El numero de conversaciones simultaneas que el modelo puede manejar", "order": 3 },
+        { "id": "c101-002_d", "text": "The amount of training data the model was exposed to", "textEs": "La cantidad de datos de entrenamiento a los que fue expuesto el modelo", "order": 4 }
+      ],
+      "tags": ["context-window", "tokens", "fundamentals"]
+    },
+    {
+      "id": "c101-003",
+      "text": "What is Constitutional AI, the approach used to train Claude?",
+      "textEs": "Que es Constitutional AI, el enfoque utilizado para entrenar a Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-003_c",
+      "explanation": "Constitutional AI (CAI) is Anthropic's approach to training AI systems to be helpful, harmless, and honest. The model follows a set of principles (a 'constitution') and learns to evaluate and revise its own outputs.",
+      "explanationEs": "Constitutional AI (CAI) es el enfoque de Anthropic para entrenar sistemas de IA que sean utiles, inofensivos y honestos. El modelo sigue un conjunto de principios (una 'constitucion') y aprende a evaluar y revisar sus propias respuestas.",
+      "options": [
+        { "id": "c101-003_a", "text": "A legal framework that governs how AI models can be used commercially", "textEs": "Un marco legal que regula como se pueden usar los modelos de IA comercialmente", "order": 1 },
+        { "id": "c101-003_b", "text": "A hardware architecture that constrains the model's computational capacity", "textEs": "Una arquitectura de hardware que limita la capacidad computacional del modelo", "order": 2 },
+        { "id": "c101-003_c", "text": "A training approach where the model follows a set of principles to be helpful, harmless, and honest", "textEs": "Un enfoque de entrenamiento donde el modelo sigue un conjunto de principios para ser util, inofensivo y honesto", "order": 3 },
+        { "id": "c101-003_d", "text": "A voting system where multiple models reach consensus on safe outputs", "textEs": "Un sistema de votacion donde multiples modelos alcanzan consenso sobre respuestas seguras", "order": 4 }
+      ],
+      "tags": ["constitutional-ai", "anthropic", "safety", "training"]
+    },
+    {
+      "id": "c101-004",
+      "text": "Which of the following tasks is Claude best suited for?",
+      "textEs": "Para cual de las siguientes tareas es Claude mas adecuado?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-004_d",
+      "explanation": "Claude excels at text analysis, summarization, writing, coding, and reasoning. Analyzing a contract and extracting key terms leverages Claude's ability to understand long documents.",
+      "explanationEs": "Claude destaca en analisis de texto, resumen, escritura, programacion y razonamiento. Analizar un contrato y extraer terminos clave aprovecha la capacidad de Claude para comprender documentos largos.",
+      "options": [
+        { "id": "c101-004_a", "text": "Real-time video stream analysis and object detection", "textEs": "Analisis de video en tiempo real y deteccion de objetos", "order": 1 },
+        { "id": "c101-004_b", "text": "Managing and optimizing database indexes", "textEs": "Administrar y optimizar indices de bases de datos", "order": 2 },
+        { "id": "c101-004_c", "text": "Browsing the internet and downloading files", "textEs": "Navegar por internet y descargar archivos", "order": 3 },
+        { "id": "c101-004_d", "text": "Analyzing a legal contract and extracting key terms and obligations", "textEs": "Analizar un contrato legal y extraer terminos y obligaciones clave", "order": 4 }
+      ],
+      "tags": ["use-cases", "capabilities", "text-analysis"]
+    },
+    {
+      "id": "c101-005",
+      "text": "What is a 'token' in the context of language models?",
+      "textEs": "Que es un 'token' en el contexto de los modelos de lenguaje?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-005_b",
+      "explanation": "A token is a unit of text that the model processes. Tokens can be words, parts of words, or characters. On average, one token is approximately 3/4 of a word in English.",
+      "explanationEs": "Un token es una unidad de texto que el modelo procesa. Los tokens pueden ser palabras, partes de palabras o caracteres. En promedio, un token equivale aproximadamente a 3/4 de una palabra en ingles.",
+      "options": [
+        { "id": "c101-005_a", "text": "An authentication credential used to access the API", "textEs": "Una credencial de autenticacion utilizada para acceder a la API", "order": 1 },
+        { "id": "c101-005_b", "text": "A unit of text (word, subword, or character) that the model processes, roughly 3/4 of a word", "textEs": "Una unidad de texto (palabra, subpalabra o caracter) que el modelo procesa, aproximadamente 3/4 de una palabra", "order": 2 },
+        { "id": "c101-005_c", "text": "A billing unit that tracks API usage per request", "textEs": "Una unidad de facturacion que rastrea el uso de la API por solicitud", "order": 3 },
+        { "id": "c101-005_d", "text": "A unique identifier for each conversation session", "textEs": "Un identificador unico para cada sesion de conversacion", "order": 4 }
+      ],
+      "tags": ["tokens", "tokenization", "fundamentals"]
+    },
+    {
+      "id": "c101-006",
+      "text": "What is the purpose of a 'system prompt' when using Claude?",
+      "textEs": "Cual es el proposito de un 'system prompt' al usar Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-006_a",
+      "explanation": "The system prompt sets the overall behavior, personality, and constraints for Claude in a conversation.",
+      "explanationEs": "El system prompt establece el comportamiento general, la personalidad y las restricciones de Claude en una conversacion.",
+      "options": [
+        { "id": "c101-006_a", "text": "To set Claude's behavior, persona, and constraints for the entire conversation", "textEs": "Establecer el comportamiento, persona y restricciones de Claude para toda la conversacion", "order": 1 },
+        { "id": "c101-006_b", "text": "To authenticate the user and verify their API permissions", "textEs": "Autenticar al usuario y verificar sus permisos de API", "order": 2 },
+        { "id": "c101-006_c", "text": "To provide the training data that Claude uses to generate responses", "textEs": "Proporcionar los datos de entrenamiento que Claude usa para generar respuestas", "order": 3 },
+        { "id": "c101-006_d", "text": "To specify which Claude model version to use for the conversation", "textEs": "Especificar que version del modelo Claude usar para la conversacion", "order": 4 }
+      ],
+      "tags": ["system-prompt", "configuration", "fundamentals"]
+    },
+    {
+      "id": "c101-007",
+      "text": "What is a known limitation of Claude and all current large language models?",
+      "textEs": "Cual es una limitacion conocida de Claude y todos los modelos de lenguaje actuales?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-007_c",
+      "explanation": "Hallucination is a well-known limitation of all current LLMs. The model can generate plausible-sounding but factually incorrect information.",
+      "explanationEs": "La alucinacion es una limitacion bien conocida de todos los LLMs actuales. El modelo puede generar informacion que suena plausible pero es factualmente incorrecta.",
+      "options": [
+        { "id": "c101-007_a", "text": "Claude can only process text in English", "textEs": "Claude solo puede procesar texto en ingles", "order": 1 },
+        { "id": "c101-007_b", "text": "Claude cannot generate code in any programming language", "textEs": "Claude no puede generar codigo en ningun lenguaje de programacion", "order": 2 },
+        { "id": "c101-007_c", "text": "Claude can generate plausible-sounding but factually incorrect information (hallucination)", "textEs": "Claude puede generar informacion que suena plausible pero es factualmente incorrecta (alucinacion)", "order": 3 },
+        { "id": "c101-007_d", "text": "Claude cannot process more than 100 words in a single message", "textEs": "Claude no puede procesar mas de 100 palabras en un solo mensaje", "order": 4 }
+      ],
+      "tags": ["limitations", "hallucination", "safety"]
+    },
+    {
+      "id": "c101-008",
+      "text": "When should you choose Haiku over Sonnet or Opus?",
+      "textEs": "Cuando deberias elegir Haiku en lugar de Sonnet u Opus?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-008_a",
+      "explanation": "Haiku is the fastest and most cost-effective Claude model. Ideal for high-volume, straightforward tasks where speed and cost matter more than maximum capability.",
+      "explanationEs": "Haiku es el modelo Claude mas rapido y economico. Ideal para tareas de alto volumen y sencillas donde la velocidad y el costo importan mas que la capacidad maxima.",
+      "options": [
+        { "id": "c101-008_a", "text": "For high-volume, straightforward tasks where speed and low cost are prioritized", "textEs": "Para tareas de alto volumen y sencillas donde se prioriza velocidad y bajo costo", "order": 1 },
+        { "id": "c101-008_b", "text": "For tasks that require the deepest reasoning and highest quality output", "textEs": "Para tareas que requieren el razonamiento mas profundo y la mayor calidad", "order": 2 },
+        { "id": "c101-008_c", "text": "Only when processing images or multimodal content", "textEs": "Solo cuando se procesan imagenes o contenido multimodal", "order": 3 },
+        { "id": "c101-008_d", "text": "When you need the largest context window available", "textEs": "Cuando necesitas la ventana de contexto mas grande disponible", "order": 4 }
+      ],
+      "tags": ["haiku", "model-selection", "cost-optimization"]
+    },
+    {
+      "id": "c101-009",
+      "text": "What does 'multimodal' mean in the context of Claude's capabilities?",
+      "textEs": "Que significa 'multimodal' en el contexto de las capacidades de Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-009_b",
+      "explanation": "Multimodal means Claude can process multiple types of input, not just text. Claude can accept images as input and analyze their content.",
+      "explanationEs": "Multimodal significa que Claude puede procesar multiples tipos de entrada, no solo texto. Claude puede aceptar imagenes como entrada y analizar su contenido.",
+      "options": [
+        { "id": "c101-009_a", "text": "Claude can run on multiple devices simultaneously", "textEs": "Claude puede ejecutarse en multiples dispositivos simultaneamente", "order": 1 },
+        { "id": "c101-009_b", "text": "Claude can process both text and images as input, enabling visual understanding", "textEs": "Claude puede procesar tanto texto como imagenes, permitiendo comprension visual", "order": 2 },
+        { "id": "c101-009_c", "text": "Claude can switch between different languages mid-conversation", "textEs": "Claude puede cambiar entre diferentes idiomas a mitad de conversacion", "order": 3 },
+        { "id": "c101-009_d", "text": "Claude can generate both text and audio outputs", "textEs": "Claude puede generar tanto texto como audio como salida", "order": 4 }
+      ],
+      "tags": ["multimodal", "images", "capabilities"]
+    },
+    {
+      "id": "c101-010",
+      "text": "What is the Messages API, and how does a basic interaction with Claude work?",
+      "textEs": "Que es la Messages API y como funciona una interaccion basica con Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-010_d",
+      "explanation": "The Messages API is the primary way to interact with Claude programmatically. You send a POST request with model, system prompt, and messages array.",
+      "explanationEs": "La Messages API es la forma principal de interactuar con Claude programaticamente. Envias una solicitud POST con modelo, system prompt y un array de mensajes.",
+      "options": [
+        { "id": "c101-010_a", "text": "A WebSocket connection that maintains a persistent chat session", "textEs": "Una conexion WebSocket que mantiene una sesion de chat persistente", "order": 1 },
+        { "id": "c101-010_b", "text": "A GraphQL endpoint that lets you query Claude's knowledge base", "textEs": "Un endpoint GraphQL que permite consultar la base de conocimiento de Claude", "order": 2 },
+        { "id": "c101-010_c", "text": "A REST API where you upload documents and Claude returns a summary asynchronously", "textEs": "Una API REST donde subes documentos y Claude devuelve un resumen de forma asincrona", "order": 3 },
+        { "id": "c101-010_d", "text": "A REST API where you send model, system prompt, and messages array, and receive the response", "textEs": "Una API REST donde envias modelo, system prompt y array de mensajes, y recibes la respuesta", "order": 4 }
+      ],
+      "tags": ["messages-api", "api", "fundamentals"]
+    },
+    {
+      "id": "c101-011",
+      "text": "What is the approximate pricing relationship between Haiku, Sonnet, and Opus models?",
+      "textEs": "Cual es la relacion aproximada de precios entre los modelos Haiku, Sonnet y Opus?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-011_c",
+      "explanation": "The Claude model family follows a tiered pricing structure. Haiku is the most affordable (fractions of a cent per request), Sonnet is mid-range, and Opus is the most expensive due to its superior capabilities. Generally, each tier costs roughly 3-5x more than the one below it per token.",
+      "explanationEs": "La familia de modelos Claude sigue una estructura de precios escalonada. Haiku es el mas economico (fracciones de centavo por solicitud), Sonnet es de rango medio y Opus es el mas costoso debido a sus capacidades superiores. Generalmente, cada nivel cuesta aproximadamente 3-5x mas que el inferior por token.",
+      "options": [
+        { "id": "c101-011_a", "text": "All three models cost the same per token", "textEs": "Los tres modelos cuestan lo mismo por token", "order": 1 },
+        { "id": "c101-011_b", "text": "Opus is free for developers; Haiku and Sonnet are paid", "textEs": "Opus es gratuito para desarrolladores; Haiku y Sonnet son de pago", "order": 2 },
+        { "id": "c101-011_c", "text": "Haiku is the cheapest, Sonnet is mid-range, and Opus is the most expensive, with each tier roughly 3-5x the cost of the one below", "textEs": "Haiku es el mas barato, Sonnet es de rango medio y Opus es el mas costoso, con cada nivel costando aproximadamente 3-5x mas que el inferior", "order": 3 },
+        { "id": "c101-011_d", "text": "Pricing is based only on output tokens; input tokens are always free", "textEs": "Los precios se basan solo en tokens de salida; los tokens de entrada siempre son gratuitos", "order": 4 }
+      ],
+      "tags": ["pricing", "models", "cost-optimization"]
+    },
+    {
+      "id": "c101-012",
+      "text": "What does it mean that Claude has a 'knowledge cutoff' date?",
+      "textEs": "Que significa que Claude tenga una 'fecha de corte de conocimiento'?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-012_b",
+      "explanation": "Claude's knowledge cutoff refers to the date after which the model has no training data. Events, discoveries, or changes that occurred after this date are unknown to Claude unless provided in the conversation context. This is why Claude may give outdated information about recent events.",
+      "explanationEs": "La fecha de corte de conocimiento de Claude se refiere a la fecha despues de la cual el modelo no tiene datos de entrenamiento. Eventos, descubrimientos o cambios que ocurrieron despues de esa fecha son desconocidos para Claude a menos que se proporcionen en el contexto de la conversacion. Por eso Claude puede dar informacion desactualizada sobre eventos recientes.",
+      "options": [
+        { "id": "c101-012_a", "text": "Claude stops working after a certain date and requires a software update", "textEs": "Claude deja de funcionar despues de cierta fecha y requiere una actualizacion de software", "order": 1 },
+        { "id": "c101-012_b", "text": "Claude's training data ends at a specific date, so it has no knowledge of events after that point unless provided in context", "textEs": "Los datos de entrenamiento de Claude terminan en una fecha especifica, por lo que no tiene conocimiento de eventos posteriores a menos que se proporcionen en el contexto", "order": 2 },
+        { "id": "c101-012_c", "text": "API keys expire after a knowledge cutoff date and must be renewed", "textEs": "Las claves API expiran despues de una fecha de corte de conocimiento y deben renovarse", "order": 3 },
+        { "id": "c101-012_d", "text": "The model forgets conversations older than the cutoff date", "textEs": "El modelo olvida conversaciones mas antiguas que la fecha de corte", "order": 4 }
+      ],
+      "tags": ["knowledge-cutoff", "limitations", "training-data"]
+    },
+    {
+      "id": "c101-013",
+      "text": "How does Claude handle multiple languages?",
+      "textEs": "Como maneja Claude multiples idiomas?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-013_a",
+      "explanation": "Claude is trained on multilingual data and can understand and generate text in many languages including English, Spanish, French, German, Japanese, Chinese, and more. It can translate between languages and respond in the language of the user's request. Performance is strongest in English but capable across many languages.",
+      "explanationEs": "Claude esta entrenado con datos multilingues y puede comprender y generar texto en muchos idiomas incluyendo ingles, espanol, frances, aleman, japones, chino y mas. Puede traducir entre idiomas y responder en el idioma de la solicitud del usuario. El rendimiento es mas fuerte en ingles pero es capaz en muchos idiomas.",
+      "options": [
+        { "id": "c101-013_a", "text": "Claude understands and generates text in many languages natively, with strongest performance in English", "textEs": "Claude comprende y genera texto en muchos idiomas de forma nativa, con mejor rendimiento en ingles", "order": 1 },
+        { "id": "c101-013_b", "text": "Claude only works in English; translation requires a separate API", "textEs": "Claude solo funciona en ingles; la traduccion requiere una API separada", "order": 2 },
+        { "id": "c101-013_c", "text": "Each language requires a different model variant (e.g., Claude-ES for Spanish)", "textEs": "Cada idioma requiere una variante de modelo diferente (ej., Claude-ES para espanol)", "order": 3 },
+        { "id": "c101-013_d", "text": "Claude supports exactly 5 languages: English, French, German, Spanish, and Japanese", "textEs": "Claude soporta exactamente 5 idiomas: ingles, frances, aleman, espanol y japones", "order": 4 }
+      ],
+      "tags": ["multilingual", "languages", "capabilities"]
+    },
+    {
+      "id": "c101-014",
+      "text": "What is Anthropic's mission and how does it relate to Claude's design?",
+      "textEs": "Cual es la mision de Anthropic y como se relaciona con el diseno de Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-014_d",
+      "explanation": "Anthropic's mission is AI safety research and the responsible development of AI systems. Claude is designed to be helpful, harmless, and honest (the HHH framework). This mission drives decisions like Constitutional AI training, refusal of harmful requests, and transparent communication about limitations.",
+      "explanationEs": "La mision de Anthropic es la investigacion en seguridad de IA y el desarrollo responsable de sistemas de IA. Claude esta disenado para ser util, inofensivo y honesto (el marco HHH). Esta mision impulsa decisiones como el entrenamiento con Constitutional AI, el rechazo de solicitudes daninas y la comunicacion transparente sobre limitaciones.",
+      "options": [
+        { "id": "c101-014_a", "text": "To build the fastest AI model and dominate the market", "textEs": "Construir el modelo de IA mas rapido y dominar el mercado", "order": 1 },
+        { "id": "c101-014_b", "text": "To replace all human workers with AI automation", "textEs": "Reemplazar a todos los trabajadores humanos con automatizacion de IA", "order": 2 },
+        { "id": "c101-014_c", "text": "To create open-source models exclusively for academic research", "textEs": "Crear modelos de codigo abierto exclusivamente para investigacion academica", "order": 3 },
+        { "id": "c101-014_d", "text": "AI safety research and building reliable, helpful, harmless, and honest AI systems", "textEs": "Investigacion en seguridad de IA y construccion de sistemas de IA confiables, utiles, inofensivos y honestos", "order": 4 }
+      ],
+      "tags": ["anthropic", "mission", "safety", "hhh"]
+    },
+    {
+      "id": "c101-015",
+      "text": "What is the difference between input tokens and output tokens in Claude's pricing?",
+      "textEs": "Cual es la diferencia entre tokens de entrada y tokens de salida en los precios de Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-015_a",
+      "explanation": "Input tokens are the tokens you send to Claude (your prompt, system message, conversation history), and output tokens are the tokens Claude generates in its response. Output tokens are typically more expensive than input tokens because they require more computation to generate. This distinction is important for cost estimation.",
+      "explanationEs": "Los tokens de entrada son los tokens que envias a Claude (tu prompt, mensaje del sistema, historial de conversacion) y los tokens de salida son los tokens que Claude genera en su respuesta. Los tokens de salida son tipicamente mas costosos que los de entrada porque requieren mas computacion para generarse. Esta distincion es importante para la estimacion de costos.",
+      "options": [
+        { "id": "c101-015_a", "text": "Input tokens are what you send to Claude; output tokens are what Claude generates. Output tokens cost more due to higher computation", "textEs": "Los tokens de entrada son lo que envias a Claude; los tokens de salida son lo que Claude genera. Los tokens de salida cuestan mas debido a mayor computacion", "order": 1 },
+        { "id": "c101-015_b", "text": "There is no difference; all tokens cost the same regardless of direction", "textEs": "No hay diferencia; todos los tokens cuestan lo mismo sin importar la direccion", "order": 2 },
+        { "id": "c101-015_c", "text": "Input tokens are free; you only pay for output tokens", "textEs": "Los tokens de entrada son gratuitos; solo pagas por tokens de salida", "order": 3 },
+        { "id": "c101-015_d", "text": "Input tokens refer to text; output tokens refer to images and code", "textEs": "Los tokens de entrada se refieren a texto; los tokens de salida se refieren a imagenes y codigo", "order": 4 }
+      ],
+      "tags": ["tokens", "pricing", "input-output", "cost"]
+    },
+    {
+      "id": "c101-016",
+      "text": "What is 'extended thinking' in Claude, and which models support it?",
+      "textEs": "Que es el 'pensamiento extendido' en Claude y que modelos lo soportan?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-016_c",
+      "explanation": "Extended thinking is a feature that allows Claude to engage in a longer, visible chain-of-thought reasoning process before providing its final answer. The model uses a special thinking block to work through complex problems step by step. This significantly improves performance on math, coding, and analytical tasks. It is available on Sonnet and Opus models.",
+      "explanationEs": "El pensamiento extendido es una funcion que permite a Claude realizar un proceso de razonamiento de cadena de pensamiento mas largo y visible antes de dar su respuesta final. El modelo usa un bloque de pensamiento especial para trabajar problemas complejos paso a paso. Esto mejora significativamente el rendimiento en tareas de matematicas, programacion y analisis. Esta disponible en los modelos Sonnet y Opus.",
+      "options": [
+        { "id": "c101-016_a", "text": "A feature that extends Claude's context window beyond 200K tokens; available on all models", "textEs": "Una funcion que extiende la ventana de contexto de Claude mas alla de 200K tokens; disponible en todos los modelos", "order": 1 },
+        { "id": "c101-016_b", "text": "A longer response time SLA for enterprise customers using Haiku", "textEs": "Un SLA de tiempo de respuesta mas largo para clientes empresariales usando Haiku", "order": 2 },
+        { "id": "c101-016_c", "text": "A visible chain-of-thought reasoning process in a thinking block that improves performance on complex tasks; available on Sonnet and Opus", "textEs": "Un proceso de razonamiento de cadena de pensamiento visible en un bloque de pensamiento que mejora el rendimiento en tareas complejas; disponible en Sonnet y Opus", "order": 3 },
+        { "id": "c101-016_d", "text": "An option to increase the maximum output token limit; exclusive to Opus", "textEs": "Una opcion para aumentar el limite maximo de tokens de salida; exclusivo de Opus", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "reasoning", "sonnet", "opus"]
+    },
+    {
+      "id": "c101-017",
+      "text": "What does 'RLHF' stand for, and how is it related to Claude's training?",
+      "textEs": "Que significa 'RLHF' y como se relaciona con el entrenamiento de Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-017_b",
+      "explanation": "RLHF stands for Reinforcement Learning from Human Feedback. It is a training technique where human evaluators rank model outputs by quality, and the model is then trained to produce outputs that humans prefer. Anthropic uses RLHF alongside Constitutional AI (RLAIF) to align Claude with human values and preferences.",
+      "explanationEs": "RLHF significa Reinforcement Learning from Human Feedback (Aprendizaje por Refuerzo a partir de Retroalimentacion Humana). Es una tecnica de entrenamiento donde evaluadores humanos clasifican las salidas del modelo por calidad, y luego el modelo se entrena para producir salidas que los humanos prefieran. Anthropic usa RLHF junto con Constitutional AI (RLAIF) para alinear a Claude con valores y preferencias humanas.",
+      "options": [
+        { "id": "c101-017_a", "text": "Rapid Language Hyperparameter Finetuning — a technique for speeding up model training", "textEs": "Rapid Language Hyperparameter Finetuning — una tecnica para acelerar el entrenamiento del modelo", "order": 1 },
+        { "id": "c101-017_b", "text": "Reinforcement Learning from Human Feedback — training the model to produce outputs that human evaluators prefer", "textEs": "Aprendizaje por Refuerzo a partir de Retroalimentacion Humana — entrenar al modelo para producir salidas que los evaluadores humanos prefieran", "order": 2 },
+        { "id": "c101-017_c", "text": "Recursive Language Heuristic Framework — an architecture for building transformer models", "textEs": "Recursive Language Heuristic Framework — una arquitectura para construir modelos transformer", "order": 3 },
+        { "id": "c101-017_d", "text": "Real-time Latency High-Frequency — a system for reducing API response times", "textEs": "Real-time Latency High-Frequency — un sistema para reducir tiempos de respuesta de la API", "order": 4 }
+      ],
+      "tags": ["rlhf", "training", "alignment", "human-feedback"]
+    },
+    {
+      "id": "c101-018",
+      "text": "What is Claude's approach when it encounters a request it cannot or should not fulfill?",
+      "textEs": "Cual es el enfoque de Claude cuando encuentra una solicitud que no puede o no debe cumplir?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-018_a",
+      "explanation": "Claude is designed to be transparent about its limitations. When it cannot fulfill a request (e.g., generating harmful content, accessing real-time data, or performing actions beyond its capabilities), it will politely decline and explain why. It often suggests alternative approaches that might help the user achieve their goal safely.",
+      "explanationEs": "Claude esta disenado para ser transparente sobre sus limitaciones. Cuando no puede cumplir una solicitud (ej., generar contenido danino, acceder a datos en tiempo real o realizar acciones mas alla de sus capacidades), rechazara amablemente y explicara por que. A menudo sugiere enfoques alternativos que podrian ayudar al usuario a lograr su objetivo de manera segura.",
+      "options": [
+        { "id": "c101-018_a", "text": "It politely declines, explains why it cannot help, and often suggests safe alternatives", "textEs": "Rechaza amablemente, explica por que no puede ayudar y a menudo sugiere alternativas seguras", "order": 1 },
+        { "id": "c101-018_b", "text": "It silently ignores the request and returns an empty response", "textEs": "Ignora silenciosamente la solicitud y devuelve una respuesta vacia", "order": 2 },
+        { "id": "c101-018_c", "text": "It generates a random unrelated response to distract the user", "textEs": "Genera una respuesta aleatoria no relacionada para distraer al usuario", "order": 3 },
+        { "id": "c101-018_d", "text": "It terminates the conversation immediately with an error code", "textEs": "Termina la conversacion inmediatamente con un codigo de error", "order": 4 }
+      ],
+      "tags": ["safety", "refusals", "transparency", "limitations"]
+    },
+    {
+      "id": "c101-019",
+      "text": "What is 'tool use' (function calling) in Claude?",
+      "textEs": "Que es el 'uso de herramientas' (function calling) en Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-019_d",
+      "explanation": "Tool use (also called function calling) allows Claude to interact with external tools and APIs. You define tools with names, descriptions, and parameter schemas. Claude can then decide when to call these tools, generate the appropriate parameters, and use the results in its response. This enables Claude to perform real-world actions like searching databases or calling APIs.",
+      "explanationEs": "El uso de herramientas (tambien llamado function calling) permite a Claude interactuar con herramientas externas y APIs. Defines herramientas con nombres, descripciones y esquemas de parametros. Claude puede entonces decidir cuando llamar estas herramientas, generar los parametros apropiados y usar los resultados en su respuesta. Esto permite a Claude realizar acciones del mundo real como buscar en bases de datos o llamar APIs.",
+      "options": [
+        { "id": "c101-019_a", "text": "A built-in calculator that Claude uses for all mathematical operations", "textEs": "Una calculadora incorporada que Claude usa para todas las operaciones matematicas", "order": 1 },
+        { "id": "c101-019_b", "text": "A way for Claude to access the internet and browse websites", "textEs": "Una forma para que Claude acceda a internet y navegue sitios web", "order": 2 },
+        { "id": "c101-019_c", "text": "A feature that lets Claude install and run third-party software", "textEs": "Una funcion que permite a Claude instalar y ejecutar software de terceros", "order": 3 },
+        { "id": "c101-019_d", "text": "A capability where Claude calls defined external functions with generated parameters and uses the results in its response", "textEs": "Una capacidad donde Claude llama funciones externas definidas con parametros generados y usa los resultados en su respuesta", "order": 4 }
+      ],
+      "tags": ["tool-use", "function-calling", "capabilities", "apis"]
+    },
+    {
+      "id": "c101-020",
+      "text": "Which of the following is NOT something Claude can do?",
+      "textEs": "Cual de las siguientes cosas NO puede hacer Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-020_c",
+      "explanation": "Claude cannot access the internet or retrieve real-time information on its own. It can only work with the information provided in the conversation or its training data. It can analyze images, generate code, and summarize documents, but real-time web access requires external tools.",
+      "explanationEs": "Claude no puede acceder a internet ni recuperar informacion en tiempo real por si solo. Solo puede trabajar con la informacion proporcionada en la conversacion o sus datos de entrenamiento. Puede analizar imagenes, generar codigo y resumir documentos, pero el acceso web en tiempo real requiere herramientas externas.",
+      "options": [
+        { "id": "c101-020_a", "text": "Analyze and describe images provided in the conversation", "textEs": "Analizar y describir imagenes proporcionadas en la conversacion", "order": 1 },
+        { "id": "c101-020_b", "text": "Generate code in multiple programming languages", "textEs": "Generar codigo en multiples lenguajes de programacion", "order": 2 },
+        { "id": "c101-020_c", "text": "Access the internet and retrieve real-time information without external tools", "textEs": "Acceder a internet y recuperar informacion en tiempo real sin herramientas externas", "order": 3 },
+        { "id": "c101-020_d", "text": "Summarize long documents and extract key information", "textEs": "Resumir documentos largos y extraer informacion clave", "order": 4 }
+      ],
+      "tags": ["limitations", "capabilities", "internet-access"]
+    },
+    {
+      "id": "c101-021",
+      "text": "What is 'prompt caching' and how does it benefit users of the Claude API?",
+      "textEs": "Que es 'prompt caching' y como beneficia a los usuarios de la API de Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-021_b",
+      "explanation": "Prompt caching allows the API to reuse previously processed prefixes of prompts, reducing latency and cost for repeated calls that share a common prefix (like a large system prompt or document). Cached input tokens cost significantly less than regular input tokens and are processed faster since the model does not need to recompute them.",
+      "explanationEs": "El prompt caching permite a la API reutilizar prefijos de prompts previamente procesados, reduciendo la latencia y el costo para llamadas repetidas que comparten un prefijo comun (como un system prompt grande o un documento). Los tokens de entrada en cache cuestan significativamente menos que los tokens de entrada regulares y se procesan mas rapido ya que el modelo no necesita recalcularlos.",
+      "options": [
+        { "id": "c101-021_a", "text": "A browser cache that stores Claude's responses locally for offline access", "textEs": "Un cache del navegador que almacena las respuestas de Claude localmente para acceso sin conexion", "order": 1 },
+        { "id": "c101-021_b", "text": "Reusing previously processed prompt prefixes to reduce latency and cost for repeated calls with shared content", "textEs": "Reutilizar prefijos de prompts previamente procesados para reducir latencia y costo en llamadas repetidas con contenido compartido", "order": 2 },
+        { "id": "c101-021_c", "text": "A feature that stores conversation history on Anthropic's servers permanently", "textEs": "Una funcion que almacena el historial de conversaciones en los servidores de Anthropic permanentemente", "order": 3 },
+        { "id": "c101-021_d", "text": "A CDN that caches API responses geographically for faster delivery", "textEs": "Un CDN que almacena en cache respuestas de la API geograficamente para entrega mas rapida", "order": 4 }
+      ],
+      "tags": ["prompt-caching", "optimization", "cost", "latency"]
+    },
+    {
+      "id": "c101-022",
+      "text": "What is the difference between Claude (the model) and Claude.ai (the product)?",
+      "textEs": "Cual es la diferencia entre Claude (el modelo) y Claude.ai (el producto)?",
+      "domainCode": "claude-101",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-022_a",
+      "explanation": "Claude refers to Anthropic's family of AI models (Haiku, Sonnet, Opus) that power various applications. Claude.ai is the consumer-facing web application where users can interact with Claude through a chat interface. The models can also be accessed via the API, AWS Bedrock, Google Vertex AI, and other platforms. Claude.ai is just one way to use Claude.",
+      "explanationEs": "Claude se refiere a la familia de modelos de IA de Anthropic (Haiku, Sonnet, Opus) que impulsan varias aplicaciones. Claude.ai es la aplicacion web orientada al consumidor donde los usuarios pueden interactuar con Claude a traves de una interfaz de chat. Los modelos tambien se pueden acceder via la API, AWS Bedrock, Google Vertex AI y otras plataformas. Claude.ai es solo una forma de usar Claude.",
+      "options": [
+        { "id": "c101-022_a", "text": "Claude is the family of AI models; Claude.ai is Anthropic's consumer web app for chatting with Claude, which is just one of many interfaces", "textEs": "Claude es la familia de modelos de IA; Claude.ai es la aplicacion web de Anthropic para chatear con Claude, que es solo una de muchas interfaces", "order": 1 },
+        { "id": "c101-022_b", "text": "They are the same thing; Claude.ai is just the full domain name", "textEs": "Son lo mismo; Claude.ai es solo el nombre de dominio completo", "order": 2 },
+        { "id": "c101-022_c", "text": "Claude is for developers; Claude.ai is a completely different model for consumers", "textEs": "Claude es para desarrolladores; Claude.ai es un modelo completamente diferente para consumidores", "order": 3 },
+        { "id": "c101-022_d", "text": "Claude.ai is the open-source version; Claude is the proprietary version", "textEs": "Claude.ai es la version de codigo abierto; Claude es la version propietaria", "order": 4 }
+      ],
+      "tags": ["claude-ai", "product", "interfaces", "platforms"]
+    },
+    {
+      "id": "c101-023",
+      "text": "How does Claude handle code generation compared to natural language tasks?",
+      "textEs": "Como maneja Claude la generacion de codigo en comparacion con tareas de lenguaje natural?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-023_c",
+      "explanation": "Claude is trained on both natural language and code, making it capable of generating, debugging, explaining, and reviewing code in many programming languages. It uses the same model for both tasks — there is no separate code model. Claude excels at understanding context, following coding conventions, and generating well-documented code with explanations.",
+      "explanationEs": "Claude esta entrenado tanto en lenguaje natural como en codigo, lo que lo hace capaz de generar, depurar, explicar y revisar codigo en muchos lenguajes de programacion. Usa el mismo modelo para ambas tareas — no hay un modelo de codigo separado. Claude destaca en entender contexto, seguir convenciones de codificacion y generar codigo bien documentado con explicaciones.",
+      "options": [
+        { "id": "c101-023_a", "text": "Code generation requires a separate Claude Code model with different pricing", "textEs": "La generacion de codigo requiere un modelo separado Claude Code con precios diferentes", "order": 1 },
+        { "id": "c101-023_b", "text": "Claude can only generate Python and JavaScript; other languages are not supported", "textEs": "Claude solo puede generar Python y JavaScript; otros lenguajes no estan soportados", "order": 2 },
+        { "id": "c101-023_c", "text": "The same model handles both; Claude is trained on code and natural language, generating, debugging, and explaining code across many languages", "textEs": "El mismo modelo maneja ambos; Claude esta entrenado en codigo y lenguaje natural, generando, depurando y explicando codigo en muchos lenguajes", "order": 3 },
+        { "id": "c101-023_d", "text": "Claude can only read code, not generate it; code generation is handled by a plugin", "textEs": "Claude solo puede leer codigo, no generarlo; la generacion de codigo la maneja un plugin", "order": 4 }
+      ],
+      "tags": ["code-generation", "capabilities", "programming"]
+    },
+    {
+      "id": "c101-024",
+      "text": "What is the 'Responsible Scaling Policy' (RSP) that Anthropic follows?",
+      "textEs": "Que es la 'Politica de Escalamiento Responsable' (RSP) que sigue Anthropic?",
+      "domainCode": "claude-101",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-024_b",
+      "explanation": "Anthropic's Responsible Scaling Policy (RSP) is a framework that ties the deployment of increasingly capable AI models to safety evaluations and mitigations. It defines AI Safety Levels (ASL) and requires that before scaling to a new capability level, appropriate safeguards must be in place. This ensures safety measures keep pace with model capabilities.",
+      "explanationEs": "La Politica de Escalamiento Responsable (RSP) de Anthropic es un marco que vincula el despliegue de modelos de IA cada vez mas capaces con evaluaciones y mitigaciones de seguridad. Define Niveles de Seguridad de IA (ASL) y requiere que antes de escalar a un nuevo nivel de capacidad, las salvaguardas apropiadas esten implementadas. Esto asegura que las medidas de seguridad sigan el ritmo de las capacidades del modelo.",
+      "options": [
+        { "id": "c101-024_a", "text": "A pricing policy that scales API costs based on usage volume", "textEs": "Una politica de precios que escala los costos de la API segun el volumen de uso", "order": 1 },
+        { "id": "c101-024_b", "text": "A framework requiring safety evaluations and mitigations at each AI Safety Level (ASL) before deploying more capable models", "textEs": "Un marco que requiere evaluaciones y mitigaciones de seguridad en cada Nivel de Seguridad de IA (ASL) antes de desplegar modelos mas capaces", "order": 2 },
+        { "id": "c101-024_c", "text": "A server autoscaling policy for handling peak API traffic", "textEs": "Una politica de autoescalado de servidores para manejar picos de trafico de la API", "order": 3 },
+        { "id": "c101-024_d", "text": "A user agreement that limits how many API calls each developer can make", "textEs": "Un acuerdo de usuario que limita cuantas llamadas API puede hacer cada desarrollador", "order": 4 }
+      ],
+      "tags": ["rsp", "safety", "anthropic", "asl", "policy"]
+    },
+    {
+      "id": "c101-025",
+      "text": "What are 'artifacts' in the Claude.ai interface?",
+      "textEs": "Que son los 'artifacts' en la interfaz de Claude.ai?",
+      "domainCode": "claude-101",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-025_a",
+      "explanation": "Artifacts in Claude.ai are interactive, self-contained pieces of content that Claude creates in a dedicated panel alongside the conversation. They can include code, documents, HTML pages, SVG graphics, Mermaid diagrams, and React components. Artifacts persist across turns, can be edited, and provide a richer output experience than plain text in the chat.",
+      "explanationEs": "Los artifacts en Claude.ai son piezas de contenido interactivas y autocontenidas que Claude crea en un panel dedicado junto a la conversacion. Pueden incluir codigo, documentos, paginas HTML, graficos SVG, diagramas Mermaid y componentes React. Los artifacts persisten entre turnos, pueden editarse y proporcionan una experiencia de salida mas rica que el texto plano en el chat.",
+      "options": [
+        { "id": "c101-025_a", "text": "Interactive content panels (code, documents, HTML, diagrams) created alongside the conversation that persist and can be edited", "textEs": "Paneles de contenido interactivo (codigo, documentos, HTML, diagramas) creados junto a la conversacion que persisten y pueden editarse", "order": 1 },
+        { "id": "c101-025_b", "text": "Log files that record all API interactions for debugging purposes", "textEs": "Archivos de log que registran todas las interacciones de la API para depuracion", "order": 2 },
+        { "id": "c101-025_c", "text": "Pre-trained model weights that users can download and run locally", "textEs": "Pesos de modelo pre-entrenados que los usuarios pueden descargar y ejecutar localmente", "order": 3 },
+        { "id": "c101-025_d", "text": "Conversation bookmarks that users can share with other Claude.ai users", "textEs": "Marcadores de conversacion que los usuarios pueden compartir con otros usuarios de Claude.ai", "order": 4 }
+      ],
+      "tags": ["artifacts", "claude-ai", "interface", "interactive-content"]
+    },
+    {
+      "id": "c101-026",
+      "text": "What is the 'max_tokens' parameter and why is it required in API calls?",
+      "textEs": "Que es el parametro 'max_tokens' y por que es requerido en las llamadas a la API?",
+      "domainCode": "claude-101",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-026_d",
+      "explanation": "The max_tokens parameter sets the upper limit on how many tokens Claude can generate in its response. It is required to prevent unbounded generation that could lead to unexpected costs or timeouts. If Claude's response is truncated because it hits this limit, the stop_reason will be 'max_tokens' instead of 'end_turn'. Setting it appropriately is important for cost control and response quality.",
+      "explanationEs": "El parametro max_tokens establece el limite superior de cuantos tokens puede generar Claude en su respuesta. Es requerido para prevenir generacion ilimitada que podria llevar a costos inesperados o timeouts. Si la respuesta de Claude se trunca porque alcanza este limite, el stop_reason sera 'max_tokens' en lugar de 'end_turn'. Configurarlo apropiadamente es importante para el control de costos y la calidad de respuesta.",
+      "options": [
+        { "id": "c101-026_a", "text": "It sets the maximum input size; it is optional but recommended", "textEs": "Establece el tamano maximo de entrada; es opcional pero recomendado", "order": 1 },
+        { "id": "c101-026_b", "text": "It determines which model version to use based on token capacity", "textEs": "Determina que version del modelo usar basado en la capacidad de tokens", "order": 2 },
+        { "id": "c101-026_c", "text": "It sets the maximum conversation length in messages, not tokens", "textEs": "Establece la longitud maxima de conversacion en mensajes, no en tokens", "order": 3 },
+        { "id": "c101-026_d", "text": "It caps the output length to prevent unbounded generation; required for cost control. If hit, stop_reason is 'max_tokens'", "textEs": "Limita la longitud de salida para prevenir generacion ilimitada; requerido para control de costos. Si se alcanza, el stop_reason es 'max_tokens'", "order": 4 }
+      ],
+      "tags": ["max-tokens", "parameters", "api", "cost-control"]
+    },
+    {
+      "id": "c101-027",
+      "text": "What role does 'temperature' play in Claude's response generation?",
+      "textEs": "Que papel juega la 'temperatura' en la generacion de respuestas de Claude?",
+      "domainCode": "claude-101",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-027_a",
+      "explanation": "Temperature is a parameter (0 to 1) that controls randomness in Claude's output. At 0, the model picks the most likely tokens, producing consistent and focused responses — best for factual queries and code. At higher values, the model considers less likely tokens, producing more diverse and creative output — better for brainstorming and creative writing. The default is 1.",
+      "explanationEs": "La temperatura es un parametro (0 a 1) que controla la aleatoriedad en la salida de Claude. En 0, el modelo elige los tokens mas probables, produciendo respuestas consistentes y enfocadas — mejor para consultas factuales y codigo. En valores mas altos, el modelo considera tokens menos probables, produciendo salida mas diversa y creativa — mejor para lluvia de ideas y escritura creativa. El valor predeterminado es 1.",
+      "options": [
+        { "id": "c101-027_a", "text": "A parameter (0-1) controlling output randomness: 0 for deterministic/focused, higher for creative/diverse; default is 1", "textEs": "Un parametro (0-1) que controla la aleatoriedad de salida: 0 para determinista/enfocado, mas alto para creativo/diverso; predeterminado es 1", "order": 1 },
+        { "id": "c101-027_b", "text": "A measure of how fast the model processes input; higher temperature means faster responses", "textEs": "Una medida de que tan rapido el modelo procesa la entrada; mayor temperatura significa respuestas mas rapidas", "order": 2 },
+        { "id": "c101-027_c", "text": "The amount of GPU compute allocated to the request; higher means better quality", "textEs": "La cantidad de computo GPU asignada a la solicitud; mas alto significa mejor calidad", "order": 3 },
+        { "id": "c101-027_d", "text": "A security parameter that controls how strictly Claude follows safety guidelines", "textEs": "Un parametro de seguridad que controla que tan estrictamente Claude sigue las directrices de seguridad", "order": 4 }
+      ],
+      "tags": ["temperature", "parameters", "randomness", "creativity"]
+    },
+    {
+      "id": "c101-028",
+      "text": "How does Claude handle vision (image input) tasks?",
+      "textEs": "Como maneja Claude las tareas de vision (entrada de imagenes)?",
+      "domainCode": "claude-101",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-028_c",
+      "explanation": "Claude can process images by including them as content blocks in the messages array, either as base64-encoded data or URLs. It can describe image content, extract text (OCR), analyze charts and diagrams, compare multiple images, and answer questions about visual content. Claude processes images natively — no separate vision model is needed. However, it cannot generate images.",
+      "explanationEs": "Claude puede procesar imagenes incluyendolas como bloques de contenido en el array de mensajes, ya sea como datos codificados en base64 o URLs. Puede describir contenido de imagenes, extraer texto (OCR), analizar graficos y diagramas, comparar multiples imagenes y responder preguntas sobre contenido visual. Claude procesa imagenes nativamente — no se necesita un modelo de vision separado. Sin embargo, no puede generar imagenes.",
+      "options": [
+        { "id": "c101-028_a", "text": "Claude cannot process images at all; it is text-only", "textEs": "Claude no puede procesar imagenes en absoluto; es solo texto", "order": 1 },
+        { "id": "c101-028_b", "text": "Image processing requires a separate vision API endpoint and additional billing", "textEs": "El procesamiento de imagenes requiere un endpoint de API de vision separado y facturacion adicional", "order": 2 },
+        { "id": "c101-028_c", "text": "Images are sent as content blocks (base64 or URL); Claude can describe, extract text, analyze charts, and answer questions natively, but cannot generate images", "textEs": "Las imagenes se envian como bloques de contenido (base64 o URL); Claude puede describir, extraer texto, analizar graficos y responder preguntas nativamente, pero no puede generar imagenes", "order": 3 },
+        { "id": "c101-028_d", "text": "Claude can both receive and generate images using a built-in DALL-E integration", "textEs": "Claude puede recibir y generar imagenes usando una integracion incorporada de DALL-E", "order": 4 }
+      ],
+      "tags": ["vision", "images", "multimodal", "ocr"]
+    },
+    {
+      "id": "c101-029",
+      "text": "What are the main ways to access Claude models besides Claude.ai?",
+      "textEs": "Cuales son las principales formas de acceder a los modelos Claude ademas de Claude.ai?",
+      "domainCode": "claude-101",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-029_b",
+      "explanation": "Claude models can be accessed through multiple channels: the Anthropic API (direct access via REST), Amazon Bedrock (AWS cloud integration), Google Cloud Vertex AI, Claude Code (CLI for developers), and Claude for Enterprise. Each channel may have different features, pricing, and data handling policies depending on the provider and deployment model.",
+      "explanationEs": "Los modelos Claude se pueden acceder a traves de multiples canales: la API de Anthropic (acceso directo via REST), Amazon Bedrock (integracion cloud de AWS), Google Cloud Vertex AI, Claude Code (CLI para desarrolladores) y Claude for Enterprise. Cada canal puede tener diferentes funciones, precios y politicas de manejo de datos dependiendo del proveedor y el modelo de despliegue.",
+      "options": [
+        { "id": "c101-029_a", "text": "Only through Claude.ai; there are no other access methods", "textEs": "Solo a traves de Claude.ai; no hay otros metodos de acceso", "order": 1 },
+        { "id": "c101-029_b", "text": "Anthropic API (REST), Amazon Bedrock, Google Vertex AI, Claude Code (CLI), and Claude for Enterprise", "textEs": "API de Anthropic (REST), Amazon Bedrock, Google Vertex AI, Claude Code (CLI) y Claude for Enterprise", "order": 2 },
+        { "id": "c101-029_c", "text": "Only through the Anthropic API; cloud providers are not supported", "textEs": "Solo a traves de la API de Anthropic; los proveedores cloud no estan soportados", "order": 3 },
+        { "id": "c101-029_d", "text": "Through a downloadable desktop application for Windows and Mac", "textEs": "A traves de una aplicacion de escritorio descargable para Windows y Mac", "order": 4 }
+      ],
+      "tags": ["access", "platforms", "bedrock", "vertex-ai", "api"]
+    },
+    {
+      "id": "c101-030",
+      "text": "What is 'batching' in the Anthropic API and when would you use it?",
+      "textEs": "Que es 'batching' en la API de Anthropic y cuando lo usarias?",
+      "domainCode": "claude-101",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-101",
+      "correctOptionId": "c101-030_a",
+      "explanation": "The Message Batches API allows you to send large volumes of requests (up to 100,000) asynchronously at a 50% discount compared to standard pricing. You submit a batch of requests, and they are processed within 24 hours. This is ideal for tasks like bulk document processing, large-scale evaluations, or any workload where real-time responses are not needed.",
+      "explanationEs": "La API de Message Batches permite enviar grandes volumenes de solicitudes (hasta 100,000) de forma asincrona con un 50% de descuento comparado con el precio estandar. Envias un lote de solicitudes y se procesan dentro de 24 horas. Esto es ideal para tareas como procesamiento masivo de documentos, evaluaciones a gran escala o cualquier carga de trabajo donde no se necesiten respuestas en tiempo real.",
+      "options": [
+        { "id": "c101-030_a", "text": "Sending up to 100K async requests at 50% discount, processed within 24 hours; ideal for bulk processing without real-time needs", "textEs": "Enviar hasta 100K solicitudes asincronas con 50% de descuento, procesadas en 24 horas; ideal para procesamiento masivo sin necesidad de tiempo real", "order": 1 },
+        { "id": "c101-030_b", "text": "Grouping multiple messages into a single API call to save on network overhead", "textEs": "Agrupar multiples mensajes en una sola llamada API para ahorrar en overhead de red", "order": 2 },
+        { "id": "c101-030_c", "text": "A technique for combining multiple models to process a single request in parallel", "textEs": "Una tecnica para combinar multiples modelos para procesar una sola solicitud en paralelo", "order": 3 },
+        { "id": "c101-030_d", "text": "A feature that automatically queues requests during rate limiting and retries them", "textEs": "Una funcion que automaticamente encola solicitudes durante limitacion de tasa y las reintenta", "order": 4 }
+      ],
+      "tags": ["batching", "batch-api", "cost-optimization", "async"]
+    }
+  ]
+}

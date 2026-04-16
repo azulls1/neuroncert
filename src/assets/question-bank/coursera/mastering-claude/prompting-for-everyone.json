@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "domain": "prompting-for-everyone",
+    "domainName": "Prompting for Everyone",
+    "trackId": "coursera-mastering-claude-1",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 8,
+    "learningLevel": 2,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "cmc-pe-001",
+      "text": "¿Cuáles son los componentes fundamentales de un prompt bien estructurado para Claude?",
+      "textEs": "¿Cuáles son los componentes fundamentales de un prompt bien estructurado para Claude?",
+      "domainCode": "prompting-for-everyone",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pe-001_b",
+      "explanation": "Un prompt bien estructurado incluye: (1) contexto o información de fondo relevante, (2) la instrucción o tarea clara que Claude debe realizar, (3) restricciones o requisitos específicos (formato, tono, longitud), y opcionalmente (4) ejemplos del resultado esperado. Estos componentes trabajan juntos para eliminar ambigüedad y guiar a Claude hacia la respuesta deseada.",
+      "explanationEs": "Un prompt bien estructurado incluye: (1) contexto o información de fondo relevante, (2) la instrucción o tarea clara que Claude debe realizar, (3) restricciones o requisitos específicos (formato, tono, longitud), y opcionalmente (4) ejemplos del resultado esperado. Estos componentes trabajan juntos para eliminar ambigüedad y guiar a Claude hacia la respuesta deseada.",
+      "options": [
+        { "id": "cmc-pe-001_a", "text": "Solo se necesita la pregunta; agregar más componentes confunde al modelo", "textEs": "Solo se necesita la pregunta; agregar más componentes confunde al modelo", "order": 1 },
+        { "id": "cmc-pe-001_b", "text": "Contexto relevante, instrucción clara, restricciones específicas (formato, tono, longitud) y opcionalmente ejemplos del resultado esperado", "textEs": "Contexto relevante, instrucción clara, restricciones específicas (formato, tono, longitud) y opcionalmente ejemplos del resultado esperado", "order": 2 },
+        { "id": "cmc-pe-001_c", "text": "Un encabezado con el nombre del modelo, el prompt en inglés y un delimitador de fin", "textEs": "Un encabezado con el nombre del modelo, el prompt en inglés y un delimitador de fin", "order": 3 },
+        { "id": "cmc-pe-001_d", "text": "Palabras clave separadas por comas que el modelo busca en su base de datos interna", "textEs": "Palabras clave separadas por comas que el modelo busca en su base de datos interna", "order": 4 }
+      ],
+      "tags": ["fundamentos-prompting", "estructura", "componentes"]
+    },
+    {
+      "id": "cmc-pe-002",
+      "text": "¿Qué es el comportamiento de seguridad (safety behavior) de Claude y cómo afecta las respuestas?",
+      "textEs": "¿Qué es el comportamiento de seguridad (safety behavior) de Claude y cómo afecta las respuestas?",
+      "domainCode": "prompting-for-everyone",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pe-002_c",
+      "explanation": "El safety behavior de Claude es el conjunto de límites y políticas integradas durante su entrenamiento (Constitutional AI) que lo hacen rechazar solicitudes dañinas, evitar generar contenido peligroso y ser transparente sobre sus limitaciones. Esto puede hacer que Claude decline ciertas solicitudes o agregue advertencias. Es una característica de diseño deliberada, no un defecto, y refleja el compromiso de Anthropic con la IA segura.",
+      "explanationEs": "El safety behavior de Claude es el conjunto de límites y políticas integradas durante su entrenamiento (Constitutional AI) que lo hacen rechazar solicitudes dañinas, evitar generar contenido peligroso y ser transparente sobre sus limitaciones. Esto puede hacer que Claude decline ciertas solicitudes o agregue advertencias. Es una característica de diseño deliberada, no un defecto, y refleja el compromiso de Anthropic con la IA segura.",
+      "options": [
+        { "id": "cmc-pe-002_a", "text": "Un firewall técnico externo que filtra las respuestas antes de enviarlas al usuario", "textEs": "Un firewall técnico externo que filtra las respuestas antes de enviarlas al usuario", "order": 1 },
+        { "id": "cmc-pe-002_b", "text": "Un sistema de puntuación que califica cada respuesta del 1 al 10 en seguridad", "textEs": "Un sistema de puntuación que califica cada respuesta del 1 al 10 en seguridad", "order": 2 },
+        { "id": "cmc-pe-002_c", "text": "Límites integrados durante el entrenamiento que hacen que Claude rechace solicitudes dañinas, evite contenido peligroso y sea transparente sobre limitaciones", "textEs": "Límites integrados durante el entrenamiento que hacen que Claude rechace solicitudes dañinas, evite contenido peligroso y sea transparente sobre limitaciones", "order": 3 },
+        { "id": "cmc-pe-002_d", "text": "Una configuración opcional que el usuario activa o desactiva según sus necesidades", "textEs": "Una configuración opcional que el usuario activa o desactiva según sus necesidades", "order": 4 }
+      ],
+      "tags": ["safety-behavior", "seguridad", "constitutional-ai", "limites"]
+    },
+    {
+      "id": "cmc-pe-003",
+      "text": "¿Cuál es la mejor estrategia para que Claude procese documentos largos de manera efectiva?",
+      "textEs": "¿Cuál es la mejor estrategia para que Claude procese documentos largos de manera efectiva?",
+      "domainCode": "prompting-for-everyone",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pe-003_a",
+      "explanation": "Para documentos largos, la estrategia óptima es: incluir el documento completo usando delimitadores claros (como etiquetas XML), colocar las instrucciones después del documento, ser específico sobre qué buscar o extraer, y aprovechar la ventana de contexto de 200K tokens. Para documentos muy largos, colocar la información más importante al inicio o al final del documento mejora la retención del modelo.",
+      "explanationEs": "Para documentos largos, la estrategia óptima es: incluir el documento completo usando delimitadores claros (como etiquetas XML), colocar las instrucciones después del documento, ser específico sobre qué buscar o extraer, y aprovechar la ventana de contexto de 200K tokens. Para documentos muy largos, colocar la información más importante al inicio o al final del documento mejora la retención del modelo.",
+      "options": [
+        { "id": "cmc-pe-003_a", "text": "Incluir el documento con delimitadores claros, colocar instrucciones después, ser específico en la consulta y aprovechar la ventana de 200K tokens", "textEs": "Incluir el documento con delimitadores claros, colocar instrucciones después, ser específico en la consulta y aprovechar la ventana de 200K tokens", "order": 1 },
+        { "id": "cmc-pe-003_b", "text": "Siempre dividir documentos en fragmentos de 500 palabras y procesarlos por separado", "textEs": "Siempre dividir documentos en fragmentos de 500 palabras y procesarlos por separado", "order": 2 },
+        { "id": "cmc-pe-003_c", "text": "Resumir el documento manualmente antes de enviarlo a Claude", "textEs": "Resumir el documento manualmente antes de enviarlo a Claude", "order": 3 },
+        { "id": "cmc-pe-003_d", "text": "Convertir el documento a formato JSON antes de incluirlo en el prompt", "textEs": "Convertir el documento a formato JSON antes de incluirlo en el prompt", "order": 4 }
+      ],
+      "tags": ["documentos-largos", "ventana-contexto", "delimitadores", "estrategias"]
+    },
+    {
+      "id": "cmc-pe-004",
+      "text": "¿Qué es el prompting estructurado y por qué es preferible al prompting en texto libre?",
+      "textEs": "¿Qué es el prompting estructurado y por qué es preferible al prompting en texto libre?",
+      "domainCode": "prompting-for-everyone",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pe-004_d",
+      "explanation": "El prompting estructurado utiliza secciones claramente delimitadas (etiquetas XML, encabezados, separadores) para organizar las diferentes partes del prompt: instrucciones, contexto, ejemplos, restricciones y formato de salida. Es preferible al texto libre porque reduce la ambigüedad, facilita que Claude identifique cada componente, mejora la consistencia de las respuestas y hace que los prompts sean más fáciles de mantener y modificar.",
+      "explanationEs": "El prompting estructurado utiliza secciones claramente delimitadas (etiquetas XML, encabezados, separadores) para organizar las diferentes partes del prompt: instrucciones, contexto, ejemplos, restricciones y formato de salida. Es preferible al texto libre porque reduce la ambigüedad, facilita que Claude identifique cada componente, mejora la consistencia de las respuestas y hace que los prompts sean más fáciles de mantener y modificar.",
+      "options": [
+        { "id": "cmc-pe-004_a", "text": "Es un formato propietario de Anthropic que solo funciona con la API de pago", "textEs": "Es un formato propietario de Anthropic que solo funciona con la API de pago", "order": 1 },
+        { "id": "cmc-pe-004_b", "text": "Se refiere a escribir prompts en lenguaje de programación en lugar de lenguaje natural", "textEs": "Se refiere a escribir prompts en lenguaje de programación en lugar de lenguaje natural", "order": 2 },
+        { "id": "cmc-pe-004_c", "text": "Es idéntico al texto libre pero con viñetas; no hay diferencia práctica en los resultados", "textEs": "Es idéntico al texto libre pero con viñetas; no hay diferencia práctica en los resultados", "order": 3 },
+        { "id": "cmc-pe-004_d", "text": "Usa secciones delimitadas (XML, encabezados) para organizar el prompt; reduce ambigüedad, mejora consistencia y facilita mantenimiento", "textEs": "Usa secciones delimitadas (XML, encabezados) para organizar el prompt; reduce ambigüedad, mejora consistencia y facilita mantenimiento", "order": 4 }
+      ],
+      "tags": ["prompting-estructurado", "xml-tags", "organizacion", "mejores-practicas"]
+    },
+    {
+      "id": "cmc-pe-005",
+      "text": "¿Cómo se puede usar el prefilling (prellenado) del mensaje del asistente para controlar el formato de salida?",
+      "textEs": "¿Cómo se puede usar el prefilling (prellenado) del mensaje del asistente para controlar el formato de salida?",
+      "domainCode": "prompting-for-everyone",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pe-005_b",
+      "explanation": "El prefilling consiste en incluir el inicio de la respuesta del asistente en la solicitud a la API. Por ejemplo, si se quiere una respuesta en JSON, se puede prellenar con '{' para que Claude continúe generando un objeto JSON válido. También se puede usar para forzar un idioma específico, un formato de lista o para omitir preámbulos innecesarios. Es una técnica poderosa para control preciso del formato.",
+      "explanationEs": "El prefilling consiste en incluir el inicio de la respuesta del asistente en la solicitud a la API. Por ejemplo, si se quiere una respuesta en JSON, se puede prellenar con '{' para que Claude continúe generando un objeto JSON válido. También se puede usar para forzar un idioma específico, un formato de lista o para omitir preámbulos innecesarios. Es una técnica poderosa para control preciso del formato.",
+      "options": [
+        { "id": "cmc-pe-005_a", "text": "Es una técnica que solo funciona en claude.ai, no en la API", "textEs": "Es una técnica que solo funciona en claude.ai, no en la API", "order": 1 },
+        { "id": "cmc-pe-005_b", "text": "Se incluye el inicio de la respuesta del asistente en la solicitud API para que Claude continúe en ese formato, como iniciar con '{' para forzar JSON", "textEs": "Se incluye el inicio de la respuesta del asistente en la solicitud API para que Claude continúe en ese formato, como iniciar con '{' para forzar JSON", "order": 2 },
+        { "id": "cmc-pe-005_c", "text": "Se envía la respuesta completa y Claude la corrige si hay errores", "textEs": "Se envía la respuesta completa y Claude la corrige si hay errores", "order": 3 },
+        { "id": "cmc-pe-005_d", "text": "Se usa un parámetro especial 'prefill' en la configuración de la API", "textEs": "Se usa un parámetro especial 'prefill' en la configuración de la API", "order": 4 }
+      ],
+      "tags": ["prefilling", "formato-salida", "api", "control"]
+    },
+    {
+      "id": "cmc-pe-006",
+      "text": "¿Cuándo podría Claude rechazar legítimamente una solicitud del usuario debido a su safety behavior?",
+      "textEs": "¿Cuándo podría Claude rechazar legítimamente una solicitud del usuario debido a su safety behavior?",
+      "domainCode": "prompting-for-everyone",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pe-006_a",
+      "explanation": "Claude rechaza solicitudes que podrían causar daño real: instrucciones para crear armas o sustancias peligrosas, generar contenido que explote a menores, asistir en actividades ilegales, o producir desinformación masiva. Estos rechazos reflejan los principios de Constitutional AI (ser útil, inofensivo y honesto). Claude no rechaza solicitudes educativas legítimas sobre estos temas, sino específicamente las que buscan causar daño directo.",
+      "explanationEs": "Claude rechaza solicitudes que podrían causar daño real: instrucciones para crear armas o sustancias peligrosas, generar contenido que explote a menores, asistir en actividades ilegales, o producir desinformación masiva. Estos rechazos reflejan los principios de Constitutional AI (ser útil, inofensivo y honesto). Claude no rechaza solicitudes educativas legítimas sobre estos temas, sino específicamente las que buscan causar daño directo.",
+      "options": [
+        { "id": "cmc-pe-006_a", "text": "Solicitudes de instrucciones para crear armas, contenido de explotación de menores, asistencia en actividades ilegales o desinformación masiva", "textEs": "Solicitudes de instrucciones para crear armas, contenido de explotación de menores, asistencia en actividades ilegales o desinformación masiva", "order": 1 },
+        { "id": "cmc-pe-006_b", "text": "Cualquier pregunta sobre temas sensibles como política, religión o salud", "textEs": "Cualquier pregunta sobre temas sensibles como política, religión o salud", "order": 2 },
+        { "id": "cmc-pe-006_c", "text": "Solicitudes que requieran más de 1000 tokens de respuesta", "textEs": "Solicitudes que requieran más de 1000 tokens de respuesta", "order": 3 },
+        { "id": "cmc-pe-006_d", "text": "Preguntas que Claude no pueda responder con 100% de certeza", "textEs": "Preguntas que Claude no pueda responder con 100% de certeza", "order": 4 }
+      ],
+      "tags": ["safety-behavior", "rechazos", "limites-eticos", "constitutional-ai"]
+    },
+    {
+      "id": "cmc-pe-007",
+      "text": "¿Por qué es útil usar etiquetas XML como <context>, <instructions> y <output_format> en prompts complejos?",
+      "textEs": "¿Por qué es útil usar etiquetas XML como <context>, <instructions> y <output_format> en prompts complejos?",
+      "domainCode": "prompting-for-everyone",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pe-007_c",
+      "explanation": "Las etiquetas XML crean límites semánticos claros entre las diferentes partes del prompt. Claude está entrenado para reconocer estas estructuras y procesar cada sección de forma apropiada. <context> indica información de fondo, <instructions> marca las tareas a realizar, y <output_format> especifica la estructura esperada. Esto es especialmente valioso en prompts largos con múltiples tipos de contenido.",
+      "explanationEs": "Las etiquetas XML crean límites semánticos claros entre las diferentes partes del prompt. Claude está entrenado para reconocer estas estructuras y procesar cada sección de forma apropiada. <context> indica información de fondo, <instructions> marca las tareas a realizar, y <output_format> especifica la estructura esperada. Esto es especialmente valioso en prompts largos con múltiples tipos de contenido.",
+      "options": [
+        { "id": "cmc-pe-007_a", "text": "Son requeridas por la API; el prompt falla sin ellas", "textEs": "Son requeridas por la API; el prompt falla sin ellas", "order": 1 },
+        { "id": "cmc-pe-007_b", "text": "Fuerzan a Claude a responder en formato XML, facilitando el parsing", "textEs": "Fuerzan a Claude a responder en formato XML, facilitando el parsing", "order": 2 },
+        { "id": "cmc-pe-007_c", "text": "Crean límites semánticos claros que Claude reconoce, permitiendo procesar cada sección (contexto, instrucciones, formato) de forma diferenciada", "textEs": "Crean límites semánticos claros que Claude reconoce, permitiendo procesar cada sección (contexto, instrucciones, formato) de forma diferenciada", "order": 3 },
+        { "id": "cmc-pe-007_d", "text": "Solo son útiles para prompts en inglés; en español no tienen efecto", "textEs": "Solo son útiles para prompts en inglés; en español no tienen efecto", "order": 4 }
+      ],
+      "tags": ["xml-tags", "estructura", "prompts-complejos", "semantica"]
+    },
+    {
+      "id": "cmc-pe-008",
+      "text": "¿Cuál es la estrategia recomendada para extraer información específica de un documento largo enviado a Claude?",
+      "textEs": "¿Cuál es la estrategia recomendada para extraer información específica de un documento largo enviado a Claude?",
+      "domainCode": "prompting-for-everyone",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pe-008_d",
+      "explanation": "La estrategia más efectiva es: envolver el documento en etiquetas delimitadoras (como <document>), colocar la pregunta específica después del documento, ser preciso sobre qué información se busca (no pedir 'un resumen' sino 'extraer las fechas y montos de cada transacción'), y si se necesitan múltiples datos, listar exactamente los campos requeridos. Esto guía la atención del modelo hacia los datos relevantes.",
+      "explanationEs": "La estrategia más efectiva es: envolver el documento en etiquetas delimitadoras (como <document>), colocar la pregunta específica después del documento, ser preciso sobre qué información se busca (no pedir 'un resumen' sino 'extraer las fechas y montos de cada transacción'), y si se necesitan múltiples datos, listar exactamente los campos requeridos. Esto guía la atención del modelo hacia los datos relevantes.",
+      "options": [
+        { "id": "cmc-pe-008_a", "text": "Copiar solo las secciones relevantes del documento y descartar el resto antes de enviarlo", "textEs": "Copiar solo las secciones relevantes del documento y descartar el resto antes de enviarlo", "order": 1 },
+        { "id": "cmc-pe-008_b", "text": "Pedir un resumen general y luego hacer preguntas específicas sobre el resumen", "textEs": "Pedir un resumen general y luego hacer preguntas específicas sobre el resumen", "order": 2 },
+        { "id": "cmc-pe-008_c", "text": "Dividir el documento en oraciones individuales y procesar cada una por separado", "textEs": "Dividir el documento en oraciones individuales y procesar cada una por separado", "order": 3 },
+        { "id": "cmc-pe-008_d", "text": "Envolver el documento en delimitadores, colocar la consulta después, especificar exactamente qué datos extraer y listar los campos requeridos", "textEs": "Envolver el documento en delimitadores, colocar la consulta después, especificar exactamente qué datos extraer y listar los campos requeridos", "order": 4 }
+      ],
+      "tags": ["documentos-largos", "extraccion", "delimitadores", "consultas-especificas"]
+    }
+  ]
+}

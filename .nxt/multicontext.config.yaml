@@ -1,0 +1,25 @@
+# NXT MultiContext Agent (Nova) - Configuracion
+# Proyecto: simulador-examen-csa
+
+multicontext:
+  # Checkpoints
+  checkpoint_interval: 300  # segundos (5 min)
+  max_checkpoints: 20       # mantener ultimos 20
+  checkpoint_on_agent_switch: true
+  checkpoint_on_decision: true
+
+  # Alertas de contexto
+  context_warning_threshold: 0.6   # 60%
+  context_critical_threshold: 0.8  # 80%
+
+  # Recovery
+  auto_recovery: true
+  recovery_prompt: true  # preguntar antes de recuperar
+
+  # Persistencia
+  persist_to_file: true
+  persist_to_mcp: false  # MCP Memory no configurado aun
+
+  # Resumen
+  summary_on_critical: true
+  summary_format: "structured"

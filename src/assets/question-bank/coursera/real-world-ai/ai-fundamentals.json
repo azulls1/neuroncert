@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "domain": "ai-fundamentals",
+    "domainName": "AI Fundamentals",
+    "trackId": "coursera-real-world-ai-1",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 8,
+    "learningLevel": 1,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "crwa-af-001",
+      "text": "¿Cuál es el propósito principal de estructurar un prompt con secciones claras (contexto, instrucción, formato de salida)?",
+      "textEs": "¿Cuál es el propósito principal de estructurar un prompt con secciones claras (contexto, instrucción, formato de salida)?",
+      "domainCode": "ai-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-1",
+      "correctOptionId": "crwa-af-001_b",
+      "explanation": "Estructurar un prompt con secciones claras ayuda a Claude a identificar qué información es contexto, qué es la instrucción principal y cómo debe formatear la respuesta. Esto reduce la ambigüedad y mejora significativamente la calidad de las respuestas, ya que el modelo puede procesar cada parte del prompt de forma diferenciada.",
+      "explanationEs": "Estructurar un prompt con secciones claras ayuda a Claude a identificar qué información es contexto, qué es la instrucción principal y cómo debe formatear la respuesta. Esto reduce la ambigüedad y mejora significativamente la calidad de las respuestas, ya que el modelo puede procesar cada parte del prompt de forma diferenciada.",
+      "options": [
+        { "id": "crwa-af-001_a", "text": "Reducir el número de tokens enviados para ahorrar costos", "textEs": "Reducir el número de tokens enviados para ahorrar costos", "order": 1 },
+        { "id": "crwa-af-001_b", "text": "Ayudar a Claude a diferenciar contexto, instrucción y formato esperado, reduciendo ambigüedad y mejorando la calidad de respuesta", "textEs": "Ayudar a Claude a diferenciar contexto, instrucción y formato esperado, reduciendo ambigüedad y mejorando la calidad de respuesta", "order": 2 },
+        { "id": "crwa-af-001_c", "text": "Es un requisito técnico de la API que rechaza prompts sin estructura", "textEs": "Es un requisito técnico de la API que rechaza prompts sin estructura", "order": 3 },
+        { "id": "crwa-af-001_d", "text": "Permitir que múltiples modelos procesen el prompt simultáneamente", "textEs": "Permitir que múltiples modelos procesen el prompt simultáneamente", "order": 4 }
+      ],
+      "tags": ["estructura-prompts", "calidad", "prompting-basico"]
+    },
+    {
+      "id": "crwa-af-002",
+      "text": "¿Por qué es importante proporcionar contexto relevante en un prompt antes de hacer una pregunta a Claude?",
+      "textEs": "¿Por qué es importante proporcionar contexto relevante en un prompt antes de hacer una pregunta a Claude?",
+      "domainCode": "ai-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-1",
+      "correctOptionId": "crwa-af-002_c",
+      "explanation": "El contexto relevante permite que Claude genere respuestas específicas y adaptadas a la situación particular del usuario. Sin contexto, Claude solo puede basarse en su conocimiento general de entrenamiento, lo que produce respuestas genéricas. Con contexto adecuado, las respuestas son más precisas, accionables y útiles para el caso específico.",
+      "explanationEs": "El contexto relevante permite que Claude genere respuestas específicas y adaptadas a la situación particular del usuario. Sin contexto, Claude solo puede basarse en su conocimiento general de entrenamiento, lo que produce respuestas genéricas. Con contexto adecuado, las respuestas son más precisas, accionables y útiles para el caso específico.",
+      "options": [
+        { "id": "crwa-af-002_a", "text": "El contexto no afecta las respuestas; Claude siempre responde de la misma forma", "textEs": "El contexto no afecta las respuestas; Claude siempre responde de la misma forma", "order": 1 },
+        { "id": "crwa-af-002_b", "text": "Se requiere contexto para autenticar al usuario en la API", "textEs": "Se requiere contexto para autenticar al usuario en la API", "order": 2 },
+        { "id": "crwa-af-002_c", "text": "Permite que Claude genere respuestas específicas y adaptadas a la situación particular, en lugar de respuestas genéricas basadas solo en entrenamiento", "textEs": "Permite que Claude genere respuestas específicas y adaptadas a la situación particular, en lugar de respuestas genéricas basadas solo en entrenamiento", "order": 3 },
+        { "id": "crwa-af-002_d", "text": "Agregar contexto reduce el tiempo de procesamiento del modelo", "textEs": "Agregar contexto reduce el tiempo de procesamiento del modelo", "order": 4 }
+      ],
+      "tags": ["contexto", "calidad-respuestas", "prompting-basico"]
+    },
+    {
+      "id": "crwa-af-003",
+      "text": "¿Qué es Claude Artifacts y cuál es su función principal?",
+      "textEs": "¿Qué es Claude Artifacts y cuál es su función principal?",
+      "domainCode": "ai-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-1",
+      "correctOptionId": "crwa-af-003_a",
+      "explanation": "Claude Artifacts es una funcionalidad de claude.ai que permite crear contenido sustancial y reutilizable (código, documentos, visualizaciones, páginas web) en un panel separado junto a la conversación. Los artifacts se pueden editar, iterar y descargar, lo que los hace ideales para trabajo creativo y técnico que requiere refinamiento progresivo.",
+      "explanationEs": "Claude Artifacts es una funcionalidad de claude.ai que permite crear contenido sustancial y reutilizable (código, documentos, visualizaciones, páginas web) en un panel separado junto a la conversación. Los artifacts se pueden editar, iterar y descargar, lo que los hace ideales para trabajo creativo y técnico que requiere refinamiento progresivo.",
+      "options": [
+        { "id": "crwa-af-003_a", "text": "Una funcionalidad que permite crear contenido reutilizable (código, documentos, visualizaciones) en un panel separado, editable e iterable", "textEs": "Una funcionalidad que permite crear contenido reutilizable (código, documentos, visualizaciones) en un panel separado, editable e iterable", "order": 1 },
+        { "id": "crwa-af-003_b", "text": "Un sistema de almacenamiento permanente para guardar conversaciones anteriores", "textEs": "Un sistema de almacenamiento permanente para guardar conversaciones anteriores", "order": 2 },
+        { "id": "crwa-af-003_c", "text": "Un plugin para conectar Claude con bases de datos externas", "textEs": "Un plugin para conectar Claude con bases de datos externas", "order": 3 },
+        { "id": "crwa-af-003_d", "text": "Una herramienta para entrenar modelos personalizados con datos propios", "textEs": "Una herramienta para entrenar modelos personalizados con datos propios", "order": 4 }
+      ],
+      "tags": ["artifacts", "claude-ai", "funcionalidades"]
+    },
+    {
+      "id": "crwa-af-004",
+      "text": "¿Cuál de las siguientes estrategias mejora más la calidad de las respuestas de Claude para tareas complejas?",
+      "textEs": "¿Cuál de las siguientes estrategias mejora más la calidad de las respuestas de Claude para tareas complejas?",
+      "domainCode": "ai-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-1",
+      "correctOptionId": "crwa-af-004_d",
+      "explanation": "Para tareas complejas, dividir la tarea en pasos claros y pedir a Claude que razone paso a paso (chain-of-thought) es la estrategia más efectiva. Esto permite al modelo organizar su pensamiento, verificar cada paso antes de continuar y producir respuestas más precisas y completas. Es más efectivo que simplemente repetir la pregunta o agregar información irrelevante.",
+      "explanationEs": "Para tareas complejas, dividir la tarea en pasos claros y pedir a Claude que razone paso a paso (chain-of-thought) es la estrategia más efectiva. Esto permite al modelo organizar su pensamiento, verificar cada paso antes de continuar y producir respuestas más precisas y completas. Es más efectivo que simplemente repetir la pregunta o agregar información irrelevante.",
+      "options": [
+        { "id": "crwa-af-004_a", "text": "Escribir el prompt en inglés porque Claude funciona mejor en ese idioma", "textEs": "Escribir el prompt en inglés porque Claude funciona mejor en ese idioma", "order": 1 },
+        { "id": "crwa-af-004_b", "text": "Enviar el mismo prompt varias veces y elegir la mejor respuesta", "textEs": "Enviar el mismo prompt varias veces y elegir la mejor respuesta", "order": 2 },
+        { "id": "crwa-af-004_c", "text": "Usar el prompt más corto posible para evitar confundir al modelo", "textEs": "Usar el prompt más corto posible para evitar confundir al modelo", "order": 3 },
+        { "id": "crwa-af-004_d", "text": "Dividir la tarea en pasos claros y pedir a Claude que razone paso a paso antes de dar una respuesta final", "textEs": "Dividir la tarea en pasos claros y pedir a Claude que razone paso a paso antes de dar una respuesta final", "order": 4 }
+      ],
+      "tags": ["calidad-respuestas", "chain-of-thought", "tareas-complejas"]
+    },
+    {
+      "id": "crwa-af-005",
+      "text": "¿Qué tipo de contenido se puede crear como Artifact en Claude?",
+      "textEs": "¿Qué tipo de contenido se puede crear como Artifact en Claude?",
+      "domainCode": "ai-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-1",
+      "correctOptionId": "crwa-af-005_b",
+      "explanation": "Los Artifacts de Claude pueden contener diversos tipos de contenido: código en múltiples lenguajes de programación, documentos de texto formateados en Markdown, visualizaciones SVG, componentes React interactivos, páginas HTML completas y diagramas Mermaid. Esta versatilidad los hace útiles tanto para tareas técnicas como creativas.",
+      "explanationEs": "Los Artifacts de Claude pueden contener diversos tipos de contenido: código en múltiples lenguajes de programación, documentos de texto formateados en Markdown, visualizaciones SVG, componentes React interactivos, páginas HTML completas y diagramas Mermaid. Esta versatilidad los hace útiles tanto para tareas técnicas como creativas.",
+      "options": [
+        { "id": "crwa-af-005_a", "text": "Solo código Python y JavaScript", "textEs": "Solo código Python y JavaScript", "order": 1 },
+        { "id": "crwa-af-005_b", "text": "Código en múltiples lenguajes, documentos Markdown, visualizaciones SVG, componentes React, HTML y diagramas Mermaid", "textEs": "Código en múltiples lenguajes, documentos Markdown, visualizaciones SVG, componentes React, HTML y diagramas Mermaid", "order": 2 },
+        { "id": "crwa-af-005_c", "text": "Solo texto plano sin formato ni código", "textEs": "Solo texto plano sin formato ni código", "order": 3 },
+        { "id": "crwa-af-005_d", "text": "Solo imágenes y archivos PDF", "textEs": "Solo imágenes y archivos PDF", "order": 4 }
+      ],
+      "tags": ["artifacts", "tipos-contenido", "funcionalidades"]
+    },
+    {
+      "id": "crwa-af-006",
+      "text": "¿Cómo se debe formular un prompt para obtener una respuesta en un formato específico (por ejemplo, una tabla o lista numerada)?",
+      "textEs": "¿Cómo se debe formular un prompt para obtener una respuesta en un formato específico (por ejemplo, una tabla o lista numerada)?",
+      "domainCode": "ai-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-1",
+      "correctOptionId": "crwa-af-006_c",
+      "explanation": "La forma más efectiva de obtener un formato específico es indicarlo explícitamente en el prompt y, si es posible, proporcionar un ejemplo del formato deseado. Claude sigue instrucciones literales, por lo que decir 'Responde con una tabla con columnas: Nombre, Descripción, Ejemplo' es mucho más efectivo que simplemente pedir 'organiza la información'. Los ejemplos del formato deseado eliminan cualquier ambigüedad.",
+      "explanationEs": "La forma más efectiva de obtener un formato específico es indicarlo explícitamente en el prompt y, si es posible, proporcionar un ejemplo del formato deseado. Claude sigue instrucciones literales, por lo que decir 'Responde con una tabla con columnas: Nombre, Descripción, Ejemplo' es mucho más efectivo que simplemente pedir 'organiza la información'. Los ejemplos del formato deseado eliminan cualquier ambigüedad.",
+      "options": [
+        { "id": "crwa-af-006_a", "text": "Usar el parámetro 'format' de la API para especificar tabla, lista o JSON", "textEs": "Usar el parámetro 'format' de la API para especificar tabla, lista o JSON", "order": 1 },
+        { "id": "crwa-af-006_b", "text": "Claude detecta automáticamente el mejor formato sin necesidad de indicarlo", "textEs": "Claude detecta automáticamente el mejor formato sin necesidad de indicarlo", "order": 2 },
+        { "id": "crwa-af-006_c", "text": "Indicar explícitamente el formato deseado en el prompt y proporcionar un ejemplo de la estructura esperada", "textEs": "Indicar explícitamente el formato deseado en el prompt y proporcionar un ejemplo de la estructura esperada", "order": 3 },
+        { "id": "crwa-af-006_d", "text": "Agregar etiquetas HTML al prompt para que Claude interprete el formato", "textEs": "Agregar etiquetas HTML al prompt para que Claude interprete el formato", "order": 4 }
+      ],
+      "tags": ["formato-salida", "estructura-prompts", "instrucciones-explicitas"]
+    },
+    {
+      "id": "crwa-af-007",
+      "text": "¿Qué característica hace que un prompt produzca respuestas de baja calidad?",
+      "textEs": "¿Qué característica hace que un prompt produzca respuestas de baja calidad?",
+      "domainCode": "ai-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-1",
+      "correctOptionId": "crwa-af-007_a",
+      "explanation": "Los prompts vagos y ambiguos son la causa más común de respuestas de baja calidad. Cuando un prompt como 'Ayúdame con esto' no especifica qué tipo de ayuda se necesita, el tema, el formato deseado ni el nivel de detalle, Claude debe adivinar la intención del usuario, produciendo respuestas genéricas e imprecisas. La especificidad es clave: definir tarea, contexto, formato y restricciones.",
+      "explanationEs": "Los prompts vagos y ambiguos son la causa más común de respuestas de baja calidad. Cuando un prompt como 'Ayúdame con esto' no especifica qué tipo de ayuda se necesita, el tema, el formato deseado ni el nivel de detalle, Claude debe adivinar la intención del usuario, produciendo respuestas genéricas e imprecisas. La especificidad es clave: definir tarea, contexto, formato y restricciones.",
+      "options": [
+        { "id": "crwa-af-007_a", "text": "Ser vago y ambiguo, sin especificar tarea concreta, contexto, formato ni restricciones", "textEs": "Ser vago y ambiguo, sin especificar tarea concreta, contexto, formato ni restricciones", "order": 1 },
+        { "id": "crwa-af-007_b", "text": "Incluir demasiado contexto relevante en el prompt", "textEs": "Incluir demasiado contexto relevante en el prompt", "order": 2 },
+        { "id": "crwa-af-007_c", "text": "Usar lenguaje formal y profesional en la redacción", "textEs": "Usar lenguaje formal y profesional en la redacción", "order": 3 },
+        { "id": "crwa-af-007_d", "text": "Pedir a Claude que explique su razonamiento antes de responder", "textEs": "Pedir a Claude que explique su razonamiento antes de responder", "order": 4 }
+      ],
+      "tags": ["calidad-respuestas", "errores-comunes", "prompts-vagos"]
+    },
+    {
+      "id": "crwa-af-008",
+      "text": "¿Cuándo es más útil usar un Artifact en lugar de una respuesta directa en la conversación de Claude?",
+      "textEs": "¿Cuándo es más útil usar un Artifact en lugar de una respuesta directa en la conversación de Claude?",
+      "domainCode": "ai-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-1",
+      "correctOptionId": "crwa-af-008_d",
+      "explanation": "Los Artifacts son más útiles cuando el contenido generado es sustancial, autocontenido y se beneficia de edición iterativa. Ejemplos ideales incluyen: código que se quiere ejecutar o modificar, documentos largos que requieren refinamiento, visualizaciones de datos, y componentes interactivos. Para respuestas breves, explicaciones conversacionales o preguntas simples, una respuesta directa en el chat es más apropiada.",
+      "explanationEs": "Los Artifacts son más útiles cuando el contenido generado es sustancial, autocontenido y se beneficia de edición iterativa. Ejemplos ideales incluyen: código que se quiere ejecutar o modificar, documentos largos que requieren refinamiento, visualizaciones de datos, y componentes interactivos. Para respuestas breves, explicaciones conversacionales o preguntas simples, una respuesta directa en el chat es más apropiada.",
+      "options": [
+        { "id": "crwa-af-008_a", "text": "Siempre, ya que los Artifacts son superiores a las respuestas en chat", "textEs": "Siempre, ya que los Artifacts son superiores a las respuestas en chat", "order": 1 },
+        { "id": "crwa-af-008_b", "text": "Solo cuando Claude no puede responder directamente en la conversación", "textEs": "Solo cuando Claude no puede responder directamente en la conversación", "order": 2 },
+        { "id": "crwa-af-008_c", "text": "Únicamente para generar imágenes y gráficos", "textEs": "Únicamente para generar imágenes y gráficos", "order": 3 },
+        { "id": "crwa-af-008_d", "text": "Cuando el contenido es sustancial, autocontenido y se beneficia de edición iterativa, como código, documentos largos o visualizaciones", "textEs": "Cuando el contenido es sustancial, autocontenido y se beneficia de edición iterativa, como código, documentos largos o visualizaciones", "order": 4 }
+      ],
+      "tags": ["artifacts", "casos-uso", "mejores-practicas"]
+    }
+  ]
+}

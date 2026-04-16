@@ -1,0 +1,1252 @@
+{
+  "meta": {
+    "domain": "tool-design-mcp",
+    "domainName": "Tool Design & MCP",
+    "trackId": "cca-f",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-15",
+    "totalQuestions": 62
+  },
+  "questions": [
+    {
+      "id": "ccaf-tm-001",
+      "text": "What are the three core primitives defined by the Model Context Protocol (MCP)?",
+      "textEs": "¿Cuáles son las tres primitivas fundamentales definidas por el Model Context Protocol (MCP)?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-001_b",
+      "explanation": "MCP defines three core primitives: Tools (executable functions the model can invoke), Resources (read-only data sources the model can access), and Prompts (reusable prompt templates). Tools are model-controlled (the model decides when to use them), Resources are application-controlled (the host decides which to expose), and Prompts are user-controlled (the user selects which to activate).",
+      "explanationEs": "MCP define tres primitivas fundamentales: Tools (funciones ejecutables que el modelo puede invocar), Resources (fuentes de datos de solo lectura que el modelo puede acceder) y Prompts (plantillas de prompts reutilizables). Las Tools son controladas por el modelo (el modelo decide cuándo usarlas), los Resources son controlados por la aplicación (el host decide cuáles exponer) y los Prompts son controlados por el usuario (el usuario selecciona cuáles activar).",
+      "options": [
+        { "id": "ccaf-tm-001_a", "text": "Functions, Schemas, and Endpoints", "textEs": "Functions, Schemas y Endpoints", "order": 1 },
+        { "id": "ccaf-tm-001_b", "text": "Tools, Resources, and Prompts", "textEs": "Tools, Resources y Prompts", "order": 2 },
+        { "id": "ccaf-tm-001_c", "text": "Actions, Contexts, and Templates", "textEs": "Actions, Contexts y Templates", "order": 3 },
+        { "id": "ccaf-tm-001_d", "text": "Commands, Data, and Instructions", "textEs": "Commands, Data e Instructions", "order": 4 }
+      ],
+      "tags": ["mcp", "primitives", "tools", "resources", "prompts"]
+    },
+    {
+      "id": "ccaf-tm-002",
+      "text": "Research shows that Claude's tool selection accuracy degrades significantly when an agent has access to more than how many tools?",
+      "textEs": "Las investigaciones muestran que la precisión de selección de herramientas de Claude se degrada significativamente cuando un agente tiene acceso a más de cuántas herramientas?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-002_c",
+      "explanation": "Empirical testing shows that Claude's ability to select the correct tool degrades noticeably when an agent has access to more than approximately 18 tools. Beyond this threshold, the model may select incorrect tools, miss relevant ones, or become confused by overlapping tool descriptions. The recommended practice is to keep each agent to 4-5 tools and distribute additional tools across specialized subagents.",
+      "explanationEs": "Las pruebas empíricas muestran que la capacidad de Claude para seleccionar la herramienta correcta se degrada notablemente cuando un agente tiene acceso a más de aproximadamente 18 herramientas. Más allá de este umbral, el modelo puede seleccionar herramientas incorrectas, omitir las relevantes o confundirse por descripciones de herramientas superpuestas. La práctica recomendada es mantener cada agente con 4-5 herramientas y distribuir herramientas adicionales entre subagentes especializados.",
+      "options": [
+        { "id": "ccaf-tm-002_a", "text": "5 tools", "textEs": "5 herramientas", "order": 1 },
+        { "id": "ccaf-tm-002_b", "text": "10 tools", "textEs": "10 herramientas", "order": 2 },
+        { "id": "ccaf-tm-002_c", "text": "18 tools", "textEs": "18 herramientas", "order": 3 },
+        { "id": "ccaf-tm-002_d", "text": "50 tools", "textEs": "50 herramientas", "order": 4 }
+      ],
+      "tags": ["tool-degradation", "18-tool-threshold", "tool-selection", "best-practices"]
+    },
+    {
+      "id": "ccaf-tm-003",
+      "text": "What is the recommended optimal number of tools per individual agent for reliable tool selection?",
+      "textEs": "¿Cuál es el número óptimo recomendado de herramientas por agente individual para una selección fiable de herramientas?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-003_b",
+      "explanation": "The recommended best practice is to give each agent 4-5 tools. This keeps the tool descriptions concise enough for the model to reliably distinguish between them and select the right tool. If a workflow requires more tools, distribute them across specialized subagents rather than loading all tools onto a single agent.",
+      "explanationEs": "La mejor práctica recomendada es dar a cada agente 4-5 herramientas. Esto mantiene las descripciones de herramientas lo suficientemente concisas para que el modelo distinga de manera fiable entre ellas y seleccione la herramienta correcta. Si un flujo de trabajo requiere más herramientas, distribúyelas entre subagentes especializados en lugar de cargar todas las herramientas en un solo agente.",
+      "options": [
+        { "id": "ccaf-tm-003_a", "text": "1-2 tools for maximum precision", "textEs": "1-2 herramientas para máxima precisión", "order": 1 },
+        { "id": "ccaf-tm-003_b", "text": "4-5 tools for reliable selection without overload", "textEs": "4-5 herramientas para selección fiable sin sobrecarga", "order": 2 },
+        { "id": "ccaf-tm-003_c", "text": "10-15 tools for comprehensive coverage", "textEs": "10-15 herramientas para cobertura integral", "order": 3 },
+        { "id": "ccaf-tm-003_d", "text": "As many as needed since Claude handles large tool sets well", "textEs": "Tantas como sean necesarias ya que Claude maneja bien conjuntos grandes de herramientas", "order": 4 }
+      ],
+      "tags": ["tool-count", "optimal-tools", "agent-design", "best-practices"]
+    },
+    {
+      "id": "ccaf-tm-004",
+      "text": "What is the difference between tool_choice 'auto', 'any', and a specific tool name (forced)?",
+      "textEs": "¿Cuál es la diferencia entre tool_choice 'auto', 'any' y un nombre de herramienta específico (forzado)?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-004_a",
+      "explanation": "'auto' (default) lets Claude decide whether to use a tool or respond with text -- the model may choose not to use any tool. 'any' forces Claude to use at least one tool from the available set but lets it choose which one. Specifying a tool name (forced) requires Claude to use that exact tool. Use 'auto' for general agents, 'any' when a tool call is always needed, and forced for deterministic pipelines.",
+      "explanationEs": "'auto' (predeterminado) permite que Claude decida si usar una herramienta o responder con texto; el modelo puede elegir no usar ninguna herramienta. 'any' fuerza a Claude a usar al menos una herramienta del conjunto disponible pero le permite elegir cuál. Especificar un nombre de herramienta (forzado) requiere que Claude use esa herramienta exacta. Usa 'auto' para agentes generales, 'any' cuando siempre se necesita una llamada a herramienta, y forzado para pipelines deterministas.",
+      "options": [
+        { "id": "ccaf-tm-004_a", "text": "'auto' lets Claude decide freely; 'any' forces at least one tool call; forced requires a specific tool", "textEs": "'auto' permite que Claude decida libremente; 'any' fuerza al menos una llamada a herramienta; forzado requiere una herramienta específica", "order": 1 },
+        { "id": "ccaf-tm-004_b", "text": "'auto' uses all tools in sequence; 'any' picks a random tool; forced skips tool validation", "textEs": "'auto' usa todas las herramientas en secuencia; 'any' elige una herramienta aleatoria; forzado omite la validación de herramientas", "order": 2 },
+        { "id": "ccaf-tm-004_c", "text": "'auto' disables tool use; 'any' enables it; forced enables a specific tool only", "textEs": "'auto' desactiva el uso de herramientas; 'any' lo activa; forzado activa solo una herramienta específica", "order": 3 },
+        { "id": "ccaf-tm-004_d", "text": "All three modes behave identically but with different logging levels", "textEs": "Los tres modos se comportan de manera idéntica pero con diferentes niveles de registro", "order": 4 }
+      ],
+      "tags": ["tool-choice", "auto", "any", "forced", "api"]
+    },
+    {
+      "id": "ccaf-tm-005",
+      "text": "In MCP, where should project-level MCP server configurations be stored?",
+      "textEs": "En MCP, ¿dónde deben almacenarse las configuraciones de servidores MCP a nivel de proyecto?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-005_c",
+      "explanation": "Project-level MCP server configurations should be stored in .mcp.json at the project root (committed to version control so all team members share the same config). User-level configurations go in ~/.claude/mcp.json for personal servers that should not be shared. The project file takes precedence for project-scoped servers, while user-level servers are available across all projects.",
+      "explanationEs": "Las configuraciones de servidores MCP a nivel de proyecto deben almacenarse en .mcp.json en la raíz del proyecto (hacer commit al control de versiones para que todos los miembros del equipo compartan la misma configuración). Las configuraciones a nivel de usuario van en ~/.claude/mcp.json para servidores personales que no deben compartirse. El archivo del proyecto tiene precedencia para servidores del alcance del proyecto, mientras que los servidores a nivel de usuario están disponibles en todos los proyectos.",
+      "options": [
+        { "id": "ccaf-tm-005_a", "text": "In the CLAUDE.md file at the project root", "textEs": "En el archivo CLAUDE.md en la raíz del proyecto", "order": 1 },
+        { "id": "ccaf-tm-005_b", "text": "In ~/.claude/servers.json for all users", "textEs": "En ~/.claude/servers.json para todos los usuarios", "order": 2 },
+        { "id": "ccaf-tm-005_c", "text": "In .mcp.json at the project root, committed to version control", "textEs": "En .mcp.json en la raíz del proyecto, hecho commit al control de versiones", "order": 3 },
+        { "id": "ccaf-tm-005_d", "text": "In package.json under the 'mcp' key", "textEs": "En package.json bajo la clave 'mcp'", "order": 4 }
+      ],
+      "tags": ["mcp-config", "project-level", "mcp-json", "configuration"]
+    },
+    {
+      "id": "ccaf-tm-006",
+      "text": "When deciding whether to build a custom MCP server or use an existing tool directly, which factor most strongly favors building a custom MCP server?",
+      "textEs": "Al decidir si construir un servidor MCP personalizado o usar una herramienta existente directamente, ¿qué factor favorece más fuertemente la construcción de un servidor MCP personalizado?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-006_d",
+      "explanation": "The build-vs-use decision framework favors building a custom MCP server when you need to expose a unified interface across multiple underlying services or APIs, especially when different teams/agents need scoped access to the same resources. Direct tool use is fine for simple, single-API integrations. Custom MCP servers shine when abstracting complexity, enforcing access policies, and providing a consistent interface.",
+      "explanationEs": "El marco de decisión construir-vs-usar favorece construir un servidor MCP personalizado cuando necesitas exponer una interfaz unificada a través de múltiples servicios o APIs subyacentes, especialmente cuando diferentes equipos/agentes necesitan acceso delimitado a los mismos recursos. El uso directo de herramientas está bien para integraciones simples con una sola API. Los servidores MCP personalizados brillan al abstraer complejidad, aplicar políticas de acceso y proporcionar una interfaz consistente.",
+      "options": [
+        { "id": "ccaf-tm-006_a", "text": "The tool only needs to be used by a single agent in one project", "textEs": "La herramienta solo necesita ser usada por un solo agente en un proyecto", "order": 1 },
+        { "id": "ccaf-tm-006_b", "text": "The underlying API already has a well-documented REST interface", "textEs": "La API subyacente ya tiene una interfaz REST bien documentada", "order": 2 },
+        { "id": "ccaf-tm-006_c", "text": "The tool performs a simple CRUD operation on a single resource", "textEs": "La herramienta realiza una operación CRUD simple en un solo recurso", "order": 3 },
+        { "id": "ccaf-tm-006_d", "text": "Multiple teams need scoped access to a unified interface abstracting several underlying services", "textEs": "Múltiples equipos necesitan acceso delimitado a una interfaz unificada que abstrae varios servicios subyacentes", "order": 4 }
+      ],
+      "tags": ["build-vs-use", "mcp-server", "decision-framework", "architecture"]
+    },
+    {
+      "id": "ccaf-tm-007",
+      "text": "How do MCP Resources differ from MCP Tools in terms of control and behavior?",
+      "textEs": "¿Cómo difieren los Resources de MCP de los Tools de MCP en términos de control y comportamiento?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-007_b",
+      "explanation": "MCP Resources are application-controlled read-only data that the host application decides to expose to the model (like files, database records, or API data). Tools are model-controlled -- the model decides when to invoke them. Resources are typically loaded into context before or during a conversation, while tools are called as needed during the agentic loop.",
+      "explanationEs": "Los Resources de MCP son datos de solo lectura controlados por la aplicación que la aplicación host decide exponer al modelo (como archivos, registros de base de datos o datos de API). Los Tools son controlados por el modelo: el modelo decide cuándo invocarlos. Los Resources típicamente se cargan en el contexto antes o durante una conversación, mientras que los Tools se llaman según sea necesario durante el bucle agente.",
+      "options": [
+        { "id": "ccaf-tm-007_a", "text": "Resources and Tools are identical but Resources are cached", "textEs": "Resources y Tools son idénticos pero los Resources se almacenan en caché", "order": 1 },
+        { "id": "ccaf-tm-007_b", "text": "Resources are application-controlled read-only data; Tools are model-controlled executable functions", "textEs": "Los Resources son datos de solo lectura controlados por la aplicación; los Tools son funciones ejecutables controladas por el modelo", "order": 2 },
+        { "id": "ccaf-tm-007_c", "text": "Resources are for external APIs; Tools are for local computations", "textEs": "Los Resources son para APIs externas; los Tools son para computaciones locales", "order": 3 },
+        { "id": "ccaf-tm-007_d", "text": "Resources require authentication; Tools do not", "textEs": "Los Resources requieren autenticación; los Tools no", "order": 4 }
+      ],
+      "tags": ["mcp", "resources", "tools", "control-model"]
+    },
+    {
+      "id": "ccaf-tm-008",
+      "text": "When distributing tools across a multi-agent system, what is the recommended strategy?",
+      "textEs": "Al distribuir herramientas a través de un sistema multi-agente, ¿cuál es la estrategia recomendada?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-008_a",
+      "explanation": "The recommended strategy is to group related tools by domain and assign each group to a specialized subagent. For example, a 'database agent' gets query tools, a 'deployment agent' gets CI/CD tools, etc. The coordinator routes tasks to the appropriate subagent. This keeps each agent under the 4-5 tool optimum, maintains clear responsibility boundaries, and avoids the 18-tool degradation threshold.",
+      "explanationEs": "La estrategia recomendada es agrupar herramientas relacionadas por dominio y asignar cada grupo a un subagente especializado. Por ejemplo, un 'agente de base de datos' obtiene herramientas de consulta, un 'agente de despliegue' obtiene herramientas CI/CD, etc. El coordinador enruta las tareas al subagente apropiado. Esto mantiene cada agente bajo el óptimo de 4-5 herramientas, mantiene límites claros de responsabilidad y evita el umbral de degradación de 18 herramientas.",
+      "options": [
+        { "id": "ccaf-tm-008_a", "text": "Group related tools by domain into specialized subagents, each with 4-5 tools, coordinated by a hub agent", "textEs": "Agrupar herramientas relacionadas por dominio en subagentes especializados, cada uno con 4-5 herramientas, coordinados por un agente hub", "order": 1 },
+        { "id": "ccaf-tm-008_b", "text": "Give all tools to every agent so each can handle any request independently", "textEs": "Dar todas las herramientas a cada agente para que cada uno pueda manejar cualquier solicitud independientemente", "order": 2 },
+        { "id": "ccaf-tm-008_c", "text": "Assign one tool per agent and chain agents in a fixed pipeline", "textEs": "Asignar una herramienta por agente y encadenar agentes en un pipeline fijo", "order": 3 },
+        { "id": "ccaf-tm-008_d", "text": "Dynamically load tools at runtime based on the user's query classification", "textEs": "Cargar herramientas dinámicamente en tiempo de ejecución según la clasificación de la consulta del usuario", "order": 4 }
+      ],
+      "tags": ["tool-distribution", "multi-agent", "specialization", "best-practices"]
+    },
+    {
+      "id": "ccaf-tm-009",
+      "text": "What is a 'scoped cross-role tool' in the context of MCP and multi-team environments?",
+      "textEs": "¿Qué es una 'herramienta de rol cruzado con alcance delimitado' en el contexto de MCP y entornos multi-equipo?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-009_c",
+      "explanation": "A scoped cross-role tool is a single tool definition that behaves differently based on the caller's role or permissions. For example, a 'query_database' tool might allow SELECT-only for analysts but full CRUD for admins. This is implemented by checking the caller's context/role at the MCP server level and adjusting the tool's behavior accordingly, providing a single interface with role-based access control.",
+      "explanationEs": "Una herramienta de rol cruzado con alcance delimitado es una definición de herramienta única que se comporta de manera diferente según el rol o permisos del llamador. Por ejemplo, una herramienta 'query_database' podría permitir solo SELECT para analistas pero CRUD completo para administradores. Esto se implementa verificando el contexto/rol del llamador a nivel del servidor MCP y ajustando el comportamiento de la herramienta en consecuencia, proporcionando una interfaz única con control de acceso basado en roles.",
+      "options": [
+        { "id": "ccaf-tm-009_a", "text": "A tool that can only be used by one specific agent role at a time", "textEs": "Una herramienta que solo puede ser usada por un rol de agente específico a la vez", "order": 1 },
+        { "id": "ccaf-tm-009_b", "text": "A tool that is duplicated across multiple MCP servers with different names", "textEs": "Una herramienta que se duplica en múltiples servidores MCP con diferentes nombres", "order": 2 },
+        { "id": "ccaf-tm-009_c", "text": "A single tool that adjusts its behavior or permissions based on the caller's role or context", "textEs": "Una herramienta única que ajusta su comportamiento o permisos según el rol o contexto del llamador", "order": 3 },
+        { "id": "ccaf-tm-009_d", "text": "A tool that requires multiple agents to invoke it simultaneously for execution", "textEs": "Una herramienta que requiere que múltiples agentes la invoquen simultáneamente para su ejecución", "order": 4 }
+      ],
+      "tags": ["scoped-tools", "cross-role", "access-control", "mcp"]
+    },
+    {
+      "id": "ccaf-tm-010",
+      "text": "What is the purpose of MCP Prompts as a primitive, and who controls their activation?",
+      "textEs": "¿Cuál es el propósito de los Prompts de MCP como primitiva, y quién controla su activación?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-010_d",
+      "explanation": "MCP Prompts are reusable prompt templates that an MCP server can expose. They are user-controlled, meaning the end user (or application) selects which prompts to activate. This distinguishes them from Tools (model-controlled) and Resources (application-controlled). Prompts are useful for standardizing common interaction patterns, like 'review this code' or 'explain this error'.",
+      "explanationEs": "Los Prompts de MCP son plantillas de prompts reutilizables que un servidor MCP puede exponer. Son controlados por el usuario, lo que significa que el usuario final (o la aplicación) selecciona cuáles activar. Esto los distingue de los Tools (controlados por el modelo) y los Resources (controlados por la aplicación). Los Prompts son útiles para estandarizar patrones de interacción comunes, como 'revisar este código' o 'explicar este error'.",
+      "options": [
+        { "id": "ccaf-tm-010_a", "text": "System instructions that override the model's behavior; controlled by the server administrator", "textEs": "Instrucciones del sistema que anulan el comportamiento del modelo; controladas por el administrador del servidor", "order": 1 },
+        { "id": "ccaf-tm-010_b", "text": "Auto-injected context that the model receives on every request; controlled by the MCP server", "textEs": "Contexto auto-inyectado que el modelo recibe en cada solicitud; controlado por el servidor MCP", "order": 2 },
+        { "id": "ccaf-tm-010_c", "text": "Dynamic tool descriptions that change based on context; controlled by the model", "textEs": "Descripciones de herramientas dinámicas que cambian según el contexto; controladas por el modelo", "order": 3 },
+        { "id": "ccaf-tm-010_d", "text": "Reusable prompt templates exposed by MCP servers; controlled (selected) by the user", "textEs": "Plantillas de prompts reutilizables expuestas por servidores MCP; controladas (seleccionadas) por el usuario", "order": 4 }
+      ],
+      "tags": ["mcp", "prompts", "user-controlled", "templates"]
+    },
+    {
+      "id": "ccaf-tm-011",
+      "text": "A developer has 22 tools across their agentic system. What is the BEST way to organize them?",
+      "textEs": "Un desarrollador tiene 22 herramientas en su sistema agente. ¿Cuál es la MEJOR forma de organizarlas?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-011_b",
+      "explanation": "With 22 tools exceeding the 18-tool degradation threshold, the best approach is to distribute them across 4-5 specialized subagents (keeping each at 4-5 tools) behind a coordinator. This maintains tool selection accuracy within each agent while still providing access to all 22 tools through the coordinator's routing logic.",
+      "explanationEs": "Con 22 herramientas excediendo el umbral de degradación de 18 herramientas, el mejor enfoque es distribuirlas entre 4-5 subagentes especializados (manteniendo cada uno con 4-5 herramientas) detrás de un coordinador. Esto mantiene la precisión de selección de herramientas dentro de cada agente mientras sigue proporcionando acceso a las 22 herramientas a través de la lógica de enrutamiento del coordinador.",
+      "options": [
+        { "id": "ccaf-tm-011_a", "text": "Load all 22 tools on a single agent and add detailed descriptions to help selection", "textEs": "Cargar las 22 herramientas en un solo agente y agregar descripciones detalladas para ayudar a la selección", "order": 1 },
+        { "id": "ccaf-tm-011_b", "text": "Distribute into 4-5 specialized subagents with 4-5 tools each, behind a coordinator agent", "textEs": "Distribuir en 4-5 subagentes especializados con 4-5 herramientas cada uno, detrás de un agente coordinador", "order": 2 },
+        { "id": "ccaf-tm-011_c", "text": "Remove tools until only 10 remain and implement the missing functionality as prompt instructions", "textEs": "Eliminar herramientas hasta que solo queden 10 e implementar la funcionalidad faltante como instrucciones en el prompt", "order": 3 },
+        { "id": "ccaf-tm-011_d", "text": "Create 22 individual agents, one per tool, and chain them sequentially", "textEs": "Crear 22 agentes individuales, uno por herramienta, y encadenarlos secuencialmente", "order": 4 }
+      ],
+      "tags": ["tool-organization", "18-tool-threshold", "multi-agent", "architecture"]
+    },
+    {
+      "id": "ccaf-tm-012",
+      "text": "Where should user-level MCP server configurations be stored to make them available across all projects?",
+      "textEs": "¿Dónde deben almacenarse las configuraciones de servidores MCP a nivel de usuario para hacerlas disponibles en todos los proyectos?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-012_a",
+      "explanation": "User-level MCP server configurations should be stored in ~/.claude/mcp.json. These servers are available across all projects for that user and are not committed to version control. This is distinct from project-level configs in .mcp.json at the project root, which are shared with the team.",
+      "explanationEs": "Las configuraciones de servidores MCP a nivel de usuario deben almacenarse en ~/.claude/mcp.json. Estos servidores están disponibles en todos los proyectos de ese usuario y no se hacen commit al control de versiones. Esto es diferente de las configuraciones a nivel de proyecto en .mcp.json en la raíz del proyecto, que se comparten con el equipo.",
+      "options": [
+        { "id": "ccaf-tm-012_a", "text": "~/.claude/mcp.json", "textEs": "~/.claude/mcp.json", "order": 1 },
+        { "id": "ccaf-tm-012_b", "text": "~/.mcp/config.json", "textEs": "~/.mcp/config.json", "order": 2 },
+        { "id": "ccaf-tm-012_c", "text": "/etc/mcp/servers.json", "textEs": "/etc/mcp/servers.json", "order": 3 },
+        { "id": "ccaf-tm-012_d", "text": "~/.config/claude/mcp-servers.yaml", "textEs": "~/.config/claude/mcp-servers.yaml", "order": 4 }
+      ],
+      "tags": ["mcp-config", "user-level", "configuration"]
+    },
+    {
+      "id": "ccaf-tm-013",
+      "text": "What are MCP Resource Templates, and how do they differ from static Resources?",
+      "textEs": "¿Qué son las Plantillas de Resources de MCP, y cómo difieren de los Resources estáticos?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-013_a",
+      "explanation": "MCP Resource Templates are parameterized URI patterns (e.g., 'users://{user_id}/profile') that allow clients to request dynamic resources by filling in template variables. Unlike static Resources that have fixed URIs and return predetermined data, Resource Templates generate resources on-demand based on the provided parameters. This enables access to large or dynamic datasets without pre-registering every possible resource.",
+      "explanationEs": "Las Plantillas de Resources de MCP son patrones de URI parametrizados (por ejemplo, 'users://{user_id}/profile') que permiten a los clientes solicitar recursos dinámicos completando las variables de la plantilla. A diferencia de los Resources estáticos que tienen URIs fijas y devuelven datos predeterminados, las Plantillas de Resources generan recursos bajo demanda según los parámetros proporcionados. Esto permite acceder a conjuntos de datos grandes o dinámicos sin registrar previamente cada recurso posible.",
+      "options": [
+        { "id": "ccaf-tm-013_a", "text": "Parameterized URI patterns that generate resources on-demand based on provided variables, unlike static resources with fixed URIs", "textEs": "Patrones de URI parametrizados que generan recursos bajo demanda según las variables proporcionadas, a diferencia de los recursos estáticos con URIs fijas", "order": 1 },
+        { "id": "ccaf-tm-013_b", "text": "Predefined JSON schemas that validate resource data before it is returned to the client", "textEs": "Esquemas JSON predefinidos que validan los datos del recurso antes de devolvérselos al cliente", "order": 2 },
+        { "id": "ccaf-tm-013_c", "text": "Cached copies of frequently accessed resources that improve performance", "textEs": "Copias en caché de recursos accedidos frecuentemente que mejoran el rendimiento", "order": 3 },
+        { "id": "ccaf-tm-013_d", "text": "HTML templates used to render resource data in a web UI", "textEs": "Plantillas HTML usadas para renderizar datos de recursos en una interfaz web", "order": 4 }
+      ],
+      "tags": ["mcp", "resource-templates", "parameterized", "dynamic-resources"]
+    },
+    {
+      "id": "ccaf-tm-014",
+      "text": "What is 'sampling' in MCP, and what trust direction does it represent?",
+      "textEs": "¿Qué es el 'sampling' en MCP, y qué dirección de confianza representa?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-014_b",
+      "explanation": "Sampling in MCP allows an MCP server to request the client to perform an LLM completion (i.e., ask the AI model a question) on the server's behalf. This is a server-to-client request, which is the reverse of the typical flow. It enables agentic behaviors where a tool server needs the model's reasoning to complete a task. The client (host application) controls whether to allow sampling and can modify the request for security.",
+      "explanationEs": "El sampling en MCP permite que un servidor MCP solicite al cliente que realice una completación de LLM (es decir, hacerle una pregunta al modelo de IA) en nombre del servidor. Esta es una solicitud de servidor a cliente, que es el flujo inverso al típico. Habilita comportamientos agentes donde un servidor de herramientas necesita el razonamiento del modelo para completar una tarea. El cliente (aplicación host) controla si permite el sampling y puede modificar la solicitud por seguridad.",
+      "options": [
+        { "id": "ccaf-tm-014_a", "text": "A random selection method for choosing which tools to present to the model; controlled by the model", "textEs": "Un método de selección aleatoria para elegir qué herramientas presentar al modelo; controlado por el modelo", "order": 1 },
+        { "id": "ccaf-tm-014_b", "text": "A capability where the MCP server requests the client to perform an LLM completion on its behalf; a server-to-client request", "textEs": "Una capacidad donde el servidor MCP solicita al cliente que realice una completación de LLM en su nombre; una solicitud de servidor a cliente", "order": 2 },
+        { "id": "ccaf-tm-014_c", "text": "A rate-limiting technique that reduces the frequency of tool invocations; controlled by the server", "textEs": "Una técnica de limitación de tasa que reduce la frecuencia de invocaciones de herramientas; controlada por el servidor", "order": 3 },
+        { "id": "ccaf-tm-014_d", "text": "A method for collecting training data from tool interactions; controlled by the application", "textEs": "Un método para recopilar datos de entrenamiento de interacciones con herramientas; controlado por la aplicación", "order": 4 }
+      ],
+      "tags": ["mcp", "sampling", "server-to-client", "agentic"]
+    },
+    {
+      "id": "ccaf-tm-015",
+      "text": "What are the two main transport mechanisms for MCP, and when should you use each?",
+      "textEs": "¿Cuáles son los dos principales mecanismos de transporte para MCP, y cuándo deberías usar cada uno?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-015_c",
+      "explanation": "MCP supports two transport mechanisms: stdio (standard input/output) and SSE (Server-Sent Events) over HTTP. Stdio is used for local MCP servers that run as child processes on the same machine -- it is simpler, lower latency, and requires no network configuration. SSE is used for remote MCP servers accessible over the network, enabling shared servers that multiple clients connect to over HTTP.",
+      "explanationEs": "MCP soporta dos mecanismos de transporte: stdio (entrada/salida estándar) y SSE (Server-Sent Events) sobre HTTP. Stdio se usa para servidores MCP locales que se ejecutan como procesos hijos en la misma máquina; es más simple, de menor latencia y no requiere configuración de red. SSE se usa para servidores MCP remotos accesibles a través de la red, habilitando servidores compartidos a los que múltiples clientes se conectan por HTTP.",
+      "options": [
+        { "id": "ccaf-tm-015_a", "text": "WebSocket for real-time and REST for batch; use WebSocket for interactive and REST for offline processing", "textEs": "WebSocket para tiempo real y REST para lotes; usar WebSocket para interactivo y REST para procesamiento offline", "order": 1 },
+        { "id": "ccaf-tm-015_b", "text": "gRPC for high-performance and HTTP for compatibility; use gRPC for internal and HTTP for external servers", "textEs": "gRPC para alto rendimiento y HTTP para compatibilidad; usar gRPC para servidores internos y HTTP para externos", "order": 2 },
+        { "id": "ccaf-tm-015_c", "text": "stdio for local child-process servers and SSE over HTTP for remote network-accessible servers", "textEs": "stdio para servidores de procesos hijos locales y SSE sobre HTTP para servidores remotos accesibles por red", "order": 3 },
+        { "id": "ccaf-tm-015_d", "text": "TCP for reliable and UDP for fast connections; use TCP for critical and UDP for logging servers", "textEs": "TCP para conexiones fiables y UDP para rápidas; usar TCP para servidores críticos y UDP para servidores de registro", "order": 4 }
+      ],
+      "tags": ["mcp", "transport", "stdio", "sse", "local-vs-remote"]
+    },
+    {
+      "id": "ccaf-tm-016",
+      "text": "What makes a good tool description for Claude, and what should it include?",
+      "textEs": "¿Qué hace una buena descripción de herramienta para Claude, y qué debería incluir?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-016_d",
+      "explanation": "A good tool description should clearly state what the tool does, when to use it (and when NOT to use it), what each parameter means with examples, and what the return format looks like. The description is the primary mechanism by which Claude decides whether and how to use a tool. Vague descriptions lead to incorrect tool selection, while overly verbose descriptions waste context tokens.",
+      "explanationEs": "Una buena descripción de herramienta debe declarar claramente qué hace la herramienta, cuándo usarla (y cuándo NO usarla), qué significa cada parámetro con ejemplos, y cómo es el formato de retorno. La descripción es el mecanismo principal por el cual Claude decide si usar y cómo usar una herramienta. Las descripciones vagas llevan a selección incorrecta de herramientas, mientras que las descripciones excesivamente verbosas desperdician tokens de contexto.",
+      "options": [
+        { "id": "ccaf-tm-016_a", "text": "Just the tool name; Claude infers the rest from parameter names", "textEs": "Solo el nombre de la herramienta; Claude infiere el resto de los nombres de parámetros", "order": 1 },
+        { "id": "ccaf-tm-016_b", "text": "A copy of the tool's source code so Claude understands the implementation", "textEs": "Una copia del código fuente de la herramienta para que Claude entienda la implementación", "order": 2 },
+        { "id": "ccaf-tm-016_c", "text": "Only the parameter JSON schema; descriptions are unnecessary for structured tools", "textEs": "Solo el esquema JSON de parámetros; las descripciones son innecesarias para herramientas estructuradas", "order": 3 },
+        { "id": "ccaf-tm-016_d", "text": "What the tool does, when to use it (and when not to), parameter descriptions with examples, and return format", "textEs": "Qué hace la herramienta, cuándo usarla (y cuándo no), descripciones de parámetros con ejemplos y formato de retorno", "order": 4 }
+      ],
+      "tags": ["tool-description", "best-practices", "tool-selection", "documentation"]
+    },
+    {
+      "id": "ccaf-tm-017",
+      "text": "How should authentication be handled for MCP servers that access external APIs on behalf of the user?",
+      "textEs": "¿Cómo debe manejarse la autenticación para servidores MCP que acceden a APIs externas en nombre del usuario?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-017_a",
+      "explanation": "MCP servers that access external APIs should handle authentication at the server level, not expose credentials to the model. The recommended approach is to configure API keys/tokens via environment variables in the MCP server configuration, use OAuth flows where the server manages token refresh, and never pass credentials through tool parameters. The model should only see the tool's functional interface, not the authentication layer.",
+      "explanationEs": "Los servidores MCP que acceden a APIs externas deben manejar la autenticación a nivel de servidor, sin exponer credenciales al modelo. El enfoque recomendado es configurar claves/tokens de API mediante variables de entorno en la configuración del servidor MCP, usar flujos OAuth donde el servidor gestiona la renovación de tokens, y nunca pasar credenciales a través de parámetros de herramientas. El modelo solo debería ver la interfaz funcional de la herramienta, no la capa de autenticación.",
+      "options": [
+        { "id": "ccaf-tm-017_a", "text": "Handle authentication at the server level via environment variables or OAuth; never expose credentials to the model through tool parameters", "textEs": "Manejar la autenticación a nivel de servidor mediante variables de entorno u OAuth; nunca exponer credenciales al modelo a través de parámetros de herramientas", "order": 1 },
+        { "id": "ccaf-tm-017_b", "text": "Include API keys as required tool parameters so the model can authenticate each request", "textEs": "Incluir claves de API como parámetros requeridos de herramientas para que el modelo pueda autenticar cada solicitud", "order": 2 },
+        { "id": "ccaf-tm-017_c", "text": "Store credentials in the system prompt so they are available throughout the conversation", "textEs": "Almacenar credenciales en el prompt del sistema para que estén disponibles durante toda la conversación", "order": 3 },
+        { "id": "ccaf-tm-017_d", "text": "Use MCP's built-in credential vault that encrypts all secrets automatically", "textEs": "Usar la bóveda de credenciales integrada de MCP que encripta todos los secretos automáticamente", "order": 4 }
+      ],
+      "tags": ["mcp", "authentication", "security", "environment-variables", "oauth"]
+    },
+    {
+      "id": "ccaf-tm-018",
+      "text": "What is the correct JSON-RPC protocol structure for MCP communication between client and server?",
+      "textEs": "¿Cuál es la estructura correcta del protocolo JSON-RPC para la comunicación MCP entre cliente y servidor?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-018_c",
+      "explanation": "MCP uses the JSON-RPC 2.0 protocol for communication. Messages include a 'jsonrpc': '2.0' field, a 'method' string (e.g., 'tools/call', 'resources/read'), a 'params' object, and an 'id' field for requests that expect responses. Notifications omit the 'id' field. Responses include either a 'result' or 'error' field. This standard protocol enables interoperability between any MCP client and server implementations.",
+      "explanationEs": "MCP usa el protocolo JSON-RPC 2.0 para la comunicación. Los mensajes incluyen un campo 'jsonrpc': '2.0', una cadena 'method' (por ejemplo, 'tools/call', 'resources/read'), un objeto 'params' y un campo 'id' para solicitudes que esperan respuestas. Las notificaciones omiten el campo 'id'. Las respuestas incluyen un campo 'result' o 'error'. Este protocolo estándar permite interoperabilidad entre cualquier implementación de cliente y servidor MCP.",
+      "options": [
+        { "id": "ccaf-tm-018_a", "text": "REST-style HTTP requests with URL paths like /tools/call and /resources/read", "textEs": "Solicitudes HTTP estilo REST con rutas URL como /tools/call y /resources/read", "order": 1 },
+        { "id": "ccaf-tm-018_b", "text": "GraphQL queries with operations like query { tools { call } }", "textEs": "Consultas GraphQL con operaciones como query { tools { call } }", "order": 2 },
+        { "id": "ccaf-tm-018_c", "text": "JSON-RPC 2.0 with method strings (e.g., 'tools/call'), params objects, and id fields for request-response correlation", "textEs": "JSON-RPC 2.0 con cadenas de método (por ejemplo, 'tools/call'), objetos params y campos id para correlación solicitud-respuesta", "order": 3 },
+        { "id": "ccaf-tm-018_d", "text": "Protocol Buffers with binary serialization for maximum performance", "textEs": "Protocol Buffers con serialización binaria para máximo rendimiento", "order": 4 }
+      ],
+      "tags": ["mcp", "json-rpc", "protocol", "communication"]
+    },
+    {
+      "id": "ccaf-tm-019",
+      "text": "When designing tool input schemas, why should you prefer specific, constrained parameter types over free-text strings?",
+      "textEs": "Al diseñar esquemas de entrada de herramientas, ¿por qué deberías preferir tipos de parámetros específicos y restringidos sobre cadenas de texto libre?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-019_b",
+      "explanation": "Constrained parameter types (enums, numbers with min/max, specific formats) reduce the likelihood of the model generating invalid inputs. When a parameter is a free-text string, Claude must guess the correct format, leading to errors. Enums limit choices to valid values, number constraints prevent out-of-range values, and format specifications (like date patterns) guide the model to produce correct input without ambiguity.",
+      "explanationEs": "Los tipos de parámetros restringidos (enums, números con min/max, formatos específicos) reducen la probabilidad de que el modelo genere entradas inválidas. Cuando un parámetro es una cadena de texto libre, Claude debe adivinar el formato correcto, lo que lleva a errores. Los enums limitan las opciones a valores válidos, las restricciones numéricas previenen valores fuera de rango y las especificaciones de formato (como patrones de fecha) guían al modelo a producir entradas correctas sin ambigüedad.",
+      "options": [
+        { "id": "ccaf-tm-019_a", "text": "Constrained types are processed faster by the API, reducing latency", "textEs": "Los tipos restringidos son procesados más rápido por la API, reduciendo la latencia", "order": 1 },
+        { "id": "ccaf-tm-019_b", "text": "Constrained types reduce invalid inputs by guiding the model to produce correct values; free-text strings are ambiguous", "textEs": "Los tipos restringidos reducen entradas inválidas guiando al modelo a producir valores correctos; las cadenas de texto libre son ambiguas", "order": 2 },
+        { "id": "ccaf-tm-019_c", "text": "Free-text strings consume more tokens in the response, increasing costs", "textEs": "Las cadenas de texto libre consumen más tokens en la respuesta, aumentando los costos", "order": 3 },
+        { "id": "ccaf-tm-019_d", "text": "The API rejects tools with free-text string parameters", "textEs": "La API rechaza herramientas con parámetros de cadena de texto libre", "order": 4 }
+      ],
+      "tags": ["tool-schema", "parameter-types", "enums", "constraints", "design"]
+    },
+    {
+      "id": "ccaf-tm-020",
+      "text": "What is the MCP capability negotiation process that occurs during the initialization handshake?",
+      "textEs": "¿Cuál es el proceso de negociación de capacidades de MCP que ocurre durante el handshake de inicialización?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-020_a",
+      "explanation": "During MCP initialization, the client sends an 'initialize' request declaring its protocol version and supported capabilities (e.g., sampling, roots). The server responds with its own supported capabilities (e.g., tools, resources, prompts) and protocol version. Both sides then know what features the other supports. The client sends an 'initialized' notification to complete the handshake. This ensures backward compatibility as new features are added.",
+      "explanationEs": "Durante la inicialización de MCP, el cliente envía una solicitud 'initialize' declarando su versión de protocolo y capacidades soportadas (por ejemplo, sampling, roots). El servidor responde con sus propias capacidades soportadas (por ejemplo, tools, resources, prompts) y versión de protocolo. Ambos lados entonces saben qué funciones soporta el otro. El cliente envía una notificación 'initialized' para completar el handshake. Esto asegura compatibilidad hacia atrás a medida que se agregan nuevas funciones.",
+      "options": [
+        { "id": "ccaf-tm-020_a", "text": "Client sends 'initialize' with its capabilities; server responds with its capabilities; client sends 'initialized' to complete", "textEs": "El cliente envía 'initialize' con sus capacidades; el servidor responde con sus capacidades; el cliente envía 'initialized' para completar", "order": 1 },
+        { "id": "ccaf-tm-020_b", "text": "Server broadcasts its capabilities on startup; clients connect and accept all capabilities automatically", "textEs": "El servidor transmite sus capacidades al iniciar; los clientes se conectan y aceptan todas las capacidades automáticamente", "order": 2 },
+        { "id": "ccaf-tm-020_c", "text": "Both sides exchange TLS certificates and negotiate an encryption protocol", "textEs": "Ambos lados intercambian certificados TLS y negocian un protocolo de encriptación", "order": 3 },
+        { "id": "ccaf-tm-020_d", "text": "The client downloads a capability manifest file from a central registry", "textEs": "El cliente descarga un archivo de manifiesto de capacidades de un registro central", "order": 4 }
+      ],
+      "tags": ["mcp", "initialization", "capability-negotiation", "handshake"]
+    },
+    {
+      "id": "ccaf-tm-021",
+      "text": "How should a tool handle and return errors to Claude through MCP?",
+      "textEs": "¿Cómo debe una herramienta manejar y devolver errores a Claude a través de MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-021_d",
+      "explanation": "When a tool encounters an error, the MCP server should return the result with isError set to true and include a descriptive error message in the content. This is different from a protocol-level error (which indicates the MCP communication itself failed). Tool-level errors with isError: true allow Claude to see the error, understand what went wrong, and decide how to proceed -- whether to retry, try a different approach, or inform the user.",
+      "explanationEs": "Cuando una herramienta encuentra un error, el servidor MCP debe devolver el resultado con isError establecido en true e incluir un mensaje de error descriptivo en el contenido. Esto es diferente de un error a nivel de protocolo (que indica que la comunicación MCP en sí falló). Los errores a nivel de herramienta con isError: true permiten que Claude vea el error, entienda qué salió mal y decida cómo proceder, ya sea reintentar, probar un enfoque diferente o informar al usuario.",
+      "options": [
+        { "id": "ccaf-tm-021_a", "text": "Throw an exception that terminates the MCP server process", "textEs": "Lanzar una excepción que termine el proceso del servidor MCP", "order": 1 },
+        { "id": "ccaf-tm-021_b", "text": "Return an empty result and let Claude figure out something went wrong from the missing data", "textEs": "Devolver un resultado vacío y dejar que Claude descubra que algo salió mal por los datos faltantes", "order": 2 },
+        { "id": "ccaf-tm-021_c", "text": "Return a JSON-RPC error response that prevents the result from reaching Claude", "textEs": "Devolver una respuesta de error JSON-RPC que impida que el resultado llegue a Claude", "order": 3 },
+        { "id": "ccaf-tm-021_d", "text": "Return the result with isError: true and a descriptive error message so Claude can reason about it and decide next steps", "textEs": "Devolver el resultado con isError: true y un mensaje de error descriptivo para que Claude pueda razonar sobre él y decidir los siguientes pasos", "order": 4 }
+      ],
+      "tags": ["mcp", "error-handling", "isError", "tool-errors"]
+    },
+    {
+      "id": "ccaf-tm-022",
+      "text": "What is the role of 'roots' in MCP, and who provides them?",
+      "textEs": "¿Cuál es el rol de los 'roots' en MCP, y quién los proporciona?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-022_c",
+      "explanation": "Roots in MCP are URI-based boundaries that the client declares to inform the server about relevant resources (e.g., workspace directories, repository paths). The client provides roots during initialization or via notifications. Servers use roots to scope their operations -- for example, a filesystem MCP server would only access files within the declared root directories. This provides a security boundary and helps servers understand the working context.",
+      "explanationEs": "Los roots en MCP son límites basados en URI que el cliente declara para informar al servidor sobre recursos relevantes (por ejemplo, directorios de trabajo, rutas de repositorios). El cliente proporciona los roots durante la inicialización o mediante notificaciones. Los servidores usan los roots para delimitar sus operaciones; por ejemplo, un servidor MCP de sistema de archivos solo accedería a archivos dentro de los directorios root declarados. Esto proporciona un límite de seguridad y ayuda a los servidores a entender el contexto de trabajo.",
+      "options": [
+        { "id": "ccaf-tm-022_a", "text": "Admin credentials for the MCP server; provided by the server administrator", "textEs": "Credenciales de administrador para el servidor MCP; proporcionadas por el administrador del servidor", "order": 1 },
+        { "id": "ccaf-tm-022_b", "text": "Root-level tools that override all other tool definitions; provided by the model", "textEs": "Herramientas de nivel raíz que anulan todas las demás definiciones de herramientas; proporcionadas por el modelo", "order": 2 },
+        { "id": "ccaf-tm-022_c", "text": "URI-based boundaries declared by the client to scope server operations, like workspace directories", "textEs": "Límites basados en URI declarados por el cliente para delimitar las operaciones del servidor, como directorios de trabajo", "order": 3 },
+        { "id": "ccaf-tm-022_d", "text": "The top-level JSON-RPC namespace for all MCP methods; defined in the protocol specification", "textEs": "El espacio de nombres JSON-RPC de nivel superior para todos los métodos MCP; definido en la especificación del protocolo", "order": 4 }
+      ],
+      "tags": ["mcp", "roots", "security-boundary", "scoping", "client-provided"]
+    },
+    {
+      "id": "ccaf-tm-023",
+      "text": "What is the 'Streamable HTTP' transport in MCP, and how does it differ from the SSE transport?",
+      "textEs": "¿Qué es el transporte 'Streamable HTTP' en MCP, y cómo difiere del transporte SSE?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-023_b",
+      "explanation": "Streamable HTTP is a newer MCP transport that uses a single HTTP endpoint where the client POSTs JSON-RPC messages. The server can respond with a single JSON response or upgrade to a Server-Sent Events stream for ongoing messages. Unlike the older SSE transport which requires a dedicated SSE endpoint for server-to-client messages plus a separate POST endpoint for client-to-server messages, Streamable HTTP consolidates to a single endpoint and supports both stateful (session-based) and stateless operation.",
+      "explanationEs": "Streamable HTTP es un transporte MCP más nuevo que usa un solo endpoint HTTP donde el cliente envía mensajes JSON-RPC por POST. El servidor puede responder con una respuesta JSON única o escalar a un flujo de Server-Sent Events para mensajes continuos. A diferencia del transporte SSE antiguo que requiere un endpoint SSE dedicado para mensajes servidor-a-cliente más un endpoint POST separado para mensajes cliente-a-servidor, Streamable HTTP consolida en un solo endpoint y soporta operación tanto con estado (basada en sesión) como sin estado.",
+      "options": [
+        { "id": "ccaf-tm-023_a", "text": "It replaces JSON-RPC with a binary protocol for faster communication over HTTP/2", "textEs": "Reemplaza JSON-RPC con un protocolo binario para comunicación más rápida sobre HTTP/2", "order": 1 },
+        { "id": "ccaf-tm-023_b", "text": "It uses a single HTTP endpoint where the server can respond with JSON or upgrade to SSE streaming, unlike the older dual-endpoint SSE transport", "textEs": "Usa un solo endpoint HTTP donde el servidor puede responder con JSON o escalar a streaming SSE, a diferencia del transporte SSE antiguo de doble endpoint", "order": 2 },
+        { "id": "ccaf-tm-023_c", "text": "It is a WebSocket-based transport that maintains persistent bidirectional connections", "textEs": "Es un transporte basado en WebSocket que mantiene conexiones bidireccionales persistentes", "order": 3 },
+        { "id": "ccaf-tm-023_d", "text": "It compresses HTTP payloads using gzip for reduced bandwidth usage", "textEs": "Comprime las cargas HTTP usando gzip para reducir el uso de ancho de banda", "order": 4 }
+      ],
+      "tags": ["mcp", "transport", "streamable-http", "sse", "protocol"]
+    },
+    {
+      "id": "ccaf-tm-024",
+      "text": "In Claude's tool use API, what is the structure of a tool definition's input_schema?",
+      "textEs": "En la API de uso de herramientas de Claude, ¿cuál es la estructura del input_schema de una definición de herramienta?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-024_a",
+      "explanation": "A tool's input_schema follows the JSON Schema specification (type: 'object'). It defines the 'properties' object listing each parameter with its type and description, and a 'required' array listing mandatory parameter names. This standard JSON Schema format allows Claude to understand what parameters the tool expects and generate valid inputs accordingly.",
+      "explanationEs": "El input_schema de una herramienta sigue la especificación JSON Schema (type: 'object'). Define un objeto 'properties' que lista cada parámetro con su tipo y descripción, y un array 'required' que lista los nombres de parámetros obligatorios. Este formato estándar de JSON Schema permite que Claude entienda qué parámetros espera la herramienta y genere entradas válidas en consecuencia.",
+      "options": [
+        { "id": "ccaf-tm-024_a", "text": "A JSON Schema object with 'properties' defining parameter types/descriptions and 'required' listing mandatory parameters", "textEs": "Un objeto JSON Schema con 'properties' definiendo tipos/descripciones de parámetros y 'required' listando parámetros obligatorios", "order": 1 },
+        { "id": "ccaf-tm-024_b", "text": "A TypeScript interface definition that Claude parses to understand parameter types", "textEs": "Una definición de interfaz TypeScript que Claude analiza para entender tipos de parámetros", "order": 2 },
+        { "id": "ccaf-tm-024_c", "text": "A plain text description of expected inputs that Claude interprets naturally", "textEs": "Una descripción en texto plano de las entradas esperadas que Claude interpreta naturalmente", "order": 3 },
+        { "id": "ccaf-tm-024_d", "text": "A Protocol Buffer schema definition for binary serialization", "textEs": "Una definición de esquema Protocol Buffer para serialización binaria", "order": 4 }
+      ],
+      "tags": ["tool-definition", "input-schema", "json-schema", "api"]
+    },
+    {
+      "id": "ccaf-tm-025",
+      "text": "What content block types can be returned in a tool_result message to Claude?",
+      "textEs": "¿Qué tipos de bloques de contenido se pueden devolver en un mensaje tool_result a Claude?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-025_c",
+      "explanation": "Tool results in Claude's API can contain multiple content block types: text blocks for textual output, image blocks (base64-encoded with media type) for visual data, and these can be combined in a single tool result. This allows tools to return rich, multimodal results. For example, a chart generation tool could return both the chart image and a text summary.",
+      "explanationEs": "Los resultados de herramientas en la API de Claude pueden contener múltiples tipos de bloques de contenido: bloques de texto para salida textual, bloques de imagen (codificados en base64 con tipo de medio) para datos visuales, y estos se pueden combinar en un solo resultado de herramienta. Esto permite que las herramientas devuelvan resultados ricos y multimodales. Por ejemplo, una herramienta de generación de gráficos podría devolver tanto la imagen del gráfico como un resumen textual.",
+      "options": [
+        { "id": "ccaf-tm-025_a", "text": "Only plain text strings; images and structured data are not supported", "textEs": "Solo cadenas de texto plano; imágenes y datos estructurados no están soportados", "order": 1 },
+        { "id": "ccaf-tm-025_b", "text": "Only JSON objects that Claude parses into structured data", "textEs": "Solo objetos JSON que Claude analiza en datos estructurados", "order": 2 },
+        { "id": "ccaf-tm-025_c", "text": "Text blocks, image blocks (base64-encoded), or a combination of both in a single result", "textEs": "Bloques de texto, bloques de imagen (codificados en base64), o una combinación de ambos en un solo resultado", "order": 3 },
+        { "id": "ccaf-tm-025_d", "text": "HTML blocks that Claude renders to understand visual content", "textEs": "Bloques HTML que Claude renderiza para entender contenido visual", "order": 4 }
+      ],
+      "tags": ["tool-results", "content-blocks", "text", "images", "multimodal"]
+    },
+    {
+      "id": "ccaf-tm-026",
+      "text": "What are the three computer use tools provided by Anthropic for Claude's computer interaction capabilities?",
+      "textEs": "¿Cuáles son las tres herramientas de uso de computadora proporcionadas por Anthropic para las capacidades de interacción con computadoras de Claude?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-026_d",
+      "explanation": "Anthropic provides three computer use tools: the 'computer' tool (for mouse actions like click, move, drag, and keyboard typing/shortcuts on a desktop environment via screenshots), the 'bash' tool (for executing shell commands), and the 'text_editor' tool (for viewing and editing files with commands like view, create, str_replace, and insert). Together, these enable Claude to interact with a computer environment as a human would.",
+      "explanationEs": "Anthropic proporciona tres herramientas de uso de computadora: la herramienta 'computer' (para acciones de ratón como clic, mover, arrastrar, y escritura/atajos de teclado en un entorno de escritorio mediante capturas de pantalla), la herramienta 'bash' (para ejecutar comandos de shell), y la herramienta 'text_editor' (para ver y editar archivos con comandos como view, create, str_replace e insert). Juntas, permiten que Claude interactúe con un entorno de computadora como lo haría un humano.",
+      "options": [
+        { "id": "ccaf-tm-026_a", "text": "screenshot, keyboard, and mouse", "textEs": "screenshot, keyboard y mouse", "order": 1 },
+        { "id": "ccaf-tm-026_b", "text": "browser, terminal, and file_manager", "textEs": "browser, terminal y file_manager", "order": 2 },
+        { "id": "ccaf-tm-026_c", "text": "display, input, and filesystem", "textEs": "display, input y filesystem", "order": 3 },
+        { "id": "ccaf-tm-026_d", "text": "computer (mouse/keyboard via screenshots), bash (shell commands), and text_editor (file editing)", "textEs": "computer (ratón/teclado vía capturas de pantalla), bash (comandos de shell) y text_editor (edición de archivos)", "order": 4 }
+      ],
+      "tags": ["computer-use", "tools", "bash", "text-editor", "screenshot"]
+    },
+    {
+      "id": "ccaf-tm-027",
+      "text": "What does the disable_parallel_tool_use flag do when set to true in an API request?",
+      "textEs": "¿Qué hace el flag disable_parallel_tool_use cuando se establece en true en una solicitud de API?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-027_b",
+      "explanation": "When disable_parallel_tool_use is set to true, Claude is constrained to make only one tool call per response turn. By default, Claude can request multiple tool calls in a single response (parallel tool use). Disabling this is useful when tools have side effects that depend on execution order, or when you need sequential, deterministic tool execution -- for example, when one tool modifies state that the next tool reads.",
+      "explanationEs": "Cuando disable_parallel_tool_use se establece en true, Claude está restringido a hacer solo una llamada a herramienta por turno de respuesta. Por defecto, Claude puede solicitar múltiples llamadas a herramientas en una sola respuesta (uso paralelo de herramientas). Desactivar esto es útil cuando las herramientas tienen efectos secundarios que dependen del orden de ejecución, o cuando necesitas ejecución secuencial y determinista de herramientas, por ejemplo, cuando una herramienta modifica un estado que la siguiente herramienta lee.",
+      "options": [
+        { "id": "ccaf-tm-027_a", "text": "It prevents Claude from using more than one type of tool throughout the entire conversation", "textEs": "Impide que Claude use más de un tipo de herramienta durante toda la conversación", "order": 1 },
+        { "id": "ccaf-tm-027_b", "text": "It forces Claude to make only one tool call per response turn instead of multiple simultaneous calls", "textEs": "Fuerza a Claude a hacer solo una llamada a herramienta por turno de respuesta en lugar de múltiples llamadas simultáneas", "order": 2 },
+        { "id": "ccaf-tm-027_c", "text": "It disables all tool use and makes Claude respond with text only", "textEs": "Desactiva todo uso de herramientas y hace que Claude responda solo con texto", "order": 3 },
+        { "id": "ccaf-tm-027_d", "text": "It runs tool calls sequentially on the server side instead of in parallel", "textEs": "Ejecuta las llamadas a herramientas secuencialmente en el lado del servidor en lugar de en paralelo", "order": 4 }
+      ],
+      "tags": ["parallel-tool-use", "disable", "sequential", "api-flag"]
+    },
+    {
+      "id": "ccaf-tm-028",
+      "text": "How can cache_control breakpoints be applied to tool definitions for token savings?",
+      "textEs": "¿Cómo se pueden aplicar puntos de interrupción cache_control a definiciones de herramientas para ahorro de tokens?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-028_a",
+      "explanation": "Cache control breakpoints can be added to tool definitions by including a 'cache_control' field with type 'ephemeral' on the last tool in the tools array. Since tools are part of the system prompt for caching purposes, marking a breakpoint allows all tool definitions up to that point to be cached across requests. This is especially beneficial when many tools are defined, as it avoids re-processing the full tool schema on every API call, saving both time and input tokens.",
+      "explanationEs": "Los puntos de interrupción de control de caché se pueden agregar a las definiciones de herramientas incluyendo un campo 'cache_control' con tipo 'ephemeral' en la última herramienta del array de herramientas. Dado que las herramientas son parte del prompt del sistema para propósitos de caché, marcar un punto de interrupción permite que todas las definiciones de herramientas hasta ese punto se almacenen en caché entre solicitudes. Esto es especialmente beneficioso cuando se definen muchas herramientas, ya que evita reprocesar el esquema completo de herramientas en cada llamada a la API, ahorrando tanto tiempo como tokens de entrada.",
+      "options": [
+        { "id": "ccaf-tm-028_a", "text": "Add 'cache_control': {'type': 'ephemeral'} on the last tool definition to cache all tools up to that point across requests", "textEs": "Agregar 'cache_control': {'type': 'ephemeral'} en la última definición de herramienta para almacenar en caché todas las herramientas hasta ese punto entre solicitudes", "order": 1 },
+        { "id": "ccaf-tm-028_b", "text": "Set a global 'cache_tools': true flag in the API request headers", "textEs": "Establecer un flag global 'cache_tools': true en los headers de la solicitud API", "order": 2 },
+        { "id": "ccaf-tm-028_c", "text": "Cache control only applies to message content, not to tool definitions", "textEs": "El control de caché solo se aplica al contenido de mensajes, no a las definiciones de herramientas", "order": 3 },
+        { "id": "ccaf-tm-028_d", "text": "Provide a TTL (time-to-live) value on each individual tool definition", "textEs": "Proporcionar un valor TTL (tiempo de vida) en cada definición individual de herramienta", "order": 4 }
+      ],
+      "tags": ["cache-control", "ephemeral", "tools", "token-savings", "prompt-caching"]
+    },
+    {
+      "id": "ccaf-tm-029",
+      "text": "What actions can Claude perform with the computer use 'computer' tool?",
+      "textEs": "¿Qué acciones puede realizar Claude con la herramienta 'computer' de uso de computadora?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-029_c",
+      "explanation": "The computer tool allows Claude to interact with a graphical desktop environment by taking screenshots to see the current screen state, performing mouse actions (click, double_click, right_click, move, drag), keyboard actions (type text, press key combinations), and scrolling. Claude works in a loop: it takes a screenshot, analyzes the current state, decides on an action, executes it, then takes another screenshot to verify the result.",
+      "explanationEs": "La herramienta computer permite que Claude interactúe con un entorno de escritorio gráfico tomando capturas de pantalla para ver el estado actual de la pantalla, realizando acciones de ratón (clic, doble_clic, clic_derecho, mover, arrastrar), acciones de teclado (escribir texto, presionar combinaciones de teclas) y desplazamiento. Claude trabaja en un bucle: toma una captura de pantalla, analiza el estado actual, decide una acción, la ejecuta, y luego toma otra captura de pantalla para verificar el resultado.",
+      "options": [
+        { "id": "ccaf-tm-029_a", "text": "Only taking screenshots and clicking; keyboard input is handled by a separate tool", "textEs": "Solo tomar capturas de pantalla y hacer clic; la entrada de teclado es manejada por una herramienta separada", "order": 1 },
+        { "id": "ccaf-tm-029_b", "text": "Only executing predefined automation scripts registered in the tool configuration", "textEs": "Solo ejecutar scripts de automatización predefinidos registrados en la configuración de la herramienta", "order": 2 },
+        { "id": "ccaf-tm-029_c", "text": "Screenshots, mouse actions (click, double-click, drag, move), keyboard input (type, key press), and scrolling", "textEs": "Capturas de pantalla, acciones de ratón (clic, doble clic, arrastrar, mover), entrada de teclado (escribir, presionar tecla) y desplazamiento", "order": 3 },
+        { "id": "ccaf-tm-029_d", "text": "Direct DOM manipulation and CSS selector-based element interaction", "textEs": "Manipulación directa del DOM e interacción con elementos basada en selectores CSS", "order": 4 }
+      ],
+      "tags": ["computer-use", "computer-tool", "screenshot", "mouse", "keyboard"]
+    },
+    {
+      "id": "ccaf-tm-030",
+      "text": "What is the text_editor tool's 'str_replace' command used for in computer use?",
+      "textEs": "¿Para qué se usa el comando 'str_replace' de la herramienta text_editor en el uso de computadora?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-030_d",
+      "explanation": "The str_replace command in the text_editor tool replaces a specific string occurrence in a file with a new string. It takes the file path, the old string to find (which must match exactly and uniquely in the file), and the new string to replace it with. This is the primary mechanism for making targeted edits to files without rewriting the entire file content, making it precise and safe for code modifications.",
+      "explanationEs": "El comando str_replace en la herramienta text_editor reemplaza una ocurrencia específica de cadena en un archivo con una nueva cadena. Toma la ruta del archivo, la cadena antigua a buscar (que debe coincidir exactamente y ser única en el archivo) y la nueva cadena para reemplazarla. Este es el mecanismo principal para hacer ediciones dirigidas a archivos sin reescribir todo el contenido del archivo, haciéndolo preciso y seguro para modificaciones de código.",
+      "options": [
+        { "id": "ccaf-tm-030_a", "text": "It performs a regex-based search and replace across all files in a directory", "textEs": "Realiza una búsqueda y reemplazo basada en regex en todos los archivos de un directorio", "order": 1 },
+        { "id": "ccaf-tm-030_b", "text": "It replaces all occurrences of a string globally in a file, like sed", "textEs": "Reemplaza todas las ocurrencias de una cadena globalmente en un archivo, como sed", "order": 2 },
+        { "id": "ccaf-tm-030_c", "text": "It renames files by replacing parts of the filename", "textEs": "Renombra archivos reemplazando partes del nombre del archivo", "order": 3 },
+        { "id": "ccaf-tm-030_d", "text": "It replaces a specific, uniquely-matching string occurrence in a file with a new string for targeted edits", "textEs": "Reemplaza una ocurrencia de cadena específica y única en un archivo con una nueva cadena para ediciones dirigidas", "order": 4 }
+      ],
+      "tags": ["text-editor", "str-replace", "computer-use", "file-editing"]
+    },
+    {
+      "id": "ccaf-tm-031",
+      "text": "In the MCP Python SDK, what decorator is used to register a function as an MCP tool?",
+      "textEs": "En el SDK de Python de MCP, ¿qué decorador se usa para registrar una función como herramienta MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-031_b",
+      "explanation": "In the MCP Python SDK (using the FastMCP high-level API), you register a function as a tool using the @mcp.tool() decorator. The function's name becomes the tool name, its docstring becomes the description, and the function's type-annotated parameters are automatically converted to the tool's JSON Schema input_schema. This convention-over-configuration approach makes it easy to expose Python functions as MCP tools.",
+      "explanationEs": "En el SDK de Python de MCP (usando la API de alto nivel FastMCP), se registra una función como herramienta usando el decorador @mcp.tool(). El nombre de la función se convierte en el nombre de la herramienta, su docstring se convierte en la descripción, y los parámetros con anotaciones de tipo de la función se convierten automáticamente al input_schema JSON Schema de la herramienta. Este enfoque de convención-sobre-configuración facilita exponer funciones de Python como herramientas MCP.",
+      "options": [
+        { "id": "ccaf-tm-031_a", "text": "@mcp.register_tool()", "textEs": "@mcp.register_tool()", "order": 1 },
+        { "id": "ccaf-tm-031_b", "text": "@mcp.tool()", "textEs": "@mcp.tool()", "order": 2 },
+        { "id": "ccaf-tm-031_c", "text": "@tool.define()", "textEs": "@tool.define()", "order": 3 },
+        { "id": "ccaf-tm-031_d", "text": "@mcp.expose(type='tool')", "textEs": "@mcp.expose(type='tool')", "order": 4 }
+      ],
+      "tags": ["mcp", "python-sdk", "decorator", "tool-registration", "fastmcp"]
+    },
+    {
+      "id": "ccaf-tm-032",
+      "text": "What happens when you set tool_choice to {\"type\": \"tool\", \"name\": \"specific_tool\"} in the API?",
+      "textEs": "¿Qué sucede cuando estableces tool_choice a {\"type\": \"tool\", \"name\": \"specific_tool\"} en la API?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-032_a",
+      "explanation": "Setting tool_choice to a specific tool name forces Claude to use that exact tool in its response. Claude will always call the named tool, regardless of the user's message. This is useful for deterministic pipelines where you know exactly which tool should be called next, such as always extracting structured data from user input using a specific extraction tool.",
+      "explanationEs": "Establecer tool_choice a un nombre de herramienta específico fuerza a Claude a usar esa herramienta exacta en su respuesta. Claude siempre llamará a la herramienta nombrada, independientemente del mensaje del usuario. Esto es útil para pipelines deterministas donde sabes exactamente qué herramienta debe llamarse a continuación, como siempre extraer datos estructurados de la entrada del usuario usando una herramienta de extracción específica.",
+      "options": [
+        { "id": "ccaf-tm-032_a", "text": "Claude is forced to call that specific tool regardless of the message content, useful for deterministic pipelines", "textEs": "Claude es forzado a llamar a esa herramienta específica independientemente del contenido del mensaje, útil para pipelines deterministas", "order": 1 },
+        { "id": "ccaf-tm-032_b", "text": "Claude prioritizes that tool but may choose another if it deems it more appropriate", "textEs": "Claude prioriza esa herramienta pero puede elegir otra si la considera más apropiada", "order": 2 },
+        { "id": "ccaf-tm-032_c", "text": "Only the named tool is made available; all other tools are hidden from Claude", "textEs": "Solo la herramienta nombrada está disponible; todas las demás herramientas se ocultan de Claude", "order": 3 },
+        { "id": "ccaf-tm-032_d", "text": "Claude calls the tool only if the user's message explicitly mentions it", "textEs": "Claude llama a la herramienta solo si el mensaje del usuario la menciona explícitamente", "order": 4 }
+      ],
+      "tags": ["tool-choice", "forced-tool", "deterministic", "api"]
+    },
+    {
+      "id": "ccaf-tm-033",
+      "text": "What is the MCP client-server architecture, and how does it relate to the host application?",
+      "textEs": "¿Cuál es la arquitectura cliente-servidor de MCP, y cómo se relaciona con la aplicación host?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-033_c",
+      "explanation": "MCP follows a client-server architecture where the Host Application (e.g., Claude Desktop, an IDE) contains one or more MCP Clients, each maintaining a 1:1 connection to an MCP Server. The host manages client lifecycle, enforces security policies, and handles user authorization. MCP Clients handle protocol communication (sending requests, receiving responses). MCP Servers expose capabilities (tools, resources, prompts) to their connected client. This layered architecture separates concerns between UI, protocol, and capability provision.",
+      "explanationEs": "MCP sigue una arquitectura cliente-servidor donde la Aplicación Host (por ejemplo, Claude Desktop, un IDE) contiene uno o más Clientes MCP, cada uno manteniendo una conexión 1:1 con un Servidor MCP. El host gestiona el ciclo de vida del cliente, aplica políticas de seguridad y maneja la autorización del usuario. Los Clientes MCP manejan la comunicación del protocolo (enviar solicitudes, recibir respuestas). Los Servidores MCP exponen capacidades (tools, resources, prompts) a su cliente conectado. Esta arquitectura por capas separa las responsabilidades entre UI, protocolo y provisión de capacidades.",
+      "options": [
+        { "id": "ccaf-tm-033_a", "text": "MCP uses peer-to-peer connections where any node can act as both client and server simultaneously", "textEs": "MCP usa conexiones peer-to-peer donde cualquier nodo puede actuar como cliente y servidor simultáneamente", "order": 1 },
+        { "id": "ccaf-tm-033_b", "text": "The host application is the MCP server, and Claude is the client that connects to it", "textEs": "La aplicación host es el servidor MCP, y Claude es el cliente que se conecta a ella", "order": 2 },
+        { "id": "ccaf-tm-033_c", "text": "The host application contains MCP clients (each with a 1:1 server connection); the host manages lifecycle and security while servers expose capabilities", "textEs": "La aplicación host contiene clientes MCP (cada uno con una conexión 1:1 al servidor); el host gestiona el ciclo de vida y seguridad mientras los servidores exponen capacidades", "order": 3 },
+        { "id": "ccaf-tm-033_d", "text": "MCP uses a centralized hub where all servers register and clients discover them through a directory service", "textEs": "MCP usa un hub centralizado donde todos los servidores se registran y los clientes los descubren a través de un servicio de directorio", "order": 4 }
+      ],
+      "tags": ["mcp", "architecture", "client-server", "host", "lifecycle"]
+    },
+    {
+      "id": "ccaf-tm-034",
+      "text": "When a tool result indicates an error with is_error: true, how does Claude typically respond?",
+      "textEs": "Cuando un resultado de herramienta indica un error con is_error: true, ¿cómo responde Claude típicamente?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-034_b",
+      "explanation": "When Claude receives a tool result with is_error: true, it reads the error message, reasons about what went wrong, and decides on a recovery strategy. This may include retrying with corrected parameters, trying an alternative tool or approach, or informing the user about the issue if recovery is not possible. Claude does not blindly retry -- it uses the error information to make an informed decision about the best next step.",
+      "explanationEs": "Cuando Claude recibe un resultado de herramienta con is_error: true, lee el mensaje de error, razona sobre qué salió mal y decide una estrategia de recuperación. Esto puede incluir reintentar con parámetros corregidos, probar una herramienta o enfoque alternativo, o informar al usuario sobre el problema si la recuperación no es posible. Claude no reintenta ciegamente: usa la información del error para tomar una decisión informada sobre el mejor siguiente paso.",
+      "options": [
+        { "id": "ccaf-tm-034_a", "text": "It automatically retries the same tool call up to three times before giving up", "textEs": "Reintenta automáticamente la misma llamada a herramienta hasta tres veces antes de rendirse", "order": 1 },
+        { "id": "ccaf-tm-034_b", "text": "It reads the error message, reasons about the cause, and decides whether to retry with corrections, try an alternative, or inform the user", "textEs": "Lee el mensaje de error, razona sobre la causa, y decide si reintentar con correcciones, probar una alternativa, o informar al usuario", "order": 2 },
+        { "id": "ccaf-tm-034_c", "text": "It stops the agentic loop immediately and returns the error to the user as-is", "textEs": "Detiene el bucle agente inmediatamente y devuelve el error al usuario tal cual", "order": 3 },
+        { "id": "ccaf-tm-034_d", "text": "It ignores the error and continues with the next planned tool call", "textEs": "Ignora el error y continúa con la siguiente llamada a herramienta planificada", "order": 4 }
+      ],
+      "tags": ["tool-errors", "is-error", "error-recovery", "agentic-behavior"]
+    },
+    {
+      "id": "ccaf-tm-035",
+      "text": "What is the recommended approach for naming MCP tools to maximize Claude's selection accuracy?",
+      "textEs": "¿Cuál es el enfoque recomendado para nombrar herramientas MCP para maximizar la precisión de selección de Claude?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-035_d",
+      "explanation": "Tool names should be clear, descriptive, and use a consistent naming convention (like verb_noun format, e.g., 'search_database', 'create_issue'). Names should clearly distinguish each tool's purpose and avoid overlapping or ambiguous names that could confuse the model. Using domain prefixes (e.g., 'github_create_pr', 'jira_create_ticket') helps when tools from multiple services coexist. The name is the first signal Claude uses for tool selection.",
+      "explanationEs": "Los nombres de herramientas deben ser claros, descriptivos y usar una convención de nombres consistente (como formato verbo_sustantivo, por ejemplo, 'search_database', 'create_issue'). Los nombres deben distinguir claramente el propósito de cada herramienta y evitar nombres superpuestos o ambiguos que podrían confundir al modelo. Usar prefijos de dominio (por ejemplo, 'github_create_pr', 'jira_create_ticket') ayuda cuando coexisten herramientas de múltiples servicios. El nombre es la primera señal que Claude usa para la selección de herramientas.",
+      "options": [
+        { "id": "ccaf-tm-035_a", "text": "Use short single-word names like 'search', 'create', 'delete' for simplicity", "textEs": "Usar nombres cortos de una sola palabra como 'search', 'create', 'delete' por simplicidad", "order": 1 },
+        { "id": "ccaf-tm-035_b", "text": "Use numeric IDs like 'tool_001', 'tool_002' and rely on descriptions for selection", "textEs": "Usar IDs numéricos como 'tool_001', 'tool_002' y confiar en las descripciones para la selección", "order": 2 },
+        { "id": "ccaf-tm-035_c", "text": "Use long, sentence-like names that describe exactly what the tool does", "textEs": "Usar nombres largos, tipo oración, que describan exactamente lo que hace la herramienta", "order": 3 },
+        { "id": "ccaf-tm-035_d", "text": "Use consistent verb_noun format (e.g., 'search_database') with domain prefixes when multiple services coexist", "textEs": "Usar formato consistente verbo_sustantivo (por ejemplo, 'search_database') con prefijos de dominio cuando coexisten múltiples servicios", "order": 4 }
+      ],
+      "tags": ["tool-naming", "best-practices", "tool-selection", "conventions"]
+    },
+    {
+      "id": "ccaf-tm-036",
+      "text": "In the MCP TypeScript SDK, how do you create and start a basic MCP server with tools?",
+      "textEs": "En el SDK de TypeScript de MCP, ¿cómo se crea e inicia un servidor MCP básico con herramientas?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-036_a",
+      "explanation": "In the MCP TypeScript SDK, you create a server using 'new McpServer({name, version})' from '@modelcontextprotocol/sdk/server/mcp.js', register tools using 'server.tool(name, schema, handler)', and connect it to a transport (e.g., 'new StdioServerTransport()') using 'server.connect(transport)'. The schema defines the tool's parameters using Zod validation, and the handler is an async function that processes the call and returns content blocks.",
+      "explanationEs": "En el SDK de TypeScript de MCP, se crea un servidor usando 'new McpServer({name, version})' de '@modelcontextprotocol/sdk/server/mcp.js', se registran herramientas usando 'server.tool(name, schema, handler)', y se conecta a un transporte (por ejemplo, 'new StdioServerTransport()') usando 'server.connect(transport)'. El schema define los parámetros de la herramienta usando validación Zod, y el handler es una función async que procesa la llamada y devuelve bloques de contenido.",
+      "options": [
+        { "id": "ccaf-tm-036_a", "text": "Create McpServer instance, register tools with server.tool(name, schema, handler), connect to a transport like StdioServerTransport", "textEs": "Crear instancia de McpServer, registrar herramientas con server.tool(name, schema, handler), conectar a un transporte como StdioServerTransport", "order": 1 },
+        { "id": "ccaf-tm-036_b", "text": "Export a JSON configuration file that lists tools and their handlers, then run 'mcp serve config.json'", "textEs": "Exportar un archivo de configuración JSON que liste herramientas y sus handlers, luego ejecutar 'mcp serve config.json'", "order": 2 },
+        { "id": "ccaf-tm-036_c", "text": "Extend the MCPToolBase class for each tool and register them in an Express.js middleware", "textEs": "Extender la clase MCPToolBase para cada herramienta y registrarlas en un middleware Express.js", "order": 3 },
+        { "id": "ccaf-tm-036_d", "text": "Define tools as GraphQL resolvers and mount them on an Apollo Server instance", "textEs": "Definir herramientas como resolvers de GraphQL y montarlas en una instancia de Apollo Server", "order": 4 }
+      ],
+      "tags": ["mcp", "typescript-sdk", "server-creation", "tool-registration"]
+    },
+    {
+      "id": "ccaf-tm-037",
+      "text": "Why should tool descriptions include information about when NOT to use the tool?",
+      "textEs": "¿Por qué las descripciones de herramientas deberían incluir información sobre cuándo NO usar la herramienta?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-037_c",
+      "explanation": "Including 'when not to use' guidance in tool descriptions helps Claude distinguish between tools with overlapping capabilities. Without negative guidance, Claude may select a tool that can technically handle a request but is not the best choice -- for example, using a general search tool when a specific lookup tool would be more efficient. Negative guidance acts as a disambiguation mechanism that improves selection accuracy, especially when an agent has multiple related tools.",
+      "explanationEs": "Incluir orientación de 'cuándo no usar' en las descripciones de herramientas ayuda a Claude a distinguir entre herramientas con capacidades superpuestas. Sin orientación negativa, Claude puede seleccionar una herramienta que técnicamente puede manejar una solicitud pero no es la mejor opción, por ejemplo, usar una herramienta de búsqueda general cuando una herramienta de consulta específica sería más eficiente. La orientación negativa actúa como un mecanismo de desambiguación que mejora la precisión de selección, especialmente cuando un agente tiene múltiples herramientas relacionadas.",
+      "options": [
+        { "id": "ccaf-tm-037_a", "text": "It is required by the API schema validation and the request will fail without it", "textEs": "Es requerido por la validación del esquema de la API y la solicitud fallará sin ello", "order": 1 },
+        { "id": "ccaf-tm-037_b", "text": "It reduces token costs by making the description shorter overall", "textEs": "Reduce los costos de tokens al hacer la descripción más corta en general", "order": 2 },
+        { "id": "ccaf-tm-037_c", "text": "It helps Claude disambiguate between tools with overlapping capabilities, improving selection accuracy", "textEs": "Ayuda a Claude a desambiguar entre herramientas con capacidades superpuestas, mejorando la precisión de selección", "order": 3 },
+        { "id": "ccaf-tm-037_d", "text": "It prevents security vulnerabilities by blocking unauthorized tool usage patterns", "textEs": "Previene vulnerabilidades de seguridad al bloquear patrones de uso no autorizado de herramientas", "order": 4 }
+      ],
+      "tags": ["tool-description", "negative-guidance", "disambiguation", "best-practices"]
+    },
+    {
+      "id": "ccaf-tm-038",
+      "text": "What security consideration is most important when building an MCP server that accesses a filesystem?",
+      "textEs": "¿Qué consideración de seguridad es más importante al construir un servidor MCP que accede a un sistema de archivos?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-038_b",
+      "explanation": "When building a filesystem MCP server, the most critical security consideration is restricting operations to within the declared roots (allowed directories). The server must validate all file paths against the allowed roots to prevent path traversal attacks (e.g., '../../../etc/passwd'). Without this restriction, a malicious prompt or confused model could access or modify any file on the system. Additional safeguards include read-only vs read-write permissions and file-type restrictions.",
+      "explanationEs": "Al construir un servidor MCP de sistema de archivos, la consideración de seguridad más crítica es restringir las operaciones dentro de los roots declarados (directorios permitidos). El servidor debe validar todas las rutas de archivo contra los roots permitidos para prevenir ataques de recorrido de ruta (por ejemplo, '../../../etc/passwd'). Sin esta restricción, un prompt malicioso o un modelo confundido podría acceder o modificar cualquier archivo en el sistema. Salvaguardas adicionales incluyen permisos de solo lectura vs lectura-escritura y restricciones de tipo de archivo.",
+      "options": [
+        { "id": "ccaf-tm-038_a", "text": "Encrypting all file contents before returning them to the model", "textEs": "Encriptar todos los contenidos de archivo antes de devolverlos al modelo", "order": 1 },
+        { "id": "ccaf-tm-038_b", "text": "Validating all file paths against allowed roots to prevent path traversal attacks outside permitted directories", "textEs": "Validar todas las rutas de archivo contra los roots permitidos para prevenir ataques de recorrido de ruta fuera de directorios permitidos", "order": 2 },
+        { "id": "ccaf-tm-038_c", "text": "Requiring the model to provide an authentication token with each file operation", "textEs": "Requerir que el modelo proporcione un token de autenticación con cada operación de archivo", "order": 3 },
+        { "id": "ccaf-tm-038_d", "text": "Logging all file operations to a blockchain for immutable audit trails", "textEs": "Registrar todas las operaciones de archivo en una blockchain para rastros de auditoría inmutables", "order": 4 }
+      ],
+      "tags": ["mcp", "security", "filesystem", "path-traversal", "roots"]
+    },
+    {
+      "id": "ccaf-tm-039",
+      "text": "How does MCP handle notification messages, and how do they differ from requests?",
+      "textEs": "¿Cómo maneja MCP los mensajes de notificación, y cómo difieren de las solicitudes?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-039_a",
+      "explanation": "In MCP's JSON-RPC 2.0 protocol, notifications are messages that do NOT include an 'id' field and do NOT expect a response. Requests include an 'id' field and expect a corresponding response with the same id. Notifications are fire-and-forget messages used for events like 'initialized', 'notifications/tools/list_changed', or progress updates. The receiver processes them but never sends a reply, making them lighter weight than requests.",
+      "explanationEs": "En el protocolo JSON-RPC 2.0 de MCP, las notificaciones son mensajes que NO incluyen un campo 'id' y NO esperan una respuesta. Las solicitudes incluyen un campo 'id' y esperan una respuesta correspondiente con el mismo id. Las notificaciones son mensajes de tipo enviar-y-olvidar usados para eventos como 'initialized', 'notifications/tools/list_changed' o actualizaciones de progreso. El receptor las procesa pero nunca envía una respuesta, haciéndolas más ligeras que las solicitudes.",
+      "options": [
+        { "id": "ccaf-tm-039_a", "text": "Notifications have no 'id' field and expect no response (fire-and-forget); requests have an 'id' and expect a response", "textEs": "Las notificaciones no tienen campo 'id' y no esperan respuesta (enviar-y-olvidar); las solicitudes tienen un 'id' y esperan una respuesta", "order": 1 },
+        { "id": "ccaf-tm-039_b", "text": "Notifications are encrypted while requests are sent in plain text", "textEs": "Las notificaciones están encriptadas mientras que las solicitudes se envían en texto plano", "order": 2 },
+        { "id": "ccaf-tm-039_c", "text": "Notifications are sent over a separate channel from requests", "textEs": "Las notificaciones se envían por un canal separado de las solicitudes", "order": 3 },
+        { "id": "ccaf-tm-039_d", "text": "There is no difference; notifications and requests are the same in MCP", "textEs": "No hay diferencia; las notificaciones y las solicitudes son lo mismo en MCP", "order": 4 }
+      ],
+      "tags": ["mcp", "notifications", "requests", "json-rpc", "protocol"]
+    },
+    {
+      "id": "ccaf-tm-040",
+      "text": "What is the purpose of using enum constraints in a tool's input_schema parameters?",
+      "textEs": "¿Cuál es el propósito de usar restricciones enum en los parámetros del input_schema de una herramienta?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-040_c",
+      "explanation": "Enum constraints in input_schema restrict a parameter to a predefined list of valid values (e.g., 'status' can only be 'open', 'closed', or 'in_progress'). This prevents the model from generating invalid or unexpected values, reduces errors, and improves reliability. Claude can see the allowed values and will always select from the list. This is much more reliable than a free-text string where Claude must guess the correct format or value.",
+      "explanationEs": "Las restricciones enum en input_schema restringen un parámetro a una lista predefinida de valores válidos (por ejemplo, 'status' solo puede ser 'open', 'closed' o 'in_progress'). Esto previene que el modelo genere valores inválidos o inesperados, reduce errores y mejora la fiabilidad. Claude puede ver los valores permitidos y siempre seleccionará de la lista. Esto es mucho más fiable que una cadena de texto libre donde Claude debe adivinar el formato o valor correcto.",
+      "options": [
+        { "id": "ccaf-tm-040_a", "text": "Enums improve API response speed by pre-validating inputs at the network level", "textEs": "Los enums mejoran la velocidad de respuesta de la API al pre-validar entradas a nivel de red", "order": 1 },
+        { "id": "ccaf-tm-040_b", "text": "Enums are required by the API and tools without them will be rejected", "textEs": "Los enums son requeridos por la API y las herramientas sin ellos serán rechazadas", "order": 2 },
+        { "id": "ccaf-tm-040_c", "text": "Enums restrict parameters to valid predefined values, preventing the model from generating invalid inputs", "textEs": "Los enums restringen parámetros a valores predefinidos válidos, previniendo que el modelo genere entradas inválidas", "order": 3 },
+        { "id": "ccaf-tm-040_d", "text": "Enums enable Claude to use parallel tool calls by specifying the execution order", "textEs": "Los enums permiten que Claude use llamadas a herramientas en paralelo al especificar el orden de ejecución", "order": 4 }
+      ],
+      "tags": ["enum-constraints", "input-schema", "validation", "tool-design"]
+    },
+    {
+      "id": "ccaf-tm-041",
+      "text": "In the computer use bash tool, what is the recommended way to handle long-running commands?",
+      "textEs": "En la herramienta bash de uso de computadora, ¿cuál es la forma recomendada de manejar comandos de larga duración?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-041_d",
+      "explanation": "For long-running commands in the bash tool, the recommended approach is to run them in the background (e.g., using '&' or nohup), redirect output to a file, and then periodically check the output file in subsequent tool calls. This prevents the tool from timing out and blocking the entire agentic loop. The bash tool has execution timeouts, so commands that take too long will be terminated, potentially losing partial results.",
+      "explanationEs": "Para comandos de larga duración en la herramienta bash, el enfoque recomendado es ejecutarlos en segundo plano (por ejemplo, usando '&' o nohup), redirigir la salida a un archivo, y luego verificar periódicamente el archivo de salida en llamadas a herramientas posteriores. Esto previene que la herramienta exceda el tiempo de espera y bloquee todo el bucle agente. La herramienta bash tiene tiempos de espera de ejecución, por lo que los comandos que toman demasiado tiempo serán terminados, potencialmente perdiendo resultados parciales.",
+      "options": [
+        { "id": "ccaf-tm-041_a", "text": "Increase the global timeout setting in the API request to accommodate long commands", "textEs": "Aumentar la configuración de tiempo de espera global en la solicitud API para acomodar comandos largos", "order": 1 },
+        { "id": "ccaf-tm-041_b", "text": "Split the command into multiple smaller commands that each complete quickly", "textEs": "Dividir el comando en múltiples comandos más pequeños que cada uno complete rápidamente", "order": 2 },
+        { "id": "ccaf-tm-041_c", "text": "Use the 'async: true' parameter on the bash tool to enable non-blocking execution", "textEs": "Usar el parámetro 'async: true' en la herramienta bash para habilitar ejecución no bloqueante", "order": 3 },
+        { "id": "ccaf-tm-041_d", "text": "Run the command in the background, redirect output to a file, and check results in subsequent tool calls", "textEs": "Ejecutar el comando en segundo plano, redirigir salida a un archivo, y verificar resultados en llamadas a herramientas posteriores", "order": 4 }
+      ],
+      "tags": ["bash-tool", "long-running", "background-execution", "computer-use"]
+    },
+    {
+      "id": "ccaf-tm-042",
+      "text": "What is the correct way to handle a tool_use stop_reason in an agentic loop with the Claude API?",
+      "textEs": "¿Cuál es la forma correcta de manejar un stop_reason de tool_use en un bucle agente con la API de Claude?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-042_a",
+      "explanation": "When Claude's response has stop_reason: 'tool_use', the agentic loop should: (1) extract the tool_use content blocks from the response, (2) execute the requested tool(s) with the provided inputs, (3) construct tool_result message(s) with the execution output, (4) append both the assistant's message and the tool_result user message to the conversation, and (5) send the updated conversation back to Claude for the next turn. This loop continues until Claude responds with stop_reason: 'end_turn'.",
+      "explanationEs": "Cuando la respuesta de Claude tiene stop_reason: 'tool_use', el bucle agente debe: (1) extraer los bloques de contenido tool_use de la respuesta, (2) ejecutar la(s) herramienta(s) solicitada(s) con las entradas proporcionadas, (3) construir mensaje(s) tool_result con la salida de ejecución, (4) agregar tanto el mensaje del asistente como el mensaje de usuario tool_result a la conversación, y (5) enviar la conversación actualizada de vuelta a Claude para el siguiente turno. Este bucle continúa hasta que Claude responde con stop_reason: 'end_turn'.",
+      "options": [
+        { "id": "ccaf-tm-042_a", "text": "Extract tool_use blocks, execute the tools, return tool_result messages appended to the conversation, and send back to Claude until stop_reason is 'end_turn'", "textEs": "Extraer bloques tool_use, ejecutar las herramientas, devolver mensajes tool_result agregados a la conversación, y enviar de vuelta a Claude hasta que stop_reason sea 'end_turn'", "order": 1 },
+        { "id": "ccaf-tm-042_b", "text": "Parse the tool name from the response text, call it directly via HTTP, and replace Claude's response with the tool output", "textEs": "Analizar el nombre de la herramienta del texto de respuesta, llamarla directamente por HTTP, y reemplazar la respuesta de Claude con la salida de la herramienta", "order": 2 },
+        { "id": "ccaf-tm-042_c", "text": "Start a new conversation with the tool result as the first message, discarding previous context", "textEs": "Iniciar una nueva conversación con el resultado de la herramienta como primer mensaje, descartando el contexto anterior", "order": 3 },
+        { "id": "ccaf-tm-042_d", "text": "Queue the tool call for batch processing and send a status update to Claude", "textEs": "Encolar la llamada a herramienta para procesamiento por lotes y enviar una actualización de estado a Claude", "order": 4 }
+      ],
+      "tags": ["agentic-loop", "tool-use", "stop-reason", "tool-result", "api"]
+    },
+    {
+      "id": "ccaf-tm-043",
+      "text": "What is the role of the 'description' field at the top level of a tool definition (separate from parameter descriptions)?",
+      "textEs": "¿Cuál es el rol del campo 'description' a nivel superior de una definición de herramienta (separado de las descripciones de parámetros)?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-043_b",
+      "explanation": "The top-level 'description' field in a tool definition provides Claude with context about the tool's overall purpose, when to use it, and what it returns. This is separate from individual parameter descriptions within the input_schema. Claude reads this description to decide whether the tool is relevant to the current task. A well-written top-level description is the single most important factor in correct tool selection, more important than the tool name or parameter names alone.",
+      "explanationEs": "El campo 'description' a nivel superior en una definición de herramienta proporciona a Claude contexto sobre el propósito general de la herramienta, cuándo usarla y qué devuelve. Esto es separado de las descripciones de parámetros individuales dentro del input_schema. Claude lee esta descripción para decidir si la herramienta es relevante para la tarea actual. Una descripción de nivel superior bien escrita es el factor individual más importante en la selección correcta de herramientas, más importante que el nombre de la herramienta o los nombres de parámetros solos.",
+      "options": [
+        { "id": "ccaf-tm-043_a", "text": "It is only displayed in developer documentation and not sent to Claude", "textEs": "Solo se muestra en la documentación del desarrollador y no se envía a Claude", "order": 1 },
+        { "id": "ccaf-tm-043_b", "text": "It tells Claude the tool's overall purpose, when to use it, and what it returns -- the primary factor in tool selection", "textEs": "Le dice a Claude el propósito general de la herramienta, cuándo usarla y qué devuelve -- el factor principal en la selección de herramientas", "order": 2 },
+        { "id": "ccaf-tm-043_c", "text": "It is a human-readable label shown in the UI but not used by Claude for reasoning", "textEs": "Es una etiqueta legible por humanos mostrada en la UI pero no usada por Claude para razonamiento", "order": 3 },
+        { "id": "ccaf-tm-043_d", "text": "It defines the return type schema for the tool's output", "textEs": "Define el esquema de tipo de retorno para la salida de la herramienta", "order": 4 }
+      ],
+      "tags": ["tool-description", "tool-definition", "selection", "best-practices"]
+    },
+    {
+      "id": "ccaf-tm-044",
+      "text": "How does the MCP server advertise changes to its available tools to connected clients?",
+      "textEs": "¿Cómo anuncia el servidor MCP los cambios en sus herramientas disponibles a los clientes conectados?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-044_c",
+      "explanation": "When an MCP server's tool list changes dynamically (tools added or removed), it sends a 'notifications/tools/list_changed' notification to the connected client. The client then calls 'tools/list' to fetch the updated tool list. This subscription-based pattern allows servers to add or remove tools at runtime without requiring a reconnection. The server must declare the 'listChanged' capability within 'tools' during initialization for this to work.",
+      "explanationEs": "Cuando la lista de herramientas de un servidor MCP cambia dinámicamente (herramientas añadidas o eliminadas), envía una notificación 'notifications/tools/list_changed' al cliente conectado. El cliente entonces llama a 'tools/list' para obtener la lista actualizada de herramientas. Este patrón basado en suscripción permite que los servidores añadan o eliminen herramientas en tiempo de ejecución sin requerir una reconexión. El servidor debe declarar la capacidad 'listChanged' dentro de 'tools' durante la inicialización para que esto funcione.",
+      "options": [
+        { "id": "ccaf-tm-044_a", "text": "The client polls the server every 30 seconds to check for tool list changes", "textEs": "El cliente consulta al servidor cada 30 segundos para verificar cambios en la lista de herramientas", "order": 1 },
+        { "id": "ccaf-tm-044_b", "text": "The server restarts and the client must reconnect to discover new tools", "textEs": "El servidor se reinicia y el cliente debe reconectarse para descubrir nuevas herramientas", "order": 2 },
+        { "id": "ccaf-tm-044_c", "text": "The server sends a 'notifications/tools/list_changed' notification, and the client then calls 'tools/list' to refresh", "textEs": "El servidor envía una notificación 'notifications/tools/list_changed', y el cliente entonces llama a 'tools/list' para actualizar", "order": 3 },
+        { "id": "ccaf-tm-044_d", "text": "Tool lists are immutable after initialization and cannot change during a session", "textEs": "Las listas de herramientas son inmutables después de la inicialización y no pueden cambiar durante una sesión", "order": 4 }
+      ],
+      "tags": ["mcp", "dynamic-tools", "notifications", "list-changed"]
+    },
+    {
+      "id": "ccaf-tm-045",
+      "text": "What is the difference between a protocol-level error and a tool-level error in MCP?",
+      "textEs": "¿Cuál es la diferencia entre un error a nivel de protocolo y un error a nivel de herramienta en MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-045_d",
+      "explanation": "Protocol-level errors are JSON-RPC error responses indicating that the MCP communication itself failed (e.g., invalid method, invalid params, internal server error). These are returned using the JSON-RPC 'error' field with standard error codes and are typically handled by the MCP client infrastructure, not seen by the model. Tool-level errors are returned within a successful tools/call response using isError: true in the result, allowing the model to see and reason about the error.",
+      "explanationEs": "Los errores a nivel de protocolo son respuestas de error JSON-RPC que indican que la comunicación MCP en sí falló (por ejemplo, método inválido, parámetros inválidos, error interno del servidor). Estos se devuelven usando el campo 'error' de JSON-RPC con códigos de error estándar y típicamente son manejados por la infraestructura del cliente MCP, no vistos por el modelo. Los errores a nivel de herramienta se devuelven dentro de una respuesta exitosa de tools/call usando isError: true en el resultado, permitiendo que el modelo vea y razone sobre el error.",
+      "options": [
+        { "id": "ccaf-tm-045_a", "text": "There is no difference; all errors in MCP are handled the same way", "textEs": "No hay diferencia; todos los errores en MCP se manejan de la misma forma", "order": 1 },
+        { "id": "ccaf-tm-045_b", "text": "Protocol errors are warnings while tool errors are fatal", "textEs": "Los errores de protocolo son advertencias mientras que los errores de herramienta son fatales", "order": 2 },
+        { "id": "ccaf-tm-045_c", "text": "Protocol errors happen on the client side; tool errors happen on the server side", "textEs": "Los errores de protocolo ocurren en el lado del cliente; los errores de herramienta ocurren en el lado del servidor", "order": 3 },
+        { "id": "ccaf-tm-045_d", "text": "Protocol errors are JSON-RPC errors handled by infrastructure (not seen by the model); tool errors use isError: true in results so the model can reason about them", "textEs": "Los errores de protocolo son errores JSON-RPC manejados por la infraestructura (no vistos por el modelo); los errores de herramienta usan isError: true en resultados para que el modelo pueda razonar sobre ellos", "order": 4 }
+      ],
+      "tags": ["mcp", "error-handling", "protocol-error", "tool-error", "json-rpc"]
+    },
+    {
+      "id": "ccaf-tm-046",
+      "text": "What is the recommended approach for building a custom MCP server that integrates with a database?",
+      "textEs": "¿Cuál es el enfoque recomendado para construir un servidor MCP personalizado que se integre con una base de datos?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-046_b",
+      "explanation": "A database MCP server should expose read-only query tools by default (using parameterized queries to prevent SQL injection), provide schema introspection as resources (so the model understands table structures), implement connection pooling for efficiency, and only expose write operations with explicit safeguards. The server should validate all inputs, use prepared statements, and respect the principle of least privilege by only granting access to needed tables/operations.",
+      "explanationEs": "Un servidor MCP de base de datos debe exponer herramientas de consulta de solo lectura por defecto (usando consultas parametrizadas para prevenir inyección SQL), proporcionar introspección de esquema como recursos (para que el modelo entienda las estructuras de tablas), implementar pool de conexiones para eficiencia, y solo exponer operaciones de escritura con salvaguardas explícitas. El servidor debe validar todas las entradas, usar sentencias preparadas, y respetar el principio de mínimo privilegio otorgando acceso solo a las tablas/operaciones necesarias.",
+      "options": [
+        { "id": "ccaf-tm-046_a", "text": "Pass raw SQL from the model directly to the database for maximum flexibility", "textEs": "Pasar SQL sin procesar del modelo directamente a la base de datos para máxima flexibilidad", "order": 1 },
+        { "id": "ccaf-tm-046_b", "text": "Expose read-only parameterized queries by default, provide schema as resources, use prepared statements, and add write tools only with explicit safeguards", "textEs": "Exponer consultas parametrizadas de solo lectura por defecto, proporcionar esquema como recursos, usar sentencias preparadas, y agregar herramientas de escritura solo con salvaguardas explícitas", "order": 2 },
+        { "id": "ccaf-tm-046_c", "text": "Expose a single generic 'execute_query' tool that accepts any SQL statement", "textEs": "Exponer una herramienta genérica única 'execute_query' que acepte cualquier sentencia SQL", "order": 3 },
+        { "id": "ccaf-tm-046_d", "text": "Cache the entire database contents as a resource and serve from memory", "textEs": "Almacenar en caché todo el contenido de la base de datos como recurso y servir desde memoria", "order": 4 }
+      ],
+      "tags": ["mcp", "database", "custom-server", "security", "sql-injection"]
+    },
+    {
+      "id": "ccaf-tm-047",
+      "text": "How does the .mcp.json configuration file specify MCP server connection details?",
+      "textEs": "¿Cómo especifica el archivo de configuración .mcp.json los detalles de conexión del servidor MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-047_a",
+      "explanation": "The .mcp.json file uses a 'mcpServers' object where each key is a server name and the value specifies the connection type and details. For stdio servers, you specify 'command' (the executable), 'args' (command-line arguments), and optionally 'env' (environment variables). For remote servers, you specify the URL endpoint. This format allows both local process-based and remote HTTP-based MCP servers to be configured declaratively.",
+      "explanationEs": "El archivo .mcp.json usa un objeto 'mcpServers' donde cada clave es un nombre de servidor y el valor especifica el tipo de conexión y detalles. Para servidores stdio, se especifica 'command' (el ejecutable), 'args' (argumentos de línea de comandos), y opcionalmente 'env' (variables de entorno). Para servidores remotos, se especifica la URL del endpoint. Este formato permite configurar declarativamente tanto servidores MCP locales basados en procesos como remotos basados en HTTP.",
+      "options": [
+        { "id": "ccaf-tm-047_a", "text": "A 'mcpServers' object with server names as keys; stdio servers specify command/args/env, remote servers specify a URL", "textEs": "Un objeto 'mcpServers' con nombres de servidor como claves; los servidores stdio especifican command/args/env, los servidores remotos especifican una URL", "order": 1 },
+        { "id": "ccaf-tm-047_b", "text": "A flat array of connection strings like 'stdio://python script.py' or 'sse://host:port'", "textEs": "Un array plano de cadenas de conexión como 'stdio://python script.py' o 'sse://host:port'", "order": 2 },
+        { "id": "ccaf-tm-047_c", "text": "A Docker Compose-like format with services, ports, and volume mappings", "textEs": "Un formato similar a Docker Compose con servicios, puertos y mapeos de volúmenes", "order": 3 },
+        { "id": "ccaf-tm-047_d", "text": "An XML configuration file that references a server registry", "textEs": "Un archivo de configuración XML que referencia un registro de servidores", "order": 4 }
+      ],
+      "tags": ["mcp-config", "mcp-json", "stdio", "configuration", "servers"]
+    },
+    {
+      "id": "ccaf-tm-048",
+      "text": "Why is it important to provide example values in tool parameter descriptions?",
+      "textEs": "¿Por qué es importante proporcionar valores de ejemplo en las descripciones de parámetros de herramientas?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-048_c",
+      "explanation": "Example values in parameter descriptions help Claude understand the expected format, range, and style of inputs. Without examples, Claude may guess formats incorrectly (e.g., date as 'April 15, 2026' vs '2026-04-15', or a project ID as a name vs a UUID). Examples serve as in-context few-shot guidance that significantly reduces format errors. They are especially important for string parameters where the expected format is not obvious from the type alone.",
+      "explanationEs": "Los valores de ejemplo en las descripciones de parámetros ayudan a Claude a entender el formato, rango y estilo esperado de las entradas. Sin ejemplos, Claude puede adivinar formatos incorrectamente (por ejemplo, fecha como 'April 15, 2026' vs '2026-04-15', o un ID de proyecto como nombre vs UUID). Los ejemplos sirven como guía few-shot en contexto que reduce significativamente los errores de formato. Son especialmente importantes para parámetros de cadena donde el formato esperado no es obvio solo por el tipo.",
+      "options": [
+        { "id": "ccaf-tm-048_a", "text": "Examples are required by the JSON Schema specification and the tool will fail validation without them", "textEs": "Los ejemplos son requeridos por la especificación JSON Schema y la herramienta fallará la validación sin ellos", "order": 1 },
+        { "id": "ccaf-tm-048_b", "text": "Examples are shown to the end user in the UI so they know what to input", "textEs": "Los ejemplos se muestran al usuario final en la UI para que sepa qué ingresar", "order": 2 },
+        { "id": "ccaf-tm-048_c", "text": "Examples act as in-context guidance helping Claude understand expected format and style, reducing format errors significantly", "textEs": "Los ejemplos actúan como guía en contexto ayudando a Claude a entender el formato y estilo esperado, reduciendo errores de formato significativamente", "order": 3 },
+        { "id": "ccaf-tm-048_d", "text": "Examples are used by the API to auto-generate test cases for the tool", "textEs": "Los ejemplos son usados por la API para auto-generar casos de prueba para la herramienta", "order": 4 }
+      ],
+      "tags": ["tool-parameters", "examples", "format-guidance", "best-practices"]
+    },
+    {
+      "id": "ccaf-tm-049",
+      "text": "What is the MCP 'tools/list' method used for, and what does it return?",
+      "textEs": "¿Para qué se usa el método 'tools/list' de MCP, y qué devuelve?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-049_a",
+      "explanation": "The 'tools/list' method is called by the MCP client to discover all tools available on the server. It returns an array of tool definitions, each containing the tool's name, description, and inputSchema (the JSON Schema defining expected parameters). This is how the client/host learns what capabilities the server offers and can present them to the model. The method supports pagination via an optional cursor parameter for servers with many tools.",
+      "explanationEs": "El método 'tools/list' es llamado por el cliente MCP para descubrir todas las herramientas disponibles en el servidor. Devuelve un array de definiciones de herramientas, cada una conteniendo el nombre de la herramienta, descripción y inputSchema (el JSON Schema que define los parámetros esperados). Así es como el cliente/host aprende qué capacidades ofrece el servidor y puede presentarlas al modelo. El método soporta paginación mediante un parámetro cursor opcional para servidores con muchas herramientas.",
+      "options": [
+        { "id": "ccaf-tm-049_a", "text": "It discovers available tools, returning an array of tool definitions with name, description, and inputSchema for each", "textEs": "Descubre herramientas disponibles, devolviendo un array de definiciones de herramientas con nombre, descripción e inputSchema para cada una", "order": 1 },
+        { "id": "ccaf-tm-049_b", "text": "It returns the execution history of all previous tool calls in the session", "textEs": "Devuelve el historial de ejecución de todas las llamadas a herramientas previas en la sesión", "order": 2 },
+        { "id": "ccaf-tm-049_c", "text": "It returns usage statistics and performance metrics for each tool", "textEs": "Devuelve estadísticas de uso y métricas de rendimiento para cada herramienta", "order": 3 },
+        { "id": "ccaf-tm-049_d", "text": "It validates the tool definitions against the MCP schema registry", "textEs": "Valida las definiciones de herramientas contra el registro de esquemas MCP", "order": 4 }
+      ],
+      "tags": ["mcp", "tools-list", "discovery", "protocol"]
+    },
+    {
+      "id": "ccaf-tm-050",
+      "text": "A developer wants Claude to always extract structured data from user messages using a 'parse_order' tool, without ever responding with plain text. What tool_choice configuration should they use?",
+      "textEs": "Un desarrollador quiere que Claude siempre extraiga datos estructurados de los mensajes del usuario usando una herramienta 'parse_order', sin responder nunca con texto plano. ¿Qué configuración de tool_choice debería usar?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-050_b",
+      "explanation": "To force Claude to always use a specific tool (never responding with text), set tool_choice to {\"type\": \"tool\", \"name\": \"parse_order\"}. This guarantees Claude will call the parse_order tool on every turn. Using 'auto' would let Claude sometimes respond with text instead. Using 'any' would force a tool call but Claude could pick a different tool. The forced tool approach is ideal for structured extraction pipelines where you need deterministic behavior.",
+      "explanationEs": "Para forzar a Claude a siempre usar una herramienta específica (nunca respondiendo con texto), establece tool_choice a {\"type\": \"tool\", \"name\": \"parse_order\"}. Esto garantiza que Claude llamará a la herramienta parse_order en cada turno. Usar 'auto' permitiría que Claude a veces responda con texto en su lugar. Usar 'any' forzaría una llamada a herramienta pero Claude podría elegir una herramienta diferente. El enfoque de herramienta forzada es ideal para pipelines de extracción estructurada donde necesitas comportamiento determinista.",
+      "options": [
+        { "id": "ccaf-tm-050_a", "text": "tool_choice: {\"type\": \"auto\"} with a system prompt instruction to always use parse_order", "textEs": "tool_choice: {\"type\": \"auto\"} con una instrucción de prompt del sistema para siempre usar parse_order", "order": 1 },
+        { "id": "ccaf-tm-050_b", "text": "tool_choice: {\"type\": \"tool\", \"name\": \"parse_order\"} to force that specific tool on every turn", "textEs": "tool_choice: {\"type\": \"tool\", \"name\": \"parse_order\"} para forzar esa herramienta específica en cada turno", "order": 2 },
+        { "id": "ccaf-tm-050_c", "text": "tool_choice: {\"type\": \"any\"} with only parse_order in the tools array", "textEs": "tool_choice: {\"type\": \"any\"} con solo parse_order en el array de herramientas", "order": 3 },
+        { "id": "ccaf-tm-050_d", "text": "Set disable_parallel_tool_use: true and provide only parse_order", "textEs": "Establecer disable_parallel_tool_use: true y proporcionar solo parse_order", "order": 4 }
+      ],
+      "tags": ["tool-choice", "forced-tool", "structured-extraction", "deterministic"]
+    },
+    {
+      "id": "ccaf-tm-051",
+      "text": "What is the recommended way to handle tool results that contain very large output (e.g., thousands of lines)?",
+      "textEs": "¿Cuál es la forma recomendada de manejar resultados de herramientas que contienen salidas muy grandes (por ejemplo, miles de líneas)?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-051_c",
+      "explanation": "Large tool results consume significant context window tokens and can degrade Claude's performance. The recommended approach is to truncate or summarize the output before returning it as a tool result, return only the most relevant portion (e.g., first N results, filtered results), or provide a summary with a way to fetch more details if needed. Alternatively, tools can write large outputs to a file and return the file path, letting Claude read specific sections as needed.",
+      "explanationEs": "Los resultados de herramientas grandes consumen tokens significativos de la ventana de contexto y pueden degradar el rendimiento de Claude. El enfoque recomendado es truncar o resumir la salida antes de devolverla como resultado de herramienta, devolver solo la porción más relevante (por ejemplo, primeros N resultados, resultados filtrados), o proporcionar un resumen con una forma de obtener más detalles si es necesario. Alternativamente, las herramientas pueden escribir salidas grandes a un archivo y devolver la ruta del archivo, permitiendo que Claude lea secciones específicas según sea necesario.",
+      "options": [
+        { "id": "ccaf-tm-051_a", "text": "Always return the complete output regardless of size to ensure Claude has all information", "textEs": "Siempre devolver la salida completa sin importar el tamaño para asegurar que Claude tenga toda la información", "order": 1 },
+        { "id": "ccaf-tm-051_b", "text": "Compress the output using gzip encoding in the tool_result content block", "textEs": "Comprimir la salida usando codificación gzip en el bloque de contenido tool_result", "order": 2 },
+        { "id": "ccaf-tm-051_c", "text": "Truncate, summarize, or return only relevant portions; optionally write full output to a file and return the path", "textEs": "Truncar, resumir o devolver solo las porciones relevantes; opcionalmente escribir la salida completa a un archivo y devolver la ruta", "order": 3 },
+        { "id": "ccaf-tm-051_d", "text": "Split the output across multiple sequential tool_result messages", "textEs": "Dividir la salida en múltiples mensajes tool_result secuenciales", "order": 4 }
+      ],
+      "tags": ["tool-results", "large-output", "truncation", "context-window", "best-practices"]
+    },
+    {
+      "id": "ccaf-tm-052",
+      "text": "In MCP, what is the purpose of the 'resources/subscribe' method?",
+      "textEs": "En MCP, ¿cuál es el propósito del método 'resources/subscribe'?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-052_a",
+      "explanation": "The 'resources/subscribe' method allows a client to subscribe to updates for a specific resource URI. When the subscribed resource changes, the server sends a 'notifications/resources/updated' notification to the client, which can then re-fetch the resource using 'resources/read'. This enables real-time monitoring of dynamic data sources without polling. The server must declare the 'subscribe' capability within 'resources' during initialization.",
+      "explanationEs": "El método 'resources/subscribe' permite que un cliente se suscriba a actualizaciones para un URI de recurso específico. Cuando el recurso suscrito cambia, el servidor envía una notificación 'notifications/resources/updated' al cliente, que puede entonces re-obtener el recurso usando 'resources/read'. Esto habilita monitoreo en tiempo real de fuentes de datos dinámicas sin sondeo. El servidor debe declarar la capacidad 'subscribe' dentro de 'resources' durante la inicialización.",
+      "options": [
+        { "id": "ccaf-tm-052_a", "text": "It subscribes to updates for a specific resource URI, receiving notifications when the resource changes so it can be re-fetched", "textEs": "Se suscribe a actualizaciones para un URI de recurso específico, recibiendo notificaciones cuando el recurso cambia para poder re-obtenerlo", "order": 1 },
+        { "id": "ccaf-tm-052_b", "text": "It registers a webhook URL for receiving resource data asynchronously", "textEs": "Registra una URL de webhook para recibir datos de recursos asincrónicamente", "order": 2 },
+        { "id": "ccaf-tm-052_c", "text": "It downloads a resource for offline access during network outages", "textEs": "Descarga un recurso para acceso offline durante cortes de red", "order": 3 },
+        { "id": "ccaf-tm-052_d", "text": "It adds the resource to the model's permanent context for all future conversations", "textEs": "Agrega el recurso al contexto permanente del modelo para todas las conversaciones futuras", "order": 4 }
+      ],
+      "tags": ["mcp", "resources", "subscribe", "real-time", "notifications"]
+    },
+    {
+      "id": "ccaf-tm-053",
+      "text": "What is the computer use tool's screenshot-action loop pattern?",
+      "textEs": "¿Cuál es el patrón de bucle captura-acción de la herramienta de uso de computadora?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-053_b",
+      "explanation": "The computer use screenshot-action loop follows a repeating pattern: (1) Claude takes a screenshot to observe the current screen state, (2) it analyzes the screenshot to understand what is displayed, (3) it decides on the next action (click, type, scroll, etc.) based on its goal and current state, (4) it executes the action, (5) it takes another screenshot to verify the result, and the cycle repeats. This observe-decide-act pattern mimics how a human interacts with a GUI.",
+      "explanationEs": "El bucle captura-acción de uso de computadora sigue un patrón repetitivo: (1) Claude toma una captura de pantalla para observar el estado actual de la pantalla, (2) analiza la captura para entender qué se muestra, (3) decide la siguiente acción (clic, escribir, desplazar, etc.) basándose en su objetivo y estado actual, (4) ejecuta la acción, (5) toma otra captura de pantalla para verificar el resultado, y el ciclo se repite. Este patrón observar-decidir-actuar imita cómo un humano interactúa con una GUI.",
+      "options": [
+        { "id": "ccaf-tm-053_a", "text": "Claude receives a DOM tree, selects elements by CSS selector, and manipulates them programmatically", "textEs": "Claude recibe un árbol DOM, selecciona elementos por selector CSS, y los manipula programáticamente", "order": 1 },
+        { "id": "ccaf-tm-053_b", "text": "Screenshot to observe state, analyze what is displayed, decide on action, execute action, screenshot to verify -- repeating until the goal is achieved", "textEs": "Captura de pantalla para observar estado, analizar qué se muestra, decidir acción, ejecutar acción, captura de pantalla para verificar -- repitiendo hasta lograr el objetivo", "order": 2 },
+        { "id": "ccaf-tm-053_c", "text": "Claude generates a complete automation script upfront and executes it in a single batch", "textEs": "Claude genera un script de automatización completo por adelantado y lo ejecuta en un solo lote", "order": 3 },
+        { "id": "ccaf-tm-053_d", "text": "Claude connects to the application's accessibility API to read and interact with UI elements", "textEs": "Claude se conecta a la API de accesibilidad de la aplicación para leer e interactuar con elementos de UI", "order": 4 }
+      ],
+      "tags": ["computer-use", "screenshot-loop", "observe-decide-act", "gui-interaction"]
+    },
+    {
+      "id": "ccaf-tm-054",
+      "text": "What security principle should guide the permissions model when designing MCP servers?",
+      "textEs": "¿Qué principio de seguridad debería guiar el modelo de permisos al diseñar servidores MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-054_c",
+      "explanation": "MCP servers should follow the principle of least privilege: grant only the minimum permissions needed for each tool to accomplish its task. Servers should not expose more capabilities than necessary, should restrict operations to declared roots/boundaries, and should default to read-only access unless write access is explicitly required. This minimizes the blast radius if a prompt injection or confused model causes unexpected tool calls. The host application adds another layer by controlling which server capabilities are presented to the model.",
+      "explanationEs": "Los servidores MCP deben seguir el principio de mínimo privilegio: otorgar solo los permisos mínimos necesarios para que cada herramienta cumpla su tarea. Los servidores no deben exponer más capacidades de las necesarias, deben restringir operaciones a roots/límites declarados, y deben establecer acceso de solo lectura por defecto a menos que se requiera explícitamente acceso de escritura. Esto minimiza el radio de impacto si una inyección de prompt o modelo confundido causa llamadas a herramientas inesperadas. La aplicación host añade otra capa controlando qué capacidades del servidor se presentan al modelo.",
+      "options": [
+        { "id": "ccaf-tm-054_a", "text": "Grant all permissions by default and let users disable ones they don't need", "textEs": "Otorgar todos los permisos por defecto y dejar que los usuarios deshabiliten los que no necesitan", "order": 1 },
+        { "id": "ccaf-tm-054_b", "text": "Require the model to authenticate with a token before each tool call", "textEs": "Requerir que el modelo se autentique con un token antes de cada llamada a herramienta", "order": 2 },
+        { "id": "ccaf-tm-054_c", "text": "Principle of least privilege: grant only minimum needed permissions, default to read-only, restrict to declared boundaries", "textEs": "Principio de mínimo privilegio: otorgar solo permisos mínimos necesarios, establecer solo lectura por defecto, restringir a límites declarados", "order": 3 },
+        { "id": "ccaf-tm-054_d", "text": "Implement a CAPTCHA challenge before any destructive operation", "textEs": "Implementar un desafío CAPTCHA antes de cualquier operación destructiva", "order": 4 }
+      ],
+      "tags": ["mcp", "security", "least-privilege", "permissions", "design-principles"]
+    },
+    {
+      "id": "ccaf-tm-055",
+      "text": "How does Claude handle tool_use content blocks when it wants to call multiple tools simultaneously?",
+      "textEs": "¿Cómo maneja Claude los bloques de contenido tool_use cuando quiere llamar múltiples herramientas simultáneamente?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-055_d",
+      "explanation": "When Claude wants to call multiple tools in parallel, it returns multiple tool_use content blocks in a single response message, each with a unique id, tool name, and input parameters. The caller should execute all the tools (potentially in parallel for efficiency), then return all tool_result blocks in a single user message, each referencing its corresponding tool_use_id. Claude can mix text blocks with multiple tool_use blocks in the same response.",
+      "explanationEs": "Cuando Claude quiere llamar múltiples herramientas en paralelo, devuelve múltiples bloques de contenido tool_use en un solo mensaje de respuesta, cada uno con un id único, nombre de herramienta y parámetros de entrada. El llamador debe ejecutar todas las herramientas (potencialmente en paralelo para eficiencia), y luego devolver todos los bloques tool_result en un solo mensaje de usuario, cada uno referenciando su tool_use_id correspondiente. Claude puede mezclar bloques de texto con múltiples bloques tool_use en la misma respuesta.",
+      "options": [
+        { "id": "ccaf-tm-055_a", "text": "Claude sends separate API requests for each tool call, and the server batches them", "textEs": "Claude envía solicitudes API separadas para cada llamada a herramienta, y el servidor las agrupa", "order": 1 },
+        { "id": "ccaf-tm-055_b", "text": "Claude chains tool calls using a 'depends_on' field that specifies execution order", "textEs": "Claude encadena llamadas a herramientas usando un campo 'depends_on' que especifica el orden de ejecución", "order": 2 },
+        { "id": "ccaf-tm-055_c", "text": "Claude can only call one tool at a time; parallel tool use is not supported", "textEs": "Claude solo puede llamar una herramienta a la vez; el uso paralelo de herramientas no está soportado", "order": 3 },
+        { "id": "ccaf-tm-055_d", "text": "Multiple tool_use content blocks with unique IDs in one response; all tool_results are returned in a single user message", "textEs": "Múltiples bloques de contenido tool_use con IDs únicos en una respuesta; todos los tool_results se devuelven en un solo mensaje de usuario", "order": 4 }
+      ],
+      "tags": ["parallel-tool-use", "tool-use-blocks", "content-blocks", "api"]
+    },
+    {
+      "id": "ccaf-tm-056",
+      "text": "What is the FastMCP pattern in the Python SDK, and what advantage does it provide?",
+      "textEs": "¿Qué es el patrón FastMCP en el SDK de Python, y qué ventaja proporciona?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-056_a",
+      "explanation": "FastMCP is a high-level, Pythonic API in the MCP Python SDK that simplifies server development. Instead of manually building JSON-RPC handlers and schemas, you create a FastMCP instance and use decorators (@mcp.tool(), @mcp.resource(), @mcp.prompt()) to register capabilities. It automatically generates JSON Schema from Python type annotations, handles the JSON-RPC protocol, manages transport setup, and provides a clean development experience similar to frameworks like FastAPI.",
+      "explanationEs": "FastMCP es una API de alto nivel y Pythónica en el SDK de Python de MCP que simplifica el desarrollo de servidores. En lugar de construir manualmente handlers JSON-RPC y schemas, creas una instancia FastMCP y usas decoradores (@mcp.tool(), @mcp.resource(), @mcp.prompt()) para registrar capacidades. Genera automáticamente JSON Schema desde anotaciones de tipo Python, maneja el protocolo JSON-RPC, gestiona la configuración de transporte, y proporciona una experiencia de desarrollo limpia similar a frameworks como FastAPI.",
+      "options": [
+        { "id": "ccaf-tm-056_a", "text": "A high-level API using decorators and type annotations that auto-generates schemas and handles protocol details, similar to FastAPI", "textEs": "Una API de alto nivel usando decoradores y anotaciones de tipo que auto-genera schemas y maneja detalles del protocolo, similar a FastAPI", "order": 1 },
+        { "id": "ccaf-tm-056_b", "text": "A performance optimization that caches tool responses to reduce latency", "textEs": "Una optimización de rendimiento que almacena en caché las respuestas de herramientas para reducir latencia", "order": 2 },
+        { "id": "ccaf-tm-056_c", "text": "A testing framework for unit testing MCP server implementations", "textEs": "Un framework de testing para pruebas unitarias de implementaciones de servidores MCP", "order": 3 },
+        { "id": "ccaf-tm-056_d", "text": "A compiled binary format for MCP servers that starts faster than interpreted Python", "textEs": "Un formato binario compilado para servidores MCP que inicia más rápido que Python interpretado", "order": 4 }
+      ],
+      "tags": ["mcp", "python-sdk", "fastmcp", "decorators", "high-level-api"]
+    },
+    {
+      "id": "ccaf-tm-057",
+      "text": "When designing an MCP server for an API integration, how should you handle API rate limits?",
+      "textEs": "Al diseñar un servidor MCP para una integración de API, ¿cómo deberías manejar los límites de tasa de la API?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-057_d",
+      "explanation": "MCP servers should implement rate limit handling at the server level, transparent to the model. This includes implementing retry logic with exponential backoff for rate-limited responses, queuing requests when near limits, and returning clear error messages (using isError: true) when limits are exceeded after retries. The model should not need to understand rate limiting -- the server abstracts this complexity. Including rate limit status in tool results can help the model pace its requests.",
+      "explanationEs": "Los servidores MCP deben implementar el manejo de límites de tasa a nivel de servidor, transparente para el modelo. Esto incluye implementar lógica de reintento con backoff exponencial para respuestas con límite de tasa, encolar solicitudes cuando se acercan a los límites, y devolver mensajes de error claros (usando isError: true) cuando los límites se exceden después de los reintentos. El modelo no debería necesitar entender los límites de tasa -- el servidor abstrae esta complejidad. Incluir el estado del límite de tasa en los resultados de herramientas puede ayudar al modelo a regular sus solicitudes.",
+      "options": [
+        { "id": "ccaf-tm-057_a", "text": "Include rate limit details in tool descriptions so Claude self-throttles its requests", "textEs": "Incluir detalles de límite de tasa en las descripciones de herramientas para que Claude auto-regule sus solicitudes", "order": 1 },
+        { "id": "ccaf-tm-057_b", "text": "Expose a 'check_rate_limit' tool that Claude must call before every API operation", "textEs": "Exponer una herramienta 'check_rate_limit' que Claude debe llamar antes de cada operación API", "order": 2 },
+        { "id": "ccaf-tm-057_c", "text": "Let the raw API errors pass through to Claude and let it decide when to retry", "textEs": "Dejar que los errores crudos de la API pasen a Claude y dejar que decida cuándo reintentar", "order": 3 },
+        { "id": "ccaf-tm-057_d", "text": "Handle rate limits at the server level with retry/backoff logic, transparent to the model, returning clear errors when limits are persistently exceeded", "textEs": "Manejar límites de tasa a nivel de servidor con lógica de reintento/backoff, transparente para el modelo, devolviendo errores claros cuando los límites se exceden persistentemente", "order": 4 }
+      ],
+      "tags": ["mcp", "api-integration", "rate-limits", "error-handling", "server-design"]
+    },
+    {
+      "id": "ccaf-tm-058",
+      "text": "What is the correct structure for returning a tool_result to Claude's API when a tool execution succeeds?",
+      "textEs": "¿Cuál es la estructura correcta para devolver un tool_result a la API de Claude cuando la ejecución de una herramienta tiene éxito?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-058_a",
+      "explanation": "A successful tool_result is sent as a user-role message containing a content block with type 'tool_result', the 'tool_use_id' matching the id from Claude's tool_use request, and a 'content' field with the result (either a string or an array of content blocks like text and images). The tool_use_id is critical -- it correlates the result back to the specific tool call Claude made, especially when multiple tools are called in parallel.",
+      "explanationEs": "Un tool_result exitoso se envía como un mensaje con rol de usuario conteniendo un bloque de contenido con type 'tool_result', el 'tool_use_id' coincidiendo con el id de la solicitud tool_use de Claude, y un campo 'content' con el resultado (ya sea una cadena o un array de bloques de contenido como texto e imágenes). El tool_use_id es crítico -- correlaciona el resultado de vuelta a la llamada a herramienta específica que hizo Claude, especialmente cuando se llaman múltiples herramientas en paralelo.",
+      "options": [
+        { "id": "ccaf-tm-058_a", "text": "A user message with type 'tool_result', tool_use_id matching the request, and content with the result data", "textEs": "Un mensaje de usuario con type 'tool_result', tool_use_id coincidiendo con la solicitud, y contenido con los datos del resultado", "order": 1 },
+        { "id": "ccaf-tm-058_b", "text": "An assistant message that appends the tool output to Claude's previous response", "textEs": "Un mensaje de asistente que agrega la salida de la herramienta a la respuesta anterior de Claude", "order": 2 },
+        { "id": "ccaf-tm-058_c", "text": "A system message with the tool output injected into the context", "textEs": "Un mensaje del sistema con la salida de la herramienta inyectada en el contexto", "order": 3 },
+        { "id": "ccaf-tm-058_d", "text": "A separate API endpoint call to /tools/result with the output payload", "textEs": "Una llamada a endpoint API separado a /tools/result con la carga del resultado", "order": 4 }
+      ],
+      "tags": ["tool-result", "api-structure", "tool-use-id", "content-blocks"]
+    },
+    {
+      "id": "ccaf-tm-059",
+      "text": "How should you handle the situation where an MCP server needs to perform a long-running operation?",
+      "textEs": "¿Cómo deberías manejar la situación donde un servidor MCP necesita realizar una operación de larga duración?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-059_c",
+      "explanation": "MCP supports progress notifications for long-running operations. The server can send 'notifications/progress' messages with progressToken (from the original request's _meta), progress (current value), and total (maximum value) to report incremental progress. Additionally, MCP supports cancellation via 'notifications/cancelled'. For very long operations, the tool can start an async job, return immediately with a job ID, and provide a separate 'check_status' tool for the model to poll.",
+      "explanationEs": "MCP soporta notificaciones de progreso para operaciones de larga duración. El servidor puede enviar mensajes 'notifications/progress' con progressToken (de la _meta de la solicitud original), progress (valor actual) y total (valor máximo) para reportar progreso incremental. Además, MCP soporta cancelación vía 'notifications/cancelled'. Para operaciones muy largas, la herramienta puede iniciar un trabajo asíncrono, devolver inmediatamente con un ID de trabajo, y proporcionar una herramienta 'check_status' separada para que el modelo consulte.",
+      "options": [
+        { "id": "ccaf-tm-059_a", "text": "Block the MCP connection until the operation completes, regardless of duration", "textEs": "Bloquear la conexión MCP hasta que la operación complete, independientemente de la duración", "order": 1 },
+        { "id": "ccaf-tm-059_b", "text": "Return a timeout error immediately if the operation will take more than 5 seconds", "textEs": "Devolver un error de timeout inmediatamente si la operación tomará más de 5 segundos", "order": 2 },
+        { "id": "ccaf-tm-059_c", "text": "Use progress notifications with progressToken, or start an async job returning a job ID with a separate status-check tool", "textEs": "Usar notificaciones de progreso con progressToken, o iniciar un trabajo asíncrono devolviendo un ID de trabajo con una herramienta separada de verificación de estado", "order": 3 },
+        { "id": "ccaf-tm-059_d", "text": "Open a separate WebSocket connection for streaming the operation's output", "textEs": "Abrir una conexión WebSocket separada para transmitir la salida de la operación", "order": 4 }
+      ],
+      "tags": ["mcp", "long-running", "progress", "async-operations", "notifications"]
+    },
+    {
+      "id": "ccaf-tm-060",
+      "text": "What is the benefit of combining tool_choice 'any' with disable_parallel_tool_use: true?",
+      "textEs": "¿Cuál es el beneficio de combinar tool_choice 'any' con disable_parallel_tool_use: true?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-060_b",
+      "explanation": "Combining tool_choice 'any' with disable_parallel_tool_use: true forces Claude to make exactly one tool call per response turn. 'any' ensures Claude must call a tool (cannot respond with just text), and disable_parallel_tool_use ensures it calls exactly one (not multiple). This is useful for step-by-step workflows where you need one tool action per turn, want to inspect/approve each action before proceeding, or need deterministic sequential execution.",
+      "explanationEs": "Combinar tool_choice 'any' con disable_parallel_tool_use: true fuerza a Claude a hacer exactamente una llamada a herramienta por turno de respuesta. 'any' asegura que Claude debe llamar a una herramienta (no puede responder solo con texto), y disable_parallel_tool_use asegura que llame exactamente una (no múltiples). Esto es útil para flujos de trabajo paso a paso donde necesitas una acción de herramienta por turno, quieres inspeccionar/aprobar cada acción antes de proceder, o necesitas ejecución secuencial determinista.",
+      "options": [
+        { "id": "ccaf-tm-060_a", "text": "It allows Claude to choose between text responses and tool calls on each turn", "textEs": "Permite que Claude elija entre respuestas de texto y llamadas a herramientas en cada turno", "order": 1 },
+        { "id": "ccaf-tm-060_b", "text": "It forces exactly one tool call per turn -- Claude must call a tool (not text) and can only call one", "textEs": "Fuerza exactamente una llamada a herramienta por turno -- Claude debe llamar a una herramienta (no texto) y solo puede llamar una", "order": 2 },
+        { "id": "ccaf-tm-060_c", "text": "It disables all tool use and only allows text responses", "textEs": "Desactiva todo uso de herramientas y solo permite respuestas de texto", "order": 3 },
+        { "id": "ccaf-tm-060_d", "text": "It makes Claude call all available tools in sequence, one per turn", "textEs": "Hace que Claude llame a todas las herramientas disponibles en secuencia, una por turno", "order": 4 }
+      ],
+      "tags": ["tool-choice", "parallel-tool-use", "sequential", "workflow-control"]
+    },
+    {
+      "id": "ccaf-tm-061",
+      "text": "What is the purpose of providing a display_width_px and display_height_px when configuring the computer use 'computer' tool?",
+      "textEs": "¿Cuál es el propósito de proporcionar display_width_px y display_height_px al configurar la herramienta 'computer' de uso de computadora?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-061_a",
+      "explanation": "The display_width_px and display_height_px parameters tell Claude the resolution of the screen it is interacting with. This is critical for accurate coordinate-based interactions -- when Claude identifies a button or field in a screenshot and needs to click on it, it must translate the visual position to pixel coordinates. Without correct screen dimensions, Claude's click coordinates would be offset, causing it to miss targets. These values should match the actual resolution of the virtual display or screen being controlled.",
+      "explanationEs": "Los parámetros display_width_px y display_height_px le dicen a Claude la resolución de la pantalla con la que está interactuando. Esto es crítico para interacciones precisas basadas en coordenadas -- cuando Claude identifica un botón o campo en una captura de pantalla y necesita hacer clic en él, debe traducir la posición visual a coordenadas de píxel. Sin dimensiones de pantalla correctas, las coordenadas de clic de Claude estarían desplazadas, causando que falle los objetivos. Estos valores deben coincidir con la resolución real de la pantalla virtual o pantalla siendo controlada.",
+      "options": [
+        { "id": "ccaf-tm-061_a", "text": "They define the screen resolution so Claude can accurately map visual positions to pixel coordinates for clicks and interactions", "textEs": "Definen la resolución de pantalla para que Claude pueda mapear precisamente posiciones visuales a coordenadas de píxel para clics e interacciones", "order": 1 },
+        { "id": "ccaf-tm-061_b", "text": "They set the resolution for screenshots to reduce image file size", "textEs": "Establecen la resolución de las capturas de pantalla para reducir el tamaño del archivo de imagen", "order": 2 },
+        { "id": "ccaf-tm-061_c", "text": "They configure the browser viewport size for web automation", "textEs": "Configuran el tamaño del viewport del navegador para automatización web", "order": 3 },
+        { "id": "ccaf-tm-061_d", "text": "They are optional metadata used only for logging and analytics", "textEs": "Son metadatos opcionales usados solo para registro y analíticas", "order": 4 }
+      ],
+      "tags": ["computer-use", "display-dimensions", "coordinates", "configuration"]
+    },
+    {
+      "id": "ccaf-tm-062",
+      "text": "When building a custom MCP server, why should you use MCP resources to expose database schemas rather than including them in tool descriptions?",
+      "textEs": "Al construir un servidor MCP personalizado, ¿por qué deberías usar recursos MCP para exponer esquemas de base de datos en lugar de incluirlos en las descripciones de herramientas?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-tm-062_d",
+      "explanation": "Using MCP resources for database schemas separates the static reference data from the tool definitions. Tool descriptions should focus on what the tool does and how to use it, not contain large schema definitions that would bloat every tool call's context. Resources can be loaded on-demand when needed, can be updated independently of tools, and the application can control when to inject them into the context. This keeps tool descriptions concise (improving selection accuracy) while still making schema information available.",
+      "explanationEs": "Usar recursos MCP para esquemas de base de datos separa los datos de referencia estáticos de las definiciones de herramientas. Las descripciones de herramientas deben enfocarse en qué hace la herramienta y cómo usarla, no contener definiciones de esquema grandes que inflarían el contexto de cada llamada a herramienta. Los recursos pueden cargarse bajo demanda cuando se necesiten, pueden actualizarse independientemente de las herramientas, y la aplicación puede controlar cuándo inyectarlos en el contexto. Esto mantiene las descripciones de herramientas concisas (mejorando la precisión de selección) mientras la información de esquema sigue disponible.",
+      "options": [
+        { "id": "ccaf-tm-062_a", "text": "Resources are encrypted while tool descriptions are sent in plain text", "textEs": "Los recursos están encriptados mientras las descripciones de herramientas se envían en texto plano", "order": 1 },
+        { "id": "ccaf-tm-062_b", "text": "MCP does not allow database-related content in tool descriptions", "textEs": "MCP no permite contenido relacionado con bases de datos en las descripciones de herramientas", "order": 2 },
+        { "id": "ccaf-tm-062_c", "text": "Resources are faster to transmit because they use binary encoding", "textEs": "Los recursos son más rápidos de transmitir porque usan codificación binaria", "order": 3 },
+        { "id": "ccaf-tm-062_d", "text": "Resources keep tool descriptions concise (improving selection accuracy), load schema on-demand, and can be updated independently of tools", "textEs": "Los recursos mantienen las descripciones de herramientas concisas (mejorando precisión de selección), cargan esquema bajo demanda, y pueden actualizarse independientemente de las herramientas", "order": 4 }
+      ],
+      "tags": ["mcp", "resources", "database-schema", "tool-descriptions", "design"]
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+{
+  "meta": {
+    "domain": "prompting-fundamentals",
+    "domainName": "Prompting Fundamentals",
+    "trackId": "coursera-mastering-claude-1",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 15,
+    "learningLevel": 2,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "cmc-pf-001",
+      "text": "What is the basic structure of a prompt when interacting with Claude through the API?",
+      "textEs": "¿Cuál es la estructura básica de un prompt al interactuar con Claude a través de la API?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-001_b",
+      "explanation": "A basic prompt to Claude consists of an optional system message (setting behavior and context), followed by a messages array with alternating user and assistant roles. The user message contains the actual prompt or question, and Claude responds as the assistant. The system message persists across the entire conversation and sets the tone, rules, and persona.",
+      "explanationEs": "Un prompt básico para Claude consiste en un mensaje de sistema opcional (que establece el comportamiento y el contexto), seguido de un arreglo de mensajes con roles alternados de usuario y asistente. El mensaje del usuario contiene el prompt o pregunta real, y Claude responde como asistente. El mensaje de sistema persiste durante toda la conversación y establece el tono, las reglas y la persona.",
+      "options": [
+        { "id": "cmc-pf-001_a", "text": "A single text string sent as a query parameter in the URL", "textEs": "Una cadena de texto única enviada como parámetro de consulta en la URL", "order": 1 },
+        { "id": "cmc-pf-001_b", "text": "An optional system message for behavior/context, plus a messages array with alternating user and assistant roles", "textEs": "Un mensaje de sistema opcional para comportamiento/contexto, más un arreglo de mensajes con roles alternados de usuario y asistente", "order": 2 },
+        { "id": "cmc-pf-001_c", "text": "A JSON object with 'question' and 'answer_format' fields", "textEs": "Un objeto JSON con los campos 'question' y 'answer_format'", "order": 3 },
+        { "id": "cmc-pf-001_d", "text": "A command-line style syntax with flags like --prompt and --format", "textEs": "Una sintaxis tipo línea de comandos con flags como --prompt y --format", "order": 4 }
+      ],
+      "tags": ["prompt-structure", "system-message", "messages", "basics"]
+    },
+    {
+      "id": "cmc-pf-002",
+      "text": "What is the difference between a system message and a user message?",
+      "textEs": "¿Cuál es la diferencia entre un mensaje de sistema y un mensaje de usuario?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-002_c",
+      "explanation": "System messages set Claude's behavior, persona, and rules for the entire conversation. They are provided once and influence all responses. User messages are the actual inputs or questions from the human user. System messages are like 'backstage instructions to an actor' while user messages are 'the audience's questions'. Claude does not respond directly to the system message -- it shapes how Claude responds to user messages.",
+      "explanationEs": "Los mensajes de sistema establecen el comportamiento, la persona y las reglas de Claude para toda la conversación. Se proporcionan una vez e influyen en todas las respuestas. Los mensajes de usuario son las entradas o preguntas reales del usuario humano. Los mensajes de sistema son como 'instrucciones entre bastidores para un actor', mientras que los mensajes de usuario son 'las preguntas del público'. Claude no responde directamente al mensaje de sistema; este moldea cómo Claude responde a los mensajes del usuario.",
+      "options": [
+        { "id": "cmc-pf-002_a", "text": "System messages are from the AI; user messages are from the human", "textEs": "Los mensajes de sistema provienen de la IA; los mensajes de usuario provienen del humano", "order": 1 },
+        { "id": "cmc-pf-002_b", "text": "System messages are processed after user messages for context", "textEs": "Los mensajes de sistema se procesan después de los mensajes de usuario para dar contexto", "order": 2 },
+        { "id": "cmc-pf-002_c", "text": "System messages set persistent behavior and rules; user messages are the actual inputs that Claude responds to", "textEs": "Los mensajes de sistema establecen comportamiento y reglas persistentes; los mensajes de usuario son las entradas reales a las que Claude responde", "order": 3 },
+        { "id": "cmc-pf-002_d", "text": "There is no practical difference; both are treated identically by the model", "textEs": "No hay diferencia práctica; ambos son tratados de forma idéntica por el modelo", "order": 4 }
+      ],
+      "tags": ["system-message", "user-message", "roles", "fundamentals"]
+    },
+    {
+      "id": "cmc-pf-003",
+      "text": "What is prompt chaining, and why is it useful for complex tasks?",
+      "textEs": "¿Qué es el encadenamiento de prompts y por qué es útil para tareas complejas?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-003_a",
+      "explanation": "Prompt chaining involves breaking a complex task into a series of simpler, sequential prompts where each prompt's output feeds into the next. For example: (1) extract key points, (2) organize into categories, (3) generate a summary. This is more reliable than asking Claude to do everything in one prompt because each step has a clear, focused objective, reducing the chance of the model skipping steps or losing focus.",
+      "explanationEs": "El encadenamiento de prompts consiste en dividir una tarea compleja en una serie de prompts más simples y secuenciales, donde la salida de cada prompt alimenta al siguiente. Por ejemplo: (1) extraer puntos clave, (2) organizar en categorías, (3) generar un resumen. Esto es más confiable que pedirle a Claude que haga todo en un solo prompt, porque cada paso tiene un objetivo claro y enfocado, reduciendo la posibilidad de que el modelo omita pasos o pierda el enfoque.",
+      "options": [
+        { "id": "cmc-pf-003_a", "text": "Breaking a complex task into sequential simpler prompts where each output feeds the next; improves reliability and focus", "textEs": "Dividir una tarea compleja en prompts secuenciales más simples donde cada salida alimenta al siguiente; mejora la confiabilidad y el enfoque", "order": 1 },
+        { "id": "cmc-pf-003_b", "text": "Sending the same prompt to multiple models and comparing results for accuracy", "textEs": "Enviar el mismo prompt a múltiples modelos y comparar resultados para verificar precisión", "order": 2 },
+        { "id": "cmc-pf-003_c", "text": "Adding more and more context to a single prompt until it produces correct output", "textEs": "Agregar cada vez más contexto a un solo prompt hasta que produzca la salida correcta", "order": 3 },
+        { "id": "cmc-pf-003_d", "text": "Linking multiple conversations together so Claude remembers previous sessions", "textEs": "Vincular múltiples conversaciones para que Claude recuerde sesiones anteriores", "order": 4 }
+      ],
+      "tags": ["prompt-chaining", "complex-tasks", "sequential", "reliability"]
+    },
+    {
+      "id": "cmc-pf-004",
+      "text": "What is the context window, and why does it matter for prompt design?",
+      "textEs": "¿Qué es la ventana de contexto y por qué es importante para el diseño de prompts?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-004_d",
+      "explanation": "The context window is the maximum number of tokens (input + output) Claude can process in a single request. For Claude, this is up to 200K tokens. It matters for prompt design because you need to fit your system prompt, conversation history, any documents, and leave room for the response all within this limit. Longer conversations consume more of the window, so you may need to summarize or trim older messages.",
+      "explanationEs": "La ventana de contexto es el número máximo de tokens (entrada + salida) que Claude puede procesar en una sola solicitud. Para Claude, esto es de hasta 200K tokens. Es importante para el diseño de prompts porque necesitas incluir el prompt del sistema, el historial de conversación, los documentos y dejar espacio para la respuesta, todo dentro de este límite. Las conversaciones más largas consumen más ventana, por lo que puede ser necesario resumir o recortar mensajes anteriores.",
+      "options": [
+        { "id": "cmc-pf-004_a", "text": "The time window during which the API session stays active; affects how long you can take between messages", "textEs": "La ventana de tiempo durante la cual la sesión de API permanece activa; afecta cuánto tiempo puedes tardar entre mensajes", "order": 1 },
+        { "id": "cmc-pf-004_b", "text": "The number of conversations you can have simultaneously; affects concurrent usage", "textEs": "El número de conversaciones que puedes tener simultáneamente; afecta el uso concurrente", "order": 2 },
+        { "id": "cmc-pf-004_c", "text": "The amount of training data Claude was trained on; affects its knowledge", "textEs": "La cantidad de datos de entrenamiento con los que se entrenó Claude; afecta su conocimiento", "order": 3 },
+        { "id": "cmc-pf-004_d", "text": "The max tokens for input + output in one request; affects how much content you can include and how long the response can be", "textEs": "El máximo de tokens para entrada + salida en una solicitud; afecta cuánto contenido puedes incluir y qué tan larga puede ser la respuesta", "order": 4 }
+      ],
+      "tags": ["context-window", "tokens", "prompt-design", "limits"]
+    },
+    {
+      "id": "cmc-pf-005",
+      "text": "How can you control the format of Claude's output through prompting?",
+      "textEs": "¿Cómo puedes controlar el formato de la salida de Claude mediante prompting?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-005_b",
+      "explanation": "You can control Claude's output format by: explicitly stating the desired format in the prompt ('Respond with a bulleted list'), providing an example of the expected output format, using XML tags to structure the request and indicate where formatted output should go, or using assistant message prefilling to start the response in the desired format. Being specific about format requirements is key -- 'Give me a JSON object with keys: name, age, city' is more effective than 'Give me the data'.",
+      "explanationEs": "Puedes controlar el formato de salida de Claude de varias formas: indicando explícitamente el formato deseado en el prompt ('Responde con una lista con viñetas'), proporcionando un ejemplo del formato de salida esperado, usando etiquetas XML para estructurar la solicitud e indicar dónde debe ir la salida formateada, o usando el prellenado del mensaje del asistente para iniciar la respuesta en el formato deseado. Ser específico sobre los requisitos de formato es clave: 'Dame un objeto JSON con las claves: nombre, edad, ciudad' es más efectivo que 'Dame los datos'.",
+      "options": [
+        { "id": "cmc-pf-005_a", "text": "Use the 'format' API parameter to specify JSON, XML, markdown, or plain text", "textEs": "Usar el parámetro 'format' de la API para especificar JSON, XML, markdown o texto plano", "order": 1 },
+        { "id": "cmc-pf-005_b", "text": "Explicitly state the desired format, provide output examples, use XML tags for structure, or prefill the assistant response", "textEs": "Indicar explícitamente el formato deseado, proporcionar ejemplos de salida, usar etiquetas XML para la estructura o prellenar la respuesta del asistente", "order": 2 },
+        { "id": "cmc-pf-005_c", "text": "Claude always outputs in the same format regardless of instructions; use post-processing to reformat", "textEs": "Claude siempre genera la salida en el mismo formato sin importar las instrucciones; usa posprocesamiento para reformatear", "order": 3 },
+        { "id": "cmc-pf-005_d", "text": "Add formatting tags like <bold>, <italic>, <list> in the prompt for styling", "textEs": "Agregar etiquetas de formato como <bold>, <italic>, <list> en el prompt para dar estilo", "order": 4 }
+      ],
+      "tags": ["output-format", "formatting", "xml-tags", "prefilling"]
+    },
+    {
+      "id": "cmc-pf-006",
+      "text": "What is role-based prompting, and how does it improve Claude's responses?",
+      "textEs": "¿Qué es el prompting basado en roles y cómo mejora las respuestas de Claude?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-006_a",
+      "explanation": "Role-based prompting assigns Claude a specific role or persona in the system prompt (e.g., 'You are an experienced Python developer who specializes in data science'). This frames Claude's responses within that expertise, producing more focused, domain-appropriate answers. It leverages the model's training on domain-specific content by activating relevant knowledge patterns. The role should be specific and relevant to the task.",
+      "explanationEs": "El prompting basado en roles asigna a Claude un rol o persona específica en el mensaje de sistema (por ejemplo, 'Eres un desarrollador Python experimentado especializado en ciencia de datos'). Esto enmarca las respuestas de Claude dentro de esa experiencia, produciendo respuestas más enfocadas y apropiadas al dominio. Aprovecha el entrenamiento del modelo en contenido específico del dominio al activar patrones de conocimiento relevantes. El rol debe ser específico y relevante para la tarea.",
+      "options": [
+        { "id": "cmc-pf-006_a", "text": "Assigning Claude a specific persona/role in the system prompt; produces more focused, domain-appropriate responses", "textEs": "Asignar a Claude una persona/rol específico en el mensaje de sistema; produce respuestas más enfocadas y apropiadas al dominio", "order": 1 },
+        { "id": "cmc-pf-006_b", "text": "Creating multiple user accounts with different roles to access different Claude capabilities", "textEs": "Crear múltiples cuentas de usuario con diferentes roles para acceder a distintas capacidades de Claude", "order": 2 },
+        { "id": "cmc-pf-006_c", "text": "Setting role-based access control for which API endpoints each user can call", "textEs": "Configurar control de acceso basado en roles para determinar qué endpoints de API puede llamar cada usuario", "order": 3 },
+        { "id": "cmc-pf-006_d", "text": "Having Claude play both user and assistant roles to simulate a conversation for training purposes", "textEs": "Hacer que Claude interprete los roles de usuario y asistente para simular una conversación con fines de entrenamiento", "order": 4 }
+      ],
+      "tags": ["role-based", "persona", "system-prompt", "domain-expertise"]
+    },
+    {
+      "id": "cmc-pf-007",
+      "text": "What is the temperature parameter, and how does it affect Claude's responses?",
+      "textEs": "¿Qué es el parámetro de temperatura y cómo afecta las respuestas de Claude?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-007_c",
+      "explanation": "Temperature (0.0 to 1.0) controls the randomness in Claude's token selection. At 0, Claude picks the most likely next token every time, producing consistent, deterministic outputs. Higher values increase randomness, leading to more creative and varied responses. Use low temperature (0-0.3) for factual, analytical tasks and higher temperature (0.5-0.8) for creative writing or brainstorming. The default is 1.0.",
+      "explanationEs": "La temperatura (de 0.0 a 1.0) controla la aleatoriedad en la selección de tokens de Claude. En 0, Claude elige el token más probable cada vez, produciendo salidas consistentes y deterministas. Valores más altos aumentan la aleatoriedad, generando respuestas más creativas y variadas. Usa temperatura baja (0-0.3) para tareas factuales y analíticas, y temperatura más alta (0.5-0.8) para escritura creativa o lluvia de ideas. El valor predeterminado es 1.0.",
+      "options": [
+        { "id": "cmc-pf-007_a", "text": "Controls how quickly Claude responds; lower values give faster responses", "textEs": "Controla qué tan rápido responde Claude; valores más bajos dan respuestas más rápidas", "order": 1 },
+        { "id": "cmc-pf-007_b", "text": "Controls the length of Claude's responses; higher values produce longer text", "textEs": "Controla la longitud de las respuestas de Claude; valores más altos producen texto más largo", "order": 2 },
+        { "id": "cmc-pf-007_c", "text": "Controls randomness in token selection; 0 for deterministic/consistent output, higher for creative/varied output", "textEs": "Controla la aleatoriedad en la selección de tokens; 0 para salida determinista/consistente, valores más altos para salida creativa/variada", "order": 3 },
+        { "id": "cmc-pf-007_d", "text": "Controls the model's knowledge cutoff; higher values access more recent training data", "textEs": "Controla la fecha de corte de conocimiento del modelo; valores más altos acceden a datos de entrenamiento más recientes", "order": 4 }
+      ],
+      "tags": ["temperature", "sampling", "randomness", "creativity"]
+    },
+    {
+      "id": "cmc-pf-008",
+      "text": "Why is it important to be specific and explicit in your prompts to Claude?",
+      "textEs": "¿Por qué es importante ser específico y explícito en tus prompts para Claude?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-008_b",
+      "explanation": "Claude interprets prompts literally and tries to follow instructions precisely. Vague prompts produce vague results because the model must guess your intent. Specific prompts ('Write a 3-paragraph email to a client explaining the project delay, in a professional but empathetic tone') leave less room for misinterpretation than vague ones ('Write an email about the project'). Specificity covers: task description, format, length, tone, audience, and constraints.",
+      "explanationEs": "Claude interpreta los prompts de forma literal e intenta seguir las instrucciones con precisión. Los prompts vagos producen resultados vagos porque el modelo debe adivinar tu intención. Los prompts específicos ('Escribe un correo de 3 párrafos a un cliente explicando el retraso del proyecto, en un tono profesional pero empático') dejan menos lugar a la malinterpretación que los vagos ('Escribe un correo sobre el proyecto'). La especificidad abarca: descripción de la tarea, formato, longitud, tono, audiencia y restricciones.",
+      "options": [
+        { "id": "cmc-pf-008_a", "text": "Specific prompts use fewer tokens, reducing cost", "textEs": "Los prompts específicos usan menos tokens, reduciendo el costo", "order": 1 },
+        { "id": "cmc-pf-008_b", "text": "Claude interprets literally; vague prompts force guessing and produce inconsistent results; specificity reduces misinterpretation", "textEs": "Claude interpreta de forma literal; los prompts vagos fuerzan a adivinar y producen resultados inconsistentes; la especificidad reduce la malinterpretación", "order": 2 },
+        { "id": "cmc-pf-008_c", "text": "Specific prompts bypass content filters, allowing more permissive responses", "textEs": "Los prompts específicos evitan los filtros de contenido, permitiendo respuestas más permisivas", "order": 3 },
+        { "id": "cmc-pf-008_d", "text": "The API rejects prompts below a minimum word count", "textEs": "La API rechaza prompts por debajo de un conteo mínimo de palabras", "order": 4 }
+      ],
+      "tags": ["specificity", "explicit-instructions", "clarity", "best-practices"]
+    },
+    {
+      "id": "cmc-pf-009",
+      "text": "What are few-shot examples in prompting, and when should you use them?",
+      "textEs": "¿Qué son los ejemplos few-shot en prompting y cuándo deberías usarlos?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-009_d",
+      "explanation": "Few-shot examples are input-output pairs included in the prompt that demonstrate the desired behavior. They show Claude exactly what kind of output you expect for given inputs. Use them when: the task has a specific format that is hard to describe in words, you need consistent output structure across varied inputs, or Claude is not following verbal instructions accurately. Place them after instructions and before the actual input.",
+      "explanationEs": "Los ejemplos few-shot son pares de entrada-salida incluidos en el prompt que demuestran el comportamiento deseado. Le muestran a Claude exactamente qué tipo de salida esperas para determinadas entradas. Úsalos cuando: la tarea tiene un formato específico difícil de describir con palabras, necesitas una estructura de salida consistente en entradas variadas, o Claude no está siguiendo las instrucciones verbales con precisión. Colócalos después de las instrucciones y antes de la entrada real.",
+      "options": [
+        { "id": "cmc-pf-009_a", "text": "Training data samples used to fine-tune the model for a specific task", "textEs": "Muestras de datos de entrenamiento usadas para ajustar finamente el modelo para una tarea específica", "order": 1 },
+        { "id": "cmc-pf-009_b", "text": "Short prompts of 1-2 words that test if the model is working", "textEs": "Prompts cortos de 1-2 palabras que prueban si el modelo está funcionando", "order": 2 },
+        { "id": "cmc-pf-009_c", "text": "Example API requests from Anthropic's documentation", "textEs": "Solicitudes de ejemplo de la API tomadas de la documentación de Anthropic", "order": 3 },
+        { "id": "cmc-pf-009_d", "text": "Input-output pairs in the prompt that demonstrate the desired behavior; use when format is hard to describe or consistency is needed", "textEs": "Pares de entrada-salida en el prompt que demuestran el comportamiento deseado; se usan cuando el formato es difícil de describir o se necesita consistencia", "order": 4 }
+      ],
+      "tags": ["few-shot", "examples", "demonstration", "consistency"]
+    },
+    {
+      "id": "cmc-pf-010",
+      "text": "How should you handle tasks where Claude needs to process a long document?",
+      "textEs": "¿Cómo deberías manejar tareas en las que Claude necesita procesar un documento largo?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-010_a",
+      "explanation": "For long documents, place the document in the prompt using clear delimiters (XML tags like <document> work well), put your question or instructions after the document, and be specific about what to look for. Claude's large context window (200K tokens) can handle most documents. For very long documents, consider placing the most important content at the beginning or end (where recall is strongest) and ask specific questions rather than general summaries.",
+      "explanationEs": "Para documentos largos, incluye el documento en el prompt usando delimitadores claros (las etiquetas XML como <document> funcionan bien), coloca tu pregunta o instrucciones después del documento y sé específico sobre qué buscar. La amplia ventana de contexto de Claude (200K tokens) puede manejar la mayoría de los documentos. Para documentos muy largos, considera colocar el contenido más importante al inicio o al final (donde la retención es más fuerte) y haz preguntas específicas en lugar de resúmenes generales.",
+      "options": [
+        { "id": "cmc-pf-010_a", "text": "Include the document with clear delimiters, place instructions after it, be specific about what to extract, leverage the 200K token window", "textEs": "Incluir el documento con delimitadores claros, colocar instrucciones después, ser específico sobre qué extraer y aprovechar la ventana de 200K tokens", "order": 1 },
+        { "id": "cmc-pf-010_b", "text": "Always split documents into 1000-word chunks and process each separately", "textEs": "Siempre dividir documentos en fragmentos de 1000 palabras y procesar cada uno por separado", "order": 2 },
+        { "id": "cmc-pf-010_c", "text": "Convert the document to a summary first, then ask questions about the summary", "textEs": "Convertir el documento en un resumen primero y luego hacer preguntas sobre el resumen", "order": 3 },
+        { "id": "cmc-pf-010_d", "text": "Upload the document to Anthropic's file storage and reference it by URL", "textEs": "Subir el documento al almacenamiento de archivos de Anthropic y referenciarlo por URL", "order": 4 }
+      ],
+      "tags": ["long-documents", "context-window", "delimiters", "document-processing"]
+    },
+    {
+      "id": "cmc-pf-011",
+      "text": "What is the 'give Claude room to think' principle, and why does it improve results?",
+      "textEs": "¿Qué es el principio de 'darle espacio a Claude para pensar' y por qué mejora los resultados?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-011_c",
+      "explanation": "Giving Claude 'room to think' means asking it to reason through a problem step-by-step before providing a final answer. This is related to chain-of-thought prompting. When Claude shows its work (e.g., 'First, let me analyze X... Then, considering Y... Therefore, Z'), it produces more accurate results because it can catch errors in its own reasoning. Forcing a short, immediate answer on complex questions skips this beneficial reasoning process.",
+      "explanationEs": "Darle 'espacio para pensar' a Claude significa pedirle que razone paso a paso sobre un problema antes de dar una respuesta final. Esto está relacionado con el prompting de cadena de pensamiento. Cuando Claude muestra su proceso (por ejemplo, 'Primero, analicemos X... Luego, considerando Y... Por lo tanto, Z'), produce resultados más precisos porque puede detectar errores en su propio razonamiento. Forzar una respuesta corta e inmediata en preguntas complejas omite este proceso de razonamiento beneficioso.",
+      "options": [
+        { "id": "cmc-pf-011_a", "text": "Setting max_tokens very high so Claude has enough space for a long response", "textEs": "Establecer max_tokens muy alto para que Claude tenga suficiente espacio para una respuesta larga", "order": 1 },
+        { "id": "cmc-pf-011_b", "text": "Adding pauses between API calls to let the model 'process' the previous response", "textEs": "Agregar pausas entre llamadas a la API para que el modelo 'procese' la respuesta anterior", "order": 2 },
+        { "id": "cmc-pf-011_c", "text": "Asking Claude to reason step-by-step before the final answer; improves accuracy by letting it catch errors in its reasoning", "textEs": "Pedir a Claude que razone paso a paso antes de la respuesta final; mejora la precisión al permitirle detectar errores en su razonamiento", "order": 3 },
+        { "id": "cmc-pf-011_d", "text": "Using extended thinking mode which automatically adds reasoning space", "textEs": "Usar el modo de pensamiento extendido que agrega espacio de razonamiento automáticamente", "order": 4 }
+      ],
+      "tags": ["thinking", "chain-of-thought", "reasoning", "step-by-step"]
+    },
+    {
+      "id": "cmc-pf-012",
+      "text": "How can you use XML tags to improve prompt structure and Claude's instruction-following?",
+      "textEs": "¿Cómo puedes usar etiquetas XML para mejorar la estructura del prompt y el seguimiento de instrucciones de Claude?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-012_b",
+      "explanation": "XML tags create clear visual and semantic boundaries in prompts. Wrapping different sections in tags like <instructions>, <context>, <examples>, <input>, and <output_format> helps Claude understand the purpose of each section. This is especially effective for complex prompts with multiple types of content. Claude is trained to recognize these structural cues and process each section appropriately.",
+      "explanationEs": "Las etiquetas XML crean límites visuales y semánticos claros en los prompts. Envolver diferentes secciones en etiquetas como <instructions>, <context>, <examples>, <input> y <output_format> ayuda a Claude a comprender el propósito de cada sección. Esto es especialmente efectivo para prompts complejos con múltiples tipos de contenido. Claude está entrenado para reconocer estas señales estructurales y procesar cada sección de forma apropiada.",
+      "options": [
+        { "id": "cmc-pf-012_a", "text": "XML tags are only for API configuration; they are stripped out before reaching the model", "textEs": "Las etiquetas XML son solo para configuración de la API; se eliminan antes de llegar al modelo", "order": 1 },
+        { "id": "cmc-pf-012_b", "text": "Tags like <instructions>, <context>, <examples> create clear section boundaries, helping Claude process each part appropriately", "textEs": "Etiquetas como <instructions>, <context>, <examples> crean límites claros entre secciones, ayudando a Claude a procesar cada parte de forma apropiada", "order": 2 },
+        { "id": "cmc-pf-012_c", "text": "XML tags force Claude to respond in XML format, which is easier to parse", "textEs": "Las etiquetas XML fuerzan a Claude a responder en formato XML, que es más fácil de parsear", "order": 3 },
+        { "id": "cmc-pf-012_d", "text": "XML tags are deprecated; use markdown headers (##) instead for the same effect", "textEs": "Las etiquetas XML están obsoletas; usa encabezados markdown (##) en su lugar para el mismo efecto", "order": 4 }
+      ],
+      "tags": ["xml-tags", "structure", "section-boundaries", "instruction-following"]
+    },
+    {
+      "id": "cmc-pf-013",
+      "text": "What common mistakes should be avoided when writing prompts for Claude?",
+      "textEs": "¿Qué errores comunes deben evitarse al escribir prompts para Claude?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-013_a",
+      "explanation": "Common prompt mistakes include: being too vague ('help me with this'), cramming multiple unrelated tasks into one prompt, not specifying the desired output format, using ambiguous pronouns without clear referents, giving contradictory instructions, and not providing enough context. The fix is to be specific, focused, and structured: one clear task per prompt, explicit format, relevant context, and concrete examples.",
+      "explanationEs": "Los errores comunes en prompts incluyen: ser demasiado vago ('ayúdame con esto'), meter múltiples tareas no relacionadas en un solo prompt, no especificar el formato de salida deseado, usar pronombres ambiguos sin referentes claros, dar instrucciones contradictorias y no proporcionar suficiente contexto. La solución es ser específico, enfocado y estructurado: una tarea clara por prompt, formato explícito, contexto relevante y ejemplos concretos.",
+      "options": [
+        { "id": "cmc-pf-013_a", "text": "Being too vague, cramming multiple tasks into one prompt, not specifying format, giving contradictory instructions", "textEs": "Ser demasiado vago, meter múltiples tareas en un solo prompt, no especificar el formato y dar instrucciones contradictorias", "order": 1 },
+        { "id": "cmc-pf-013_b", "text": "Using too many tokens in the prompt (keeps it expensive) and asking only one question at a time", "textEs": "Usar demasiados tokens en el prompt (lo mantiene costoso) y hacer solo una pregunta a la vez", "order": 2 },
+        { "id": "cmc-pf-013_c", "text": "Writing prompts in natural language instead of using the special prompt syntax", "textEs": "Escribir prompts en lenguaje natural en lugar de usar la sintaxis especial de prompts", "order": 3 },
+        { "id": "cmc-pf-013_d", "text": "Using polite language like 'please' and 'thank you' which confuses the model", "textEs": "Usar lenguaje cortés como 'por favor' y 'gracias' que confunde al modelo", "order": 4 }
+      ],
+      "tags": ["common-mistakes", "vague-prompts", "best-practices", "clarity"]
+    },
+    {
+      "id": "cmc-pf-014",
+      "text": "How does including context in the prompt affect Claude's response quality?",
+      "textEs": "¿Cómo afecta la inclusión de contexto en el prompt a la calidad de las respuestas de Claude?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-014_d",
+      "explanation": "Providing relevant context (background information, relevant documents, previous decisions, constraints) significantly improves response quality because Claude bases its answers on the information available in the conversation. Without context, Claude must rely solely on its training data, which may not cover your specific situation. With context, Claude can tailor its response to your exact needs, reference specific details, and provide more actionable guidance.",
+      "explanationEs": "Proporcionar contexto relevante (información de fondo, documentos relevantes, decisiones previas, restricciones) mejora significativamente la calidad de las respuestas porque Claude basa sus respuestas en la información disponible en la conversación. Sin contexto, Claude debe depender únicamente de sus datos de entrenamiento, que pueden no cubrir tu situación específica. Con contexto, Claude puede adaptar su respuesta a tus necesidades exactas, referenciar detalles específicos y proporcionar orientación más accionable.",
+      "options": [
+        { "id": "cmc-pf-014_a", "text": "Context has no effect; Claude always generates responses from its training data only", "textEs": "El contexto no tiene efecto; Claude siempre genera respuestas únicamente a partir de sus datos de entrenamiento", "order": 1 },
+        { "id": "cmc-pf-014_b", "text": "More context always means better results; include as much information as possible", "textEs": "Más contexto siempre significa mejores resultados; incluye tanta información como sea posible", "order": 2 },
+        { "id": "cmc-pf-014_c", "text": "Context slows down processing; minimize it for faster responses", "textEs": "El contexto ralentiza el procesamiento; minimízalo para obtener respuestas más rápidas", "order": 3 },
+        { "id": "cmc-pf-014_d", "text": "Relevant context enables tailored, specific, actionable responses; without it Claude relies only on general training knowledge", "textEs": "El contexto relevante permite respuestas personalizadas, específicas y accionables; sin él, Claude depende solo de su conocimiento general de entrenamiento", "order": 4 }
+      ],
+      "tags": ["context", "relevance", "response-quality", "specificity"]
+    },
+    {
+      "id": "cmc-pf-015",
+      "text": "What is the difference between zero-shot, one-shot, and few-shot prompting?",
+      "textEs": "¿Cuál es la diferencia entre prompting zero-shot, one-shot y few-shot?",
+      "domainCode": "prompting-fundamentals",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "coursera-mastering-claude-1",
+      "correctOptionId": "cmc-pf-015_c",
+      "explanation": "Zero-shot provides only instructions with no examples ('Classify this sentiment as positive/negative'). One-shot includes a single example to demonstrate the pattern. Few-shot includes multiple examples (typically 2-5) showing the expected input-output pairs. More examples generally improve consistency but consume more tokens. Start with zero-shot; if results are inconsistent, add examples. The choice depends on task complexity and the importance of consistent formatting.",
+      "explanationEs": "Zero-shot proporciona solo instrucciones sin ejemplos ('Clasifica este sentimiento como positivo/negativo'). One-shot incluye un solo ejemplo para demostrar el patrón. Few-shot incluye múltiples ejemplos (típicamente 2-5) mostrando los pares de entrada-salida esperados. Más ejemplos generalmente mejoran la consistencia pero consumen más tokens. Comienza con zero-shot; si los resultados son inconsistentes, agrega ejemplos. La elección depende de la complejidad de la tarea y la importancia de un formato consistente.",
+      "options": [
+        { "id": "cmc-pf-015_a", "text": "Different model sizes: zero-shot uses Haiku, one-shot uses Sonnet, few-shot uses Opus", "textEs": "Diferentes tamaños de modelo: zero-shot usa Haiku, one-shot usa Sonnet, few-shot usa Opus", "order": 1 },
+        { "id": "cmc-pf-015_b", "text": "Different API tiers: zero-shot is free, one-shot is basic, few-shot is premium", "textEs": "Diferentes niveles de API: zero-shot es gratuito, one-shot es básico, few-shot es premium", "order": 2 },
+        { "id": "cmc-pf-015_c", "text": "Zero-shot: instructions only; one-shot: one example; few-shot: multiple examples. More examples improve consistency but use more tokens", "textEs": "Zero-shot: solo instrucciones; one-shot: un ejemplo; few-shot: múltiples ejemplos. Más ejemplos mejoran la consistencia pero usan más tokens", "order": 3 },
+        { "id": "cmc-pf-015_d", "text": "Different retry strategies: zero-shot never retries, one-shot retries once, few-shot retries multiple times", "textEs": "Diferentes estrategias de reintento: zero-shot nunca reintenta, one-shot reintenta una vez, few-shot reintenta múltiples veces", "order": 4 }
+      ],
+      "tags": ["zero-shot", "one-shot", "few-shot", "examples", "prompting-strategies"]
+    }
+  ]
+}

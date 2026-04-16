@@ -1,0 +1,51 @@
+{
+  "version": "4.0.0",
+  "framework": "NXT AI Development",
+  "project": {
+    "name": "simulador-examen-csa",
+    "display_name": "Simulador Examen CSA ServiceNow",
+    "version": "1.0.0",
+    "type": "web-app",
+    "stack": ["Angular 20", "TypeScript 5.8", "RxJS 7.8", "Express 5", "SSR"],
+    "description": "Simulador de examen para certificacion ServiceNow CSA con 120 preguntas, 90 minutos, integracion n8n webhooks"
+  },
+  "current_phase": "construir",
+  "phase_progress": {
+    "descubrir": "completed",
+    "definir": "completed",
+    "disenar": "completed",
+    "planificar": "completed",
+    "construir": "in_progress",
+    "verificar": "pending"
+  },
+  "active_tasks": [
+    {
+      "id": "task_20260412_context_init",
+      "description": "Inicializacion de agentes de contexto NXT en el proyecto",
+      "status": "in_progress",
+      "agent": "nxt-context"
+    }
+  ],
+  "completed_tasks": [],
+  "session": {
+    "started_at": "2026-04-12T19:56:00Z",
+    "interaction_count": 1,
+    "last_interaction": "2026-04-12T19:56:00Z",
+    "agents_activated": ["nxt-context", "nxt-multicontext", "nxt-changelog", "nxt-ralph"]
+  },
+  "persistence": {
+    "context_agent": "active",
+    "multicontext_agent": "active",
+    "changelog_agent": "active",
+    "ralph_agent": "standby",
+    "last_checkpoint": "cp_20260412_195600",
+    "checkpoints_count": 1
+  },
+  "metrics": {
+    "context_entries": 24,
+    "decisions_count": 5,
+    "patterns_count": 7,
+    "checkpoints_created": 1,
+    "recoveries_successful": 0
+  }
+}

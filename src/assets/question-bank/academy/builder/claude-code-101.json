@@ -1,0 +1,614 @@
+{
+  "meta": {
+    "domain": "claude-code-101",
+    "domainName": "Claude Code 101",
+    "trackId": "academy-claude-code-101",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 30,
+    "learningLevel": 2,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "cc101-001",
+      "text": "What is the primary purpose of the CLAUDE.md file in a project repository?",
+      "textEs": "¿Cuál es el propósito principal del archivo CLAUDE.md en un repositorio de proyecto?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-001_b",
+      "explanation": "The CLAUDE.md file serves as persistent project-level memory for Claude Code. It contains instructions, conventions, and context that Claude reads at the start of every session, ensuring consistent behavior across conversations. It can include coding standards, architecture notes, and preferred workflows.",
+      "explanationEs": "El archivo CLAUDE.md sirve como memoria persistente a nivel de proyecto para Claude Code. Contiene instrucciones, convenciones y contexto que Claude lee al inicio de cada sesión, asegurando un comportamiento consistente entre conversaciones. Puede incluir estándares de código, notas de arquitectura y flujos de trabajo preferidos.",
+      "options": [
+        { "id": "cc101-001_a", "text": "It is a README replacement that GitHub renders on the repository homepage", "textEs": "Es un reemplazo del README que GitHub renderiza en la página principal del repositorio", "order": 1 },
+        { "id": "cc101-001_b", "text": "It provides persistent project-level instructions and context that Claude Code reads at the start of every session", "textEs": "Proporciona instrucciones y contexto persistentes a nivel de proyecto que Claude Code lee al inicio de cada sesión", "order": 2 },
+        { "id": "cc101-001_c", "text": "It is a changelog that tracks all modifications Claude Code has made to the codebase", "textEs": "Es un registro de cambios que rastrea todas las modificaciones que Claude Code ha realizado en el código base", "order": 3 },
+        { "id": "cc101-001_d", "text": "It is a configuration file that sets the API key and model parameters for Claude Code", "textEs": "Es un archivo de configuración que establece la clave API y los parámetros del modelo para Claude Code", "order": 4 }
+      ],
+      "tags": ["claude-code", "claude-md", "configuration", "project-memory"]
+    },
+    {
+      "id": "cc101-002",
+      "text": "How do you install Claude Code on your machine?",
+      "textEs": "¿Cómo se instala Claude Code en tu máquina?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-002_a",
+      "explanation": "Claude Code is installed globally via npm using the command 'npm install -g @anthropic-ai/claude-code'. This makes the 'claude' command available system-wide from any terminal. It requires Node.js 18+ to be installed on the system.",
+      "explanationEs": "Claude Code se instala globalmente mediante npm usando el comando 'npm install -g @anthropic-ai/claude-code'. Esto hace que el comando 'claude' esté disponible en todo el sistema desde cualquier terminal. Requiere que Node.js 18+ esté instalado en el sistema.",
+      "options": [
+        { "id": "cc101-002_a", "text": "npm install -g @anthropic-ai/claude-code", "textEs": "npm install -g @anthropic-ai/claude-code", "order": 1 },
+        { "id": "cc101-002_b", "text": "pip install claude-code", "textEs": "pip install claude-code", "order": 2 },
+        { "id": "cc101-002_c", "text": "brew install claude-code", "textEs": "brew install claude-code", "order": 3 },
+        { "id": "cc101-002_d", "text": "Download the binary from anthropic.com/downloads and add it to your PATH", "textEs": "Descargar el binario desde anthropic.com/downloads y agregarlo al PATH", "order": 4 }
+      ],
+      "tags": ["claude-code", "installation", "npm", "setup"]
+    },
+    {
+      "id": "cc101-003",
+      "text": "What are custom slash commands in Claude Code and where are they defined?",
+      "textEs": "¿Qué son los comandos slash personalizados en Claude Code y dónde se definen?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-003_c",
+      "explanation": "Custom slash commands are reusable prompt templates stored as Markdown files in the .claude/commands/ directory of your project. Each .md file becomes a slash command (e.g., .claude/commands/review.md becomes /project:review). They can include the special placeholder $ARGUMENTS to accept user input when invoked.",
+      "explanationEs": "Los comandos slash personalizados son plantillas de prompts reutilizables almacenadas como archivos Markdown en el directorio .claude/commands/ de tu proyecto. Cada archivo .md se convierte en un comando slash (por ejemplo, .claude/commands/review.md se convierte en /project:review). Pueden incluir el marcador especial $ARGUMENTS para aceptar entrada del usuario al ser invocados.",
+      "options": [
+        { "id": "cc101-003_a", "text": "JSON configuration objects defined in the settings.json file under the 'commands' key", "textEs": "Objetos de configuración JSON definidos en el archivo settings.json bajo la clave 'commands'", "order": 1 },
+        { "id": "cc101-003_b", "text": "Shell scripts placed in the .claude/scripts/ directory that Claude Code can execute", "textEs": "Scripts de shell colocados en el directorio .claude/scripts/ que Claude Code puede ejecutar", "order": 2 },
+        { "id": "cc101-003_c", "text": "Markdown files in .claude/commands/ that become slash commands, with optional $ARGUMENTS placeholder for user input", "textEs": "Archivos Markdown en .claude/commands/ que se convierten en comandos slash, con marcador opcional $ARGUMENTS para entrada del usuario", "order": 3 },
+        { "id": "cc101-003_d", "text": "Python plugins registered in the CLAUDE.md file under a [commands] section", "textEs": "Plugins de Python registrados en el archivo CLAUDE.md bajo una sección [commands]", "order": 4 }
+      ],
+      "tags": ["claude-code", "custom-commands", "slash-commands", "workflow"]
+    },
+    {
+      "id": "cc101-004",
+      "text": "What are hooks in Claude Code and what lifecycle events can they respond to?",
+      "textEs": "¿Qué son los hooks en Claude Code y a qué eventos del ciclo de vida pueden responder?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-004_d",
+      "explanation": "Hooks are user-defined shell commands that execute automatically at specific points in Claude Code's lifecycle. They can respond to events like PreToolUse (before a tool runs), PostToolUse (after a tool runs), Notification, and Stop (when Claude finishes). Hooks are configured in settings.json and can enforce policies, run linters, or trigger custom workflows.",
+      "explanationEs": "Los hooks son comandos shell definidos por el usuario que se ejecutan automáticamente en puntos específicos del ciclo de vida de Claude Code. Pueden responder a eventos como PreToolUse (antes de ejecutar una herramienta), PostToolUse (después de ejecutar una herramienta), Notification y Stop (cuando Claude termina). Los hooks se configuran en settings.json y pueden aplicar políticas, ejecutar linters o activar flujos de trabajo personalizados.",
+      "options": [
+        { "id": "cc101-004_a", "text": "Hooks are Git hooks (pre-commit, post-commit) that Claude Code automatically installs in your repository", "textEs": "Los hooks son hooks de Git (pre-commit, post-commit) que Claude Code instala automáticamente en tu repositorio", "order": 1 },
+        { "id": "cc101-004_b", "text": "Hooks are JavaScript functions defined in CLAUDE.md that modify Claude's behavior at runtime", "textEs": "Los hooks son funciones JavaScript definidas en CLAUDE.md que modifican el comportamiento de Claude en tiempo de ejecución", "order": 2 },
+        { "id": "cc101-004_c", "text": "Hooks are API webhooks that notify external services when Claude Code completes a task", "textEs": "Los hooks son webhooks de API que notifican a servicios externos cuando Claude Code completa una tarea", "order": 3 },
+        { "id": "cc101-004_d", "text": "Shell commands configured in settings.json that run at lifecycle events like PreToolUse, PostToolUse, Notification, and Stop", "textEs": "Comandos shell configurados en settings.json que se ejecutan en eventos del ciclo de vida como PreToolUse, PostToolUse, Notification y Stop", "order": 4 }
+      ],
+      "tags": ["claude-code", "hooks", "lifecycle", "automation", "settings"]
+    },
+    {
+      "id": "cc101-005",
+      "text": "How does Claude Code's permission system work, and what is the difference between 'allowedTools' and the interactive permission prompt?",
+      "textEs": "¿Cómo funciona el sistema de permisos de Claude Code y cuál es la diferencia entre 'allowedTools' y el aviso de permisos interactivo?",
+      "domainCode": "claude-code-101",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-005_b",
+      "explanation": "Claude Code uses a tiered permission model. By default, it prompts the user for approval before running potentially destructive tools (like Bash commands or file writes). The 'allowedTools' setting in settings.json lets you pre-approve specific tools or tool patterns so Claude can use them without prompting. This enables a spectrum from fully interactive to fully autonomous operation.",
+      "explanationEs": "Claude Code utiliza un modelo de permisos por niveles. Por defecto, solicita aprobación del usuario antes de ejecutar herramientas potencialmente destructivas (como comandos Bash o escritura de archivos). La configuración 'allowedTools' en settings.json permite pre-aprobar herramientas específicas o patrones de herramientas para que Claude pueda usarlas sin solicitar permiso. Esto permite un espectro desde operación totalmente interactiva hasta totalmente autónoma.",
+      "options": [
+        { "id": "cc101-005_a", "text": "Claude Code runs all tools freely by default; permissions only restrict specific dangerous operations listed in a blocklist", "textEs": "Claude Code ejecuta todas las herramientas libremente por defecto; los permisos solo restringen operaciones peligrosas específicas listadas en una lista de bloqueo", "order": 1 },
+        { "id": "cc101-005_b", "text": "By default Claude prompts for approval on potentially destructive tools; 'allowedTools' in settings.json pre-approves specific tools to skip prompting", "textEs": "Por defecto Claude solicita aprobación para herramientas potencialmente destructivas; 'allowedTools' en settings.json pre-aprueba herramientas específicas para omitir la solicitud", "order": 2 },
+        { "id": "cc101-005_c", "text": "All tools require approval every time; there is no way to pre-authorize tools in Claude Code", "textEs": "Todas las herramientas requieren aprobación cada vez; no hay forma de pre-autorizar herramientas en Claude Code", "order": 3 },
+        { "id": "cc101-005_d", "text": "Permissions are managed through CLAUDE.md by listing tools under a [permissions] header", "textEs": "Los permisos se gestionan a través de CLAUDE.md listando herramientas bajo un encabezado [permissions]", "order": 4 }
+      ],
+      "tags": ["claude-code", "permissions", "allowedTools", "security", "settings"]
+    },
+    {
+      "id": "cc101-006",
+      "text": "What is the purpose of using git worktrees with Claude Code, and how does this workflow benefit developers?",
+      "textEs": "¿Cuál es el propósito de usar git worktrees con Claude Code y cómo beneficia este flujo de trabajo a los desarrolladores?",
+      "domainCode": "claude-code-101",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-006_a",
+      "explanation": "Git worktrees allow you to check out multiple branches of the same repository simultaneously in different directories. When combined with Claude Code, this enables running multiple Claude instances in parallel on separate tasks without branch conflicts. Each worktree has its own working directory, so one Claude agent can work on a feature while another fixes a bug, all in the same repo without stashing or switching branches.",
+      "explanationEs": "Los git worktrees permiten tener múltiples ramas del mismo repositorio simultáneamente en diferentes directorios. Al combinarse con Claude Code, esto permite ejecutar múltiples instancias de Claude en paralelo en tareas separadas sin conflictos de ramas. Cada worktree tiene su propio directorio de trabajo, así que un agente Claude puede trabajar en una funcionalidad mientras otro corrige un error, todo en el mismo repositorio sin necesidad de hacer stash o cambiar de rama.",
+      "options": [
+        { "id": "cc101-006_a", "text": "Worktrees enable parallel Claude instances on separate branches without conflicts, allowing simultaneous work on different tasks in the same repo", "textEs": "Los worktrees permiten instancias paralelas de Claude en ramas separadas sin conflictos, permitiendo trabajo simultáneo en diferentes tareas en el mismo repositorio", "order": 1 },
+        { "id": "cc101-006_b", "text": "Worktrees are used to create backup copies of the repository in case Claude Code introduces breaking changes", "textEs": "Los worktrees se usan para crear copias de respaldo del repositorio en caso de que Claude Code introduzca cambios que rompan el código", "order": 2 },
+        { "id": "cc101-006_c", "text": "Worktrees allow Claude Code to access files from other repositories that are linked as submodules", "textEs": "Los worktrees permiten a Claude Code acceder a archivos de otros repositorios que están vinculados como submódulos", "order": 3 },
+        { "id": "cc101-006_d", "text": "Worktrees are required for Claude Code to function; it cannot operate in a standard git repository", "textEs": "Los worktrees son necesarios para que Claude Code funcione; no puede operar en un repositorio git estándar", "order": 4 }
+      ],
+      "tags": ["claude-code", "git-worktrees", "parallel-development", "workflow"]
+    },
+    {
+      "id": "cc101-007",
+      "text": "What is the recommended way to run Claude Code in a CI/CD pipeline for automated tasks?",
+      "textEs": "¿Cuál es la forma recomendada de ejecutar Claude Code en una pipeline de CI/CD para tareas automatizadas?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-007_c",
+      "explanation": "For CI/CD and non-interactive environments, Claude Code should be run with the --print (-p) flag, which sends a single prompt and outputs the result without entering interactive mode. Combined with environment variable ANTHROPIC_API_KEY for authentication and the --allowedTools flag for permissions, this enables fully headless automation in pipelines.",
+      "explanationEs": "Para CI/CD y entornos no interactivos, Claude Code debe ejecutarse con la bandera --print (-p), que envía un solo prompt y muestra el resultado sin entrar en modo interactivo. Combinado con la variable de entorno ANTHROPIC_API_KEY para autenticación y la bandera --allowedTools para permisos, esto permite automatización completamente sin interfaz gráfica en las pipelines.",
+      "options": [
+        { "id": "cc101-007_a", "text": "Use 'claude --daemon' to run it as a background service that listens for incoming tasks", "textEs": "Usar 'claude --daemon' para ejecutarlo como un servicio en segundo plano que escucha tareas entrantes", "order": 1 },
+        { "id": "cc101-007_b", "text": "Use the Claude Code REST API endpoint to submit tasks programmatically from CI scripts", "textEs": "Usar el endpoint REST API de Claude Code para enviar tareas programáticamente desde scripts de CI", "order": 2 },
+        { "id": "cc101-007_c", "text": "Use 'claude --print' (-p) for single-prompt non-interactive execution, with ANTHROPIC_API_KEY and --allowedTools for headless automation", "textEs": "Usar 'claude --print' (-p) para ejecución no interactiva de un solo prompt, con ANTHROPIC_API_KEY y --allowedTools para automatización sin interfaz", "order": 3 },
+        { "id": "cc101-007_d", "text": "Use 'claude --batch' with a JSON file containing a list of tasks to process sequentially", "textEs": "Usar 'claude --batch' con un archivo JSON que contiene una lista de tareas para procesar secuencialmente", "order": 4 }
+      ],
+      "tags": ["claude-code", "ci-cd", "automation", "print-mode", "headless"]
+    },
+    {
+      "id": "cc101-008",
+      "text": "Where does CLAUDE.md file hierarchy apply, and how do the different levels interact?",
+      "textEs": "¿Dónde se aplica la jerarquía del archivo CLAUDE.md y cómo interactúan los diferentes niveles?",
+      "domainCode": "claude-code-101",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-008_d",
+      "explanation": "CLAUDE.md files can exist at multiple levels: user-level (~/.claude/CLAUDE.md), project root (./CLAUDE.md), and in subdirectories. Claude Code loads them hierarchically -- the user-level file applies globally, the project root file applies to the current project, and subdirectory files apply when working within those directories. All applicable levels are combined, with more specific files adding context to broader ones.",
+      "explanationEs": "Los archivos CLAUDE.md pueden existir en múltiples niveles: nivel de usuario (~/.claude/CLAUDE.md), raíz del proyecto (./CLAUDE.md) y en subdirectorios. Claude Code los carga jerárquicamente -- el archivo a nivel de usuario se aplica globalmente, el de la raíz del proyecto se aplica al proyecto actual, y los de subdirectorios se aplican al trabajar dentro de esos directorios. Todos los niveles aplicables se combinan, con los archivos más específicos agregando contexto a los más generales.",
+      "options": [
+        { "id": "cc101-008_a", "text": "Only one CLAUDE.md is supported per project, and it must be placed at the repository root", "textEs": "Solo se admite un CLAUDE.md por proyecto, y debe colocarse en la raíz del repositorio", "order": 1 },
+        { "id": "cc101-008_b", "text": "CLAUDE.md files in subdirectories override and completely replace the root-level CLAUDE.md", "textEs": "Los archivos CLAUDE.md en subdirectorios anulan y reemplazan completamente el CLAUDE.md de la raíz", "order": 2 },
+        { "id": "cc101-008_c", "text": "Claude Code only reads CLAUDE.md from ~/.claude/ and ignores any project-level files", "textEs": "Claude Code solo lee CLAUDE.md desde ~/.claude/ e ignora cualquier archivo a nivel de proyecto", "order": 3 },
+        { "id": "cc101-008_d", "text": "CLAUDE.md files exist at user (~/.claude/), project root, and subdirectory levels; all applicable levels are combined hierarchically", "textEs": "Los archivos CLAUDE.md existen a nivel de usuario (~/.claude/), raíz del proyecto y subdirectorios; todos los niveles aplicables se combinan jerárquicamente", "order": 4 }
+      ],
+      "tags": ["claude-code", "claude-md", "hierarchy", "configuration", "project-structure"]
+    },
+    {
+      "id": "cc101-009",
+      "text": "Which of the following correctly describes how to configure Claude Code settings at different scopes?",
+      "textEs": "¿Cuál de las siguientes opciones describe correctamente cómo configurar los ajustes de Claude Code en diferentes ámbitos?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-009_b",
+      "explanation": "Claude Code settings can be scoped at three levels: user (~/.claude/settings.json), project (.claude/settings.json), and enterprise (managed by organization admins). The enterprise scope takes the highest precedence and cannot be overridden. Project-level settings are committed to the repository and shared with the team. User-level settings apply as personal defaults.",
+      "explanationEs": "Los ajustes de Claude Code pueden configurarse en tres niveles: usuario (~/.claude/settings.json), proyecto (.claude/settings.json) y empresa (gestionado por administradores de la organización). El ámbito empresarial tiene la mayor precedencia y no puede ser anulado. Los ajustes a nivel de proyecto se confirman en el repositorio y se comparten con el equipo. Los ajustes a nivel de usuario se aplican como valores predeterminados personales.",
+      "options": [
+        { "id": "cc101-009_a", "text": "Settings are only configurable via environment variables; there are no settings files", "textEs": "Los ajustes solo se pueden configurar mediante variables de entorno; no hay archivos de configuración", "order": 1 },
+        { "id": "cc101-009_b", "text": "Settings exist at user (~/.claude/settings.json), project (.claude/settings.json), and enterprise scopes, with enterprise having highest precedence", "textEs": "Los ajustes existen a nivel de usuario (~/.claude/settings.json), proyecto (.claude/settings.json) y empresa, con el nivel empresarial teniendo la mayor precedencia", "order": 2 },
+        { "id": "cc101-009_c", "text": "All settings must be configured in the CLAUDE.md file using a YAML frontmatter block", "textEs": "Todos los ajustes deben configurarse en el archivo CLAUDE.md usando un bloque de frontmatter YAML", "order": 3 },
+        { "id": "cc101-009_d", "text": "Settings are configured exclusively through the 'claude config' command and stored in a SQLite database", "textEs": "Los ajustes se configuran exclusivamente a través del comando 'claude config' y se almacenan en una base de datos SQLite", "order": 4 }
+      ],
+      "tags": ["claude-code", "settings", "configuration", "scopes", "enterprise"]
+    },
+    {
+      "id": "cc101-010",
+      "text": "What does the 'claude --continue' flag do, and when is it useful?",
+      "textEs": "¿Qué hace la bandera 'claude --continue' y cuándo es útil?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-010_a",
+      "explanation": "The '--continue' flag resumes the most recent conversation session, preserving the full context and history. This is useful when you need to pick up where you left off -- for example, after closing the terminal, reviewing changes Claude made, or after a network interruption. Without this flag, Claude Code starts a fresh conversation with no memory of previous interactions.",
+      "explanationEs": "La bandera '--continue' reanuda la sesión de conversación más reciente, preservando el contexto completo y el historial. Esto es útil cuando necesitas continuar donde lo dejaste -- por ejemplo, después de cerrar la terminal, revisar cambios que Claude hizo, o después de una interrupción de red. Sin esta bandera, Claude Code inicia una conversación nueva sin memoria de interacciones anteriores.",
+      "options": [
+        { "id": "cc101-010_a", "text": "It resumes the most recent conversation session with full context and history preserved", "textEs": "Reanuda la sesión de conversación más reciente con el contexto completo y el historial preservado", "order": 1 },
+        { "id": "cc101-010_b", "text": "It continues executing a previously queued batch of commands that was interrupted", "textEs": "Continúa ejecutando un lote de comandos previamente encolado que fue interrumpido", "order": 2 },
+        { "id": "cc101-010_c", "text": "It automatically retries the last failed tool operation until it succeeds", "textEs": "Reintenta automáticamente la última operación de herramienta fallida hasta que tenga éxito", "order": 3 },
+        { "id": "cc101-010_d", "text": "It starts Claude Code in continuous mode where it watches for file changes and responds automatically", "textEs": "Inicia Claude Code en modo continuo donde observa cambios de archivos y responde automáticamente", "order": 4 }
+      ],
+      "tags": ["claude-code", "continue", "session", "conversation-history"]
+    },
+    {
+      "id": "cc101-011",
+      "text": "What is the 'claude --resume' flag and how does it differ from '--continue'?",
+      "textEs": "¿Qué es la bandera 'claude --resume' y cómo difiere de '--continue'?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-011_b",
+      "explanation": "While '--continue' resumes the most recent conversation, '--resume' allows you to select from a list of previous sessions by ID. This is useful when you have multiple ongoing tasks and need to return to a specific conversation, not just the last one. You can use 'claude --resume <session-id>' to target a specific session.",
+      "explanationEs": "Mientras que '--continue' reanuda la conversación más reciente, '--resume' permite seleccionar de una lista de sesiones anteriores por ID. Esto es útil cuando tienes múltiples tareas en curso y necesitas volver a una conversación específica, no solo la última. Puedes usar 'claude --resume <session-id>' para apuntar a una sesión específica.",
+      "options": [
+        { "id": "cc101-011_a", "text": "They are identical flags; '--resume' is just an alias for '--continue'", "textEs": "Son banderas idénticas; '--resume' es solo un alias para '--continue'", "order": 1 },
+        { "id": "cc101-011_b", "text": "'--continue' resumes the most recent session; '--resume' lets you select a specific previous session by ID", "textEs": "'--continue' reanuda la sesión más reciente; '--resume' permite seleccionar una sesión anterior específica por ID", "order": 2 },
+        { "id": "cc101-011_c", "text": "'--resume' starts a new session from a saved prompt template", "textEs": "'--resume' inicia una nueva sesión desde una plantilla de prompt guardada", "order": 3 },
+        { "id": "cc101-011_d", "text": "'--resume' is used only in CI/CD mode to resume pipeline runs", "textEs": "'--resume' se usa solo en modo CI/CD para reanudar ejecuciones de pipeline", "order": 4 }
+      ],
+      "tags": ["claude-code", "resume", "session-management", "cli-flags"]
+    },
+    {
+      "id": "cc101-012",
+      "text": "What tools does Claude Code have available by default for interacting with the filesystem and running commands?",
+      "textEs": "¿Qué herramientas tiene Claude Code disponibles por defecto para interactuar con el sistema de archivos y ejecutar comandos?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-012_c",
+      "explanation": "Claude Code comes with built-in tools including Read (read files), Write (create/overwrite files), Edit (make targeted edits to files), Bash (execute shell commands), Glob (find files by pattern), Grep (search file contents), and WebFetch (fetch URLs). These tools allow it to navigate codebases, make changes, run tests, and interact with development tools.",
+      "explanationEs": "Claude Code viene con herramientas integradas incluyendo Read (leer archivos), Write (crear/sobrescribir archivos), Edit (hacer ediciones dirigidas a archivos), Bash (ejecutar comandos shell), Glob (encontrar archivos por patrón), Grep (buscar contenido de archivos) y WebFetch (obtener URLs). Estas herramientas le permiten navegar código, hacer cambios, ejecutar pruebas e interactuar con herramientas de desarrollo.",
+      "options": [
+        { "id": "cc101-012_a", "text": "Only a text editor and terminal; file operations require manual approval each time", "textEs": "Solo un editor de texto y terminal; las operaciones de archivos requieren aprobación manual cada vez", "order": 1 },
+        { "id": "cc101-012_b", "text": "A virtual machine with full root access and unrestricted network capabilities", "textEs": "Una máquina virtual con acceso root completo y capacidades de red sin restricciones", "order": 2 },
+        { "id": "cc101-012_c", "text": "Read, Write, Edit, Bash, Glob, Grep, and WebFetch — for file operations, shell commands, search, and URL fetching", "textEs": "Read, Write, Edit, Bash, Glob, Grep y WebFetch — para operaciones de archivos, comandos shell, búsqueda y obtención de URLs", "order": 3 },
+        { "id": "cc101-012_d", "text": "A GUI-based file manager that requires mouse interaction for all operations", "textEs": "Un administrador de archivos basado en GUI que requiere interacción con el ratón para todas las operaciones", "order": 4 }
+      ],
+      "tags": ["claude-code", "tools", "built-in", "filesystem", "bash"]
+    },
+    {
+      "id": "cc101-013",
+      "text": "How do you add MCP servers to Claude Code?",
+      "textEs": "¿Cómo se agregan servidores MCP a Claude Code?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-013_a",
+      "explanation": "MCP servers can be added to Claude Code using the 'claude mcp add' command, which registers the server in the settings. For example: 'claude mcp add my-server npx @some/mcp-server'. You can also manually edit the settings.json file to add server configurations. Once added, Claude Code can use the tools provided by those MCP servers.",
+      "explanationEs": "Los servidores MCP se pueden agregar a Claude Code usando el comando 'claude mcp add', que registra el servidor en la configuración. Por ejemplo: 'claude mcp add my-server npx @some/mcp-server'. También puedes editar manualmente el archivo settings.json para agregar configuraciones de servidores. Una vez agregados, Claude Code puede usar las herramientas proporcionadas por esos servidores MCP.",
+      "options": [
+        { "id": "cc101-013_a", "text": "Use 'claude mcp add <name> <command>' or manually edit settings.json to register MCP server configurations", "textEs": "Usar 'claude mcp add <nombre> <comando>' o editar manualmente settings.json para registrar configuraciones de servidores MCP", "order": 1 },
+        { "id": "cc101-013_b", "text": "Install MCP servers from a marketplace via 'claude install mcp <package>'", "textEs": "Instalar servidores MCP desde un marketplace vía 'claude install mcp <paquete>'", "order": 2 },
+        { "id": "cc101-013_c", "text": "MCP is not supported in Claude Code; it only works in Claude Desktop", "textEs": "MCP no es soportado en Claude Code; solo funciona en Claude Desktop", "order": 3 },
+        { "id": "cc101-013_d", "text": "Add a .mcp directory to your project root with YAML configuration files", "textEs": "Agregar un directorio .mcp a la raíz del proyecto con archivos de configuración YAML", "order": 4 }
+      ],
+      "tags": ["claude-code", "mcp", "servers", "configuration", "cli"]
+    },
+    {
+      "id": "cc101-014",
+      "text": "What is the purpose of the '--output-format' flag in Claude Code?",
+      "textEs": "¿Cuál es el propósito de la bandera '--output-format' en Claude Code?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-014_d",
+      "explanation": "The '--output-format' flag (used with --print mode) controls how Claude Code formats its output. Options include 'text' (plain text, default), 'json' (full structured output with metadata), and 'stream-json' (streaming JSON events). The 'json' format is particularly useful for CI/CD pipelines where you need to programmatically parse Claude's response, cost data, and session metadata.",
+      "explanationEs": "La bandera '--output-format' (usada con modo --print) controla cómo Claude Code formatea su salida. Las opciones incluyen 'text' (texto plano, predeterminado), 'json' (salida estructurada completa con metadatos) y 'stream-json' (eventos JSON en streaming). El formato 'json' es particularmente útil para pipelines de CI/CD donde necesitas parsear programáticamente la respuesta de Claude, datos de costo y metadatos de sesión.",
+      "options": [
+        { "id": "cc101-014_a", "text": "It sets the programming language for code generation (e.g., python, javascript)", "textEs": "Establece el lenguaje de programación para generación de código (ej., python, javascript)", "order": 1 },
+        { "id": "cc101-014_b", "text": "It changes the visual theme of the terminal UI (dark mode, light mode)", "textEs": "Cambia el tema visual de la interfaz de terminal (modo oscuro, modo claro)", "order": 2 },
+        { "id": "cc101-014_c", "text": "It specifies the file format when saving conversation logs", "textEs": "Especifica el formato de archivo al guardar registros de conversación", "order": 3 },
+        { "id": "cc101-014_d", "text": "It controls output format in print mode: 'text' (default), 'json' (structured with metadata), or 'stream-json' (streaming events)", "textEs": "Controla el formato de salida en modo print: 'text' (predeterminado), 'json' (estructurado con metadatos) o 'stream-json' (eventos en streaming)", "order": 4 }
+      ],
+      "tags": ["claude-code", "output-format", "json", "ci-cd", "print-mode"]
+    },
+    {
+      "id": "cc101-015",
+      "text": "What is the Claude Code SDK and how is it used programmatically?",
+      "textEs": "¿Qué es el SDK de Claude Code y cómo se usa programáticamente?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-015_b",
+      "explanation": "The Claude Code SDK allows you to use Claude Code as a library within your own JavaScript/TypeScript applications. You import it from '@anthropic-ai/claude-code' and call it programmatically, passing prompts, options, and receiving structured results. This enables building custom automation, tooling, and workflows on top of Claude Code's capabilities without using the CLI directly.",
+      "explanationEs": "El SDK de Claude Code permite usar Claude Code como una librería dentro de tus propias aplicaciones JavaScript/TypeScript. Lo importas desde '@anthropic-ai/claude-code' y lo llamas programáticamente, pasando prompts, opciones y recibiendo resultados estructurados. Esto permite construir automatización personalizada, herramientas y flujos de trabajo sobre las capacidades de Claude Code sin usar el CLI directamente.",
+      "options": [
+        { "id": "cc101-015_a", "text": "A Python library for training custom Claude models on proprietary data", "textEs": "Una librería de Python para entrenar modelos Claude personalizados con datos propietarios", "order": 1 },
+        { "id": "cc101-015_b", "text": "A JavaScript/TypeScript library from '@anthropic-ai/claude-code' that lets you invoke Claude Code programmatically within your own applications", "textEs": "Una librería JavaScript/TypeScript de '@anthropic-ai/claude-code' que permite invocar Claude Code programáticamente dentro de tus propias aplicaciones", "order": 2 },
+        { "id": "cc101-015_c", "text": "A GUI framework for building visual interfaces on top of Claude Code", "textEs": "Un framework GUI para construir interfaces visuales sobre Claude Code", "order": 3 },
+        { "id": "cc101-015_d", "text": "A REST API that replicates the CLI functionality over HTTP", "textEs": "Una API REST que replica la funcionalidad del CLI sobre HTTP", "order": 4 }
+      ],
+      "tags": ["claude-code", "sdk", "programmatic", "javascript", "typescript"]
+    },
+    {
+      "id": "cc101-016",
+      "text": "How do hooks interact with Claude Code's tool execution, and what can a hook's exit code control?",
+      "textEs": "¿Cómo interactúan los hooks con la ejecución de herramientas de Claude Code y qué puede controlar el código de salida de un hook?",
+      "domainCode": "claude-code-101",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-016_c",
+      "explanation": "Hook exit codes control behavior: exit code 0 means proceed normally, exit code 2 means block the tool execution (for PreToolUse hooks) — the tool call is rejected with the hook's stderr as the reason. Any other non-zero exit code is treated as an error. Hooks receive JSON on stdin with details about the tool call (tool name, input parameters) and can make decisions based on this context.",
+      "explanationEs": "Los códigos de salida de los hooks controlan el comportamiento: código de salida 0 significa proceder normalmente, código de salida 2 significa bloquear la ejecución de la herramienta (para hooks PreToolUse) — la llamada a la herramienta se rechaza con el stderr del hook como razón. Cualquier otro código de salida no cero se trata como error. Los hooks reciben JSON en stdin con detalles sobre la llamada a la herramienta (nombre de herramienta, parámetros de entrada) y pueden tomar decisiones basadas en este contexto.",
+      "options": [
+        { "id": "cc101-016_a", "text": "Hooks cannot affect tool execution; they only log events for monitoring purposes", "textEs": "Los hooks no pueden afectar la ejecución de herramientas; solo registran eventos para monitoreo", "order": 1 },
+        { "id": "cc101-016_b", "text": "Any non-zero exit code from a hook crashes Claude Code immediately", "textEs": "Cualquier código de salida no cero de un hook causa que Claude Code se cierre inmediatamente", "order": 2 },
+        { "id": "cc101-016_c", "text": "Exit 0 proceeds normally, exit 2 blocks the tool call (PreToolUse), other non-zero is an error. Hooks receive tool details as JSON on stdin", "textEs": "Salida 0 procede normalmente, salida 2 bloquea la llamada a herramienta (PreToolUse), otros no cero son error. Los hooks reciben detalles de herramienta como JSON en stdin", "order": 3 },
+        { "id": "cc101-016_d", "text": "Exit codes are ignored; hooks communicate results through a shared SQLite database", "textEs": "Los códigos de salida se ignoran; los hooks comunican resultados a través de una base de datos SQLite compartida", "order": 4 }
+      ],
+      "tags": ["claude-code", "hooks", "exit-codes", "tool-execution", "PreToolUse"]
+    },
+    {
+      "id": "cc101-017",
+      "text": "What is the difference between 'user' scope and 'project' scope commands in Claude Code?",
+      "textEs": "¿Cuál es la diferencia entre comandos de ámbito 'usuario' y ámbito 'proyecto' en Claude Code?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-017_a",
+      "explanation": "User-scope commands are defined in ~/.claude/commands/ and are available in all projects (personal commands). Project-scope commands are defined in .claude/commands/ within a specific repository and are shared with the team when committed. User commands appear as /user:<name> and project commands as /project:<name> in the CLI.",
+      "explanationEs": "Los comandos de ámbito de usuario se definen en ~/.claude/commands/ y están disponibles en todos los proyectos (comandos personales). Los comandos de ámbito de proyecto se definen en .claude/commands/ dentro de un repositorio específico y se comparten con el equipo cuando se hacen commit. Los comandos de usuario aparecen como /user:<nombre> y los de proyecto como /project:<nombre> en el CLI.",
+      "options": [
+        { "id": "cc101-017_a", "text": "User commands (~/.claude/commands/) are personal and global; project commands (.claude/commands/) are repository-specific and team-shared", "textEs": "Los comandos de usuario (~/.claude/commands/) son personales y globales; los de proyecto (.claude/commands/) son específicos del repositorio y compartidos con el equipo", "order": 1 },
+        { "id": "cc101-017_b", "text": "User commands run with elevated privileges; project commands run in a sandbox", "textEs": "Los comandos de usuario se ejecutan con privilegios elevados; los de proyecto se ejecutan en sandbox", "order": 2 },
+        { "id": "cc101-017_c", "text": "User commands are written in JavaScript; project commands are written in Markdown", "textEs": "Los comandos de usuario se escriben en JavaScript; los de proyecto se escriben en Markdown", "order": 3 },
+        { "id": "cc101-017_d", "text": "There is no difference; both types work identically in all contexts", "textEs": "No hay diferencia; ambos tipos funcionan de forma idéntica en todos los contextos", "order": 4 }
+      ],
+      "tags": ["claude-code", "commands", "user-scope", "project-scope", "team"]
+    },
+    {
+      "id": "cc101-018",
+      "text": "How does Claude Code handle multi-turn conversations when used with the '--print' flag?",
+      "textEs": "¿Cómo maneja Claude Code conversaciones de múltiples turnos cuando se usa con la bandera '--print'?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-018_d",
+      "explanation": "When using '--print' mode, Claude Code runs a single prompt and exits. For multi-turn workflows in scripts, you combine '--print' with '--continue' or '--resume <session-id>' to continue previous sessions. This lets you chain multiple non-interactive calls that share the same conversation context. The session ID from a previous run can be captured from the JSON output.",
+      "explanationEs": "Cuando se usa el modo '--print', Claude Code ejecuta un solo prompt y sale. Para flujos de trabajo de múltiples turnos en scripts, combinas '--print' con '--continue' o '--resume <session-id>' para continuar sesiones anteriores. Esto permite encadenar múltiples llamadas no interactivas que comparten el mismo contexto de conversación. El ID de sesión de una ejecución anterior se puede capturar de la salida JSON.",
+      "options": [
+        { "id": "cc101-018_a", "text": "Multi-turn is not supported in print mode; each call is completely independent", "textEs": "Los múltiples turnos no son soportados en modo print; cada llamada es completamente independiente", "order": 1 },
+        { "id": "cc101-018_b", "text": "Use a special --multi-turn flag that opens a limited interactive session", "textEs": "Usar una bandera especial --multi-turn que abre una sesión interactiva limitada", "order": 2 },
+        { "id": "cc101-018_c", "text": "Pass all turns in a single prompt separated by a special delimiter", "textEs": "Pasar todos los turnos en un solo prompt separados por un delimitador especial", "order": 3 },
+        { "id": "cc101-018_d", "text": "Combine '--print' with '--continue' or '--resume <session-id>' to chain non-interactive calls that share conversation context", "textEs": "Combinar '--print' con '--continue' o '--resume <session-id>' para encadenar llamadas no interactivas que comparten contexto de conversación", "order": 4 }
+      ],
+      "tags": ["claude-code", "print-mode", "multi-turn", "session", "scripting"]
+    },
+    {
+      "id": "cc101-019",
+      "text": "What is the purpose of the '/compact' command in Claude Code?",
+      "textEs": "¿Cuál es el propósito del comando '/compact' en Claude Code?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-019_b",
+      "explanation": "The '/compact' command summarizes the current conversation to reduce token usage and free up context window space. This is useful during long sessions where the conversation history grows large and approaches the context limit. Claude creates a condensed summary of the conversation so far, allowing the session to continue with less token overhead while preserving the essential context.",
+      "explanationEs": "El comando '/compact' resume la conversación actual para reducir el uso de tokens y liberar espacio en la ventana de contexto. Esto es útil durante sesiones largas donde el historial de conversación crece y se acerca al límite de contexto. Claude crea un resumen condensado de la conversación hasta el momento, permitiendo que la sesión continúe con menos overhead de tokens mientras preserva el contexto esencial.",
+      "options": [
+        { "id": "cc101-019_a", "text": "It compresses all files in the project directory to save disk space", "textEs": "Comprime todos los archivos en el directorio del proyecto para ahorrar espacio en disco", "order": 1 },
+        { "id": "cc101-019_b", "text": "It summarizes the current conversation to reduce token usage and free up context window space during long sessions", "textEs": "Resume la conversación actual para reducir el uso de tokens y liberar espacio en la ventana de contexto durante sesiones largas", "order": 2 },
+        { "id": "cc101-019_c", "text": "It switches Claude Code to a compact UI mode with fewer visual elements", "textEs": "Cambia Claude Code a un modo de UI compacto con menos elementos visuales", "order": 3 },
+        { "id": "cc101-019_d", "text": "It removes all non-essential files from the project directory", "textEs": "Elimina todos los archivos no esenciales del directorio del proyecto", "order": 4 }
+      ],
+      "tags": ["claude-code", "compact", "context-management", "tokens", "optimization"]
+    },
+    {
+      "id": "cc101-020",
+      "text": "How does Claude Code decide which model to use, and can you override the default?",
+      "textEs": "¿Cómo decide Claude Code qué modelo usar y puedes anular el predeterminado?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-020_c",
+      "explanation": "Claude Code uses Sonnet as its default model for most tasks. You can override this using the '--model' flag (e.g., 'claude --model claude-opus-4-20250514') or by setting the CLAUDE_MODEL environment variable. Different models can be specified for different use cases — for example, using Opus for complex architectural decisions and Sonnet for routine code changes.",
+      "explanationEs": "Claude Code usa Sonnet como su modelo predeterminado para la mayoría de las tareas. Puedes anular esto usando la bandera '--model' (ej., 'claude --model claude-opus-4-20250514') o estableciendo la variable de entorno CLAUDE_MODEL. Se pueden especificar diferentes modelos para diferentes casos de uso — por ejemplo, usar Opus para decisiones arquitectónicas complejas y Sonnet para cambios de código rutinarios.",
+      "options": [
+        { "id": "cc101-020_a", "text": "Claude Code always uses Opus; the model cannot be changed", "textEs": "Claude Code siempre usa Opus; el modelo no puede cambiarse", "order": 1 },
+        { "id": "cc101-020_b", "text": "It automatically selects the best model based on task complexity", "textEs": "Selecciona automáticamente el mejor modelo basado en la complejidad de la tarea", "order": 2 },
+        { "id": "cc101-020_c", "text": "Default is Sonnet; override with '--model' flag or CLAUDE_MODEL environment variable for different use cases", "textEs": "El predeterminado es Sonnet; anular con la bandera '--model' o la variable de entorno CLAUDE_MODEL para diferentes casos de uso", "order": 3 },
+        { "id": "cc101-020_d", "text": "The model is determined by the API key tier; free keys get Haiku, paid keys get Opus", "textEs": "El modelo se determina por el nivel de la clave API; claves gratuitas obtienen Haiku, claves de pago obtienen Opus", "order": 4 }
+      ],
+      "tags": ["claude-code", "model-selection", "sonnet", "opus", "configuration"]
+    },
+    {
+      "id": "cc101-021",
+      "text": "What is the 'claude init' command used for?",
+      "textEs": "¿Para qué se usa el comando 'claude init'?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-021_a",
+      "explanation": "The 'claude init' command initializes a CLAUDE.md file in your project with sensible defaults. It analyzes your codebase structure, detects the tech stack, and generates project-specific instructions for Claude Code. This is the recommended way to set up CLAUDE.md for a new project rather than writing it from scratch.",
+      "explanationEs": "El comando 'claude init' inicializa un archivo CLAUDE.md en tu proyecto con valores predeterminados sensatos. Analiza la estructura de tu código, detecta el stack tecnológico y genera instrucciones específicas del proyecto para Claude Code. Esta es la forma recomendada de configurar CLAUDE.md para un proyecto nuevo en lugar de escribirlo desde cero.",
+      "options": [
+        { "id": "cc101-021_a", "text": "Initializes a CLAUDE.md file by analyzing the codebase and generating project-specific instructions", "textEs": "Inicializa un archivo CLAUDE.md analizando el código y generando instrucciones específicas del proyecto", "order": 1 },
+        { "id": "cc101-021_b", "text": "Creates a new Git repository and sets up Claude Code as a pre-commit hook", "textEs": "Crea un nuevo repositorio Git y configura Claude Code como hook pre-commit", "order": 2 },
+        { "id": "cc101-021_c", "text": "Downloads and installs the latest version of Claude Code", "textEs": "Descarga e instala la última versión de Claude Code", "order": 3 },
+        { "id": "cc101-021_d", "text": "Generates an API key and stores it in the project configuration", "textEs": "Genera una clave API y la almacena en la configuración del proyecto", "order": 4 }
+      ],
+      "tags": ["claude-code", "init", "setup", "claude-md", "initialization"]
+    },
+    {
+      "id": "cc101-022",
+      "text": "How does Claude Code handle large codebases that exceed its context window?",
+      "textEs": "¿Cómo maneja Claude Code bases de código grandes que exceden su ventana de contexto?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-022_b",
+      "explanation": "Claude Code uses an agentic approach to navigate large codebases. It uses tools like Glob and Grep to find relevant files, reads only the specific files or file sections it needs, and builds up context incrementally. It does not try to load the entire codebase at once. This targeted approach means Claude Code can work effectively with repositories of any size.",
+      "explanationEs": "Claude Code usa un enfoque agéntico para navegar bases de código grandes. Usa herramientas como Glob y Grep para encontrar archivos relevantes, lee solo los archivos específicos o secciones de archivos que necesita, y construye contexto incrementalmente. No intenta cargar toda la base de código a la vez. Este enfoque dirigido significa que Claude Code puede trabajar efectivamente con repositorios de cualquier tamaño.",
+      "options": [
+        { "id": "cc101-022_a", "text": "It fails with an error; Claude Code cannot work with projects larger than the context window", "textEs": "Falla con un error; Claude Code no puede trabajar con proyectos más grandes que la ventana de contexto", "order": 1 },
+        { "id": "cc101-022_b", "text": "It uses Glob, Grep, and targeted file reads to search and access only relevant files incrementally, working with repos of any size", "textEs": "Usa Glob, Grep y lecturas de archivos dirigidas para buscar y acceder solo a archivos relevantes incrementalmente, trabajando con repos de cualquier tamaño", "order": 2 },
+        { "id": "cc101-022_c", "text": "It automatically splits the codebase into chunks and processes each separately", "textEs": "Automáticamente divide la base de código en fragmentos y procesa cada uno por separado", "order": 3 },
+        { "id": "cc101-022_d", "text": "It requires the user to manually specify which files to include in the context", "textEs": "Requiere que el usuario especifique manualmente qué archivos incluir en el contexto", "order": 4 }
+      ],
+      "tags": ["claude-code", "large-codebases", "context", "search", "agentic"]
+    },
+    {
+      "id": "cc101-023",
+      "text": "What is the recommended workflow for using Claude Code with GitHub pull requests?",
+      "textEs": "¿Cuál es el flujo de trabajo recomendado para usar Claude Code con pull requests de GitHub?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-023_d",
+      "explanation": "Claude Code can create and manage GitHub PRs through the gh CLI. The recommended workflow is: make changes with Claude Code, have it create a branch, commit the changes, and create a PR with a proper title and description. Claude Code can also review existing PRs, respond to review comments, and push fixes. In CI/CD, the Claude GitHub Action can automate PR reviews and implement feedback.",
+      "explanationEs": "Claude Code puede crear y gestionar PRs de GitHub a través del CLI de gh. El flujo de trabajo recomendado es: hacer cambios con Claude Code, hacer que cree una rama, confirmar los cambios y crear un PR con un título y descripción adecuados. Claude Code también puede revisar PRs existentes, responder a comentarios de revisión y enviar correcciones. En CI/CD, la GitHub Action de Claude puede automatizar revisiones de PR e implementar retroalimentación.",
+      "options": [
+        { "id": "cc101-023_a", "text": "Claude Code cannot interact with GitHub; all git operations must be done manually", "textEs": "Claude Code no puede interactuar con GitHub; todas las operaciones git deben hacerse manualmente", "order": 1 },
+        { "id": "cc101-023_b", "text": "Use a special Claude Code GitHub plugin that must be installed separately", "textEs": "Usar un plugin especial de Claude Code para GitHub que debe instalarse por separado", "order": 2 },
+        { "id": "cc101-023_c", "text": "Only push code; Claude Code cannot create branches or PRs", "textEs": "Solo enviar código; Claude Code no puede crear ramas o PRs", "order": 3 },
+        { "id": "cc101-023_d", "text": "Claude creates branches, commits, and PRs via gh CLI; can review PRs, respond to comments, and push fixes. Automatable in CI with GitHub Actions", "textEs": "Claude crea ramas, commits y PRs vía gh CLI; puede revisar PRs, responder a comentarios y enviar correcciones. Automatizable en CI con GitHub Actions", "order": 4 }
+      ],
+      "tags": ["claude-code", "github", "pull-requests", "workflow", "ci-cd"]
+    },
+    {
+      "id": "cc101-024",
+      "text": "What is the 'deny' permission level in Claude Code's allowedTools, and when should you use it?",
+      "textEs": "¿Qué es el nivel de permiso 'deny' en allowedTools de Claude Code y cuándo deberías usarlo?",
+      "domainCode": "claude-code-101",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-024_a",
+      "explanation": "The 'deny' permission in allowedTools blocks specific tools from being used entirely. Unlike simply not pre-approving a tool (which still allows it with user approval), deny prevents it completely — Claude will not even attempt to use it. This is useful for enforcing organizational policies, such as preventing Claude from writing to production configuration files or executing certain dangerous commands.",
+      "explanationEs": "El permiso 'deny' en allowedTools bloquea herramientas específicas de ser usadas completamente. A diferencia de simplemente no pre-aprobar una herramienta (que aún la permite con aprobación del usuario), deny la previene completamente — Claude ni siquiera intentará usarla. Esto es útil para aplicar políticas organizacionales, como prevenir que Claude escriba en archivos de configuración de producción o ejecute ciertos comandos peligrosos.",
+      "options": [
+        { "id": "cc101-024_a", "text": "Deny blocks tools completely (not even prompted); used for enforcing policies like preventing writes to production configs", "textEs": "Deny bloquea herramientas completamente (ni siquiera se solicita); usado para aplicar políticas como prevenir escrituras en configs de producción", "order": 1 },
+        { "id": "cc101-024_b", "text": "Deny logs tool usage attempts without actually blocking them", "textEs": "Deny registra intentos de uso de herramientas sin realmente bloquearlos", "order": 2 },
+        { "id": "cc101-024_c", "text": "Deny is the default for all tools until explicitly allowed", "textEs": "Deny es el predeterminado para todas las herramientas hasta que se permitan explícitamente", "order": 3 },
+        { "id": "cc101-024_d", "text": "Deny only works during CI/CD mode and has no effect in interactive sessions", "textEs": "Deny solo funciona durante modo CI/CD y no tiene efecto en sesiones interactivas", "order": 4 }
+      ],
+      "tags": ["claude-code", "permissions", "deny", "security", "policy"]
+    },
+    {
+      "id": "cc101-025",
+      "text": "How do you use Claude Code to run and fix failing tests?",
+      "textEs": "¿Cómo usas Claude Code para ejecutar y corregir pruebas fallidas?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-025_c",
+      "explanation": "The typical workflow is to ask Claude Code to run the test suite, read the failure output, identify the root cause, make the necessary code fixes, and re-run the tests to verify. Claude Code's agentic loop handles this naturally — it runs tests via Bash, reads error output, uses its tools to find and edit the relevant source files, then runs tests again. You can also set up a PostToolUse hook to auto-run tests after edits.",
+      "explanationEs": "El flujo de trabajo típico es pedir a Claude Code que ejecute el conjunto de pruebas, lea la salida de fallos, identifique la causa raíz, haga las correcciones de código necesarias y re-ejecute las pruebas para verificar. El ciclo agéntico de Claude Code maneja esto naturalmente — ejecuta pruebas vía Bash, lee la salida de error, usa sus herramientas para encontrar y editar los archivos fuente relevantes, luego ejecuta pruebas de nuevo. También puedes configurar un hook PostToolUse para auto-ejecutar pruebas después de ediciones.",
+      "options": [
+        { "id": "cc101-025_a", "text": "Claude Code can only run tests; it cannot read output or make fixes autonomously", "textEs": "Claude Code solo puede ejecutar pruebas; no puede leer la salida o hacer correcciones autónomamente", "order": 1 },
+        { "id": "cc101-025_b", "text": "You must manually copy test failures and paste them into Claude Code's prompt", "textEs": "Debes copiar manualmente los fallos de pruebas y pegarlos en el prompt de Claude Code", "order": 2 },
+        { "id": "cc101-025_c", "text": "Ask Claude to run tests, it reads failures, identifies root causes, edits source files, and re-runs tests in an agentic loop", "textEs": "Pedir a Claude que ejecute pruebas, lee fallos, identifica causas raíz, edita archivos fuente y re-ejecuta pruebas en un ciclo agéntico", "order": 3 },
+        { "id": "cc101-025_d", "text": "Use a special '/test' slash command that is hardcoded to run 'npm test'", "textEs": "Usar un comando slash especial '/test' que está codificado para ejecutar 'npm test'", "order": 4 }
+      ],
+      "tags": ["claude-code", "testing", "agentic-loop", "debugging", "workflow"]
+    },
+    {
+      "id": "cc101-026",
+      "text": "What is the difference between 'claude' (interactive) and 'claude -p' (print) modes?",
+      "textEs": "¿Cuál es la diferencia entre los modos 'claude' (interactivo) y 'claude -p' (print)?",
+      "domainCode": "claude-code-101",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-026_d",
+      "explanation": "Interactive mode ('claude') starts a REPL-like session where you can have a back-and-forth conversation, approve tool uses, and work iteratively. Print mode ('claude -p \"prompt\"') sends a single prompt, outputs the result to stdout, and exits. Print mode is designed for scripting, CI/CD, and piping into other commands. Interactive mode is for development sessions where you need ongoing collaboration.",
+      "explanationEs": "El modo interactivo ('claude') inicia una sesión tipo REPL donde puedes tener una conversación de ida y vuelta, aprobar usos de herramientas y trabajar iterativamente. El modo print ('claude -p \"prompt\"') envía un solo prompt, muestra el resultado en stdout y sale. El modo print está diseñado para scripting, CI/CD y piping a otros comandos. El modo interactivo es para sesiones de desarrollo donde necesitas colaboración continua.",
+      "options": [
+        { "id": "cc101-026_a", "text": "There is no difference; '-p' is just an alias for the default mode", "textEs": "No hay diferencia; '-p' es solo un alias para el modo predeterminado", "order": 1 },
+        { "id": "cc101-026_b", "text": "Interactive mode uses Opus; print mode uses Haiku for cost savings", "textEs": "El modo interactivo usa Opus; el modo print usa Haiku para ahorrar costos", "order": 2 },
+        { "id": "cc101-026_c", "text": "Print mode shows more detailed output with debugging information", "textEs": "El modo print muestra salida más detallada con información de depuración", "order": 3 },
+        { "id": "cc101-026_d", "text": "Interactive is a REPL for ongoing collaboration; print sends one prompt, outputs to stdout, and exits — designed for scripting and CI/CD", "textEs": "Interactivo es un REPL para colaboración continua; print envía un prompt, muestra en stdout y sale — diseñado para scripting y CI/CD", "order": 4 }
+      ],
+      "tags": ["claude-code", "interactive", "print-mode", "cli-modes", "scripting"]
+    },
+    {
+      "id": "cc101-027",
+      "text": "What are the best practices for writing effective CLAUDE.md files?",
+      "textEs": "¿Cuáles son las mejores prácticas para escribir archivos CLAUDE.md efectivos?",
+      "domainCode": "claude-code-101",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-027_b",
+      "explanation": "Best practices for CLAUDE.md include: keep it concise (Claude reads it every session, so bloat wastes tokens), include coding standards and conventions, document build/test/lint commands, describe project architecture briefly, note common pitfalls, and use markdown headers for organization. Avoid putting frequently changing information in it. Use subdirectory CLAUDE.md files for module-specific instructions.",
+      "explanationEs": "Las mejores prácticas para CLAUDE.md incluyen: mantenerlo conciso (Claude lo lee cada sesión, así que el exceso desperdicia tokens), incluir estándares y convenciones de codificación, documentar comandos de build/test/lint, describir la arquitectura del proyecto brevemente, notar errores comunes y usar encabezados markdown para organización. Evitar poner información que cambia frecuentemente. Usar archivos CLAUDE.md en subdirectorios para instrucciones específicas de módulos.",
+      "options": [
+        { "id": "cc101-027_a", "text": "Write as much detail as possible; longer CLAUDE.md files always produce better results", "textEs": "Escribir tanto detalle como sea posible; archivos CLAUDE.md más largos siempre producen mejores resultados", "order": 1 },
+        { "id": "cc101-027_b", "text": "Keep concise, include coding standards, build commands, architecture overview, common pitfalls; use subdirectory files for module-specific guidance", "textEs": "Mantener conciso, incluir estándares de codificación, comandos de build, resumen de arquitectura, errores comunes; usar archivos en subdirectorios para guía específica de módulos", "order": 2 },
+        { "id": "cc101-027_c", "text": "Only include the project name and version number; everything else is auto-detected", "textEs": "Solo incluir el nombre del proyecto y número de versión; todo lo demás se autodetecta", "order": 3 },
+        { "id": "cc101-027_d", "text": "Duplicate the entire README.md content into CLAUDE.md for maximum context", "textEs": "Duplicar todo el contenido del README.md en CLAUDE.md para máximo contexto", "order": 4 }
+      ],
+      "tags": ["claude-code", "claude-md", "best-practices", "documentation", "conventions"]
+    },
+    {
+      "id": "cc101-028",
+      "text": "How can you use Claude Code to implement changes across multiple files simultaneously?",
+      "textEs": "¿Cómo puedes usar Claude Code para implementar cambios en múltiples archivos simultáneamente?",
+      "domainCode": "claude-code-101",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-028_a",
+      "explanation": "Claude Code handles multi-file changes naturally in its agentic loop. Describe the change at a high level (e.g., 'rename the User model to Account across the entire codebase'), and Claude will search for all affected files using Glob/Grep, plan the changes, and apply edits to each file sequentially. It understands cross-file dependencies and can update imports, references, tests, and documentation together.",
+      "explanationEs": "Claude Code maneja cambios en múltiples archivos naturalmente en su ciclo agéntico. Describe el cambio a alto nivel (ej., 'renombrar el modelo User a Account en toda la base de código'), y Claude buscará todos los archivos afectados usando Glob/Grep, planificará los cambios y aplicará ediciones a cada archivo secuencialmente. Entiende dependencias entre archivos y puede actualizar imports, referencias, pruebas y documentación juntos.",
+      "options": [
+        { "id": "cc101-028_a", "text": "Describe the change at high level; Claude searches all affected files with Glob/Grep, plans changes, and edits each file including cross-file dependencies", "textEs": "Describir el cambio a alto nivel; Claude busca todos los archivos afectados con Glob/Grep, planifica cambios y edita cada archivo incluyendo dependencias entre archivos", "order": 1 },
+        { "id": "cc101-028_b", "text": "You must specify each file individually; Claude cannot discover files on its own", "textEs": "Debes especificar cada archivo individualmente; Claude no puede descubrir archivos por sí solo", "order": 2 },
+        { "id": "cc101-028_c", "text": "Multi-file changes are not supported; Claude Code can only edit one file per session", "textEs": "Los cambios en múltiples archivos no son soportados; Claude Code solo puede editar un archivo por sesión", "order": 3 },
+        { "id": "cc101-028_d", "text": "Use the '--multi-file' flag with a list of paths to enable batch editing mode", "textEs": "Usar la bandera '--multi-file' con una lista de rutas para habilitar el modo de edición por lotes", "order": 4 }
+      ],
+      "tags": ["claude-code", "multi-file", "refactoring", "agentic", "cross-file"]
+    },
+    {
+      "id": "cc101-029",
+      "text": "What happens when Claude Code encounters an error during a task?",
+      "textEs": "¿Qué sucede cuando Claude Code encuentra un error durante una tarea?",
+      "domainCode": "claude-code-101",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-029_c",
+      "explanation": "Claude Code is designed to handle errors autonomously. When a command fails or a tool returns an error, Claude reads the error output, analyzes the root cause, and attempts a fix. For example, if a Bash command fails, Claude reads stderr, adjusts the command or fixes the underlying issue, and retries. This self-correcting behavior is a key feature of its agentic loop and often resolves issues without human intervention.",
+      "explanationEs": "Claude Code está diseñado para manejar errores autónomamente. Cuando un comando falla o una herramienta devuelve un error, Claude lee la salida de error, analiza la causa raíz e intenta una corrección. Por ejemplo, si un comando Bash falla, Claude lee stderr, ajusta el comando o corrige el problema subyacente y reintenta. Este comportamiento autocorrectivo es una característica clave de su ciclo agéntico y a menudo resuelve problemas sin intervención humana.",
+      "options": [
+        { "id": "cc101-029_a", "text": "It immediately stops and asks the user to fix the issue manually", "textEs": "Se detiene inmediatamente y pide al usuario que corrija el problema manualmente", "order": 1 },
+        { "id": "cc101-029_b", "text": "It silently skips the failed step and continues with the next task", "textEs": "Salta silenciosamente el paso fallido y continúa con la siguiente tarea", "order": 2 },
+        { "id": "cc101-029_c", "text": "It reads error output, analyzes root cause, and attempts self-correction (adjust commands, fix code) in an agentic loop", "textEs": "Lee la salida de error, analiza la causa raíz e intenta autocorrección (ajustar comandos, corregir código) en un ciclo agéntico", "order": 3 },
+        { "id": "cc101-029_d", "text": "It creates a bug report and submits it to the Claude Code issue tracker", "textEs": "Crea un reporte de error y lo envía al rastreador de issues de Claude Code", "order": 4 }
+      ],
+      "tags": ["claude-code", "error-handling", "self-correction", "agentic-loop", "debugging"]
+    },
+    {
+      "id": "cc101-030",
+      "text": "What is the Claude Code GitHub Action and what are its primary use cases?",
+      "textEs": "¿Qué es la GitHub Action de Claude Code y cuáles son sus casos de uso principales?",
+      "domainCode": "claude-code-101",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "academy-claude-code-101",
+      "correctOptionId": "cc101-030_d",
+      "explanation": "The Claude Code GitHub Action (anthropics/claude-code-action) runs Claude Code in GitHub Actions workflows. Primary use cases include automated PR code review (triggered on pull_request events), implementing review feedback automatically, issue triage and resolution (triggered on issues events), and running custom automation. It uses GitHub's authentication and can comment on PRs, push commits, and interact with the repository like a human collaborator.",
+      "explanationEs": "La GitHub Action de Claude Code (anthropics/claude-code-action) ejecuta Claude Code en flujos de trabajo de GitHub Actions. Los casos de uso principales incluyen revisión automática de código en PRs (activada en eventos pull_request), implementación automática de retroalimentación de revisión, triaje y resolución de issues (activada en eventos de issues) y automatización personalizada. Usa la autenticación de GitHub y puede comentar en PRs, enviar commits e interactuar con el repositorio como un colaborador humano.",
+      "options": [
+        { "id": "cc101-030_a", "text": "A GitHub Action that automatically deploys Claude Code to production servers", "textEs": "Una GitHub Action que automáticamente despliega Claude Code a servidores de producción", "order": 1 },
+        { "id": "cc101-030_b", "text": "A monitoring tool that tracks Claude Code's resource usage in CI pipelines", "textEs": "Una herramienta de monitoreo que rastrea el uso de recursos de Claude Code en pipelines de CI", "order": 2 },
+        { "id": "cc101-030_c", "text": "A GitHub App that replaces all human code reviewers with automated Claude reviews", "textEs": "Una GitHub App que reemplaza todos los revisores humanos de código con revisiones automatizadas de Claude", "order": 3 },
+        { "id": "cc101-030_d", "text": "Runs Claude Code in GitHub Actions for automated PR review, implementing review feedback, issue triage, and custom automation with GitHub auth", "textEs": "Ejecuta Claude Code en GitHub Actions para revisión automatizada de PRs, implementación de retroalimentación, triaje de issues y automatización personalizada con autenticación de GitHub", "order": 4 }
+      ],
+      "tags": ["claude-code", "github-action", "ci-cd", "automation", "code-review"]
+    }
+  ]
+}

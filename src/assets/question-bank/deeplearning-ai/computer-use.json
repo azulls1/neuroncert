@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "domain": "computer-use",
+    "domainName": "Building Towards Computer Use with Anthropic",
+    "trackId": "dlai-computer-use",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 8,
+    "learningLevel": 3,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "dlai-cu-001",
+      "text": "Segun el curso de Colt Steele, cual es el proposito principal de usar plantillas de prompt (prompt templates) al interactuar con la API de Claude?",
+      "textEs": "Segun el curso de Colt Steele, cual es el proposito principal de usar plantillas de prompt (prompt templates) al interactuar con la API de Claude?",
+      "domainCode": "computer-use",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-computer-use",
+      "correctOptionId": "dlai-cu-001_c",
+      "explanation": "Las plantillas de prompt permiten estandarizar y reutilizar estructuras de prompt probadas. Se definen con marcadores de posicion (placeholders) que se rellenan dinamicamente con datos especificos en tiempo de ejecucion. Colt Steele enfatiza que esto reduce errores, mejora la consistencia y permite iterar sobre prompts de forma sistematica.",
+      "explanationEs": "Las plantillas de prompt permiten estandarizar y reutilizar estructuras de prompt probadas. Se definen con marcadores de posicion (placeholders) que se rellenan dinamicamente con datos especificos en tiempo de ejecucion. Colt Steele enfatiza que esto reduce errores, mejora la consistencia y permite iterar sobre prompts de forma sistematica.",
+      "options": [
+        { "id": "dlai-cu-001_a", "text": "Reducir el costo de las llamadas a la API al minimizar los tokens enviados", "textEs": "Reducir el costo de las llamadas a la API al minimizar los tokens enviados", "order": 1 },
+        { "id": "dlai-cu-001_b", "text": "Encriptar las instrucciones del prompt para proteger la propiedad intelectual", "textEs": "Encriptar las instrucciones del prompt para proteger la propiedad intelectual", "order": 2 },
+        { "id": "dlai-cu-001_c", "text": "Estandarizar y reutilizar estructuras de prompt probadas con placeholders dinamicos, mejorando consistencia y facilitando la iteracion", "textEs": "Estandarizar y reutilizar estructuras de prompt probadas con placeholders dinamicos, mejorando consistencia y facilitando la iteracion", "order": 3 },
+        { "id": "dlai-cu-001_d", "text": "Generar automaticamente prompts sin intervencion humana", "textEs": "Generar automaticamente prompts sin intervencion humana", "order": 4 }
+      ],
+      "tags": ["prompt-templates", "colt-steele", "reutilizacion", "consistencia"]
+    },
+    {
+      "id": "dlai-cu-002",
+      "text": "Que ventaja ofrece estructurar los prompts con etiquetas XML al comunicarse con Claude?",
+      "textEs": "Que ventaja ofrece estructurar los prompts con etiquetas XML al comunicarse con Claude?",
+      "domainCode": "computer-use",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-computer-use",
+      "correctOptionId": "dlai-cu-002_a",
+      "explanation": "Las etiquetas XML proporcionan una estructura clara y jerarquica que Claude puede parsear de forma precisa. Delimitan secciones como instrucciones, contexto, datos de entrada y formato de salida. Claude esta entrenado para reconocer y respetar estas delimitaciones, lo que produce respuestas mas organizadas y fieles a la estructura solicitada.",
+      "explanationEs": "Las etiquetas XML proporcionan una estructura clara y jerarquica que Claude puede parsear de forma precisa. Delimitan secciones como instrucciones, contexto, datos de entrada y formato de salida. Claude esta entrenado para reconocer y respetar estas delimitaciones, lo que produce respuestas mas organizadas y fieles a la estructura solicitada.",
+      "options": [
+        { "id": "dlai-cu-002_a", "text": "Proporcionan estructura jerarquica clara que Claude parsea con precision, delimitando secciones como instrucciones, contexto y formato de salida", "textEs": "Proporcionan estructura jerarquica clara que Claude parsea con precision, delimitando secciones como instrucciones, contexto y formato de salida", "order": 1 },
+        { "id": "dlai-cu-002_b", "text": "Son obligatorias para todas las llamadas a la API de Claude; sin ellas la solicitud falla", "textEs": "Son obligatorias para todas las llamadas a la API de Claude; sin ellas la solicitud falla", "order": 2 },
+        { "id": "dlai-cu-002_c", "text": "Reducen el consumo de tokens porque XML es mas eficiente que el texto plano", "textEs": "Reducen el consumo de tokens porque XML es mas eficiente que el texto plano", "order": 3 },
+        { "id": "dlai-cu-002_d", "text": "Permiten que Claude ejecute codigo XML directamente como parte de su respuesta", "textEs": "Permiten que Claude ejecute codigo XML directamente como parte de su respuesta", "order": 4 }
+      ],
+      "tags": ["xml-structuring", "prompt-structure", "parsing", "best-practices"]
+    },
+    {
+      "id": "dlai-cu-003",
+      "text": "En el flujo de trabajo de tool use con Claude, que ocurre cuando el modelo determina que necesita usar una herramienta?",
+      "textEs": "En el flujo de trabajo de tool use con Claude, que ocurre cuando el modelo determina que necesita usar una herramienta?",
+      "domainCode": "computer-use",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-computer-use",
+      "correctOptionId": "dlai-cu-003_b",
+      "explanation": "Cuando Claude decide usar una herramienta, la respuesta de la API contiene un bloque de contenido de tipo 'tool_use' con el nombre de la herramienta y los parametros en JSON. El stop_reason es 'tool_use'. La aplicacion cliente ejecuta la herramienta con esos parametros, obtiene el resultado, y lo envia de vuelta a Claude como un mensaje de rol 'user' con contenido tipo 'tool_result'. Claude entonces procesa el resultado y continua.",
+      "explanationEs": "Cuando Claude decide usar una herramienta, la respuesta de la API contiene un bloque de contenido de tipo 'tool_use' con el nombre de la herramienta y los parametros en JSON. El stop_reason es 'tool_use'. La aplicacion cliente ejecuta la herramienta con esos parametros, obtiene el resultado, y lo envia de vuelta a Claude como un mensaje de rol 'user' con contenido tipo 'tool_result'. Claude entonces procesa el resultado y continua.",
+      "options": [
+        { "id": "dlai-cu-003_a", "text": "Claude ejecuta la herramienta directamente en sus servidores y devuelve el resultado final al usuario", "textEs": "Claude ejecuta la herramienta directamente en sus servidores y devuelve el resultado final al usuario", "order": 1 },
+        { "id": "dlai-cu-003_b", "text": "La API retorna un bloque 'tool_use' con nombre y parametros; el cliente ejecuta la herramienta y devuelve el resultado como 'tool_result' para que Claude continue", "textEs": "La API retorna un bloque 'tool_use' con nombre y parametros; el cliente ejecuta la herramienta y devuelve el resultado como 'tool_result' para que Claude continue", "order": 2 },
+        { "id": "dlai-cu-003_c", "text": "Claude pausa la conversacion y envia un webhook al servidor del usuario para que ejecute la herramienta", "textEs": "Claude pausa la conversacion y envia un webhook al servidor del usuario para que ejecute la herramienta", "order": 3 },
+        { "id": "dlai-cu-003_d", "text": "El modelo genera codigo fuente de la herramienta que el usuario debe compilar y ejecutar manualmente", "textEs": "El modelo genera codigo fuente de la herramienta que el usuario debe compilar y ejecutar manualmente", "order": 4 }
+      ],
+      "tags": ["tool-use-workflow", "tool-use-block", "tool-result", "api-flow"]
+    },
+    {
+      "id": "dlai-cu-004",
+      "text": "Como se define una herramienta (tool) en una solicitud a la API de Claude para habilitar tool use?",
+      "textEs": "Como se define una herramienta (tool) en una solicitud a la API de Claude para habilitar tool use?",
+      "domainCode": "computer-use",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-computer-use",
+      "correctOptionId": "dlai-cu-004_d",
+      "explanation": "Las herramientas se definen en el parametro 'tools' de la solicitud a la API. Cada herramienta incluye un 'name' (identificador unico), 'description' (explicacion de cuando y como usarla), e 'input_schema' (un JSON Schema que define los parametros aceptados, sus tipos y cuales son requeridos). La descripcion es critica porque Claude la usa para decidir cuando invocar la herramienta.",
+      "explanationEs": "Las herramientas se definen en el parametro 'tools' de la solicitud a la API. Cada herramienta incluye un 'name' (identificador unico), 'description' (explicacion de cuando y como usarla), e 'input_schema' (un JSON Schema que define los parametros aceptados, sus tipos y cuales son requeridos). La descripcion es critica porque Claude la usa para decidir cuando invocar la herramienta.",
+      "options": [
+        { "id": "dlai-cu-004_a", "text": "Registrando la herramienta en el dashboard de Anthropic y referenciandola por su ID en la solicitud", "textEs": "Registrando la herramienta en el dashboard de Anthropic y referenciandola por su ID en la solicitud", "order": 1 },
+        { "id": "dlai-cu-004_b", "text": "Incluyendo la URL del endpoint de la herramienta en el header de la solicitud HTTP", "textEs": "Incluyendo la URL del endpoint de la herramienta en el header de la solicitud HTTP", "order": 2 },
+        { "id": "dlai-cu-004_c", "text": "Describiendo la herramienta en texto natural dentro del system prompt", "textEs": "Describiendo la herramienta en texto natural dentro del system prompt", "order": 3 },
+        { "id": "dlai-cu-004_d", "text": "En el parametro 'tools' con name, description e input_schema (JSON Schema con tipos y parametros requeridos) para cada herramienta", "textEs": "En el parametro 'tools' con name, description e input_schema (JSON Schema con tipos y parametros requeridos) para cada herramienta", "order": 4 }
+      ],
+      "tags": ["tool-definition", "input-schema", "json-schema", "api-configuration"]
+    },
+    {
+      "id": "dlai-cu-005",
+      "text": "Segun las ensenanzas de Colt Steele, cual es la estructura basica de un chatbot que utiliza herramientas (tools) con la API de Claude?",
+      "textEs": "Segun las ensenanzas de Colt Steele, cual es la estructura basica de un chatbot que utiliza herramientas (tools) con la API de Claude?",
+      "domainCode": "computer-use",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-computer-use",
+      "correctOptionId": "dlai-cu-005_a",
+      "explanation": "Un chatbot con herramientas implementa un bucle agentico: (1) recibe el mensaje del usuario, (2) envia a Claude con las definiciones de herramientas, (3) verifica si el stop_reason es 'tool_use', (4) si es asi, ejecuta la herramienta, agrega el tool_result al historial, y vuelve a llamar a Claude, (5) repite hasta que stop_reason sea 'end_turn', indicando una respuesta final de texto. Este bucle permite encadenar multiples herramientas.",
+      "explanationEs": "Un chatbot con herramientas implementa un bucle agentico: (1) recibe el mensaje del usuario, (2) envia a Claude con las definiciones de herramientas, (3) verifica si el stop_reason es 'tool_use', (4) si es asi, ejecuta la herramienta, agrega el tool_result al historial, y vuelve a llamar a Claude, (5) repite hasta que stop_reason sea 'end_turn', indicando una respuesta final de texto. Este bucle permite encadenar multiples herramientas.",
+      "options": [
+        { "id": "dlai-cu-005_a", "text": "Un bucle agentico que envia mensajes a Claude, verifica si stop_reason es 'tool_use', ejecuta herramientas, agrega tool_result, y repite hasta que stop_reason sea 'end_turn'", "textEs": "Un bucle agentico que envia mensajes a Claude, verifica si stop_reason es 'tool_use', ejecuta herramientas, agrega tool_result, y repite hasta que stop_reason sea 'end_turn'", "order": 1 },
+        { "id": "dlai-cu-005_b", "text": "Un sistema de eventos donde Claude emite señales que activan funciones del servidor automaticamente", "textEs": "Un sistema de eventos donde Claude emite señales que activan funciones del servidor automaticamente", "order": 2 },
+        { "id": "dlai-cu-005_c", "text": "Un flujo lineal de solicitud-respuesta sin necesidad de bucles adicionales", "textEs": "Un flujo lineal de solicitud-respuesta sin necesidad de bucles adicionales", "order": 3 },
+        { "id": "dlai-cu-005_d", "text": "Un pipeline de microservicios donde cada herramienta es un servicio independiente que se comunica via colas de mensajes", "textEs": "Un pipeline de microservicios donde cada herramienta es un servicio independiente que se comunica via colas de mensajes", "order": 4 }
+      ],
+      "tags": ["chatbot", "agentic-loop", "tool-use", "colt-steele", "stop-reason"]
+    },
+    {
+      "id": "dlai-cu-006",
+      "text": "Que patron XML recomienda el curso para estructurar un prompt que incluye datos de contexto y formato de salida esperado?",
+      "textEs": "Que patron XML recomienda el curso para estructurar un prompt que incluye datos de contexto y formato de salida esperado?",
+      "domainCode": "computer-use",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-computer-use",
+      "correctOptionId": "dlai-cu-006_c",
+      "explanation": "El patron recomendado usa etiquetas XML semanticas para separar secciones: <instructions> para las directivas, <context> o <documents> para los datos de referencia, <input> para la entrada del usuario, y <output_format> para especificar la estructura esperada de la respuesta. Esta separacion clara permite a Claude distinguir facilmente entre lo que debe hacer, con que datos, y como formatear su respuesta.",
+      "explanationEs": "El patron recomendado usa etiquetas XML semanticas para separar secciones: <instructions> para las directivas, <context> o <documents> para los datos de referencia, <input> para la entrada del usuario, y <output_format> para especificar la estructura esperada de la respuesta. Esta separacion clara permite a Claude distinguir facilmente entre lo que debe hacer, con que datos, y como formatear su respuesta.",
+      "options": [
+        { "id": "dlai-cu-006_a", "text": "Usar una unica etiqueta <prompt> que envuelva todo el contenido sin subdivisiones", "textEs": "Usar una unica etiqueta <prompt> que envuelva todo el contenido sin subdivisiones", "order": 1 },
+        { "id": "dlai-cu-006_b", "text": "Usar etiquetas HTML estandar como <div>, <p> y <span> para estructurar el prompt", "textEs": "Usar etiquetas HTML estandar como <div>, <p> y <span> para estructurar el prompt", "order": 2 },
+        { "id": "dlai-cu-006_c", "text": "Usar etiquetas XML semanticas separadas: <instructions> para directivas, <context> para datos, <input> para entrada del usuario, y <output_format> para el formato esperado", "textEs": "Usar etiquetas XML semanticas separadas: <instructions> para directivas, <context> para datos, <input> para entrada del usuario, y <output_format> para el formato esperado", "order": 3 },
+        { "id": "dlai-cu-006_d", "text": "Usar notacion JSON dentro del prompt en lugar de XML para mayor compatibilidad", "textEs": "Usar notacion JSON dentro del prompt en lugar de XML para mayor compatibilidad", "order": 4 }
+      ],
+      "tags": ["xml-pattern", "prompt-structure", "semantic-tags", "output-format"]
+    },
+    {
+      "id": "dlai-cu-007",
+      "text": "Que es el parametro 'tool_choice' en la API de Claude y como afecta el comportamiento de tool use?",
+      "textEs": "Que es el parametro 'tool_choice' en la API de Claude y como afecta el comportamiento de tool use?",
+      "domainCode": "computer-use",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-computer-use",
+      "correctOptionId": "dlai-cu-007_b",
+      "explanation": "El parametro tool_choice controla como Claude decide usar herramientas. 'auto' (por defecto) permite que Claude decida libremente; 'any' fuerza al modelo a usar al menos una herramienta; 'tool' con un nombre especifico fuerza el uso de esa herramienta particular. Esto es util cuando quieres garantizar la ejecucion de una herramienta o extraer datos estructurados obligatoriamente.",
+      "explanationEs": "El parametro tool_choice controla como Claude decide usar herramientas. 'auto' (por defecto) permite que Claude decida libremente; 'any' fuerza al modelo a usar al menos una herramienta; 'tool' con un nombre especifico fuerza el uso de esa herramienta particular. Esto es util cuando quieres garantizar la ejecucion de una herramienta o extraer datos estructurados obligatoriamente.",
+      "options": [
+        { "id": "dlai-cu-007_a", "text": "Especifica el orden en que Claude debe intentar usar las herramientas disponibles", "textEs": "Especifica el orden en que Claude debe intentar usar las herramientas disponibles", "order": 1 },
+        { "id": "dlai-cu-007_b", "text": "Controla si Claude decide libremente (auto), es forzado a usar alguna herramienta (any), o debe usar una herramienta especifica (tool)", "textEs": "Controla si Claude decide libremente (auto), es forzado a usar alguna herramienta (any), o debe usar una herramienta especifica (tool)", "order": 2 },
+        { "id": "dlai-cu-007_c", "text": "Define el numero maximo de herramientas que Claude puede usar en una sola respuesta", "textEs": "Define el numero maximo de herramientas que Claude puede usar en una sola respuesta", "order": 3 },
+        { "id": "dlai-cu-007_d", "text": "Establece un timeout para la ejecucion de cada herramienta", "textEs": "Establece un timeout para la ejecucion de cada herramienta", "order": 4 }
+      ],
+      "tags": ["tool-choice", "auto", "any", "forced-tool-use", "api-parameter"]
+    },
+    {
+      "id": "dlai-cu-008",
+      "text": "Que estrategia enseña Colt Steele para manejar errores cuando una herramienta falla durante el flujo de tool use?",
+      "textEs": "Que estrategia enseña Colt Steele para manejar errores cuando una herramienta falla durante el flujo de tool use?",
+      "domainCode": "computer-use",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-computer-use",
+      "correctOptionId": "dlai-cu-008_d",
+      "explanation": "Cuando una herramienta falla, se envia un bloque tool_result con is_error: true y un mensaje descriptivo del error. Claude recibe este error como contexto y puede decidir: reintentar con parametros corregidos, usar una herramienta alternativa, o informar al usuario sobre el problema. Este patron de manejo de errores es fundamental para construir chatbots robustos con herramientas.",
+      "explanationEs": "Cuando una herramienta falla, se envia un bloque tool_result con is_error: true y un mensaje descriptivo del error. Claude recibe este error como contexto y puede decidir: reintentar con parametros corregidos, usar una herramienta alternativa, o informar al usuario sobre el problema. Este patron de manejo de errores es fundamental para construir chatbots robustos con herramientas.",
+      "options": [
+        { "id": "dlai-cu-008_a", "text": "Terminar la conversacion inmediatamente y mostrar un codigo de error al usuario", "textEs": "Terminar la conversacion inmediatamente y mostrar un codigo de error al usuario", "order": 1 },
+        { "id": "dlai-cu-008_b", "text": "Ignorar el error silenciosamente y dejar que Claude continue sin el resultado de la herramienta", "textEs": "Ignorar el error silenciosamente y dejar que Claude continue sin el resultado de la herramienta", "order": 2 },
+        { "id": "dlai-cu-008_c", "text": "Reintentar automaticamente la misma llamada exacta tres veces antes de fallar", "textEs": "Reintentar automaticamente la misma llamada exacta tres veces antes de fallar", "order": 3 },
+        { "id": "dlai-cu-008_d", "text": "Enviar un tool_result con is_error: true y un mensaje descriptivo para que Claude decida si reintentar, usar alternativa, o informar al usuario", "textEs": "Enviar un tool_result con is_error: true y un mensaje descriptivo para que Claude decida si reintentar, usar alternativa, o informar al usuario", "order": 4 }
+      ],
+      "tags": ["error-handling", "tool-result", "is-error", "robustness", "colt-steele"]
+    }
+  ]
+}

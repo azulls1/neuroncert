@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "domain": "exampro-claude-code",
+    "domainName": "Claude Code Essentials",
+    "trackId": "exampro-claude-code",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 8,
+    "learningLevel": 3,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "ep-cc-001",
+      "text": "Segun el curso de Andrew Brown, cual es el comando correcto para iniciar Claude Code en modo interactivo dentro de un directorio de proyecto?",
+      "textEs": "Segun el curso de Andrew Brown, cual es el comando correcto para iniciar Claude Code en modo interactivo dentro de un directorio de proyecto?",
+      "domainCode": "exampro-claude-code",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "exampro-claude-code",
+      "correctOptionId": "ep-cc-001_a",
+      "explanation": "Para iniciar Claude Code en modo interactivo, se ejecuta el comando 'claude' en la terminal dentro del directorio del proyecto. Claude Code detecta automaticamente el contexto del proyecto (CLAUDE.md, .mcp.json, archivos de configuracion) y establece una sesion interactiva REPL donde puedes enviar prompts y recibir respuestas con acceso completo al sistema de archivos.",
+      "explanationEs": "Para iniciar Claude Code en modo interactivo, se ejecuta el comando 'claude' en la terminal dentro del directorio del proyecto. Claude Code detecta automaticamente el contexto del proyecto (CLAUDE.md, .mcp.json, archivos de configuracion) y establece una sesion interactiva REPL donde puedes enviar prompts y recibir respuestas con acceso completo al sistema de archivos.",
+      "options": [
+        { "id": "ep-cc-001_a", "text": "Ejecutar 'claude' en la terminal dentro del directorio del proyecto para iniciar la sesion interactiva REPL", "textEs": "Ejecutar 'claude' en la terminal dentro del directorio del proyecto para iniciar la sesion interactiva REPL", "order": 1 },
+        { "id": "ep-cc-001_b", "text": "Ejecutar 'claude-code start --interactive' con la ruta del proyecto como argumento", "textEs": "Ejecutar 'claude-code start --interactive' con la ruta del proyecto como argumento", "order": 2 },
+        { "id": "ep-cc-001_c", "text": "Abrir la aplicacion de escritorio Claude Code y seleccionar el proyecto desde el menu", "textEs": "Abrir la aplicacion de escritorio Claude Code y seleccionar el proyecto desde el menu", "order": 3 },
+        { "id": "ep-cc-001_d", "text": "Ejecutar 'npx @anthropic/claude-code init' para crear una nueva sesion", "textEs": "Ejecutar 'npx @anthropic/claude-code init' para crear una nueva sesion", "order": 4 }
+      ],
+      "tags": ["cli-usage", "interactive-mode", "andrew-brown", "getting-started"]
+    },
+    {
+      "id": "ep-cc-002",
+      "text": "Cual es la forma recomendada por Andrew Brown para instalar Claude Code globalmente?",
+      "textEs": "Cual es la forma recomendada por Andrew Brown para instalar Claude Code globalmente?",
+      "domainCode": "exampro-claude-code",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "exampro-claude-code",
+      "correctOptionId": "ep-cc-002_b",
+      "explanation": "Claude Code se instala globalmente usando npm con el comando 'npm install -g @anthropic-ai/claude-code'. Esto hace disponible el comando 'claude' en cualquier terminal. Se requiere Node.js version 18 o superior. Tras la instalacion, se debe autenticar con 'claude' que guia al usuario por el flujo de autenticacion con Anthropic.",
+      "explanationEs": "Claude Code se instala globalmente usando npm con el comando 'npm install -g @anthropic-ai/claude-code'. Esto hace disponible el comando 'claude' en cualquier terminal. Se requiere Node.js version 18 o superior. Tras la instalacion, se debe autenticar con 'claude' que guia al usuario por el flujo de autenticacion con Anthropic.",
+      "options": [
+        { "id": "ep-cc-002_a", "text": "Descargandolo como binario precompilado desde la pagina de releases en GitHub", "textEs": "Descargandolo como binario precompilado desde la pagina de releases en GitHub", "order": 1 },
+        { "id": "ep-cc-002_b", "text": "Ejecutando 'npm install -g @anthropic-ai/claude-code', lo que requiere Node.js 18 o superior", "textEs": "Ejecutando 'npm install -g @anthropic-ai/claude-code', lo que requiere Node.js 18 o superior", "order": 2 },
+        { "id": "ep-cc-002_c", "text": "Usando pip install claude-code desde el repositorio PyPI de Python", "textEs": "Usando pip install claude-code desde el repositorio PyPI de Python", "order": 3 },
+        { "id": "ep-cc-002_d", "text": "Instalandolo como extension de Visual Studio Code desde el marketplace", "textEs": "Instalandolo como extension de Visual Studio Code desde el marketplace", "order": 4 }
+      ],
+      "tags": ["installation", "npm", "setup", "andrew-brown"]
+    },
+    {
+      "id": "ep-cc-003",
+      "text": "Que explica Andrew Brown sobre el uso del modo headless (no interactivo) de Claude Code con el flag -p?",
+      "textEs": "Que explica Andrew Brown sobre el uso del modo headless (no interactivo) de Claude Code con el flag -p?",
+      "domainCode": "exampro-claude-code",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "exampro-claude-code",
+      "correctOptionId": "ep-cc-003_c",
+      "explanation": "El flag -p (o --prompt) ejecuta Claude Code en modo no interactivo: recibe un prompt como argumento, ejecuta la tarea, imprime el resultado y termina. Es ideal para automatizacion, scripts de CI/CD y pipelines. Tambien se puede combinar con --output-format json para obtener resultados estructurados. No abre una sesion REPL interactiva.",
+      "explanationEs": "El flag -p (o --prompt) ejecuta Claude Code en modo no interactivo: recibe un prompt como argumento, ejecuta la tarea, imprime el resultado y termina. Es ideal para automatizacion, scripts de CI/CD y pipelines. Tambien se puede combinar con --output-format json para obtener resultados estructurados. No abre una sesion REPL interactiva.",
+      "options": [
+        { "id": "ep-cc-003_a", "text": "El flag -p activa el modo de planificacion sin ejecutar acciones", "textEs": "El flag -p activa el modo de planificacion sin ejecutar acciones", "order": 1 },
+        { "id": "ep-cc-003_b", "text": "El flag -p conecta Claude Code a un servidor remoto para ejecucion distribuida", "textEs": "El flag -p conecta Claude Code a un servidor remoto para ejecucion distribuida", "order": 2 },
+        { "id": "ep-cc-003_c", "text": "El flag -p ejecuta un prompt unico en modo no interactivo, ideal para automatizacion y CI/CD, imprimiendo resultado y terminando", "textEs": "El flag -p ejecuta un prompt unico en modo no interactivo, ideal para automatizacion y CI/CD, imprimiendo resultado y terminando", "order": 3 },
+        { "id": "ep-cc-003_d", "text": "El flag -p habilita ejecucion con privilegios elevados de administrador", "textEs": "El flag -p habilita ejecucion con privilegios elevados de administrador", "order": 4 }
+      ],
+      "tags": ["headless-mode", "flag-p", "automation", "ci-cd", "non-interactive"]
+    },
+    {
+      "id": "ep-cc-004",
+      "text": "Como se estructura un flujo de trabajo tipico de Claude Code para implementar una nueva funcionalidad segun las mejores practicas del curso?",
+      "textEs": "Como se estructura un flujo de trabajo tipico de Claude Code para implementar una nueva funcionalidad segun las mejores practicas del curso?",
+      "domainCode": "exampro-claude-code",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "exampro-claude-code",
+      "correctOptionId": "ep-cc-004_d",
+      "explanation": "El flujo recomendado es: (1) crear una rama de feature, (2) describir la funcionalidad deseada a Claude Code con contexto claro, (3) dejar que Claude explore el codigo existente, proponga un plan y lo ejecute, (4) revisar los cambios generados usando git diff, (5) ejecutar tests para verificar que no hay regresiones, (6) iterar con feedback si es necesario, (7) hacer commit y abrir un PR.",
+      "explanationEs": "El flujo recomendado es: (1) crear una rama de feature, (2) describir la funcionalidad deseada a Claude Code con contexto claro, (3) dejar que Claude explore el codigo existente, proponga un plan y lo ejecute, (4) revisar los cambios generados usando git diff, (5) ejecutar tests para verificar que no hay regresiones, (6) iterar con feedback si es necesario, (7) hacer commit y abrir un PR.",
+      "options": [
+        { "id": "ep-cc-004_a", "text": "Escribir todo el codigo manualmente y usar Claude Code solo para generar tests automatizados", "textEs": "Escribir todo el codigo manualmente y usar Claude Code solo para generar tests automatizados", "order": 1 },
+        { "id": "ep-cc-004_b", "text": "Dejar que Claude Code tome todas las decisiones sin revision humana para maximizar velocidad", "textEs": "Dejar que Claude Code tome todas las decisiones sin revision humana para maximizar velocidad", "order": 2 },
+        { "id": "ep-cc-004_c", "text": "Usar Claude Code exclusivamente para escribir documentacion y comentarios en el codigo", "textEs": "Usar Claude Code exclusivamente para escribir documentacion y comentarios en el codigo", "order": 3 },
+        { "id": "ep-cc-004_d", "text": "Crear rama, describir funcionalidad con contexto, dejar que Claude explore y ejecute, revisar con git diff, ejecutar tests, iterar, y hacer commit", "textEs": "Crear rama, describir funcionalidad con contexto, dejar que Claude explore y ejecute, revisar con git diff, ejecutar tests, iterar, y hacer commit", "order": 4 }
+      ],
+      "tags": ["workflow", "feature-implementation", "best-practices", "code-review"]
+    },
+    {
+      "id": "ep-cc-005",
+      "text": "Que recomienda el curso de ExamPro sobre la configuracion inicial del proyecto para trabajar efectivamente con Claude Code?",
+      "textEs": "Que recomienda el curso de ExamPro sobre la configuracion inicial del proyecto para trabajar efectivamente con Claude Code?",
+      "domainCode": "exampro-claude-code",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "exampro-claude-code",
+      "correctOptionId": "ep-cc-005_a",
+      "explanation": "La configuracion inicial incluye: crear un archivo CLAUDE.md con convenciones del proyecto, comandos de build y test, y patrones de codigo; configurar .mcp.json si se necesitan herramientas externas; y establecer reglas en settings.json para permisos de herramientas. Un CLAUDE.md bien estructurado es la pieza mas importante porque actua como memoria del proyecto.",
+      "explanationEs": "La configuracion inicial incluye: crear un archivo CLAUDE.md con convenciones del proyecto, comandos de build y test, y patrones de codigo; configurar .mcp.json si se necesitan herramientas externas; y establecer reglas en settings.json para permisos de herramientas. Un CLAUDE.md bien estructurado es la pieza mas importante porque actua como memoria del proyecto.",
+      "options": [
+        { "id": "ep-cc-005_a", "text": "Crear CLAUDE.md con convenciones, comandos y patrones; configurar .mcp.json para herramientas externas; y establecer permisos en settings.json", "textEs": "Crear CLAUDE.md con convenciones, comandos y patrones; configurar .mcp.json para herramientas externas; y establecer permisos en settings.json", "order": 1 },
+        { "id": "ep-cc-005_b", "text": "Solo es necesario tener un archivo .env con la clave API de Anthropic en la raiz del proyecto", "textEs": "Solo es necesario tener un archivo .env con la clave API de Anthropic en la raiz del proyecto", "order": 2 },
+        { "id": "ep-cc-005_c", "text": "Instalar un plugin especifico para cada lenguaje de programacion que se use en el proyecto", "textEs": "Instalar un plugin especifico para cada lenguaje de programacion que se use en el proyecto", "order": 3 },
+        { "id": "ep-cc-005_d", "text": "Crear un archivo claude.config.yaml con la version del modelo y limites de tokens", "textEs": "Crear un archivo claude.config.yaml con la version del modelo y limites de tokens", "order": 4 }
+      ],
+      "tags": ["project-setup", "claude-md", "configuration", "initial-setup"]
+    },
+    {
+      "id": "ep-cc-006",
+      "text": "Cual es la diferencia entre los modos de permisos 'allowedTools' en la configuracion de Claude Code?",
+      "textEs": "Cual es la diferencia entre los modos de permisos 'allowedTools' en la configuracion de Claude Code?",
+      "domainCode": "exampro-claude-code",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "exampro-claude-code",
+      "correctOptionId": "ep-cc-006_b",
+      "explanation": "En settings.json, 'allowedTools' define una lista de herramientas que Claude puede usar sin pedir confirmacion al usuario. Las herramientas no listadas requieren aprobacion explicita en cada uso. Tambien existe 'deniedTools' que bloquea herramientas por completo. Los patrones soportan wildcards, por ejemplo 'mcp__*' permite todas las herramientas MCP sin confirmacion.",
+      "explanationEs": "En settings.json, 'allowedTools' define una lista de herramientas que Claude puede usar sin pedir confirmacion al usuario. Las herramientas no listadas requieren aprobacion explicita en cada uso. Tambien existe 'deniedTools' que bloquea herramientas por completo. Los patrones soportan wildcards, por ejemplo 'mcp__*' permite todas las herramientas MCP sin confirmacion.",
+      "options": [
+        { "id": "ep-cc-006_a", "text": "allowedTools lista herramientas premium que requieren licencia adicional para usarse", "textEs": "allowedTools lista herramientas premium que requieren licencia adicional para usarse", "order": 1 },
+        { "id": "ep-cc-006_b", "text": "allowedTools define herramientas que Claude puede usar sin confirmacion; las no listadas requieren aprobacion explicita; deniedTools bloquea herramientas completamente", "textEs": "allowedTools define herramientas que Claude puede usar sin confirmacion; las no listadas requieren aprobacion explicita; deniedTools bloquea herramientas completamente", "order": 2 },
+        { "id": "ep-cc-006_c", "text": "allowedTools y deniedTools son intercambiables y funcionan de la misma manera", "textEs": "allowedTools y deniedTools son intercambiables y funcionan de la misma manera", "order": 3 },
+        { "id": "ep-cc-006_d", "text": "allowedTools solo se aplica en modo headless; en modo interactivo todas las herramientas estan disponibles", "textEs": "allowedTools solo se aplica en modo headless; en modo interactivo todas las herramientas estan disponibles", "order": 4 }
+      ],
+      "tags": ["permissions", "allowed-tools", "denied-tools", "settings", "security"]
+    },
+    {
+      "id": "ep-cc-007",
+      "text": "Segun Andrew Brown, que ventaja ofrece el comando 'claude --continue' al trabajar con Claude Code?",
+      "textEs": "Segun Andrew Brown, que ventaja ofrece el comando 'claude --continue' al trabajar con Claude Code?",
+      "domainCode": "exampro-claude-code",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "exampro-claude-code",
+      "correctOptionId": "ep-cc-007_c",
+      "explanation": "El flag --continue (o -c) permite reanudar la sesion mas reciente de Claude Code, manteniendo todo el historial de mensajes y contexto previo. Esto es util cuando se cierra la terminal accidentalmente, cuando se necesita continuar un trabajo en progreso, o cuando se quiere iterar sobre cambios realizados en una sesion anterior sin perder el contexto acumulado.",
+      "explanationEs": "El flag --continue (o -c) permite reanudar la sesion mas reciente de Claude Code, manteniendo todo el historial de mensajes y contexto previo. Esto es util cuando se cierra la terminal accidentalmente, cuando se necesita continuar un trabajo en progreso, o cuando se quiere iterar sobre cambios realizados en una sesion anterior sin perder el contexto acumulado.",
+      "options": [
+        { "id": "ep-cc-007_a", "text": "Ejecuta el ultimo comando que fallo para reintentarlo automaticamente", "textEs": "Ejecuta el ultimo comando que fallo para reintentarlo automaticamente", "order": 1 },
+        { "id": "ep-cc-007_b", "text": "Continua un proceso de build o test que se interrumpio", "textEs": "Continua un proceso de build o test que se interrumpio", "order": 2 },
+        { "id": "ep-cc-007_c", "text": "Reanuda la sesion mas reciente manteniendo el historial completo de mensajes y contexto previo", "textEs": "Reanuda la sesion mas reciente manteniendo el historial completo de mensajes y contexto previo", "order": 3 },
+        { "id": "ep-cc-007_d", "text": "Sincroniza los cambios locales con un repositorio remoto", "textEs": "Sincroniza los cambios locales con un repositorio remoto", "order": 4 }
+      ],
+      "tags": ["continue-flag", "session-management", "context-preservation", "andrew-brown"]
+    },
+    {
+      "id": "ep-cc-008",
+      "text": "Que mejores practicas recomienda el curso para mantener la calidad del codigo generado por Claude Code?",
+      "textEs": "Que mejores practicas recomienda el curso para mantener la calidad del codigo generado por Claude Code?",
+      "domainCode": "exampro-claude-code",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "exampro-claude-code",
+      "correctOptionId": "ep-cc-008_d",
+      "explanation": "Las mejores practicas incluyen: siempre revisar los cambios con git diff antes de hacer commit; ejecutar tests despues de cada cambio significativo; usar linters y formatters configurados como hooks de pre-commit; incluir instrucciones de estilo en CLAUDE.md; y nunca confiar ciegamente en codigo generado, especialmente para logica de negocio critica, manejo de seguridad o operaciones destructivas.",
+      "explanationEs": "Las mejores practicas incluyen: siempre revisar los cambios con git diff antes de hacer commit; ejecutar tests despues de cada cambio significativo; usar linters y formatters configurados como hooks de pre-commit; incluir instrucciones de estilo en CLAUDE.md; y nunca confiar ciegamente en codigo generado, especialmente para logica de negocio critica, manejo de seguridad o operaciones destructivas.",
+      "options": [
+        { "id": "ep-cc-008_a", "text": "Usar exclusivamente el modelo mas grande y costoso para garantizar la mayor calidad posible", "textEs": "Usar exclusivamente el modelo mas grande y costoso para garantizar la mayor calidad posible", "order": 1 },
+        { "id": "ep-cc-008_b", "text": "Generar todo el codigo de una vez y revisarlo al final del proyecto completo", "textEs": "Generar todo el codigo de una vez y revisarlo al final del proyecto completo", "order": 2 },
+        { "id": "ep-cc-008_c", "text": "Confiar completamente en Claude Code ya que sus respuestas son siempre correctas y seguras", "textEs": "Confiar completamente en Claude Code ya que sus respuestas son siempre correctas y seguras", "order": 3 },
+        { "id": "ep-cc-008_d", "text": "Revisar cambios con git diff, ejecutar tests tras cada cambio, usar linters/hooks, definir estilo en CLAUDE.md, y nunca confiar ciegamente en codigo generado", "textEs": "Revisar cambios con git diff, ejecutar tests tras cada cambio, usar linters/hooks, definir estilo en CLAUDE.md, y nunca confiar ciegamente en codigo generado", "order": 4 }
+      ],
+      "tags": ["code-quality", "best-practices", "review", "testing", "linting"]
+    }
+  ]
+}

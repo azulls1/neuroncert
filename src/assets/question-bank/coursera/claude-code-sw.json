@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "claude-code-sw",
+    "domainName": "Claude Code: Software Engineering with AI Agents",
+    "trackId": "claude-code-sw",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "CCSW-001",
+      "text": "What is the primary benefit of using parallel Claude Code agents when working on a large codebase?",
+      "textEs": "¿Cuál es el beneficio principal de usar agentes paralelos de Claude Code al trabajar en un código base grande?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-001_b",
+      "explanation": "Parallel Claude Code agents allow you to work on multiple independent tasks simultaneously — for example, one agent writes tests while another refactors a module and a third updates documentation. Each agent operates in its own worktree or branch, avoiding merge conflicts and dramatically reducing total wall-clock time for multi-file changes.",
+      "explanationEs": "Los agentes paralelos de Claude Code permiten trabajar en múltiples tareas independientes simultáneamente — por ejemplo, un agente escribe pruebas mientras otro refactoriza un módulo y un tercero actualiza la documentación. Cada agente opera en su propio worktree o rama, evitando conflictos de merge y reduciendo drásticamente el tiempo total para cambios en múltiples archivos.",
+      "options": [
+        { "id": "CCSW-001_a", "text": "They share a single context window, allowing unlimited file access", "textEs": "Comparten una sola ventana de contexto, permitiendo acceso ilimitado a archivos", "order": 1 },
+        { "id": "CCSW-001_b", "text": "They can tackle independent tasks concurrently across separate worktrees, reducing total development time", "textEs": "Pueden abordar tareas independientes concurrentemente en worktrees separados, reduciendo el tiempo total de desarrollo", "order": 2 },
+        { "id": "CCSW-001_c", "text": "They automatically resolve merge conflicts between branches", "textEs": "Resuelven automáticamente los conflictos de merge entre ramas", "order": 3 },
+        { "id": "CCSW-001_d", "text": "They replace the need for CI/CD pipelines entirely", "textEs": "Reemplazan por completo la necesidad de pipelines de CI/CD", "order": 4 }
+      ],
+      "tags": ["parallel-agents", "worktrees", "concurrency", "productivity"]
+    },
+    {
+      "id": "CCSW-002",
+      "text": "When using Claude Code for git branch management, what is the recommended workflow for implementing a new feature?",
+      "textEs": "Al usar Claude Code para gestión de ramas git, ¿cuál es el flujo de trabajo recomendado para implementar una nueva funcionalidad?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-002_c",
+      "explanation": "The recommended workflow is to have Claude Code create a feature branch from the main branch, implement the changes there, run tests, and then create a pull request. This keeps the main branch clean and allows for proper code review before merging. Claude Code can handle all these git operations through natural language instructions.",
+      "explanationEs": "El flujo de trabajo recomendado es que Claude Code cree una rama de funcionalidad desde la rama principal, implemente los cambios allí, ejecute las pruebas y luego cree un pull request. Esto mantiene la rama principal limpia y permite una revisión de código adecuada antes de fusionar. Claude Code puede manejar todas estas operaciones git mediante instrucciones en lenguaje natural.",
+      "options": [
+        { "id": "CCSW-002_a", "text": "Commit directly to the main branch and push immediately", "textEs": "Hacer commit directamente en la rama principal y push inmediatamente", "order": 1 },
+        { "id": "CCSW-002_b", "text": "Use git stash to save changes and apply them later", "textEs": "Usar git stash para guardar cambios y aplicarlos después", "order": 2 },
+        { "id": "CCSW-002_c", "text": "Create a feature branch, implement changes, run tests, and open a pull request for review", "textEs": "Crear una rama de funcionalidad, implementar cambios, ejecutar pruebas y abrir un pull request para revisión", "order": 3 },
+        { "id": "CCSW-002_d", "text": "Fork the repository, make changes in the fork, and submit a patch file", "textEs": "Hacer fork del repositorio, realizar cambios en el fork y enviar un archivo de parche", "order": 4 }
+      ],
+      "tags": ["git", "branch-management", "feature-branch", "pull-request"]
+    },
+    {
+      "id": "CCSW-003",
+      "text": "How does Claude Code automate code review when integrated with GitHub pull requests?",
+      "textEs": "¿Cómo automatiza Claude Code la revisión de código cuando está integrado con pull requests de GitHub?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-003_a",
+      "explanation": "Claude Code can be configured as a GitHub Action (via claude-code-action) that automatically reviews pull requests. It analyzes the diff, identifies potential bugs, suggests improvements, checks for style consistency, and posts inline review comments. It can also be triggered by @mentioning it in PR comments to ask specific questions about the changes.",
+      "explanationEs": "Claude Code puede configurarse como una GitHub Action (a través de claude-code-action) que revisa pull requests automáticamente. Analiza el diff, identifica posibles bugs, sugiere mejoras, verifica la consistencia de estilo y publica comentarios de revisión en línea. También puede activarse mencionándolo con @ en comentarios de PR para hacer preguntas específicas sobre los cambios.",
+      "options": [
+        { "id": "CCSW-003_a", "text": "It runs as a GitHub Action that analyzes diffs, identifies bugs, suggests improvements, and posts inline review comments", "textEs": "Se ejecuta como una GitHub Action que analiza diffs, identifica bugs, sugiere mejoras y publica comentarios de revisión en línea", "order": 1 },
+        { "id": "CCSW-003_b", "text": "It automatically merges all pull requests that pass linting checks", "textEs": "Fusiona automáticamente todos los pull requests que pasen las verificaciones de linting", "order": 2 },
+        { "id": "CCSW-003_c", "text": "It replaces human reviewers entirely and approves PRs without human oversight", "textEs": "Reemplaza completamente a los revisores humanos y aprueba PRs sin supervisión humana", "order": 3 },
+        { "id": "CCSW-003_d", "text": "It only checks for syntax errors and does not provide semantic analysis", "textEs": "Solo verifica errores de sintaxis y no proporciona análisis semántico", "order": 4 }
+      ],
+      "tags": ["code-review", "github-actions", "pull-request", "automation"]
+    },
+    {
+      "id": "CCSW-004",
+      "text": "What is the purpose of the CLAUDE.md file in a project using Claude Code?",
+      "textEs": "¿Cuál es el propósito del archivo CLAUDE.md en un proyecto que usa Claude Code?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-004_d",
+      "explanation": "The CLAUDE.md file serves as a project-level memory and instruction set for Claude Code. It contains project conventions, architecture decisions, coding standards, common commands, and any context that Claude should know about the codebase. Claude Code reads this file automatically at the start of each session, ensuring consistent behavior aligned with the team's practices.",
+      "explanationEs": "El archivo CLAUDE.md sirve como memoria e instrucciones a nivel de proyecto para Claude Code. Contiene convenciones del proyecto, decisiones de arquitectura, estándares de código, comandos comunes y cualquier contexto que Claude deba conocer sobre el código base. Claude Code lee este archivo automáticamente al inicio de cada sesión, asegurando un comportamiento consistente alineado con las prácticas del equipo.",
+      "options": [
+        { "id": "CCSW-004_a", "text": "It is the main entry point for the application and must contain valid JavaScript", "textEs": "Es el punto de entrada principal de la aplicación y debe contener JavaScript válido", "order": 1 },
+        { "id": "CCSW-004_b", "text": "It stores API keys and authentication tokens for Claude Code", "textEs": "Almacena claves API y tokens de autenticación para Claude Code", "order": 2 },
+        { "id": "CCSW-004_c", "text": "It is a changelog that Claude Code auto-generates after each session", "textEs": "Es un registro de cambios que Claude Code genera automáticamente después de cada sesión", "order": 3 },
+        { "id": "CCSW-004_d", "text": "It provides project conventions, architecture context, and instructions that Claude Code reads automatically each session", "textEs": "Proporciona convenciones del proyecto, contexto de arquitectura e instrucciones que Claude Code lee automáticamente en cada sesión", "order": 4 }
+      ],
+      "tags": ["CLAUDE.md", "project-memory", "conventions", "configuration"]
+    },
+    {
+      "id": "CCSW-005",
+      "text": "When asking Claude Code to generate tests, which approach yields the highest quality test suite?",
+      "textEs": "Al pedir a Claude Code que genere pruebas, ¿qué enfoque produce la suite de pruebas de mayor calidad?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-005_b",
+      "explanation": "The best approach is to point Claude Code to the source file, specify the testing framework, and ask it to cover both happy paths and edge cases including error handling. Providing examples of existing tests in the project helps Claude match the team's testing style. Simply asking for 'some tests' without context leads to superficial coverage that misses important edge cases and error scenarios.",
+      "explanationEs": "El mejor enfoque es señalar a Claude Code el archivo fuente, especificar el framework de testing y pedir que cubra tanto los caminos felices como los casos límite incluyendo manejo de errores. Proporcionar ejemplos de pruebas existentes en el proyecto ayuda a Claude a coincidir con el estilo de testing del equipo. Simplemente pedir 'algunas pruebas' sin contexto lleva a una cobertura superficial que omite casos límite y escenarios de error importantes.",
+      "options": [
+        { "id": "CCSW-005_a", "text": "Ask Claude Code to 'write some tests' without additional context and let it decide everything", "textEs": "Pedir a Claude Code que 'escriba algunas pruebas' sin contexto adicional y dejar que decida todo", "order": 1 },
+        { "id": "CCSW-005_b", "text": "Point to the source file, specify the testing framework, request happy path and edge case coverage, and reference existing test examples", "textEs": "Señalar el archivo fuente, especificar el framework de testing, solicitar cobertura de camino feliz y casos límite, y referenciar ejemplos de pruebas existentes", "order": 2 },
+        { "id": "CCSW-005_c", "text": "Only ask for unit tests and avoid integration tests, since Claude Code cannot handle multi-file testing", "textEs": "Solo pedir pruebas unitarias y evitar pruebas de integración, ya que Claude Code no puede manejar pruebas multi-archivo", "order": 3 },
+        { "id": "CCSW-005_d", "text": "Generate tests in a separate repository to avoid polluting the main codebase", "textEs": "Generar pruebas en un repositorio separado para evitar contaminar el código base principal", "order": 4 }
+      ],
+      "tags": ["test-generation", "testing", "best-practices", "edge-cases"]
+    },
+    {
+      "id": "CCSW-006",
+      "text": "What is the safest way to use Claude Code for large-scale refactoring across multiple files?",
+      "textEs": "¿Cuál es la forma más segura de usar Claude Code para refactorización a gran escala en múltiples archivos?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-006_c",
+      "explanation": "For large-scale refactoring, the safest approach is to work on a dedicated branch, make incremental changes with frequent commits, and run the existing test suite after each step. This allows you to review each change, verify nothing breaks, and easily revert specific commits if needed. Claude Code's ability to run tests between changes provides a safety net against regressions.",
+      "explanationEs": "Para refactorización a gran escala, el enfoque más seguro es trabajar en una rama dedicada, hacer cambios incrementales con commits frecuentes y ejecutar la suite de pruebas existente después de cada paso. Esto permite revisar cada cambio, verificar que nada se rompe y revertir commits específicos fácilmente si es necesario. La capacidad de Claude Code de ejecutar pruebas entre cambios proporciona una red de seguridad contra regresiones.",
+      "options": [
+        { "id": "CCSW-006_a", "text": "Apply all changes at once in a single commit to minimize the number of review steps", "textEs": "Aplicar todos los cambios de una vez en un solo commit para minimizar los pasos de revisión", "order": 1 },
+        { "id": "CCSW-006_b", "text": "Refactor directly on the main branch so changes are immediately available to the team", "textEs": "Refactorizar directamente en la rama principal para que los cambios estén disponibles inmediatamente para el equipo", "order": 2 },
+        { "id": "CCSW-006_c", "text": "Work on a dedicated branch, make incremental commits, and run the test suite after each change step", "textEs": "Trabajar en una rama dedicada, hacer commits incrementales y ejecutar la suite de pruebas después de cada paso de cambio", "order": 3 },
+        { "id": "CCSW-006_d", "text": "Disable all linting and type-checking during refactoring to speed up the process", "textEs": "Deshabilitar todo el linting y verificación de tipos durante la refactorización para acelerar el proceso", "order": 4 }
+      ],
+      "tags": ["refactoring", "safety", "incremental-changes", "testing"]
+    },
+    {
+      "id": "CCSW-007",
+      "text": "How do Claude Code hooks work, and what is a common use case?",
+      "textEs": "¿Cómo funcionan los hooks de Claude Code y cuál es un caso de uso común?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-007_a",
+      "explanation": "Claude Code hooks are user-defined shell commands configured in settings.json that execute automatically at specific lifecycle points — such as before/after a tool call or at session start. A common use case is running a linter or formatter automatically after Claude Code edits a file, ensuring all generated code adheres to the project's style guide without manual intervention.",
+      "explanationEs": "Los hooks de Claude Code son comandos de shell definidos por el usuario y configurados en settings.json que se ejecutan automáticamente en puntos específicos del ciclo de vida — como antes/después de una llamada a herramienta o al inicio de la sesión. Un caso de uso común es ejecutar un linter o formateador automáticamente después de que Claude Code edite un archivo, asegurando que todo el código generado cumpla con la guía de estilo del proyecto sin intervención manual.",
+      "options": [
+        { "id": "CCSW-007_a", "text": "Shell commands in settings.json that auto-run at lifecycle points, e.g., running a linter after each file edit", "textEs": "Comandos de shell en settings.json que se ejecutan automáticamente en puntos del ciclo de vida, ej., ejecutar un linter después de cada edición de archivo", "order": 1 },
+        { "id": "CCSW-007_b", "text": "Git hooks that Claude Code installs in the .git/hooks directory to prevent bad commits", "textEs": "Git hooks que Claude Code instala en el directorio .git/hooks para prevenir commits incorrectos", "order": 2 },
+        { "id": "CCSW-007_c", "text": "Webhook endpoints that notify external services when Claude Code completes a task", "textEs": "Endpoints de webhook que notifican a servicios externos cuando Claude Code completa una tarea", "order": 3 },
+        { "id": "CCSW-007_d", "text": "Pre-built plugins that extend Claude Code's language support beyond JavaScript and Python", "textEs": "Plugins pre-construidos que extienden el soporte de lenguajes de Claude Code más allá de JavaScript y Python", "order": 4 }
+      ],
+      "tags": ["hooks", "settings", "automation", "lifecycle"]
+    },
+    {
+      "id": "CCSW-008",
+      "text": "What permission model does Claude Code use when executing terminal commands?",
+      "textEs": "¿Qué modelo de permisos usa Claude Code al ejecutar comandos de terminal?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-008_b",
+      "explanation": "Claude Code requires explicit user approval before running terminal commands and file modifications. It presents the proposed action and waits for confirmation. Users can configure an allowlist of safe commands that can execute without prompting, but destructive operations (like git push --force or rm -rf) always require approval. This human-in-the-loop design prevents unintended side effects.",
+      "explanationEs": "Claude Code requiere aprobación explícita del usuario antes de ejecutar comandos de terminal y modificaciones de archivos. Presenta la acción propuesta y espera confirmación. Los usuarios pueden configurar una lista de comandos seguros que se ejecutan sin pedir confirmación, pero las operaciones destructivas (como git push --force o rm -rf) siempre requieren aprobación. Este diseño de humano en el ciclo previene efectos secundarios no deseados.",
+      "options": [
+        { "id": "CCSW-008_a", "text": "It runs all commands automatically without any user interaction required", "textEs": "Ejecuta todos los comandos automáticamente sin requerir interacción del usuario", "order": 1 },
+        { "id": "CCSW-008_b", "text": "It asks for user approval before running commands, with an allowlist for safe operations that can skip the prompt", "textEs": "Pide aprobación del usuario antes de ejecutar comandos, con una lista de operaciones seguras que pueden omitir la confirmación", "order": 2 },
+        { "id": "CCSW-008_c", "text": "It only executes commands inside a Docker container and never touches the host system", "textEs": "Solo ejecuta comandos dentro de un contenedor Docker y nunca toca el sistema host", "order": 3 },
+        { "id": "CCSW-008_d", "text": "It requires root/administrator privileges to run any command", "textEs": "Requiere privilegios de root/administrador para ejecutar cualquier comando", "order": 4 }
+      ],
+      "tags": ["permissions", "security", "human-in-the-loop", "terminal"]
+    },
+    {
+      "id": "CCSW-009",
+      "text": "Which strategy should you use when Claude Code needs to understand a large, unfamiliar codebase before making changes?",
+      "textEs": "¿Qué estrategia deberías usar cuando Claude Code necesita comprender un código base grande y desconocido antes de hacer cambios?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-009_d",
+      "explanation": "The best strategy is to first ask Claude Code to explore the project structure, read key files like README, configuration files, and entry points, and then use search tools (Grep, Glob) to find relevant code patterns. Starting with a broad exploration and narrowing down is more effective than immediately diving into editing. The CLAUDE.md file, if present, accelerates this onboarding process significantly.",
+      "explanationEs": "La mejor estrategia es primero pedir a Claude Code que explore la estructura del proyecto, lea archivos clave como README, archivos de configuración y puntos de entrada, y luego use herramientas de búsqueda (Grep, Glob) para encontrar patrones de código relevantes. Comenzar con una exploración amplia y luego reducir el alcance es más efectivo que editar directamente. El archivo CLAUDE.md, si existe, acelera significativamente este proceso de incorporación.",
+      "options": [
+        { "id": "CCSW-009_a", "text": "Start editing files immediately and fix errors as they appear during compilation", "textEs": "Comenzar a editar archivos inmediatamente y corregir errores conforme aparezcan durante la compilación", "order": 1 },
+        { "id": "CCSW-009_b", "text": "Read every single file in the repository sequentially from top to bottom", "textEs": "Leer cada archivo del repositorio secuencialmente de arriba a abajo", "order": 2 },
+        { "id": "CCSW-009_c", "text": "Only read the package.json or equivalent manifest file and infer everything else", "textEs": "Solo leer el package.json o archivo de manifiesto equivalente e inferir todo lo demás", "order": 3 },
+        { "id": "CCSW-009_d", "text": "Explore the project structure, read key files (README, config, entry points), and use search tools to find relevant patterns", "textEs": "Explorar la estructura del proyecto, leer archivos clave (README, config, puntos de entrada) y usar herramientas de búsqueda para encontrar patrones relevantes", "order": 4 }
+      ],
+      "tags": ["codebase-exploration", "onboarding", "search-tools", "strategy"]
+    },
+    {
+      "id": "CCSW-010",
+      "text": "What is the recommended way to use Claude Code for full-stack development involving both frontend and backend changes?",
+      "textEs": "¿Cuál es la forma recomendada de usar Claude Code para desarrollo full-stack que involucre cambios tanto en frontend como en backend?",
+      "domainCode": "claude-code-sw",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "claude-code-sw",
+      "correctOptionId": "CCSW-010_a",
+      "explanation": "For full-stack changes, the recommended approach is to describe the complete feature requirement and let Claude Code coordinate changes across frontend and backend, ensuring API contracts are consistent. Claude Code can modify server routes, database schemas, API types, and UI components in the same session, running relevant tests for each layer. Alternatively, parallel agents can handle frontend and backend independently when the API contract is already defined.",
+      "explanationEs": "Para cambios full-stack, el enfoque recomendado es describir el requisito completo de la funcionalidad y dejar que Claude Code coordine cambios entre frontend y backend, asegurando que los contratos de API sean consistentes. Claude Code puede modificar rutas del servidor, esquemas de base de datos, tipos de API y componentes de UI en la misma sesión, ejecutando pruebas relevantes para cada capa. Alternativamente, agentes paralelos pueden manejar frontend y backend independientemente cuando el contrato de API ya está definido.",
+      "options": [
+        { "id": "CCSW-010_a", "text": "Describe the full feature requirement and let Claude Code coordinate consistent changes across all layers, or use parallel agents when the API contract is defined", "textEs": "Describir el requisito completo de la funcionalidad y dejar que Claude Code coordine cambios consistentes en todas las capas, o usar agentes paralelos cuando el contrato de API esté definido", "order": 1 },
+        { "id": "CCSW-010_b", "text": "Always handle frontend and backend in completely separate Claude Code sessions with no shared context", "textEs": "Siempre manejar frontend y backend en sesiones de Claude Code completamente separadas sin contexto compartido", "order": 2 },
+        { "id": "CCSW-010_c", "text": "Only use Claude Code for backend changes; frontend should always be done manually", "textEs": "Solo usar Claude Code para cambios de backend; el frontend siempre debe hacerse manualmente", "order": 3 },
+        { "id": "CCSW-010_d", "text": "Finish and deploy all backend changes first, then start a new session for frontend changes", "textEs": "Terminar y desplegar todos los cambios de backend primero, luego iniciar una nueva sesión para cambios de frontend", "order": 4 }
+      ],
+      "tags": ["full-stack", "frontend", "backend", "coordination", "parallel-agents"]
+    }
+  ]
+}

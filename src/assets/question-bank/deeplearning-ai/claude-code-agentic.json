@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "domain": "claude-code-agentic",
+    "domainName": "Claude Code: Agentic Coding Assistant",
+    "trackId": "dlai-claude-code",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 8,
+    "learningLevel": 3,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "dlai-cca-001",
+      "text": "Segun las mejores practicas de codificacion agentica ensenadas por Elie Schoppik, cual es la ventaja principal de usar Git worktrees con Claude Code?",
+      "textEs": "Segun las mejores practicas de codificacion agentica ensenadas por Elie Schoppik, cual es la ventaja principal de usar Git worktrees con Claude Code?",
+      "domainCode": "claude-code-agentic",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-claude-code",
+      "correctOptionId": "dlai-cca-001_b",
+      "explanation": "Los Git worktrees permiten tener multiples copias de trabajo del mismo repositorio sin necesidad de clonar. Esto habilita ejecutar varias instancias de Claude Code en paralelo, cada una trabajando en una rama diferente sin conflictos de archivos. Elie Schoppik destaca esto como un patron clave para maximizar la productividad agentica.",
+      "explanationEs": "Los Git worktrees permiten tener multiples copias de trabajo del mismo repositorio sin necesidad de clonar. Esto habilita ejecutar varias instancias de Claude Code en paralelo, cada una trabajando en una rama diferente sin conflictos de archivos. Elie Schoppik destaca esto como un patron clave para maximizar la productividad agentica.",
+      "options": [
+        { "id": "dlai-cca-001_a", "text": "Permiten hacer commits mas rapidos al reducir el tamano del indice de Git", "textEs": "Permiten hacer commits mas rapidos al reducir el tamano del indice de Git", "order": 1 },
+        { "id": "dlai-cca-001_b", "text": "Permiten trabajar en multiples ramas simultaneamente, habilitando varias instancias de Claude Code en paralelo sin conflictos de archivos", "textEs": "Permiten trabajar en multiples ramas simultaneamente, habilitando varias instancias de Claude Code en paralelo sin conflictos de archivos", "order": 2 },
+        { "id": "dlai-cca-001_c", "text": "Reemplazan completamente la necesidad de usar ramas en Git", "textEs": "Reemplazan completamente la necesidad de usar ramas en Git", "order": 3 },
+        { "id": "dlai-cca-001_d", "text": "Son necesarios para que Claude Code pueda acceder al historial de commits del repositorio", "textEs": "Son necesarios para que Claude Code pueda acceder al historial de commits del repositorio", "order": 4 }
+      ],
+      "tags": ["git-worktrees", "parallel-workflows", "elie-schoppik", "best-practices"]
+    },
+    {
+      "id": "dlai-cca-002",
+      "text": "En el contexto de Claude Code, que son los servidores MCP y como extienden las capacidades del agente?",
+      "textEs": "En el contexto de Claude Code, que son los servidores MCP y como extienden las capacidades del agente?",
+      "domainCode": "claude-code-agentic",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-claude-code",
+      "correctOptionId": "dlai-cca-002_a",
+      "explanation": "Los servidores MCP (Model Context Protocol) son procesos que exponen herramientas, recursos y prompts estandarizados que Claude Code puede usar. Se configuran en .mcp.json (nivel proyecto) o ~/.claude/mcp.json (nivel usuario). Permiten que Claude interactue con sistemas externos como bases de datos, APIs y servicios en la nube mediante una interfaz unificada.",
+      "explanationEs": "Los servidores MCP (Model Context Protocol) son procesos que exponen herramientas, recursos y prompts estandarizados que Claude Code puede usar. Se configuran en .mcp.json (nivel proyecto) o ~/.claude/mcp.json (nivel usuario). Permiten que Claude interactue con sistemas externos como bases de datos, APIs y servicios en la nube mediante una interfaz unificada.",
+      "options": [
+        { "id": "dlai-cca-002_a", "text": "Son procesos que exponen herramientas, recursos y prompts estandarizados que Claude puede invocar, configurados en archivos .mcp.json", "textEs": "Son procesos que exponen herramientas, recursos y prompts estandarizados que Claude puede invocar, configurados en archivos .mcp.json", "order": 1 },
+        { "id": "dlai-cca-002_b", "text": "Son modelos de lenguaje auxiliares que Claude Code usa para validar sus respuestas", "textEs": "Son modelos de lenguaje auxiliares que Claude Code usa para validar sus respuestas", "order": 2 },
+        { "id": "dlai-cca-002_c", "text": "Son servidores web que hospedan la interfaz grafica de Claude Code en el navegador", "textEs": "Son servidores web que hospedan la interfaz grafica de Claude Code en el navegador", "order": 3 },
+        { "id": "dlai-cca-002_d", "text": "Son servicios de cache que almacenan respuestas previas para reducir el consumo de tokens", "textEs": "Son servicios de cache que almacenan respuestas previas para reducir el consumo de tokens", "order": 4 }
+      ],
+      "tags": ["mcp-servers", "model-context-protocol", "extensibility", "configuration"]
+    },
+    {
+      "id": "dlai-cca-003",
+      "text": "Cual es la mejor practica para ejecutar multiples tareas en paralelo con Claude Code segun el curso de DeepLearning.AI?",
+      "textEs": "Cual es la mejor practica para ejecutar multiples tareas en paralelo con Claude Code segun el curso de DeepLearning.AI?",
+      "domainCode": "claude-code-agentic",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-claude-code",
+      "correctOptionId": "dlai-cca-003_c",
+      "explanation": "La estrategia recomendada combina Git worktrees con multiples instancias de Claude Code. Se crea un worktree por tarea (cada uno en su propia rama), se lanza una instancia de Claude Code en cada worktree, y cada instancia trabaja de forma independiente sin conflictos de archivos. Las herramientas paralelas dentro de una misma sesion tambien se pueden usar para operaciones de lectura simultaneas.",
+      "explanationEs": "La estrategia recomendada combina Git worktrees con multiples instancias de Claude Code. Se crea un worktree por tarea (cada uno en su propia rama), se lanza una instancia de Claude Code en cada worktree, y cada instancia trabaja de forma independiente sin conflictos de archivos. Las herramientas paralelas dentro de una misma sesion tambien se pueden usar para operaciones de lectura simultaneas.",
+      "options": [
+        { "id": "dlai-cca-003_a", "text": "Usar un unico prompt largo que describa todas las tareas simultaneamente", "textEs": "Usar un unico prompt largo que describa todas las tareas simultaneamente", "order": 1 },
+        { "id": "dlai-cca-003_b", "text": "Configurar un servidor MCP que distribuya las tareas entre multiples modelos", "textEs": "Configurar un servidor MCP que distribuya las tareas entre multiples modelos", "order": 2 },
+        { "id": "dlai-cca-003_c", "text": "Crear un Git worktree por tarea en ramas separadas y lanzar una instancia de Claude Code en cada worktree", "textEs": "Crear un Git worktree por tarea en ramas separadas y lanzar una instancia de Claude Code en cada worktree", "order": 3 },
+        { "id": "dlai-cca-003_d", "text": "Activar el modo batch en la API para procesar todas las solicitudes en una sola llamada", "textEs": "Activar el modo batch en la API para procesar todas las solicitudes en una sola llamada", "order": 4 }
+      ],
+      "tags": ["parallel-tools", "git-worktrees", "multi-instance", "productivity"]
+    },
+    {
+      "id": "dlai-cca-004",
+      "text": "Que papel juega el archivo CLAUDE.md en un flujo de trabajo agentico con Claude Code?",
+      "textEs": "Que papel juega el archivo CLAUDE.md en un flujo de trabajo agentico con Claude Code?",
+      "domainCode": "claude-code-agentic",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-claude-code",
+      "correctOptionId": "dlai-cca-004_d",
+      "explanation": "CLAUDE.md actua como memoria persistente del proyecto para Claude Code. Contiene instrucciones, convenciones de codigo, comandos de build/test, y contexto que Claude carga automaticamente al iniciar. Es el equivalente a un system prompt especifico del proyecto que garantiza consistencia entre sesiones y entre diferentes desarrolladores del equipo.",
+      "explanationEs": "CLAUDE.md actua como memoria persistente del proyecto para Claude Code. Contiene instrucciones, convenciones de codigo, comandos de build/test, y contexto que Claude carga automaticamente al iniciar. Es el equivalente a un system prompt especifico del proyecto que garantiza consistencia entre sesiones y entre diferentes desarrolladores del equipo.",
+      "options": [
+        { "id": "dlai-cca-004_a", "text": "Es un archivo de configuracion que define los limites de tokens por sesion", "textEs": "Es un archivo de configuracion que define los limites de tokens por sesion", "order": 1 },
+        { "id": "dlai-cca-004_b", "text": "Es un log automatico de todas las acciones realizadas por Claude Code", "textEs": "Es un log automatico de todas las acciones realizadas por Claude Code", "order": 2 },
+        { "id": "dlai-cca-004_c", "text": "Es un archivo opcional que solo se usa para documentar el proyecto ante usuarios externos", "textEs": "Es un archivo opcional que solo se usa para documentar el proyecto ante usuarios externos", "order": 3 },
+        { "id": "dlai-cca-004_d", "text": "Es memoria persistente del proyecto que contiene instrucciones, convenciones y contexto que Claude carga automaticamente al iniciar", "textEs": "Es memoria persistente del proyecto que contiene instrucciones, convenciones y contexto que Claude carga automaticamente al iniciar", "order": 4 }
+      ],
+      "tags": ["claude-md", "project-memory", "best-practices", "configuration"]
+    },
+    {
+      "id": "dlai-cca-005",
+      "text": "Segun Elie Schoppik, cual es el enfoque recomendado para dar instrucciones efectivas a Claude Code?",
+      "textEs": "Segun Elie Schoppik, cual es el enfoque recomendado para dar instrucciones efectivas a Claude Code?",
+      "domainCode": "claude-code-agentic",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-claude-code",
+      "correctOptionId": "dlai-cca-005_b",
+      "explanation": "El enfoque recomendado es ser especifico y proporcionar contexto claro, similar a como delegarias una tarea a un desarrollador junior competente. Esto incluye indicar que archivos modificar, que patrones seguir, que tests ejecutar, y que criterios de exito aplicar. Las instrucciones vagas producen resultados impredecibles en flujos agenticos.",
+      "explanationEs": "El enfoque recomendado es ser especifico y proporcionar contexto claro, similar a como delegarias una tarea a un desarrollador junior competente. Esto incluye indicar que archivos modificar, que patrones seguir, que tests ejecutar, y que criterios de exito aplicar. Las instrucciones vagas producen resultados impredecibles en flujos agenticos.",
+      "options": [
+        { "id": "dlai-cca-005_a", "text": "Dar instrucciones minimas para que el agente tenga libertad creativa total", "textEs": "Dar instrucciones minimas para que el agente tenga libertad creativa total", "order": 1 },
+        { "id": "dlai-cca-005_b", "text": "Ser especifico proporcionando contexto claro: archivos a modificar, patrones a seguir, tests a ejecutar y criterios de exito", "textEs": "Ser especifico proporcionando contexto claro: archivos a modificar, patrones a seguir, tests a ejecutar y criterios de exito", "order": 2 },
+        { "id": "dlai-cca-005_c", "text": "Escribir pseudocodigo completo para que Claude solo lo traduzca al lenguaje destino", "textEs": "Escribir pseudocodigo completo para que Claude solo lo traduzca al lenguaje destino", "order": 3 },
+        { "id": "dlai-cca-005_d", "text": "Limitar las instrucciones a una sola linea para evitar confundir al modelo", "textEs": "Limitar las instrucciones a una sola linea para evitar confundir al modelo", "order": 4 }
+      ],
+      "tags": ["effective-instructions", "elie-schoppik", "prompting", "agentic-coding"]
+    },
+    {
+      "id": "dlai-cca-006",
+      "text": "Como se configuran los servidores MCP a nivel de proyecto en Claude Code?",
+      "textEs": "Como se configuran los servidores MCP a nivel de proyecto en Claude Code?",
+      "domainCode": "claude-code-agentic",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-claude-code",
+      "correctOptionId": "dlai-cca-006_a",
+      "explanation": "Los servidores MCP a nivel de proyecto se configuran en un archivo .mcp.json en la raiz del repositorio. Este archivo define un objeto 'mcpServers' donde cada clave es el nombre del servidor y el valor especifica el comando, argumentos y variables de entorno necesarios para iniciarlo. Claude Code los inicia automaticamente al abrir el proyecto.",
+      "explanationEs": "Los servidores MCP a nivel de proyecto se configuran en un archivo .mcp.json en la raiz del repositorio. Este archivo define un objeto 'mcpServers' donde cada clave es el nombre del servidor y el valor especifica el comando, argumentos y variables de entorno necesarios para iniciarlo. Claude Code los inicia automaticamente al abrir el proyecto.",
+      "options": [
+        { "id": "dlai-cca-006_a", "text": "Mediante un archivo .mcp.json en la raiz del repositorio con un objeto 'mcpServers' que define comando, argumentos y variables de entorno para cada servidor", "textEs": "Mediante un archivo .mcp.json en la raiz del repositorio con un objeto 'mcpServers' que define comando, argumentos y variables de entorno para cada servidor", "order": 1 },
+        { "id": "dlai-cca-006_b", "text": "Usando el comando 'claude mcp install' que descarga e instala servidores desde un registro central", "textEs": "Usando el comando 'claude mcp install' que descarga e instala servidores desde un registro central", "order": 2 },
+        { "id": "dlai-cca-006_c", "text": "Agregando las URLs de los servidores en la seccion 'servers' del archivo package.json", "textEs": "Agregando las URLs de los servidores en la seccion 'servers' del archivo package.json", "order": 3 },
+        { "id": "dlai-cca-006_d", "text": "Configurandolos en el panel de ajustes de la interfaz web de Claude Code", "textEs": "Configurandolos en el panel de ajustes de la interfaz web de Claude Code", "order": 4 }
+      ],
+      "tags": ["mcp-configuration", "mcp-json", "project-setup", "servers"]
+    },
+    {
+      "id": "dlai-cca-007",
+      "text": "Que estrategia recomienda el curso para manejar tareas complejas que requieren cambios en multiples archivos?",
+      "textEs": "Que estrategia recomienda el curso para manejar tareas complejas que requieren cambios en multiples archivos?",
+      "domainCode": "claude-code-agentic",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-claude-code",
+      "correctOptionId": "dlai-cca-007_c",
+      "explanation": "Para tareas complejas, se recomienda descomponer el trabajo en subtareas bien definidas. Cada subtarea puede ejecutarse en su propio worktree o como un prompt independiente. Primero se usa el modo Plan para que Claude analice y proponga un enfoque, luego se ejecutan las subtareas secuencialmente o en paralelo segun las dependencias. Finalmente se revisan y combinan los cambios.",
+      "explanationEs": "Para tareas complejas, se recomienda descomponer el trabajo en subtareas bien definidas. Cada subtarea puede ejecutarse en su propio worktree o como un prompt independiente. Primero se usa el modo Plan para que Claude analice y proponga un enfoque, luego se ejecutan las subtareas secuencialmente o en paralelo segun las dependencias. Finalmente se revisan y combinan los cambios.",
+      "options": [
+        { "id": "dlai-cca-007_a", "text": "Escribir un unico prompt detallado con todas las modificaciones necesarias y ejecutarlo de una sola vez", "textEs": "Escribir un unico prompt detallado con todas las modificaciones necesarias y ejecutarlo de una sola vez", "order": 1 },
+        { "id": "dlai-cca-007_b", "text": "Delegar la descomposicion completamente al modelo sin intervenir en la planificacion", "textEs": "Delegar la descomposicion completamente al modelo sin intervenir en la planificacion", "order": 2 },
+        { "id": "dlai-cca-007_c", "text": "Descomponer en subtareas, usar Plan Mode para definir el enfoque, ejecutar en worktrees paralelos o prompts secuenciales, y luego revisar y combinar cambios", "textEs": "Descomponer en subtareas, usar Plan Mode para definir el enfoque, ejecutar en worktrees paralelos o prompts secuenciales, y luego revisar y combinar cambios", "order": 3 },
+        { "id": "dlai-cca-007_d", "text": "Modificar los archivos manualmente y solo usar Claude Code para los tests", "textEs": "Modificar los archivos manualmente y solo usar Claude Code para los tests", "order": 4 }
+      ],
+      "tags": ["task-decomposition", "plan-mode", "complex-tasks", "workflow"]
+    },
+    {
+      "id": "dlai-cca-008",
+      "text": "Cual es la ventaja de usar herramientas paralelas (parallel tool calls) dentro de una sesion de Claude Code?",
+      "textEs": "Cual es la ventaja de usar herramientas paralelas (parallel tool calls) dentro de una sesion de Claude Code?",
+      "domainCode": "claude-code-agentic",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "dlai-claude-code",
+      "correctOptionId": "dlai-cca-008_b",
+      "explanation": "Las herramientas paralelas permiten que Claude Code ejecute multiples operaciones simultaneamente en un solo turno, como leer varios archivos a la vez o buscar en multiples directorios. Esto reduce significativamente el tiempo total de ejecucion comparado con hacer cada operacion secuencialmente. Es especialmente util para tareas de exploracion y analisis de codigo donde se necesitan leer muchos archivos.",
+      "explanationEs": "Las herramientas paralelas permiten que Claude Code ejecute multiples operaciones simultaneamente en un solo turno, como leer varios archivos a la vez o buscar en multiples directorios. Esto reduce significativamente el tiempo total de ejecucion comparado con hacer cada operacion secuencialmente. Es especialmente util para tareas de exploracion y analisis de codigo donde se necesitan leer muchos archivos.",
+      "options": [
+        { "id": "dlai-cca-008_a", "text": "Permiten usar menos tokens al comprimir multiples solicitudes en una sola", "textEs": "Permiten usar menos tokens al comprimir multiples solicitudes en una sola", "order": 1 },
+        { "id": "dlai-cca-008_b", "text": "Permiten ejecutar multiples operaciones simultaneamente en un solo turno, reduciendo significativamente el tiempo total de ejecucion", "textEs": "Permiten ejecutar multiples operaciones simultaneamente en un solo turno, reduciendo significativamente el tiempo total de ejecucion", "order": 2 },
+        { "id": "dlai-cca-008_c", "text": "Permiten que Claude Code use multiples modelos de IA al mismo tiempo para comparar resultados", "textEs": "Permiten que Claude Code use multiples modelos de IA al mismo tiempo para comparar resultados", "order": 3 },
+        { "id": "dlai-cca-008_d", "text": "Son exclusivamente para operaciones de escritura que no tienen dependencias entre si", "textEs": "Son exclusivamente para operaciones de escritura que no tienen dependencias entre si", "order": 4 }
+      ],
+      "tags": ["parallel-tools", "performance", "concurrent-operations", "efficiency"]
+    }
+  ]
+}

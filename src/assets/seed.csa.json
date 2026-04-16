@@ -1,0 +1,4972 @@
+{
+  "domains": [
+    {
+      "code": "platform",
+      "name": "Platform Fundamentals",
+      "description": "Core platform concepts, navigation, and basic administration",
+      "questionCount": 42
+    },
+    {
+      "code": "ui",
+      "name": "User Interface",
+      "description": "Forms, lists, and user interface customization",
+      "questionCount": 32
+    },
+    {
+      "code": "automation",
+      "name": "Automation & Workflow",
+      "description": "Business rules, workflows, and process automation",
+      "questionCount": 24
+    },
+    {
+      "code": "data",
+      "name": "Data Management",
+      "description": "Tables, fields, relationships, and data import/export",
+      "questionCount": 26
+    },
+    {
+      "code": "security",
+      "name": "Security & Access",
+      "description": "Roles, ACLs, and security policies",
+      "questionCount": 23
+    },
+    {
+      "code": "integration",
+      "name": "Integration & APIs",
+      "description": "REST APIs, web services, and external integrations",
+      "questionCount": 23
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "text": "What is the primary purpose of the ServiceNow platform?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q001_a",
+          "text": "To provide cloud-based IT service management",
+          "order": 1
+        },
+        {
+          "id": "q001_b",
+          "text": "To manage only hardware assets",
+          "order": 2
+        },
+        {
+          "id": "q001_c",
+          "text": "To replace all existing IT tools",
+          "order": 3
+        },
+        {
+          "id": "q001_d",
+          "text": "To provide only ticketing functionality",
+          "order": 4
+        }
+      ],
+      "context": "ServiceNow is a cloud-based platform that provides IT service management and business process automation."
+    },
+    {
+      "id": "q002",
+      "text": "Which component is responsible for controlling access to records in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q002_a",
+          "text": "Business Rules",
+          "order": 1
+        },
+        {
+          "id": "q002_b",
+          "text": "Access Control Lists (ACLs)",
+          "order": 2
+        },
+        {
+          "id": "q002_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q002_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "ACLs are the primary mechanism for controlling record-level access in ServiceNow."
+    },
+    {
+      "id": "q003",
+      "text": "What is the purpose of a Business Rule in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q003_a",
+          "text": "To define user interface behavior",
+          "order": 1
+        },
+        {
+          "id": "q003_b",
+          "text": "To automate business logic and data processing",
+          "order": 2
+        },
+        {
+          "id": "q003_c",
+          "text": "To control user access to records",
+          "order": 3
+        },
+        {
+          "id": "q003_d",
+          "text": "To create custom reports",
+          "order": 4
+        }
+      ],
+      "context": "Business Rules execute server-side logic to automate business processes and data manipulation."
+    },
+    {
+      "id": "q004",
+      "text": "Which table is used to store user information in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q004_a",
+          "text": "sys_user",
+          "order": 1
+        },
+        {
+          "id": "q004_b",
+          "text": "user_table",
+          "order": 2
+        },
+        {
+          "id": "q004_c",
+          "text": "person",
+          "order": 3
+        },
+        {
+          "id": "q004_d",
+          "text": "employee",
+          "order": 4
+        }
+      ],
+      "context": "The sys_user table is the core table for storing user account information in ServiceNow."
+    },
+    {
+      "id": "q005",
+      "text": "What is the difference between a List and a Form view in ServiceNow?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q005_a",
+          "text": "Lists show multiple records, Forms show single records",
+          "order": 1
+        },
+        {
+          "id": "q005_b",
+          "text": "Lists are read-only, Forms allow editing",
+          "order": 2
+        },
+        {
+          "id": "q005_c",
+          "text": "Lists are for administrators only",
+          "order": 3
+        },
+        {
+          "id": "q005_d",
+          "text": "There is no difference between them",
+          "order": 4
+        }
+      ],
+      "context": "Lists display multiple records in a tabular format, while Forms display a single record for detailed viewing and editing."
+    },
+    {
+      "id": "q006",
+      "text": "Which REST API method is used to create a new record?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q006_a",
+          "text": "GET",
+          "order": 1
+        },
+        {
+          "id": "q006_b",
+          "text": "POST",
+          "order": 2
+        },
+        {
+          "id": "q006_c",
+          "text": "PUT",
+          "order": 3
+        },
+        {
+          "id": "q006_d",
+          "text": "DELETE",
+          "order": 4
+        }
+      ],
+      "context": "POST is the HTTP method used to create new resources in REST APIs."
+    },
+    {
+      "id": "q007",
+      "text": "What is the purpose of a UI Policy in ServiceNow?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q007_a",
+          "text": "To control server-side business logic",
+          "order": 1
+        },
+        {
+          "id": "q007_b",
+          "text": "To dynamically show/hide fields and sections",
+          "order": 2
+        },
+        {
+          "id": "q007_c",
+          "text": "To manage user permissions",
+          "order": 3
+        },
+        {
+          "id": "q007_d",
+          "text": "To create custom reports",
+          "order": 4
+        }
+      ],
+      "context": "UI Policies control the visibility and behavior of form elements based on field values."
+    },
+    {
+      "id": "q008",
+      "text": "Which field type is used to store large amounts of text?",
+      "domainCode": "data",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q008_a",
+          "text": "String",
+          "order": 1
+        },
+        {
+          "id": "q008_b",
+          "text": "Text",
+          "order": 2
+        },
+        {
+          "id": "q008_c",
+          "text": "Integer",
+          "order": 3
+        },
+        {
+          "id": "q008_d",
+          "text": "Boolean",
+          "order": 4
+        }
+      ],
+      "context": "The Text field type is designed for storing large amounts of text data."
+    },
+    {
+      "id": "q009",
+      "text": "What is the purpose of a Workflow in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q009_a",
+          "text": "To define database table structure",
+          "order": 1
+        },
+        {
+          "id": "q009_b",
+          "text": "To automate multi-step business processes",
+          "order": 2
+        },
+        {
+          "id": "q009_c",
+          "text": "To control user interface layout",
+          "order": 3
+        },
+        {
+          "id": "q009_d",
+          "text": "To manage system security",
+          "order": 4
+        }
+      ],
+      "context": "Workflows automate complex business processes by defining a sequence of activities and approvals."
+    },
+    {
+      "id": "q010",
+      "text": "Which role is required to access the System Administration module?",
+      "domainCode": "security",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q010_a",
+          "text": "user",
+          "order": 1
+        },
+        {
+          "id": "q010_b",
+          "text": "admin",
+          "order": 2
+        },
+        {
+          "id": "q010_c",
+          "text": "itil",
+          "order": 3
+        },
+        {
+          "id": "q010_d",
+          "text": "snc_read_only",
+          "order": 4
+        }
+      ],
+      "context": "The admin role provides full administrative access to the ServiceNow platform."
+    },
+    {
+      "id": "q011",
+      "text": "What is the purpose of a Reference field in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q011_a",
+          "text": "To store numeric values",
+          "order": 1
+        },
+        {
+          "id": "q011_b",
+          "text": "To create relationships between tables",
+          "order": 2
+        },
+        {
+          "id": "q011_c",
+          "text": "To store date and time values",
+          "order": 3
+        },
+        {
+          "id": "q011_d",
+          "text": "To store boolean values",
+          "order": 4
+        }
+      ],
+      "context": "Reference fields create relationships between records in different tables."
+    },
+    {
+      "id": "q012",
+      "text": "Which component is used to create custom applications in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q012_a",
+          "text": "Business Rules",
+          "order": 1
+        },
+        {
+          "id": "q012_b",
+          "text": "Application Creator",
+          "order": 2
+        },
+        {
+          "id": "q012_c",
+          "text": "Studio",
+          "order": 3
+        },
+        {
+          "id": "q012_d",
+          "text": "UI Policies",
+          "order": 4
+        }
+      ],
+      "context": "Studio is the development environment for creating custom applications in ServiceNow."
+    },
+    {
+      "id": "q013",
+      "text": "What is the purpose of a Client Script in ServiceNow?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q013_a",
+          "text": "To execute server-side logic",
+          "order": 1
+        },
+        {
+          "id": "q013_b",
+          "text": "To add client-side interactivity and validation",
+          "order": 2
+        },
+        {
+          "id": "q013_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q013_d",
+          "text": "To create database tables",
+          "order": 4
+        }
+      ],
+      "context": "Client Scripts run in the browser to provide client-side functionality and validation."
+    },
+    {
+      "id": "q014",
+      "text": "Which table stores incident records in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q014_a",
+          "text": "incident",
+          "order": 1
+        },
+        {
+          "id": "q014_b",
+          "text": "ticket",
+          "order": 2
+        },
+        {
+          "id": "q014_c",
+          "text": "issue",
+          "order": 3
+        },
+        {
+          "id": "q014_d",
+          "text": "problem",
+          "order": 4
+        }
+      ],
+      "context": "The incident table is the core table for managing IT incidents in ServiceNow."
+    },
+    {
+      "id": "q015",
+      "text": "What is the purpose of a Scheduled Job in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q015_a",
+          "text": "To create user interfaces",
+          "order": 1
+        },
+        {
+          "id": "q015_b",
+          "text": "To execute automated tasks on a schedule",
+          "order": 2
+        },
+        {
+          "id": "q015_c",
+          "text": "To manage user permissions",
+          "order": 3
+        },
+        {
+          "id": "q015_d",
+          "text": "To create reports",
+          "order": 4
+        }
+      ],
+      "context": "Scheduled Jobs run automated tasks at specified intervals or times."
+    },
+    {
+      "id": "q016",
+      "text": "Which field type is used to store email addresses?",
+      "domainCode": "data",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q016_a",
+          "text": "String",
+          "order": 1
+        },
+        {
+          "id": "q016_b",
+          "text": "Email",
+          "order": 2
+        },
+        {
+          "id": "q016_c",
+          "text": "Integer",
+          "order": 3
+        },
+        {
+          "id": "q016_d",
+          "text": "Date",
+          "order": 4
+        }
+      ],
+      "context": "The Email field type provides validation for email address format."
+    },
+    {
+      "id": "q017",
+      "text": "What is the purpose of a Transform Map in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q017_a",
+          "text": "To create user interfaces",
+          "order": 1
+        },
+        {
+          "id": "q017_b",
+          "text": "To map and transform data during import",
+          "order": 2
+        },
+        {
+          "id": "q017_c",
+          "text": "To manage workflows",
+          "order": 3
+        },
+        {
+          "id": "q017_d",
+          "text": "To control access permissions",
+          "order": 4
+        }
+      ],
+      "context": "Transform Maps define how data is mapped and transformed when importing from external sources."
+    },
+    {
+      "id": "q018",
+      "text": "Which REST API endpoint is used to retrieve a specific record?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q018_a",
+          "text": "/api/now/table/{table_name}",
+          "order": 1
+        },
+        {
+          "id": "q018_b",
+          "text": "/api/now/table/{table_name}/{sys_id}",
+          "order": 2
+        },
+        {
+          "id": "q018_c",
+          "text": "/api/now/table/{table_name}/create",
+          "order": 3
+        },
+        {
+          "id": "q018_d",
+          "text": "/api/now/table/{table_name}/delete",
+          "order": 4
+        }
+      ],
+      "context": "The specific record endpoint includes the sys_id to retrieve a single record."
+    },
+    {
+      "id": "q019",
+      "text": "What is the purpose of a Service Catalog in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q019_a",
+          "text": "To store system configuration",
+          "order": 1
+        },
+        {
+          "id": "q019_b",
+          "text": "To provide a self-service portal for users",
+          "order": 2
+        },
+        {
+          "id": "q019_c",
+          "text": "To manage user accounts",
+          "order": 3
+        },
+        {
+          "id": "q019_d",
+          "text": "To create reports",
+          "order": 4
+        }
+      ],
+      "context": "Service Catalog provides a self-service portal where users can request services and items."
+    },
+    {
+      "id": "q020",
+      "text": "Which component is used to create custom reports in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q020_a",
+          "text": "Report Designer",
+          "order": 1
+        },
+        {
+          "id": "q020_b",
+          "text": "Business Rules",
+          "order": 2
+        },
+        {
+          "id": "q020_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q020_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "Report Designer is the tool used to create custom reports and dashboards."
+    },
+    {
+      "id": "q021",
+      "text": "What is the purpose of the ServiceNow instance?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q021_a",
+          "text": "To provide a unique environment for each customer",
+          "order": 1
+        },
+        {
+          "id": "q021_b",
+          "text": "To store all customer data in one place",
+          "order": 2
+        },
+        {
+          "id": "q021_c",
+          "text": "To share data between customers",
+          "order": 3
+        },
+        {
+          "id": "q021_d",
+          "text": "To reduce system performance",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q022",
+      "text": "Which module is used to manage IT assets?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q022_a",
+          "text": "Asset Management",
+          "order": 1
+        },
+        {
+          "id": "q022_b",
+          "text": "Configuration Management",
+          "order": 2
+        },
+        {
+          "id": "q022_c",
+          "text": "Service Catalog",
+          "order": 3
+        },
+        {
+          "id": "q022_d",
+          "text": "Change Management",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q023",
+      "text": "What is the purpose of the ServiceNow mobile app?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q023_a",
+          "text": "To provide mobile access to ServiceNow",
+          "order": 1
+        },
+        {
+          "id": "q023_b",
+          "text": "To replace the web interface",
+          "order": 2
+        },
+        {
+          "id": "q023_c",
+          "text": "To manage mobile devices only",
+          "order": 3
+        },
+        {
+          "id": "q023_d",
+          "text": "To create mobile applications",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q024",
+      "text": "Which component is used to create custom applications?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q024_a",
+          "text": "Application Creator",
+          "order": 1
+        },
+        {
+          "id": "q024_b",
+          "text": "Studio",
+          "order": 2
+        },
+        {
+          "id": "q024_c",
+          "text": "System Definition",
+          "order": 3
+        },
+        {
+          "id": "q024_d",
+          "text": "Plugin Management",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q025",
+      "text": "What is the purpose of the ServiceNow Community?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q025_a",
+          "text": "To provide support and resources",
+          "order": 1
+        },
+        {
+          "id": "q025_b",
+          "text": "To store customer data",
+          "order": 2
+        },
+        {
+          "id": "q025_c",
+          "text": "To manage user accounts",
+          "order": 3
+        },
+        {
+          "id": "q025_d",
+          "text": "To create reports",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q026",
+      "text": "What is the purpose of a Form Layout in ServiceNow?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q026_a",
+          "text": "To control server-side logic",
+          "order": 1
+        },
+        {
+          "id": "q026_b",
+          "text": "To organize fields on forms",
+          "order": 2
+        },
+        {
+          "id": "q026_c",
+          "text": "To manage user permissions",
+          "order": 3
+        },
+        {
+          "id": "q026_d",
+          "text": "To create database tables",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q027",
+      "text": "Which component is used to create custom list views?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q027_a",
+          "text": "List Layout",
+          "order": 1
+        },
+        {
+          "id": "q027_b",
+          "text": "Business Rules",
+          "order": 2
+        },
+        {
+          "id": "q027_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q027_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q028",
+      "text": "What is the purpose of a Homepage in ServiceNow?",
+      "domainCode": "ui",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q028_a",
+          "text": "To provide a personalized dashboard",
+          "order": 1
+        },
+        {
+          "id": "q028_b",
+          "text": "To store system configuration",
+          "order": 2
+        },
+        {
+          "id": "q028_c",
+          "text": "To manage user accounts",
+          "order": 3
+        },
+        {
+          "id": "q028_d",
+          "text": "To create reports",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q029",
+      "text": "Which field type is used to display related records?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q029_a",
+          "text": "Reference",
+          "order": 1
+        },
+        {
+          "id": "q029_b",
+          "text": "String",
+          "order": 2
+        },
+        {
+          "id": "q029_c",
+          "text": "Integer",
+          "order": 3
+        },
+        {
+          "id": "q029_d",
+          "text": "Boolean",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q030",
+      "text": "What is the purpose of a Related List in ServiceNow?",
+      "domainCode": "ui",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q030_a",
+          "text": "To display related records",
+          "order": 1
+        },
+        {
+          "id": "q030_b",
+          "text": "To create new records",
+          "order": 2
+        },
+        {
+          "id": "q030_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q030_d",
+          "text": "To execute business logic",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q031",
+      "text": "What is the purpose of a Scheduled Job in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q031_a",
+          "text": "To create user interfaces",
+          "order": 1
+        },
+        {
+          "id": "q031_b",
+          "text": "To execute automated tasks",
+          "order": 2
+        },
+        {
+          "id": "q031_c",
+          "text": "To manage user permissions",
+          "order": 3
+        },
+        {
+          "id": "q031_d",
+          "text": "To create reports",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q032",
+      "text": "Which component is used to send email notifications?",
+      "domainCode": "automation",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q032_a",
+          "text": "Email Notification",
+          "order": 1
+        },
+        {
+          "id": "q032_b",
+          "text": "Business Rule",
+          "order": 2
+        },
+        {
+          "id": "q032_c",
+          "text": "UI Policy",
+          "order": 3
+        },
+        {
+          "id": "q032_d",
+          "text": "Client Script",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q033",
+      "text": "What is the purpose of a Workflow Activity?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q033_a",
+          "text": "To define workflow steps",
+          "order": 1
+        },
+        {
+          "id": "q033_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q033_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q033_d",
+          "text": "To store data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q034",
+      "text": "Which component is used to create approval processes?",
+      "domainCode": "automation",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q034_a",
+          "text": "Approval Engine",
+          "order": 1
+        },
+        {
+          "id": "q034_b",
+          "text": "Business Rules",
+          "order": 2
+        },
+        {
+          "id": "q034_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q034_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q035",
+      "text": "What is the purpose of a Script Action in workflows?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q035_a",
+          "text": "To execute custom logic",
+          "order": 1
+        },
+        {
+          "id": "q035_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q035_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q035_d",
+          "text": "To store data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q036",
+      "text": "What is the purpose of a Data Source in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q036_a",
+          "text": "To connect to external databases",
+          "order": 1
+        },
+        {
+          "id": "q036_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q036_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q036_d",
+          "text": "To execute business logic",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q037",
+      "text": "Which component is used to import data from CSV files?",
+      "domainCode": "data",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q037_a",
+          "text": "Import Set",
+          "order": 1
+        },
+        {
+          "id": "q037_b",
+          "text": "Business Rules",
+          "order": 2
+        },
+        {
+          "id": "q037_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q037_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q038",
+      "text": "What is the purpose of a Table Dictionary in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q038_a",
+          "text": "To define table structure",
+          "order": 1
+        },
+        {
+          "id": "q038_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q038_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q038_d",
+          "text": "To execute business logic",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q039",
+      "text": "Which field type is used to store file attachments?",
+      "domainCode": "data",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q039_a",
+          "text": "Attachment",
+          "order": 1
+        },
+        {
+          "id": "q039_b",
+          "text": "String",
+          "order": 2
+        },
+        {
+          "id": "q039_c",
+          "text": "Integer",
+          "order": 3
+        },
+        {
+          "id": "q039_d",
+          "text": "Boolean",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q040",
+      "text": "What is the purpose of a Transform Script in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q040_a",
+          "text": "To transform data during import",
+          "order": 1
+        },
+        {
+          "id": "q040_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q040_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q040_d",
+          "text": "To execute business logic",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q041",
+      "text": "What is the purpose of a Role in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q041_a",
+          "text": "To group permissions",
+          "order": 1
+        },
+        {
+          "id": "q041_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q041_c",
+          "text": "To store data",
+          "order": 3
+        },
+        {
+          "id": "q041_d",
+          "text": "To execute business logic",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q042",
+      "text": "Which component is used to control field-level access?",
+      "domainCode": "security",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q042_a",
+          "text": "Field-level ACLs",
+          "order": 1
+        },
+        {
+          "id": "q042_b",
+          "text": "Business Rules",
+          "order": 2
+        },
+        {
+          "id": "q042_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q042_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q043",
+      "text": "What is the purpose of a Security Rule in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q043_a",
+          "text": "To define security policies",
+          "order": 1
+        },
+        {
+          "id": "q043_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q043_c",
+          "text": "To store data",
+          "order": 3
+        },
+        {
+          "id": "q043_d",
+          "text": "To execute business logic",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q044",
+      "text": "Which component is used to manage user sessions?",
+      "domainCode": "security",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q044_a",
+          "text": "Session Management",
+          "order": 1
+        },
+        {
+          "id": "q044_b",
+          "text": "Business Rules",
+          "order": 2
+        },
+        {
+          "id": "q044_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q044_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q045",
+      "text": "What is the purpose of a Multi-Factor Authentication in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q045_a",
+          "text": "To enhance security",
+          "order": 1
+        },
+        {
+          "id": "q045_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q045_c",
+          "text": "To store data",
+          "order": 3
+        },
+        {
+          "id": "q045_d",
+          "text": "To execute business logic",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q046",
+      "text": "What is the purpose of a REST Message in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q046_a",
+          "text": "To make REST API calls",
+          "order": 1
+        },
+        {
+          "id": "q046_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q046_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q046_d",
+          "text": "To store data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q047",
+      "text": "Which component is used to create web services?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q047_a",
+          "text": "SOAP Web Service",
+          "order": 1
+        },
+        {
+          "id": "q047_b",
+          "text": "Business Rules",
+          "order": 2
+        },
+        {
+          "id": "q047_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q047_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q048",
+      "text": "What is the purpose of a MID Server in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q048_a",
+          "text": "To connect to on-premises systems",
+          "order": 1
+        },
+        {
+          "id": "q048_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q048_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q048_d",
+          "text": "To store data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q049",
+      "text": "Which component is used to integrate with LDAP?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q049_a",
+          "text": "LDAP Integration",
+          "order": 1
+        },
+        {
+          "id": "q049_b",
+          "text": "Business Rules",
+          "order": 2
+        },
+        {
+          "id": "q049_c",
+          "text": "UI Policies",
+          "order": 3
+        },
+        {
+          "id": "q049_d",
+          "text": "Client Scripts",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q050",
+      "text": "What is the purpose of a Webhook in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q050_a",
+          "text": "To send data to external systems",
+          "order": 1
+        },
+        {
+          "id": "q050_b",
+          "text": "To create user interfaces",
+          "order": 2
+        },
+        {
+          "id": "q050_c",
+          "text": "To manage permissions",
+          "order": 3
+        },
+        {
+          "id": "q050_d",
+          "text": "To store data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q051",
+      "text": "What is the primary function of the platform in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q051_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q051_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q051_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q051_d",
+          "text": "the platform",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q052",
+      "text": "What is the primary function of the instance in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q052_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q052_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q052_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q052_d",
+          "text": "the instance",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q053",
+      "text": "What is the primary function of the system in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q053_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q053_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q053_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q053_d",
+          "text": "the system",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q054",
+      "text": "What is the primary function of the application in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q054_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q054_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q054_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q054_d",
+          "text": "the application",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q055",
+      "text": "Which module handles IT service management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q055_a",
+          "text": "IT service management",
+          "order": 1
+        },
+        {
+          "id": "q055_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q055_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q055_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q056",
+      "text": "Which module handles asset management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q056_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q056_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q056_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q056_d",
+          "text": "asset management",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q057",
+      "text": "Which module handles change management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q057_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q057_b",
+          "text": "change management",
+          "order": 2
+        },
+        {
+          "id": "q057_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q057_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q058",
+      "text": "Which module handles incident management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q058_a",
+          "text": "incident management",
+          "order": 1
+        },
+        {
+          "id": "q058_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q058_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q058_d",
+          "text": "To provide core functionality",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q059",
+      "text": "What is the purpose of the mobile app in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q059_a",
+          "text": "the mobile app",
+          "order": 1
+        },
+        {
+          "id": "q059_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q059_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q059_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q060",
+      "text": "What is the purpose of the community in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q060_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q060_b",
+          "text": "the community",
+          "order": 2
+        },
+        {
+          "id": "q060_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q060_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q061",
+      "text": "What is the purpose of the knowledge base in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q061_a",
+          "text": "the knowledge base",
+          "order": 1
+        },
+        {
+          "id": "q061_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q061_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q061_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q062",
+      "text": "What is the purpose of the service catalog in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q062_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q062_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q062_c",
+          "text": "the service catalog",
+          "order": 3
+        },
+        {
+          "id": "q062_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q063",
+      "text": "Which component is used for system administration in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q063_a",
+          "text": "system administration",
+          "order": 1
+        },
+        {
+          "id": "q063_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q063_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q063_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q064",
+      "text": "Which component is used for user management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q064_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q064_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q064_c",
+          "text": "user management",
+          "order": 3
+        },
+        {
+          "id": "q064_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q065",
+      "text": "Which component is used for reporting in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q065_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q065_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q065_c",
+          "text": "reporting",
+          "order": 3
+        },
+        {
+          "id": "q065_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q066",
+      "text": "Which component is used for customization in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q066_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q066_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q066_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q066_d",
+          "text": "customization",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q067",
+      "text": "What is the purpose of forms in ServiceNow UI?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q067_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q067_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q067_c",
+          "text": "forms",
+          "order": 3
+        },
+        {
+          "id": "q067_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q068",
+      "text": "What is the purpose of lists in ServiceNow UI?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q068_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q068_b",
+          "text": "lists",
+          "order": 2
+        },
+        {
+          "id": "q068_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q068_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q069",
+      "text": "What is the purpose of homepages in ServiceNow UI?",
+      "domainCode": "ui",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q069_a",
+          "text": "homepages",
+          "order": 1
+        },
+        {
+          "id": "q069_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q069_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q069_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q070",
+      "text": "What is the purpose of dashboards in ServiceNow UI?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q070_a",
+          "text": "dashboards",
+          "order": 1
+        },
+        {
+          "id": "q070_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q070_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q070_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q071",
+      "text": "Which UI component is used for displaying data?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q071_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q071_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q071_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q071_d",
+          "text": "displaying data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q072",
+      "text": "Which UI component is used for user interaction?",
+      "domainCode": "ui",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q072_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q072_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q072_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q072_d",
+          "text": "user interaction",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q073",
+      "text": "Which UI component is used for navigation?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q073_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q073_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q073_c",
+          "text": "navigation",
+          "order": 3
+        },
+        {
+          "id": "q073_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q074",
+      "text": "Which UI component is used for customization?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q074_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q074_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q074_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q074_d",
+          "text": "customization",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q075",
+      "text": "What controls field visibility in ServiceNow forms?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q075_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q075_b",
+          "text": "field visibility",
+          "order": 2
+        },
+        {
+          "id": "q075_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q075_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q076",
+      "text": "What controls field behavior in ServiceNow forms?",
+      "domainCode": "ui",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q076_a",
+          "text": "field behavior",
+          "order": 1
+        },
+        {
+          "id": "q076_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q076_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q076_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q077",
+      "text": "What controls form layout in ServiceNow forms?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q077_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q077_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q077_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q077_d",
+          "text": "form layout",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q078",
+      "text": "What controls user experience in ServiceNow forms?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q078_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q078_b",
+          "text": "user experience",
+          "order": 2
+        },
+        {
+          "id": "q078_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q078_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q079",
+      "text": "What is the purpose of business rules in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q079_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q079_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q079_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q079_d",
+          "text": "business rules",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q080",
+      "text": "What is the purpose of workflows in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q080_a",
+          "text": "workflows",
+          "order": 1
+        },
+        {
+          "id": "q080_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q080_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q080_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q081",
+      "text": "What is the purpose of scheduled jobs in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q081_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q081_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q081_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q081_d",
+          "text": "scheduled jobs",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q082",
+      "text": "What is the purpose of email notifications in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q082_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q082_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q082_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q082_d",
+          "text": "email notifications",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q083",
+      "text": "Which automation component handles {process}?",
+      "domainCode": "automation",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q083_a",
+          "text": "approval processes",
+          "order": 1
+        },
+        {
+          "id": "q083_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q083_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q083_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q084",
+      "text": "Which automation component handles {process}?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q084_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q084_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q084_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q084_d",
+          "text": "data processing",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q085",
+      "text": "Which automation component handles {process}?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q085_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q085_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q085_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q085_d",
+          "text": "task automation",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q086",
+      "text": "Which automation component handles {process}?",
+      "domainCode": "automation",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q086_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q086_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q086_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q086_d",
+          "text": "notification sending",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q087",
+      "text": "What is the purpose of tables in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q087_a",
+          "text": "tables",
+          "order": 1
+        },
+        {
+          "id": "q087_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q087_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q087_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q088",
+      "text": "What is the purpose of fields in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q088_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q088_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q088_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q088_d",
+          "text": "fields",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q089",
+      "text": "What is the purpose of relationships in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q089_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q089_b",
+          "text": "relationships",
+          "order": 2
+        },
+        {
+          "id": "q089_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q089_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q090",
+      "text": "What is the purpose of import sets in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q090_a",
+          "text": "import sets",
+          "order": 1
+        },
+        {
+          "id": "q090_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q090_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q090_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q091",
+      "text": "Which data component is used for storing data?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q091_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q091_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q091_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q091_d",
+          "text": "storing data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q092",
+      "text": "Which data component is used for importing data?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q092_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q092_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q092_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q092_d",
+          "text": "importing data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q093",
+      "text": "Which data component is used for transforming data?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q093_a",
+          "text": "transforming data",
+          "order": 1
+        },
+        {
+          "id": "q093_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q093_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q093_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q094",
+      "text": "Which data component is used for exporting data?",
+      "domainCode": "data",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q094_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q094_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q094_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q094_d",
+          "text": "exporting data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q095",
+      "text": "What is the purpose of roles in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q095_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q095_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q095_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q095_d",
+          "text": "roles",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q096",
+      "text": "What is the purpose of ACLs in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q096_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q096_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q096_c",
+          "text": "ACLs",
+          "order": 3
+        },
+        {
+          "id": "q096_d",
+          "text": "To provide core functionality",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q097",
+      "text": "What is the purpose of security rules in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q097_a",
+          "text": "security rules",
+          "order": 1
+        },
+        {
+          "id": "q097_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q097_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q097_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q098",
+      "text": "What is the purpose of authentication in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q098_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q098_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q098_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q098_d",
+          "text": "authentication",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q099",
+      "text": "Which security component controls {access}?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q099_a",
+          "text": "user access",
+          "order": 1
+        },
+        {
+          "id": "q099_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q099_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q099_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q100",
+      "text": "Which security component controls {access}?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q100_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q100_b",
+          "text": "record access",
+          "order": 2
+        },
+        {
+          "id": "q100_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q100_d",
+          "text": "To provide core functionality",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q101",
+      "text": "Which security component controls {access}?",
+      "domainCode": "security",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q101_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q101_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q101_c",
+          "text": "field access",
+          "order": 3
+        },
+        {
+          "id": "q101_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q102",
+      "text": "Which security component controls {access}?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q102_a",
+          "text": "system access",
+          "order": 1
+        },
+        {
+          "id": "q102_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q102_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q102_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q103",
+      "text": "What is the purpose of REST APIs in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q103_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q103_b",
+          "text": "REST APIs",
+          "order": 2
+        },
+        {
+          "id": "q103_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q103_d",
+          "text": "To provide core functionality",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q104",
+      "text": "What is the purpose of web services in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q104_a",
+          "text": "web services",
+          "order": 1
+        },
+        {
+          "id": "q104_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q104_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q104_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q105",
+      "text": "What is the purpose of MID servers in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q105_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q105_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q105_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q105_d",
+          "text": "MID servers",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q106",
+      "text": "What is the purpose of webhooks in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q106_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q106_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q106_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q106_d",
+          "text": "webhooks",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q107",
+      "text": "Which integration component is used for external communication?",
+      "domainCode": "integration",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q107_a",
+          "text": "external communication",
+          "order": 1
+        },
+        {
+          "id": "q107_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q107_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q107_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q108",
+      "text": "Which integration component is used for data exchange?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q108_a",
+          "text": "data exchange",
+          "order": 1
+        },
+        {
+          "id": "q108_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q108_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q108_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q109",
+      "text": "Which integration component is used for system integration?",
+      "domainCode": "integration",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q109_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q109_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q109_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q109_d",
+          "text": "system integration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q110",
+      "text": "Which integration component is used for API management?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q110_a",
+          "text": "API management",
+          "order": 1
+        },
+        {
+          "id": "q110_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q110_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q110_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q051",
+      "text": "What is the primary function of the platform in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q051_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q051_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q051_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q051_d",
+          "text": "the platform",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q052",
+      "text": "What is the primary function of the instance in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q052_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q052_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q052_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q052_d",
+          "text": "the instance",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q053",
+      "text": "What is the primary function of the system in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q053_a",
+          "text": "the system",
+          "order": 1
+        },
+        {
+          "id": "q053_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q053_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q053_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q054",
+      "text": "What is the primary function of the application in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q054_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q054_b",
+          "text": "the application",
+          "order": 2
+        },
+        {
+          "id": "q054_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q054_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q055",
+      "text": "Which module handles IT service management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q055_a",
+          "text": "IT service management",
+          "order": 1
+        },
+        {
+          "id": "q055_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q055_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q055_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q056",
+      "text": "Which module handles asset management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q056_a",
+          "text": "asset management",
+          "order": 1
+        },
+        {
+          "id": "q056_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q056_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q056_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q057",
+      "text": "Which module handles change management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q057_a",
+          "text": "change management",
+          "order": 1
+        },
+        {
+          "id": "q057_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q057_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q057_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q058",
+      "text": "Which module handles incident management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q058_a",
+          "text": "incident management",
+          "order": 1
+        },
+        {
+          "id": "q058_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q058_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q058_d",
+          "text": "To provide core functionality",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q059",
+      "text": "What is the purpose of the mobile app in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q059_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q059_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q059_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q059_d",
+          "text": "the mobile app",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q060",
+      "text": "What is the purpose of the community in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q060_a",
+          "text": "the community",
+          "order": 1
+        },
+        {
+          "id": "q060_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q060_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q060_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q061",
+      "text": "What is the purpose of the knowledge base in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q061_a",
+          "text": "the knowledge base",
+          "order": 1
+        },
+        {
+          "id": "q061_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q061_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q061_d",
+          "text": "To provide core functionality",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q062",
+      "text": "What is the purpose of the service catalog in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q062_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q062_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q062_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q062_d",
+          "text": "the service catalog",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q063",
+      "text": "Which component is used for system administration in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q063_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q063_b",
+          "text": "system administration",
+          "order": 2
+        },
+        {
+          "id": "q063_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q063_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q064",
+      "text": "Which component is used for user management in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q064_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q064_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q064_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q064_d",
+          "text": "user management",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q065",
+      "text": "Which component is used for reporting in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q065_a",
+          "text": "reporting",
+          "order": 1
+        },
+        {
+          "id": "q065_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q065_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q065_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q066",
+      "text": "Which component is used for customization in ServiceNow?",
+      "domainCode": "platform",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q066_a",
+          "text": "customization",
+          "order": 1
+        },
+        {
+          "id": "q066_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q066_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q066_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to platform domain."
+    },
+    {
+      "id": "q067",
+      "text": "What is the purpose of forms in ServiceNow UI?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q067_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q067_b",
+          "text": "forms",
+          "order": 2
+        },
+        {
+          "id": "q067_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q067_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q068",
+      "text": "What is the purpose of lists in ServiceNow UI?",
+      "domainCode": "ui",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q068_a",
+          "text": "lists",
+          "order": 1
+        },
+        {
+          "id": "q068_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q068_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q068_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q069",
+      "text": "What is the purpose of homepages in ServiceNow UI?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q069_a",
+          "text": "homepages",
+          "order": 1
+        },
+        {
+          "id": "q069_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q069_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q069_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q070",
+      "text": "What is the purpose of dashboards in ServiceNow UI?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q070_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q070_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q070_c",
+          "text": "dashboards",
+          "order": 3
+        },
+        {
+          "id": "q070_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q071",
+      "text": "Which UI component is used for displaying data?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q071_a",
+          "text": "displaying data",
+          "order": 1
+        },
+        {
+          "id": "q071_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q071_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q071_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q072",
+      "text": "Which UI component is used for user interaction?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q072_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q072_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q072_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q072_d",
+          "text": "user interaction",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q073",
+      "text": "Which UI component is used for navigation?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q073_a",
+          "text": "navigation",
+          "order": 1
+        },
+        {
+          "id": "q073_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q073_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q073_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q074",
+      "text": "Which UI component is used for customization?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q074_a",
+          "text": "customization",
+          "order": 1
+        },
+        {
+          "id": "q074_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q074_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q074_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q075",
+      "text": "What controls field visibility in ServiceNow forms?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q075_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q075_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q075_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q075_d",
+          "text": "field visibility",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q076",
+      "text": "What controls field behavior in ServiceNow forms?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q076_a",
+          "text": "field behavior",
+          "order": 1
+        },
+        {
+          "id": "q076_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q076_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q076_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q077",
+      "text": "What controls form layout in ServiceNow forms?",
+      "domainCode": "ui",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q077_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q077_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q077_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q077_d",
+          "text": "form layout",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q078",
+      "text": "What controls user experience in ServiceNow forms?",
+      "domainCode": "ui",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q078_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q078_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q078_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q078_d",
+          "text": "user experience",
+          "order": 4
+        }
+      ],
+      "context": "Question related to ui domain."
+    },
+    {
+      "id": "q079",
+      "text": "What is the purpose of business rules in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q079_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q079_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q079_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q079_d",
+          "text": "business rules",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q080",
+      "text": "What is the purpose of workflows in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q080_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q080_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q080_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q080_d",
+          "text": "workflows",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q081",
+      "text": "What is the purpose of scheduled jobs in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q081_a",
+          "text": "scheduled jobs",
+          "order": 1
+        },
+        {
+          "id": "q081_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q081_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q081_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q082",
+      "text": "What is the purpose of email notifications in ServiceNow?",
+      "domainCode": "automation",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q082_a",
+          "text": "email notifications",
+          "order": 1
+        },
+        {
+          "id": "q082_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q082_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q082_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q083",
+      "text": "Which automation component handles {process}?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q083_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q083_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q083_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q083_d",
+          "text": "approval processes",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q084",
+      "text": "Which automation component handles {process}?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q084_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q084_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q084_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q084_d",
+          "text": "data processing",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q085",
+      "text": "Which automation component handles {process}?",
+      "domainCode": "automation",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q085_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q085_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q085_c",
+          "text": "task automation",
+          "order": 3
+        },
+        {
+          "id": "q085_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q086",
+      "text": "Which automation component handles {process}?",
+      "domainCode": "automation",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q086_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q086_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q086_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q086_d",
+          "text": "notification sending",
+          "order": 4
+        }
+      ],
+      "context": "Question related to automation domain."
+    },
+    {
+      "id": "q087",
+      "text": "What is the purpose of tables in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q087_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q087_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q087_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q087_d",
+          "text": "tables",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q088",
+      "text": "What is the purpose of fields in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q088_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q088_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q088_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q088_d",
+          "text": "fields",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q089",
+      "text": "What is the purpose of relationships in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q089_a",
+          "text": "relationships",
+          "order": 1
+        },
+        {
+          "id": "q089_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q089_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q089_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q090",
+      "text": "What is the purpose of import sets in ServiceNow?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q090_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q090_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q090_c",
+          "text": "import sets",
+          "order": 3
+        },
+        {
+          "id": "q090_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q091",
+      "text": "Which data component is used for storing data?",
+      "domainCode": "data",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q091_a",
+          "text": "storing data",
+          "order": 1
+        },
+        {
+          "id": "q091_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q091_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q091_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q092",
+      "text": "Which data component is used for importing data?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q092_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q092_b",
+          "text": "importing data",
+          "order": 2
+        },
+        {
+          "id": "q092_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q092_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q093",
+      "text": "Which data component is used for transforming data?",
+      "domainCode": "data",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q093_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q093_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q093_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q093_d",
+          "text": "transforming data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q094",
+      "text": "Which data component is used for exporting data?",
+      "domainCode": "data",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q094_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q094_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q094_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q094_d",
+          "text": "exporting data",
+          "order": 4
+        }
+      ],
+      "context": "Question related to data domain."
+    },
+    {
+      "id": "q095",
+      "text": "What is the purpose of roles in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q095_a",
+          "text": "roles",
+          "order": 1
+        },
+        {
+          "id": "q095_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q095_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q095_d",
+          "text": "To provide core functionality",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q096",
+      "text": "What is the purpose of ACLs in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q096_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q096_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q096_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q096_d",
+          "text": "ACLs",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q097",
+      "text": "What is the purpose of security rules in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q097_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q097_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q097_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q097_d",
+          "text": "security rules",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q098",
+      "text": "What is the purpose of authentication in ServiceNow?",
+      "domainCode": "security",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q098_a",
+          "text": "authentication",
+          "order": 1
+        },
+        {
+          "id": "q098_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q098_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q098_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q099",
+      "text": "Which security component controls {access}?",
+      "domainCode": "security",
+      "difficulty": "easy",
+      "options": [
+        {
+          "id": "q099_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q099_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q099_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q099_d",
+          "text": "user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q100",
+      "text": "Which security component controls {access}?",
+      "domainCode": "security",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q100_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q100_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q100_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q100_d",
+          "text": "record access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q101",
+      "text": "Which security component controls {access}?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q101_a",
+          "text": "field access",
+          "order": 1
+        },
+        {
+          "id": "q101_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q101_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q101_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q102",
+      "text": "Which security component controls {access}?",
+      "domainCode": "security",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q102_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q102_b",
+          "text": "system access",
+          "order": 2
+        },
+        {
+          "id": "q102_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q102_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to security domain."
+    },
+    {
+      "id": "q103",
+      "text": "What is the purpose of REST APIs in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q103_a",
+          "text": "REST APIs",
+          "order": 1
+        },
+        {
+          "id": "q103_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q103_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q103_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q104",
+      "text": "What is the purpose of web services in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q104_a",
+          "text": "web services",
+          "order": 1
+        },
+        {
+          "id": "q104_b",
+          "text": "To control user access",
+          "order": 2
+        },
+        {
+          "id": "q104_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q104_d",
+          "text": "To manage system configuration",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q105",
+      "text": "What is the purpose of MID servers in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q105_a",
+          "text": "To provide core functionality",
+          "order": 1
+        },
+        {
+          "id": "q105_b",
+          "text": "MID servers",
+          "order": 2
+        },
+        {
+          "id": "q105_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q105_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q106",
+      "text": "What is the purpose of webhooks in ServiceNow?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q106_a",
+          "text": "webhooks",
+          "order": 1
+        },
+        {
+          "id": "q106_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q106_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q106_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q107",
+      "text": "Which integration component is used for external communication?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q107_a",
+          "text": "To manage system configuration",
+          "order": 1
+        },
+        {
+          "id": "q107_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q107_c",
+          "text": "To control user access",
+          "order": 3
+        },
+        {
+          "id": "q107_d",
+          "text": "external communication",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q108",
+      "text": "Which integration component is used for data exchange?",
+      "domainCode": "integration",
+      "difficulty": "hard",
+      "options": [
+        {
+          "id": "q108_a",
+          "text": "data exchange",
+          "order": 1
+        },
+        {
+          "id": "q108_b",
+          "text": "To manage system configuration",
+          "order": 2
+        },
+        {
+          "id": "q108_c",
+          "text": "To provide core functionality",
+          "order": 3
+        },
+        {
+          "id": "q108_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q109",
+      "text": "Which integration component is used for system integration?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q109_a",
+          "text": "To control user access",
+          "order": 1
+        },
+        {
+          "id": "q109_b",
+          "text": "system integration",
+          "order": 2
+        },
+        {
+          "id": "q109_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q109_d",
+          "text": "To provide core functionality",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    },
+    {
+      "id": "q110",
+      "text": "Which integration component is used for API management?",
+      "domainCode": "integration",
+      "difficulty": "medium",
+      "options": [
+        {
+          "id": "q110_a",
+          "text": "API management",
+          "order": 1
+        },
+        {
+          "id": "q110_b",
+          "text": "To provide core functionality",
+          "order": 2
+        },
+        {
+          "id": "q110_c",
+          "text": "To manage system configuration",
+          "order": 3
+        },
+        {
+          "id": "q110_d",
+          "text": "To control user access",
+          "order": 4
+        }
+      ],
+      "context": "Question related to integration domain."
+    }
+  ]
+}

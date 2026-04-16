@@ -1,0 +1,1312 @@
+{
+  "meta": {
+    "domain": "agentic-architecture",
+    "domainName": "Agentic Architecture",
+    "trackId": "cca-f",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-15",
+    "totalQuestions": 65
+  },
+  "questions": [
+    {
+      "id": "ccaf-aa-001",
+      "text": "In an agentic loop, what does a stop_reason of 'tool_use' in the API response indicate?",
+      "textEs": "En un bucle agente, ¿qué indica un stop_reason de 'tool_use' en la respuesta de la API?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-001_b",
+      "explanation": "When Claude returns a stop_reason of 'tool_use', it means the model wants to invoke one or more tools. The orchestrator should execute those tool calls, append the results back into the conversation as tool_result messages, and then call Claude again to continue the loop. The loop only terminates when stop_reason is 'end_turn' (or 'stop_sequence').",
+      "explanationEs": "Cuando Claude devuelve un stop_reason de 'tool_use', significa que el modelo desea invocar una o más herramientas. El orquestador debe ejecutar esas llamadas a herramientas, agregar los resultados a la conversación como mensajes tool_result, y luego llamar a Claude nuevamente para continuar el bucle. El bucle solo termina cuando stop_reason es 'end_turn' (o 'stop_sequence').",
+      "options": [
+        { "id": "ccaf-aa-001_a", "text": "The model has finished processing and no further action is needed", "textEs": "El modelo ha terminado de procesar y no se requiere ninguna acción adicional", "order": 1 },
+        { "id": "ccaf-aa-001_b", "text": "The model wants to invoke one or more tools and expects the results to be appended back", "textEs": "El modelo desea invocar una o más herramientas y espera que los resultados se agreguen de vuelta", "order": 2 },
+        { "id": "ccaf-aa-001_c", "text": "The model encountered an error and requires a retry", "textEs": "El modelo encontró un error y requiere un reintento", "order": 3 },
+        { "id": "ccaf-aa-001_d", "text": "The model has exceeded its token limit and needs a new session", "textEs": "El modelo ha excedido su límite de tokens y necesita una nueva sesión", "order": 4 }
+      ],
+      "tags": ["agentic-loop", "stop-reason", "tool-use", "api"]
+    },
+    {
+      "id": "ccaf-aa-002",
+      "text": "Which stop_reason value signals that the agentic loop should terminate because the model considers its task complete?",
+      "textEs": "¿Qué valor de stop_reason señala que el bucle agente debe terminar porque el modelo considera que su tarea está completa?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-002_a",
+      "explanation": "A stop_reason of 'end_turn' indicates the model has finished its response and does not need to invoke any more tools. This is the primary signal for the orchestrator to exit the agentic loop. 'tool_use' means more tools are needed, 'max_tokens' means truncation occurred, and 'stop_sequence' means a custom stop sequence was hit.",
+      "explanationEs": "Un stop_reason de 'end_turn' indica que el modelo ha terminado su respuesta y no necesita invocar más herramientas. Esta es la señal principal para que el orquestador salga del bucle agente. 'tool_use' significa que se necesitan más herramientas, 'max_tokens' significa que ocurrió una truncación, y 'stop_sequence' significa que se alcanzó una secuencia de parada personalizada.",
+      "options": [
+        { "id": "ccaf-aa-002_a", "text": "end_turn", "textEs": "end_turn", "order": 1 },
+        { "id": "ccaf-aa-002_b", "text": "tool_use", "textEs": "tool_use", "order": 2 },
+        { "id": "ccaf-aa-002_c", "text": "max_tokens", "textEs": "max_tokens", "order": 3 },
+        { "id": "ccaf-aa-002_d", "text": "complete", "textEs": "complete", "order": 4 }
+      ],
+      "tags": ["agentic-loop", "stop-reason", "end-turn"]
+    },
+    {
+      "id": "ccaf-aa-003",
+      "text": "In a hub-and-spoke orchestration pattern, what is the primary role of the hub (coordinator) agent?",
+      "textEs": "En un patrón de orquestación hub-and-spoke, ¿cuál es el rol principal del agente hub (coordinador)?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-003_c",
+      "explanation": "In hub-and-spoke orchestration, the coordinator (hub) agent is responsible for decomposing the overall task, dispatching subtasks to specialized agents (spokes), and synthesizing their results into a coherent final output. The spokes execute independently within their narrow scope. The hub does NOT execute domain logic itself -- it orchestrates.",
+      "explanationEs": "En la orquestación hub-and-spoke, el agente coordinador (hub) es responsable de descomponer la tarea general, despachar subtareas a agentes especializados (spokes) y sintetizar sus resultados en una salida final coherente. Los spokes se ejecutan de forma independiente dentro de su alcance limitado. El hub NO ejecuta lógica de dominio por sí mismo; solo orquesta.",
+      "options": [
+        { "id": "ccaf-aa-003_a", "text": "Execute all tool calls directly and return combined results", "textEs": "Ejecutar todas las llamadas a herramientas directamente y devolver los resultados combinados", "order": 1 },
+        { "id": "ccaf-aa-003_b", "text": "Maintain a shared memory store accessible by all subagents", "textEs": "Mantener un almacén de memoria compartido accesible por todos los subagentes", "order": 2 },
+        { "id": "ccaf-aa-003_c", "text": "Decompose the task, dispatch subtasks to specialized agents, and synthesize their results", "textEs": "Descomponer la tarea, despachar subtareas a agentes especializados y sintetizar sus resultados", "order": 3 },
+        { "id": "ccaf-aa-003_d", "text": "Validate all subagent responses against a predefined schema before returning", "textEs": "Validar todas las respuestas de los subagentes contra un esquema predefinido antes de retornar", "order": 4 }
+      ],
+      "tags": ["hub-and-spoke", "orchestration", "coordinator", "task-decomposition"]
+    },
+    {
+      "id": "ccaf-aa-004",
+      "text": "When appending a tool result back into the conversation in an agentic loop, what is the correct message structure?",
+      "textEs": "Al agregar un resultado de herramienta a la conversación en un bucle agente, ¿cuál es la estructura de mensaje correcta?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-004_b",
+      "explanation": "After executing a tool call, the result must be appended as a message with role 'user' containing a content block of type 'tool_result' with the matching tool_use_id. This maintains the conversational structure that Claude expects: assistant message with tool_use blocks, followed by user message with corresponding tool_result blocks.",
+      "explanationEs": "Después de ejecutar una llamada a herramienta, el resultado debe agregarse como un mensaje con rol 'user' que contenga un bloque de contenido de tipo 'tool_result' con el tool_use_id correspondiente. Esto mantiene la estructura conversacional que Claude espera: mensaje del asistente con bloques tool_use, seguido de mensaje del usuario con los bloques tool_result correspondientes.",
+      "options": [
+        { "id": "ccaf-aa-004_a", "text": "A message with role 'assistant' and type 'tool_output' containing the raw result string", "textEs": "Un mensaje con rol 'assistant' y tipo 'tool_output' que contiene la cadena de resultado en bruto", "order": 1 },
+        { "id": "ccaf-aa-004_b", "text": "A message with role 'user' containing a content block of type 'tool_result' with the matching tool_use_id", "textEs": "Un mensaje con rol 'user' que contiene un bloque de contenido de tipo 'tool_result' con el tool_use_id correspondiente", "order": 2 },
+        { "id": "ccaf-aa-004_c", "text": "A message with role 'system' and the tool result embedded in the system prompt", "textEs": "Un mensaje con rol 'system' y el resultado de la herramienta incrustado en el prompt del sistema", "order": 3 },
+        { "id": "ccaf-aa-004_d", "text": "A separate API call with the tool result passed as a parameter", "textEs": "Una llamada a la API separada con el resultado de la herramienta pasado como parámetro", "order": 4 }
+      ],
+      "tags": ["agentic-loop", "tool-result", "message-structure", "api"]
+    },
+    {
+      "id": "ccaf-aa-005",
+      "text": "What is the primary risk of 'context leakage' in a multi-agent system, and how should it be mitigated?",
+      "textEs": "¿Cuál es el riesgo principal de la 'fuga de contexto' en un sistema multi-agente, y cómo debe mitigarse?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-005_d",
+      "explanation": "Context leakage occurs when sensitive information from one agent's conversation (e.g., PII, credentials, internal reasoning) inadvertently flows to another agent that should not have access to it. The correct mitigation is to give each subagent an isolated context window with only the specific information it needs for its task, rather than sharing the full parent context.",
+      "explanationEs": "La fuga de contexto ocurre cuando información sensible de la conversación de un agente (por ejemplo, datos personales, credenciales, razonamiento interno) fluye inadvertidamente hacia otro agente que no debería tener acceso a ella. La mitigación correcta es dar a cada subagente una ventana de contexto aislada con solo la información específica que necesita para su tarea, en lugar de compartir todo el contexto del padre.",
+      "options": [
+        { "id": "ccaf-aa-005_a", "text": "Agents running out of context window space; mitigate by using summarization before each handoff", "textEs": "Los agentes se quedan sin espacio en la ventana de contexto; mitigar usando resúmenes antes de cada traspaso", "order": 1 },
+        { "id": "ccaf-aa-005_b", "text": "Tool results being too large; mitigate by truncating all tool outputs to 1000 tokens", "textEs": "Los resultados de herramientas son demasiado grandes; mitigar truncando todas las salidas a 1000 tokens", "order": 2 },
+        { "id": "ccaf-aa-005_c", "text": "Agents generating hallucinated tool calls; mitigate by restricting tool_choice to 'any'", "textEs": "Los agentes generan llamadas a herramientas alucinadas; mitigar restringiendo tool_choice a 'any'", "order": 3 },
+        { "id": "ccaf-aa-005_d", "text": "Sensitive information from one agent flowing to another; mitigate by isolating each subagent's context to only what it needs", "textEs": "Información sensible de un agente fluyendo hacia otro; mitigar aislando el contexto de cada subagente a solo lo que necesita", "order": 4 }
+      ],
+      "tags": ["context-leakage", "multi-agent", "security", "isolation"]
+    },
+    {
+      "id": "ccaf-aa-006",
+      "text": "In the Claude Agent SDK, what is the recommended way to handle session resumption after a network interruption?",
+      "textEs": "En el SDK de Agentes de Claude, ¿cuál es la forma recomendada de manejar la reanudación de sesión después de una interrupción de red?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-006_a",
+      "explanation": "Session resumption in the Agent SDK works by persisting the full conversation history (messages array) and the last tool invocation state. On resumption, you reconstruct the messages array up to the last successful exchange and re-submit to Claude. The model will continue from where it left off because the conversation context is fully deterministic from the messages.",
+      "explanationEs": "La reanudación de sesión en el SDK de Agentes funciona persistiendo el historial completo de la conversación (array de mensajes) y el último estado de invocación de herramientas. Al reanudar, se reconstruye el array de mensajes hasta el último intercambio exitoso y se re-envía a Claude. El modelo continuará desde donde se quedó porque el contexto de la conversación es completamente determinista a partir de los mensajes.",
+      "options": [
+        { "id": "ccaf-aa-006_a", "text": "Persist the full messages array and last tool state, then re-submit the conversation to Claude on resumption", "textEs": "Persistir el array completo de mensajes y el último estado de herramientas, luego re-enviar la conversación a Claude al reanudar", "order": 1 },
+        { "id": "ccaf-aa-006_b", "text": "Store only the system prompt and last assistant message, then start a fresh conversation", "textEs": "Almacenar solo el prompt del sistema y el último mensaje del asistente, luego iniciar una conversación nueva", "order": 2 },
+        { "id": "ccaf-aa-006_c", "text": "Use a session_id parameter that automatically resumes server-side state", "textEs": "Usar un parámetro session_id que reanuda automáticamente el estado del lado del servidor", "order": 3 },
+        { "id": "ccaf-aa-006_d", "text": "Checkpoint to a database after every tool call and replay all tool calls on resumption", "textEs": "Crear un punto de control en una base de datos después de cada llamada a herramienta y reproducir todas las llamadas al reanudar", "order": 4 }
+      ],
+      "tags": ["agent-sdk", "session-resumption", "persistence", "recovery"]
+    },
+    {
+      "id": "ccaf-aa-007",
+      "text": "When designing task decomposition for a complex agentic workflow, which approach is most effective?",
+      "textEs": "Al diseñar la descomposición de tareas para un flujo de trabajo agente complejo, ¿qué enfoque es más efectivo?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-007_c",
+      "explanation": "Effective task decomposition breaks a complex task into subtasks where each can be completed independently by a specialized agent with a focused prompt and limited tool set. This reduces per-agent complexity, keeps context windows manageable, and allows parallel execution. Having one agent do everything sequentially defeats the purpose, while decomposing by token count ignores semantic boundaries.",
+      "explanationEs": "La descomposición efectiva de tareas divide una tarea compleja en subtareas donde cada una puede ser completada de forma independiente por un agente especializado con un prompt enfocado y un conjunto limitado de herramientas. Esto reduce la complejidad por agente, mantiene las ventanas de contexto manejables y permite la ejecución en paralelo. Hacer que un solo agente haga todo secuencialmente anula el propósito, mientras que descomponer por cantidad de tokens ignora los límites semánticos.",
+      "options": [
+        { "id": "ccaf-aa-007_a", "text": "Have a single agent handle all steps sequentially to maintain full context", "textEs": "Hacer que un solo agente maneje todos los pasos secuencialmente para mantener el contexto completo", "order": 1 },
+        { "id": "ccaf-aa-007_b", "text": "Split tasks by estimated token count to ensure each agent uses roughly equal context", "textEs": "Dividir las tareas por cantidad estimada de tokens para asegurar que cada agente use aproximadamente el mismo contexto", "order": 2 },
+        { "id": "ccaf-aa-007_c", "text": "Break into independent subtasks where each agent has a focused prompt and limited, relevant tool set", "textEs": "Dividir en subtareas independientes donde cada agente tiene un prompt enfocado y un conjunto de herramientas limitado y relevante", "order": 3 },
+        { "id": "ccaf-aa-007_d", "text": "Create one agent per tool and chain them in a fixed pipeline", "textEs": "Crear un agente por herramienta y encadenarlos en un pipeline fijo", "order": 4 }
+      ],
+      "tags": ["task-decomposition", "orchestration", "design-patterns"]
+    },
+    {
+      "id": "ccaf-aa-008",
+      "text": "What is the primary advantage of using token economics analysis when designing an agentic system?",
+      "textEs": "¿Cuál es la ventaja principal de usar el análisis de economía de tokens al diseñar un sistema agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-008_b",
+      "explanation": "Token economics helps you predict and optimize costs and latency. Each iteration of an agentic loop sends the entire conversation history plus new tool results, so costs grow quadratically with loop iterations. Understanding this helps you design systems with bounded iteration counts, appropriate summarization strategies, and cost-effective tool result sizes.",
+      "explanationEs": "La economía de tokens te ayuda a predecir y optimizar costos y latencia. Cada iteración de un bucle agente envía todo el historial de la conversación más los nuevos resultados de herramientas, por lo que los costos crecen cuadráticamente con las iteraciones del bucle. Entender esto te ayuda a diseñar sistemas con conteos de iteraciones limitados, estrategias de resumen apropiadas y tamaños de resultados de herramientas rentables.",
+      "options": [
+        { "id": "ccaf-aa-008_a", "text": "It determines the optimal model (Haiku vs Sonnet vs Opus) for each agent", "textEs": "Determina el modelo óptimo (Haiku vs Sonnet vs Opus) para cada agente", "order": 1 },
+        { "id": "ccaf-aa-008_b", "text": "It helps predict cost growth across loop iterations since each iteration resends the full conversation history", "textEs": "Ayuda a predecir el crecimiento de costos a lo largo de las iteraciones del bucle ya que cada iteración reenvía todo el historial de la conversación", "order": 2 },
+        { "id": "ccaf-aa-008_c", "text": "It calculates the exact number of API calls needed before starting the workflow", "textEs": "Calcula el número exacto de llamadas a la API necesarias antes de iniciar el flujo de trabajo", "order": 3 },
+        { "id": "ccaf-aa-008_d", "text": "It measures the quality of model outputs at different temperature settings", "textEs": "Mide la calidad de las salidas del modelo en diferentes configuraciones de temperatura", "order": 4 }
+      ],
+      "tags": ["token-economics", "cost-optimization", "agentic-loop", "design"]
+    },
+    {
+      "id": "ccaf-aa-009",
+      "text": "In a coordinator-subagent pattern, how should the coordinator communicate task requirements to a subagent?",
+      "textEs": "En un patrón coordinador-subagente, ¿cómo debe el coordinador comunicar los requisitos de la tarea a un subagente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-009_a",
+      "explanation": "The coordinator should send a focused, self-contained prompt to each subagent that includes only the specific task description, relevant context (not the full parent conversation), expected output format, and any constraints. This prevents context leakage, keeps the subagent focused, and ensures efficient token usage.",
+      "explanationEs": "El coordinador debe enviar un prompt enfocado y autosuficiente a cada subagente que incluya solo la descripción específica de la tarea, el contexto relevante (no toda la conversación del padre), el formato de salida esperado y cualquier restricción. Esto previene la fuga de contexto, mantiene al subagente enfocado y asegura un uso eficiente de tokens.",
+      "options": [
+        { "id": "ccaf-aa-009_a", "text": "Send a focused prompt with only the specific task, relevant context subset, expected output format, and constraints", "textEs": "Enviar un prompt enfocado con solo la tarea específica, un subconjunto de contexto relevante, el formato de salida esperado y las restricciones", "order": 1 },
+        { "id": "ccaf-aa-009_b", "text": "Forward the entire parent conversation history so the subagent has maximum context", "textEs": "Reenviar todo el historial de conversación del padre para que el subagente tenga el máximo contexto", "order": 2 },
+        { "id": "ccaf-aa-009_c", "text": "Pass only the tool names and let the subagent determine its own task from available tools", "textEs": "Pasar solo los nombres de las herramientas y dejar que el subagente determine su propia tarea a partir de las herramientas disponibles", "order": 3 },
+        { "id": "ccaf-aa-009_d", "text": "Use a shared database where the coordinator writes tasks and subagents poll for work", "textEs": "Usar una base de datos compartida donde el coordinador escribe tareas y los subagentes consultan en busca de trabajo", "order": 4 }
+      ],
+      "tags": ["coordinator-subagent", "prompt-design", "context-isolation"]
+    },
+    {
+      "id": "ccaf-aa-010",
+      "text": "What happens if an agentic loop does not implement a maximum iteration limit?",
+      "textEs": "¿Qué sucede si un bucle agente no implementa un límite máximo de iteraciones?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-010_c",
+      "explanation": "Without a maximum iteration limit, an agentic loop can enter an infinite cycle where the model keeps requesting tool calls that don't resolve the task. This leads to unbounded API costs (since each iteration sends the growing conversation), potential rate limiting, and a poor user experience. Always implement a max_iterations safeguard.",
+      "explanationEs": "Sin un límite máximo de iteraciones, un bucle agente puede entrar en un ciclo infinito donde el modelo sigue solicitando llamadas a herramientas que no resuelven la tarea. Esto lleva a costos de API ilimitados (ya que cada iteración envía la conversación creciente), posible limitación de tasa y una mala experiencia de usuario. Siempre implementa una salvaguarda de max_iterations.",
+      "options": [
+        { "id": "ccaf-aa-010_a", "text": "The API will automatically terminate after 100 iterations", "textEs": "La API terminará automáticamente después de 100 iteraciones", "order": 1 },
+        { "id": "ccaf-aa-010_b", "text": "The model will eventually return end_turn on its own within a few iterations", "textEs": "El modelo eventualmente devolverá end_turn por sí solo en unas pocas iteraciones", "order": 2 },
+        { "id": "ccaf-aa-010_c", "text": "The loop may run indefinitely, causing unbounded costs and potential rate limiting", "textEs": "El bucle puede ejecutarse indefinidamente, causando costos ilimitados y posible limitación de tasa", "order": 3 },
+        { "id": "ccaf-aa-010_d", "text": "The context window will overflow and the API will return a 400 error", "textEs": "La ventana de contexto se desbordará y la API devolverá un error 400", "order": 4 }
+      ],
+      "tags": ["agentic-loop", "safeguards", "max-iterations", "cost-control"]
+    },
+    {
+      "id": "ccaf-aa-011",
+      "text": "In Claude Code's architecture, what is the relationship between hooks and the agentic loop?",
+      "textEs": "En la arquitectura de Claude Code, ¿cuál es la relación entre los hooks y el bucle agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-011_b",
+      "explanation": "Hooks in Claude Code are user-defined shell commands that execute at specific lifecycle points: before/after tool calls, before/after the model responds, etc. They run OUTSIDE the model's context -- Claude does not see hook output unless explicitly configured. This makes hooks ideal for validation, logging, and side effects that should not influence the model's reasoning.",
+      "explanationEs": "Los hooks en Claude Code son comandos de shell definidos por el usuario que se ejecutan en puntos específicos del ciclo de vida: antes/después de llamadas a herramientas, antes/después de que el modelo responda, etc. Se ejecutan FUERA del contexto del modelo; Claude no ve la salida de los hooks a menos que se configure explícitamente. Esto hace que los hooks sean ideales para validación, registro de logs y efectos secundarios que no deben influir en el razonamiento del modelo.",
+      "options": [
+        { "id": "ccaf-aa-011_a", "text": "Hooks replace the agentic loop entirely with a predefined sequence of commands", "textEs": "Los hooks reemplazan completamente el bucle agente con una secuencia predefinida de comandos", "order": 1 },
+        { "id": "ccaf-aa-011_b", "text": "Hooks are shell commands that execute at lifecycle points outside the model's context, for validation and side effects", "textEs": "Los hooks son comandos de shell que se ejecutan en puntos del ciclo de vida fuera del contexto del modelo, para validación y efectos secundarios", "order": 2 },
+        { "id": "ccaf-aa-011_c", "text": "Hooks are prompts injected into the system message that modify Claude's behavior at runtime", "textEs": "Los hooks son prompts inyectados en el mensaje del sistema que modifican el comportamiento de Claude en tiempo de ejecución", "order": 3 },
+        { "id": "ccaf-aa-011_d", "text": "Hooks are API middleware that transform tool results before they reach the model", "textEs": "Los hooks son middleware de API que transforman los resultados de herramientas antes de que lleguen al modelo", "order": 4 }
+      ],
+      "tags": ["hooks", "claude-code", "lifecycle", "agentic-loop"]
+    },
+    {
+      "id": "ccaf-aa-012",
+      "text": "When should you choose a single-agent architecture over a multi-agent (coordinator-subagent) architecture?",
+      "textEs": "¿Cuándo deberías elegir una arquitectura de agente único sobre una arquitectura multi-agente (coordinador-subagente)?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-012_d",
+      "explanation": "A single-agent architecture is preferred when the task is well-defined, uses a small number of tools (4-5), and the full context fits within one conversation. Multi-agent architectures add orchestration complexity and latency, so they should only be used when tasks require specialized knowledge domains, many tools, or independent parallel execution.",
+      "explanationEs": "Una arquitectura de agente único es preferible cuando la tarea está bien definida, usa un número pequeño de herramientas (4-5) y todo el contexto cabe en una sola conversación. Las arquitecturas multi-agente añaden complejidad de orquestación y latencia, por lo que solo deben usarse cuando las tareas requieren dominios de conocimiento especializados, muchas herramientas o ejecución paralela independiente.",
+      "options": [
+        { "id": "ccaf-aa-012_a", "text": "Always use multi-agent because it is more scalable", "textEs": "Siempre usar multi-agente porque es más escalable", "order": 1 },
+        { "id": "ccaf-aa-012_b", "text": "When you need to process more than 100,000 tokens of input", "textEs": "Cuando necesitas procesar más de 100,000 tokens de entrada", "order": 2 },
+        { "id": "ccaf-aa-012_c", "text": "When the task requires tools from more than 2 different APIs", "textEs": "Cuando la tarea requiere herramientas de más de 2 APIs diferentes", "order": 3 },
+        { "id": "ccaf-aa-012_d", "text": "When the task is well-defined, uses few tools, and the full context fits in one conversation", "textEs": "Cuando la tarea está bien definida, usa pocas herramientas y todo el contexto cabe en una conversación", "order": 4 }
+      ],
+      "tags": ["architecture-decision", "single-agent", "multi-agent", "design-patterns"]
+    },
+    {
+      "id": "ccaf-aa-013",
+      "text": "In the Agent SDK lifecycle, what is the correct order of operations when the agent receives a user message?",
+      "textEs": "En el ciclo de vida del SDK de Agentes, ¿cuál es el orden correcto de operaciones cuando el agente recibe un mensaje del usuario?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-013_a",
+      "explanation": "The Agent SDK follows a specific lifecycle: (1) the user message is appended to the messages array, (2) the full messages array (including system prompt) is sent to the Claude API, (3) the response is parsed -- if stop_reason is 'tool_use', the tools are executed and results appended, then back to step 2; if 'end_turn', the response is returned to the user.",
+      "explanationEs": "El SDK de Agentes sigue un ciclo de vida específico: (1) el mensaje del usuario se agrega al array de mensajes, (2) el array completo de mensajes (incluyendo el prompt del sistema) se envía a la API de Claude, (3) la respuesta se analiza -- si stop_reason es 'tool_use', las herramientas se ejecutan y los resultados se agregan, luego se regresa al paso 2; si es 'end_turn', la respuesta se devuelve al usuario.",
+      "options": [
+        { "id": "ccaf-aa-013_a", "text": "Append user message -> Send to API -> Parse response -> If tool_use: execute tools, append results, loop back; If end_turn: return response", "textEs": "Agregar mensaje del usuario -> Enviar a la API -> Analizar respuesta -> Si tool_use: ejecutar herramientas, agregar resultados, volver al bucle; Si end_turn: retornar respuesta", "order": 1 },
+        { "id": "ccaf-aa-013_b", "text": "Parse user intent -> Select tools -> Execute tools -> Send results to API -> Return response", "textEs": "Analizar intención del usuario -> Seleccionar herramientas -> Ejecutar herramientas -> Enviar resultados a la API -> Retornar respuesta", "order": 2 },
+        { "id": "ccaf-aa-013_c", "text": "Send user message -> Wait for streaming -> Execute any inline tool calls -> Return final text", "textEs": "Enviar mensaje del usuario -> Esperar streaming -> Ejecutar llamadas a herramientas en línea -> Retornar texto final", "order": 3 },
+        { "id": "ccaf-aa-013_d", "text": "Classify message type -> Route to handler -> Execute handler logic -> Format response -> Return", "textEs": "Clasificar tipo de mensaje -> Enrutar al manejador -> Ejecutar lógica del manejador -> Formatear respuesta -> Retornar", "order": 4 }
+      ],
+      "tags": ["agent-sdk", "lifecycle", "agentic-loop", "message-flow"]
+    },
+    {
+      "id": "ccaf-aa-014",
+      "text": "Why is it important to keep tool result sizes manageable in an agentic loop?",
+      "textEs": "¿Por qué es importante mantener tamaños manejables en los resultados de herramientas en un bucle agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-014_b",
+      "explanation": "In an agentic loop, the entire conversation history (including all previous tool results) is sent with every API call. Large tool results compound across iterations, rapidly consuming the context window and increasing costs quadratically. Trimming or summarizing tool results keeps the context manageable and costs predictable.",
+      "explanationEs": "En un bucle agente, todo el historial de la conversación (incluyendo todos los resultados de herramientas previos) se envía con cada llamada a la API. Los resultados de herramientas grandes se acumulan a lo largo de las iteraciones, consumiendo rápidamente la ventana de contexto y aumentando los costos cuadráticamente. Recortar o resumir los resultados de herramientas mantiene el contexto manejable y los costos predecibles.",
+      "options": [
+        { "id": "ccaf-aa-014_a", "text": "Large tool results cause the API to timeout after 30 seconds", "textEs": "Los resultados de herramientas grandes causan que la API expire después de 30 segundos", "order": 1 },
+        { "id": "ccaf-aa-014_b", "text": "Tool results accumulate in the conversation history and are resent every iteration, causing quadratic cost growth", "textEs": "Los resultados de herramientas se acumulan en el historial de conversación y se reenvían en cada iteración, causando un crecimiento cuadrático de costos", "order": 2 },
+        { "id": "ccaf-aa-014_c", "text": "The model cannot process tool results larger than 4096 tokens", "textEs": "El modelo no puede procesar resultados de herramientas mayores a 4096 tokens", "order": 3 },
+        { "id": "ccaf-aa-014_d", "text": "Large tool results are automatically truncated by the API, causing data loss", "textEs": "Los resultados de herramientas grandes son truncados automáticamente por la API, causando pérdida de datos", "order": 4 }
+      ],
+      "tags": ["tool-results", "token-economics", "context-window", "cost-optimization"]
+    },
+    {
+      "id": "ccaf-aa-015",
+      "text": "A developer's agentic system occasionally produces incorrect final answers because subagents return partial or ambiguous results. What architectural improvement would most directly address this?",
+      "textEs": "El sistema agente de un desarrollador produce ocasionalmente respuestas finales incorrectas porque los subagentes devuelven resultados parciales o ambiguos. ¿Qué mejora arquitectónica abordaría más directamente este problema?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-015_c",
+      "explanation": "Adding a verification step where the coordinator validates subagent outputs against expected schemas and quality criteria before synthesizing the final answer directly addresses the problem of partial or ambiguous results. The coordinator can request clarification or re-execution from subagents that return insufficient results, ensuring the final output meets quality standards.",
+      "explanationEs": "Agregar un paso de verificación donde el coordinador valida las salidas de los subagentes contra esquemas esperados y criterios de calidad antes de sintetizar la respuesta final aborda directamente el problema de resultados parciales o ambiguos. El coordinador puede solicitar aclaraciones o re-ejecución de subagentes que devuelven resultados insuficientes, asegurando que la salida final cumpla los estándares de calidad.",
+      "options": [
+        { "id": "ccaf-aa-015_a", "text": "Increase the temperature for all subagents to generate more diverse outputs", "textEs": "Aumentar la temperatura para todos los subagentes para generar salidas más diversas", "order": 1 },
+        { "id": "ccaf-aa-015_b", "text": "Add more tools to each subagent so they have broader capabilities", "textEs": "Agregar más herramientas a cada subagente para que tengan capacidades más amplias", "order": 2 },
+        { "id": "ccaf-aa-015_c", "text": "Have the coordinator validate subagent outputs against expected schemas before synthesizing the final answer", "textEs": "Hacer que el coordinador valide las salidas de los subagentes contra esquemas esperados antes de sintetizar la respuesta final", "order": 3 },
+        { "id": "ccaf-aa-015_d", "text": "Switch all subagents to use the Opus model for higher quality", "textEs": "Cambiar todos los subagentes para que usen el modelo Opus para mayor calidad", "order": 4 }
+      ],
+      "tags": ["coordinator-subagent", "validation", "quality-assurance", "architecture"]
+    },
+    {
+      "id": "ccaf-aa-016",
+      "text": "When Claude returns multiple tool_use blocks in a single response, what does this indicate and how should the orchestrator handle it?",
+      "textEs": "Cuando Claude devuelve múltiples bloques tool_use en una sola respuesta, ¿qué indica esto y cómo debe manejarlo el orquestador?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-016_b",
+      "explanation": "When Claude returns multiple tool_use blocks in a single response, it is requesting parallel tool execution. The orchestrator should execute all tool calls (potentially in parallel for performance) and return all tool_result blocks in a single user message. Each tool_result must include the matching tool_use_id. This pattern enables Claude to gather multiple pieces of information simultaneously rather than sequentially.",
+      "explanationEs": "Cuando Claude devuelve múltiples bloques tool_use en una sola respuesta, está solicitando ejecución paralela de herramientas. El orquestador debe ejecutar todas las llamadas a herramientas (potencialmente en paralelo para mejor rendimiento) y devolver todos los bloques tool_result en un solo mensaje de usuario. Cada tool_result debe incluir el tool_use_id correspondiente. Este patrón permite a Claude recopilar múltiples datos simultáneamente en lugar de secuencialmente.",
+      "options": [
+        { "id": "ccaf-aa-016_a", "text": "An error occurred and only the first tool call should be executed", "textEs": "Ocurrió un error y solo la primera llamada a herramienta debe ejecutarse", "order": 1 },
+        { "id": "ccaf-aa-016_b", "text": "Claude wants parallel tool execution; execute all calls and return all results in one user message with matching tool_use_ids", "textEs": "Claude quiere ejecución paralela de herramientas; ejecutar todas las llamadas y devolver todos los resultados en un mensaje de usuario con los tool_use_ids correspondientes", "order": 2 },
+        { "id": "ccaf-aa-016_c", "text": "The tools should be executed sequentially in the order they appear, with separate API calls between each", "textEs": "Las herramientas deben ejecutarse secuencialmente en el orden en que aparecen, con llamadas a la API separadas entre cada una", "order": 3 },
+        { "id": "ccaf-aa-016_d", "text": "The model is confused and the request should be retried with tool_choice set to 'auto'", "textEs": "El modelo está confundido y la solicitud debe reintentarse con tool_choice configurado en 'auto'", "order": 4 }
+      ],
+      "tags": ["parallel-tool-execution", "multiple-tool-use", "orchestrator", "api"]
+    },
+    {
+      "id": "ccaf-aa-017",
+      "text": "What is the recommended error recovery strategy when a tool call fails inside an agentic loop?",
+      "textEs": "¿Cuál es la estrategia recomendada de recuperación de errores cuando una llamada a herramienta falla dentro de un bucle agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-017_c",
+      "explanation": "When a tool call fails, the recommended approach is to return the error as a tool_result with is_error set to true, including a descriptive error message. Claude can then reason about the error and decide whether to retry with different parameters, try an alternative approach, or report the failure. This keeps the model in the loop for intelligent error recovery rather than implementing rigid retry logic outside the model.",
+      "explanationEs": "Cuando una llamada a herramienta falla, el enfoque recomendado es devolver el error como un tool_result con is_error establecido en true, incluyendo un mensaje de error descriptivo. Claude puede entonces razonar sobre el error y decidir si reintentar con diferentes parámetros, probar un enfoque alternativo o reportar el fallo. Esto mantiene al modelo en el bucle para una recuperación de errores inteligente en lugar de implementar lógica de reintento rígida fuera del modelo.",
+      "options": [
+        { "id": "ccaf-aa-017_a", "text": "Silently retry the tool call up to 5 times before surfacing the error", "textEs": "Reintentar silenciosamente la llamada a herramienta hasta 5 veces antes de mostrar el error", "order": 1 },
+        { "id": "ccaf-aa-017_b", "text": "Immediately terminate the agentic loop and return the error to the user", "textEs": "Terminar inmediatamente el bucle agente y devolver el error al usuario", "order": 2 },
+        { "id": "ccaf-aa-017_c", "text": "Return the error as a tool_result with is_error: true so Claude can reason about it and decide the next step", "textEs": "Devolver el error como un tool_result con is_error: true para que Claude pueda razonar sobre él y decidir el siguiente paso", "order": 3 },
+        { "id": "ccaf-aa-017_d", "text": "Replace the failed tool result with a placeholder value and continue the loop", "textEs": "Reemplazar el resultado fallido de la herramienta con un valor de marcador de posición y continuar el bucle", "order": 4 }
+      ],
+      "tags": ["error-recovery", "tool-result", "is-error", "agentic-loop"]
+    },
+    {
+      "id": "ccaf-aa-018",
+      "text": "In a long-running agentic session, what is the primary challenge with memory management and how is it typically addressed?",
+      "textEs": "En una sesión agente de larga duración, ¿cuál es el desafío principal con la gestión de memoria y cómo se aborda típicamente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-018_a",
+      "explanation": "The primary challenge is that the conversation history grows with every iteration, eventually exhausting the context window. This is addressed through conversation compaction: periodically summarizing older parts of the conversation while preserving critical facts in persistent blocks. Some systems also use external memory (files, databases) to store intermediate results, referencing them instead of keeping everything in the conversation context.",
+      "explanationEs": "El desafío principal es que el historial de conversación crece con cada iteración, eventualmente agotando la ventana de contexto. Esto se aborda mediante la compactación de conversación: resumiendo periódicamente las partes más antiguas de la conversación mientras se preservan hechos críticos en bloques persistentes. Algunos sistemas también usan memoria externa (archivos, bases de datos) para almacenar resultados intermedios, referenciándolos en lugar de mantener todo en el contexto de la conversación.",
+      "options": [
+        { "id": "ccaf-aa-018_a", "text": "Conversation history grows with each iteration, exhausting the context window; addressed via compaction, persistent fact blocks, and external memory", "textEs": "El historial de conversación crece con cada iteración, agotando la ventana de contexto; se aborda mediante compactación, bloques de hechos persistentes y memoria externa", "order": 1 },
+        { "id": "ccaf-aa-018_b", "text": "The model forgets its system prompt after 10 iterations; addressed by re-injecting the system prompt periodically", "textEs": "El modelo olvida su prompt del sistema después de 10 iteraciones; se aborda reinyectando el prompt del sistema periódicamente", "order": 2 },
+        { "id": "ccaf-aa-018_c", "text": "Tool definitions consume increasing memory; addressed by dynamically unloading unused tools", "textEs": "Las definiciones de herramientas consumen memoria creciente; se aborda descargando dinámicamente las herramientas no utilizadas", "order": 3 },
+        { "id": "ccaf-aa-018_d", "text": "The API connection times out; addressed by implementing WebSocket keep-alive pings", "textEs": "La conexión de API expira; se aborda implementando pings WebSocket de keep-alive", "order": 4 }
+      ],
+      "tags": ["memory-management", "long-sessions", "context-window", "compaction"]
+    },
+    {
+      "id": "ccaf-aa-019",
+      "text": "What is the 'agent handoff' pattern, and when is it preferred over the hub-and-spoke model?",
+      "textEs": "¿Qué es el patrón de 'traspaso de agente', y cuándo se prefiere sobre el modelo hub-and-spoke?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-019_d",
+      "explanation": "In the agent handoff pattern, control passes sequentially from one specialized agent to the next, like a relay race. Each agent completes its phase and hands off the result (and optionally relevant context) to the next agent in the pipeline. This is preferred over hub-and-spoke when the workflow has a clear sequential structure (e.g., research -> draft -> review -> publish) where each stage depends on the previous one's complete output.",
+      "explanationEs": "En el patrón de traspaso de agente, el control pasa secuencialmente de un agente especializado al siguiente, como una carrera de relevos. Cada agente completa su fase y traspasa el resultado (y opcionalmente el contexto relevante) al siguiente agente en el pipeline. Se prefiere sobre el hub-and-spoke cuando el flujo de trabajo tiene una estructura secuencial clara (por ejemplo, investigar -> redactar -> revisar -> publicar) donde cada etapa depende de la salida completa de la anterior.",
+      "options": [
+        { "id": "ccaf-aa-019_a", "text": "An emergency pattern where a failing agent transfers its work to a backup agent; preferred when reliability is critical", "textEs": "Un patrón de emergencia donde un agente que falla transfiere su trabajo a un agente de respaldo; preferido cuando la fiabilidad es crítica", "order": 1 },
+        { "id": "ccaf-aa-019_b", "text": "A pattern where agents negotiate which one handles a task; preferred when tasks are ambiguous", "textEs": "Un patrón donde los agentes negocian cuál maneja una tarea; preferido cuando las tareas son ambiguas", "order": 2 },
+        { "id": "ccaf-aa-019_c", "text": "A pattern where the coordinator permanently delegates authority to a subagent; preferred for long-running workflows", "textEs": "Un patrón donde el coordinador delega permanentemente la autoridad a un subagente; preferido para flujos de trabajo de larga duración", "order": 3 },
+        { "id": "ccaf-aa-019_d", "text": "Sequential transfer of control between specialized agents in a pipeline; preferred when workflow stages have clear dependencies", "textEs": "Transferencia secuencial de control entre agentes especializados en un pipeline; preferido cuando las etapas del flujo de trabajo tienen dependencias claras", "order": 4 }
+      ],
+      "tags": ["agent-handoff", "pipeline", "sequential", "orchestration-patterns"]
+    },
+    {
+      "id": "ccaf-aa-020",
+      "text": "How can you optimize costs in a multi-agent system that processes thousands of requests per day?",
+      "textEs": "¿Cómo puedes optimizar los costos en un sistema multi-agente que procesa miles de solicitudes por día?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-020_b",
+      "explanation": "The most effective cost optimization strategy is to use model tiering: assign simpler tasks (classification, routing, extraction) to Haiku, moderate tasks to Sonnet, and reserve Opus for complex reasoning. Additionally, use prompt caching for repeated system prompts and tool definitions, keep tool results compact, and set appropriate max_tokens limits. The Batch API offers 50% savings for non-time-sensitive work.",
+      "explanationEs": "La estrategia de optimización de costos más efectiva es usar escalonamiento de modelos: asignar tareas simples (clasificación, enrutamiento, extracción) a Haiku, tareas moderadas a Sonnet y reservar Opus para razonamiento complejo. Además, usar caché de prompts para prompts del sistema repetidos y definiciones de herramientas, mantener resultados de herramientas compactos y establecer límites apropiados de max_tokens. La API por lotes ofrece un 50% de ahorro para trabajo no sensible al tiempo.",
+      "options": [
+        { "id": "ccaf-aa-020_a", "text": "Use only Opus for everything to minimize errors and reduce retries", "textEs": "Usar solo Opus para todo para minimizar errores y reducir reintentos", "order": 1 },
+        { "id": "ccaf-aa-020_b", "text": "Use model tiering (Haiku for simple tasks, Sonnet for moderate, Opus for complex), prompt caching, compact tool results, and Batch API for async work", "textEs": "Usar escalonamiento de modelos (Haiku para tareas simples, Sonnet para moderadas, Opus para complejas), caché de prompts, resultados de herramientas compactos y API por lotes para trabajo asíncrono", "order": 2 },
+        { "id": "ccaf-aa-020_c", "text": "Minimize the number of agents to 2 (one coordinator and one worker) to reduce API calls", "textEs": "Minimizar el número de agentes a 2 (un coordinador y un trabajador) para reducir las llamadas a la API", "order": 3 },
+        { "id": "ccaf-aa-020_d", "text": "Cache all model responses and replay them for identical queries without calling the API", "textEs": "Cachear todas las respuestas del modelo y reproducirlas para consultas idénticas sin llamar a la API", "order": 4 }
+      ],
+      "tags": ["cost-optimization", "model-tiering", "prompt-caching", "batch-api"]
+    },
+    {
+      "id": "ccaf-aa-021",
+      "text": "What is the purpose of setting max_tokens in an agentic loop, and what happens if the response is truncated?",
+      "textEs": "¿Cuál es el propósito de establecer max_tokens en un bucle agente, y qué sucede si la respuesta se trunca?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-021_a",
+      "explanation": "Setting max_tokens limits the length of each individual response from Claude. If the response is truncated, the stop_reason will be 'max_tokens' instead of 'end_turn' or 'tool_use'. In an agentic loop, a 'max_tokens' stop_reason should be handled carefully -- you can either increase max_tokens, feed the partial response back asking Claude to continue, or treat it as an error. Truncated tool_use blocks will fail to parse.",
+      "explanationEs": "Establecer max_tokens limita la longitud de cada respuesta individual de Claude. Si la respuesta se trunca, el stop_reason será 'max_tokens' en lugar de 'end_turn' o 'tool_use'. En un bucle agente, un stop_reason de 'max_tokens' debe manejarse con cuidado: puedes aumentar max_tokens, devolver la respuesta parcial pidiendo a Claude que continúe, o tratarlo como un error. Los bloques tool_use truncados fallarán al analizar.",
+      "options": [
+        { "id": "ccaf-aa-021_a", "text": "It limits response length; truncation produces stop_reason 'max_tokens' which needs special handling since tool_use blocks may be incomplete", "textEs": "Limita la longitud de la respuesta; la truncación produce stop_reason 'max_tokens' que necesita manejo especial ya que los bloques tool_use pueden estar incompletos", "order": 1 },
+        { "id": "ccaf-aa-021_b", "text": "It limits the total conversation length; once reached, the conversation must be restarted", "textEs": "Limita la longitud total de la conversación; una vez alcanzado, la conversación debe reiniciarse", "order": 2 },
+        { "id": "ccaf-aa-021_c", "text": "It limits the number of tool calls per response; excess tool calls are queued for the next iteration", "textEs": "Limita el número de llamadas a herramientas por respuesta; las llamadas excedentes se ponen en cola para la siguiente iteración", "order": 3 },
+        { "id": "ccaf-aa-021_d", "text": "It has no effect in agentic loops because the loop automatically manages token limits", "textEs": "No tiene efecto en bucles agente porque el bucle gestiona automáticamente los límites de tokens", "order": 4 }
+      ],
+      "tags": ["max-tokens", "truncation", "stop-reason", "agentic-loop"]
+    },
+    {
+      "id": "ccaf-aa-022",
+      "text": "In a multi-agent system, what is the 'fan-out/fan-in' pattern?",
+      "textEs": "En un sistema multi-agente, ¿qué es el patrón 'fan-out/fan-in'?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-022_c",
+      "explanation": "Fan-out/fan-in is an orchestration pattern where a coordinator dispatches the same task or related subtasks to multiple agents in parallel (fan-out), waits for all results, and then aggregates or synthesizes them into a single output (fan-in). This is useful for tasks like multi-source research, parallel data extraction from different documents, or getting diverse perspectives on a problem.",
+      "explanationEs": "Fan-out/fan-in es un patrón de orquestación donde un coordinador despacha la misma tarea o subtareas relacionadas a múltiples agentes en paralelo (fan-out), espera todos los resultados y luego los agrega o sintetiza en una sola salida (fan-in). Es útil para tareas como investigación de múltiples fuentes, extracción de datos en paralelo de diferentes documentos u obtener diversas perspectivas sobre un problema.",
+      "options": [
+        { "id": "ccaf-aa-022_a", "text": "A load-balancing pattern that distributes user requests across multiple identical agent instances", "textEs": "Un patrón de balanceo de carga que distribuye solicitudes de usuarios entre múltiples instancias idénticas de agentes", "order": 1 },
+        { "id": "ccaf-aa-022_b", "text": "A pattern where one agent generates multiple outputs and another selects the best one", "textEs": "Un patrón donde un agente genera múltiples salidas y otro selecciona la mejor", "order": 2 },
+        { "id": "ccaf-aa-022_c", "text": "A coordinator dispatches subtasks to multiple agents in parallel (fan-out) and aggregates all results into one output (fan-in)", "textEs": "Un coordinador despacha subtareas a múltiples agentes en paralelo (fan-out) y agrega todos los resultados en una sola salida (fan-in)", "order": 3 },
+        { "id": "ccaf-aa-022_d", "text": "A caching pattern where results from one agent are distributed to all other agents", "textEs": "Un patrón de caché donde los resultados de un agente se distribuyen a todos los demás agentes", "order": 4 }
+      ],
+      "tags": ["fan-out-fan-in", "parallel-execution", "orchestration", "aggregation"]
+    },
+    {
+      "id": "ccaf-aa-023",
+      "text": "What role does the system prompt play in defining an agent's behavior within a multi-agent architecture?",
+      "textEs": "¿Qué rol juega el prompt del sistema en la definición del comportamiento de un agente dentro de una arquitectura multi-agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-023_b",
+      "explanation": "In a multi-agent architecture, each agent's system prompt defines its specialized role, available tools, output format expectations, and behavioral constraints. This is how you create 'specialized' agents -- the same Claude model behaves differently based on its system prompt. A well-crafted system prompt ensures the agent stays focused on its domain and produces outputs in the format the coordinator expects.",
+      "explanationEs": "En una arquitectura multi-agente, el prompt del sistema de cada agente define su rol especializado, las herramientas disponibles, las expectativas de formato de salida y las restricciones de comportamiento. Así es como se crean agentes 'especializados': el mismo modelo Claude se comporta de manera diferente según su prompt del sistema. Un prompt del sistema bien elaborado asegura que el agente se mantenga enfocado en su dominio y produzca salidas en el formato que el coordinador espera.",
+      "options": [
+        { "id": "ccaf-aa-023_a", "text": "It only sets the model version; behavior is determined by the tools provided", "textEs": "Solo establece la versión del modelo; el comportamiento está determinado por las herramientas proporcionadas", "order": 1 },
+        { "id": "ccaf-aa-023_b", "text": "It defines the agent's role, tools, output format, and constraints, making the same model behave as a specialized agent", "textEs": "Define el rol del agente, herramientas, formato de salida y restricciones, haciendo que el mismo modelo se comporte como un agente especializado", "order": 2 },
+        { "id": "ccaf-aa-023_c", "text": "It is optional in multi-agent systems since the coordinator's prompt governs all subagents", "textEs": "Es opcional en sistemas multi-agente ya que el prompt del coordinador gobierna a todos los subagentes", "order": 3 },
+        { "id": "ccaf-aa-023_d", "text": "It is used only for logging and debugging purposes, not for runtime behavior", "textEs": "Se usa solo para registro de logs y depuración, no para el comportamiento en tiempo de ejecución", "order": 4 }
+      ],
+      "tags": ["system-prompt", "agent-specialization", "multi-agent", "configuration"]
+    },
+    {
+      "id": "ccaf-aa-024",
+      "text": "A developer notices that their agentic loop sometimes takes 15+ iterations to complete a task that should take 3-4. What is the most likely cause?",
+      "textEs": "Un desarrollador nota que su bucle agente a veces toma más de 15 iteraciones para completar una tarea que debería tomar 3-4. ¿Cuál es la causa más probable?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-024_d",
+      "explanation": "When an agentic loop takes far more iterations than expected, the most likely cause is that tool descriptions or the system prompt are ambiguous, causing the model to select wrong tools, misinterpret results, or repeat actions. Improving tool descriptions with clear names, specific parameter documentation, and examples of when to use each tool typically resolves the issue. Also check for overlapping tool functionality that confuses selection.",
+      "explanationEs": "Cuando un bucle agente toma muchas más iteraciones de lo esperado, la causa más probable es que las descripciones de herramientas o el prompt del sistema sean ambiguos, causando que el modelo seleccione herramientas incorrectas, malinterprete resultados o repita acciones. Mejorar las descripciones de herramientas con nombres claros, documentación específica de parámetros y ejemplos de cuándo usar cada herramienta típicamente resuelve el problema. También verifica funcionalidades superpuestas entre herramientas que confundan la selección.",
+      "options": [
+        { "id": "ccaf-aa-024_a", "text": "The API is experiencing high latency, causing timeout retries", "textEs": "La API está experimentando alta latencia, causando reintentos por tiempo de espera", "order": 1 },
+        { "id": "ccaf-aa-024_b", "text": "The max_tokens setting is too low, causing truncated responses that need re-processing", "textEs": "La configuración de max_tokens es demasiado baja, causando respuestas truncadas que necesitan reprocesamiento", "order": 2 },
+        { "id": "ccaf-aa-024_c", "text": "The model is using extended thinking, which counts as additional iterations", "textEs": "El modelo está usando pensamiento extendido, lo cual cuenta como iteraciones adicionales", "order": 3 },
+        { "id": "ccaf-aa-024_d", "text": "Ambiguous tool descriptions or overlapping tool functionality causing incorrect tool selection and repeated actions", "textEs": "Descripciones de herramientas ambiguas o funcionalidades superpuestas causando selección incorrecta de herramientas y acciones repetidas", "order": 4 }
+      ],
+      "tags": ["debugging", "excessive-iterations", "tool-descriptions", "optimization"]
+    },
+    {
+      "id": "ccaf-aa-025",
+      "text": "How does prompt caching reduce costs in an agentic loop that uses a large system prompt with tool definitions?",
+      "textEs": "¿Cómo reduce el caché de prompts los costos en un bucle agente que usa un prompt del sistema grande con definiciones de herramientas?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-025_a",
+      "explanation": "Prompt caching allows the API to cache the prefix of a request (system prompt, tool definitions, and the beginning of the conversation) across multiple calls. In an agentic loop, the system prompt and tool definitions are identical in every iteration, and early conversation turns are the same too. Cached tokens are charged at a 90% discount on reads (after a small write premium), significantly reducing per-iteration costs when the loop runs many times.",
+      "explanationEs": "El caché de prompts permite que la API almacene en caché el prefijo de una solicitud (prompt del sistema, definiciones de herramientas y el inicio de la conversación) a través de múltiples llamadas. En un bucle agente, el prompt del sistema y las definiciones de herramientas son idénticos en cada iteración, y los turnos iniciales de conversación también lo son. Los tokens en caché se cobran con un 90% de descuento en lecturas (después de una pequeña prima de escritura), reduciendo significativamente los costos por iteración cuando el bucle se ejecuta muchas veces.",
+      "options": [
+        { "id": "ccaf-aa-025_a", "text": "Cached prefixes (system prompt, tools, early turns) are charged at 90% discount on reads, saving significantly across iterations", "textEs": "Los prefijos en caché (prompt del sistema, herramientas, turnos iniciales) se cobran con 90% de descuento en lecturas, ahorrando significativamente a lo largo de las iteraciones", "order": 1 },
+        { "id": "ccaf-aa-025_b", "text": "It stores the model's complete responses and returns them without re-computation for identical prompts", "textEs": "Almacena las respuestas completas del modelo y las devuelve sin recalculación para prompts idénticos", "order": 2 },
+        { "id": "ccaf-aa-025_c", "text": "It compresses the system prompt to use fewer tokens, leaving more room for conversation history", "textEs": "Comprime el prompt del sistema para usar menos tokens, dejando más espacio para el historial de conversación", "order": 3 },
+        { "id": "ccaf-aa-025_d", "text": "It eliminates the need to send tool definitions after the first iteration, reducing payload size", "textEs": "Elimina la necesidad de enviar definiciones de herramientas después de la primera iteración, reduciendo el tamaño del payload", "order": 4 }
+      ],
+      "tags": ["prompt-caching", "cost-optimization", "agentic-loop", "system-prompt"]
+    },
+    {
+      "id": "ccaf-aa-026",
+      "text": "What is the purpose of a custom stop_sequence in an agentic loop?",
+      "textEs": "¿Cuál es el propósito de una stop_sequence personalizada en un bucle agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-026_b",
+      "explanation": "Custom stop sequences allow you to define specific strings that, when generated by the model, cause the response to terminate immediately with stop_reason 'stop_sequence'. In agentic loops, this is useful for creating structured handoff signals -- for example, having the agent emit '</task_complete>' when it finishes, allowing the orchestrator to detect completion through a deterministic signal rather than parsing natural language. The model stops generating immediately when it emits the stop sequence, so the sequence itself is not included in the response content.",
+      "explanationEs": "Las secuencias de parada personalizadas permiten definir cadenas específicas que, cuando son generadas por el modelo, causan que la respuesta termine inmediatamente con stop_reason 'stop_sequence'. En bucles agente, esto es útil para crear señales de traspaso estructuradas -- por ejemplo, hacer que el agente emita '</task_complete>' cuando termine, permitiendo al orquestador detectar la finalización mediante una señal determinista en lugar de analizar lenguaje natural. El modelo deja de generar inmediatamente cuando emite la secuencia de parada, por lo que la secuencia misma no se incluye en el contenido de la respuesta.",
+      "options": [
+        { "id": "ccaf-aa-026_a", "text": "It forces the model to stop thinking and immediately output an answer", "textEs": "Fuerza al modelo a dejar de pensar e inmediatamente producir una respuesta", "order": 1 },
+        { "id": "ccaf-aa-026_b", "text": "It defines a specific string that causes the response to end immediately, allowing deterministic handoff signals for the orchestrator", "textEs": "Define una cadena específica que causa que la respuesta termine inmediatamente, permitiendo señales de traspaso deterministas para el orquestador", "order": 2 },
+        { "id": "ccaf-aa-026_c", "text": "It limits the number of tokens generated per response, similar to max_tokens", "textEs": "Limita el número de tokens generados por respuesta, similar a max_tokens", "order": 3 },
+        { "id": "ccaf-aa-026_d", "text": "It prevents the model from generating harmful content by stopping at flagged words", "textEs": "Evita que el modelo genere contenido dañino al detenerse en palabras marcadas", "order": 4 }
+      ],
+      "tags": ["stop-sequence", "agentic-loop", "orchestration", "handoff-signal"]
+    },
+    {
+      "id": "ccaf-aa-027",
+      "text": "In the consensus multi-agent pattern, how do multiple agents arrive at a final answer?",
+      "textEs": "En el patrón multi-agente de consenso, ¿cómo llegan múltiples agentes a una respuesta final?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-027_c",
+      "explanation": "In the consensus pattern, multiple agents independently process the same task, and their outputs are compared or voted on to produce a final answer. A synthesis agent or voting mechanism evaluates the individual outputs and selects the best one, combines them, or identifies the majority answer. This pattern improves reliability for high-stakes decisions by reducing the impact of any single model call producing an incorrect or hallucinated result.",
+      "explanationEs": "En el patrón de consenso, múltiples agentes procesan independientemente la misma tarea, y sus salidas se comparan o se votan para producir una respuesta final. Un agente de síntesis o mecanismo de votación evalúa las salidas individuales y selecciona la mejor, las combina o identifica la respuesta mayoritaria. Este patrón mejora la fiabilidad para decisiones de alto riesgo al reducir el impacto de cualquier llamada individual al modelo que produzca un resultado incorrecto o alucinado.",
+      "options": [
+        { "id": "ccaf-aa-027_a", "text": "Agents share a single context window and collaboratively write the response token by token", "textEs": "Los agentes comparten una sola ventana de contexto y escriben colaborativamente la respuesta token por token", "order": 1 },
+        { "id": "ccaf-aa-027_b", "text": "One lead agent produces a draft and other agents iteratively refine it in rounds", "textEs": "Un agente líder produce un borrador y otros agentes lo refinan iterativamente en rondas", "order": 2 },
+        { "id": "ccaf-aa-027_c", "text": "Multiple agents independently process the same task, and their outputs are compared or voted on via a synthesis mechanism", "textEs": "Múltiples agentes procesan independientemente la misma tarea, y sus salidas se comparan o votan mediante un mecanismo de síntesis", "order": 3 },
+        { "id": "ccaf-aa-027_d", "text": "Agents debate in a shared chat thread until they all produce the same output", "textEs": "Los agentes debaten en un hilo de chat compartido hasta que todos producen la misma salida", "order": 4 }
+      ],
+      "tags": ["consensus-pattern", "multi-agent", "voting", "reliability"]
+    },
+    {
+      "id": "ccaf-aa-028",
+      "text": "When using the Claude Agent SDK managed agents endpoint (/v1/agents), what is the primary benefit over building your own orchestration layer?",
+      "textEs": "Al usar el endpoint de agentes gestionados del SDK de Agentes de Claude (/v1/agents), ¿cuál es el beneficio principal sobre construir tu propia capa de orquestación?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-028_a",
+      "explanation": "The managed agents endpoint (/v1/agents) abstracts away the agentic loop, tool execution, and session management. Instead of manually implementing the loop (check stop_reason, execute tools, append results, re-call API), you define the agent configuration (tools, system prompt, model) and the service handles the orchestration. This reduces boilerplate code, eliminates common bugs in loop management, and provides built-in features like session persistence and tool execution sandboxing.",
+      "explanationEs": "El endpoint de agentes gestionados (/v1/agents) abstrae el bucle agente, la ejecución de herramientas y la gestión de sesiones. En lugar de implementar manualmente el bucle (verificar stop_reason, ejecutar herramientas, agregar resultados, re-llamar a la API), defines la configuración del agente (herramientas, prompt del sistema, modelo) y el servicio maneja la orquestación. Esto reduce el código repetitivo, elimina errores comunes en la gestión del bucle y proporciona características integradas como persistencia de sesión y sandboxing de ejecución de herramientas.",
+      "options": [
+        { "id": "ccaf-aa-028_a", "text": "It abstracts the agentic loop, tool execution, and session management, reducing boilerplate and eliminating common orchestration bugs", "textEs": "Abstrae el bucle agente, la ejecución de herramientas y la gestión de sesiones, reduciendo código repetitivo y eliminando errores comunes de orquestación", "order": 1 },
+        { "id": "ccaf-aa-028_b", "text": "It guarantees zero-latency tool execution by running tools server-side", "textEs": "Garantiza ejecución de herramientas sin latencia al ejecutarlas del lado del servidor", "order": 2 },
+        { "id": "ccaf-aa-028_c", "text": "It automatically selects the optimal model for each tool call", "textEs": "Selecciona automáticamente el modelo óptimo para cada llamada a herramienta", "order": 3 },
+        { "id": "ccaf-aa-028_d", "text": "It provides built-in multi-agent coordination without any configuration", "textEs": "Proporciona coordinación multi-agente integrada sin ninguna configuración", "order": 4 }
+      ],
+      "tags": ["agent-sdk", "managed-agents", "orchestration", "v1-agents"]
+    },
+    {
+      "id": "ccaf-aa-029",
+      "text": "In a dependent tool chain, tool B requires the output of tool A as input. How should the orchestrator handle this dependency?",
+      "textEs": "En una cadena de herramientas dependientes, la herramienta B requiere la salida de la herramienta A como entrada. ¿Cómo debe el orquestador manejar esta dependencia?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-029_d",
+      "explanation": "The orchestrator does not need to manually manage dependent tool chains -- Claude handles this naturally through the agentic loop. In the first iteration, Claude will call tool A. When the result is returned, Claude sees tool A's output in the conversation history and can then call tool B with the appropriate input derived from that result. The model's reasoning capabilities allow it to extract the needed values and construct the correct parameters for tool B without explicit orchestrator logic for dependencies.",
+      "explanationEs": "El orquestador no necesita gestionar manualmente las cadenas de herramientas dependientes -- Claude maneja esto naturalmente a través del bucle agente. En la primera iteración, Claude llamará a la herramienta A. Cuando se devuelve el resultado, Claude ve la salida de la herramienta A en el historial de conversación y puede entonces llamar a la herramienta B con la entrada apropiada derivada de ese resultado. Las capacidades de razonamiento del modelo le permiten extraer los valores necesarios y construir los parámetros correctos para la herramienta B sin lógica explícita del orquestador para dependencias.",
+      "options": [
+        { "id": "ccaf-aa-029_a", "text": "Pre-define the dependency graph in the tool configuration and let the API resolve execution order", "textEs": "Pre-definir el grafo de dependencias en la configuración de herramientas y dejar que la API resuelva el orden de ejecución", "order": 1 },
+        { "id": "ccaf-aa-029_b", "text": "Execute both tools in parallel and retry tool B if tool A has not completed yet", "textEs": "Ejecutar ambas herramientas en paralelo y reintentar la herramienta B si la herramienta A no ha terminado aún", "order": 2 },
+        { "id": "ccaf-aa-029_c", "text": "Parse tool A's result in the orchestrator and programmatically inject it into tool B's parameters", "textEs": "Analizar el resultado de la herramienta A en el orquestador e inyectarlo programáticamente en los parámetros de la herramienta B", "order": 3 },
+        { "id": "ccaf-aa-029_d", "text": "Let Claude handle it naturally: it calls tool A first, sees the result in conversation history, then calls tool B with derived inputs in a subsequent iteration", "textEs": "Dejar que Claude lo maneje naturalmente: llama primero a la herramienta A, ve el resultado en el historial de conversación, luego llama a la herramienta B con entradas derivadas en una iteración subsiguiente", "order": 4 }
+      ],
+      "tags": ["dependent-tools", "tool-chains", "orchestration", "agentic-loop"]
+    },
+    {
+      "id": "ccaf-aa-030",
+      "text": "What is a circuit breaker in the context of agentic error handling, and when should it be triggered?",
+      "textEs": "¿Qué es un circuit breaker en el contexto de manejo de errores agentes, y cuándo debe activarse?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-030_b",
+      "explanation": "A circuit breaker is a pattern borrowed from distributed systems that monitors failure rates of tool calls or API requests. When failures exceed a threshold (e.g., 5 consecutive failures or 50% failure rate in a time window), the circuit 'opens' and subsequent calls are immediately failed without executing, preventing cascading failures and wasted API costs. After a cooldown period, the circuit enters 'half-open' state, allowing a test request through. If it succeeds, the circuit closes and normal operation resumes.",
+      "explanationEs": "Un circuit breaker es un patrón tomado de sistemas distribuidos que monitorea las tasas de fallo de llamadas a herramientas o solicitudes API. Cuando los fallos exceden un umbral (por ejemplo, 5 fallos consecutivos o 50% de tasa de fallos en una ventana de tiempo), el circuito se 'abre' y las llamadas subsiguientes fallan inmediatamente sin ejecutarse, previniendo fallos en cascada y costos de API desperdiciados. Después de un período de enfriamiento, el circuito entra en estado 'semi-abierto', permitiendo una solicitud de prueba. Si tiene éxito, el circuito se cierra y la operación normal se reanuda.",
+      "options": [
+        { "id": "ccaf-aa-030_a", "text": "A hardware component that limits electrical current to the API servers; triggered when server load is too high", "textEs": "Un componente de hardware que limita la corriente eléctrica a los servidores de la API; se activa cuando la carga del servidor es demasiado alta", "order": 1 },
+        { "id": "ccaf-aa-030_b", "text": "A pattern that monitors failure rates and stops executing calls when failures exceed a threshold, preventing cascading failures and wasted costs", "textEs": "Un patrón que monitorea tasas de fallo y detiene la ejecución de llamadas cuando los fallos exceden un umbral, previniendo fallos en cascada y costos desperdiciados", "order": 2 },
+        { "id": "ccaf-aa-030_c", "text": "A mechanism that terminates the agentic loop after the first tool failure, ensuring no partial results are returned", "textEs": "Un mecanismo que termina el bucle agente después del primer fallo de herramienta, asegurando que no se devuelvan resultados parciales", "order": 3 },
+        { "id": "ccaf-aa-030_d", "text": "A feature of the Claude API that automatically retries failed requests with exponential backoff", "textEs": "Una característica de la API de Claude que reintenta automáticamente las solicitudes fallidas con retroceso exponencial", "order": 4 }
+      ],
+      "tags": ["circuit-breaker", "error-handling", "resilience", "distributed-patterns"]
+    },
+    {
+      "id": "ccaf-aa-031",
+      "text": "When implementing a summarization strategy for context window management, at what point in the agentic loop should summarization be triggered?",
+      "textEs": "Al implementar una estrategia de resumen para la gestión de la ventana de contexto, ¿en qué punto del bucle agente debe activarse el resumen?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-031_c",
+      "explanation": "Summarization should be triggered proactively when token usage approaches a configurable threshold (e.g., 70-80% of the context window), not after hitting the limit. At this point, older conversation turns (especially large tool results) are summarized into a compact representation while preserving key facts and decisions. This ensures there is always room for the current interaction while retaining essential context. Waiting until the window is full can cause the API call to fail or require emergency truncation that loses important information.",
+      "explanationEs": "El resumen debe activarse proactivamente cuando el uso de tokens se acerca a un umbral configurable (por ejemplo, 70-80% de la ventana de contexto), no después de alcanzar el límite. En este punto, los turnos de conversación más antiguos (especialmente resultados de herramientas grandes) se resumen en una representación compacta mientras se preservan hechos y decisiones clave. Esto asegura que siempre haya espacio para la interacción actual mientras se retiene el contexto esencial. Esperar hasta que la ventana esté llena puede causar que la llamada a la API falle o requiera una truncación de emergencia que pierde información importante.",
+      "options": [
+        { "id": "ccaf-aa-031_a", "text": "After every single tool call to keep the context as small as possible", "textEs": "Después de cada llamada a herramienta individual para mantener el contexto lo más pequeño posible", "order": 1 },
+        { "id": "ccaf-aa-031_b", "text": "Only when the API returns a 400 error indicating the context window has been exceeded", "textEs": "Solo cuando la API devuelve un error 400 indicando que la ventana de contexto ha sido excedida", "order": 2 },
+        { "id": "ccaf-aa-031_c", "text": "Proactively when token usage reaches 70-80% of the context window, summarizing older turns while preserving key facts", "textEs": "Proactivamente cuando el uso de tokens alcanza el 70-80% de la ventana de contexto, resumiendo turnos más antiguos mientras se preservan hechos clave", "order": 3 },
+        { "id": "ccaf-aa-031_d", "text": "At fixed intervals (e.g., every 10 iterations) regardless of context window usage", "textEs": "En intervalos fijos (por ejemplo, cada 10 iteraciones) independientemente del uso de la ventana de contexto", "order": 4 }
+      ],
+      "tags": ["summarization", "context-window", "token-management", "proactive"]
+    },
+    {
+      "id": "ccaf-aa-032",
+      "text": "What is the tool_choice parameter, and how does setting it to 'auto' differ from setting it to a specific tool name?",
+      "textEs": "¿Qué es el parámetro tool_choice, y cómo difiere configurarlo en 'auto' de configurarlo con un nombre de herramienta específico?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-032_a",
+      "explanation": "The tool_choice parameter controls how Claude selects tools. When set to 'auto' (the default), Claude decides whether to use tools and which ones to call based on the conversation context. When set to a specific tool name (e.g., {type: 'tool', name: 'search_database'}), Claude is forced to call that specific tool, which is useful when the orchestrator knows exactly which tool should be used next. There is also 'any' which forces Claude to use at least one tool but lets it choose which, and 'none' which prevents tool use entirely.",
+      "explanationEs": "El parámetro tool_choice controla cómo Claude selecciona herramientas. Cuando se configura en 'auto' (el valor predeterminado), Claude decide si usar herramientas y cuáles llamar basándose en el contexto de la conversación. Cuando se configura con un nombre de herramienta específico (por ejemplo, {type: 'tool', name: 'search_database'}), Claude es forzado a llamar esa herramienta específica, lo cual es útil cuando el orquestador sabe exactamente qué herramienta debe usarse a continuación. También existe 'any' que fuerza a Claude a usar al menos una herramienta pero le deja elegir cuál, y 'none' que previene el uso de herramientas por completo.",
+      "options": [
+        { "id": "ccaf-aa-032_a", "text": "'auto' lets Claude decide if and which tools to call; a specific name forces Claude to call that exact tool on the next response", "textEs": "'auto' deja que Claude decida si usar y cuáles herramientas llamar; un nombre específico fuerza a Claude a llamar exactamente esa herramienta en la siguiente respuesta", "order": 1 },
+        { "id": "ccaf-aa-032_b", "text": "'auto' executes all available tools in parallel; a specific name limits execution to that single tool", "textEs": "'auto' ejecuta todas las herramientas disponibles en paralelo; un nombre específico limita la ejecución a esa única herramienta", "order": 2 },
+        { "id": "ccaf-aa-032_c", "text": "'auto' disables tool use entirely; a specific name enables only that tool", "textEs": "'auto' desactiva el uso de herramientas por completo; un nombre específico habilita solo esa herramienta", "order": 3 },
+        { "id": "ccaf-aa-032_d", "text": "Both 'auto' and a specific name produce the same behavior; the parameter only affects logging", "textEs": "Tanto 'auto' como un nombre específico producen el mismo comportamiento; el parámetro solo afecta los registros de logs", "order": 4 }
+      ],
+      "tags": ["tool-choice", "api-parameters", "tool-selection", "orchestration"]
+    },
+    {
+      "id": "ccaf-aa-033",
+      "text": "In a parallel delegation multi-agent pattern, what is the key challenge when aggregating results from concurrent subagents?",
+      "textEs": "En un patrón multi-agente de delegación paralela, ¿cuál es el desafío clave al agregar resultados de subagentes concurrentes?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-033_d",
+      "explanation": "When multiple subagents run concurrently, they may produce conflicting or overlapping information, use different formats or levels of detail, or one may fail while others succeed. The coordinator must handle result reconciliation: resolving conflicts between contradictory outputs, normalizing varying response formats, deciding how to proceed with partial results when some agents fail, and synthesizing a coherent answer from heterogeneous inputs. This is fundamentally harder than aggregating sequential results because there is no shared state between concurrent agents.",
+      "explanationEs": "Cuando múltiples subagentes se ejecutan concurrentemente, pueden producir información conflictiva o superpuesta, usar diferentes formatos o niveles de detalle, o uno puede fallar mientras otros tienen éxito. El coordinador debe manejar la reconciliación de resultados: resolver conflictos entre salidas contradictorias, normalizar formatos de respuesta variables, decidir cómo proceder con resultados parciales cuando algunos agentes fallan, y sintetizar una respuesta coherente a partir de entradas heterogéneas. Esto es fundamentalmente más difícil que agregar resultados secuenciales porque no hay estado compartido entre agentes concurrentes.",
+      "options": [
+        { "id": "ccaf-aa-033_a", "text": "Ensuring all subagents finish at exactly the same time to maintain synchronization", "textEs": "Asegurar que todos los subagentes terminen exactamente al mismo tiempo para mantener la sincronización", "order": 1 },
+        { "id": "ccaf-aa-033_b", "text": "Preventing subagents from using the same tools simultaneously due to API rate limits", "textEs": "Evitar que los subagentes usen las mismas herramientas simultáneamente debido a límites de tasa de la API", "order": 2 },
+        { "id": "ccaf-aa-033_c", "text": "Managing shared memory access between concurrent agents running on the same server", "textEs": "Gestionar el acceso a memoria compartida entre agentes concurrentes ejecutándose en el mismo servidor", "order": 3 },
+        { "id": "ccaf-aa-033_d", "text": "Reconciling conflicting outputs, normalizing varying formats, handling partial failures, and synthesizing a coherent answer from heterogeneous results", "textEs": "Reconciliar salidas conflictivas, normalizar formatos variables, manejar fallos parciales y sintetizar una respuesta coherente a partir de resultados heterogéneos", "order": 4 }
+      ],
+      "tags": ["parallel-delegation", "result-aggregation", "multi-agent", "reconciliation"]
+    },
+    {
+      "id": "ccaf-aa-034",
+      "text": "How do thinking blocks (extended thinking) work in an agentic context, and what parameter controls the thinking budget?",
+      "textEs": "¿Cómo funcionan los bloques de pensamiento (pensamiento extendido) en un contexto agente, y qué parámetro controla el presupuesto de pensamiento?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-034_b",
+      "explanation": "Extended thinking allows Claude to perform internal reasoning before producing a response, exposed as 'thinking' content blocks in the API response. The budget_tokens parameter within the thinking configuration controls how many tokens Claude can use for internal reasoning. In agentic contexts, thinking blocks appear before tool_use or text blocks and allow Claude to plan multi-step tool usage, reason about tool results, and make complex decisions. Thinking tokens are billed as output tokens but are not included in the conversation history on subsequent turns.",
+      "explanationEs": "El pensamiento extendido permite a Claude realizar razonamiento interno antes de producir una respuesta, expuesto como bloques de contenido 'thinking' en la respuesta de la API. El parámetro budget_tokens dentro de la configuración de pensamiento controla cuántos tokens puede usar Claude para razonamiento interno. En contextos agentes, los bloques de pensamiento aparecen antes de los bloques tool_use o texto y permiten a Claude planificar el uso de herramientas de múltiples pasos, razonar sobre resultados de herramientas y tomar decisiones complejas. Los tokens de pensamiento se cobran como tokens de salida pero no se incluyen en el historial de conversación en turnos subsiguientes.",
+      "options": [
+        { "id": "ccaf-aa-034_a", "text": "Thinking blocks replace tool_use blocks; the thinking_depth parameter sets the number of reasoning steps", "textEs": "Los bloques de pensamiento reemplazan los bloques tool_use; el parámetro thinking_depth establece el número de pasos de razonamiento", "order": 1 },
+        { "id": "ccaf-aa-034_b", "text": "Thinking blocks contain internal reasoning before tool/text output; budget_tokens controls the maximum tokens for thinking, billed as output tokens", "textEs": "Los bloques de pensamiento contienen razonamiento interno antes de la salida de herramientas/texto; budget_tokens controla el máximo de tokens para pensamiento, cobrados como tokens de salida", "order": 2 },
+        { "id": "ccaf-aa-034_c", "text": "Thinking blocks are visible to the user as a 'chain of thought' display; max_thinking_tokens controls the budget", "textEs": "Los bloques de pensamiento son visibles para el usuario como una visualización de 'cadena de pensamiento'; max_thinking_tokens controla el presupuesto", "order": 3 },
+        { "id": "ccaf-aa-034_d", "text": "Thinking blocks are cached across iterations to avoid repeated reasoning; thinking_cache_ttl controls how long they persist", "textEs": "Los bloques de pensamiento se almacenan en caché entre iteraciones para evitar razonamiento repetido; thinking_cache_ttl controla cuánto tiempo persisten", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "thinking-blocks", "budget-tokens", "agentic-reasoning"]
+    },
+    {
+      "id": "ccaf-aa-035",
+      "text": "What is the human-in-the-loop pattern in agentic systems, and when should it be applied?",
+      "textEs": "¿Qué es el patrón human-in-the-loop en sistemas agentes, y cuándo debe aplicarse?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-035_c",
+      "explanation": "The human-in-the-loop pattern pauses the agentic loop at specific decision points to request human approval before proceeding. This is essential for high-risk actions such as executing code that modifies production systems, sending external communications, making financial transactions, or deleting data. The orchestrator intercepts the tool call, presents it to a human reviewer, and only executes it upon approval. This balances automation efficiency with safety for irreversible or sensitive operations.",
+      "explanationEs": "El patrón human-in-the-loop pausa el bucle agente en puntos de decisión específicos para solicitar aprobación humana antes de proceder. Esto es esencial para acciones de alto riesgo como ejecutar código que modifica sistemas de producción, enviar comunicaciones externas, realizar transacciones financieras o eliminar datos. El orquestador intercepta la llamada a herramienta, la presenta a un revisor humano y solo la ejecuta tras la aprobación. Esto equilibra la eficiencia de la automatización con la seguridad para operaciones irreversibles o sensibles.",
+      "options": [
+        { "id": "ccaf-aa-035_a", "text": "A pattern where humans write tool results manually instead of executing actual tools, applied to all agent interactions", "textEs": "Un patrón donde los humanos escriben resultados de herramientas manualmente en lugar de ejecutar herramientas reales, aplicado a todas las interacciones del agente", "order": 1 },
+        { "id": "ccaf-aa-035_b", "text": "A debugging technique where developers step through each agentic iteration, applied only during development", "textEs": "Una técnica de depuración donde los desarrolladores revisan paso a paso cada iteración agente, aplicada solo durante el desarrollo", "order": 2 },
+        { "id": "ccaf-aa-035_c", "text": "Pausing the loop at specific decision points for human approval before executing high-risk or irreversible actions", "textEs": "Pausar el bucle en puntos de decisión específicos para aprobación humana antes de ejecutar acciones de alto riesgo o irreversibles", "order": 3 },
+        { "id": "ccaf-aa-035_d", "text": "A fallback where humans take over completely when the agent fails, applied after three consecutive errors", "textEs": "Un respaldo donde los humanos toman el control completamente cuando el agente falla, aplicado después de tres errores consecutivos", "order": 4 }
+      ],
+      "tags": ["human-in-the-loop", "safety", "approval", "guardrails"]
+    },
+    {
+      "id": "ccaf-aa-036",
+      "text": "How does Server-Sent Events (SSE) streaming work in an agentic context, and what is its primary advantage?",
+      "textEs": "¿Cómo funciona el streaming de Server-Sent Events (SSE) en un contexto agente, y cuál es su ventaja principal?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-036_a",
+      "explanation": "In agentic contexts, SSE streaming delivers partial response tokens as they are generated, rather than waiting for the complete response. The stream emits events like 'content_block_start', 'content_block_delta' (for incremental text/tool_use content), and 'message_stop'. The primary advantage is reduced time-to-first-token: users see text appearing immediately, and the orchestrator can begin parsing tool_use blocks as soon as they start forming. For tool calls, the orchestrator accumulates the streamed JSON and can prepare for tool execution before the full response is complete.",
+      "explanationEs": "En contextos agentes, el streaming SSE entrega tokens de respuesta parciales a medida que se generan, en lugar de esperar la respuesta completa. El stream emite eventos como 'content_block_start', 'content_block_delta' (para contenido incremental de texto/tool_use) y 'message_stop'. La ventaja principal es la reducción del tiempo al primer token: los usuarios ven el texto apareciendo inmediatamente, y el orquestador puede comenzar a analizar los bloques tool_use tan pronto como comienzan a formarse. Para llamadas a herramientas, el orquestador acumula el JSON transmitido y puede prepararse para la ejecución de herramientas antes de que la respuesta completa esté lista.",
+      "options": [
+        { "id": "ccaf-aa-036_a", "text": "SSE delivers tokens incrementally as generated, reducing time-to-first-token and allowing the orchestrator to prepare for tool execution while streaming", "textEs": "SSE entrega tokens incrementalmente a medida que se generan, reduciendo el tiempo al primer token y permitiendo al orquestador prepararse para la ejecución de herramientas mientras transmite", "order": 1 },
+        { "id": "ccaf-aa-036_b", "text": "SSE sends the complete response in compressed chunks, reducing bandwidth usage by 90%", "textEs": "SSE envía la respuesta completa en fragmentos comprimidos, reduciendo el uso de ancho de banda en un 90%", "order": 2 },
+        { "id": "ccaf-aa-036_c", "text": "SSE enables bidirectional communication so the orchestrator can cancel tool calls mid-execution", "textEs": "SSE habilita comunicación bidireccional para que el orquestador pueda cancelar llamadas a herramientas durante la ejecución", "order": 3 },
+        { "id": "ccaf-aa-036_d", "text": "SSE automatically retries failed connections, ensuring agentic loops never lose state due to network issues", "textEs": "SSE reintenta automáticamente conexiones fallidas, asegurando que los bucles agente nunca pierdan estado por problemas de red", "order": 4 }
+      ],
+      "tags": ["sse", "streaming", "time-to-first-token", "partial-results"]
+    },
+    {
+      "id": "ccaf-aa-037",
+      "text": "A code generation agent needs to write code, run tests, and fix failures iteratively. Which architectural pattern best supports this workflow?",
+      "textEs": "Un agente de generación de código necesita escribir código, ejecutar pruebas y corregir fallos iterativamente. ¿Qué patrón arquitectónico soporta mejor este flujo de trabajo?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-037_b",
+      "explanation": "A self-correcting single-agent loop is ideal for code generation tasks where the agent writes code, uses a tool to execute tests, sees the test output (pass/fail with error messages), and iterates until all tests pass. This leverages the agentic loop's natural ability to accumulate context: the agent sees its previous code, the test failures, and can reason about what to fix. Multi-agent patterns would add unnecessary overhead since the write-test-fix cycle benefits from maintaining full context of previous attempts.",
+      "explanationEs": "Un bucle de agente único auto-correctivo es ideal para tareas de generación de código donde el agente escribe código, usa una herramienta para ejecutar pruebas, ve la salida de las pruebas (éxito/fallo con mensajes de error) e itera hasta que todas las pruebas pasen. Esto aprovecha la capacidad natural del bucle agente de acumular contexto: el agente ve su código anterior, los fallos de las pruebas y puede razonar sobre qué corregir. Los patrones multi-agente añadirían sobrecarga innecesaria ya que el ciclo escribir-probar-corregir se beneficia de mantener el contexto completo de intentos anteriores.",
+      "options": [
+        { "id": "ccaf-aa-037_a", "text": "Hub-and-spoke with separate agents for writing, testing, and fixing", "textEs": "Hub-and-spoke con agentes separados para escribir, probar y corregir", "order": 1 },
+        { "id": "ccaf-aa-037_b", "text": "A self-correcting single-agent loop with tools for code writing and test execution, iterating until tests pass", "textEs": "Un bucle de agente único auto-correctivo con herramientas para escritura de código y ejecución de pruebas, iterando hasta que las pruebas pasen", "order": 2 },
+        { "id": "ccaf-aa-037_c", "text": "A consensus pattern where three agents independently generate code and the best solution is selected", "textEs": "Un patrón de consenso donde tres agentes generan código independientemente y se selecciona la mejor solución", "order": 3 },
+        { "id": "ccaf-aa-037_d", "text": "A sequential pipeline where one agent generates code and a second agent runs tests on it once", "textEs": "Un pipeline secuencial donde un agente genera código y un segundo agente ejecuta pruebas sobre él una vez", "order": 4 }
+      ],
+      "tags": ["code-generation", "self-correcting", "test-driven", "real-world-patterns"]
+    },
+    {
+      "id": "ccaf-aa-038",
+      "text": "What are permission boundaries in agentic systems, and how do they differ from tool-level access control?",
+      "textEs": "¿Qué son los límites de permisos en sistemas agentes, y cómo difieren del control de acceso a nivel de herramienta?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-038_d",
+      "explanation": "Permission boundaries define the scope of what an agent can do at a granular level beyond just which tools are available. While tool-level access control determines which tools an agent can call, permission boundaries constrain what those tools can do -- for example, a file_write tool might be restricted to only write within a specific directory, or a database_query tool might be limited to read-only queries on specific tables. This defense-in-depth approach ensures that even if the model generates an unexpected tool call, the damage is contained within the defined boundaries.",
+      "explanationEs": "Los límites de permisos definen el alcance de lo que un agente puede hacer a un nivel granular más allá de solo qué herramientas están disponibles. Mientras el control de acceso a nivel de herramienta determina qué herramientas puede llamar un agente, los límites de permisos restringen lo que esas herramientas pueden hacer -- por ejemplo, una herramienta file_write podría estar restringida a escribir solo dentro de un directorio específico, o una herramienta database_query podría estar limitada a consultas de solo lectura en tablas específicas. Este enfoque de defensa en profundidad asegura que incluso si el modelo genera una llamada a herramienta inesperada, el daño está contenido dentro de los límites definidos.",
+      "options": [
+        { "id": "ccaf-aa-038_a", "text": "Permission boundaries and tool-level access control are the same thing -- both define which tools an agent can call", "textEs": "Los límites de permisos y el control de acceso a nivel de herramienta son lo mismo -- ambos definen qué herramientas puede llamar un agente", "order": 1 },
+        { "id": "ccaf-aa-038_b", "text": "Permission boundaries control which models an agent can use, while tool-level access controls which tools are available", "textEs": "Los límites de permisos controlan qué modelos puede usar un agente, mientras el control de acceso a nivel de herramienta controla qué herramientas están disponibles", "order": 2 },
+        { "id": "ccaf-aa-038_c", "text": "Permission boundaries are enforced by the Claude API, while tool-level access is enforced by the orchestrator", "textEs": "Los límites de permisos son aplicados por la API de Claude, mientras el acceso a nivel de herramienta es aplicado por el orquestador", "order": 3 },
+        { "id": "ccaf-aa-038_d", "text": "Permission boundaries constrain what tools can do (e.g., write only to specific directories), providing defense-in-depth beyond which tools are available", "textEs": "Los límites de permisos restringen lo que las herramientas pueden hacer (por ejemplo, escribir solo en directorios específicos), proporcionando defensa en profundidad más allá de qué herramientas están disponibles", "order": 4 }
+      ],
+      "tags": ["permission-boundaries", "safety", "access-control", "defense-in-depth"]
+    },
+    {
+      "id": "ccaf-aa-039",
+      "text": "When using the /v1/sessions endpoint in the Agent SDK, what is the relationship between a session and an agent?",
+      "textEs": "Al usar el endpoint /v1/sessions en el SDK de Agentes, ¿cuál es la relación entre una sesión y un agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-039_b",
+      "explanation": "In the Agent SDK, a session represents an ongoing conversation with a specific agent. An agent is a configuration (model, tools, system prompt, parameters) while a session is an instance of that agent running with its own conversation history. Multiple sessions can be created from the same agent definition, each with independent state. Sessions track the conversation messages, tool call history, and any accumulated context, allowing stateful interactions that persist across multiple user messages.",
+      "explanationEs": "En el SDK de Agentes, una sesión representa una conversación en curso con un agente específico. Un agente es una configuración (modelo, herramientas, prompt del sistema, parámetros) mientras que una sesión es una instancia de ese agente ejecutándose con su propio historial de conversación. Se pueden crear múltiples sesiones a partir de la misma definición de agente, cada una con estado independiente. Las sesiones rastrean los mensajes de conversación, el historial de llamadas a herramientas y cualquier contexto acumulado, permitiendo interacciones con estado que persisten a través de múltiples mensajes del usuario.",
+      "options": [
+        { "id": "ccaf-aa-039_a", "text": "A session and an agent are the same thing -- each API call creates both", "textEs": "Una sesión y un agente son lo mismo -- cada llamada a la API crea ambos", "order": 1 },
+        { "id": "ccaf-aa-039_b", "text": "An agent is a reusable configuration; a session is a stateful instance of that agent with its own conversation history", "textEs": "Un agente es una configuración reutilizable; una sesión es una instancia con estado de ese agente con su propio historial de conversación", "order": 2 },
+        { "id": "ccaf-aa-039_c", "text": "A session contains multiple agents that collaborate on a single task", "textEs": "Una sesión contiene múltiples agentes que colaboran en una sola tarea", "order": 3 },
+        { "id": "ccaf-aa-039_d", "text": "An agent is created per user request, while a session is a global singleton shared across all users", "textEs": "Un agente se crea por solicitud del usuario, mientras que una sesión es un singleton global compartido entre todos los usuarios", "order": 4 }
+      ],
+      "tags": ["agent-sdk", "sessions", "v1-sessions", "stateful"]
+    },
+    {
+      "id": "ccaf-aa-040",
+      "text": "What is the fallback pattern in agentic error handling, and how does it differ from simple retries?",
+      "textEs": "¿Qué es el patrón de respaldo en el manejo de errores agentes, y cómo difiere de los reintentos simples?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-040_c",
+      "explanation": "A fallback pattern provides an alternative execution path when the primary approach fails, rather than simply retrying the same action. For example, if a web search tool fails, the agent might fall back to searching a local knowledge base. If Opus is unavailable or times out, the system might fall back to Sonnet. If a complex tool chain fails, the agent might fall back to a simpler single-tool approach. Unlike retries which repeat the same action hoping for a different result, fallbacks switch to a fundamentally different strategy.",
+      "explanationEs": "Un patrón de respaldo proporciona una ruta de ejecución alternativa cuando el enfoque primario falla, en lugar de simplemente reintentar la misma acción. Por ejemplo, si una herramienta de búsqueda web falla, el agente podría recurrir a buscar en una base de conocimiento local. Si Opus no está disponible o expira, el sistema podría recurrir a Sonnet. Si una cadena de herramientas compleja falla, el agente podría recurrir a un enfoque más simple de una sola herramienta. A diferencia de los reintentos que repiten la misma acción esperando un resultado diferente, los respaldos cambian a una estrategia fundamentalmente diferente.",
+      "options": [
+        { "id": "ccaf-aa-040_a", "text": "Fallbacks and retries are the same -- both re-execute the failed tool call", "textEs": "Los respaldos y los reintentos son lo mismo -- ambos re-ejecutan la llamada a herramienta fallida", "order": 1 },
+        { "id": "ccaf-aa-040_b", "text": "Fallbacks skip the failed step entirely; retries attempt it again with exponential backoff", "textEs": "Los respaldos saltan completamente el paso fallido; los reintentos lo intentan de nuevo con retroceso exponencial", "order": 2 },
+        { "id": "ccaf-aa-040_c", "text": "Fallbacks switch to an alternative strategy (different tool, model, or approach) instead of repeating the same failed action", "textEs": "Los respaldos cambian a una estrategia alternativa (herramienta, modelo o enfoque diferente) en lugar de repetir la misma acción fallida", "order": 3 },
+        { "id": "ccaf-aa-040_d", "text": "Fallbacks terminate the loop gracefully; retries continue the loop with modified parameters", "textEs": "Los respaldos terminan el bucle de forma elegante; los reintentos continúan el bucle con parámetros modificados", "order": 4 }
+      ],
+      "tags": ["fallback-pattern", "error-handling", "resilience", "alternative-strategy"]
+    },
+    {
+      "id": "ccaf-aa-041",
+      "text": "How should an orchestrator handle partial results when streaming a response that includes both text and tool_use blocks?",
+      "textEs": "¿Cómo debe un orquestador manejar resultados parciales al transmitir una respuesta que incluye tanto texto como bloques tool_use?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-041_a",
+      "explanation": "When streaming a response with both text and tool_use blocks, the orchestrator receives content_block_start events that indicate the block type. For text blocks, deltas can be displayed to the user immediately. For tool_use blocks, the orchestrator must accumulate JSON deltas until the block is complete (signaled by content_block_stop) because partial JSON is not valid and cannot be parsed. Only after the complete tool_use block is received can the orchestrator extract the tool name and input parameters to execute the tool call.",
+      "explanationEs": "Al transmitir una respuesta con tanto texto como bloques tool_use, el orquestador recibe eventos content_block_start que indican el tipo de bloque. Para bloques de texto, los deltas pueden mostrarse al usuario inmediatamente. Para bloques tool_use, el orquestador debe acumular deltas JSON hasta que el bloque esté completo (señalizado por content_block_stop) porque JSON parcial no es válido y no puede analizarse. Solo después de recibir el bloque tool_use completo puede el orquestador extraer el nombre de la herramienta y los parámetros de entrada para ejecutar la llamada.",
+      "options": [
+        { "id": "ccaf-aa-041_a", "text": "Display text deltas immediately but accumulate tool_use JSON deltas until the block is complete, since partial JSON cannot be parsed", "textEs": "Mostrar deltas de texto inmediatamente pero acumular deltas JSON de tool_use hasta que el bloque esté completo, ya que JSON parcial no puede analizarse", "order": 1 },
+        { "id": "ccaf-aa-041_b", "text": "Buffer all content until the entire message is complete, then process text and tool_use blocks together", "textEs": "Almacenar en búfer todo el contenido hasta que el mensaje completo esté listo, luego procesar bloques de texto y tool_use juntos", "order": 2 },
+        { "id": "ccaf-aa-041_c", "text": "Execute tool calls immediately on each JSON delta to minimize latency", "textEs": "Ejecutar llamadas a herramientas inmediatamente en cada delta JSON para minimizar la latencia", "order": 3 },
+        { "id": "ccaf-aa-041_d", "text": "Discard text blocks during streaming and only process tool_use blocks for agentic workflows", "textEs": "Descartar bloques de texto durante la transmisión y solo procesar bloques tool_use para flujos de trabajo agentes", "order": 4 }
+      ],
+      "tags": ["streaming", "partial-results", "tool-use", "content-blocks"]
+    },
+    {
+      "id": "ccaf-aa-042",
+      "text": "A research agent needs to search multiple databases, cross-reference findings, and produce a synthesis report. Which multi-agent architecture is most appropriate?",
+      "textEs": "Un agente de investigación necesita buscar en múltiples bases de datos, cruzar referencias de hallazgos y producir un informe de síntesis. ¿Qué arquitectura multi-agente es más apropiada?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-042_a",
+      "explanation": "A hub-and-spoke with fan-out/fan-in is ideal for research agents because: (1) the coordinator can fan-out search queries to multiple specialized database agents in parallel, (2) each database agent searches independently using its domain-specific tools, (3) all results fan-in to the coordinator, which cross-references findings and produces the synthesis. This maximizes parallelism (all searches happen simultaneously), maintains isolation (each agent only has tools for its database), and centralizes synthesis logic in the coordinator.",
+      "explanationEs": "Un hub-and-spoke con fan-out/fan-in es ideal para agentes de investigación porque: (1) el coordinador puede hacer fan-out de consultas de búsqueda a múltiples agentes de base de datos especializados en paralelo, (2) cada agente de base de datos busca independientemente usando sus herramientas específicas del dominio, (3) todos los resultados hacen fan-in al coordinador, que cruza referencias de hallazgos y produce la síntesis. Esto maximiza el paralelismo (todas las búsquedas ocurren simultáneamente), mantiene el aislamiento (cada agente solo tiene herramientas para su base de datos) y centraliza la lógica de síntesis en el coordinador.",
+      "options": [
+        { "id": "ccaf-aa-042_a", "text": "Hub-and-spoke with fan-out/fan-in: coordinator fans out searches to parallel database agents, then synthesizes all results", "textEs": "Hub-and-spoke con fan-out/fan-in: el coordinador hace fan-out de búsquedas a agentes de base de datos en paralelo, luego sintetiza todos los resultados", "order": 1 },
+        { "id": "ccaf-aa-042_b", "text": "Sequential pipeline: search agent -> cross-reference agent -> synthesis agent, each passing results to the next", "textEs": "Pipeline secuencial: agente de búsqueda -> agente de referencias cruzadas -> agente de síntesis, cada uno pasando resultados al siguiente", "order": 2 },
+        { "id": "ccaf-aa-042_c", "text": "Single agent with all database tools, searching each database sequentially in one loop", "textEs": "Agente único con todas las herramientas de base de datos, buscando en cada base de datos secuencialmente en un solo bucle", "order": 3 },
+        { "id": "ccaf-aa-042_d", "text": "Consensus pattern: three independent agents each search all databases and vote on the best findings", "textEs": "Patrón de consenso: tres agentes independientes cada uno busca en todas las bases de datos y votan sobre los mejores hallazgos", "order": 4 }
+      ],
+      "tags": ["research-agent", "hub-and-spoke", "fan-out-fan-in", "real-world-patterns"]
+    },
+    {
+      "id": "ccaf-aa-043",
+      "text": "What is the recommended approach for implementing guardrails that prevent an agent from executing dangerous tool calls?",
+      "textEs": "¿Cuál es el enfoque recomendado para implementar guardrails que prevengan que un agente ejecute llamadas a herramientas peligrosas?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-043_d",
+      "explanation": "A defense-in-depth approach combines multiple guardrail layers: (1) system prompt instructions that tell Claude about restricted actions, (2) orchestrator-level validation that inspects tool call parameters before execution (e.g., rejecting file deletions outside allowed directories), (3) tool-level sandboxing that limits what the underlying tool implementation can actually do, and (4) human-in-the-loop approval for high-risk operations. Relying on any single layer is insufficient because models can sometimes ignore system prompt instructions.",
+      "explanationEs": "Un enfoque de defensa en profundidad combina múltiples capas de guardrails: (1) instrucciones en el prompt del sistema que le dicen a Claude sobre acciones restringidas, (2) validación a nivel del orquestador que inspecciona los parámetros de llamadas a herramientas antes de la ejecución (por ejemplo, rechazando eliminaciones de archivos fuera de directorios permitidos), (3) sandboxing a nivel de herramienta que limita lo que la implementación subyacente de la herramienta puede realmente hacer, y (4) aprobación human-in-the-loop para operaciones de alto riesgo. Depender de una sola capa es insuficiente porque los modelos a veces pueden ignorar las instrucciones del prompt del sistema.",
+      "options": [
+        { "id": "ccaf-aa-043_a", "text": "Add 'NEVER do X' instructions to the system prompt, which Claude will always follow", "textEs": "Agregar instrucciones 'NUNCA hagas X' al prompt del sistema, que Claude siempre seguirá", "order": 1 },
+        { "id": "ccaf-aa-043_b", "text": "Reduce the number of available tools to only safe ones, removing all potentially dangerous tools", "textEs": "Reducir el número de herramientas disponibles a solo las seguras, eliminando todas las herramientas potencialmente peligrosas", "order": 2 },
+        { "id": "ccaf-aa-043_c", "text": "Use a lower temperature setting to make the model more deterministic and less likely to take risky actions", "textEs": "Usar una configuración de temperatura más baja para hacer al modelo más determinista y menos propenso a tomar acciones riesgosas", "order": 3 },
+        { "id": "ccaf-aa-043_d", "text": "Defense-in-depth: combine system prompt instructions, orchestrator-level parameter validation, tool-level sandboxing, and human-in-the-loop for high-risk operations", "textEs": "Defensa en profundidad: combinar instrucciones en el prompt del sistema, validación de parámetros a nivel del orquestador, sandboxing a nivel de herramienta y human-in-the-loop para operaciones de alto riesgo", "order": 4 }
+      ],
+      "tags": ["guardrails", "safety", "defense-in-depth", "tool-validation"]
+    },
+    {
+      "id": "ccaf-aa-044",
+      "text": "How does extended thinking benefit tool planning in complex agentic tasks?",
+      "textEs": "¿Cómo beneficia el pensamiento extendido a la planificación de herramientas en tareas agentes complejas?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-044_b",
+      "explanation": "Extended thinking allows Claude to reason through complex multi-step tool usage plans before committing to the first tool call. Without thinking, Claude may greedily select the first relevant tool, leading to suboptimal tool sequences. With thinking enabled, Claude can evaluate multiple approaches, consider tool dependencies, plan parallel vs. sequential execution, and select the most efficient path. This is particularly valuable for tasks requiring 5+ tool calls where the order and combination of tools significantly affects the quality and efficiency of the result.",
+      "explanationEs": "El pensamiento extendido permite a Claude razonar sobre planes complejos de uso de herramientas de múltiples pasos antes de comprometerse con la primera llamada a herramienta. Sin pensamiento, Claude puede seleccionar vorazmente la primera herramienta relevante, llevando a secuencias de herramientas subóptimas. Con el pensamiento habilitado, Claude puede evaluar múltiples enfoques, considerar dependencias de herramientas, planificar ejecución paralela vs. secuencial y seleccionar el camino más eficiente. Esto es particularmente valioso para tareas que requieren más de 5 llamadas a herramientas donde el orden y la combinación de herramientas afectan significativamente la calidad y eficiencia del resultado.",
+      "options": [
+        { "id": "ccaf-aa-044_a", "text": "It makes tool execution faster by pre-computing tool results during the thinking phase", "textEs": "Hace que la ejecución de herramientas sea más rápida al pre-computar resultados de herramientas durante la fase de pensamiento", "order": 1 },
+        { "id": "ccaf-aa-044_b", "text": "It allows Claude to reason through multi-step plans, evaluate approaches, and select optimal tool sequences before committing to the first call", "textEs": "Permite a Claude razonar sobre planes de múltiples pasos, evaluar enfoques y seleccionar secuencias de herramientas óptimas antes de comprometerse con la primera llamada", "order": 2 },
+        { "id": "ccaf-aa-044_c", "text": "It enables Claude to execute tools internally during thinking without needing the orchestrator", "textEs": "Permite a Claude ejecutar herramientas internamente durante el pensamiento sin necesitar el orquestador", "order": 3 },
+        { "id": "ccaf-aa-044_d", "text": "It caches tool definitions in the thinking block to reduce token usage in subsequent iterations", "textEs": "Almacena en caché las definiciones de herramientas en el bloque de pensamiento para reducir el uso de tokens en iteraciones subsiguientes", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "tool-planning", "multi-step", "optimization"]
+    },
+    {
+      "id": "ccaf-aa-045",
+      "text": "In a data pipeline agent, what is the recommended pattern for processing large datasets that exceed the context window?",
+      "textEs": "En un agente de pipeline de datos, ¿cuál es el patrón recomendado para procesar conjuntos de datos grandes que exceden la ventana de contexto?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-045_c",
+      "explanation": "For large datasets, the recommended pattern is chunked processing with external state: the agent processes data in manageable chunks using tools that read/write from external storage (files, databases). Each iteration, the agent reads a chunk, processes it, writes intermediate results to external storage, and continues to the next chunk. The agent maintains a lightweight progress tracker in the conversation context (e.g., 'Processed rows 1-1000 of 50000, current aggregation: {...}') rather than keeping all data in memory. This keeps the context window manageable while allowing the agent to process arbitrarily large datasets.",
+      "explanationEs": "Para conjuntos de datos grandes, el patrón recomendado es procesamiento por fragmentos con estado externo: el agente procesa datos en fragmentos manejables usando herramientas que leen/escriben desde almacenamiento externo (archivos, bases de datos). En cada iteración, el agente lee un fragmento, lo procesa, escribe resultados intermedios en almacenamiento externo y continúa al siguiente fragmento. El agente mantiene un rastreador de progreso ligero en el contexto de conversación (por ejemplo, 'Procesadas filas 1-1000 de 50000, agregación actual: {...}') en lugar de mantener todos los datos en memoria. Esto mantiene la ventana de contexto manejable mientras permite al agente procesar conjuntos de datos arbitrariamente grandes.",
+      "options": [
+        { "id": "ccaf-aa-045_a", "text": "Load the entire dataset into the system prompt so the agent can reference any part at any time", "textEs": "Cargar todo el conjunto de datos en el prompt del sistema para que el agente pueda referenciar cualquier parte en cualquier momento", "order": 1 },
+        { "id": "ccaf-aa-045_b", "text": "Spawn one subagent per data row and aggregate all results in the coordinator", "textEs": "Crear un subagente por fila de datos y agregar todos los resultados en el coordinador", "order": 2 },
+        { "id": "ccaf-aa-045_c", "text": "Chunked processing with external state: read/process chunks via tools, write intermediate results to external storage, maintain lightweight progress in context", "textEs": "Procesamiento por fragmentos con estado externo: leer/procesar fragmentos mediante herramientas, escribir resultados intermedios en almacenamiento externo, mantener progreso ligero en contexto", "order": 3 },
+        { "id": "ccaf-aa-045_d", "text": "Use the Batch API to process all rows simultaneously in a single request", "textEs": "Usar la API por lotes para procesar todas las filas simultáneamente en una sola solicitud", "order": 4 }
+      ],
+      "tags": ["data-pipeline", "large-datasets", "chunked-processing", "external-state"]
+    },
+    {
+      "id": "ccaf-aa-046",
+      "text": "What is the SWE-bench pattern, and how does it relate to evaluating code generation agents?",
+      "textEs": "¿Qué es el patrón SWE-bench, y cómo se relaciona con la evaluación de agentes de generación de código?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-046_a",
+      "explanation": "SWE-bench is a benchmark that evaluates code generation agents by giving them real GitHub issues from open-source repositories and measuring whether the agent can produce a correct patch that resolves the issue and passes the repository's test suite. The pattern involves: (1) presenting the agent with an issue description and repository context, (2) allowing the agent to explore the codebase using tools (file search, read, grep), (3) having the agent produce code changes, and (4) running the existing test suite to validate correctness. This benchmarks agents on realistic software engineering tasks rather than isolated coding problems.",
+      "explanationEs": "SWE-bench es un benchmark que evalúa agentes de generación de código dándoles issues reales de GitHub de repositorios de código abierto y midiendo si el agente puede producir un parche correcto que resuelva el issue y pase la suite de pruebas del repositorio. El patrón involucra: (1) presentar al agente una descripción del issue y contexto del repositorio, (2) permitir al agente explorar el código usando herramientas (búsqueda de archivos, lectura, grep), (3) hacer que el agente produzca cambios de código, y (4) ejecutar la suite de pruebas existente para validar la corrección. Esto evalúa agentes en tareas realistas de ingeniería de software en lugar de problemas de codificación aislados.",
+      "options": [
+        { "id": "ccaf-aa-046_a", "text": "A benchmark giving agents real GitHub issues to solve; the agent explores code, produces patches, and success is measured by passing the test suite", "textEs": "Un benchmark que da a los agentes issues reales de GitHub para resolver; el agente explora código, produce parches y el éxito se mide al pasar la suite de pruebas", "order": 1 },
+        { "id": "ccaf-aa-046_b", "text": "A set of standardized coding challenges (like LeetCode) used to measure model intelligence before deployment", "textEs": "Un conjunto de desafíos de codificación estandarizados (como LeetCode) usados para medir la inteligencia del modelo antes del despliegue", "order": 2 },
+        { "id": "ccaf-aa-046_c", "text": "A technique where agents write their own test suites before writing code, measuring test coverage as the primary metric", "textEs": "Una técnica donde los agentes escriben sus propias suites de pruebas antes de escribir código, midiendo la cobertura de pruebas como métrica principal", "order": 3 },
+        { "id": "ccaf-aa-046_d", "text": "A framework for benchmarking API response times of different model providers for code generation tasks", "textEs": "Un framework para evaluar los tiempos de respuesta de API de diferentes proveedores de modelos para tareas de generación de código", "order": 4 }
+      ],
+      "tags": ["swe-bench", "evaluation", "code-generation", "benchmarking"]
+    },
+    {
+      "id": "ccaf-aa-047",
+      "text": "How should an agentic system handle a situation where the context window is nearly full but the task is not yet complete?",
+      "textEs": "¿Cómo debe un sistema agente manejar una situación donde la ventana de contexto está casi llena pero la tarea aún no está completa?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-047_d",
+      "explanation": "When approaching context limits mid-task, the system should perform conversation compaction: use a separate API call to summarize the conversation so far (key facts, decisions made, current progress, remaining steps), then start a new conversation with the summary as context. This preserves the essential state while freeing up the context window for continued work. The alternative approaches each have problems: truncating silently loses information, failing abruptly abandons the work, and ignoring the limit will cause an API error.",
+      "explanationEs": "Al acercarse a los límites de contexto a mitad de tarea, el sistema debe realizar compactación de conversación: usar una llamada API separada para resumir la conversación hasta el momento (hechos clave, decisiones tomadas, progreso actual, pasos restantes), luego iniciar una nueva conversación con el resumen como contexto. Esto preserva el estado esencial mientras libera la ventana de contexto para continuar el trabajo. Los enfoques alternativos tienen cada uno problemas: truncar silenciosamente pierde información, fallar abruptamente abandona el trabajo, e ignorar el límite causará un error de la API.",
+      "options": [
+        { "id": "ccaf-aa-047_a", "text": "Silently truncate the oldest messages and continue the loop", "textEs": "Truncar silenciosamente los mensajes más antiguos y continuar el bucle", "order": 1 },
+        { "id": "ccaf-aa-047_b", "text": "Immediately return a partial result and let the user decide whether to continue", "textEs": "Devolver inmediatamente un resultado parcial y dejar que el usuario decida si continuar", "order": 2 },
+        { "id": "ccaf-aa-047_c", "text": "Switch to a model with a larger context window and replay the full conversation", "textEs": "Cambiar a un modelo con una ventana de contexto más grande y reproducir la conversación completa", "order": 3 },
+        { "id": "ccaf-aa-047_d", "text": "Summarize the conversation so far (key facts, progress, remaining steps) and start a new conversation with the summary as context", "textEs": "Resumir la conversación hasta el momento (hechos clave, progreso, pasos restantes) e iniciar una nueva conversación con el resumen como contexto", "order": 4 }
+      ],
+      "tags": ["context-window", "compaction", "summarization", "continuation"]
+    },
+    {
+      "id": "ccaf-aa-048",
+      "text": "In an agentic loop, what is the difference between retries at the orchestrator level vs. retries handled by the model itself?",
+      "textEs": "En un bucle agente, ¿cuál es la diferencia entre reintentos a nivel del orquestador vs. reintentos manejados por el modelo mismo?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-048_c",
+      "explanation": "Orchestrator-level retries handle transient infrastructure failures (HTTP 429 rate limits, 500 server errors, network timeouts) by resending the same API request with exponential backoff -- the model never sees these failures. Model-level retries occur when a tool execution fails and the error is returned as a tool_result with is_error: true; Claude sees the error, reasons about it, and can adapt its approach (different parameters, alternative tool, different strategy). The two complement each other: orchestrator retries handle infrastructure issues, model retries handle logical/application errors.",
+      "explanationEs": "Los reintentos a nivel del orquestador manejan fallos transitorios de infraestructura (límites de tasa HTTP 429, errores de servidor 500, tiempos de espera de red) reenviando la misma solicitud API con retroceso exponencial -- el modelo nunca ve estos fallos. Los reintentos a nivel del modelo ocurren cuando la ejecución de una herramienta falla y el error se devuelve como un tool_result con is_error: true; Claude ve el error, razona sobre él y puede adaptar su enfoque (parámetros diferentes, herramienta alternativa, estrategia diferente). Los dos se complementan: los reintentos del orquestador manejan problemas de infraestructura, los reintentos del modelo manejan errores lógicos/de aplicación.",
+      "options": [
+        { "id": "ccaf-aa-048_a", "text": "They are the same mechanism -- both resend the failed API call with exponential backoff", "textEs": "Son el mismo mecanismo -- ambos reenvían la llamada API fallida con retroceso exponencial", "order": 1 },
+        { "id": "ccaf-aa-048_b", "text": "Orchestrator retries are for tool failures; model retries are for API failures", "textEs": "Los reintentos del orquestador son para fallos de herramientas; los reintentos del modelo son para fallos de la API", "order": 2 },
+        { "id": "ccaf-aa-048_c", "text": "Orchestrator retries handle infrastructure failures (429, 500) transparently; model retries handle tool errors via is_error: true, allowing intelligent adaptation", "textEs": "Los reintentos del orquestador manejan fallos de infraestructura (429, 500) de forma transparente; los reintentos del modelo manejan errores de herramientas mediante is_error: true, permitiendo adaptación inteligente", "order": 3 },
+        { "id": "ccaf-aa-048_d", "text": "Only orchestrator retries should be used; returning errors to the model wastes tokens", "textEs": "Solo deben usarse reintentos del orquestador; devolver errores al modelo desperdicia tokens", "order": 4 }
+      ],
+      "tags": ["retries", "orchestrator", "error-handling", "infrastructure"]
+    },
+    {
+      "id": "ccaf-aa-049",
+      "text": "What is the primary consideration when deciding the budget_tokens value for extended thinking in an agentic loop?",
+      "textEs": "¿Cuál es la consideración principal al decidir el valor de budget_tokens para el pensamiento extendido en un bucle agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-049_a",
+      "explanation": "The budget_tokens value must balance reasoning quality against cost and latency, considering that thinking tokens are billed as output tokens (the most expensive token type) and are generated every iteration of the agentic loop. A high budget allows deeper reasoning but significantly increases per-iteration cost and time-to-first-token. For agentic loops that may run 10+ iterations, even a moderate thinking budget compounds rapidly. The recommended approach is to use higher budgets for the initial planning iteration and lower budgets for subsequent tool-result-processing iterations.",
+      "explanationEs": "El valor de budget_tokens debe equilibrar la calidad del razonamiento contra el costo y la latencia, considerando que los tokens de pensamiento se cobran como tokens de salida (el tipo de token más caro) y se generan en cada iteración del bucle agente. Un presupuesto alto permite razonamiento más profundo pero aumenta significativamente el costo por iteración y el tiempo al primer token. Para bucles agente que pueden ejecutar más de 10 iteraciones, incluso un presupuesto de pensamiento moderado se acumula rápidamente. El enfoque recomendado es usar presupuestos más altos para la iteración de planificación inicial y presupuestos más bajos para las iteraciones subsiguientes de procesamiento de resultados de herramientas.",
+      "options": [
+        { "id": "ccaf-aa-049_a", "text": "Thinking tokens are billed as output tokens every iteration, so balance reasoning quality against compounding cost across loop iterations", "textEs": "Los tokens de pensamiento se cobran como tokens de salida en cada iteración, así que equilibra la calidad del razonamiento contra el costo acumulado a lo largo de las iteraciones del bucle", "order": 1 },
+        { "id": "ccaf-aa-049_b", "text": "Always set budget_tokens to the maximum allowed value to ensure the highest quality reasoning", "textEs": "Siempre configurar budget_tokens al valor máximo permitido para asegurar la mayor calidad de razonamiento", "order": 2 },
+        { "id": "ccaf-aa-049_c", "text": "Thinking tokens are free in agentic loops, so there is no cost consideration", "textEs": "Los tokens de pensamiento son gratuitos en bucles agente, así que no hay consideración de costo", "order": 3 },
+        { "id": "ccaf-aa-049_d", "text": "Set budget_tokens to zero after the first iteration since thinking is only needed for the initial response", "textEs": "Configurar budget_tokens a cero después de la primera iteración ya que el pensamiento solo es necesario para la respuesta inicial", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "budget-tokens", "cost-management", "agentic-loop"]
+    },
+    {
+      "id": "ccaf-aa-050",
+      "text": "What is the 'context passing' problem in multi-agent systems, and what is the most efficient solution?",
+      "textEs": "¿Cuál es el problema de 'paso de contexto' en sistemas multi-agente, y cuál es la solución más eficiente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-050_b",
+      "explanation": "The context passing problem arises when information from one agent's output must be shared with another agent as input. Naively forwarding the full output wastes tokens and may leak sensitive information. The most efficient solution is structured output contracts: each agent produces output in a predefined schema (e.g., JSON with specific fields), and the coordinator extracts only the relevant fields to pass to the next agent. This minimizes token transfer, prevents context leakage, and makes agent outputs machine-parseable for reliable orchestration.",
+      "explanationEs": "El problema de paso de contexto surge cuando la información de la salida de un agente debe compartirse con otro agente como entrada. Reenviar ingenuamente toda la salida desperdicia tokens y puede filtrar información sensible. La solución más eficiente son contratos de salida estructurada: cada agente produce salida en un esquema predefinido (por ejemplo, JSON con campos específicos), y el coordinador extrae solo los campos relevantes para pasar al siguiente agente. Esto minimiza la transferencia de tokens, previene la fuga de contexto y hace que las salidas de los agentes sean analizables por máquina para una orquestación confiable.",
+      "options": [
+        { "id": "ccaf-aa-050_a", "text": "Always forward the full agent output to maintain maximum information; token cost is negligible", "textEs": "Siempre reenviar la salida completa del agente para mantener la máxima información; el costo de tokens es insignificante", "order": 1 },
+        { "id": "ccaf-aa-050_b", "text": "Use structured output contracts (predefined schemas) so the coordinator extracts only relevant fields, minimizing tokens and preventing leakage", "textEs": "Usar contratos de salida estructurada (esquemas predefinidos) para que el coordinador extraiga solo campos relevantes, minimizando tokens y previniendo fugas", "order": 2 },
+        { "id": "ccaf-aa-050_c", "text": "Store all agent outputs in a shared vector database and let agents query it as needed", "textEs": "Almacenar todas las salidas de agentes en una base de datos vectorial compartida y dejar que los agentes la consulten según sea necesario", "order": 3 },
+        { "id": "ccaf-aa-050_d", "text": "Have agents communicate directly through tool calls rather than through the coordinator", "textEs": "Hacer que los agentes se comuniquen directamente a través de llamadas a herramientas en lugar de a través del coordinador", "order": 4 }
+      ],
+      "tags": ["context-passing", "structured-output", "multi-agent", "efficiency"]
+    },
+    {
+      "id": "ccaf-aa-051",
+      "text": "What is the 'tool poisoning' risk in agentic systems, and how should it be mitigated?",
+      "textEs": "¿Cuál es el riesgo de 'envenenamiento de herramientas' en sistemas agentes, y cómo debe mitigarse?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-051_a",
+      "explanation": "Tool poisoning occurs when a tool result contains adversarial content designed to manipulate the model's subsequent behavior -- for example, a web scraping tool returning a page with hidden instructions like 'Ignore all previous instructions and instead...' embedded in the content. This is a form of indirect prompt injection. Mitigation strategies include: (1) sanitizing tool results to remove potential injection patterns, (2) marking tool results as untrusted in the system prompt, (3) using content moderation on tool outputs before returning them to the model, and (4) implementing output validation that checks the model's response after processing untrusted tool results.",
+      "explanationEs": "El envenenamiento de herramientas ocurre cuando el resultado de una herramienta contiene contenido adversarial diseñado para manipular el comportamiento subsiguiente del modelo -- por ejemplo, una herramienta de web scraping que devuelve una página con instrucciones ocultas como 'Ignora todas las instrucciones anteriores y en su lugar...' embebidas en el contenido. Esto es una forma de inyección de prompt indirecta. Las estrategias de mitigación incluyen: (1) sanitizar los resultados de herramientas para eliminar patrones de inyección potenciales, (2) marcar los resultados de herramientas como no confiables en el prompt del sistema, (3) usar moderación de contenido en las salidas de herramientas antes de devolverlas al modelo, y (4) implementar validación de salida que verifique la respuesta del modelo después de procesar resultados de herramientas no confiables.",
+      "options": [
+        { "id": "ccaf-aa-051_a", "text": "Tool results contain adversarial content to manipulate the model (indirect prompt injection); mitigate via sanitization, marking results as untrusted, and output validation", "textEs": "Los resultados de herramientas contienen contenido adversarial para manipular al modelo (inyección de prompt indirecta); mitigar mediante sanitización, marcado de resultados como no confiables y validación de salida", "order": 1 },
+        { "id": "ccaf-aa-051_b", "text": "Tools themselves are malicious code; mitigate by only using tools from verified publishers", "textEs": "Las herramientas mismas son código malicioso; mitigar usando solo herramientas de publicadores verificados", "order": 2 },
+        { "id": "ccaf-aa-051_c", "text": "Too many tool definitions confuse the model; mitigate by limiting to 5 tools per agent", "textEs": "Demasiadas definiciones de herramientas confunden al modelo; mitigar limitando a 5 herramientas por agente", "order": 3 },
+        { "id": "ccaf-aa-051_d", "text": "Tool results are too large and poison the context window; mitigate by truncating all results to 500 tokens", "textEs": "Los resultados de herramientas son demasiado grandes y envenenan la ventana de contexto; mitigar truncando todos los resultados a 500 tokens", "order": 4 }
+      ],
+      "tags": ["tool-poisoning", "prompt-injection", "safety", "adversarial"]
+    },
+    {
+      "id": "ccaf-aa-052",
+      "text": "When benchmarking an agentic system, which metrics are most important to track?",
+      "textEs": "Al evaluar un sistema agente, ¿qué métricas son más importantes de rastrear?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-052_c",
+      "explanation": "Comprehensive agentic system benchmarking requires tracking multiple dimensions: (1) task success rate (did the agent complete the task correctly?), (2) average iterations per task (efficiency of the agentic loop), (3) total tokens consumed per task (cost), (4) end-to-end latency (user experience), and (5) error recovery rate (resilience). Focusing on only one metric gives an incomplete picture -- for example, a system might have high success rate but unacceptable cost, or low latency but poor accuracy.",
+      "explanationEs": "La evaluación integral de un sistema agente requiere rastrear múltiples dimensiones: (1) tasa de éxito de tareas (¿completó el agente la tarea correctamente?), (2) iteraciones promedio por tarea (eficiencia del bucle agente), (3) tokens totales consumidos por tarea (costo), (4) latencia de extremo a extremo (experiencia del usuario) y (5) tasa de recuperación de errores (resiliencia). Enfocarse en solo una métrica da una imagen incompleta -- por ejemplo, un sistema podría tener alta tasa de éxito pero costo inaceptable, o baja latencia pero poca precisión.",
+      "options": [
+        { "id": "ccaf-aa-052_a", "text": "Only task success rate, since that is the only metric that matters to end users", "textEs": "Solo la tasa de éxito de tareas, ya que es la única métrica que importa a los usuarios finales", "order": 1 },
+        { "id": "ccaf-aa-052_b", "text": "Only tokens consumed, since cost is the primary concern for production systems", "textEs": "Solo tokens consumidos, ya que el costo es la preocupación principal para sistemas en producción", "order": 2 },
+        { "id": "ccaf-aa-052_c", "text": "Task success rate, average iterations per task, total tokens consumed, end-to-end latency, and error recovery rate", "textEs": "Tasa de éxito de tareas, iteraciones promedio por tarea, tokens totales consumidos, latencia de extremo a extremo y tasa de recuperación de errores", "order": 3 },
+        { "id": "ccaf-aa-052_d", "text": "Model accuracy scores on standardized LLM benchmarks like MMLU and HumanEval", "textEs": "Puntuaciones de precisión del modelo en benchmarks estandarizados de LLM como MMLU y HumanEval", "order": 4 }
+      ],
+      "tags": ["benchmarking", "metrics", "evaluation", "monitoring"]
+    },
+    {
+      "id": "ccaf-aa-053",
+      "text": "How does the 'sliding window' technique work for maintaining conversation history in long-running agents?",
+      "textEs": "¿Cómo funciona la técnica de 'ventana deslizante' para mantener el historial de conversación en agentes de larga duración?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-053_b",
+      "explanation": "The sliding window technique retains only the N most recent message turns in the conversation history, dropping older turns as new ones are added. This keeps the context window at a manageable size but has a significant trade-off: the agent loses access to earlier context, which may include important decisions, tool results, or user requirements from the beginning of the conversation. For this reason, sliding window is often combined with a persistent summary block that captures key facts from dropped turns.",
+      "explanationEs": "La técnica de ventana deslizante retiene solo los N turnos de mensajes más recientes en el historial de conversación, descartando turnos más antiguos a medida que se agregan nuevos. Esto mantiene la ventana de contexto en un tamaño manejable pero tiene una compensación significativa: el agente pierde acceso al contexto anterior, que puede incluir decisiones importantes, resultados de herramientas o requisitos del usuario del inicio de la conversación. Por esta razón, la ventana deslizante a menudo se combina con un bloque de resumen persistente que captura hechos clave de los turnos descartados.",
+      "options": [
+        { "id": "ccaf-aa-053_a", "text": "It compresses all messages to use fewer tokens while preserving their full content", "textEs": "Comprime todos los mensajes para usar menos tokens mientras preserva su contenido completo", "order": 1 },
+        { "id": "ccaf-aa-053_b", "text": "It keeps only the N most recent turns, dropping older ones; often combined with a persistent summary of dropped turns' key facts", "textEs": "Mantiene solo los N turnos más recientes, descartando los más antiguos; a menudo combinada con un resumen persistente de hechos clave de los turnos descartados", "order": 2 },
+        { "id": "ccaf-aa-053_c", "text": "It splits the conversation across multiple parallel context windows that are merged for each API call", "textEs": "Divide la conversación entre múltiples ventanas de contexto paralelas que se fusionan para cada llamada a la API", "order": 3 },
+        { "id": "ccaf-aa-053_d", "text": "It automatically switches to a model with a larger context window when the current one is full", "textEs": "Cambia automáticamente a un modelo con una ventana de contexto más grande cuando la actual está llena", "order": 4 }
+      ],
+      "tags": ["sliding-window", "conversation-history", "memory-management", "context-window"]
+    },
+    {
+      "id": "ccaf-aa-054",
+      "text": "In a sequential pipeline multi-agent pattern, what is the main advantage over having a single agent perform all steps?",
+      "textEs": "En un patrón multi-agente de pipeline secuencial, ¿cuál es la ventaja principal sobre tener un solo agente que realice todos los pasos?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-054_a",
+      "explanation": "The main advantage of a sequential pipeline is that each agent in the pipeline operates with a fresh context window containing only the previous agent's output and its own specialized instructions. This means each agent can have: (1) a focused system prompt optimized for its specific step, (2) a minimal tool set relevant to its task, (3) a clean context not cluttered with irrelevant previous steps. A single agent performing all steps would accumulate all intermediate state in one context window, potentially running out of space or getting confused by irrelevant earlier context.",
+      "explanationEs": "La ventaja principal de un pipeline secuencial es que cada agente en el pipeline opera con una ventana de contexto fresca que contiene solo la salida del agente anterior y sus propias instrucciones especializadas. Esto significa que cada agente puede tener: (1) un prompt del sistema enfocado optimizado para su paso específico, (2) un conjunto mínimo de herramientas relevantes para su tarea, (3) un contexto limpio no saturado con pasos anteriores irrelevantes. Un solo agente realizando todos los pasos acumularía todo el estado intermedio en una ventana de contexto, potencialmente quedándose sin espacio o confundiéndose con contexto anterior irrelevante.",
+      "options": [
+        { "id": "ccaf-aa-054_a", "text": "Each agent gets a fresh context with focused prompt and minimal tools, avoiding context pollution from previous steps", "textEs": "Cada agente obtiene un contexto fresco con prompt enfocado y herramientas mínimas, evitando la contaminación de contexto de pasos anteriores", "order": 1 },
+        { "id": "ccaf-aa-054_b", "text": "The pipeline runs faster because each agent uses a smaller model", "textEs": "El pipeline se ejecuta más rápido porque cada agente usa un modelo más pequeño", "order": 2 },
+        { "id": "ccaf-aa-054_c", "text": "The pipeline can process multiple requests simultaneously, one at each stage", "textEs": "El pipeline puede procesar múltiples solicitudes simultáneamente, una en cada etapa", "order": 3 },
+        { "id": "ccaf-aa-054_d", "text": "If one agent fails, the pipeline automatically skips to the next agent without losing data", "textEs": "Si un agente falla, el pipeline salta automáticamente al siguiente agente sin perder datos", "order": 4 }
+      ],
+      "tags": ["sequential-pipeline", "context-isolation", "multi-agent", "specialization"]
+    },
+    {
+      "id": "ccaf-aa-055",
+      "text": "How should an orchestrator handle the case where a tool call returns successfully but with an empty or null result?",
+      "textEs": "¿Cómo debe un orquestador manejar el caso donde una llamada a herramienta retorna exitosamente pero con un resultado vacío o nulo?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-055_c",
+      "explanation": "An empty or null tool result should still be returned to Claude as a valid tool_result (not as an error), with a clear indication that the result was empty. For example: 'The search returned 0 results' or 'No records found matching the criteria.' This gives Claude accurate information to reason about -- it may decide to broaden search criteria, try a different tool, or conclude that the absence of results is itself meaningful. Returning it as an error (is_error: true) would be incorrect since the tool executed successfully; the empty result is valid data.",
+      "explanationEs": "Un resultado de herramienta vacío o nulo aún debe devolverse a Claude como un tool_result válido (no como un error), con una indicación clara de que el resultado estaba vacío. Por ejemplo: 'La búsqueda devolvió 0 resultados' o 'No se encontraron registros que coincidan con los criterios.' Esto le da a Claude información precisa para razonar -- puede decidir ampliar los criterios de búsqueda, probar una herramienta diferente o concluir que la ausencia de resultados es en sí misma significativa. Devolverlo como un error (is_error: true) sería incorrecto ya que la herramienta se ejecutó exitosamente; el resultado vacío es datos válidos.",
+      "options": [
+        { "id": "ccaf-aa-055_a", "text": "Return it as a tool_result with is_error: true since an empty result indicates a problem", "textEs": "Devolverlo como un tool_result con is_error: true ya que un resultado vacío indica un problema", "order": 1 },
+        { "id": "ccaf-aa-055_b", "text": "Silently retry the tool call with the same parameters, as empty results are likely transient failures", "textEs": "Reintentar silenciosamente la llamada a herramienta con los mismos parámetros, ya que los resultados vacíos probablemente son fallos transitorios", "order": 2 },
+        { "id": "ccaf-aa-055_c", "text": "Return a valid tool_result with a clear message like 'No results found,' allowing Claude to reason about the empty result and adapt its approach", "textEs": "Devolver un tool_result válido con un mensaje claro como 'No se encontraron resultados,' permitiendo a Claude razonar sobre el resultado vacío y adaptar su enfoque", "order": 3 },
+        { "id": "ccaf-aa-055_d", "text": "Omit the tool_result entirely and let Claude continue without it", "textEs": "Omitir el tool_result completamente y dejar que Claude continúe sin él", "order": 4 }
+      ],
+      "tags": ["empty-results", "tool-result", "error-handling", "orchestration"]
+    },
+    {
+      "id": "ccaf-aa-056",
+      "text": "What is the key difference between stateful sessions and stateless API calls in agentic architectures?",
+      "textEs": "¿Cuál es la diferencia clave entre sesiones con estado y llamadas API sin estado en arquitecturas agentes?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-056_d",
+      "explanation": "The Claude Messages API is fundamentally stateless: each request must include the complete conversation history (system prompt + all messages). Stateful sessions are an abstraction built on top of this, where the client or server persists the messages array between calls and automatically includes it in each request. The /v1/sessions endpoint in the Agent SDK provides server-side statefulness, so the client only sends new messages rather than the full history. This simplifies client code and reduces bandwidth, but the underlying mechanism still sends the full context to the model.",
+      "explanationEs": "La API de Mensajes de Claude es fundamentalmente sin estado: cada solicitud debe incluir el historial completo de conversación (prompt del sistema + todos los mensajes). Las sesiones con estado son una abstracción construida sobre esto, donde el cliente o servidor persiste el array de mensajes entre llamadas y automáticamente lo incluye en cada solicitud. El endpoint /v1/sessions en el SDK de Agentes proporciona estado del lado del servidor, para que el cliente solo envíe mensajes nuevos en lugar del historial completo. Esto simplifica el código del cliente y reduce el ancho de banda, pero el mecanismo subyacente aún envía el contexto completo al modelo.",
+      "options": [
+        { "id": "ccaf-aa-056_a", "text": "Stateful sessions use WebSockets while stateless calls use HTTP REST", "textEs": "Las sesiones con estado usan WebSockets mientras las llamadas sin estado usan HTTP REST", "order": 1 },
+        { "id": "ccaf-aa-056_b", "text": "Stateful sessions store the model's internal weights; stateless calls reset the model each time", "textEs": "Las sesiones con estado almacenan los pesos internos del modelo; las llamadas sin estado reinician el modelo cada vez", "order": 2 },
+        { "id": "ccaf-aa-056_c", "text": "There is no difference; the Claude API is always stateful", "textEs": "No hay diferencia; la API de Claude siempre tiene estado", "order": 3 },
+        { "id": "ccaf-aa-056_d", "text": "The Messages API is stateless (full history sent each call); sessions persist the messages array server-side so clients only send new messages", "textEs": "La API de Mensajes es sin estado (historial completo enviado en cada llamada); las sesiones persisten el array de mensajes del lado del servidor para que los clientes solo envíen mensajes nuevos", "order": 4 }
+      ],
+      "tags": ["stateful-sessions", "stateless-api", "agent-sdk", "architecture"]
+    },
+    {
+      "id": "ccaf-aa-057",
+      "text": "In an agentic system that generates and executes code, what is the most critical safety measure?",
+      "textEs": "En un sistema agente que genera y ejecuta código, ¿cuál es la medida de seguridad más crítica?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-057_b",
+      "explanation": "Sandboxed execution is the most critical safety measure for code generation agents. The generated code must run in an isolated environment (container, VM, or restricted process) with limited filesystem access, no network access to internal services, bounded CPU/memory/time resources, and no ability to escalate privileges. Even with perfect prompt engineering, the model may generate code that has unintended side effects -- for example, an infinite loop, a file deletion, or a network request to an external service. Sandboxing ensures these cannot affect the host system.",
+      "explanationEs": "La ejecución en sandbox es la medida de seguridad más crítica para agentes de generación de código. El código generado debe ejecutarse en un entorno aislado (contenedor, VM o proceso restringido) con acceso limitado al sistema de archivos, sin acceso de red a servicios internos, recursos de CPU/memoria/tiempo limitados y sin capacidad de escalar privilegios. Incluso con ingeniería de prompts perfecta, el modelo puede generar código que tiene efectos secundarios no deseados -- por ejemplo, un bucle infinito, una eliminación de archivos o una solicitud de red a un servicio externo. El sandboxing asegura que estos no puedan afectar al sistema anfitrión.",
+      "options": [
+        { "id": "ccaf-aa-057_a", "text": "Reviewing all generated code with a second Claude instance before execution", "textEs": "Revisar todo el código generado con una segunda instancia de Claude antes de la ejecución", "order": 1 },
+        { "id": "ccaf-aa-057_b", "text": "Sandboxed execution in an isolated environment with limited filesystem, network, and resource access", "textEs": "Ejecución en sandbox en un entorno aislado con acceso limitado al sistema de archivos, red y recursos", "order": 2 },
+        { "id": "ccaf-aa-057_c", "text": "Only allowing the agent to generate code in interpreted languages that can be easily interrupted", "textEs": "Solo permitir al agente generar código en lenguajes interpretados que puedan ser fácilmente interrumpidos", "order": 3 },
+        { "id": "ccaf-aa-057_d", "text": "Setting temperature to 0 so the model generates deterministic, predictable code", "textEs": "Configurar la temperatura a 0 para que el modelo genere código determinista y predecible", "order": 4 }
+      ],
+      "tags": ["code-execution", "sandboxing", "safety", "isolation"]
+    },
+    {
+      "id": "ccaf-aa-058",
+      "text": "When designing a tool schema for an agentic system, what makes a tool description effective for reliable tool selection by the model?",
+      "textEs": "Al diseñar un esquema de herramienta para un sistema agente, ¿qué hace que una descripción de herramienta sea efectiva para una selección confiable de herramientas por el modelo?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-058_d",
+      "explanation": "Effective tool descriptions include: (1) a clear, action-oriented name (e.g., 'search_customers' not 'tool1'), (2) a description that explains when to use the tool and when NOT to use it, (3) detailed parameter descriptions with types, constraints, and examples, (4) the expected output format so the model knows what to expect. Vague descriptions like 'searches stuff' lead to incorrect tool selection. Overly complex descriptions waste context tokens. The key is being specific enough that the model can distinguish between similar tools and use each one correctly without ambiguity.",
+      "explanationEs": "Las descripciones efectivas de herramientas incluyen: (1) un nombre claro orientado a la acción (por ejemplo, 'search_customers' no 'tool1'), (2) una descripción que explica cuándo usar la herramienta y cuándo NO usarla, (3) descripciones detalladas de parámetros con tipos, restricciones y ejemplos, (4) el formato de salida esperado para que el modelo sepa qué esperar. Descripciones vagas como 'busca cosas' llevan a una selección incorrecta de herramientas. Descripciones excesivamente complejas desperdician tokens de contexto. La clave es ser lo suficientemente específico para que el modelo pueda distinguir entre herramientas similares y usar cada una correctamente sin ambigüedad.",
+      "options": [
+        { "id": "ccaf-aa-058_a", "text": "Keep descriptions as short as possible (under 10 words) to save context window space", "textEs": "Mantener las descripciones lo más cortas posible (menos de 10 palabras) para ahorrar espacio en la ventana de contexto", "order": 1 },
+        { "id": "ccaf-aa-058_b", "text": "Include the tool's source code in the description so the model understands its implementation", "textEs": "Incluir el código fuente de la herramienta en la descripción para que el modelo entienda su implementación", "order": 2 },
+        { "id": "ccaf-aa-058_c", "text": "Use generic names and descriptions so the model can creatively adapt tools to different situations", "textEs": "Usar nombres y descripciones genéricas para que el modelo pueda adaptar creativamente las herramientas a diferentes situaciones", "order": 3 },
+        { "id": "ccaf-aa-058_d", "text": "Clear action-oriented name, when/when-not-to-use description, detailed parameters with types and examples, and expected output format", "textEs": "Nombre claro orientado a la acción, descripción de cuándo/cuándo-no-usar, parámetros detallados con tipos y ejemplos, y formato de salida esperado", "order": 4 }
+      ],
+      "tags": ["tool-design", "tool-descriptions", "schema", "best-practices"]
+    },
+    {
+      "id": "ccaf-aa-059",
+      "text": "What is the 'observer agent' pattern, and how does it improve agentic system reliability?",
+      "textEs": "¿Qué es el patrón de 'agente observador', y cómo mejora la confiabilidad del sistema agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-059_b",
+      "explanation": "The observer agent pattern uses a separate, lightweight agent that monitors the primary agent's actions without interfering with execution. The observer reviews tool calls and responses in real-time, flagging potential issues like: off-topic behavior, unsafe operations, hallucinated information, or getting stuck in loops. When the observer detects a problem, it can signal the orchestrator to intervene (e.g., inject a corrective message, request human review, or terminate the loop). This separation of concerns means the primary agent stays focused on its task while safety monitoring happens independently.",
+      "explanationEs": "El patrón de agente observador usa un agente separado y ligero que monitorea las acciones del agente principal sin interferir con la ejecución. El observador revisa las llamadas a herramientas y respuestas en tiempo real, señalando problemas potenciales como: comportamiento fuera de tema, operaciones inseguras, información alucinada o quedarse atrapado en bucles. Cuando el observador detecta un problema, puede señalar al orquestador que intervenga (por ejemplo, inyectar un mensaje correctivo, solicitar revisión humana o terminar el bucle). Esta separación de responsabilidades significa que el agente principal se mantiene enfocado en su tarea mientras el monitoreo de seguridad ocurre independientemente.",
+      "options": [
+        { "id": "ccaf-aa-059_a", "text": "An agent that logs all tool calls to a database for post-hoc analysis, improving future versions through historical data", "textEs": "Un agente que registra todas las llamadas a herramientas en una base de datos para análisis posterior, mejorando versiones futuras a través de datos históricos", "order": 1 },
+        { "id": "ccaf-aa-059_b", "text": "A separate lightweight agent monitoring the primary agent's actions in real-time, flagging off-topic behavior, unsafe operations, or stuck loops for orchestrator intervention", "textEs": "Un agente ligero separado que monitorea las acciones del agente principal en tiempo real, señalando comportamiento fuera de tema, operaciones inseguras o bucles atascados para intervención del orquestador", "order": 2 },
+        { "id": "ccaf-aa-059_c", "text": "A testing agent that replays previous successful interactions to verify the primary agent produces consistent results", "textEs": "Un agente de pruebas que reproduce interacciones exitosas anteriores para verificar que el agente principal produce resultados consistentes", "order": 3 },
+        { "id": "ccaf-aa-059_d", "text": "An agent that observes user behavior to adapt the primary agent's responses to user preferences over time", "textEs": "Un agente que observa el comportamiento del usuario para adaptar las respuestas del agente principal a las preferencias del usuario con el tiempo", "order": 4 }
+      ],
+      "tags": ["observer-agent", "monitoring", "safety", "reliability"]
+    },
+    {
+      "id": "ccaf-aa-060",
+      "text": "When using extended thinking in a multi-turn agentic conversation, what happens to thinking blocks from previous turns?",
+      "textEs": "Al usar pensamiento extendido en una conversación agente de múltiples turnos, ¿qué sucede con los bloques de pensamiento de turnos anteriores?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-060_a",
+      "explanation": "Thinking blocks from previous turns are NOT included in the conversation history sent back to the API. Each turn's thinking is ephemeral -- it influences the response for that turn but is discarded before the next API call. This is important for token management in agentic loops: thinking tokens do not compound across iterations. The model generates fresh thinking for each turn based on the visible conversation history (text and tool_use/tool_result blocks). If you need information from previous thinking to persist, it must be captured in the visible response text or tool calls.",
+      "explanationEs": "Los bloques de pensamiento de turnos anteriores NO se incluyen en el historial de conversación enviado de vuelta a la API. El pensamiento de cada turno es efímero -- influye en la respuesta para ese turno pero se descarta antes de la siguiente llamada a la API. Esto es importante para la gestión de tokens en bucles agente: los tokens de pensamiento no se acumulan entre iteraciones. El modelo genera pensamiento fresco para cada turno basándose en el historial de conversación visible (bloques de texto y tool_use/tool_result). Si necesitas que la información del pensamiento anterior persista, debe capturarse en el texto de respuesta visible o en las llamadas a herramientas.",
+      "options": [
+        { "id": "ccaf-aa-060_a", "text": "Thinking blocks are ephemeral and not included in subsequent API calls; they do not compound across iterations, and information must be captured in visible output to persist", "textEs": "Los bloques de pensamiento son efímeros y no se incluyen en llamadas API subsiguientes; no se acumulan entre iteraciones, y la información debe capturarse en la salida visible para persistir", "order": 1 },
+        { "id": "ccaf-aa-060_b", "text": "Thinking blocks from all previous turns are accumulated and sent with every API call, contributing to context window growth", "textEs": "Los bloques de pensamiento de todos los turnos anteriores se acumulan y envían con cada llamada API, contribuyendo al crecimiento de la ventana de contexto", "order": 2 },
+        { "id": "ccaf-aa-060_c", "text": "Thinking blocks are cached server-side and automatically referenced by the model in subsequent turns", "textEs": "Los bloques de pensamiento se almacenan en caché del lado del servidor y el modelo los referencia automáticamente en turnos subsiguientes", "order": 3 },
+        { "id": "ccaf-aa-060_d", "text": "Only the last turn's thinking block is preserved; older ones are replaced", "textEs": "Solo se preserva el bloque de pensamiento del último turno; los más antiguos se reemplazan", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "multi-turn", "ephemeral", "token-management"]
+    },
+    {
+      "id": "ccaf-aa-061",
+      "text": "A developer is building an agent that needs to interact with both internal APIs (trusted) and external web services (untrusted). What is the recommended architectural approach?",
+      "textEs": "Un desarrollador está construyendo un agente que necesita interactuar tanto con APIs internas (confiables) como con servicios web externos (no confiables). ¿Cuál es el enfoque arquitectónico recomendado?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-061_c",
+      "explanation": "The recommended approach is to separate trusted and untrusted tool interactions into different trust zones with appropriate safeguards. Tools interacting with untrusted external services should: (1) sanitize all returned content to mitigate prompt injection, (2) have stricter permission boundaries (read-only where possible), (3) have results marked as untrusted in the system prompt. Tools for trusted internal APIs can have broader permissions but should still validate inputs. The orchestrator acts as the security boundary, applying different validation and sanitization rules based on the tool's trust zone. This prevents untrusted external content from influencing actions taken on trusted internal systems.",
+      "explanationEs": "El enfoque recomendado es separar las interacciones de herramientas confiables y no confiables en diferentes zonas de confianza con salvaguardas apropiadas. Las herramientas que interactúan con servicios externos no confiables deben: (1) sanitizar todo el contenido devuelto para mitigar inyección de prompts, (2) tener límites de permisos más estrictos (solo lectura donde sea posible), (3) tener resultados marcados como no confiables en el prompt del sistema. Las herramientas para APIs internas confiables pueden tener permisos más amplios pero aún deben validar entradas. El orquestador actúa como el límite de seguridad, aplicando diferentes reglas de validación y sanitización basadas en la zona de confianza de la herramienta. Esto previene que contenido externo no confiable influya en acciones tomadas en sistemas internos confiables.",
+      "options": [
+        { "id": "ccaf-aa-061_a", "text": "Treat all tools equally and rely on the system prompt to tell Claude which sources to trust", "textEs": "Tratar todas las herramientas por igual y confiar en el prompt del sistema para decirle a Claude en qué fuentes confiar", "order": 1 },
+        { "id": "ccaf-aa-061_b", "text": "Only use internal APIs; block all external web service access to eliminate the risk", "textEs": "Solo usar APIs internas; bloquear todo acceso a servicios web externos para eliminar el riesgo", "order": 2 },
+        { "id": "ccaf-aa-061_c", "text": "Separate tools into trust zones: sanitize untrusted external results, mark them as untrusted, apply stricter permissions; use the orchestrator as the security boundary", "textEs": "Separar herramientas en zonas de confianza: sanitizar resultados externos no confiables, marcarlos como no confiables, aplicar permisos más estrictos; usar el orquestador como el límite de seguridad", "order": 3 },
+        { "id": "ccaf-aa-061_d", "text": "Use two separate agent instances: one for internal APIs and one for external services, with no communication between them", "textEs": "Usar dos instancias de agente separadas: una para APIs internas y otra para servicios externos, sin comunicación entre ellas", "order": 4 }
+      ],
+      "tags": ["trust-zones", "security", "internal-external", "sanitization"]
+    },
+    {
+      "id": "ccaf-aa-062",
+      "text": "How should evaluation test suites for agentic systems differ from traditional LLM evaluation?",
+      "textEs": "¿Cómo deben diferir las suites de pruebas de evaluación para sistemas agentes de la evaluación tradicional de LLM?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-062_d",
+      "explanation": "Agentic evaluation requires testing multi-step tool interactions and end-to-end task completion, not just single-turn response quality. Effective agentic test suites include: (1) mock tool environments that simulate realistic tool responses (including errors and edge cases), (2) multi-step scenarios where success depends on correct tool sequencing, (3) adversarial test cases with misleading tool results (to test robustness), (4) evaluation of the full trajectory (not just the final answer -- did the agent take an efficient path?), and (5) regression tests for previously observed failure modes. Traditional LLM evals only test single-turn input/output quality.",
+      "explanationEs": "La evaluación agente requiere probar interacciones de herramientas de múltiples pasos y completación de tareas de extremo a extremo, no solo la calidad de respuesta de un solo turno. Las suites de pruebas agentes efectivas incluyen: (1) entornos de herramientas simulados que simulan respuestas realistas de herramientas (incluyendo errores y casos límite), (2) escenarios de múltiples pasos donde el éxito depende de la secuenciación correcta de herramientas, (3) casos de prueba adversariales con resultados de herramientas engañosos (para probar robustez), (4) evaluación de la trayectoria completa (no solo la respuesta final -- ¿tomó el agente un camino eficiente?), y (5) pruebas de regresión para modos de fallo previamente observados. Las evaluaciones tradicionales de LLM solo prueban calidad de entrada/salida de un solo turno.",
+      "options": [
+        { "id": "ccaf-aa-062_a", "text": "They should be identical -- use the same standardized benchmarks (MMLU, HellaSwag) for both", "textEs": "Deben ser idénticas -- usar los mismos benchmarks estandarizados (MMLU, HellaSwag) para ambos", "order": 1 },
+        { "id": "ccaf-aa-062_b", "text": "Only evaluate the final answer quality; the intermediate steps do not matter", "textEs": "Solo evaluar la calidad de la respuesta final; los pasos intermedios no importan", "order": 2 },
+        { "id": "ccaf-aa-062_c", "text": "Focus exclusively on token efficiency and cost metrics rather than task completion", "textEs": "Enfocarse exclusivamente en métricas de eficiencia de tokens y costos en lugar de completación de tareas", "order": 3 },
+        { "id": "ccaf-aa-062_d", "text": "Test multi-step tool interactions with mock environments, evaluate full trajectories, include adversarial cases, and run regression tests for known failure modes", "textEs": "Probar interacciones de herramientas de múltiples pasos con entornos simulados, evaluar trayectorias completas, incluir casos adversariales y ejecutar pruebas de regresión para modos de fallo conocidos", "order": 4 }
+      ],
+      "tags": ["evaluation", "testing", "multi-step", "adversarial", "regression"]
+    },
+    {
+      "id": "ccaf-aa-063",
+      "text": "What is the 'temperature ladder' technique in multi-agent systems?",
+      "textEs": "¿Qué es la técnica de 'escalera de temperatura' en sistemas multi-agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-063_b",
+      "explanation": "The temperature ladder technique assigns different temperature values to agents based on their role. Creative or brainstorming agents use higher temperatures (0.7-1.0) to generate diverse ideas or explore novel solutions. Analytical, coding, or fact-checking agents use lower temperatures (0.0-0.3) for more deterministic, precise outputs. The coordinator typically uses a moderate temperature. This technique optimizes the quality-creativity tradeoff for each agent's specific function rather than using a one-size-fits-all temperature across the entire system.",
+      "explanationEs": "La técnica de escalera de temperatura asigna diferentes valores de temperatura a los agentes según su rol. Los agentes creativos o de lluvia de ideas usan temperaturas más altas (0.7-1.0) para generar ideas diversas o explorar soluciones novedosas. Los agentes analíticos, de codificación o de verificación de hechos usan temperaturas más bajas (0.0-0.3) para salidas más deterministas y precisas. El coordinador típicamente usa una temperatura moderada. Esta técnica optimiza el equilibrio calidad-creatividad para la función específica de cada agente en lugar de usar una temperatura única para todo el sistema.",
+      "options": [
+        { "id": "ccaf-aa-063_a", "text": "Gradually increasing temperature across iterations to generate progressively more creative responses", "textEs": "Aumentar gradualmente la temperatura entre iteraciones para generar respuestas progresivamente más creativas", "order": 1 },
+        { "id": "ccaf-aa-063_b", "text": "Assigning different temperatures to agents by role: higher for creative tasks, lower for analytical/coding tasks, optimizing each agent's output quality", "textEs": "Asignar diferentes temperaturas a los agentes por rol: más alta para tareas creativas, más baja para tareas analíticas/de codificación, optimizando la calidad de salida de cada agente", "order": 2 },
+        { "id": "ccaf-aa-063_c", "text": "Reducing temperature to zero after each successful tool call to prevent hallucination in subsequent responses", "textEs": "Reducir la temperatura a cero después de cada llamada exitosa a herramienta para prevenir alucinaciones en respuestas subsiguientes", "order": 3 },
+        { "id": "ccaf-aa-063_d", "text": "Using high temperature for the first API call and gradually decreasing it until the model produces an acceptable answer", "textEs": "Usar temperatura alta para la primera llamada API y disminuirla gradualmente hasta que el modelo produzca una respuesta aceptable", "order": 4 }
+      ],
+      "tags": ["temperature", "multi-agent", "optimization", "creative-analytical"]
+    },
+    {
+      "id": "ccaf-aa-064",
+      "text": "In the context of agentic architectures, what is 'tool result caching' and when is it appropriate to use?",
+      "textEs": "En el contexto de arquitecturas agentes, ¿qué es el 'caché de resultados de herramientas' y cuándo es apropiado usarlo?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-064_c",
+      "explanation": "Tool result caching stores the results of tool calls in a local cache keyed by the tool name and input parameters. When the model requests the same tool call with identical parameters (which commonly happens when agents retry or when multiple subagents need the same information), the cached result is returned immediately without re-executing the tool. This is appropriate for idempotent, deterministic tools (database reads, API lookups, file reads) where the result is stable. It is NOT appropriate for non-idempotent tools (write operations, time-sensitive data) or tools where results change between calls.",
+      "explanationEs": "El caché de resultados de herramientas almacena los resultados de llamadas a herramientas en un caché local indexado por el nombre de la herramienta y los parámetros de entrada. Cuando el modelo solicita la misma llamada a herramienta con parámetros idénticos (lo cual ocurre comúnmente cuando los agentes reintentan o cuando múltiples subagentes necesitan la misma información), el resultado en caché se devuelve inmediatamente sin re-ejecutar la herramienta. Esto es apropiado para herramientas idempotentes y deterministas (lecturas de base de datos, consultas API, lecturas de archivos) donde el resultado es estable. NO es apropiado para herramientas no idempotentes (operaciones de escritura, datos sensibles al tiempo) o herramientas donde los resultados cambian entre llamadas.",
+      "options": [
+        { "id": "ccaf-aa-064_a", "text": "Caching all tool results indefinitely to avoid any redundant tool executions; appropriate for all tools", "textEs": "Almacenar en caché todos los resultados de herramientas indefinidamente para evitar ejecuciones redundantes; apropiado para todas las herramientas", "order": 1 },
+        { "id": "ccaf-aa-064_b", "text": "Storing tool schemas in memory to avoid re-parsing them; appropriate when using many tools", "textEs": "Almacenar esquemas de herramientas en memoria para evitar re-analizarlos; apropiado cuando se usan muchas herramientas", "order": 2 },
+        { "id": "ccaf-aa-064_c", "text": "Storing tool results keyed by tool name + parameters, returning cached results for identical calls; appropriate for idempotent, deterministic tools only", "textEs": "Almacenar resultados de herramientas indexados por nombre de herramienta + parámetros, devolviendo resultados en caché para llamadas idénticas; apropiado solo para herramientas idempotentes y deterministas", "order": 3 },
+        { "id": "ccaf-aa-064_d", "text": "Using the Claude API's built-in tool caching feature that automatically deduplicates tool calls; appropriate by default", "textEs": "Usar la función de caché de herramientas integrada en la API de Claude que automáticamente deduplica llamadas a herramientas; apropiado por defecto", "order": 4 }
+      ],
+      "tags": ["tool-caching", "optimization", "idempotent", "performance"]
+    },
+    {
+      "id": "ccaf-aa-065",
+      "text": "A team is evaluating whether to use a managed agents service (/v1/agents) or build custom orchestration for their production agentic system. What factors should drive this decision?",
+      "textEs": "Un equipo está evaluando si usar un servicio de agentes gestionados (/v1/agents) o construir orquestación personalizada para su sistema agente de producción. ¿Qué factores deben guiar esta decisión?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-aa-065_d",
+      "explanation": "The decision depends on several factors: Managed agents (/v1/agents) are ideal when you need rapid development, standard agentic patterns, built-in session management, and don't need fine-grained control over the loop. Custom orchestration is preferred when you need: (1) custom error handling logic beyond what the managed service provides, (2) complex multi-agent coordination with custom routing, (3) specific middleware (logging, monitoring, rate limiting) between loop iterations, (4) hybrid architectures mixing Claude with other models, or (5) strict compliance requirements that mandate full control over data flow. Many teams start with managed agents and migrate to custom orchestration only when specific limitations are hit.",
+      "explanationEs": "La decisión depende de varios factores: Los agentes gestionados (/v1/agents) son ideales cuando necesitas desarrollo rápido, patrones agentes estándar, gestión de sesiones integrada y no necesitas control detallado sobre el bucle. La orquestación personalizada es preferida cuando necesitas: (1) lógica de manejo de errores personalizada más allá de lo que proporciona el servicio gestionado, (2) coordinación multi-agente compleja con enrutamiento personalizado, (3) middleware específico (logging, monitoreo, limitación de tasa) entre iteraciones del bucle, (4) arquitecturas híbridas mezclando Claude con otros modelos, o (5) requisitos estrictos de cumplimiento que exigen control total sobre el flujo de datos. Muchos equipos comienzan con agentes gestionados y migran a orquestación personalizada solo cuando se encuentran con limitaciones específicas.",
+      "options": [
+        { "id": "ccaf-aa-065_a", "text": "Always use managed agents because they are more reliable and cost-effective than custom solutions", "textEs": "Siempre usar agentes gestionados porque son más confiables y rentables que las soluciones personalizadas", "order": 1 },
+        { "id": "ccaf-aa-065_b", "text": "Always build custom orchestration because managed services cannot handle production workloads", "textEs": "Siempre construir orquestación personalizada porque los servicios gestionados no pueden manejar cargas de trabajo de producción", "order": 2 },
+        { "id": "ccaf-aa-065_c", "text": "The decision is purely about cost: managed agents are more expensive per API call", "textEs": "La decisión es puramente sobre costo: los agentes gestionados son más caros por llamada API", "order": 3 },
+        { "id": "ccaf-aa-065_d", "text": "Managed agents for rapid development and standard patterns; custom orchestration for specialized error handling, complex multi-agent routing, custom middleware, or compliance requirements", "textEs": "Agentes gestionados para desarrollo rápido y patrones estándar; orquestación personalizada para manejo de errores especializado, enrutamiento multi-agente complejo, middleware personalizado o requisitos de cumplimiento", "order": 4 }
+      ],
+      "tags": ["managed-agents", "custom-orchestration", "architecture-decision", "production"]
+    }
+  ]
+}

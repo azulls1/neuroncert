@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "domain": "enterprise-cloud",
+    "domainName": "Enterprise Deployment",
+    "trackId": "academy-enterprise-cloud",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10,
+    "learningLevel": 4,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "ecloud-001",
+      "text": "What is the primary advantage of accessing Claude through Amazon Bedrock compared to the direct Anthropic API?",
+      "textEs": "¿Cuál es la ventaja principal de acceder a Claude a través de Amazon Bedrock en comparación con la API directa de Anthropic?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-001_a",
+      "explanation": "Amazon Bedrock provides enterprise-grade infrastructure integration including VPC endpoints (PrivateLink) for private connectivity, IAM-based authentication and authorization, AWS CloudTrail logging, and seamless integration with existing AWS services. This allows enterprises to use Claude within their existing security perimeter and compliance framework without managing separate API keys or network configurations.",
+      "explanationEs": "Amazon Bedrock proporciona integración de infraestructura de nivel empresarial que incluye endpoints VPC (PrivateLink) para conectividad privada, autenticación y autorización basadas en IAM, registro de AWS CloudTrail e integración fluida con los servicios AWS existentes. Esto permite a las empresas usar Claude dentro de su perímetro de seguridad existente y marco de cumplimiento sin gestionar claves API o configuraciones de red separadas.",
+      "options": [
+        { "id": "ecloud-001_a", "text": "Enterprise integration with VPC endpoints, IAM authentication, CloudTrail logging, and existing AWS security perimeter compliance", "textEs": "Integración empresarial con endpoints VPC, autenticación IAM, registro de CloudTrail y cumplimiento del perímetro de seguridad AWS existente", "order": 1 },
+        { "id": "ecloud-001_b", "text": "Bedrock provides access to newer Claude models before they are available on the direct API", "textEs": "Bedrock proporciona acceso a modelos de Claude más nuevos antes de que estén disponibles en la API directa", "order": 2 },
+        { "id": "ecloud-001_c", "text": "Bedrock offers significantly lower per-token pricing compared to the direct Anthropic API", "textEs": "Bedrock ofrece precios por token significativamente más bajos en comparación con la API directa de Anthropic", "order": 3 },
+        { "id": "ecloud-001_d", "text": "Bedrock automatically fine-tunes Claude models using your organization's proprietary data", "textEs": "Bedrock ajusta automáticamente los modelos de Claude usando los datos propietarios de su organización", "order": 4 }
+      ],
+      "tags": ["enterprise", "bedrock", "aws", "vpc", "iam", "security"]
+    },
+    {
+      "id": "ecloud-002",
+      "text": "How does Google Cloud's Vertex AI provide access to Claude, and what authentication mechanism does it use?",
+      "textEs": "¿Cómo proporciona Google Cloud's Vertex AI acceso a Claude y qué mecanismo de autenticación utiliza?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-002_c",
+      "explanation": "Vertex AI makes Claude available as a managed model endpoint within Google Cloud. Authentication uses Google Cloud IAM with service accounts and OAuth 2.0 tokens (ADC - Application Default Credentials). Requests are sent to a region-specific Vertex AI endpoint, and data stays within the customer's GCP project. This integrates with VPC Service Controls, Cloud Audit Logs, and other GCP security features.",
+      "explanationEs": "Vertex AI hace Claude disponible como un endpoint de modelo gestionado dentro de Google Cloud. La autenticación utiliza IAM de Google Cloud con cuentas de servicio y tokens OAuth 2.0 (ADC - Application Default Credentials). Las solicitudes se envían a un endpoint de Vertex AI específico de región, y los datos permanecen dentro del proyecto GCP del cliente. Esto se integra con VPC Service Controls, Cloud Audit Logs y otras funciones de seguridad de GCP.",
+      "options": [
+        { "id": "ecloud-002_a", "text": "Vertex AI runs Claude as a Kubernetes pod in the customer's GKE cluster, authenticated via kubeconfig", "textEs": "Vertex AI ejecuta Claude como un pod de Kubernetes en el clúster GKE del cliente, autenticado mediante kubeconfig", "order": 1 },
+        { "id": "ecloud-002_b", "text": "Vertex AI proxies requests to the Anthropic API, requiring an Anthropic API key stored in Secret Manager", "textEs": "Vertex AI redirige solicitudes a la API de Anthropic, requiriendo una clave API de Anthropic almacenada en Secret Manager", "order": 2 },
+        { "id": "ecloud-002_c", "text": "Claude is a managed model endpoint in Vertex AI, using Google Cloud IAM with service accounts and OAuth 2.0 (ADC) for authentication", "textEs": "Claude es un endpoint de modelo gestionado en Vertex AI, usando IAM de Google Cloud con cuentas de servicio y OAuth 2.0 (ADC) para autenticación", "order": 3 },
+        { "id": "ecloud-002_d", "text": "Vertex AI downloads Claude model weights to the customer's TPU instances for local inference", "textEs": "Vertex AI descarga los pesos del modelo Claude a las instancias TPU del cliente para inferencia local", "order": 4 }
+      ],
+      "tags": ["enterprise", "vertex-ai", "gcp", "authentication", "iam"]
+    },
+    {
+      "id": "ecloud-003",
+      "text": "What is the recommended approach for integrating Claude Code into a CI/CD pipeline for automated code review?",
+      "textEs": "¿Cuál es el enfoque recomendado para integrar Claude Code en una pipeline CI/CD para revisión de código automatizada?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-003_b",
+      "explanation": "The recommended approach uses GitHub Actions (or equivalent CI) with the Claude Code GitHub Action or the CLI in print mode. The workflow triggers on pull request events, checks out the code, runs 'claude -p' with a review prompt and the diff, and posts findings as PR comments. The API key is stored as a repository secret. The --allowedTools flag restricts Claude to read-only tools to prevent unintended modifications.",
+      "explanationEs": "El enfoque recomendado utiliza GitHub Actions (o CI equivalente) con la GitHub Action de Claude Code o la CLI en modo print. El flujo de trabajo se activa con eventos de pull request, hace checkout del código, ejecuta 'claude -p' con un prompt de revisión y el diff, y publica hallazgos como comentarios en el PR. La clave API se almacena como secreto del repositorio. La bandera --allowedTools restringe a Claude a herramientas de solo lectura para prevenir modificaciones no intencionadas.",
+      "options": [
+        { "id": "ecloud-003_a", "text": "Run Claude Code as a persistent server process that monitors the repository and automatically reviews every commit", "textEs": "Ejecutar Claude Code como un proceso servidor persistente que monitorea el repositorio y revisa automáticamente cada commit", "order": 1 },
+        { "id": "ecloud-003_b", "text": "Use GitHub Actions with Claude CLI in print mode, triggered on PR events, with the API key as a secret and --allowedTools for read-only access", "textEs": "Usar GitHub Actions con Claude CLI en modo print, activado en eventos de PR, con la clave API como secreto y --allowedTools para acceso de solo lectura", "order": 2 },
+        { "id": "ecloud-003_c", "text": "Deploy a Claude-powered microservice that receives webhook events and uses the Claude API (not Claude Code) for reviews", "textEs": "Desplegar un microservicio basado en Claude que recibe eventos webhook y usa la API de Claude (no Claude Code) para revisiones", "order": 3 },
+        { "id": "ecloud-003_d", "text": "Install Claude Code on each developer's machine and require them to run a local review command before pushing", "textEs": "Instalar Claude Code en la máquina de cada desarrollador y requerir que ejecuten un comando de revisión local antes de hacer push", "order": 4 }
+      ],
+      "tags": ["enterprise", "ci-cd", "github-actions", "code-review", "automation"]
+    },
+    {
+      "id": "ecloud-004",
+      "text": "What observability practices should be implemented when deploying Claude at enterprise scale?",
+      "textEs": "¿Qué prácticas de observabilidad deben implementarse al desplegar Claude a escala empresarial?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-004_d",
+      "explanation": "Enterprise observability for Claude deployments should include: tracking token usage and costs per team/project, monitoring latency (time-to-first-token and total response time), logging all prompts and responses for audit trails (with PII redaction), setting up alerts for error rates and rate limit hits, monitoring model performance metrics (task success rates, user satisfaction), and integrating with existing observability stacks (Datadog, Grafana, CloudWatch).",
+      "explanationEs": "La observabilidad empresarial para despliegues de Claude debe incluir: rastreo de uso de tokens y costos por equipo/proyecto, monitoreo de latencia (tiempo hasta el primer token y tiempo total de respuesta), registro de todos los prompts y respuestas para auditoría (con redacción de PII), configuración de alertas para tasas de error y límites de velocidad alcanzados, monitoreo de métricas de rendimiento del modelo (tasas de éxito de tareas, satisfacción del usuario) e integración con stacks de observabilidad existentes (Datadog, Grafana, CloudWatch).",
+      "options": [
+        { "id": "ecloud-004_a", "text": "Only monitor total API cost; other metrics add unnecessary complexity for AI deployments", "textEs": "Solo monitorear el costo total de la API; otras métricas agregan complejidad innecesaria para despliegues de IA", "order": 1 },
+        { "id": "ecloud-004_b", "text": "Rely exclusively on Anthropic's usage dashboard; no additional observability tooling is needed", "textEs": "Confiar exclusivamente en el dashboard de uso de Anthropic; no se necesitan herramientas de observabilidad adicionales", "order": 2 },
+        { "id": "ecloud-004_c", "text": "Log only failed requests; successful interactions do not need monitoring", "textEs": "Registrar solo solicitudes fallidas; las interacciones exitosas no necesitan monitoreo", "order": 3 },
+        { "id": "ecloud-004_d", "text": "Track token usage/costs, latency metrics, audit-logged prompts/responses with PII redaction, error/rate-limit alerts, and integrate with existing stacks", "textEs": "Rastrear uso de tokens/costos, métricas de latencia, prompts/respuestas registrados para auditoría con redacción de PII, alertas de errores/límites de velocidad e integrar con stacks existentes", "order": 4 }
+      ],
+      "tags": ["enterprise", "observability", "monitoring", "logging", "audit"]
+    },
+    {
+      "id": "ecloud-005",
+      "text": "What governance controls should be in place for enterprise Claude deployments to ensure responsible AI use?",
+      "textEs": "¿Qué controles de gobernanza deben implementarse para despliegues empresariales de Claude para asegurar un uso responsable de la IA?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-005_a",
+      "explanation": "Enterprise governance for Claude should include: access control policies (who can use which models and features), data classification rules (what data can be sent to Claude), usage policies and acceptable use guidelines, prompt injection and output filtering safeguards, human-in-the-loop requirements for high-risk decisions, regular audits of AI interactions, and compliance mapping to relevant regulations (GDPR, SOC 2, HIPAA).",
+      "explanationEs": "La gobernanza empresarial para Claude debe incluir: políticas de control de acceso (quién puede usar qué modelos y funciones), reglas de clasificación de datos (qué datos pueden enviarse a Claude), políticas de uso y directrices de uso aceptable, salvaguardas contra inyección de prompts y filtrado de salida, requisitos de humano en el ciclo para decisiones de alto riesgo, auditorías regulares de interacciones con IA y mapeo de cumplimiento a regulaciones relevantes (GDPR, SOC 2, HIPAA).",
+      "options": [
+        { "id": "ecloud-005_a", "text": "Access control policies, data classification rules, usage guidelines, prompt/output safeguards, human-in-the-loop for high-risk decisions, audits, and compliance mapping", "textEs": "Políticas de control de acceso, reglas de clasificación de datos, directrices de uso, salvaguardas de prompts/salida, humano en el ciclo para decisiones de alto riesgo, auditorías y mapeo de cumplimiento", "order": 1 },
+        { "id": "ecloud-005_b", "text": "Simply restrict Claude to internal use only; no additional governance is needed if data does not leave the organization", "textEs": "Simplemente restringir Claude solo para uso interno; no se necesita gobernanza adicional si los datos no salen de la organización", "order": 2 },
+        { "id": "ecloud-005_c", "text": "Delegate all governance to the cloud provider (AWS/GCP) since they manage the Claude infrastructure", "textEs": "Delegar toda la gobernanza al proveedor de nube (AWS/GCP) ya que ellos gestionan la infraestructura de Claude", "order": 3 },
+        { "id": "ecloud-005_d", "text": "Block Claude usage entirely until a full AI governance framework is developed and approved (typically 12-18 months)", "textEs": "Bloquear completamente el uso de Claude hasta que se desarrolle y apruebe un marco completo de gobernanza de IA (típicamente 12-18 meses)", "order": 4 }
+      ],
+      "tags": ["enterprise", "governance", "compliance", "security", "responsible-ai"]
+    },
+    {
+      "id": "ecloud-006",
+      "text": "What is the role of provisioned throughput (reserved capacity) in enterprise Claude deployments on Bedrock?",
+      "textEs": "¿Cuál es el rol del throughput provisionado (capacidad reservada) en despliegues empresariales de Claude en Bedrock?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-006_c",
+      "explanation": "Provisioned throughput on Amazon Bedrock allows enterprises to reserve dedicated model capacity, guaranteeing consistent performance regardless of overall platform demand. This ensures predictable latency for production workloads, avoids throttling during peak usage, and provides cost predictability for high-volume applications. It is critical for latency-sensitive production systems where on-demand capacity might experience variable response times.",
+      "explanationEs": "El throughput provisionado en Amazon Bedrock permite a las empresas reservar capacidad de modelo dedicada, garantizando rendimiento consistente independientemente de la demanda general de la plataforma. Esto asegura latencia predecible para cargas de trabajo de producción, evita limitaciones durante picos de uso y proporciona previsibilidad de costos para aplicaciones de alto volumen. Es crítico para sistemas de producción sensibles a la latencia donde la capacidad bajo demanda podría experimentar tiempos de respuesta variables.",
+      "options": [
+        { "id": "ecloud-006_a", "text": "Provisioned throughput deploys a dedicated instance of Claude that can be customized with proprietary training data", "textEs": "El throughput provisionado despliega una instancia dedicada de Claude que puede personalizarse con datos de entrenamiento propietarios", "order": 1 },
+        { "id": "ecloud-006_b", "text": "It allows running Claude models offline within the customer's data center with no internet connectivity required", "textEs": "Permite ejecutar modelos de Claude sin conexión dentro del centro de datos del cliente sin necesidad de conectividad a internet", "order": 2 },
+        { "id": "ecloud-006_c", "text": "Reserved dedicated model capacity guaranteeing consistent latency, avoiding throttling during peak usage, and providing cost predictability", "textEs": "Capacidad de modelo dedicada reservada que garantiza latencia consistente, evita limitaciones durante picos de uso y proporciona previsibilidad de costos", "order": 3 },
+        { "id": "ecloud-006_d", "text": "It provides access to a larger context window size that is not available with on-demand pricing", "textEs": "Proporciona acceso a un tamaño de ventana de contexto más grande que no está disponible con precios bajo demanda", "order": 4 }
+      ],
+      "tags": ["enterprise", "bedrock", "provisioned-throughput", "capacity", "latency"]
+    },
+    {
+      "id": "ecloud-007",
+      "text": "How should secrets and API keys be managed when deploying Claude-powered applications in enterprise environments?",
+      "textEs": "¿Cómo deben gestionarse los secretos y claves API al desplegar aplicaciones basadas en Claude en entornos empresariales?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-007_b",
+      "explanation": "Enterprise secret management requires using dedicated secrets managers (AWS Secrets Manager, GCP Secret Manager, HashiCorp Vault) to store API keys, rotating keys on a regular schedule, using short-lived credentials where possible (IAM roles, service accounts), never embedding keys in source code or container images, implementing least-privilege access to secrets, and auditing secret access patterns.",
+      "explanationEs": "La gestión empresarial de secretos requiere usar gestores de secretos dedicados (AWS Secrets Manager, GCP Secret Manager, HashiCorp Vault) para almacenar claves API, rotar claves en un horario regular, usar credenciales de corta duración cuando sea posible (roles IAM, cuentas de servicio), nunca incrustar claves en código fuente o imágenes de contenedor, implementar acceso de mínimo privilegio a secretos y auditar patrones de acceso a secretos.",
+      "options": [
+        { "id": "ecloud-007_a", "text": "Store API keys in environment variables on the application server; no additional management is needed", "textEs": "Almacenar claves API en variables de entorno en el servidor de aplicaciones; no se necesita gestión adicional", "order": 1 },
+        { "id": "ecloud-007_b", "text": "Use dedicated secrets managers (AWS Secrets Manager, Vault), rotate keys regularly, use short-lived credentials, and audit access patterns", "textEs": "Usar gestores de secretos dedicados (AWS Secrets Manager, Vault), rotar claves regularmente, usar credenciales de corta duración y auditar patrones de acceso", "order": 2 },
+        { "id": "ecloud-007_c", "text": "Encrypt the API key and embed it directly in the application's configuration file committed to the repository", "textEs": "Cifrar la clave API e incrustarla directamente en el archivo de configuración de la aplicación confirmado al repositorio", "order": 3 },
+        { "id": "ecloud-007_d", "text": "Share a single API key across all services and teams to simplify management and reduce overhead", "textEs": "Compartir una única clave API entre todos los servicios y equipos para simplificar la gestión y reducir la sobrecarga", "order": 4 }
+      ],
+      "tags": ["enterprise", "secrets-management", "security", "api-keys", "vault"]
+    },
+    {
+      "id": "ecloud-008",
+      "text": "What is a key consideration when designing error handling and retry logic for Claude API calls in production systems?",
+      "textEs": "¿Cuál es una consideración clave al diseñar manejo de errores y lógica de reintentos para llamadas a la API de Claude en sistemas de producción?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-008_d",
+      "explanation": "Production systems should implement exponential backoff with jitter for retries on transient errors (429 rate limits, 5xx server errors). Non-retryable errors (400 bad request, 401 unauthorized) should fail immediately. Circuit breakers should prevent cascading failures when the API is consistently unavailable. It is critical to distinguish between retryable and non-retryable errors to avoid unnecessary latency or infinite retry loops.",
+      "explanationEs": "Los sistemas de producción deben implementar retroceso exponencial con jitter para reintentos en errores transitorios (429 límites de velocidad, 5xx errores de servidor). Los errores no reintentables (400 solicitud incorrecta, 401 no autorizado) deben fallar inmediatamente. Los circuit breakers deben prevenir fallos en cascada cuando la API no está disponible consistentemente. Es crítico distinguir entre errores reintentables y no reintentables para evitar latencia innecesaria o bucles de reintentos infinitos.",
+      "options": [
+        { "id": "ecloud-008_a", "text": "Always retry exactly 3 times with 1-second delays, regardless of the error type", "textEs": "Siempre reintentar exactamente 3 veces con retrasos de 1 segundo, independientemente del tipo de error", "order": 1 },
+        { "id": "ecloud-008_b", "text": "Never retry; if a request fails, return an error to the user immediately", "textEs": "Nunca reintentar; si una solicitud falla, devolver un error al usuario inmediatamente", "order": 2 },
+        { "id": "ecloud-008_c", "text": "Cache all responses and serve cached results when the API returns errors, regardless of how old the cache is", "textEs": "Almacenar en caché todas las respuestas y servir resultados en caché cuando la API devuelve errores, sin importar la antigüedad del caché", "order": 3 },
+        { "id": "ecloud-008_d", "text": "Use exponential backoff with jitter for retryable errors (429, 5xx), fail immediately on non-retryable errors (400, 401), and implement circuit breakers", "textEs": "Usar retroceso exponencial con jitter para errores reintentables (429, 5xx), fallar inmediatamente en errores no reintentables (400, 401) e implementar circuit breakers", "order": 4 }
+      ],
+      "tags": ["enterprise", "error-handling", "retry-logic", "circuit-breaker", "production"]
+    },
+    {
+      "id": "ecloud-009",
+      "text": "What security measure ensures that data sent to Claude via Amazon Bedrock does not leave the customer's AWS account boundary?",
+      "textEs": "¿Qué medida de seguridad asegura que los datos enviados a Claude a través de Amazon Bedrock no salgan del límite de la cuenta AWS del cliente?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-009_a",
+      "explanation": "AWS PrivateLink (VPC Endpoints) allows customers to access Bedrock's Claude API entirely within their VPC, without traffic traversing the public internet. Combined with VPC endpoint policies that restrict which models and actions are allowed, this ensures data stays within the customer's network boundary. This is essential for regulated industries that require data to remain within a controlled network perimeter.",
+      "explanationEs": "AWS PrivateLink (VPC Endpoints) permite a los clientes acceder a la API de Claude de Bedrock completamente dentro de su VPC, sin que el tráfico atraviese la internet pública. Combinado con políticas de endpoint VPC que restringen qué modelos y acciones se permiten, esto asegura que los datos permanezcan dentro del límite de red del cliente. Esto es esencial para industrias reguladas que requieren que los datos permanezcan dentro de un perímetro de red controlado.",
+      "options": [
+        { "id": "ecloud-009_a", "text": "AWS PrivateLink (VPC Endpoints) to access Bedrock entirely within the VPC, combined with VPC endpoint policies", "textEs": "AWS PrivateLink (VPC Endpoints) para acceder a Bedrock completamente dentro del VPC, combinado con políticas de endpoint VPC", "order": 1 },
+        { "id": "ecloud-009_b", "text": "Encrypting the API request payload with a customer-managed KMS key before sending it over the public internet", "textEs": "Cifrar la carga útil de la solicitud API con una clave KMS gestionada por el cliente antes de enviarla por la internet pública", "order": 2 },
+        { "id": "ecloud-009_c", "text": "Using a NAT Gateway to mask the source IP address when connecting to the Bedrock service endpoint", "textEs": "Usar un NAT Gateway para enmascarar la dirección IP de origen al conectar con el endpoint del servicio Bedrock", "order": 3 },
+        { "id": "ecloud-009_d", "text": "Deploying the Claude model inside an ECS container within the customer's VPC for fully local inference", "textEs": "Desplegar el modelo Claude dentro de un contenedor ECS en el VPC del cliente para inferencia completamente local", "order": 4 }
+      ],
+      "tags": ["enterprise", "bedrock", "privatelink", "vpc", "network-security"]
+    },
+    {
+      "id": "ecloud-010",
+      "text": "What is the recommended architecture for a multi-region enterprise deployment of Claude-powered applications?",
+      "textEs": "¿Cuál es la arquitectura recomendada para un despliegue empresarial multi-región de aplicaciones basadas en Claude?",
+      "domainCode": "enterprise-cloud",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "exam",
+      "trackId": "academy-enterprise-cloud",
+      "correctOptionId": "ecloud-010_c",
+      "explanation": "A multi-region Claude deployment should use regional endpoints closest to users for low latency, implement a global load balancer with health checks and automatic failover between regions, replicate prompt templates and application configuration across regions, centralize logging and monitoring with cross-region aggregation, and consider data residency requirements that may restrict which regions can process certain data. Active-active or active-passive patterns depend on the specific availability requirements.",
+      "explanationEs": "Un despliegue multi-región de Claude debe usar endpoints regionales más cercanos a los usuarios para baja latencia, implementar un balanceador de carga global con verificaciones de salud y failover automático entre regiones, replicar plantillas de prompts y configuración de aplicaciones entre regiones, centralizar registro y monitoreo con agregación entre regiones, y considerar requisitos de residencia de datos que pueden restringir qué regiones pueden procesar ciertos datos. Los patrones activo-activo o activo-pasivo dependen de los requisitos específicos de disponibilidad.",
+      "options": [
+        { "id": "ecloud-010_a", "text": "Deploy in a single region and use a CDN to cache Claude responses for users in other regions", "textEs": "Desplegar en una sola región y usar un CDN para almacenar en caché las respuestas de Claude para usuarios en otras regiones", "order": 1 },
+        { "id": "ecloud-010_b", "text": "Run a local Claude model instance in each region to eliminate cross-region API calls entirely", "textEs": "Ejecutar una instancia local del modelo Claude en cada región para eliminar completamente las llamadas API entre regiones", "order": 2 },
+        { "id": "ecloud-010_c", "text": "Use regional endpoints with global load balancing, automatic failover, replicated configuration, centralized observability, and data residency compliance", "textEs": "Usar endpoints regionales con balanceo de carga global, failover automático, configuración replicada, observabilidad centralizada y cumplimiento de residencia de datos", "order": 3 },
+        { "id": "ecloud-010_d", "text": "Route all global traffic through a single regional proxy that handles authentication and forwards to the nearest Claude endpoint", "textEs": "Enrutar todo el tráfico global a través de un proxy regional único que maneja autenticación y reenvía al endpoint de Claude más cercano", "order": 4 }
+      ],
+      "tags": ["enterprise", "multi-region", "architecture", "high-availability", "failover"]
+    }
+  ]
+}

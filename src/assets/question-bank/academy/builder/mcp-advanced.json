@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "mcp-advanced",
+    "domainName": "MCP Advanced",
+    "trackId": "mcp-advanced",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "mcpa-001",
+      "text": "¿Cuál es la diferencia principal entre el transporte stdio y el transporte SSE (Server-Sent Events) en MCP?",
+      "textEs": "¿Cuál es la diferencia principal entre el transporte stdio y el transporte SSE (Server-Sent Events) en MCP?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-001_a",
+      "explanation": "El transporte stdio comunica a través de stdin/stdout y es ideal para servidores MCP locales que se ejecutan como subprocesos del cliente. El transporte SSE usa HTTP con Server-Sent Events para comunicación remota, permitiendo que el servidor MCP esté en una máquina diferente. SSE es adecuado para servidores compartidos o en la nube, mientras que stdio es más simple para uso local.",
+      "explanationEs": "El transporte stdio comunica a través de stdin/stdout y es ideal para servidores MCP locales que se ejecutan como subprocesos del cliente. El transporte SSE usa HTTP con Server-Sent Events para comunicación remota, permitiendo que el servidor MCP esté en una máquina diferente. SSE es adecuado para servidores compartidos o en la nube, mientras que stdio es más simple para uso local.",
+      "options": [
+        { "id": "mcpa-001_a", "text": "stdio usa stdin/stdout para comunicación local entre procesos, mientras que SSE usa HTTP para comunicación remota entre máquinas", "textEs": "stdio usa stdin/stdout para comunicación local entre procesos, mientras que SSE usa HTTP para comunicación remota entre máquinas", "order": 1 },
+        { "id": "mcpa-001_b", "text": "stdio es más rápido que SSE en todos los escenarios", "textEs": "stdio es más rápido que SSE en todos los escenarios", "order": 2 },
+        { "id": "mcpa-001_c", "text": "SSE solo funciona con JavaScript y stdio solo con Python", "textEs": "SSE solo funciona con JavaScript y stdio solo con Python", "order": 3 },
+        { "id": "mcpa-001_d", "text": "No hay diferencia funcional, solo cambia la sintaxis de configuración", "textEs": "No hay diferencia funcional, solo cambia la sintaxis de configuración", "order": 4 }
+      ],
+      "tags": ["transporte", "stdio", "sse", "arquitectura"]
+    },
+    {
+      "id": "mcpa-002",
+      "text": "¿Qué es el 'sampling' en MCP y cuándo es útil?",
+      "textEs": "¿Qué es el 'sampling' en MCP y cuándo es útil?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-002_c",
+      "explanation": "El sampling en MCP permite que un servidor MCP solicite al cliente que genere una completion del LLM. Esto es útil para flujos agenticos donde el servidor necesita que el modelo razone o tome decisiones como parte de la ejecución de una herramienta, sin que el usuario tenga que intervenir manualmente en cada paso.",
+      "explanationEs": "El sampling en MCP permite que un servidor MCP solicite al cliente que genere una completion del LLM. Esto es útil para flujos agenticos donde el servidor necesita que el modelo razone o tome decisiones como parte de la ejecución de una herramienta, sin que el usuario tenga que intervenir manualmente en cada paso.",
+      "options": [
+        { "id": "mcpa-002_a", "text": "Un método para muestrear aleatoriamente datos de una base de datos", "textEs": "Un método para muestrear aleatoriamente datos de una base de datos", "order": 1 },
+        { "id": "mcpa-002_b", "text": "Una técnica para reducir el tamaño de las respuestas del servidor MCP", "textEs": "Una técnica para reducir el tamaño de las respuestas del servidor MCP", "order": 2 },
+        { "id": "mcpa-002_c", "text": "Una capacidad que permite al servidor MCP solicitar completions del LLM a través del cliente para flujos agenticos", "textEs": "Una capacidad que permite al servidor MCP solicitar completions del LLM a través del cliente para flujos agenticos", "order": 3 },
+        { "id": "mcpa-002_d", "text": "Un proceso para validar la calidad de las respuestas del servidor MCP", "textEs": "Un proceso para validar la calidad de las respuestas del servidor MCP", "order": 4 }
+      ],
+      "tags": ["sampling", "agentico", "completions"]
+    },
+    {
+      "id": "mcpa-003",
+      "text": "¿Cómo funcionan las notificaciones en el protocolo MCP?",
+      "textEs": "¿Cómo funcionan las notificaciones en el protocolo MCP?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-003_b",
+      "explanation": "Las notificaciones en MCP son mensajes unidireccionales (fire-and-forget) que no requieren respuesta. Tanto el cliente como el servidor pueden enviar notificaciones. Ejemplos incluyen: el servidor notificando que sus herramientas cambiaron (tools/list_changed), o que el progreso de una operación avanzó. A diferencia de las solicitudes, no tienen un ID de correlación.",
+      "explanationEs": "Las notificaciones en MCP son mensajes unidireccionales (fire-and-forget) que no requieren respuesta. Tanto el cliente como el servidor pueden enviar notificaciones. Ejemplos incluyen: el servidor notificando que sus herramientas cambiaron (tools/list_changed), o que el progreso de una operación avanzó. A diferencia de las solicitudes, no tienen un ID de correlación.",
+      "options": [
+        { "id": "mcpa-003_a", "text": "Son mensajes bidireccionales que siempre requieren confirmación de recepción", "textEs": "Son mensajes bidireccionales que siempre requieren confirmación de recepción", "order": 1 },
+        { "id": "mcpa-003_b", "text": "Son mensajes unidireccionales (fire-and-forget) sin respuesta requerida, que ambas partes pueden enviar para señalar eventos", "textEs": "Son mensajes unidireccionales (fire-and-forget) sin respuesta requerida, que ambas partes pueden enviar para señalar eventos", "order": 2 },
+        { "id": "mcpa-003_c", "text": "Son notificaciones push que se envían al correo electrónico del usuario", "textEs": "Son notificaciones push que se envían al correo electrónico del usuario", "order": 3 },
+        { "id": "mcpa-003_d", "text": "Son alertas del sistema operativo que aparecen cuando un servidor MCP falla", "textEs": "Son alertas del sistema operativo que aparecen cuando un servidor MCP falla", "order": 4 }
+      ],
+      "tags": ["notificaciones", "protocolo", "mensajes"]
+    },
+    {
+      "id": "mcpa-004",
+      "text": "¿Cuál es un patrón de autenticación recomendado para servidores MCP que acceden a APIs externas protegidas?",
+      "textEs": "¿Cuál es un patrón de autenticación recomendado para servidores MCP que acceden a APIs externas protegidas?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-004_a",
+      "explanation": "El patrón recomendado es que el servidor MCP reciba tokens de acceso como variables de entorno o a través de un flujo OAuth configurado, y los use para autenticar las solicitudes a APIs externas. Nunca se deben incluir credenciales directamente en el código fuente o en los mensajes MCP. El servidor gestiona la autenticación de forma transparente para el cliente.",
+      "explanationEs": "El patrón recomendado es que el servidor MCP reciba tokens de acceso como variables de entorno o a través de un flujo OAuth configurado, y los use para autenticar las solicitudes a APIs externas. Nunca se deben incluir credenciales directamente en el código fuente o en los mensajes MCP. El servidor gestiona la autenticación de forma transparente para el cliente.",
+      "options": [
+        { "id": "mcpa-004_a", "text": "Configurar tokens como variables de entorno o implementar flujo OAuth, gestionando la autenticación de forma transparente en el servidor", "textEs": "Configurar tokens como variables de entorno o implementar flujo OAuth, gestionando la autenticación de forma transparente en el servidor", "order": 1 },
+        { "id": "mcpa-004_b", "text": "Incluir las credenciales directamente en el código fuente del servidor MCP", "textEs": "Incluir las credenciales directamente en el código fuente del servidor MCP", "order": 2 },
+        { "id": "mcpa-004_c", "text": "Pedir al usuario que proporcione sus credenciales en cada solicitud a través del chat", "textEs": "Pedir al usuario que proporcione sus credenciales en cada solicitud a través del chat", "order": 3 },
+        { "id": "mcpa-004_d", "text": "Desactivar la autenticación en las APIs externas para simplificar la integración", "textEs": "Desactivar la autenticación en las APIs externas para simplificar la integración", "order": 4 }
+      ],
+      "tags": ["autenticacion", "oauth", "seguridad"]
+    },
+    {
+      "id": "mcpa-005",
+      "text": "En una arquitectura multi-servidor MCP, ¿cómo gestiona el cliente la conexión a múltiples servidores simultáneamente?",
+      "textEs": "En una arquitectura multi-servidor MCP, ¿cómo gestiona el cliente la conexión a múltiples servidores simultáneamente?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-005_d",
+      "explanation": "El cliente MCP mantiene conexiones independientes con cada servidor y agrega las herramientas de todos los servidores en un catálogo unificado. Cuando el LLM decide usar una herramienta, el cliente la enruta al servidor correcto de forma transparente. Los servidores no necesitan conocerse entre sí, lo que permite composición modular de capacidades.",
+      "explanationEs": "El cliente MCP mantiene conexiones independientes con cada servidor y agrega las herramientas de todos los servidores en un catálogo unificado. Cuando el LLM decide usar una herramienta, el cliente la enruta al servidor correcto de forma transparente. Los servidores no necesitan conocerse entre sí, lo que permite composición modular de capacidades.",
+      "options": [
+        { "id": "mcpa-005_a", "text": "Solo puede conectarse a un servidor a la vez y debe alternar entre ellos", "textEs": "Solo puede conectarse a un servidor a la vez y debe alternar entre ellos", "order": 1 },
+        { "id": "mcpa-005_b", "text": "Todos los servidores deben estar en la misma máquina para comunicarse", "textEs": "Todos los servidores deben estar en la misma máquina para comunicarse", "order": 2 },
+        { "id": "mcpa-005_c", "text": "Se necesita un servidor proxy central que coordine todos los demás servidores", "textEs": "Se necesita un servidor proxy central que coordine todos los demás servidores", "order": 3 },
+        { "id": "mcpa-005_d", "text": "Mantiene conexiones independientes a cada servidor y agrega sus herramientas en un catálogo unificado, enrutando solicitudes automáticamente", "textEs": "Mantiene conexiones independientes a cada servidor y agrega sus herramientas en un catálogo unificado, enrutando solicitudes automáticamente", "order": 4 }
+      ],
+      "tags": ["multi-servidor", "arquitectura", "enrutamiento"]
+    },
+    {
+      "id": "mcpa-006",
+      "text": "¿Cuál es un patrón de producción importante al desplegar servidores MCP en un entorno empresarial?",
+      "textEs": "¿Cuál es un patrón de producción importante al desplegar servidores MCP en un entorno empresarial?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-006_b",
+      "explanation": "En producción, los servidores MCP deben implementar rate limiting, logging estructurado, manejo de errores robusto y health checks. El rate limiting protege contra abuso y costos excesivos. El logging permite auditoría y debugging. Los health checks facilitan monitoreo y reinicio automático. Sin estos patrones, un servidor MCP en producción es frágil e inseguro.",
+      "explanationEs": "En producción, los servidores MCP deben implementar rate limiting, logging estructurado, manejo de errores robusto y health checks. El rate limiting protege contra abuso y costos excesivos. El logging permite auditoría y debugging. Los health checks facilitan monitoreo y reinicio automático. Sin estos patrones, un servidor MCP en producción es frágil e inseguro.",
+      "options": [
+        { "id": "mcpa-006_a", "text": "Ejecutar el servidor MCP como root para asegurar acceso completo a todos los recursos", "textEs": "Ejecutar el servidor MCP como root para asegurar acceso completo a todos los recursos", "order": 1 },
+        { "id": "mcpa-006_b", "text": "Implementar rate limiting, logging estructurado, manejo robusto de errores y health checks", "textEs": "Implementar rate limiting, logging estructurado, manejo robusto de errores y health checks", "order": 2 },
+        { "id": "mcpa-006_c", "text": "Desactivar toda validación de entrada para maximizar la velocidad de respuesta", "textEs": "Desactivar toda validación de entrada para maximizar la velocidad de respuesta", "order": 3 },
+        { "id": "mcpa-006_d", "text": "Usar un único servidor MCP para todas las herramientas de la organización", "textEs": "Usar un único servidor MCP para todas las herramientas de la organización", "order": 4 }
+      ],
+      "tags": ["produccion", "rate-limiting", "logging", "health-checks"]
+    },
+    {
+      "id": "mcpa-007",
+      "text": "¿Qué son los 'resources' en MCP y cómo se diferencian de las 'tools'?",
+      "textEs": "¿Qué son los 'resources' en MCP y cómo se diferencian de las 'tools'?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-007_c",
+      "explanation": "En MCP, los resources (recursos) exponen datos estáticos o semi-estáticos que el modelo puede leer (como archivos, registros de base de datos, contenido de páginas). Los tools (herramientas) representan acciones que el modelo puede ejecutar y que pueden tener efectos secundarios (crear, modificar, eliminar). Los resources son para lectura, los tools para acción.",
+      "explanationEs": "En MCP, los resources (recursos) exponen datos estáticos o semi-estáticos que el modelo puede leer (como archivos, registros de base de datos, contenido de páginas). Los tools (herramientas) representan acciones que el modelo puede ejecutar y que pueden tener efectos secundarios (crear, modificar, eliminar). Los resources son para lectura, los tools para acción.",
+      "options": [
+        { "id": "mcpa-007_a", "text": "Son lo mismo, solo cambia la nomenclatura según la versión del protocolo", "textEs": "Son lo mismo, solo cambia la nomenclatura según la versión del protocolo", "order": 1 },
+        { "id": "mcpa-007_b", "text": "Los resources son herramientas que se ejecutan más lentamente", "textEs": "Los resources son herramientas que se ejecutan más lentamente", "order": 2 },
+        { "id": "mcpa-007_c", "text": "Los resources exponen datos para lectura, mientras que los tools representan acciones ejecutables con posibles efectos secundarios", "textEs": "Los resources exponen datos para lectura, mientras que los tools representan acciones ejecutables con posibles efectos secundarios", "order": 3 },
+        { "id": "mcpa-007_d", "text": "Los resources solo existen en servidores remotos y los tools solo en servidores locales", "textEs": "Los resources solo existen en servidores remotos y los tools solo en servidores locales", "order": 4 }
+      ],
+      "tags": ["resources", "tools", "conceptos"]
+    },
+    {
+      "id": "mcpa-008",
+      "text": "¿Qué mecanismo usa MCP para manejar operaciones de larga duración sin bloquear al cliente?",
+      "textEs": "¿Qué mecanismo usa MCP para manejar operaciones de larga duración sin bloquear al cliente?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-008_a",
+      "explanation": "MCP soporta notificaciones de progreso (progress notifications) que el servidor envía durante operaciones largas. El servidor puede enviar actualizaciones incrementales sobre el estado de la operación mientras el cliente continúa procesando. Esto evita timeouts y proporciona retroalimentación al usuario sobre el avance de la tarea.",
+      "explanationEs": "MCP soporta notificaciones de progreso (progress notifications) que el servidor envía durante operaciones largas. El servidor puede enviar actualizaciones incrementales sobre el estado de la operación mientras el cliente continúa procesando. Esto evita timeouts y proporciona retroalimentación al usuario sobre el avance de la tarea.",
+      "options": [
+        { "id": "mcpa-008_a", "text": "Notificaciones de progreso que el servidor envía incrementalmente mientras procesa, evitando timeouts", "textEs": "Notificaciones de progreso que el servidor envía incrementalmente mientras procesa, evitando timeouts", "order": 1 },
+        { "id": "mcpa-008_b", "text": "Dividir automáticamente la operación en múltiples solicitudes más pequeñas", "textEs": "Dividir automáticamente la operación en múltiples solicitudes más pequeñas", "order": 2 },
+        { "id": "mcpa-008_c", "text": "Establecer un timeout infinito para todas las operaciones", "textEs": "Establecer un timeout infinito para todas las operaciones", "order": 3 },
+        { "id": "mcpa-008_d", "text": "Ejecutar todas las operaciones en background sin informar al cliente", "textEs": "Ejecutar todas las operaciones en background sin informar al cliente", "order": 4 }
+      ],
+      "tags": ["operaciones-largas", "progreso", "async"]
+    },
+    {
+      "id": "mcpa-009",
+      "text": "Al implementar un servidor MCP personalizado, ¿cuál es la importancia de definir esquemas JSON claros para los parámetros de las herramientas?",
+      "textEs": "Al implementar un servidor MCP personalizado, ¿cuál es la importancia de definir esquemas JSON claros para los parámetros de las herramientas?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-009_d",
+      "explanation": "Los esquemas JSON de los parámetros sirven como documentación para el LLM: le indican qué parámetros son requeridos, sus tipos, valores permitidos y descripciones. Un esquema bien definido permite al modelo generar llamadas a herramientas correctas sin ambigüedad. Sin esquemas claros, el modelo puede enviar parámetros incorrectos o incompletos.",
+      "explanationEs": "Los esquemas JSON de los parámetros sirven como documentación para el LLM: le indican qué parámetros son requeridos, sus tipos, valores permitidos y descripciones. Un esquema bien definido permite al modelo generar llamadas a herramientas correctas sin ambigüedad. Sin esquemas claros, el modelo puede enviar parámetros incorrectos o incompletos.",
+      "options": [
+        { "id": "mcpa-009_a", "text": "Solo es necesario para cumplir con estándares de código, no tiene impacto funcional", "textEs": "Solo es necesario para cumplir con estándares de código, no tiene impacto funcional", "order": 1 },
+        { "id": "mcpa-009_b", "text": "Los esquemas solo se usan para generar documentación automática", "textEs": "Los esquemas solo se usan para generar documentación automática", "order": 2 },
+        { "id": "mcpa-009_c", "text": "Son opcionales y el LLM puede inferir los parámetros por contexto", "textEs": "Son opcionales y el LLM puede inferir los parámetros por contexto", "order": 3 },
+        { "id": "mcpa-009_d", "text": "Sirven como documentación para el LLM, permitiéndole generar llamadas correctas con los tipos y valores adecuados", "textEs": "Sirven como documentación para el LLM, permitiéndole generar llamadas correctas con los tipos y valores adecuados", "order": 4 }
+      ],
+      "tags": ["esquemas", "json-schema", "diseno-herramientas"]
+    },
+    {
+      "id": "mcpa-010",
+      "text": "¿Cuál es un antipatrón común al diseñar herramientas MCP que se debe evitar?",
+      "textEs": "¿Cuál es un antipatrón común al diseñar herramientas MCP que se debe evitar?",
+      "domainCode": "mcp-advanced",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "mcp-advanced",
+      "correctOptionId": "mcpa-010_b",
+      "explanation": "Crear herramientas demasiado genéricas que acepten cualquier tipo de solicitud en texto libre es un antipatrón. El LLM tendrá dificultad para saber cuándo y cómo usarla. Las herramientas deben ser específicas con nombres descriptivos, parámetros bien definidos y un propósito claro. Mejor tener varias herramientas pequeñas que una herramienta que intente hacer todo.",
+      "explanationEs": "Crear herramientas demasiado genéricas que acepten cualquier tipo de solicitud en texto libre es un antipatrón. El LLM tendrá dificultad para saber cuándo y cómo usarla. Las herramientas deben ser específicas con nombres descriptivos, parámetros bien definidos y un propósito claro. Mejor tener varias herramientas pequeñas que una herramienta que intente hacer todo.",
+      "options": [
+        { "id": "mcpa-010_a", "text": "Crear herramientas con nombres descriptivos y específicos", "textEs": "Crear herramientas con nombres descriptivos y específicos", "order": 1 },
+        { "id": "mcpa-010_b", "text": "Crear herramientas excesivamente genéricas que acepten cualquier solicitud en texto libre sin parámetros estructurados", "textEs": "Crear herramientas excesivamente genéricas que acepten cualquier solicitud en texto libre sin parámetros estructurados", "order": 2 },
+        { "id": "mcpa-010_c", "text": "Separar operaciones de lectura y escritura en herramientas distintas", "textEs": "Separar operaciones de lectura y escritura en herramientas distintas", "order": 3 },
+        { "id": "mcpa-010_d", "text": "Incluir descripciones claras de cuándo usar cada herramienta", "textEs": "Incluir descripciones claras de cuándo usar cada herramienta", "order": 4 }
+      ],
+      "tags": ["antipatrones", "diseno", "herramientas-especificas"]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "domain": "prompt-certs-readiness",
+    "domainName": "Claude Code Readiness Check",
+    "trackId": "prompt-certs-readiness",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 8,
+    "learningLevel": 2,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "pcr-001",
+      "text": "Que es Claude Code y cual es su funcion principal como herramienta de desarrollo?",
+      "textEs": "Que es Claude Code y cual es su funcion principal como herramienta de desarrollo?",
+      "domainCode": "prompt-certs-readiness",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "prompt-certs-readiness",
+      "correctOptionId": "pcr-001_b",
+      "explanation": "Claude Code es un asistente de codificacion agentico que se ejecuta en la terminal. Tiene acceso al sistema de archivos, puede ejecutar comandos, buscar en el codigo, editar archivos y usar herramientas externas. A diferencia de un chatbot simple, Claude Code puede actuar autonomamente sobre el entorno del proyecto, lo que lo convierte en un agente de desarrollo completo.",
+      "explanationEs": "Claude Code es un asistente de codificacion agentico que se ejecuta en la terminal. Tiene acceso al sistema de archivos, puede ejecutar comandos, buscar en el codigo, editar archivos y usar herramientas externas. A diferencia de un chatbot simple, Claude Code puede actuar autonomamente sobre el entorno del proyecto, lo que lo convierte en un agente de desarrollo completo.",
+      "options": [
+        { "id": "pcr-001_a", "text": "Un editor de codigo con autocompletado basado en IA similar a un IDE", "textEs": "Un editor de codigo con autocompletado basado en IA similar a un IDE", "order": 1 },
+        { "id": "pcr-001_b", "text": "Un asistente de codificacion agentico de terminal que accede al sistema de archivos, ejecuta comandos, edita archivos y usa herramientas externas", "textEs": "Un asistente de codificacion agentico de terminal que accede al sistema de archivos, ejecuta comandos, edita archivos y usa herramientas externas", "order": 2 },
+        { "id": "pcr-001_c", "text": "Un servicio en la nube que revisa pull requests automaticamente sin intervencion local", "textEs": "Un servicio en la nube que revisa pull requests automaticamente sin intervencion local", "order": 3 },
+        { "id": "pcr-001_d", "text": "Una extension de navegador que genera codigo a partir de capturas de pantalla", "textEs": "Una extension de navegador que genera codigo a partir de capturas de pantalla", "order": 4 }
+      ],
+      "tags": ["claude-code", "fundamentals", "definition", "readiness"]
+    },
+    {
+      "id": "pcr-002",
+      "text": "Que requisito previo es necesario para instalar Claude Code en tu maquina?",
+      "textEs": "Que requisito previo es necesario para instalar Claude Code en tu maquina?",
+      "domainCode": "prompt-certs-readiness",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "prompt-certs-readiness",
+      "correctOptionId": "pcr-002_a",
+      "explanation": "Claude Code requiere Node.js version 18 o superior instalado en el sistema, ya que se distribuye como un paquete npm. Se instala globalmente con 'npm install -g @anthropic-ai/claude-code'. Tambien se necesita una cuenta de Anthropic con acceso a la API o un plan que incluya Claude Code (como Claude Pro o Max).",
+      "explanationEs": "Claude Code requiere Node.js version 18 o superior instalado en el sistema, ya que se distribuye como un paquete npm. Se instala globalmente con 'npm install -g @anthropic-ai/claude-code'. Tambien se necesita una cuenta de Anthropic con acceso a la API o un plan que incluya Claude Code (como Claude Pro o Max).",
+      "options": [
+        { "id": "pcr-002_a", "text": "Node.js version 18 o superior, ya que Claude Code se distribuye como paquete npm", "textEs": "Node.js version 18 o superior, ya que Claude Code se distribuye como paquete npm", "order": 1 },
+        { "id": "pcr-002_b", "text": "Python 3.10 o superior con pip actualizado", "textEs": "Python 3.10 o superior con pip actualizado", "order": 2 },
+        { "id": "pcr-002_c", "text": "Docker instalado y ejecutandose en segundo plano", "textEs": "Docker instalado y ejecutandose en segundo plano", "order": 3 },
+        { "id": "pcr-002_d", "text": "No tiene requisitos previos; se descarga como un binario autocontenido", "textEs": "No tiene requisitos previos; se descarga como un binario autocontenido", "order": 4 }
+      ],
+      "tags": ["installation", "prerequisites", "node-js", "npm"]
+    },
+    {
+      "id": "pcr-003",
+      "text": "Que archivo actua como la 'memoria del proyecto' para Claude Code y donde se ubica?",
+      "textEs": "Que archivo actua como la 'memoria del proyecto' para Claude Code y donde se ubica?",
+      "domainCode": "prompt-certs-readiness",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "prompt-certs-readiness",
+      "correctOptionId": "pcr-003_c",
+      "explanation": "El archivo CLAUDE.md en la raiz del proyecto actua como memoria persistente. Claude Code lo lee automaticamente al iniciar una sesion. Contiene instrucciones del proyecto, convenciones de estilo, comandos frecuentes, y cualquier contexto que Claude deba conocer. Tambien puede existir uno global en ~/.claude/CLAUDE.md para preferencias personales.",
+      "explanationEs": "El archivo CLAUDE.md en la raiz del proyecto actua como memoria persistente. Claude Code lo lee automaticamente al iniciar una sesion. Contiene instrucciones del proyecto, convenciones de estilo, comandos frecuentes, y cualquier contexto que Claude deba conocer. Tambien puede existir uno global en ~/.claude/CLAUDE.md para preferencias personales.",
+      "options": [
+        { "id": "pcr-003_a", "text": "El archivo .clauderc en el directorio home del usuario", "textEs": "El archivo .clauderc en el directorio home del usuario", "order": 1 },
+        { "id": "pcr-003_b", "text": "El archivo claude.config.json en la carpeta .vscode del proyecto", "textEs": "El archivo claude.config.json en la carpeta .vscode del proyecto", "order": 2 },
+        { "id": "pcr-003_c", "text": "El archivo CLAUDE.md en la raiz del proyecto, que Claude carga automaticamente al iniciar cada sesion", "textEs": "El archivo CLAUDE.md en la raiz del proyecto, que Claude carga automaticamente al iniciar cada sesion", "order": 3 },
+        { "id": "pcr-003_d", "text": "El archivo .env con las variables de configuracion de Claude", "textEs": "El archivo .env con las variables de configuracion de Claude", "order": 4 }
+      ],
+      "tags": ["claude-md", "project-memory", "configuration", "fundamentals"]
+    },
+    {
+      "id": "pcr-004",
+      "text": "Cual es la diferencia entre ejecutar 'claude' y 'claude -p \"haz algo\"' en la terminal?",
+      "textEs": "Cual es la diferencia entre ejecutar 'claude' y 'claude -p \"haz algo\"' en la terminal?",
+      "domainCode": "prompt-certs-readiness",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "prompt-certs-readiness",
+      "correctOptionId": "pcr-004_d",
+      "explanation": "'claude' sin argumentos inicia una sesion interactiva REPL donde puedes enviar multiples mensajes, ver respuestas, y mantener una conversacion continua. 'claude -p' ejecuta un prompt unico en modo no interactivo: procesa la solicitud, imprime el resultado, y termina. El modo -p es ideal para scripts y automatizacion.",
+      "explanationEs": "'claude' sin argumentos inicia una sesion interactiva REPL donde puedes enviar multiples mensajes, ver respuestas, y mantener una conversacion continua. 'claude -p' ejecuta un prompt unico en modo no interactivo: procesa la solicitud, imprime el resultado, y termina. El modo -p es ideal para scripts y automatizacion.",
+      "options": [
+        { "id": "pcr-004_a", "text": "No hay diferencia; ambos comandos inician una sesion interactiva", "textEs": "No hay diferencia; ambos comandos inician una sesion interactiva", "order": 1 },
+        { "id": "pcr-004_b", "text": "'claude' usa el modelo Haiku y 'claude -p' usa Sonnet", "textEs": "'claude' usa el modelo Haiku y 'claude -p' usa Sonnet", "order": 2 },
+        { "id": "pcr-004_c", "text": "'claude' requiere autenticacion cada vez y 'claude -p' usa un token guardado", "textEs": "'claude' requiere autenticacion cada vez y 'claude -p' usa un token guardado", "order": 3 },
+        { "id": "pcr-004_d", "text": "'claude' abre una sesion interactiva REPL con conversacion continua; 'claude -p' ejecuta un prompt unico, imprime el resultado y termina", "textEs": "'claude' abre una sesion interactiva REPL con conversacion continua; 'claude -p' ejecuta un prompt unico, imprime el resultado y termina", "order": 4 }
+      ],
+      "tags": ["cli-modes", "interactive", "headless", "basic-usage"]
+    },
+    {
+      "id": "pcr-005",
+      "text": "Que herramientas integradas puede usar Claude Code para interactuar con los archivos de tu proyecto?",
+      "textEs": "Que herramientas integradas puede usar Claude Code para interactuar con los archivos de tu proyecto?",
+      "domainCode": "prompt-certs-readiness",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "prompt-certs-readiness",
+      "correctOptionId": "pcr-005_b",
+      "explanation": "Claude Code tiene herramientas integradas como Read (leer archivos), Edit (editar archivos con reemplazos exactos), Write (crear archivos nuevos), Grep (buscar patrones en archivos), Glob (buscar archivos por patron), y Bash (ejecutar comandos de terminal). Estas herramientas permiten que Claude explore, modifique y gestione el codigo del proyecto de forma autonoma.",
+      "explanationEs": "Claude Code tiene herramientas integradas como Read (leer archivos), Edit (editar archivos con reemplazos exactos), Write (crear archivos nuevos), Grep (buscar patrones en archivos), Glob (buscar archivos por patron), y Bash (ejecutar comandos de terminal). Estas herramientas permiten que Claude explore, modifique y gestione el codigo del proyecto de forma autonoma.",
+      "options": [
+        { "id": "pcr-005_a", "text": "Solo puede leer archivos; todas las modificaciones deben hacerse manualmente por el usuario", "textEs": "Solo puede leer archivos; todas las modificaciones deben hacerse manualmente por el usuario", "order": 1 },
+        { "id": "pcr-005_b", "text": "Read, Edit, Write, Grep, Glob y Bash, que permiten leer, editar, crear, buscar archivos y ejecutar comandos de terminal", "textEs": "Read, Edit, Write, Grep, Glob y Bash, que permiten leer, editar, crear, buscar archivos y ejecutar comandos de terminal", "order": 2 },
+        { "id": "pcr-005_c", "text": "Unicamente Bash para ejecutar cualquier operacion a traves de comandos de shell", "textEs": "Unicamente Bash para ejecutar cualquier operacion a traves de comandos de shell", "order": 3 },
+        { "id": "pcr-005_d", "text": "Las herramientas dependen del lenguaje de programacion del proyecto y se instalan por separado", "textEs": "Las herramientas dependen del lenguaje de programacion del proyecto y se instalan por separado", "order": 4 }
+      ],
+      "tags": ["built-in-tools", "read", "edit", "grep", "bash", "fundamentals"]
+    },
+    {
+      "id": "pcr-006",
+      "text": "Que es el archivo settings.json de Claude Code y para que sirve?",
+      "textEs": "Que es el archivo settings.json de Claude Code y para que sirve?",
+      "domainCode": "prompt-certs-readiness",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "prompt-certs-readiness",
+      "correctOptionId": "pcr-006_a",
+      "explanation": "El archivo settings.json (ubicado en .claude/settings.json para el proyecto o ~/.claude/settings.json para configuracion global) permite configurar permisos de herramientas (allowedTools, deniedTools), ajustes de comportamiento, y preferencias del entorno. Es el mecanismo principal para controlar que puede y que no puede hacer Claude Code automaticamente.",
+      "explanationEs": "El archivo settings.json (ubicado en .claude/settings.json para el proyecto o ~/.claude/settings.json para configuracion global) permite configurar permisos de herramientas (allowedTools, deniedTools), ajustes de comportamiento, y preferencias del entorno. Es el mecanismo principal para controlar que puede y que no puede hacer Claude Code automaticamente.",
+      "options": [
+        { "id": "pcr-006_a", "text": "Un archivo de configuracion en .claude/ o ~/.claude/ que define permisos de herramientas, comportamiento y preferencias del entorno", "textEs": "Un archivo de configuracion en .claude/ o ~/.claude/ que define permisos de herramientas, comportamiento y preferencias del entorno", "order": 1 },
+        { "id": "pcr-006_b", "text": "Un archivo que almacena el historial de todas las sesiones anteriores de Claude Code", "textEs": "Un archivo que almacena el historial de todas las sesiones anteriores de Claude Code", "order": 2 },
+        { "id": "pcr-006_c", "text": "Un archivo generado automaticamente que no se debe modificar manualmente", "textEs": "Un archivo generado automaticamente que no se debe modificar manualmente", "order": 3 },
+        { "id": "pcr-006_d", "text": "Un archivo que contiene la clave API de Anthropic y credenciales de autenticacion", "textEs": "Un archivo que contiene la clave API de Anthropic y credenciales de autenticacion", "order": 4 }
+      ],
+      "tags": ["settings-json", "configuration", "permissions", "fundamentals"]
+    },
+    {
+      "id": "pcr-007",
+      "text": "Que significa que Claude Code sea un asistente 'agentico' y en que se diferencia de un chatbot tradicional?",
+      "textEs": "Que significa que Claude Code sea un asistente 'agentico' y en que se diferencia de un chatbot tradicional?",
+      "domainCode": "prompt-certs-readiness",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "prompt-certs-readiness",
+      "correctOptionId": "pcr-007_c",
+      "explanation": "Un asistente agentico puede tomar acciones autonomas sobre el entorno: leer y escribir archivos, ejecutar comandos, buscar informacion, y encadenar multiples pasos para completar una tarea compleja. Un chatbot tradicional solo genera texto como respuesta. Claude Code opera en un bucle donde puede planificar, actuar, observar resultados, y ajustar su enfoque iterativamente.",
+      "explanationEs": "Un asistente agentico puede tomar acciones autonomas sobre el entorno: leer y escribir archivos, ejecutar comandos, buscar informacion, y encadenar multiples pasos para completar una tarea compleja. Un chatbot tradicional solo genera texto como respuesta. Claude Code opera en un bucle donde puede planificar, actuar, observar resultados, y ajustar su enfoque iterativamente.",
+      "options": [
+        { "id": "pcr-007_a", "text": "Significa que usa multiples modelos de IA en paralelo para generar mejores respuestas de texto", "textEs": "Significa que usa multiples modelos de IA en paralelo para generar mejores respuestas de texto", "order": 1 },
+        { "id": "pcr-007_b", "text": "Significa que puede recordar conversaciones anteriores indefinidamente sin limites de contexto", "textEs": "Significa que puede recordar conversaciones anteriores indefinidamente sin limites de contexto", "order": 2 },
+        { "id": "pcr-007_c", "text": "Significa que puede actuar autonomamente sobre el entorno (leer, escribir, ejecutar) y encadenar pasos iterativamente, no solo generar texto", "textEs": "Significa que puede actuar autonomamente sobre el entorno (leer, escribir, ejecutar) y encadenar pasos iterativamente, no solo generar texto", "order": 3 },
+        { "id": "pcr-007_d", "text": "Significa que se ejecuta en un servidor remoto de Anthropic en lugar de localmente", "textEs": "Significa que se ejecuta en un servidor remoto de Anthropic en lugar de localmente", "order": 4 }
+      ],
+      "tags": ["agentic", "autonomous", "chatbot-vs-agent", "fundamentals"]
+    },
+    {
+      "id": "pcr-008",
+      "text": "Que comando de Claude Code usarias para ver la lista de comandos slash disponibles en una sesion interactiva?",
+      "textEs": "Que comando de Claude Code usarias para ver la lista de comandos slash disponibles en una sesion interactiva?",
+      "domainCode": "prompt-certs-readiness",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "prompt-certs-readiness",
+      "correctOptionId": "pcr-008_b",
+      "explanation": "En una sesion interactiva de Claude Code, al escribir '/' se muestra una lista de todos los comandos slash disponibles, incluyendo los integrados (/help, /clear, /compact, /cost, etc.) y los custom commands definidos en .claude/commands/ o ~/.claude/commands/. Tambien puedes escribir '/help' para obtener informacion detallada sobre los comandos disponibles.",
+      "explanationEs": "En una sesion interactiva de Claude Code, al escribir '/' se muestra una lista de todos los comandos slash disponibles, incluyendo los integrados (/help, /clear, /compact, /cost, etc.) y los custom commands definidos en .claude/commands/ o ~/.claude/commands/. Tambien puedes escribir '/help' para obtener informacion detallada sobre los comandos disponibles.",
+      "options": [
+        { "id": "pcr-008_a", "text": "Ejecutar 'claude --list-commands' desde una terminal nueva", "textEs": "Ejecutar 'claude --list-commands' desde una terminal nueva", "order": 1 },
+        { "id": "pcr-008_b", "text": "Escribir '/' en la sesion interactiva para ver la lista, o '/help' para informacion detallada", "textEs": "Escribir '/' en la sesion interactiva para ver la lista, o '/help' para informacion detallada", "order": 2 },
+        { "id": "pcr-008_c", "text": "Escribir 'commands()' como si fuera una funcion de Python", "textEs": "Escribir 'commands()' como si fuera una funcion de Python", "order": 3 },
+        { "id": "pcr-008_d", "text": "Presionar Ctrl+Shift+P para abrir la paleta de comandos", "textEs": "Presionar Ctrl+Shift+P para abrir la paleta de comandos", "order": 4 }
+      ],
+      "tags": ["slash-commands", "help", "interactive-session", "basic-cli"]
+    }
+  ]
+}

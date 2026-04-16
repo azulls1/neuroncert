@@ -1,0 +1,40 @@
+{
+  "total": 5,
+  "decisions": [
+    {
+      "id": "ADR-001",
+      "title": "Angular Standalone Components sin NgModules",
+      "file": "ADR-001-standalone-components.md",
+      "status": "accepted",
+      "date": "2026-04-01"
+    },
+    {
+      "id": "ADR-002",
+      "title": "Angular Signals para State Management",
+      "file": "ADR-002-angular-signals.md",
+      "status": "accepted",
+      "date": "2026-04-01"
+    },
+    {
+      "id": "ADR-003",
+      "title": "n8n Webhooks para Generacion de Preguntas",
+      "file": "ADR-003-n8n-webhooks.md",
+      "status": "accepted",
+      "date": "2026-04-01"
+    },
+    {
+      "id": "ADR-004",
+      "title": "CSS Custom Properties sin Framework CSS",
+      "file": "ADR-004-css-custom-properties.md",
+      "status": "accepted",
+      "date": "2026-04-01"
+    },
+    {
+      "id": "ADR-005",
+      "title": "SessionStorage + LocalStorage para Persistencia",
+      "file": "ADR-005-storage-strategy.md",
+      "status": "accepted",
+      "date": "2026-04-01"
+    }
+  ]
+}

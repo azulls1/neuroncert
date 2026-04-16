@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "coursera-rag-mcp",
+    "domainName": "Building RAG and MCP Servers",
+    "trackId": "coursera-rag-mcp",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "RAGMCP-001",
+      "text": "In a Retrieval-Augmented Generation (RAG) pipeline, what is the primary purpose of the retrieval step before sending context to Claude?",
+      "textEs": "En un pipeline de Generacion Aumentada por Recuperacion (RAG), ¿cual es el proposito principal del paso de recuperacion antes de enviar contexto a Claude?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-001_b",
+      "explanation": "The retrieval step searches a knowledge base (vector store, database, etc.) to find the most relevant documents or chunks for the user's query. These retrieved passages are then injected into Claude's prompt as context, allowing the model to generate answers grounded in specific, up-to-date information rather than relying solely on its training data. This reduces hallucinations and enables domain-specific answers.",
+      "explanationEs": "El paso de recuperacion busca en una base de conocimientos (almacen vectorial, base de datos, etc.) para encontrar los documentos o fragmentos mas relevantes para la consulta del usuario. Estos pasajes recuperados se inyectan luego en el prompt de Claude como contexto, permitiendo al modelo generar respuestas fundamentadas en informacion especifica y actualizada en lugar de depender unicamente de sus datos de entrenamiento. Esto reduce las alucinaciones y permite respuestas especificas del dominio.",
+      "options": [
+        { "id": "RAGMCP-001_a", "text": "To fine-tune Claude on domain-specific data before each query", "textEs": "Para ajustar finamente a Claude con datos especificos del dominio antes de cada consulta", "order": 1 },
+        { "id": "RAGMCP-001_b", "text": "To find relevant documents from a knowledge base and inject them as context so Claude can ground its answers in specific data", "textEs": "Para encontrar documentos relevantes de una base de conocimientos e inyectarlos como contexto para que Claude pueda fundamentar sus respuestas en datos especificos", "order": 2 },
+        { "id": "RAGMCP-001_c", "text": "To cache frequently asked questions so Claude does not need to generate new responses", "textEs": "Para cachear preguntas frecuentes para que Claude no necesite generar nuevas respuestas", "order": 3 },
+        { "id": "RAGMCP-001_d", "text": "To pre-process the user's query into a format Claude can understand", "textEs": "Para pre-procesar la consulta del usuario en un formato que Claude pueda entender", "order": 4 }
+      ],
+      "tags": ["rag", "retrieval", "knowledge-base", "grounding"]
+    },
+    {
+      "id": "RAGMCP-002",
+      "text": "What is the recommended chunk size strategy when splitting documents for a RAG system used with Claude?",
+      "textEs": "¿Cual es la estrategia recomendada de tamaño de fragmentos al dividir documentos para un sistema RAG usado con Claude?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-002_c",
+      "explanation": "Optimal chunking balances granularity with context preservation. Chunks of 200-800 tokens with overlap (10-20%) between consecutive chunks help ensure that relevant information is not split across boundaries. Semantic chunking (splitting at paragraph or section boundaries) is preferred over fixed-size splitting. Too-small chunks lose context, while too-large chunks dilute relevance scores and waste context window space.",
+      "explanationEs": "La fragmentacion optima equilibra la granularidad con la preservacion del contexto. Fragmentos de 200-800 tokens con superposicion (10-20%) entre fragmentos consecutivos ayudan a asegurar que la informacion relevante no se divida entre limites. La fragmentacion semantica (dividir en limites de parrafos o secciones) es preferida sobre la division de tamaño fijo. Fragmentos muy pequeños pierden contexto, mientras que fragmentos muy grandes diluyen las puntuaciones de relevancia y desperdician espacio de la ventana de contexto.",
+      "options": [
+        { "id": "RAGMCP-002_a", "text": "Use the entire document as a single chunk to maximize context for each retrieval", "textEs": "Usar el documento completo como un solo fragmento para maximizar el contexto en cada recuperacion", "order": 1 },
+        { "id": "RAGMCP-002_b", "text": "Split into individual sentences for maximum granularity and precise matching", "textEs": "Dividir en oraciones individuales para maxima granularidad y coincidencia precisa", "order": 2 },
+        { "id": "RAGMCP-002_c", "text": "Use 200-800 token chunks with 10-20% overlap, preferring semantic boundaries like paragraphs or sections", "textEs": "Usar fragmentos de 200-800 tokens con 10-20% de superposicion, prefiriendo limites semanticos como parrafos o secciones", "order": 3 },
+        { "id": "RAGMCP-002_d", "text": "Chunk size does not matter; the embedding model normalizes all chunks to the same representation", "textEs": "El tamaño de fragmento no importa; el modelo de embeddings normaliza todos los fragmentos a la misma representacion", "order": 4 }
+      ],
+      "tags": ["chunking", "document-splitting", "overlap", "semantic-chunking"]
+    },
+    {
+      "id": "RAGMCP-003",
+      "text": "In the Model Context Protocol (MCP), what are the three core primitives that a server can expose to clients?",
+      "textEs": "En el Protocolo de Contexto de Modelo (MCP), ¿cuales son las tres primitivas principales que un servidor puede exponer a los clientes?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "easy",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-003_a",
+      "explanation": "MCP servers expose three core primitives: Tools (executable functions the model can call), Resources (data sources the client can read, like files or database records), and Prompts (reusable prompt templates). Tools are model-controlled (the LLM decides when to use them), Resources are application-controlled (the host app decides when to access them), and Prompts are user-controlled (triggered by user actions).",
+      "explanationEs": "Los servidores MCP exponen tres primitivas principales: Herramientas (funciones ejecutables que el modelo puede llamar), Recursos (fuentes de datos que el cliente puede leer, como archivos o registros de base de datos) y Prompts (plantillas de prompts reutilizables). Las herramientas son controladas por el modelo (el LLM decide cuando usarlas), los recursos son controlados por la aplicacion (la app host decide cuando accederlos), y los prompts son controlados por el usuario (activados por acciones del usuario).",
+      "options": [
+        { "id": "RAGMCP-003_a", "text": "Tools (executable functions), Resources (readable data sources), and Prompts (reusable prompt templates)", "textEs": "Herramientas (funciones ejecutables), Recursos (fuentes de datos legibles) y Prompts (plantillas de prompts reutilizables)", "order": 1 },
+        { "id": "RAGMCP-003_b", "text": "Endpoints (API URLs), Schemas (data models), and Handlers (callback functions)", "textEs": "Endpoints (URLs de API), Schemas (modelos de datos) y Handlers (funciones callback)", "order": 2 },
+        { "id": "RAGMCP-003_c", "text": "Models (LLM instances), Agents (autonomous workers), and Pipelines (data flows)", "textEs": "Modelos (instancias de LLM), Agentes (trabajadores autonomos) y Pipelines (flujos de datos)", "order": 3 },
+        { "id": "RAGMCP-003_d", "text": "Inputs (user queries), Outputs (model responses), and Logs (execution traces)", "textEs": "Inputs (consultas de usuario), Outputs (respuestas del modelo) y Logs (trazas de ejecucion)", "order": 4 }
+      ],
+      "tags": ["mcp", "primitives", "tools", "resources", "prompts"]
+    },
+    {
+      "id": "RAGMCP-004",
+      "text": "When implementing an MCP server, what transport protocols are supported for communication between the client and server?",
+      "textEs": "Al implementar un servidor MCP, ¿que protocolos de transporte se soportan para la comunicacion entre el cliente y el servidor?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-004_d",
+      "explanation": "MCP supports two transport mechanisms: stdio (standard input/output) for local servers that run as child processes, and SSE (Server-Sent Events) over HTTP for remote servers. The stdio transport is simpler and ideal for local development, while SSE enables remote server deployments accessible over the network. Both use JSON-RPC 2.0 as the message format.",
+      "explanationEs": "MCP soporta dos mecanismos de transporte: stdio (entrada/salida estandar) para servidores locales que se ejecutan como procesos hijos, y SSE (Eventos Enviados por el Servidor) sobre HTTP para servidores remotos. El transporte stdio es mas simple e ideal para desarrollo local, mientras que SSE permite despliegues de servidores remotos accesibles a traves de la red. Ambos usan JSON-RPC 2.0 como formato de mensaje.",
+      "options": [
+        { "id": "RAGMCP-004_a", "text": "Only HTTP REST endpoints with JSON payloads", "textEs": "Solo endpoints HTTP REST con payloads JSON", "order": 1 },
+        { "id": "RAGMCP-004_b", "text": "WebSocket connections exclusively for bidirectional streaming", "textEs": "Conexiones WebSocket exclusivamente para streaming bidireccional", "order": 2 },
+        { "id": "RAGMCP-004_c", "text": "gRPC with Protocol Buffers for high-performance communication", "textEs": "gRPC con Protocol Buffers para comunicacion de alto rendimiento", "order": 3 },
+        { "id": "RAGMCP-004_d", "text": "stdio (standard I/O for local processes) and SSE (Server-Sent Events over HTTP for remote servers), both using JSON-RPC 2.0", "textEs": "stdio (E/S estandar para procesos locales) y SSE (Eventos Enviados por el Servidor sobre HTTP para servidores remotos), ambos usando JSON-RPC 2.0", "order": 4 }
+      ],
+      "tags": ["mcp", "transport", "stdio", "sse", "json-rpc"]
+    },
+    {
+      "id": "RAGMCP-005",
+      "text": "What embedding strategy is most effective for a RAG system that must handle both short keyword queries and long natural language questions?",
+      "textEs": "¿Que estrategia de embeddings es mas efectiva para un sistema RAG que debe manejar tanto consultas cortas de palabras clave como preguntas largas en lenguaje natural?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-005_b",
+      "explanation": "Hybrid search combining dense vector embeddings (for semantic similarity) with sparse retrieval like BM25 (for keyword matching) gives the best results across query types. Dense embeddings excel at understanding meaning and paraphrases but can miss exact keyword matches. BM25 handles keyword queries well but misses semantic connections. Reciprocal rank fusion or weighted scoring combines both result sets for robust retrieval regardless of query style.",
+      "explanationEs": "La busqueda hibrida que combina embeddings de vectores densos (para similitud semantica) con recuperacion dispersa como BM25 (para coincidencia de palabras clave) da los mejores resultados en todos los tipos de consulta. Los embeddings densos son excelentes para entender significado y parafrasis pero pueden perder coincidencias exactas de palabras clave. BM25 maneja bien las consultas de palabras clave pero pierde conexiones semanticas. La fusion de rango reciproco o puntuacion ponderada combina ambos conjuntos de resultados para una recuperacion robusta independientemente del estilo de consulta.",
+      "options": [
+        { "id": "RAGMCP-005_a", "text": "Use only dense vector embeddings with cosine similarity; they handle all query types equally well", "textEs": "Usar solo embeddings de vectores densos con similitud coseno; manejan todos los tipos de consulta igualmente bien", "order": 1 },
+        { "id": "RAGMCP-005_b", "text": "Use hybrid search combining dense embeddings for semantic matching with sparse retrieval (BM25) for keyword matching, then fuse results", "textEs": "Usar busqueda hibrida combinando embeddings densos para coincidencia semantica con recuperacion dispersa (BM25) para coincidencia de palabras clave, luego fusionar resultados", "order": 2 },
+        { "id": "RAGMCP-005_c", "text": "Use TF-IDF exclusively since it works best for both short and long queries in production systems", "textEs": "Usar TF-IDF exclusivamente ya que funciona mejor para consultas cortas y largas en sistemas de produccion", "order": 3 },
+        { "id": "RAGMCP-005_d", "text": "Train a custom embedding model on your specific data; pre-trained embeddings never work well for RAG", "textEs": "Entrenar un modelo de embeddings personalizado con tus datos especificos; los embeddings preentrenados nunca funcionan bien para RAG", "order": 4 }
+      ],
+      "tags": ["embeddings", "hybrid-search", "bm25", "dense-vectors", "retrieval-strategy"]
+    },
+    {
+      "id": "RAGMCP-006",
+      "text": "When building an MCP server that exposes a database query tool, what security best practice should be implemented to prevent unauthorized data access?",
+      "textEs": "Al construir un servidor MCP que expone una herramienta de consulta de base de datos, ¿que mejor practica de seguridad debe implementarse para prevenir el acceso no autorizado a datos?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-006_c",
+      "explanation": "MCP tools that access databases should implement input validation and parameterized queries to prevent SQL injection, use read-only database connections where possible, apply row-level access controls, and validate that the tool's input schema constrains queries to allowed tables and operations. The server should never pass raw user input directly into SQL. Defense in depth with multiple layers of protection is the recommended approach.",
+      "explanationEs": "Las herramientas MCP que acceden a bases de datos deben implementar validacion de entrada y consultas parametrizadas para prevenir inyeccion SQL, usar conexiones de base de datos de solo lectura cuando sea posible, aplicar controles de acceso a nivel de fila, y validar que el esquema de entrada de la herramienta restrinja las consultas a tablas y operaciones permitidas. El servidor nunca debe pasar la entrada cruda del usuario directamente al SQL. La defensa en profundidad con multiples capas de proteccion es el enfoque recomendado.",
+      "options": [
+        { "id": "RAGMCP-006_a", "text": "Trust the LLM to generate safe queries since it has been trained to avoid malicious SQL", "textEs": "Confiar en que el LLM genere consultas seguras ya que ha sido entrenado para evitar SQL malicioso", "order": 1 },
+        { "id": "RAGMCP-006_b", "text": "Only deploy MCP servers on localhost so they are not accessible from the network", "textEs": "Solo desplegar servidores MCP en localhost para que no sean accesibles desde la red", "order": 2 },
+        { "id": "RAGMCP-006_c", "text": "Use parameterized queries, read-only connections, input validation, and constrain the tool schema to allowed tables and operations", "textEs": "Usar consultas parametrizadas, conexiones de solo lectura, validacion de entrada, y restringir el esquema de la herramienta a tablas y operaciones permitidas", "order": 3 },
+        { "id": "RAGMCP-006_d", "text": "Encrypt the database connection string in the MCP configuration file", "textEs": "Cifrar la cadena de conexion de la base de datos en el archivo de configuracion MCP", "order": 4 }
+      ],
+      "tags": ["mcp", "security", "sql-injection", "access-control", "tool-safety"]
+    },
+    {
+      "id": "RAGMCP-007",
+      "text": "In a RAG pipeline, what is 'reranking' and when should it be applied?",
+      "textEs": "En un pipeline RAG, ¿que es el 'reranking' y cuando debe aplicarse?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-007_a",
+      "explanation": "Reranking is a second-pass scoring step applied after initial retrieval. The initial retrieval (e.g., vector similarity search) returns a broad set of candidate chunks. A reranker model then scores each chunk against the original query with a more sophisticated cross-encoder model, producing more accurate relevance scores. This improves precision by promoting the most relevant chunks to the top. It should be applied between retrieval and context injection into the prompt.",
+      "explanationEs": "El reranking es un paso de puntuacion de segunda pasada aplicado despues de la recuperacion inicial. La recuperacion inicial (por ejemplo, busqueda de similitud vectorial) devuelve un conjunto amplio de fragmentos candidatos. Un modelo reranker luego puntua cada fragmento contra la consulta original con un modelo cross-encoder mas sofisticado, produciendo puntuaciones de relevancia mas precisas. Esto mejora la precision promoviendo los fragmentos mas relevantes al principio. Debe aplicarse entre la recuperacion y la inyeccion de contexto en el prompt.",
+      "options": [
+        { "id": "RAGMCP-007_a", "text": "A second-pass scoring step after initial retrieval that uses a cross-encoder to produce more accurate relevance scores, applied before context injection", "textEs": "Un paso de puntuacion de segunda pasada despues de la recuperacion inicial que usa un cross-encoder para producir puntuaciones de relevancia mas precisas, aplicado antes de la inyeccion de contexto", "order": 1 },
+        { "id": "RAGMCP-007_b", "text": "Sorting the final LLM response paragraphs by importance before showing them to the user", "textEs": "Ordenar los parrafos de la respuesta final del LLM por importancia antes de mostrarlos al usuario", "order": 2 },
+        { "id": "RAGMCP-007_c", "text": "Re-embedding the retrieved chunks with a different model to improve their vector representations", "textEs": "Re-embeber los fragmentos recuperados con un modelo diferente para mejorar sus representaciones vectoriales", "order": 3 },
+        { "id": "RAGMCP-007_d", "text": "Asking Claude to rate each retrieved chunk and filter out low-quality ones before answering", "textEs": "Pedir a Claude que califique cada fragmento recuperado y filtre los de baja calidad antes de responder", "order": 4 }
+      ],
+      "tags": ["reranking", "cross-encoder", "retrieval-pipeline", "relevance-scoring"]
+    },
+    {
+      "id": "RAGMCP-008",
+      "text": "How does an MCP tool definition differ from a Claude API tool definition when both are used for the same function?",
+      "textEs": "¿En que se diferencia una definicion de herramienta MCP de una definicion de herramienta de la API de Claude cuando ambas se usan para la misma funcion?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "medium",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-008_d",
+      "explanation": "MCP tool definitions are server-side declarations exposed via the MCP protocol's tools/list method. The MCP client (e.g., Claude Code, an IDE) discovers them dynamically and translates them into the format Claude's API expects. A direct Claude API tool definition is passed in the request body of each API call. Functionally they define the same thing (name, description, input schema), but MCP adds a discovery and transport layer, enabling tools to be shared across multiple clients without code changes.",
+      "explanationEs": "Las definiciones de herramientas MCP son declaraciones del lado del servidor expuestas a traves del metodo tools/list del protocolo MCP. El cliente MCP (por ejemplo, Claude Code, un IDE) las descubre dinamicamente y las traduce al formato que espera la API de Claude. Una definicion de herramienta directa de la API de Claude se pasa en el cuerpo de solicitud de cada llamada a la API. Funcionalmente definen lo mismo (nombre, descripcion, esquema de entrada), pero MCP agrega una capa de descubrimiento y transporte, permitiendo que las herramientas se compartan entre multiples clientes sin cambios de codigo.",
+      "options": [
+        { "id": "RAGMCP-008_a", "text": "MCP tools use a completely different schema format incompatible with Claude's API tool format", "textEs": "Las herramientas MCP usan un formato de esquema completamente diferente incompatible con el formato de herramientas de la API de Claude", "order": 1 },
+        { "id": "RAGMCP-008_b", "text": "MCP tools can only be used with Claude Code; they cannot be used with the Messages API", "textEs": "Las herramientas MCP solo pueden usarse con Claude Code; no pueden usarse con la API de Mensajes", "order": 2 },
+        { "id": "RAGMCP-008_c", "text": "MCP tools are faster because they bypass the API and connect directly to the model", "textEs": "Las herramientas MCP son mas rapidas porque evitan la API y se conectan directamente al modelo", "order": 3 },
+        { "id": "RAGMCP-008_d", "text": "They define the same structure (name, description, input schema) but MCP adds a discovery and transport layer; the MCP client translates them into API tool format", "textEs": "Definen la misma estructura (nombre, descripcion, esquema de entrada) pero MCP agrega una capa de descubrimiento y transporte; el cliente MCP las traduce al formato de herramientas de la API", "order": 4 }
+      ],
+      "tags": ["mcp", "tool-definition", "api-tools", "discovery", "interoperability"]
+    },
+    {
+      "id": "RAGMCP-009",
+      "text": "What is a common failure mode in RAG systems where retrieved documents are relevant but the generated answer is still incorrect?",
+      "textEs": "¿Cual es un modo de falla comun en sistemas RAG donde los documentos recuperados son relevantes pero la respuesta generada sigue siendo incorrecta?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-009_b",
+      "explanation": "This describes the 'lost in the middle' problem, where relevant information is present in the context but located in the middle of many retrieved chunks. LLMs tend to pay more attention to information at the beginning and end of their context. Mitigation strategies include: limiting the number of retrieved chunks, placing the most relevant chunks first, using reranking to prioritize quality, and structuring the prompt to highlight key passages.",
+      "explanationEs": "Esto describe el problema de 'perdido en el medio', donde la informacion relevante esta presente en el contexto pero ubicada en el medio de muchos fragmentos recuperados. Los LLMs tienden a prestar mas atencion a la informacion al principio y al final de su contexto. Las estrategias de mitigacion incluyen: limitar el numero de fragmentos recuperados, colocar los fragmentos mas relevantes primero, usar reranking para priorizar calidad, y estructurar el prompt para resaltar los pasajes clave.",
+      "options": [
+        { "id": "RAGMCP-009_a", "text": "The embedding model always produces incorrect vector representations for technical documents", "textEs": "El modelo de embeddings siempre produce representaciones vectoriales incorrectas para documentos tecnicos", "order": 1 },
+        { "id": "RAGMCP-009_b", "text": "The 'lost in the middle' effect: relevant information buried among many chunks gets less attention from the model", "textEs": "El efecto 'perdido en el medio': informacion relevante enterrada entre muchos fragmentos recibe menos atencion del modelo", "order": 2 },
+        { "id": "RAGMCP-009_c", "text": "Claude cannot read context provided in the messages; it only uses its training data", "textEs": "Claude no puede leer contexto proporcionado en los mensajes; solo usa sus datos de entrenamiento", "order": 3 },
+        { "id": "RAGMCP-009_d", "text": "The vector database always returns chunks in reverse chronological order causing confusion", "textEs": "La base de datos vectorial siempre devuelve fragmentos en orden cronologico inverso causando confusion", "order": 4 }
+      ],
+      "tags": ["rag", "lost-in-the-middle", "failure-modes", "context-attention"]
+    },
+    {
+      "id": "RAGMCP-010",
+      "text": "When building an MCP server that provides RAG capabilities, what is the recommended architecture for exposing both search and document retrieval?",
+      "textEs": "Al construir un servidor MCP que proporciona capacidades RAG, ¿cual es la arquitectura recomendada para exponer tanto la busqueda como la recuperacion de documentos?",
+      "domainCode": "coursera-rag-mcp",
+      "difficulty": "hard",
+      "learningLevel": 4,
+      "contentType": "theory",
+      "trackId": "coursera-rag-mcp",
+      "correctOptionId": "RAGMCP-010_a",
+      "explanation": "The recommended architecture uses MCP tools for search operations (the model decides when to search and with what query) and MCP resources for document access (the application can list and read specific documents by URI). This separation follows MCP's design philosophy: tools for actions the model triggers, resources for data the application navigates. A search tool returns document IDs/summaries, and resources allow fetching full document content by URI.",
+      "explanationEs": "La arquitectura recomendada usa herramientas MCP para operaciones de busqueda (el modelo decide cuando buscar y con que consulta) y recursos MCP para acceso a documentos (la aplicacion puede listar y leer documentos especificos por URI). Esta separacion sigue la filosofia de diseño de MCP: herramientas para acciones que el modelo activa, recursos para datos que la aplicacion navega. Una herramienta de busqueda devuelve IDs/resumenes de documentos, y los recursos permiten obtener el contenido completo del documento por URI.",
+      "options": [
+        { "id": "RAGMCP-010_a", "text": "Use MCP tools for search queries (model-triggered) and MCP resources for document access (application-navigated, accessed by URI)", "textEs": "Usar herramientas MCP para consultas de busqueda (activadas por el modelo) y recursos MCP para acceso a documentos (navegados por la aplicacion, accedidos por URI)", "order": 1 },
+        { "id": "RAGMCP-010_b", "text": "Expose everything as MCP prompts so users manually trigger all retrieval operations", "textEs": "Exponer todo como prompts MCP para que los usuarios activen manualmente todas las operaciones de recuperacion", "order": 2 },
+        { "id": "RAGMCP-010_c", "text": "Use a single MCP tool that handles both search and retrieval in one call to minimize latency", "textEs": "Usar una sola herramienta MCP que maneje tanto busqueda como recuperacion en una sola llamada para minimizar latencia", "order": 3 },
+        { "id": "RAGMCP-010_d", "text": "Bypass MCP entirely and embed the RAG pipeline directly into the system prompt", "textEs": "Evadir MCP completamente e integrar el pipeline RAG directamente en el system prompt", "order": 4 }
+      ],
+      "tags": ["mcp", "rag", "architecture", "tools-vs-resources", "server-design"]
+    }
+  ]
+}

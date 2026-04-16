@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "claude-code-action",
+    "domainName": "Claude Code in Action",
+    "trackId": "claude-code-action",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "cca-001",
+      "text": "En Claude Code (CLI), ¿cuál es la forma correcta de leer un archivo antes de editarlo?",
+      "textEs": "En Claude Code (CLI), ¿cuál es la forma correcta de leer un archivo antes de editarlo?",
+      "domainCode": "claude-code-action",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-001_b",
+      "explanation": "Claude Code utiliza la herramienta Read para leer archivos del sistema de archivos local. Es obligatorio leer un archivo antes de editarlo para entender su contenido actual y evitar sobrescribir información importante. La herramienta Read acepta rutas absolutas y permite especificar offset y limit para archivos grandes.",
+      "explanationEs": "Claude Code utiliza la herramienta Read para leer archivos del sistema de archivos local. Es obligatorio leer un archivo antes de editarlo para entender su contenido actual y evitar sobrescribir información importante. La herramienta Read acepta rutas absolutas y permite especificar offset y limit para archivos grandes.",
+      "options": [
+        { "id": "cca-001_a", "text": "Usar el comando 'cat' directamente en bash siempre que sea posible", "textEs": "Usar el comando 'cat' directamente en bash siempre que sea posible", "order": 1 },
+        { "id": "cca-001_b", "text": "Usar la herramienta Read con una ruta absoluta al archivo, lo cual es obligatorio antes de cualquier edición", "textEs": "Usar la herramienta Read con una ruta absoluta al archivo, lo cual es obligatorio antes de cualquier edición", "order": 2 },
+        { "id": "cca-001_c", "text": "Adivinar el contenido del archivo basándose en el nombre y proceder a editar", "textEs": "Adivinar el contenido del archivo basándose en el nombre y proceder a editar", "order": 3 },
+        { "id": "cca-001_d", "text": "Pedir al usuario que copie y pegue el contenido del archivo en el chat", "textEs": "Pedir al usuario que copie y pegue el contenido del archivo en el chat", "order": 4 }
+      ],
+      "tags": ["read", "archivos", "cli-basico"]
+    },
+    {
+      "id": "cca-002",
+      "text": "¿Cuál es la diferencia principal entre la herramienta Edit y la herramienta Write en Claude Code?",
+      "textEs": "¿Cuál es la diferencia principal entre la herramienta Edit y la herramienta Write en Claude Code?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-002_a",
+      "explanation": "Edit realiza reemplazos de texto específicos (busca una cadena exacta y la reemplaza por otra), ideal para cambios puntuales en archivos existentes. Write sobrescribe el archivo completo, apropiado para crear archivos nuevos o reescrituras totales. Edit es preferido porque envía solo el diff, es más seguro y preserva contenido no modificado.",
+      "explanationEs": "Edit realiza reemplazos de texto específicos (busca una cadena exacta y la reemplaza por otra), ideal para cambios puntuales en archivos existentes. Write sobrescribe el archivo completo, apropiado para crear archivos nuevos o reescrituras totales. Edit es preferido porque envía solo el diff, es más seguro y preserva contenido no modificado.",
+      "options": [
+        { "id": "cca-002_a", "text": "Edit hace reemplazos de texto específicos (diff), mientras que Write sobrescribe todo el archivo; Edit es preferido para cambios puntuales", "textEs": "Edit hace reemplazos de texto específicos (diff), mientras que Write sobrescribe todo el archivo; Edit es preferido para cambios puntuales", "order": 1 },
+        { "id": "cca-002_b", "text": "Edit es para archivos de código y Write es para archivos de texto", "textEs": "Edit es para archivos de código y Write es para archivos de texto", "order": 2 },
+        { "id": "cca-002_c", "text": "Edit requiere permisos de administrador y Write no", "textEs": "Edit requiere permisos de administrador y Write no", "order": 3 },
+        { "id": "cca-002_d", "text": "No hay diferencia real, son alias del mismo comando", "textEs": "No hay diferencia real, son alias del mismo comando", "order": 4 }
+      ],
+      "tags": ["edit", "write", "herramientas"]
+    },
+    {
+      "id": "cca-003",
+      "text": "Al ejecutar comandos bash en Claude Code, ¿por qué se recomienda usar rutas absolutas en lugar de rutas relativas?",
+      "textEs": "Al ejecutar comandos bash en Claude Code, ¿por qué se recomienda usar rutas absolutas en lugar de rutas relativas?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-003_c",
+      "explanation": "En Claude Code, el directorio de trabajo (cwd) se reinicia entre llamadas a Bash. Esto significa que un 'cd' en un comando no persiste al siguiente. Usar rutas absolutas garantiza que siempre se accede al archivo o directorio correcto independientemente del estado del shell entre ejecuciones.",
+      "explanationEs": "En Claude Code, el directorio de trabajo (cwd) se reinicia entre llamadas a Bash. Esto significa que un 'cd' en un comando no persiste al siguiente. Usar rutas absolutas garantiza que siempre se accede al archivo o directorio correcto independientemente del estado del shell entre ejecuciones.",
+      "options": [
+        { "id": "cca-003_a", "text": "Porque las rutas relativas no funcionan en el sistema operativo", "textEs": "Porque las rutas relativas no funcionan en el sistema operativo", "order": 1 },
+        { "id": "cca-003_b", "text": "Porque las rutas absolutas son más rápidas de procesar", "textEs": "Porque las rutas absolutas son más rápidas de procesar", "order": 2 },
+        { "id": "cca-003_c", "text": "Porque el directorio de trabajo se reinicia entre llamadas a Bash, y las rutas absolutas evitan errores de ubicación", "textEs": "Porque el directorio de trabajo se reinicia entre llamadas a Bash, y las rutas absolutas evitan errores de ubicación", "order": 3 },
+        { "id": "cca-003_d", "text": "Porque las rutas relativas consumen más tokens en la conversación", "textEs": "Porque las rutas relativas consumen más tokens en la conversación", "order": 4 }
+      ],
+      "tags": ["bash", "rutas", "buenas-practicas"]
+    },
+    {
+      "id": "cca-004",
+      "text": "¿Qué estrategia de gestión de contexto es recomendada cuando se trabaja con un repositorio de código grande en Claude Code?",
+      "textEs": "¿Qué estrategia de gestión de contexto es recomendada cuando se trabaja con un repositorio de código grande en Claude Code?",
+      "domainCode": "claude-code-action",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-004_d",
+      "explanation": "En repositorios grandes, es crucial ser selectivo con la información cargada en contexto. La estrategia óptima es usar herramientas de búsqueda (Glob, Grep) para localizar archivos relevantes, leer solo las secciones necesarias usando offset/limit, y evitar cargar archivos completos innecesariamente. Esto maximiza el uso del contexto disponible para información realmente relevante.",
+      "explanationEs": "En repositorios grandes, es crucial ser selectivo con la información cargada en contexto. La estrategia óptima es usar herramientas de búsqueda (Glob, Grep) para localizar archivos relevantes, leer solo las secciones necesarias usando offset/limit, y evitar cargar archivos completos innecesariamente. Esto maximiza el uso del contexto disponible para información realmente relevante.",
+      "options": [
+        { "id": "cca-004_a", "text": "Leer todos los archivos del proyecto al inicio de la conversación", "textEs": "Leer todos los archivos del proyecto al inicio de la conversación", "order": 1 },
+        { "id": "cca-004_b", "text": "Copiar todo el código fuente en un solo archivo de texto", "textEs": "Copiar todo el código fuente en un solo archivo de texto", "order": 2 },
+        { "id": "cca-004_c", "text": "Trabajar solo con archivos que tengan menos de 100 líneas", "textEs": "Trabajar solo con archivos que tengan menos de 100 líneas", "order": 3 },
+        { "id": "cca-004_d", "text": "Usar Glob y Grep para localizar archivos relevantes, luego leer solo las secciones necesarias con offset/limit", "textEs": "Usar Glob y Grep para localizar archivos relevantes, luego leer solo las secciones necesarias con offset/limit", "order": 4 }
+      ],
+      "tags": ["gestion-contexto", "repositorios-grandes", "optimizacion"]
+    },
+    {
+      "id": "cca-005",
+      "text": "¿Qué son los 'worktrees' en el contexto de Claude Code y cuándo se usan?",
+      "textEs": "¿Qué son los 'worktrees' en el contexto de Claude Code y cuándo se usan?",
+      "domainCode": "claude-code-action",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-005_b",
+      "explanation": "Los worktrees de Git permiten tener múltiples ramas checked out simultáneamente en directorios separados. En Claude Code, esto es útil para trabajar en múltiples tareas en paralelo sin cambiar de rama, o para que Claude trabaje en una tarea en un worktree mientras el desarrollador trabaja en otro. Se crean con 'git worktree add'.",
+      "explanationEs": "Los worktrees de Git permiten tener múltiples ramas checked out simultáneamente en directorios separados. En Claude Code, esto es útil para trabajar en múltiples tareas en paralelo sin cambiar de rama, o para que Claude trabaje en una tarea en un worktree mientras el desarrollador trabaja en otro. Se crean con 'git worktree add'.",
+      "options": [
+        { "id": "cca-005_a", "text": "Espacios virtuales de trabajo aislados que simulan diferentes sistemas operativos", "textEs": "Espacios virtuales de trabajo aislados que simulan diferentes sistemas operativos", "order": 1 },
+        { "id": "cca-005_b", "text": "Copias de trabajo de Git que permiten tener múltiples ramas checked out simultáneamente para trabajo paralelo", "textEs": "Copias de trabajo de Git que permiten tener múltiples ramas checked out simultáneamente para trabajo paralelo", "order": 2 },
+        { "id": "cca-005_c", "text": "Archivos temporales que Claude crea para guardar su progreso entre sesiones", "textEs": "Archivos temporales que Claude crea para guardar su progreso entre sesiones", "order": 3 },
+        { "id": "cca-005_d", "text": "Contenedores Docker que Claude usa para ejecutar código de forma aislada", "textEs": "Contenedores Docker que Claude usa para ejecutar código de forma aislada", "order": 4 }
+      ],
+      "tags": ["worktrees", "git", "trabajo-paralelo"]
+    },
+    {
+      "id": "cca-006",
+      "text": "¿Qué es MCP (Model Context Protocol) en el contexto de Claude Code y cuál es su función?",
+      "textEs": "¿Qué es MCP (Model Context Protocol) en el contexto de Claude Code y cuál es su función?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-006_a",
+      "explanation": "MCP es un protocolo abierto creado por Anthropic que estandariza cómo las aplicaciones de IA se conectan con fuentes de datos y herramientas externas. En Claude Code, los servidores MCP proveen herramientas adicionales (como acceso a Jira, GitHub, bases de datos, etc.) que extienden las capacidades nativas de Claude.",
+      "explanationEs": "MCP es un protocolo abierto creado por Anthropic que estandariza cómo las aplicaciones de IA se conectan con fuentes de datos y herramientas externas. En Claude Code, los servidores MCP proveen herramientas adicionales (como acceso a Jira, GitHub, bases de datos, etc.) que extienden las capacidades nativas de Claude.",
+      "options": [
+        { "id": "cca-006_a", "text": "Un protocolo abierto que estandariza la conexión de Claude con herramientas y fuentes de datos externas mediante servidores", "textEs": "Un protocolo abierto que estandariza la conexión de Claude con herramientas y fuentes de datos externas mediante servidores", "order": 1 },
+        { "id": "cca-006_b", "text": "Un formato de compresión de contexto para reducir el uso de tokens", "textEs": "Un formato de compresión de contexto para reducir el uso de tokens", "order": 2 },
+        { "id": "cca-006_c", "text": "Un método de cifrado para proteger las conversaciones con Claude", "textEs": "Un método de cifrado para proteger las conversaciones con Claude", "order": 3 },
+        { "id": "cca-006_d", "text": "Un protocolo de red para comunicación entre múltiples instancias de Claude", "textEs": "Un protocolo de red para comunicación entre múltiples instancias de Claude", "order": 4 }
+      ],
+      "tags": ["mcp", "protocolo", "integraciones"]
+    },
+    {
+      "id": "cca-007",
+      "text": "¿Qué son los 'hooks' en Claude Code y para qué se utilizan?",
+      "textEs": "¿Qué son los 'hooks' en Claude Code y para qué se utilizan?",
+      "domainCode": "claude-code-action",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-007_c",
+      "explanation": "Los hooks en Claude Code son scripts o comandos que se ejecutan automáticamente en respuesta a ciertos eventos (como antes/después de un commit, antes de ejecutar un comando, etc.). Se configuran en settings.json y permiten automatizar validaciones, formateo de código, notificaciones y otros flujos de trabajo que deben ocurrir consistentemente.",
+      "explanationEs": "Los hooks en Claude Code son scripts o comandos que se ejecutan automáticamente en respuesta a ciertos eventos (como antes/después de un commit, antes de ejecutar un comando, etc.). Se configuran en settings.json y permiten automatizar validaciones, formateo de código, notificaciones y otros flujos de trabajo que deben ocurrir consistentemente.",
+      "options": [
+        { "id": "cca-007_a", "text": "Atajos de teclado personalizados para acciones frecuentes", "textEs": "Atajos de teclado personalizados para acciones frecuentes", "order": 1 },
+        { "id": "cca-007_b", "text": "Puntos de conexión para APIs externas de terceros", "textEs": "Puntos de conexión para APIs externas de terceros", "order": 2 },
+        { "id": "cca-007_c", "text": "Scripts que se ejecutan automáticamente en respuesta a eventos específicos, configurados en settings.json", "textEs": "Scripts que se ejecutan automáticamente en respuesta a eventos específicos, configurados en settings.json", "order": 3 },
+        { "id": "cca-007_d", "text": "Funciones de callback que se llaman cuando Claude termina de generar una respuesta", "textEs": "Funciones de callback que se llaman cuando Claude termina de generar una respuesta", "order": 4 }
+      ],
+      "tags": ["hooks", "automatizacion", "settings"]
+    },
+    {
+      "id": "cca-008",
+      "text": "Cuando Claude Code necesita buscar un patrón específico en el código fuente de un proyecto, ¿cuál es la herramienta preferida?",
+      "textEs": "Cuando Claude Code necesita buscar un patrón específico en el código fuente de un proyecto, ¿cuál es la herramienta preferida?",
+      "domainCode": "claude-code-action",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-008_b",
+      "explanation": "Grep es la herramienta preferida para buscar patrones en contenido de archivos. Está construida sobre ripgrep, soporta expresiones regulares, filtrado por tipo de archivo y múltiples modos de salida. Se debe usar Grep en lugar de ejecutar 'grep' o 'rg' directamente en Bash, ya que la herramienta Grep tiene permisos y acceso optimizados.",
+      "explanationEs": "Grep es la herramienta preferida para buscar patrones en contenido de archivos. Está construida sobre ripgrep, soporta expresiones regulares, filtrado por tipo de archivo y múltiples modos de salida. Se debe usar Grep en lugar de ejecutar 'grep' o 'rg' directamente en Bash, ya que la herramienta Grep tiene permisos y acceso optimizados.",
+      "options": [
+        { "id": "cca-008_a", "text": "Ejecutar 'grep -r' directamente en la herramienta Bash", "textEs": "Ejecutar 'grep -r' directamente en la herramienta Bash", "order": 1 },
+        { "id": "cca-008_b", "text": "Usar la herramienta Grep nativa de Claude Code, que está optimizada con ripgrep y permisos adecuados", "textEs": "Usar la herramienta Grep nativa de Claude Code, que está optimizada con ripgrep y permisos adecuados", "order": 2 },
+        { "id": "cca-008_c", "text": "Leer cada archivo uno por uno hasta encontrar el patrón", "textEs": "Leer cada archivo uno por uno hasta encontrar el patrón", "order": 3 },
+        { "id": "cca-008_d", "text": "Pedir al usuario que busque el patrón manualmente y comparta los resultados", "textEs": "Pedir al usuario que busque el patrón manualmente y comparta los resultados", "order": 4 }
+      ],
+      "tags": ["grep", "busqueda", "herramientas"]
+    },
+    {
+      "id": "cca-009",
+      "text": "¿Por qué Claude Code debe evitar ejecutar comandos git con la bandera '-i' (modo interactivo)?",
+      "textEs": "¿Por qué Claude Code debe evitar ejecutar comandos git con la bandera '-i' (modo interactivo)?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-009_a",
+      "explanation": "Los comandos interactivos como 'git rebase -i' o 'git add -i' abren un editor de texto o interfaz interactiva que requiere entrada manual del usuario. Claude Code ejecuta comandos en un entorno no interactivo, por lo que estos comandos quedarán bloqueados esperando input que nunca llegará, causando timeouts.",
+      "explanationEs": "Los comandos interactivos como 'git rebase -i' o 'git add -i' abren un editor de texto o interfaz interactiva que requiere entrada manual del usuario. Claude Code ejecuta comandos en un entorno no interactivo, por lo que estos comandos quedarán bloqueados esperando input que nunca llegará, causando timeouts.",
+      "options": [
+        { "id": "cca-009_a", "text": "Porque requieren entrada interactiva del usuario que no es posible en el entorno de ejecución no interactivo de Claude Code", "textEs": "Porque requieren entrada interactiva del usuario que no es posible en el entorno de ejecución no interactivo de Claude Code", "order": 1 },
+        { "id": "cca-009_b", "text": "Porque la bandera -i consume demasiados recursos de CPU", "textEs": "Porque la bandera -i consume demasiados recursos de CPU", "order": 2 },
+        { "id": "cca-009_c", "text": "Porque los comandos interactivos de git están deprecados", "textEs": "Porque los comandos interactivos de git están deprecados", "order": 3 },
+        { "id": "cca-009_d", "text": "Porque la bandera -i solo funciona en sistemas Linux, no en Windows", "textEs": "Porque la bandera -i solo funciona en sistemas Linux, no en Windows", "order": 4 }
+      ],
+      "tags": ["git", "interactivo", "limitaciones"]
+    },
+    {
+      "id": "cca-010",
+      "text": "Al crear commits con Claude Code, ¿cuál es la práctica recomendada respecto a commits existentes?",
+      "textEs": "Al crear commits con Claude Code, ¿cuál es la práctica recomendada respecto a commits existentes?",
+      "domainCode": "claude-code-action",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "claude-code-action",
+      "correctOptionId": "cca-010_d",
+      "explanation": "Claude Code siempre debe crear commits nuevos en lugar de enmendar (amend) commits existentes, a menos que el usuario lo solicite explícitamente. Si un pre-commit hook falla, el commit NO se realizó, y usar --amend modificaría el commit ANTERIOR, potencialmente destruyendo trabajo previo. La práctica segura es arreglar el problema, re-stagear y crear un commit nuevo.",
+      "explanationEs": "Claude Code siempre debe crear commits nuevos en lugar de enmendar (amend) commits existentes, a menos que el usuario lo solicite explícitamente. Si un pre-commit hook falla, el commit NO se realizó, y usar --amend modificaría el commit ANTERIOR, potencialmente destruyendo trabajo previo. La práctica segura es arreglar el problema, re-stagear y crear un commit nuevo.",
+      "options": [
+        { "id": "cca-010_a", "text": "Siempre usar 'git commit --amend' para mantener el historial limpio", "textEs": "Siempre usar 'git commit --amend' para mantener el historial limpio", "order": 1 },
+        { "id": "cca-010_b", "text": "Usar 'git commit --no-verify' para evitar problemas con hooks", "textEs": "Usar 'git commit --no-verify' para evitar problemas con hooks", "order": 2 },
+        { "id": "cca-010_c", "text": "Hacer squash de todos los commits al final del trabajo", "textEs": "Hacer squash de todos los commits al final del trabajo", "order": 3 },
+        { "id": "cca-010_d", "text": "Siempre crear commits nuevos en lugar de enmendar, especialmente tras fallo de hooks, para no destruir trabajo previo", "textEs": "Siempre crear commits nuevos en lugar de enmendar, especialmente tras fallo de hooks, para no destruir trabajo previo", "order": 4 }
+      ],
+      "tags": ["git", "commits", "seguridad"]
+    }
+  ]
+}

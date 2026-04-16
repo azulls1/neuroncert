@@ -1,0 +1,16 @@
+{
+  "recovery_id": "recovery_20260412_195600",
+  "timestamp": "2026-04-12T19:56:00Z",
+  "source_checkpoint": "cp_20260412_195600",
+  "status": "valid",
+  "project": "simulador-examen-csa",
+  "phase": "construir",
+  "last_successful_action": "NXT Context agent completed - session-context.json, ADRs, patterns, preferences created",
+  "recovery_instructions": [
+    "1. Cargar .nxt/state.json para estado del proyecto",
+    "2. Cargar .nxt/context/session-context.json para contexto completo",
+    "3. Cargar .nxt/state/current.json para estado del MultiContext",
+    "4. Verificar que los archivos del proyecto existen",
+    "5. Continuar con la tarea pendiente"
+  ]
+}

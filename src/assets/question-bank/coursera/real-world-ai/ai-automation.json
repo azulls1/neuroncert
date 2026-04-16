@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "domain": "ai-automation",
+    "domainName": "AI Automation",
+    "trackId": "coursera-real-world-ai-3",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 8,
+    "learningLevel": 2,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "crwa-aa-001",
+      "text": "¿Qué son los Claude Projects y cuál es su beneficio principal?",
+      "textEs": "¿Qué son los Claude Projects y cuál es su beneficio principal?",
+      "domainCode": "ai-automation",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-3",
+      "correctOptionId": "crwa-aa-001_b",
+      "explanation": "Claude Projects es una funcionalidad de claude.ai que permite crear espacios de trabajo persistentes con instrucciones personalizadas y documentos de referencia. El beneficio principal es que se puede cargar conocimiento base (documentos, guías, datos) que Claude tendrá disponible en cada conversación dentro del proyecto, eliminando la necesidad de repetir contexto en cada interacción.",
+      "explanationEs": "Claude Projects es una funcionalidad de claude.ai que permite crear espacios de trabajo persistentes con instrucciones personalizadas y documentos de referencia. El beneficio principal es que se puede cargar conocimiento base (documentos, guías, datos) que Claude tendrá disponible en cada conversación dentro del proyecto, eliminando la necesidad de repetir contexto en cada interacción.",
+      "options": [
+        { "id": "crwa-aa-001_a", "text": "Un servicio de hosting para desplegar aplicaciones construidas con Claude", "textEs": "Un servicio de hosting para desplegar aplicaciones construidas con Claude", "order": 1 },
+        { "id": "crwa-aa-001_b", "text": "Espacios de trabajo persistentes con instrucciones y documentos de referencia que Claude usa en cada conversación del proyecto", "textEs": "Espacios de trabajo persistentes con instrucciones y documentos de referencia que Claude usa en cada conversación del proyecto", "order": 2 },
+        { "id": "crwa-aa-001_c", "text": "Un sistema de control de versiones para prompts y respuestas", "textEs": "Un sistema de control de versiones para prompts y respuestas", "order": 3 },
+        { "id": "crwa-aa-001_d", "text": "Una herramienta para entrenar modelos personalizados con datos propios", "textEs": "Una herramienta para entrenar modelos personalizados con datos propios", "order": 4 }
+      ],
+      "tags": ["claude-projects", "espacios-trabajo", "conocimiento-base"]
+    },
+    {
+      "id": "crwa-aa-002",
+      "text": "¿Qué significa que Claude tenga capacidades multimodales y cómo se aplican en automatización?",
+      "textEs": "¿Qué significa que Claude tenga capacidades multimodales y cómo se aplican en automatización?",
+      "domainCode": "ai-automation",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-3",
+      "correctOptionId": "crwa-aa-002_c",
+      "explanation": "Las capacidades multimodales de Claude permiten procesar tanto texto como imágenes como entrada. En automatización, esto habilita flujos donde se pueden analizar capturas de pantalla, extraer texto de documentos escaneados, interpretar gráficos y diagramas, y procesar formularios con imágenes. Esto amplía significativamente los tipos de tareas que se pueden automatizar más allá del texto puro.",
+      "explanationEs": "Las capacidades multimodales de Claude permiten procesar tanto texto como imágenes como entrada. En automatización, esto habilita flujos donde se pueden analizar capturas de pantalla, extraer texto de documentos escaneados, interpretar gráficos y diagramas, y procesar formularios con imágenes. Esto amplía significativamente los tipos de tareas que se pueden automatizar más allá del texto puro.",
+      "options": [
+        { "id": "crwa-aa-002_a", "text": "Claude puede generar audio, video e imágenes además de texto", "textEs": "Claude puede generar audio, video e imágenes además de texto", "order": 1 },
+        { "id": "crwa-aa-002_b", "text": "Claude puede ejecutar código directamente en múltiples lenguajes de programación", "textEs": "Claude puede ejecutar código directamente en múltiples lenguajes de programación", "order": 2 },
+        { "id": "crwa-aa-002_c", "text": "Claude procesa texto e imágenes, permitiendo automatizar análisis de capturas, documentos escaneados, gráficos y formularios visuales", "textEs": "Claude procesa texto e imágenes, permitiendo automatizar análisis de capturas, documentos escaneados, gráficos y formularios visuales", "order": 3 },
+        { "id": "crwa-aa-002_d", "text": "Claude puede conectarse a múltiples APIs simultáneamente sin configuración", "textEs": "Claude puede conectarse a múltiples APIs simultáneamente sin configuración", "order": 4 }
+      ],
+      "tags": ["multimodal", "automatizacion", "imagenes", "vision"]
+    },
+    {
+      "id": "crwa-aa-003",
+      "text": "¿Qué es RAG (Retrieval-Augmented Generation) en el contexto de Claude?",
+      "textEs": "¿Qué es RAG (Retrieval-Augmented Generation) en el contexto de Claude?",
+      "domainCode": "ai-automation",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-3",
+      "correctOptionId": "crwa-aa-003_a",
+      "explanation": "RAG es un patrón donde se recupera información relevante de fuentes externas (bases de datos, documentos, APIs) y se incluye en el prompt de Claude como contexto antes de que genere una respuesta. Esto permite a Claude responder con información actualizada y específica que no estaba en sus datos de entrenamiento, reduciendo alucinaciones y mejorando la precisión para casos de uso empresariales.",
+      "explanationEs": "RAG es un patrón donde se recupera información relevante de fuentes externas (bases de datos, documentos, APIs) y se incluye en el prompt de Claude como contexto antes de que genere una respuesta. Esto permite a Claude responder con información actualizada y específica que no estaba en sus datos de entrenamiento, reduciendo alucinaciones y mejorando la precisión para casos de uso empresariales.",
+      "options": [
+        { "id": "crwa-aa-003_a", "text": "Un patrón que recupera información relevante de fuentes externas y la incluye en el prompt como contexto, mejorando precisión con datos actualizados", "textEs": "Un patrón que recupera información relevante de fuentes externas y la incluye en el prompt como contexto, mejorando precisión con datos actualizados", "order": 1 },
+        { "id": "crwa-aa-003_b", "text": "Un método para reentrenar a Claude con datos propios de la empresa", "textEs": "Un método para reentrenar a Claude con datos propios de la empresa", "order": 2 },
+        { "id": "crwa-aa-003_c", "text": "Un protocolo de seguridad que restringe las respuestas de Claude a información verificada", "textEs": "Un protocolo de seguridad que restringe las respuestas de Claude a información verificada", "order": 3 },
+        { "id": "crwa-aa-003_d", "text": "Un tipo de modelo de lenguaje diferente a Claude que se especializa en búsquedas", "textEs": "Un tipo de modelo de lenguaje diferente a Claude que se especializa en búsquedas", "order": 4 }
+      ],
+      "tags": ["rag", "retrieval", "generacion-aumentada", "contexto-externo"]
+    },
+    {
+      "id": "crwa-aa-004",
+      "text": "¿Cuál es una ventaja clave de usar documentos de referencia en un Claude Project?",
+      "textEs": "¿Cuál es una ventaja clave de usar documentos de referencia en un Claude Project?",
+      "domainCode": "ai-automation",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-3",
+      "correctOptionId": "crwa-aa-004_d",
+      "explanation": "Los documentos de referencia en un Claude Project se cargan una vez y están disponibles automáticamente en todas las conversaciones del proyecto. Esto significa que Claude puede consultar guías de estilo, documentación técnica, políticas de la empresa o bases de conocimiento sin que el usuario tenga que incluirlos manualmente en cada prompt. Es una forma de RAG simplificada y accesible.",
+      "explanationEs": "Los documentos de referencia en un Claude Project se cargan una vez y están disponibles automáticamente en todas las conversaciones del proyecto. Esto significa que Claude puede consultar guías de estilo, documentación técnica, políticas de la empresa o bases de conocimiento sin que el usuario tenga que incluirlos manualmente en cada prompt. Es una forma de RAG simplificada y accesible.",
+      "options": [
+        { "id": "crwa-aa-004_a", "text": "Reemplazan completamente el entrenamiento original de Claude con datos personalizados", "textEs": "Reemplazan completamente el entrenamiento original de Claude con datos personalizados", "order": 1 },
+        { "id": "crwa-aa-004_b", "text": "Permiten que Claude acceda a internet para buscar información actualizada", "textEs": "Permiten que Claude acceda a internet para buscar información actualizada", "order": 2 },
+        { "id": "crwa-aa-004_c", "text": "Solo sirven para proporcionar ejemplos de formato de salida", "textEs": "Solo sirven para proporcionar ejemplos de formato de salida", "order": 3 },
+        { "id": "crwa-aa-004_d", "text": "Se cargan una vez y están disponibles en todas las conversaciones, permitiendo respuestas basadas en conocimiento específico sin repetir contexto", "textEs": "Se cargan una vez y están disponibles en todas las conversaciones, permitiendo respuestas basadas en conocimiento específico sin repetir contexto", "order": 4 }
+      ],
+      "tags": ["claude-projects", "documentos-referencia", "conocimiento-base"]
+    },
+    {
+      "id": "crwa-aa-005",
+      "text": "¿Qué tipo de tareas repetitivas se pueden automatizar efectivamente con Claude Projects?",
+      "textEs": "¿Qué tipo de tareas repetitivas se pueden automatizar efectivamente con Claude Projects?",
+      "domainCode": "ai-automation",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-3",
+      "correctOptionId": "crwa-aa-005_b",
+      "explanation": "Claude Projects son especialmente efectivos para automatizar tareas repetitivas que requieren conocimiento consistente: redacción de correos siguiendo guías de estilo, análisis de documentos con criterios estándar, generación de reportes con formato específico, respuestas a preguntas frecuentes basadas en documentación interna, y clasificación de contenido según políticas predefinidas.",
+      "explanationEs": "Claude Projects son especialmente efectivos para automatizar tareas repetitivas que requieren conocimiento consistente: redacción de correos siguiendo guías de estilo, análisis de documentos con criterios estándar, generación de reportes con formato específico, respuestas a preguntas frecuentes basadas en documentación interna, y clasificación de contenido según políticas predefinidas.",
+      "options": [
+        { "id": "crwa-aa-005_a", "text": "Solo tareas de programación y generación de código", "textEs": "Solo tareas de programación y generación de código", "order": 1 },
+        { "id": "crwa-aa-005_b", "text": "Redacción con guías de estilo, análisis con criterios estándar, reportes con formato específico y respuestas basadas en documentación interna", "textEs": "Redacción con guías de estilo, análisis con criterios estándar, reportes con formato específico y respuestas basadas en documentación interna", "order": 2 },
+        { "id": "crwa-aa-005_c", "text": "Exclusivamente tareas de traducción entre idiomas", "textEs": "Exclusivamente tareas de traducción entre idiomas", "order": 3 },
+        { "id": "crwa-aa-005_d", "text": "Solo tareas matemáticas y cálculos numéricos complejos", "textEs": "Solo tareas matemáticas y cálculos numéricos complejos", "order": 4 }
+      ],
+      "tags": ["automatizacion", "tareas-repetitivas", "claude-projects"]
+    },
+    {
+      "id": "crwa-aa-006",
+      "text": "¿Cómo mejora el procesamiento de imágenes las capacidades de automatización de Claude?",
+      "textEs": "¿Cómo mejora el procesamiento de imágenes las capacidades de automatización de Claude?",
+      "domainCode": "ai-automation",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-3",
+      "correctOptionId": "crwa-aa-006_a",
+      "explanation": "El procesamiento de imágenes permite automatizar tareas que antes requerían intervención humana para interpretar contenido visual: extracción de datos de facturas escaneadas, análisis de capturas de pantalla para QA, interpretación de gráficos en reportes, lectura de diagramas de arquitectura y procesamiento de formularios físicos digitalizados. Esto amplía el alcance de la automatización más allá del texto estructurado.",
+      "explanationEs": "El procesamiento de imágenes permite automatizar tareas que antes requerían intervención humana para interpretar contenido visual: extracción de datos de facturas escaneadas, análisis de capturas de pantalla para QA, interpretación de gráficos en reportes, lectura de diagramas de arquitectura y procesamiento de formularios físicos digitalizados. Esto amplía el alcance de la automatización más allá del texto estructurado.",
+      "options": [
+        { "id": "crwa-aa-006_a", "text": "Permite automatizar extracción de datos de documentos escaneados, análisis de capturas, interpretación de gráficos y procesamiento de formularios visuales", "textEs": "Permite automatizar extracción de datos de documentos escaneados, análisis de capturas, interpretación de gráficos y procesamiento de formularios visuales", "order": 1 },
+        { "id": "crwa-aa-006_b", "text": "Solo mejora la experiencia visual de la interfaz de Claude, sin impacto en automatización", "textEs": "Solo mejora la experiencia visual de la interfaz de Claude, sin impacto en automatización", "order": 2 },
+        { "id": "crwa-aa-006_c", "text": "Permite que Claude genere imágenes para automatizar diseño gráfico", "textEs": "Permite que Claude genere imágenes para automatizar diseño gráfico", "order": 3 },
+        { "id": "crwa-aa-006_d", "text": "Únicamente permite reconocimiento facial para autenticación de usuarios", "textEs": "Únicamente permite reconocimiento facial para autenticación de usuarios", "order": 4 }
+      ],
+      "tags": ["multimodal", "imagenes", "automatizacion", "vision"]
+    },
+    {
+      "id": "crwa-aa-007",
+      "text": "En un flujo de RAG básico, ¿cuál es el orden correcto de los pasos principales?",
+      "textEs": "En un flujo de RAG básico, ¿cuál es el orden correcto de los pasos principales?",
+      "domainCode": "ai-automation",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-3",
+      "correctOptionId": "crwa-aa-007_c",
+      "explanation": "Un flujo RAG básico sigue estos pasos: (1) el usuario hace una consulta, (2) se buscan documentos o fragmentos relevantes en una base de conocimiento usando la consulta como clave de búsqueda, (3) los fragmentos recuperados se incluyen como contexto en el prompt enviado a Claude, y (4) Claude genera una respuesta fundamentada en ese contexto recuperado. Este flujo combina búsqueda con generación.",
+      "explanationEs": "Un flujo RAG básico sigue estos pasos: (1) el usuario hace una consulta, (2) se buscan documentos o fragmentos relevantes en una base de conocimiento usando la consulta como clave de búsqueda, (3) los fragmentos recuperados se incluyen como contexto en el prompt enviado a Claude, y (4) Claude genera una respuesta fundamentada en ese contexto recuperado. Este flujo combina búsqueda con generación.",
+      "options": [
+        { "id": "crwa-aa-007_a", "text": "Generar respuesta → Buscar documentos → Verificar precisión → Enviar al usuario", "textEs": "Generar respuesta → Buscar documentos → Verificar precisión → Enviar al usuario", "order": 1 },
+        { "id": "crwa-aa-007_b", "text": "Entrenar modelo → Indexar documentos → Recibir consulta → Responder", "textEs": "Entrenar modelo → Indexar documentos → Recibir consulta → Responder", "order": 2 },
+        { "id": "crwa-aa-007_c", "text": "Recibir consulta → Buscar fragmentos relevantes en la base de conocimiento → Incluirlos como contexto en el prompt → Generar respuesta fundamentada", "textEs": "Recibir consulta → Buscar fragmentos relevantes en la base de conocimiento → Incluirlos como contexto en el prompt → Generar respuesta fundamentada", "order": 3 },
+        { "id": "crwa-aa-007_d", "text": "Cargar todos los documentos en el prompt → Hacer la consulta → Filtrar la respuesta → Devolver resultado", "textEs": "Cargar todos los documentos en el prompt → Hacer la consulta → Filtrar la respuesta → Devolver resultado", "order": 4 }
+      ],
+      "tags": ["rag", "flujo", "pasos", "automatizacion"]
+    },
+    {
+      "id": "crwa-aa-008",
+      "text": "¿Cuál es la diferencia principal entre usar instrucciones personalizadas en un Claude Project y un system prompt en la API?",
+      "textEs": "¿Cuál es la diferencia principal entre usar instrucciones personalizadas en un Claude Project y un system prompt en la API?",
+      "domainCode": "ai-automation",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-3",
+      "correctOptionId": "crwa-aa-008_b",
+      "explanation": "Funcionalmente, ambos cumplen un papel similar: definir el comportamiento de Claude. La diferencia principal es la interfaz y la persistencia. Las instrucciones de un Claude Project se configuran visualmente en claude.ai y persisten automáticamente en todas las conversaciones del proyecto. Un system prompt en la API debe enviarse programáticamente en cada solicitud. Los Projects son una abstracción de nivel superior orientada a usuarios no técnicos.",
+      "explanationEs": "Funcionalmente, ambos cumplen un papel similar: definir el comportamiento de Claude. La diferencia principal es la interfaz y la persistencia. Las instrucciones de un Claude Project se configuran visualmente en claude.ai y persisten automáticamente en todas las conversaciones del proyecto. Un system prompt en la API debe enviarse programáticamente en cada solicitud. Los Projects son una abstracción de nivel superior orientada a usuarios no técnicos.",
+      "options": [
+        { "id": "crwa-aa-008_a", "text": "No hay diferencia; son exactamente lo mismo bajo nombres diferentes", "textEs": "No hay diferencia; son exactamente lo mismo bajo nombres diferentes", "order": 1 },
+        { "id": "crwa-aa-008_b", "text": "Los Projects ofrecen una interfaz visual con persistencia automática en claude.ai; el system prompt se envía programáticamente en cada solicitud de la API", "textEs": "Los Projects ofrecen una interfaz visual con persistencia automática en claude.ai; el system prompt se envía programáticamente en cada solicitud de la API", "order": 2 },
+        { "id": "crwa-aa-008_c", "text": "Las instrucciones de Projects son más potentes y permiten funciones que el system prompt no puede lograr", "textEs": "Las instrucciones de Projects son más potentes y permiten funciones que el system prompt no puede lograr", "order": 3 },
+        { "id": "crwa-aa-008_d", "text": "El system prompt solo funciona con Opus; las instrucciones de Projects funcionan con todos los modelos", "textEs": "El system prompt solo funciona con Opus; las instrucciones de Projects funcionan con todos los modelos", "order": 4 }
+      ],
+      "tags": ["claude-projects", "system-prompt", "api", "comparacion"]
+    }
+  ]
+}

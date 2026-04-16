@@ -1,0 +1,246 @@
+/* ═══════════════════════════════════════════════════════════
+   Simulador CSA ServiceNow — Global Styles
+   Forest Design System v1.0 + Tailwind CSS v4
+   ═══════════════════════════════════════════════════════════ */
+
+@import "tailwindcss";
+@import "./styles/forest/forest-theme.css";
+@import "./styles/forest/forest-layout.css";
+@import "./styles/forest/forest-components.css";
+@import "./styles/forest/forest-utilities.css";
+@import "./styles/forest/forest-animations.css";
+@import "./styles/forest/forest-dark-surface.css";
+@import "./styles/forest/forest-print.css";
+
+/* ─── App-specific overrides ─── */
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background: var(--color-bg-page, #F7F8F7);
+  color: var(--color-text-primary, #04202C);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+/* Override Forest sidebar layout — we have NO sidebar */
+.app-main {
+  margin-left: 0 !important;
+}
+
+/* Ensure full-width content */
+.page {
+  padding: 24px 16px;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .page { padding: 32px 32px; }
+}
+
+@media (min-width: 1024px) {
+  .page { padding: 40px 48px; }
+}
+
+@media (min-width: 1440px) {
+  .page { padding: 40px 64px; }
+}
+
+.page-wide {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-medium {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hero card fix — prevent text overflow */
+.card-hero {
+  overflow: hidden;
+  text-align: center;
+  padding: 48px 24px;
+  border-radius: 16px;
+}
+
+@media (min-width: 640px) {
+  .card-hero { padding: 56px 40px; }
+}
+
+.card-hero__title {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .card-hero__title { font-size: 2.25rem; }
+}
+
+@media (min-width: 1024px) {
+  .card-hero__title { font-size: 2.75rem; }
+}
+
+.card-hero__desc {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid responsiveness fixes */
+.grid-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .grid-features { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-features { grid-template-columns: repeat(3, 1fr); }
+}
+
+.grid-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 480px) {
+  .grid-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .grid-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-stats { grid-template-columns: repeat(4, 1fr); }
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .grid-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1280px) {
+  .grid-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Card fixes */
+.card, .card-section, .card-compact, .card-stat, .card-feature {
+  box-sizing: border-box;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+/* Filter pills — horizontal scroll on mobile */
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 639px) {
+  .filter-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+
+  .filter-pill {
+    flex-shrink: 0;
+  }
+}
+
+/* Stack spacing */
+.stack > * + * { margin-top: 16px; }
+.stack-lg > * + * { margin-top: 24px; }
+
+/* Navbar responsive */
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 16px;
+  gap: 12px;
+}
+
+@media (min-width: 1024px) {
+  .navbar-inner { padding: 0 24px; }
+}
+
+@media (max-width: 639px) {
+  .navbar-inner {
+    flex-wrap: nowrap;
+    height: auto;
+    padding: 8px 12px;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 479px) {
+  .navbar-inner {
+    padding: 8px 8px;
+    gap: 2px;
+  }
+
+  .badge {
+    font-size: 10px !important;
+    padding: 2px 6px;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #C9D1C8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #7D8F84; }
+
+/* Flex row responsive */
+.flex-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .flex-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Action bar sticky */
+.action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 0;
+  margin-top: 24px;
+}
+
+@media (max-width: 639px) {
+  .action-bar {
+    flex-direction: column;
+  }
+
+  .action-bar .btn {
+    width: 100%;
+  }
+}

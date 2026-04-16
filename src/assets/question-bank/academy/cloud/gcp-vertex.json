@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "domain": "gcp-vertex",
+    "domainName": "GCP Vertex AI",
+    "trackId": "gcp-vertex",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 8
+  },
+  "questions": [
+    {
+      "id": "gcpv-001",
+      "text": "¿Cómo se accede a los modelos de Claude en Google Cloud Platform?",
+      "textEs": "¿Cómo se accede a los modelos de Claude en Google Cloud Platform?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-001_a",
+      "explanation": "Los modelos de Claude están disponibles en GCP a través de Vertex AI Model Garden, que es el marketplace de modelos de Google Cloud. Desde Model Garden, se habilita el acceso a Claude y se puede invocar usando la API de Vertex AI. Esto permite usar Claude dentro del ecosistema GCP con todas sus herramientas de gestión.",
+      "explanationEs": "Los modelos de Claude están disponibles en GCP a través de Vertex AI Model Garden, que es el marketplace de modelos de Google Cloud. Desde Model Garden, se habilita el acceso a Claude y se puede invocar usando la API de Vertex AI. Esto permite usar Claude dentro del ecosistema GCP con todas sus herramientas de gestión.",
+      "options": [
+        { "id": "gcpv-001_a", "text": "A través de Vertex AI Model Garden, donde se habilita Claude y se invoca usando la API de Vertex AI", "textEs": "A través de Vertex AI Model Garden, donde se habilita Claude y se invoca usando la API de Vertex AI", "order": 1 },
+        { "id": "gcpv-001_b", "text": "Descargando el modelo desde Google Cloud Storage e instalándolo en una VM", "textEs": "Descargando el modelo desde Google Cloud Storage e instalándolo en una VM", "order": 2 },
+        { "id": "gcpv-001_c", "text": "A través de Google Workspace usando complementos de Chrome", "textEs": "A través de Google Workspace usando complementos de Chrome", "order": 3 },
+        { "id": "gcpv-001_d", "text": "Solo a través del marketplace de terceros Google Cloud Marketplace como SaaS", "textEs": "Solo a través del marketplace de terceros Google Cloud Marketplace como SaaS", "order": 4 }
+      ],
+      "tags": ["vertex-ai", "model-garden", "acceso"]
+    },
+    {
+      "id": "gcpv-002",
+      "text": "¿Cuál es el formato de endpoint para invocar Claude a través de Vertex AI?",
+      "textEs": "¿Cuál es el formato de endpoint para invocar Claude a través de Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-002_c",
+      "explanation": "En Vertex AI, Claude se invoca a través de endpoints regionales que incluyen el project ID, la región y el modelo. El formato típico es: https://{REGION}-aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/{REGION}/publishers/anthropic/models/{MODEL_ID}:streamRawPredict. Esto se integra con la autenticación estándar de GCP.",
+      "explanationEs": "En Vertex AI, Claude se invoca a través de endpoints regionales que incluyen el project ID, la región y el modelo. El formato típico es: https://{REGION}-aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/{REGION}/publishers/anthropic/models/{MODEL_ID}:streamRawPredict. Esto se integra con la autenticación estándar de GCP.",
+      "options": [
+        { "id": "gcpv-002_a", "text": "Se usa la misma URL de api.anthropic.com pero con un header de GCP", "textEs": "Se usa la misma URL de api.anthropic.com pero con un header de GCP", "order": 1 },
+        { "id": "gcpv-002_b", "text": "Un endpoint global único: aiplatform.googleapis.com/claude", "textEs": "Un endpoint global único: aiplatform.googleapis.com/claude", "order": 2 },
+        { "id": "gcpv-002_c", "text": "Endpoints regionales con formato: {REGION}-aiplatform.googleapis.com incluyendo project ID, región, publisher y model ID", "textEs": "Endpoints regionales con formato: {REGION}-aiplatform.googleapis.com incluyendo project ID, región, publisher y model ID", "order": 3 },
+        { "id": "gcpv-002_d", "text": "No hay endpoints HTTP; solo se puede acceder mediante la librería cliente de Python", "textEs": "No hay endpoints HTTP; solo se puede acceder mediante la librería cliente de Python", "order": 4 }
+      ],
+      "tags": ["endpoints", "api", "formato"]
+    },
+    {
+      "id": "gcpv-003",
+      "text": "¿Qué sistema de IAM de GCP controla el acceso a Claude en Vertex AI?",
+      "textEs": "¿Qué sistema de IAM de GCP controla el acceso a Claude en Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-003_b",
+      "explanation": "GCP IAM controla el acceso mediante roles predefinidos como 'Vertex AI User' (roles/aiplatform.user) que permite invocar modelos. Los permisos se asignan a cuentas de servicio o usuarios a nivel de proyecto u organización. Se pueden crear roles personalizados para control más granular. Esto se integra con la jerarquía de recursos de GCP.",
+      "explanationEs": "GCP IAM controla el acceso mediante roles predefinidos como 'Vertex AI User' (roles/aiplatform.user) que permite invocar modelos. Los permisos se asignan a cuentas de servicio o usuarios a nivel de proyecto u organización. Se pueden crear roles personalizados para control más granular. Esto se integra con la jerarquía de recursos de GCP.",
+      "options": [
+        { "id": "gcpv-003_a", "text": "Un sistema de API keys específico de Anthropic que se configura en GCP", "textEs": "Un sistema de API keys específico de Anthropic que se configura en GCP", "order": 1 },
+        { "id": "gcpv-003_b", "text": "GCP IAM con roles como 'Vertex AI User' asignados a cuentas de servicio o usuarios a nivel de proyecto", "textEs": "GCP IAM con roles como 'Vertex AI User' asignados a cuentas de servicio o usuarios a nivel de proyecto", "order": 2 },
+        { "id": "gcpv-003_c", "text": "Google Workspace Admin que gestiona los permisos desde el panel de administración", "textEs": "Google Workspace Admin que gestiona los permisos desde el panel de administración", "order": 3 },
+        { "id": "gcpv-003_d", "text": "No hay control de acceso; cualquier usuario del proyecto puede usar Claude", "textEs": "No hay control de acceso; cualquier usuario del proyecto puede usar Claude", "order": 4 }
+      ],
+      "tags": ["iam", "gcp", "roles"]
+    },
+    {
+      "id": "gcpv-004",
+      "text": "¿Cómo se puede monitorear el uso y rendimiento de Claude en Vertex AI?",
+      "textEs": "¿Cómo se puede monitorear el uso y rendimiento de Claude en Vertex AI?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-004_d",
+      "explanation": "Google Cloud Monitoring (antes Stackdriver) y Cloud Logging proporcionan métricas y logs nativos para Vertex AI. Se pueden monitorear latencia de predicciones, conteo de solicitudes, errores y uso de cuota. Cloud Audit Logs registra quién hizo qué solicitud para cumplimiento. Se pueden crear dashboards y alertas personalizadas.",
+      "explanationEs": "Google Cloud Monitoring (antes Stackdriver) y Cloud Logging proporcionan métricas y logs nativos para Vertex AI. Se pueden monitorear latencia de predicciones, conteo de solicitudes, errores y uso de cuota. Cloud Audit Logs registra quién hizo qué solicitud para cumplimiento. Se pueden crear dashboards y alertas personalizadas.",
+      "options": [
+        { "id": "gcpv-004_a", "text": "Solo se puede ver el uso en la facturación mensual de GCP", "textEs": "Solo se puede ver el uso en la facturación mensual de GCP", "order": 1 },
+        { "id": "gcpv-004_b", "text": "Usando exclusivamente herramientas de monitoreo de terceros", "textEs": "Usando exclusivamente herramientas de monitoreo de terceros", "order": 2 },
+        { "id": "gcpv-004_c", "text": "Revisando manualmente los logs en la consola de Vertex AI", "textEs": "Revisando manualmente los logs en la consola de Vertex AI", "order": 3 },
+        { "id": "gcpv-004_d", "text": "Cloud Monitoring y Cloud Logging para métricas, latencia, errores, uso de cuota; Cloud Audit Logs para auditoría de acceso", "textEs": "Cloud Monitoring y Cloud Logging para métricas, latencia, errores, uso de cuota; Cloud Audit Logs para auditoría de acceso", "order": 4 }
+      ],
+      "tags": ["monitoreo", "cloud-monitoring", "logging"]
+    },
+    {
+      "id": "gcpv-005",
+      "text": "¿Cómo se puede integrar Claude en Vertex AI con BigQuery para análisis de datos?",
+      "textEs": "¿Cómo se puede integrar Claude en Vertex AI con BigQuery para análisis de datos?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-005_a",
+      "explanation": "BigQuery ML permite llamar a modelos de Vertex AI directamente desde consultas SQL usando la función ML.GENERATE_TEXT. Esto permite analizar datos almacenados en BigQuery con Claude sin mover datos fuera de GCP. Casos de uso incluyen clasificación de texto, extracción de entidades, resumen y análisis de sentimiento sobre datos a escala.",
+      "explanationEs": "BigQuery ML permite llamar a modelos de Vertex AI directamente desde consultas SQL usando la función ML.GENERATE_TEXT. Esto permite analizar datos almacenados en BigQuery con Claude sin mover datos fuera de GCP. Casos de uso incluyen clasificación de texto, extracción de entidades, resumen y análisis de sentimiento sobre datos a escala.",
+      "options": [
+        { "id": "gcpv-005_a", "text": "Usando BigQuery ML con ML.GENERATE_TEXT para invocar Claude directamente desde consultas SQL sobre datos almacenados en BigQuery", "textEs": "Usando BigQuery ML con ML.GENERATE_TEXT para invocar Claude directamente desde consultas SQL sobre datos almacenados en BigQuery", "order": 1 },
+        { "id": "gcpv-005_b", "text": "Exportando todos los datos de BigQuery a CSV y subiéndolos manualmente a Claude", "textEs": "Exportando todos los datos de BigQuery a CSV y subiéndolos manualmente a Claude", "order": 2 },
+        { "id": "gcpv-005_c", "text": "No es posible integrar BigQuery con Claude; son servicios incompatibles", "textEs": "No es posible integrar BigQuery con Claude; son servicios incompatibles", "order": 3 },
+        { "id": "gcpv-005_d", "text": "Creando una conexión JDBC directa entre Claude y BigQuery", "textEs": "Creando una conexión JDBC directa entre Claude y BigQuery", "order": 4 }
+      ],
+      "tags": ["bigquery", "integracion", "sql", "datos"]
+    },
+    {
+      "id": "gcpv-006",
+      "text": "¿Qué diferencia hay entre usar la API de Anthropic directamente y usar Claude a través de Vertex AI para una empresa con infraestructura en GCP?",
+      "textEs": "¿Qué diferencia hay entre usar la API de Anthropic directamente y usar Claude a través de Vertex AI para una empresa con infraestructura en GCP?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-006_b",
+      "explanation": "Vertex AI ofrece integración nativa con el ecosistema GCP: IAM para control de acceso, VPC Service Controls para aislamiento de red, Cloud Audit Logs para cumplimiento, facturación consolidada con otros servicios GCP y soporte de committed use discounts. Los datos se procesan dentro de la infraestructura GCP, cumpliendo requisitos de residencia de datos.",
+      "explanationEs": "Vertex AI ofrece integración nativa con el ecosistema GCP: IAM para control de acceso, VPC Service Controls para aislamiento de red, Cloud Audit Logs para cumplimiento, facturación consolidada con otros servicios GCP y soporte de committed use discounts. Los datos se procesan dentro de la infraestructura GCP, cumpliendo requisitos de residencia de datos.",
+      "options": [
+        { "id": "gcpv-006_a", "text": "Claude en Vertex AI tiene capacidades superiores al Claude de la API directa", "textEs": "Claude en Vertex AI tiene capacidades superiores al Claude de la API directa", "order": 1 },
+        { "id": "gcpv-006_b", "text": "Vertex AI integra con IAM, VPC Service Controls, Cloud Audit Logs y facturación consolidada de GCP, manteniendo datos dentro del ecosistema", "textEs": "Vertex AI integra con IAM, VPC Service Controls, Cloud Audit Logs y facturación consolidada de GCP, manteniendo datos dentro del ecosistema", "order": 2 },
+        { "id": "gcpv-006_c", "text": "La API directa de Anthropic es siempre más económica que Vertex AI", "textEs": "La API directa de Anthropic es siempre más económica que Vertex AI", "order": 3 },
+        { "id": "gcpv-006_d", "text": "No hay diferencia significativa; ambas opciones ofrecen exactamente lo mismo", "textEs": "No hay diferencia significativa; ambas opciones ofrecen exactamente lo mismo", "order": 4 }
+      ],
+      "tags": ["comparacion", "ventajas-vertex", "ecosistema-gcp"]
+    },
+    {
+      "id": "gcpv-007",
+      "text": "¿Qué son los VPC Service Controls en el contexto de usar Claude en Vertex AI y por qué son importantes?",
+      "textEs": "¿Qué son los VPC Service Controls en el contexto de usar Claude en Vertex AI y por qué son importantes?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-007_c",
+      "explanation": "VPC Service Controls crean perímetros de seguridad alrededor de los recursos de GCP que restringen el movimiento de datos. Cuando se aplican a Vertex AI, aseguran que las solicitudes a Claude solo se originen desde redes autorizadas y que los datos no se filtren fuera del perímetro definido. Esto es crucial para cumplimiento regulatorio y protección de datos sensibles.",
+      "explanationEs": "VPC Service Controls crean perímetros de seguridad alrededor de los recursos de GCP que restringen el movimiento de datos. Cuando se aplican a Vertex AI, aseguran que las solicitudes a Claude solo se originen desde redes autorizadas y que los datos no se filtren fuera del perímetro definido. Esto es crucial para cumplimiento regulatorio y protección de datos sensibles.",
+      "options": [
+        { "id": "gcpv-007_a", "text": "Firewalls que protegen las máquinas virtuales de GCP contra ataques DDoS", "textEs": "Firewalls que protegen las máquinas virtuales de GCP contra ataques DDoS", "order": 1 },
+        { "id": "gcpv-007_b", "text": "Redes privadas virtuales (VPN) para conectar la oficina con GCP", "textEs": "Redes privadas virtuales (VPN) para conectar la oficina con GCP", "order": 2 },
+        { "id": "gcpv-007_c", "text": "Perímetros de seguridad que restringen el origen de solicitudes a Vertex AI y previenen la filtración de datos fuera del perímetro definido", "textEs": "Perímetros de seguridad que restringen el origen de solicitudes a Vertex AI y previenen la filtración de datos fuera del perímetro definido", "order": 3 },
+        { "id": "gcpv-007_d", "text": "Controles de versión para los modelos desplegados en Vertex AI", "textEs": "Controles de versión para los modelos desplegados en Vertex AI", "order": 4 }
+      ],
+      "tags": ["vpc-service-controls", "seguridad", "compliance"]
+    },
+    {
+      "id": "gcpv-008",
+      "text": "¿Cuál es el proceso para habilitar Claude en Vertex AI Model Garden por primera vez?",
+      "textEs": "¿Cuál es el proceso para habilitar Claude en Vertex AI Model Garden por primera vez?",
+      "domainCode": "gcp-vertex",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "gcp-vertex",
+      "correctOptionId": "gcpv-008_d",
+      "explanation": "Para habilitar Claude en Vertex AI, se debe: 1) Habilitar la API de Vertex AI en el proyecto GCP, 2) Navegar a Model Garden en la consola, 3) Buscar Claude y solicitar acceso, 4) Aceptar los términos de uso de Anthropic. Una vez aprobado, se puede invocar el modelo usando la API de Vertex AI con las credenciales del proyecto.",
+      "explanationEs": "Para habilitar Claude en Vertex AI, se debe: 1) Habilitar la API de Vertex AI en el proyecto GCP, 2) Navegar a Model Garden en la consola, 3) Buscar Claude y solicitar acceso, 4) Aceptar los términos de uso de Anthropic. Una vez aprobado, se puede invocar el modelo usando la API de Vertex AI con las credenciales del proyecto.",
+      "options": [
+        { "id": "gcpv-008_a", "text": "Enviar un correo a Anthropic solicitando acceso y esperar aprobación manual", "textEs": "Enviar un correo a Anthropic solicitando acceso y esperar aprobación manual", "order": 1 },
+        { "id": "gcpv-008_b", "text": "Descargar el modelo desde GitHub y desplegarlo en un container de GKE", "textEs": "Descargar el modelo desde GitHub y desplegarlo en un container de GKE", "order": 2 },
+        { "id": "gcpv-008_c", "text": "Comprar una licencia de Anthropic y activarla en la consola de GCP", "textEs": "Comprar una licencia de Anthropic y activarla en la consola de GCP", "order": 3 },
+        { "id": "gcpv-008_d", "text": "Habilitar la API de Vertex AI, navegar a Model Garden, solicitar acceso a Claude y aceptar los términos de uso", "textEs": "Habilitar la API de Vertex AI, navegar a Model Garden, solicitar acceso a Claude y aceptar los términos de uso", "order": 4 }
+      ],
+      "tags": ["setup", "model-garden", "configuracion-inicial"]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+# NXT AI Development Framework - Configuracion del Proyecto
+# Proyecto: Simulador Examen CSA ServiceNow
+# Version: 4.0.0
+
+project:
+  name: simulador-examen-csa
+  display_name: "Simulador Examen CSA ServiceNow"
+  version: "1.0.0"
+  type: web-app
+  description: "Simulador de practica para certificacion ServiceNow CSA"
+
+  stack:
+    framework: "Angular 20.1.0"
+    language: "TypeScript 5.8.2"
+    reactive: "RxJS 7.8.0 + Angular Signals"
+    ssr: "@angular/ssr + Express 5"
+    build: "Angular CLI 20.1.6 + Vite"
+    testing: "Karma + Jasmine"
+
+  external_services:
+    - name: "n8n Webhooks"
+      url: "https://devwebhook.personalizzimo.com"
+      purpose: "Generacion de preguntas y validacion de respuestas"
+
+# Framework NXT
+nxt:
+  version: "4.0.0"
+  source: "nxt-ai-development"
+
+  # Agentes de contexto habilitados
+  persistence:
+    context_agent: true
+    multicontext_agent: true
+    changelog_agent: true
+    ralph_agent: true
+
+  # Fase actual del proyecto
+  current_phase: "construir"
+
+  # Nivel BMAD estimado
+  bmad_level: 2  # Standard (1-8h features)

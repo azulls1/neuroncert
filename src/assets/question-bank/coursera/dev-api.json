@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "coursera-dev-api",
+    "domainName": "Developing Applications with Claude API",
+    "trackId": "coursera-dev-api",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "DEVAPI-001",
+      "text": "When building a multi-turn conversation with the Claude API, how should previous messages be included in each request?",
+      "textEs": "Al construir una conversacion multi-turno con la API de Claude, ¿como se deben incluir los mensajes previos en cada solicitud?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-001_b",
+      "explanation": "The Claude Messages API is stateless. Each request must include the full conversation history as an array of alternating user and assistant messages. The API does not retain session state between calls, so the client is responsible for appending previous messages to maintain context across turns.",
+      "explanationEs": "La API de Mensajes de Claude es sin estado. Cada solicitud debe incluir el historial completo de la conversacion como un arreglo de mensajes alternados de usuario y asistente. La API no retiene estado de sesion entre llamadas, por lo que el cliente es responsable de agregar los mensajes previos para mantener el contexto entre turnos.",
+      "options": [
+        { "id": "DEVAPI-001_a", "text": "Only send the latest user message; the API remembers previous turns automatically via a session ID", "textEs": "Solo enviar el ultimo mensaje del usuario; la API recuerda turnos previos automaticamente mediante un ID de sesion", "order": 1 },
+        { "id": "DEVAPI-001_b", "text": "Include the full conversation history as alternating user/assistant messages in the messages array on every request", "textEs": "Incluir el historial completo de la conversacion como mensajes alternados de usuario/asistente en el arreglo messages en cada solicitud", "order": 2 },
+        { "id": "DEVAPI-001_c", "text": "Use a separate /history endpoint to upload previous messages before making the new request", "textEs": "Usar un endpoint separado /history para subir los mensajes previos antes de hacer la nueva solicitud", "order": 3 },
+        { "id": "DEVAPI-001_d", "text": "Pass a conversation_id parameter and the API will fetch the history from its internal database", "textEs": "Pasar un parametro conversation_id y la API buscara el historial en su base de datos interna", "order": 4 }
+      ],
+      "tags": ["multi-turn", "messages-api", "stateless", "conversation-history"]
+    },
+    {
+      "id": "DEVAPI-002",
+      "text": "What is the correct way to obtain structured JSON output from Claude when building an application that needs to parse the response programmatically?",
+      "textEs": "¿Cual es la forma correcta de obtener una salida JSON estructurada de Claude al construir una aplicacion que necesita parsear la respuesta programaticamente?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-002_c",
+      "explanation": "Claude supports tool use (function calling) to produce structured JSON output reliably. By defining a tool with a JSON schema, Claude will return a tool_use content block with structured data matching that schema. This is more reliable than asking for JSON in the prompt text, because the model is constrained by the schema definition and returns validated structured data.",
+      "explanationEs": "Claude soporta uso de herramientas (function calling) para producir salida JSON estructurada de forma confiable. Al definir una herramienta con un esquema JSON, Claude devolvera un bloque de contenido tool_use con datos estructurados que coinciden con ese esquema. Esto es mas confiable que pedir JSON en el texto del prompt, porque el modelo esta restringido por la definicion del esquema y devuelve datos estructurados validados.",
+      "options": [
+        { "id": "DEVAPI-002_a", "text": "Set the response_format parameter to 'json_object' in the API request", "textEs": "Establecer el parametro response_format a 'json_object' en la solicitud de la API", "order": 1 },
+        { "id": "DEVAPI-002_b", "text": "Include 'Respond only in JSON' in the prompt and parse the text response", "textEs": "Incluir 'Responde solo en JSON' en el prompt y parsear la respuesta de texto", "order": 2 },
+        { "id": "DEVAPI-002_c", "text": "Use tool use (function calling) with a defined JSON schema so Claude returns a structured tool_use content block", "textEs": "Usar tool use (function calling) con un esquema JSON definido para que Claude devuelva un bloque de contenido tool_use estructurado", "order": 3 },
+        { "id": "DEVAPI-002_d", "text": "Use the /structured endpoint instead of /messages for JSON responses", "textEs": "Usar el endpoint /structured en lugar de /messages para respuestas JSON", "order": 4 }
+      ],
+      "tags": ["structured-output", "tool-use", "json-schema", "function-calling"]
+    },
+    {
+      "id": "DEVAPI-003",
+      "text": "When using server-sent events (SSE) streaming with the Claude API, which event type indicates that the model has finished generating its complete response?",
+      "textEs": "Al usar streaming con eventos enviados por el servidor (SSE) con la API de Claude, ¿que tipo de evento indica que el modelo ha terminado de generar su respuesta completa?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-003_a",
+      "explanation": "The message_stop event signals that the entire message generation is complete. During streaming, you receive message_start, content_block_start, content_block_delta (with incremental text), content_block_stop, and finally message_stop. The message_delta event before message_stop includes the final stop_reason field. The message_stop event is your signal to finalize processing.",
+      "explanationEs": "El evento message_stop señala que la generacion completa del mensaje ha terminado. Durante el streaming, se reciben message_start, content_block_start, content_block_delta (con texto incremental), content_block_stop, y finalmente message_stop. El evento message_delta antes de message_stop incluye el campo stop_reason final. El evento message_stop es la señal para finalizar el procesamiento.",
+      "options": [
+        { "id": "DEVAPI-003_a", "text": "message_stop", "textEs": "message_stop", "order": 1 },
+        { "id": "DEVAPI-003_b", "text": "content_block_stop", "textEs": "content_block_stop", "order": 2 },
+        { "id": "DEVAPI-003_c", "text": "stream_end", "textEs": "stream_end", "order": 3 },
+        { "id": "DEVAPI-003_d", "text": "response_complete", "textEs": "response_complete", "order": 4 }
+      ],
+      "tags": ["streaming", "sse", "events", "message-stop"]
+    },
+    {
+      "id": "DEVAPI-004",
+      "text": "An application receives a 529 status code from the Claude API. What does this indicate and what is the recommended handling strategy?",
+      "textEs": "Una aplicacion recibe un codigo de estado 529 de la API de Claude. ¿Que indica esto y cual es la estrategia de manejo recomendada?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-004_b",
+      "explanation": "A 529 status code means the API is temporarily overloaded. The recommended strategy is to implement exponential backoff with retries. Unlike a 429 (rate limit), which means your specific account hit its limit, a 529 indicates server-side capacity issues. You should retry with increasing delays (e.g., 1s, 2s, 4s, 8s) and respect any Retry-After header if provided.",
+      "explanationEs": "Un codigo de estado 529 significa que la API esta temporalmente sobrecargada. La estrategia recomendada es implementar retroceso exponencial con reintentos. A diferencia de un 429 (limite de tasa), que significa que tu cuenta especifica alcanzo su limite, un 529 indica problemas de capacidad del lado del servidor. Se debe reintentar con demoras crecientes (por ejemplo, 1s, 2s, 4s, 8s) y respetar cualquier encabezado Retry-After si se proporciona.",
+      "options": [
+        { "id": "DEVAPI-004_a", "text": "Invalid API key; regenerate credentials and retry immediately", "textEs": "Clave de API invalida; regenerar credenciales y reintentar inmediatamente", "order": 1 },
+        { "id": "DEVAPI-004_b", "text": "API is temporarily overloaded; implement exponential backoff and retry after increasing delays", "textEs": "La API esta temporalmente sobrecargada; implementar retroceso exponencial y reintentar despues de demoras crecientes", "order": 2 },
+        { "id": "DEVAPI-004_c", "text": "Request payload is too large; reduce the message length and resend", "textEs": "El payload de la solicitud es demasiado grande; reducir la longitud del mensaje y reenviar", "order": 3 },
+        { "id": "DEVAPI-004_d", "text": "Model not available in your region; switch to a different model variant", "textEs": "Modelo no disponible en tu region; cambiar a una variante de modelo diferente", "order": 4 }
+      ],
+      "tags": ["error-handling", "529", "overloaded", "exponential-backoff", "retry"]
+    },
+    {
+      "id": "DEVAPI-005",
+      "text": "In the Anthropic Python SDK, what is the correct way to create a message with streaming enabled?",
+      "textEs": "En el SDK de Python de Anthropic, ¿cual es la forma correcta de crear un mensaje con streaming habilitado?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-005_d",
+      "explanation": "The Anthropic Python SDK provides a client.messages.stream() context manager that returns an iterable of events. You use it with a 'with' statement and iterate over text chunks using stream.text_stream. This is the idiomatic SDK pattern, as opposed to manually setting stream=True on the create method (which returns raw SSE events).",
+      "explanationEs": "El SDK de Python de Anthropic proporciona un administrador de contexto client.messages.stream() que devuelve un iterable de eventos. Se usa con una declaracion 'with' y se itera sobre fragmentos de texto usando stream.text_stream. Este es el patron idiomatico del SDK, a diferencia de establecer manualmente stream=True en el metodo create (que devuelve eventos SSE sin procesar).",
+      "options": [
+        { "id": "DEVAPI-005_a", "text": "client.messages.create(stream=True, ...) returns a generator of strings", "textEs": "client.messages.create(stream=True, ...) devuelve un generador de cadenas", "order": 1 },
+        { "id": "DEVAPI-005_b", "text": "client.stream_message(...) returns text chunks asynchronously", "textEs": "client.stream_message(...) devuelve fragmentos de texto asincronamente", "order": 2 },
+        { "id": "DEVAPI-005_c", "text": "client.messages.create(..., response_type='stream') enables streaming mode", "textEs": "client.messages.create(..., response_type='stream') habilita el modo streaming", "order": 3 },
+        { "id": "DEVAPI-005_d", "text": "Use client.messages.stream() as a context manager and iterate over stream.text_stream for text chunks", "textEs": "Usar client.messages.stream() como administrador de contexto e iterar sobre stream.text_stream para fragmentos de texto", "order": 4 }
+      ],
+      "tags": ["python-sdk", "streaming", "sdk-patterns", "context-manager"]
+    },
+    {
+      "id": "DEVAPI-006",
+      "text": "When building a context-aware agent with Claude, what is the purpose of appending the tool_result back into the messages array after Claude makes a tool_use request?",
+      "textEs": "Al construir un agente consciente del contexto con Claude, ¿cual es el proposito de agregar el tool_result de vuelta al arreglo de mensajes despues de que Claude hace una solicitud tool_use?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-006_a",
+      "explanation": "When Claude responds with a tool_use stop_reason, it means the model wants to call a function. Your application must execute the tool, then append both the assistant's tool_use message and a new user message containing the tool_result. This completes the agentic loop: Claude sees the tool output and can then formulate its final answer or request another tool call. Without the tool_result, Claude cannot continue the conversation.",
+      "explanationEs": "Cuando Claude responde con un stop_reason de tool_use, significa que el modelo quiere llamar a una funcion. Tu aplicacion debe ejecutar la herramienta, luego agregar tanto el mensaje tool_use del asistente como un nuevo mensaje de usuario conteniendo el tool_result. Esto completa el ciclo agentico: Claude ve la salida de la herramienta y puede formular su respuesta final o solicitar otra llamada a herramienta. Sin el tool_result, Claude no puede continuar la conversacion.",
+      "options": [
+        { "id": "DEVAPI-006_a", "text": "It closes the agentic loop so Claude can see the tool output and continue reasoning to produce a final answer or make further tool calls", "textEs": "Cierra el ciclo agentico para que Claude pueda ver la salida de la herramienta y continuar razonando para producir una respuesta final o hacer mas llamadas a herramientas", "order": 1 },
+        { "id": "DEVAPI-006_b", "text": "It logs the tool execution for billing purposes; without it the request will fail with a 400 error", "textEs": "Registra la ejecucion de la herramienta para facturacion; sin ello la solicitud fallara con un error 400", "order": 2 },
+        { "id": "DEVAPI-006_c", "text": "It updates the system prompt with real-time data that persists across all future conversations", "textEs": "Actualiza el system prompt con datos en tiempo real que persisten en todas las conversaciones futuras", "order": 3 },
+        { "id": "DEVAPI-006_d", "text": "It is optional and only needed for debugging; Claude can generate the final answer without seeing tool results", "textEs": "Es opcional y solo se necesita para depuracion; Claude puede generar la respuesta final sin ver los resultados de la herramienta", "order": 4 }
+      ],
+      "tags": ["agentic-loop", "tool-use", "tool-result", "context-aware-agent"]
+    },
+    {
+      "id": "DEVAPI-007",
+      "text": "What is the recommended approach for handling conversation context that exceeds Claude's maximum context window in a long-running application?",
+      "textEs": "¿Cual es el enfoque recomendado para manejar el contexto de conversacion que excede la ventana de contexto maxima de Claude en una aplicacion de larga duracion?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-007_c",
+      "explanation": "When conversations grow too long, the recommended approach is to implement a sliding window that keeps the system message and recent messages while summarizing or dropping older ones. You can also use a summarization step where Claude condenses older conversation turns into a summary that replaces them. This preserves important context while staying within token limits. Simply truncating from the end loses the most recent context, which is usually the most relevant.",
+      "explanationEs": "Cuando las conversaciones crecen demasiado, el enfoque recomendado es implementar una ventana deslizante que mantiene el mensaje de sistema y los mensajes recientes mientras se resumen o descartan los mas antiguos. Tambien se puede usar un paso de resumen donde Claude condensa turnos antiguos de conversacion en un resumen que los reemplaza. Esto preserva el contexto importante mientras se mantiene dentro de los limites de tokens. Simplemente truncar desde el final pierde el contexto mas reciente, que generalmente es el mas relevante.",
+      "options": [
+        { "id": "DEVAPI-007_a", "text": "Switch to a model with unlimited context; all Claude models support infinite conversation length", "textEs": "Cambiar a un modelo con contexto ilimitado; todos los modelos de Claude soportan longitud de conversacion infinita", "order": 1 },
+        { "id": "DEVAPI-007_b", "text": "Truncate the most recent messages to fit within the limit, keeping the oldest messages for context", "textEs": "Truncar los mensajes mas recientes para ajustarse al limite, manteniendo los mensajes mas antiguos para contexto", "order": 2 },
+        { "id": "DEVAPI-007_c", "text": "Use a sliding window keeping the system message and recent turns, and summarize or prune older messages", "textEs": "Usar una ventana deslizante manteniendo el mensaje de sistema y los turnos recientes, y resumir o podar los mensajes mas antiguos", "order": 3 },
+        { "id": "DEVAPI-007_d", "text": "Store messages in a database and pass the database connection string so Claude can query history directly", "textEs": "Almacenar mensajes en una base de datos y pasar la cadena de conexion para que Claude pueda consultar el historial directamente", "order": 4 }
+      ],
+      "tags": ["context-window", "sliding-window", "summarization", "long-running-apps"]
+    },
+    {
+      "id": "DEVAPI-008",
+      "text": "In the Claude API, what does the 'max_tokens' parameter control, and what happens if the response reaches this limit?",
+      "textEs": "En la API de Claude, ¿que controla el parametro 'max_tokens' y que sucede si la respuesta alcanza este limite?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-008_b",
+      "explanation": "The max_tokens parameter sets the maximum number of tokens Claude can generate in its response. If the response reaches this limit, the generation stops mid-sentence and the stop_reason is set to 'max_tokens' instead of 'end_turn'. This is a required parameter in the Messages API. Applications should check the stop_reason to detect truncated responses and decide whether to request a continuation.",
+      "explanationEs": "El parametro max_tokens establece el numero maximo de tokens que Claude puede generar en su respuesta. Si la respuesta alcanza este limite, la generacion se detiene a mitad de oracion y el stop_reason se establece en 'max_tokens' en lugar de 'end_turn'. Este es un parametro requerido en la API de Mensajes. Las aplicaciones deben verificar el stop_reason para detectar respuestas truncadas y decidir si solicitar una continuacion.",
+      "options": [
+        { "id": "DEVAPI-008_a", "text": "It limits the total tokens (input + output); if reached, the API returns a 413 error", "textEs": "Limita el total de tokens (entrada + salida); si se alcanza, la API devuelve un error 413", "order": 1 },
+        { "id": "DEVAPI-008_b", "text": "It caps the output tokens; if reached, generation stops and stop_reason is 'max_tokens' indicating truncation", "textEs": "Limita los tokens de salida; si se alcanza, la generacion se detiene y stop_reason es 'max_tokens' indicando truncamiento", "order": 2 },
+        { "id": "DEVAPI-008_c", "text": "It sets a soft suggestion; Claude may exceed it slightly to finish its current sentence", "textEs": "Establece una sugerencia suave; Claude puede excederlo ligeramente para terminar su oracion actual", "order": 3 },
+        { "id": "DEVAPI-008_d", "text": "It controls the input token limit; output is always unlimited", "textEs": "Controla el limite de tokens de entrada; la salida siempre es ilimitada", "order": 4 }
+      ],
+      "tags": ["max-tokens", "stop-reason", "truncation", "api-parameters"]
+    },
+    {
+      "id": "DEVAPI-009",
+      "text": "When defining tools for Claude's function calling, what is the role of the 'input_schema' property in a tool definition?",
+      "textEs": "Al definir herramientas para el function calling de Claude, ¿cual es el rol de la propiedad 'input_schema' en una definicion de herramienta?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-009_d",
+      "explanation": "The input_schema is a JSON Schema object that describes the parameters the tool accepts. Claude uses this schema to understand what arguments to generate when calling the tool. Well-defined schemas with descriptions for each property help Claude produce accurate tool calls. The schema also enables client-side validation of Claude's tool call inputs before execution.",
+      "explanationEs": "El input_schema es un objeto JSON Schema que describe los parametros que acepta la herramienta. Claude usa este esquema para entender que argumentos generar al llamar la herramienta. Esquemas bien definidos con descripciones para cada propiedad ayudan a Claude a producir llamadas a herramientas precisas. El esquema tambien permite la validacion del lado del cliente de los inputs de llamadas a herramientas de Claude antes de su ejecucion.",
+      "options": [
+        { "id": "DEVAPI-009_a", "text": "It validates Claude's text response format to ensure it matches a specific pattern", "textEs": "Valida el formato de respuesta de texto de Claude para asegurar que coincida con un patron especifico", "order": 1 },
+        { "id": "DEVAPI-009_b", "text": "It defines the expected output format that the tool will return to Claude", "textEs": "Define el formato de salida esperado que la herramienta devolvera a Claude", "order": 2 },
+        { "id": "DEVAPI-009_c", "text": "It specifies rate limiting rules for how often the tool can be called", "textEs": "Especifica reglas de limitacion de tasa para la frecuencia con que se puede llamar a la herramienta", "order": 3 },
+        { "id": "DEVAPI-009_d", "text": "It is a JSON Schema describing the tool's parameters so Claude knows what arguments to generate for the tool call", "textEs": "Es un JSON Schema que describe los parametros de la herramienta para que Claude sepa que argumentos generar para la llamada a la herramienta", "order": 4 }
+      ],
+      "tags": ["tool-definition", "input-schema", "json-schema", "function-calling"]
+    },
+    {
+      "id": "DEVAPI-010",
+      "text": "A developer is building an application using the Claude API and wants to ensure consistent behavior across requests. Which combination of parameters should they configure in the system message and request body?",
+      "textEs": "Un desarrollador esta construyendo una aplicacion usando la API de Claude y quiere asegurar un comportamiento consistente entre solicitudes. ¿Que combinacion de parametros debe configurar en el mensaje de sistema y el cuerpo de la solicitud?",
+      "domainCode": "coursera-dev-api",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-dev-api",
+      "correctOptionId": "DEVAPI-010_a",
+      "explanation": "For consistent behavior: use a detailed system message that defines the role, rules, and output format; set temperature to 0 for deterministic outputs; and define the model version explicitly (e.g., 'claude-sonnet-4-20250514') rather than using an alias like 'claude-sonnet-4' which may point to updated versions over time. This combination minimizes variability across requests. The system message anchors behavior, low temperature reduces randomness, and pinning the model version prevents unexpected changes from model updates.",
+      "explanationEs": "Para comportamiento consistente: usar un mensaje de sistema detallado que defina el rol, las reglas y el formato de salida; establecer la temperatura en 0 para salidas deterministicas; y definir la version del modelo explicitamente (por ejemplo, 'claude-sonnet-4-20250514') en lugar de usar un alias como 'claude-sonnet-4' que puede apuntar a versiones actualizadas con el tiempo. Esta combinacion minimiza la variabilidad entre solicitudes. El mensaje de sistema ancla el comportamiento, la temperatura baja reduce la aleatoriedad, y fijar la version del modelo previene cambios inesperados por actualizaciones del modelo.",
+      "options": [
+        { "id": "DEVAPI-010_a", "text": "Detailed system message with role/rules/format, temperature set to 0, and a pinned model version string", "textEs": "Mensaje de sistema detallado con rol/reglas/formato, temperatura en 0, y una cadena de version de modelo fijada", "order": 1 },
+        { "id": "DEVAPI-010_b", "text": "No system message (let Claude decide), high temperature for creativity, and use the latest model alias", "textEs": "Sin mensaje de sistema (dejar que Claude decida), temperatura alta para creatividad, y usar el alias del modelo mas reciente", "order": 2 },
+        { "id": "DEVAPI-010_c", "text": "A seed parameter to lock randomness, a response_format of 'deterministic', and max_tokens set to 1", "textEs": "Un parametro seed para fijar la aleatoriedad, un response_format de 'deterministic', y max_tokens en 1", "order": 3 },
+        { "id": "DEVAPI-010_d", "text": "Multiple system messages per request for redundancy, with the cache_control flag enabled", "textEs": "Multiples mensajes de sistema por solicitud para redundancia, con la bandera cache_control habilitada", "order": 4 }
+      ],
+      "tags": ["consistency", "system-message", "temperature", "model-version", "production"]
+    }
+  ]
+}

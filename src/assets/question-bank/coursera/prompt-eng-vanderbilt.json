@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "coursera-prompt-eng-vanderbilt",
+    "domainName": "Prompt Engineering (Vanderbilt)",
+    "trackId": "coursera-prompt-eng-vanderbilt",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "PEVAND-001",
+      "text": "What is the key difference between zero-shot and few-shot prompting, and when should each be used?",
+      "textEs": "¿Cual es la diferencia clave entre prompting zero-shot y few-shot, y cuando debe usarse cada uno?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-001_b",
+      "explanation": "Zero-shot prompting gives no examples, relying on the model's training to understand the task from instructions alone. Few-shot prompting includes one or more input-output examples that demonstrate the desired format and reasoning pattern. Few-shot is preferred when the output format is specific or unusual, when the task requires a particular reasoning style, or when zero-shot produces inconsistent results. Zero-shot works well for straightforward, well-known tasks.",
+      "explanationEs": "El prompting zero-shot no da ejemplos, confiando en el entrenamiento del modelo para entender la tarea solo a partir de instrucciones. El prompting few-shot incluye uno o mas ejemplos de entrada-salida que demuestran el formato y patron de razonamiento deseados. Few-shot es preferido cuando el formato de salida es especifico o inusual, cuando la tarea requiere un estilo de razonamiento particular, o cuando zero-shot produce resultados inconsistentes. Zero-shot funciona bien para tareas sencillas y bien conocidas.",
+      "options": [
+        { "id": "PEVAND-001_a", "text": "Zero-shot uses the latest model; few-shot uses an older, fine-tuned model", "textEs": "Zero-shot usa el modelo mas reciente; few-shot usa un modelo mas antiguo ajustado", "order": 1 },
+        { "id": "PEVAND-001_b", "text": "Zero-shot provides no examples (instructions only); few-shot includes input-output examples to demonstrate the desired pattern", "textEs": "Zero-shot no proporciona ejemplos (solo instrucciones); few-shot incluye ejemplos de entrada-salida para demostrar el patron deseado", "order": 2 },
+        { "id": "PEVAND-001_c", "text": "Zero-shot processes one document; few-shot processes multiple documents simultaneously", "textEs": "Zero-shot procesa un documento; few-shot procesa multiples documentos simultaneamente", "order": 3 },
+        { "id": "PEVAND-001_d", "text": "There is no difference; both terms refer to the same technique", "textEs": "No hay diferencia; ambos terminos se refieren a la misma tecnica", "order": 4 }
+      ],
+      "tags": ["zero-shot", "few-shot", "prompting-techniques", "fundamentals"]
+    },
+    {
+      "id": "PEVAND-002",
+      "text": "In chain-of-thought (CoT) prompting, what mechanism improves the model's accuracy on complex reasoning tasks?",
+      "textEs": "En el prompting de cadena de pensamiento (CoT), ¿que mecanismo mejora la precision del modelo en tareas de razonamiento complejas?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-002_c",
+      "explanation": "Chain-of-thought prompting instructs the model to show its intermediate reasoning steps before arriving at a final answer. This works because the model generates each token based on all previous tokens, so producing step-by-step reasoning creates a richer context for subsequent tokens. The explicit reasoning trace helps the model catch logical errors, maintain consistency, and arrive at more accurate conclusions. It is especially effective for math, logic, and multi-step analysis tasks.",
+      "explanationEs": "El prompting de cadena de pensamiento instruye al modelo a mostrar sus pasos de razonamiento intermedios antes de llegar a una respuesta final. Esto funciona porque el modelo genera cada token basado en todos los tokens previos, asi que producir razonamiento paso a paso crea un contexto mas rico para tokens subsecuentes. La traza de razonamiento explicito ayuda al modelo a detectar errores logicos, mantener consistencia, y llegar a conclusiones mas precisas. Es especialmente efectivo para tareas de matematicas, logica y analisis de multiples pasos.",
+      "options": [
+        { "id": "PEVAND-002_a", "text": "It activates a special reasoning mode in the API that uses more compute per token", "textEs": "Activa un modo de razonamiento especial en la API que usa mas computo por token", "order": 1 },
+        { "id": "PEVAND-002_b", "text": "It forces the model to search the internet for relevant information before answering", "textEs": "Forza al modelo a buscar en internet informacion relevante antes de responder", "order": 2 },
+        { "id": "PEVAND-002_c", "text": "By generating intermediate reasoning steps, the model builds richer context that improves the accuracy of subsequent tokens and the final answer", "textEs": "Al generar pasos de razonamiento intermedios, el modelo construye un contexto mas rico que mejora la precision de los tokens subsecuentes y la respuesta final", "order": 3 },
+        { "id": "PEVAND-002_d", "text": "It reduces the temperature to zero automatically, making responses deterministic", "textEs": "Reduce la temperatura a cero automaticamente, haciendo las respuestas deterministicas", "order": 4 }
+      ],
+      "tags": ["chain-of-thought", "reasoning", "intermediate-steps", "accuracy"]
+    },
+    {
+      "id": "PEVAND-003",
+      "text": "A prompt engineer is designing a domain-specific prompt for legal document analysis. Which technique BEST ensures the model applies domain-appropriate reasoning?",
+      "textEs": "Un ingeniero de prompts esta diseñando un prompt especifico del dominio para analisis de documentos legales. ¿Que tecnica MEJOR asegura que el modelo aplique razonamiento apropiado al dominio?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-003_d",
+      "explanation": "Combining a domain-expert persona (system message establishing the model as an experienced legal analyst) with few-shot examples showing the specific legal reasoning pattern (e.g., identifying clauses, applying relevant statutes, noting jurisdictional considerations) and explicit output structure provides the strongest domain grounding. The persona sets the frame, the examples calibrate the reasoning depth and style, and the structure ensures consistent, actionable output.",
+      "explanationEs": "Combinar una persona experta en el dominio (mensaje de sistema estableciendo al modelo como un analista legal experimentado) con ejemplos few-shot mostrando el patron de razonamiento legal especifico (por ejemplo, identificar clausulas, aplicar estatutos relevantes, notar consideraciones jurisdiccionales) y una estructura de salida explicita proporciona el anclaje de dominio mas fuerte. La persona establece el marco, los ejemplos calibran la profundidad y estilo de razonamiento, y la estructura asegura una salida consistente y accionable.",
+      "options": [
+        { "id": "PEVAND-003_a", "text": "Simply ask 'Analyze this legal document' and let the model figure out the approach", "textEs": "Simplemente pedir 'Analiza este documento legal' y dejar que el modelo descifre el enfoque", "order": 1 },
+        { "id": "PEVAND-003_b", "text": "Set temperature to maximum for creative legal interpretations", "textEs": "Establecer la temperatura al maximo para interpretaciones legales creativas", "order": 2 },
+        { "id": "PEVAND-003_c", "text": "Fine-tune the model on legal data; prompting alone cannot achieve domain-specific reasoning", "textEs": "Ajustar finamente el modelo con datos legales; el prompting solo no puede lograr razonamiento especifico del dominio", "order": 3 },
+        { "id": "PEVAND-003_d", "text": "Combine a domain-expert persona in the system message, few-shot examples with legal reasoning patterns, and explicit output structure", "textEs": "Combinar una persona experta en el dominio en el mensaje de sistema, ejemplos few-shot con patrones de razonamiento legal, y estructura de salida explicita", "order": 4 }
+      ],
+      "tags": ["domain-specific", "persona", "few-shot", "legal-analysis", "systematic-design"]
+    },
+    {
+      "id": "PEVAND-004",
+      "text": "What is the purpose of 'prompt evaluation' and which metric is most relevant for a classification task?",
+      "textEs": "¿Cual es el proposito de la 'evaluacion de prompts' y que metrica es mas relevante para una tarea de clasificacion?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-004_a",
+      "explanation": "Prompt evaluation systematically measures how well a prompt performs against a test set of inputs with known expected outputs. For classification tasks, accuracy (percentage of correct classifications) is the primary metric, but precision, recall, and F1 score provide deeper insight, especially for imbalanced datasets. You create a golden dataset, run each input through the prompt, compare outputs to expected results, and compute metrics. This enables data-driven prompt iteration rather than guessing.",
+      "explanationEs": "La evaluacion de prompts mide sistematicamente que tan bien funciona un prompt contra un conjunto de prueba de entradas con salidas esperadas conocidas. Para tareas de clasificacion, la precision (porcentaje de clasificaciones correctas) es la metrica primaria, pero la precision, recall y puntaje F1 proporcionan una vision mas profunda, especialmente para datasets desbalanceados. Se crea un dataset golden, se ejecuta cada entrada a traves del prompt, se comparan las salidas con los resultados esperados, y se calculan metricas. Esto permite iteracion de prompts basada en datos en lugar de adivinar.",
+      "options": [
+        { "id": "PEVAND-004_a", "text": "Systematically measure prompt performance against a test set; accuracy, precision, recall, and F1 score are key classification metrics", "textEs": "Medir sistematicamente el rendimiento del prompt contra un conjunto de prueba; precision, recall y puntaje F1 son metricas clave de clasificacion", "order": 1 },
+        { "id": "PEVAND-004_b", "text": "Count how many tokens the prompt uses; shorter prompts are always better", "textEs": "Contar cuantos tokens usa el prompt; los prompts mas cortos siempre son mejores", "order": 2 },
+        { "id": "PEVAND-004_c", "text": "Ask the model to rate its own confidence; high self-reported confidence means the prompt is good", "textEs": "Pedir al modelo que califique su propia confianza; alta confianza auto-reportada significa que el prompt es bueno", "order": 3 },
+        { "id": "PEVAND-004_d", "text": "Evaluate prompts based on response time only; faster responses indicate better prompts", "textEs": "Evaluar prompts basandose solo en el tiempo de respuesta; respuestas mas rapidas indican mejores prompts", "order": 4 }
+      ],
+      "tags": ["prompt-evaluation", "metrics", "classification", "f1-score", "golden-dataset"]
+    },
+    {
+      "id": "PEVAND-005",
+      "text": "What is the 'role prompting' technique and how does it affect model behavior?",
+      "textEs": "¿Que es la tecnica de 'role prompting' y como afecta el comportamiento del modelo?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "easy",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-005_c",
+      "explanation": "Role prompting assigns a specific identity, expertise, or persona to the model (e.g., 'You are an experienced data scientist specializing in time series analysis'). This activates relevant knowledge patterns, adjusts vocabulary and depth of explanation, and steers the model toward domain-appropriate reasoning. The model draws on its training to emulate the expertise level and communication style associated with that role, producing more targeted and useful responses.",
+      "explanationEs": "El role prompting asigna una identidad, experiencia o persona especifica al modelo (por ejemplo, 'Eres un cientifico de datos experimentado especializado en analisis de series temporales'). Esto activa patrones de conocimiento relevantes, ajusta el vocabulario y la profundidad de explicacion, y dirige al modelo hacia un razonamiento apropiado al dominio. El modelo recurre a su entrenamiento para emular el nivel de experiencia y estilo de comunicacion asociado con ese rol, produciendo respuestas mas dirigidas y utiles.",
+      "options": [
+        { "id": "PEVAND-005_a", "text": "It assigns different API access levels to the model based on the role", "textEs": "Asigna diferentes niveles de acceso a la API al modelo basado en el rol", "order": 1 },
+        { "id": "PEVAND-005_b", "text": "It loads a pre-trained role-specific adapter that modifies the model's weights", "textEs": "Carga un adaptador preentrenado especifico del rol que modifica los pesos del modelo", "order": 2 },
+        { "id": "PEVAND-005_c", "text": "It assigns a persona/expertise to the model, activating relevant knowledge patterns and adjusting vocabulary and reasoning depth", "textEs": "Asigna una persona/experiencia al modelo, activando patrones de conocimiento relevantes y ajustando el vocabulario y la profundidad de razonamiento", "order": 3 },
+        { "id": "PEVAND-005_d", "text": "It restricts the model to only answering questions within the role's field, refusing all others", "textEs": "Restringe al modelo a solo responder preguntas dentro del campo del rol, rechazando todas las demas", "order": 4 }
+      ],
+      "tags": ["role-prompting", "persona", "domain-expertise", "behavior-steering"]
+    },
+    {
+      "id": "PEVAND-006",
+      "text": "When designing a prompt that uses XML tags to structure sections (e.g., <context>, <instructions>, <examples>), what is the primary benefit of this approach?",
+      "textEs": "Al diseñar un prompt que usa etiquetas XML para estructurar secciones (por ejemplo, <context>, <instructions>, <examples>), ¿cual es el beneficio principal de este enfoque?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-006_b",
+      "explanation": "XML tags create clear semantic boundaries between different parts of the prompt, making it unambiguous where instructions end and context begins, or where examples are separated from the actual input. Claude is specifically trained to understand XML-tagged sections, which improves instruction following. This also makes prompts more maintainable and easier to modify since each section is clearly delineated. It prevents the model from confusing context data with instructions.",
+      "explanationEs": "Las etiquetas XML crean limites semanticos claros entre diferentes partes del prompt, haciendo inequivoco donde terminan las instrucciones y comienza el contexto, o donde los ejemplos se separan de la entrada real. Claude esta especificamente entrenado para entender secciones etiquetadas con XML, lo que mejora el seguimiento de instrucciones. Esto tambien hace los prompts mas mantenibles y faciles de modificar ya que cada seccion esta claramente delimitada. Previene que el modelo confunda datos de contexto con instrucciones.",
+      "options": [
+        { "id": "PEVAND-006_a", "text": "It enables Claude to parse the prompt as an XML document and apply XPath queries for data extraction", "textEs": "Permite a Claude parsear el prompt como un documento XML y aplicar consultas XPath para extraccion de datos", "order": 1 },
+        { "id": "PEVAND-006_b", "text": "It creates clear semantic boundaries between prompt sections, improving instruction following and preventing context-instruction confusion", "textEs": "Crea limites semanticos claros entre secciones del prompt, mejorando el seguimiento de instrucciones y previniendo confusion contexto-instrucciones", "order": 2 },
+        { "id": "PEVAND-006_c", "text": "It reduces the token count because XML tags are not counted as input tokens", "textEs": "Reduce el conteo de tokens porque las etiquetas XML no se cuentan como tokens de entrada", "order": 3 },
+        { "id": "PEVAND-006_d", "text": "It is required by the API; prompts without XML tags are rejected with a 400 error", "textEs": "Es requerido por la API; los prompts sin etiquetas XML son rechazados con un error 400", "order": 4 }
+      ],
+      "tags": ["xml-tags", "prompt-structure", "semantic-boundaries", "maintainability"]
+    },
+    {
+      "id": "PEVAND-007",
+      "text": "A prompt engineer discovers that a prompt performs well on test cases but poorly in production. Which systematic approach should they use to diagnose and fix the issue?",
+      "textEs": "Un ingeniero de prompts descubre que un prompt funciona bien en casos de prueba pero mal en produccion. ¿Que enfoque sistematico debe usar para diagnosticar y corregir el problema?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-007_d",
+      "explanation": "The systematic approach involves: (1) Collect failing production examples and categorize the failure modes. (2) Compare production inputs against test cases to identify distribution differences (e.g., longer inputs, different languages, edge cases). (3) Add failing examples to the test suite. (4) Iterate on the prompt with targeted fixes for each failure category. (5) Re-evaluate on the full test suite (including new cases) to ensure fixes do not cause regressions. This data-driven feedback loop is the hallmark of professional prompt engineering.",
+      "explanationEs": "El enfoque sistematico involucra: (1) Recolectar ejemplos fallidos de produccion y categorizar los modos de falla. (2) Comparar las entradas de produccion contra los casos de prueba para identificar diferencias de distribucion (por ejemplo, entradas mas largas, diferentes idiomas, casos limite). (3) Agregar ejemplos fallidos al conjunto de pruebas. (4) Iterar en el prompt con correcciones dirigidas para cada categoria de falla. (5) Re-evaluar en el conjunto completo de pruebas (incluyendo nuevos casos) para asegurar que las correcciones no causen regresiones. Este ciclo de retroalimentacion basado en datos es la marca del prompt engineering profesional.",
+      "options": [
+        { "id": "PEVAND-007_a", "text": "Increase the temperature to make the model more creative with diverse production inputs", "textEs": "Aumentar la temperatura para hacer al modelo mas creativo con entradas de produccion diversas", "order": 1 },
+        { "id": "PEVAND-007_b", "text": "Switch to a larger model; prompt issues are always caused by insufficient model capability", "textEs": "Cambiar a un modelo mas grande; los problemas de prompt siempre son causados por capacidad insuficiente del modelo", "order": 2 },
+        { "id": "PEVAND-007_c", "text": "Rewrite the prompt from scratch; iterative improvements rarely work", "textEs": "Reescribir el prompt desde cero; las mejoras iterativas raramente funcionan", "order": 3 },
+        { "id": "PEVAND-007_d", "text": "Collect failing examples, categorize failure modes, compare production vs test distribution, add failures to test suite, iterate with targeted fixes, and regression test", "textEs": "Recolectar ejemplos fallidos, categorizar modos de falla, comparar distribucion produccion vs prueba, agregar fallas al conjunto de pruebas, iterar con correcciones dirigidas, y prueba de regresion", "order": 4 }
+      ],
+      "tags": ["prompt-evaluation", "debugging", "failure-analysis", "regression-testing", "production"]
+    },
+    {
+      "id": "PEVAND-008",
+      "text": "What is the 'self-consistency' prompting technique and when is it most useful?",
+      "textEs": "¿Que es la tecnica de prompting de 'auto-consistencia' y cuando es mas util?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "hard",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-008_a",
+      "explanation": "Self-consistency involves generating multiple responses to the same prompt (typically with higher temperature) and then selecting the most common answer through majority voting. The intuition is that if multiple independent reasoning paths arrive at the same answer, it is more likely correct. This is most useful for tasks with definitive answers (math, logic, factual questions) where individual CoT traces may occasionally err but the consensus is reliable. The trade-off is higher API cost due to multiple calls.",
+      "explanationEs": "La auto-consistencia involucra generar multiples respuestas al mismo prompt (tipicamente con mayor temperatura) y luego seleccionar la respuesta mas comun mediante votacion por mayoria. La intuicion es que si multiples caminos de razonamiento independientes llegan a la misma respuesta, es mas probable que sea correcta. Es mas util para tareas con respuestas definitivas (matematicas, logica, preguntas factuales) donde trazas individuales de CoT pueden errar ocasionalmente pero el consenso es confiable. La compensacion es mayor costo de API debido a multiples llamadas.",
+      "options": [
+        { "id": "PEVAND-008_a", "text": "Generate multiple responses with varied reasoning paths, then select the most common answer via majority voting; best for tasks with definitive correct answers", "textEs": "Generar multiples respuestas con caminos de razonamiento variados, luego seleccionar la respuesta mas comun via votacion por mayoria; mejor para tareas con respuestas correctas definitivas", "order": 1 },
+        { "id": "PEVAND-008_b", "text": "Ask the model to check if its response is internally consistent before outputting it; this happens automatically", "textEs": "Pedir al modelo que verifique si su respuesta es internamente consistente antes de producirla; esto sucede automaticamente", "order": 2 },
+        { "id": "PEVAND-008_c", "text": "Use the same prompt repeatedly with temperature 0 to verify the response never changes", "textEs": "Usar el mismo prompt repetidamente con temperatura 0 para verificar que la respuesta nunca cambie", "order": 3 },
+        { "id": "PEVAND-008_d", "text": "Fine-tune the model to always produce consistent outputs for the same input", "textEs": "Ajustar finamente el modelo para que siempre produzca salidas consistentes para la misma entrada", "order": 4 }
+      ],
+      "tags": ["self-consistency", "majority-voting", "multiple-paths", "reliability"]
+    },
+    {
+      "id": "PEVAND-009",
+      "text": "What is 'prompt injection' and which design pattern helps mitigate it in production systems?",
+      "textEs": "¿Que es la 'inyeccion de prompts' y que patron de diseño ayuda a mitigarla en sistemas de produccion?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-009_b",
+      "explanation": "Prompt injection occurs when malicious user input overrides or hijacks the system instructions, causing the model to ignore its intended behavior. Mitigation strategies include: separating system instructions from user input using clear delimiters (like XML tags), input validation/sanitization, placing critical instructions in the system message (which Claude prioritizes), output filtering, and using a defense-in-depth approach with multiple layers. No single technique is foolproof, so combining multiple defenses is essential.",
+      "explanationEs": "La inyeccion de prompts ocurre cuando la entrada maliciosa del usuario anula o secuestra las instrucciones del sistema, causando que el modelo ignore su comportamiento previsto. Las estrategias de mitigacion incluyen: separar instrucciones del sistema de la entrada del usuario usando delimitadores claros (como etiquetas XML), validacion/sanitizacion de entrada, colocar instrucciones criticas en el mensaje de sistema (que Claude prioriza), filtrado de salida, y usar un enfoque de defensa en profundidad con multiples capas. Ninguna tecnica es infalible, asi que combinar multiples defensas es esencial.",
+      "options": [
+        { "id": "PEVAND-009_a", "text": "Prompt injection is when the API key is exposed; use HTTPS to prevent it", "textEs": "La inyeccion de prompts es cuando la clave de API se expone; usar HTTPS para prevenirlo", "order": 1 },
+        { "id": "PEVAND-009_b", "text": "It is malicious user input that hijacks system instructions; mitigate with clear delimiters, system message for critical instructions, input sanitization, and defense in depth", "textEs": "Es entrada maliciosa del usuario que secuestra instrucciones del sistema; mitigar con delimitadores claros, mensaje de sistema para instrucciones criticas, sanitizacion de entrada, y defensa en profundidad", "order": 2 },
+        { "id": "PEVAND-009_c", "text": "It is a technique for injecting additional context into the prompt to improve responses; it is beneficial, not harmful", "textEs": "Es una tecnica para inyectar contexto adicional en el prompt para mejorar respuestas; es beneficiosa, no dañina", "order": 3 },
+        { "id": "PEVAND-009_d", "text": "It only affects open-source models; Claude is immune to prompt injection by design", "textEs": "Solo afecta a modelos de codigo abierto; Claude es inmune a la inyeccion de prompts por diseño", "order": 4 }
+      ],
+      "tags": ["prompt-injection", "security", "defense-in-depth", "input-sanitization"]
+    },
+    {
+      "id": "PEVAND-010",
+      "text": "When should a prompt engineer use 'decomposition' (breaking a complex prompt into multiple simpler prompts) versus a single comprehensive prompt?",
+      "textEs": "¿Cuando debe un ingeniero de prompts usar 'descomposicion' (dividir un prompt complejo en multiples prompts mas simples) versus un solo prompt integral?",
+      "domainCode": "coursera-prompt-eng-vanderbilt",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "theory",
+      "trackId": "coursera-prompt-eng-vanderbilt",
+      "correctOptionId": "PEVAND-010_c",
+      "explanation": "Decomposition is preferred when: the task has multiple distinct steps with different requirements, the single prompt produces inconsistent results due to competing objectives, intermediate outputs need validation before proceeding, or different steps benefit from different model parameters. A single prompt is better when the task is straightforward, all steps are tightly coupled, and latency is a primary concern. Decomposition increases reliability at the cost of additional API calls and latency.",
+      "explanationEs": "La descomposicion es preferida cuando: la tarea tiene multiples pasos distintos con diferentes requisitos, el prompt unico produce resultados inconsistentes debido a objetivos en competencia, las salidas intermedias necesitan validacion antes de proceder, o diferentes pasos se benefician de diferentes parametros del modelo. Un solo prompt es mejor cuando la tarea es sencilla, todos los pasos estan estrechamente acoplados, y la latencia es una preocupacion principal. La descomposicion aumenta la confiabilidad a costa de llamadas adicionales a la API y latencia.",
+      "options": [
+        { "id": "PEVAND-010_a", "text": "Always use decomposition; single prompts never work well for any task", "textEs": "Siempre usar descomposicion; los prompts unicos nunca funcionan bien para ninguna tarea", "order": 1 },
+        { "id": "PEVAND-010_b", "text": "Never use decomposition; it wastes API tokens without improving quality", "textEs": "Nunca usar descomposicion; desperdicia tokens de API sin mejorar la calidad", "order": 2 },
+        { "id": "PEVAND-010_c", "text": "Use decomposition when steps have different requirements, a single prompt is inconsistent, or intermediate validation is needed; use a single prompt for simple, tightly coupled tasks", "textEs": "Usar descomposicion cuando los pasos tienen diferentes requisitos, un solo prompt es inconsistente, o se necesita validacion intermedia; usar un solo prompt para tareas simples y estrechamente acopladas", "order": 3 },
+        { "id": "PEVAND-010_d", "text": "Use decomposition only when the total prompt exceeds the context window; otherwise always use a single prompt", "textEs": "Usar descomposicion solo cuando el prompt total excede la ventana de contexto; de lo contrario siempre usar un solo prompt", "order": 4 }
+      ],
+      "tags": ["decomposition", "prompt-chaining", "task-complexity", "systematic-design"]
+    }
+  ]
+}

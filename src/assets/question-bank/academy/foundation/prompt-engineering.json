@@ -1,0 +1,612 @@
+{
+  "meta": {
+    "domain": "prompt-engineering",
+    "domainName": "Prompt Engineering Fundamentals",
+    "trackId": "prompt-engineering",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 30
+  },
+  "questions": [
+    {
+      "id": "PE-001",
+      "text": "What is 'zero-shot' prompting?",
+      "textEs": "¿Qué es el prompting 'zero-shot'?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-001_a",
+      "explanation": "Zero-shot prompting means asking the model to perform a task without providing any examples. You simply describe what you want, and the model uses its training knowledge to respond. For example, 'Classify this review as positive or negative: The movie was terrible.' Zero-shot works well for straightforward tasks where the model already understands the expected format from its pre-training.",
+      "explanationEs": "El prompting zero-shot significa pedir al modelo que realice una tarea sin proporcionar ningún ejemplo. Simplemente describes lo que quieres y el modelo usa su conocimiento de entrenamiento para responder. Por ejemplo, 'Clasifica esta reseña como positiva o negativa: La película fue terrible.' El zero-shot funciona bien para tareas directas donde el modelo ya entiende el formato esperado de su pre-entrenamiento.",
+      "options": [
+        { "id": "PE-001_a", "text": "Asking the model to perform a task without providing any examples, relying solely on its training knowledge", "textEs": "Pedir al modelo que realice una tarea sin proporcionar ningún ejemplo, confiando únicamente en su conocimiento de entrenamiento", "order": 1 },
+        { "id": "PE-001_b", "text": "Providing exactly one example before asking the model to perform the task", "textEs": "Proporcionar exactamente un ejemplo antes de pedir al modelo que realice la tarea", "order": 2 },
+        { "id": "PE-001_c", "text": "A technique where the model generates zero output tokens to save on costs", "textEs": "Una técnica donde el modelo genera cero tokens de salida para ahorrar costos", "order": 3 },
+        { "id": "PE-001_d", "text": "Running the model with temperature set to zero for deterministic output", "textEs": "Ejecutar el modelo con temperatura establecida en cero para salida determinista", "order": 4 }
+      ],
+      "tags": ["zero-shot", "prompting-technique", "basics"]
+    },
+    {
+      "id": "PE-002",
+      "text": "What is 'few-shot' prompting, and when is it most useful?",
+      "textEs": "¿Qué es el prompting 'few-shot' y cuándo es más útil?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-002_b",
+      "explanation": "Few-shot prompting involves providing a small number of input-output examples in the prompt before asking the model to handle a new input. For instance, showing three examples of text classified by sentiment before asking it to classify a fourth. It is most useful when you need the model to follow a specific format, handle ambiguous tasks, or match a particular style that is hard to describe in words alone.",
+      "explanationEs": "El prompting few-shot implica proporcionar un pequeño número de ejemplos de entrada-salida en el prompt antes de pedir al modelo que maneje una nueva entrada. Por ejemplo, mostrar tres ejemplos de texto clasificado por sentimiento antes de pedir que clasifique un cuarto. Es más útil cuando necesitas que el modelo siga un formato específico, maneje tareas ambiguas o coincida con un estilo particular que es difícil de describir solo con palabras.",
+      "options": [
+        { "id": "PE-002_a", "text": "Training the model on a few hundred data points before deploying it", "textEs": "Entrenar al modelo con unos cientos de datos antes de desplegarlo", "order": 1 },
+        { "id": "PE-002_b", "text": "Including a small number of input-output examples in the prompt to demonstrate the desired task format before the actual query", "textEs": "Incluir un pequeño número de ejemplos de entrada-salida en el prompt para demostrar el formato deseado de la tarea antes de la consulta real", "order": 2 },
+        { "id": "PE-002_c", "text": "Sending the same prompt multiple times and averaging the results for better accuracy", "textEs": "Enviar el mismo prompt múltiples veces y promediar los resultados para mejor precisión", "order": 3 },
+        { "id": "PE-002_d", "text": "A technique that limits the model's response to only a few sentences", "textEs": "Una técnica que limita la respuesta del modelo a solo unas pocas oraciones", "order": 4 }
+      ],
+      "tags": ["few-shot", "examples", "prompting-technique", "format"]
+    },
+    {
+      "id": "PE-003",
+      "text": "What is chain-of-thought (CoT) prompting, and why does it improve reasoning?",
+      "textEs": "¿Qué es el prompting de cadena de pensamiento (CoT) y por qué mejora el razonamiento?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-003_c",
+      "explanation": "Chain-of-thought prompting asks the model to show its step-by-step reasoning process before arriving at a final answer. By explicitly working through intermediate steps, the model is less likely to skip logical connections or make errors. You can trigger CoT by adding phrases like 'Think step by step' or 'Show your reasoning.' This technique is particularly effective for math, logic puzzles, and multi-step analysis tasks.",
+      "explanationEs": "El prompting de cadena de pensamiento pide al modelo que muestre su proceso de razonamiento paso a paso antes de llegar a una respuesta final. Al trabajar explícitamente a través de pasos intermedios, el modelo es menos propenso a saltar conexiones lógicas o cometer errores. Puedes activar CoT agregando frases como 'Piensa paso a paso' o 'Muestra tu razonamiento.' Esta técnica es particularmente efectiva para matemáticas, acertijos lógicos y tareas de análisis de múltiples pasos.",
+      "options": [
+        { "id": "PE-003_a", "text": "Sending multiple prompts in a chain where each response feeds into the next prompt automatically", "textEs": "Enviar múltiples prompts en cadena donde cada respuesta alimenta el siguiente prompt automáticamente", "order": 1 },
+        { "id": "PE-003_b", "text": "Asking the model to only think internally without showing any reasoning to the user", "textEs": "Pedir al modelo que solo piense internamente sin mostrar ningún razonamiento al usuario", "order": 2 },
+        { "id": "PE-003_c", "text": "Asking the model to show its step-by-step reasoning before giving a final answer, reducing errors on complex tasks", "textEs": "Pedir al modelo que muestre su razonamiento paso a paso antes de dar una respuesta final, reduciendo errores en tareas complejas", "order": 3 },
+        { "id": "PE-003_d", "text": "A patented technique that only works with specific premium model tiers", "textEs": "Una técnica patentada que solo funciona con niveles de modelo premium específicos", "order": 4 }
+      ],
+      "tags": ["chain-of-thought", "reasoning", "step-by-step", "logic"]
+    },
+    {
+      "id": "PE-004",
+      "text": "What is role prompting, and how does it influence Claude's responses?",
+      "textEs": "¿Qué es el prompting de rol y cómo influye en las respuestas de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-004_d",
+      "explanation": "Role prompting involves assigning a specific role or persona to Claude, such as 'You are an experienced Python developer' or 'Act as a patient kindergarten teacher.' This frames the model's responses to match the expertise level, tone, and perspective of that role. It helps Claude calibrate the depth and style of its answers — a senior developer role produces more technical output, while a teacher role produces simpler explanations.",
+      "explanationEs": "El prompting de rol implica asignar un rol o persona específica a Claude, como 'Eres un desarrollador Python experimentado' o 'Actúa como un maestro de jardín de infantes paciente.' Esto enmarca las respuestas del modelo para coincidir con el nivel de expertise, tono y perspectiva de ese rol. Ayuda a Claude a calibrar la profundidad y estilo de sus respuestas — un rol de desarrollador senior produce salida más técnica, mientras que un rol de maestro produce explicaciones más simples.",
+      "options": [
+        { "id": "PE-004_a", "text": "Creating separate user accounts with different access levels for different team members", "textEs": "Crear cuentas de usuario separadas con diferentes niveles de acceso para diferentes miembros del equipo", "order": 1 },
+        { "id": "PE-004_b", "text": "Asking Claude to roleplay as a fictional character for entertainment purposes only", "textEs": "Pedir a Claude que interprete un personaje ficticio solo con fines de entretenimiento", "order": 2 },
+        { "id": "PE-004_c", "text": "A security feature that restricts which topics Claude can discuss based on assigned permissions", "textEs": "Una función de seguridad que restringe los temas que Claude puede discutir según los permisos asignados", "order": 3 },
+        { "id": "PE-004_d", "text": "Assigning a specific persona or expertise to Claude to calibrate the tone, depth, and perspective of its responses", "textEs": "Asignar una persona o expertise específica a Claude para calibrar el tono, profundidad y perspectiva de sus respuestas", "order": 4 }
+      ],
+      "tags": ["role-prompting", "persona", "tone", "expertise"]
+    },
+    {
+      "id": "PE-005",
+      "text": "How can you prompt Claude to produce structured output like JSON or XML?",
+      "textEs": "¿Cómo puedes hacer un prompt para que Claude produzca salida estructurada como JSON o XML?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-005_b",
+      "explanation": "To get structured output, explicitly specify the format in your prompt and provide a schema or example. For instance: 'Return your answer as a JSON object with keys: name, age, city.' Providing an example of the expected structure helps ensure consistency. You can also use XML tags like <answer></answer> to delimit different parts of the response. For the API, the 'response_format' parameter or prefilling the assistant turn can enforce JSON output.",
+      "explanationEs": "Para obtener salida estructurada, especifica explícitamente el formato en tu prompt y proporciona un esquema o ejemplo. Por ejemplo: 'Devuelve tu respuesta como un objeto JSON con claves: nombre, edad, ciudad.' Proporcionar un ejemplo de la estructura esperada ayuda a asegurar la consistencia. También puedes usar etiquetas XML como <answer></answer> para delimitar diferentes partes de la respuesta. Para la API, el parámetro 'response_format' o prellenar el turno del asistente puede forzar salida JSON.",
+      "options": [
+        { "id": "PE-005_a", "text": "Claude cannot produce structured output; you must parse free-text responses manually", "textEs": "Claude no puede producir salida estructurada; debes parsear respuestas de texto libre manualmente", "order": 1 },
+        { "id": "PE-005_b", "text": "Explicitly specify the format, provide a schema or example, and optionally use XML tags or API parameters to enforce structure", "textEs": "Especificar explícitamente el formato, proporcionar un esquema o ejemplo y opcionalmente usar etiquetas XML o parámetros de API para forzar la estructura", "order": 2 },
+        { "id": "PE-005_c", "text": "Set the temperature to exactly 0.5, which automatically enables structured output mode", "textEs": "Establecer la temperatura exactamente en 0.5, lo que habilita automáticamente el modo de salida estructurada", "order": 3 },
+        { "id": "PE-005_d", "text": "Use a special syntax like #JSON_MODE at the beginning of the prompt", "textEs": "Usar una sintaxis especial como #JSON_MODE al principio del prompt", "order": 4 }
+      ],
+      "tags": ["structured-output", "json", "xml", "format", "schema"]
+    },
+    {
+      "id": "PE-006",
+      "text": "What does the 'temperature' parameter control, and how does it affect output?",
+      "textEs": "¿Qué controla el parámetro 'temperature' y cómo afecta la salida?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-006_a",
+      "explanation": "Temperature controls the randomness of the model's output. A lower temperature (closer to 0) makes responses more deterministic and focused, choosing the most probable tokens — ideal for factual tasks, code generation, and structured outputs. A higher temperature (closer to 1) increases randomness and creativity, allowing more diverse and unexpected word choices — better for creative writing and brainstorming. The default is typically around 1.0.",
+      "explanationEs": "La temperatura controla la aleatoriedad de la salida del modelo. Una temperatura más baja (cercana a 0) hace las respuestas más deterministas y enfocadas, eligiendo los tokens más probables — ideal para tareas factuales, generación de código y salidas estructuradas. Una temperatura más alta (cercana a 1) aumenta la aleatoriedad y creatividad, permitiendo opciones de palabras más diversas e inesperadas — mejor para escritura creativa y lluvia de ideas. El valor predeterminado es típicamente alrededor de 1.0.",
+      "options": [
+        { "id": "PE-006_a", "text": "It controls output randomness: low values (near 0) give deterministic, focused responses; high values (near 1) give more creative, varied output", "textEs": "Controla la aleatoriedad de la salida: valores bajos (cerca de 0) dan respuestas deterministas y enfocadas; valores altos (cerca de 1) dan salida más creativa y variada", "order": 1 },
+        { "id": "PE-006_b", "text": "It controls the speed of response generation: lower values produce faster responses", "textEs": "Controla la velocidad de generación de respuestas: valores más bajos producen respuestas más rápidas", "order": 2 },
+        { "id": "PE-006_c", "text": "It sets the maximum number of tokens the model can generate in its response", "textEs": "Establece el número máximo de tokens que el modelo puede generar en su respuesta", "order": 3 },
+        { "id": "PE-006_d", "text": "It adjusts the factual accuracy of the model by accessing more or fewer training data layers", "textEs": "Ajusta la precisión factual del modelo accediendo a más o menos capas de datos de entrenamiento", "order": 4 }
+      ],
+      "tags": ["temperature", "randomness", "parameters", "creativity"]
+    },
+    {
+      "id": "PE-007",
+      "text": "What is a system prompt, and how does it differ from a user prompt?",
+      "textEs": "¿Qué es un prompt de sistema y en qué se diferencia de un prompt de usuario?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-007_c",
+      "explanation": "A system prompt is a special instruction set at the beginning of a conversation that defines Claude's overall behavior, persona, constraints, and rules for the entire session. It is separate from user messages and takes higher priority. User prompts are the individual messages you send during the conversation. The system prompt sets the 'ground rules' (e.g., 'Always respond in Spanish,' 'You are a legal expert'), while user prompts are the specific questions or tasks within those rules.",
+      "explanationEs": "Un prompt de sistema es un conjunto especial de instrucciones establecido al inicio de una conversación que define el comportamiento general de Claude, su persona, restricciones y reglas para toda la sesión. Es separado de los mensajes del usuario y tiene mayor prioridad. Los prompts de usuario son los mensajes individuales que envías durante la conversación. El prompt de sistema establece las 'reglas base' (ej., 'Siempre responde en español,' 'Eres un experto legal'), mientras que los prompts de usuario son las preguntas o tareas específicas dentro de esas reglas.",
+      "options": [
+        { "id": "PE-007_a", "text": "They are the same thing; 'system prompt' is just an older term for 'user prompt'", "textEs": "Son lo mismo; 'prompt de sistema' es solo un término más antiguo para 'prompt de usuario'", "order": 1 },
+        { "id": "PE-007_b", "text": "System prompts are automatically generated by the model and cannot be customized by users", "textEs": "Los prompts de sistema son generados automáticamente por el modelo y no pueden ser personalizados por los usuarios", "order": 2 },
+        { "id": "PE-007_c", "text": "A system prompt sets session-wide behavior and rules with higher priority, while user prompts are the specific questions or tasks within those rules", "textEs": "Un prompt de sistema establece el comportamiento y reglas de toda la sesión con mayor prioridad, mientras que los prompts de usuario son las preguntas o tareas específicas dentro de esas reglas", "order": 3 },
+        { "id": "PE-007_d", "text": "System prompts only work via the API; they have no equivalent in claude.ai or other interfaces", "textEs": "Los prompts de sistema solo funcionan a través de la API; no tienen equivalente en claude.ai u otras interfaces", "order": 4 }
+      ],
+      "tags": ["system-prompt", "user-prompt", "configuration", "priority"]
+    },
+    {
+      "id": "PE-008",
+      "text": "What is the benefit of using XML tags like <context> and <instructions> in prompts to Claude?",
+      "textEs": "¿Cuál es el beneficio de usar etiquetas XML como <context> e <instructions> en prompts para Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-008_d",
+      "explanation": "Claude is specifically trained to recognize XML-style tags as structural delimiters within prompts. Using tags like <context>, <instructions>, <example>, and <output_format> clearly separates different sections of a complex prompt, helping Claude understand the role of each part. This reduces ambiguity about what is context vs. instruction vs. example, and consistently improves output quality compared to using plain text separators or no structure at all.",
+      "explanationEs": "Claude está específicamente entrenado para reconocer etiquetas de estilo XML como delimitadores estructurales dentro de prompts. Usar etiquetas como <context>, <instructions>, <example> y <output_format> separa claramente diferentes secciones de un prompt complejo, ayudando a Claude a entender el rol de cada parte. Esto reduce la ambigüedad sobre qué es contexto vs. instrucción vs. ejemplo, y mejora consistentemente la calidad de la salida comparado con usar separadores de texto plano o ninguna estructura.",
+      "options": [
+        { "id": "PE-008_a", "text": "XML tags are required syntax; Claude cannot process prompts without them", "textEs": "Las etiquetas XML son sintaxis requerida; Claude no puede procesar prompts sin ellas", "order": 1 },
+        { "id": "PE-008_b", "text": "They reduce token usage by compressing the prompt content automatically", "textEs": "Reducen el uso de tokens al comprimir el contenido del prompt automáticamente", "order": 2 },
+        { "id": "PE-008_c", "text": "They enable Claude to make API calls to external XML services", "textEs": "Permiten a Claude hacer llamadas API a servicios XML externos", "order": 3 },
+        { "id": "PE-008_d", "text": "They provide clear structural separation of prompt sections (context, instructions, examples), reducing ambiguity and improving output quality", "textEs": "Proporcionan una separación estructural clara de las secciones del prompt (contexto, instrucciones, ejemplos), reduciendo la ambigüedad y mejorando la calidad de la salida", "order": 4 }
+      ],
+      "tags": ["xml-tags", "structure", "prompt-organization", "best-practices"]
+    },
+    {
+      "id": "PE-009",
+      "text": "What is 'prompt chaining,' and when should you use it instead of a single long prompt?",
+      "textEs": "¿Qué es el 'encadenamiento de prompts' y cuándo deberías usarlo en lugar de un solo prompt largo?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-009_a",
+      "explanation": "Prompt chaining breaks a complex task into a series of sequential prompts, where the output of one step becomes the input for the next. For example: Step 1 extracts key points from a document, Step 2 organizes them into an outline, Step 3 writes each section. This is better than a single long prompt when the task has distinct stages, when intermediate verification is needed, or when the combined instructions would exceed what the model can reliably handle at once.",
+      "explanationEs": "El encadenamiento de prompts divide una tarea compleja en una serie de prompts secuenciales, donde la salida de un paso se convierte en la entrada del siguiente. Por ejemplo: el Paso 1 extrae puntos clave de un documento, el Paso 2 los organiza en un esquema, el Paso 3 escribe cada sección. Esto es mejor que un solo prompt largo cuando la tarea tiene etapas distintas, cuando se necesita verificación intermedia, o cuando las instrucciones combinadas excederían lo que el modelo puede manejar de manera confiable a la vez.",
+      "options": [
+        { "id": "PE-009_a", "text": "Breaking a complex task into sequential prompts where each step's output feeds the next; best for multi-stage tasks needing intermediate verification", "textEs": "Dividir una tarea compleja en prompts secuenciales donde la salida de cada paso alimenta el siguiente; mejor para tareas de múltiples etapas que necesitan verificación intermedia", "order": 1 },
+        { "id": "PE-009_b", "text": "Sending the same prompt to multiple different AI models and combining their responses", "textEs": "Enviar el mismo prompt a múltiples modelos de IA diferentes y combinar sus respuestas", "order": 2 },
+        { "id": "PE-009_c", "text": "Repeating a prompt verbatim multiple times to improve consistency of the output", "textEs": "Repetir un prompt textualmente múltiples veces para mejorar la consistencia de la salida", "order": 3 },
+        { "id": "PE-009_d", "text": "A blockchain-based verification system that ensures prompt integrity", "textEs": "Un sistema de verificación basado en blockchain que asegura la integridad del prompt", "order": 4 }
+      ],
+      "tags": ["prompt-chaining", "workflow", "multi-step", "decomposition"]
+    },
+    {
+      "id": "PE-010",
+      "text": "Which of the following is a common prompt engineering anti-pattern that should be avoided?",
+      "textEs": "¿Cuál de los siguientes es un anti-patrón común de ingeniería de prompts que debe evitarse?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-010_b",
+      "explanation": "A common anti-pattern is giving vague or ambiguous instructions and expecting the model to guess what you want. For example, saying 'Make this better' without specifying what 'better' means (more concise? more formal? more detailed?). Other anti-patterns include contradicting instructions within the same prompt, overloading a single prompt with too many unrelated tasks, and not providing output format expectations. Clear, specific, and well-structured prompts consistently produce superior results.",
+      "explanationEs": "Un anti-patrón común es dar instrucciones vagas o ambiguas y esperar que el modelo adivine lo que quieres. Por ejemplo, decir 'Hazlo mejor' sin especificar qué significa 'mejor' (¿más conciso? ¿más formal? ¿más detallado?). Otros anti-patrones incluyen instrucciones contradictorias dentro del mismo prompt, sobrecargar un solo prompt con demasiadas tareas no relacionadas y no proporcionar expectativas de formato de salida. Los prompts claros, específicos y bien estructurados producen consistentemente resultados superiores.",
+      "options": [
+        { "id": "PE-010_a", "text": "Providing examples of the desired output format in the prompt", "textEs": "Proporcionar ejemplos del formato de salida deseado en el prompt", "order": 1 },
+        { "id": "PE-010_b", "text": "Giving vague instructions like 'Make this better' without specifying what improvement means, leading to unpredictable results", "textEs": "Dar instrucciones vagas como 'Hazlo mejor' sin especificar qué significa mejora, llevando a resultados impredecibles", "order": 2 },
+        { "id": "PE-010_c", "text": "Using chain-of-thought reasoning for complex mathematical problems", "textEs": "Usar razonamiento de cadena de pensamiento para problemas matemáticos complejos", "order": 3 },
+        { "id": "PE-010_d", "text": "Specifying the desired length and format of the response", "textEs": "Especificar la longitud y formato deseados de la respuesta", "order": 4 }
+      ],
+      "tags": ["anti-patterns", "best-practices", "clarity", "specificity"]
+    },
+    {
+      "id": "PE-011",
+      "text": "What is 'prefilling' the assistant turn, and how does it guide Claude's output?",
+      "textEs": "¿Qué es 'prellenar' el turno del asistente y cómo guía la salida de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-011_a",
+      "explanation": "Prefilling involves starting the assistant message with specific text before Claude generates the rest. For example, prefilling with '{' forces Claude to output valid JSON, or prefilling with 'Here is the translation in French:' directs Claude's response language. This technique leverages the API's ability to include a partial assistant message, and Claude continues from where you left off.",
+      "explanationEs": "Prellenar implica comenzar el mensaje del asistente con texto específico antes de que Claude genere el resto. Por ejemplo, prellenar con '{' obliga a Claude a generar JSON válido, o prellenar con 'Aquí está la traducción en francés:' dirige el idioma de respuesta de Claude. Esta técnica aprovecha la capacidad de la API para incluir un mensaje parcial del asistente, y Claude continúa desde donde lo dejaste.",
+      "options": [
+        { "id": "PE-011_a", "text": "Starting the assistant message with specific text so Claude continues from that point, useful for forcing format (e.g., '{' for JSON)", "textEs": "Comenzar el mensaje del asistente con texto específico para que Claude continúe desde ese punto, útil para forzar formato (ej., '{' para JSON)", "order": 1 },
+        { "id": "PE-011_b", "text": "Pre-loading Claude's memory with previous conversations from other users", "textEs": "Pre-cargar la memoria de Claude con conversaciones previas de otros usuarios", "order": 2 },
+        { "id": "PE-011_c", "text": "A premium feature that pre-generates multiple responses for the user to choose from", "textEs": "Una función premium que pre-genera múltiples respuestas para que el usuario elija", "order": 3 },
+        { "id": "PE-011_d", "text": "Sending the prompt to Claude before the user finishes typing for faster response times", "textEs": "Enviar el prompt a Claude antes de que el usuario termine de escribir para tiempos de respuesta más rápidos", "order": 4 }
+      ],
+      "tags": ["prefilling", "assistant-turn", "format-control", "json"]
+    },
+    {
+      "id": "PE-012",
+      "text": "What is the 'least-to-most' prompting technique?",
+      "textEs": "¿Qué es la técnica de prompting 'de menor a mayor'?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-012_c",
+      "explanation": "Least-to-most prompting breaks a complex problem into smaller subproblems, solves them in order from simplest to most complex, and uses each solution to help solve the next. For example, to solve a complex math word problem, you first identify the variables, then set up equations, then solve step by step. This technique helps the model tackle problems that would be too complex to solve in one step.",
+      "explanationEs": "El prompting de menor a mayor descompone un problema complejo en subproblemas más pequeños, los resuelve en orden del más simple al más complejo, y usa cada solución para ayudar a resolver el siguiente. Por ejemplo, para resolver un problema matemático complejo, primero identificas las variables, luego planteas ecuaciones y luego resuelves paso a paso. Esta técnica ayuda al modelo a abordar problemas que serían demasiado complejos para resolver en un solo paso.",
+      "options": [
+        { "id": "PE-012_a", "text": "Starting with the shortest possible prompt and gradually adding more words", "textEs": "Comenzar con el prompt más corto posible y gradualmente agregar más palabras", "order": 1 },
+        { "id": "PE-012_b", "text": "Using the cheapest model first and upgrading to more expensive ones if needed", "textEs": "Usar el modelo más barato primero y actualizar a modelos más caros si es necesario", "order": 2 },
+        { "id": "PE-012_c", "text": "Decomposing a complex problem into subproblems, solving from simplest to most complex, using each solution to inform the next", "textEs": "Descomponer un problema complejo en subproblemas, resolver del más simple al más complejo, usando cada solución para informar la siguiente", "order": 3 },
+        { "id": "PE-012_d", "text": "Ranking prompt examples from least relevant to most relevant", "textEs": "Clasificar los ejemplos del prompt del menos relevante al más relevante", "order": 4 }
+      ],
+      "tags": ["least-to-most", "decomposition", "problem-solving", "technique"]
+    },
+    {
+      "id": "PE-013",
+      "text": "How can you use Claude to evaluate and improve its own outputs?",
+      "textEs": "¿Cómo puedes usar a Claude para evaluar y mejorar sus propias salidas?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-013_b",
+      "explanation": "You can ask Claude to critique, evaluate, or improve its own output in a follow-up prompt. This self-reflection technique involves generating an initial response, then asking Claude to identify weaknesses, check for errors, or suggest improvements. This is sometimes called 'reflection' prompting and can significantly improve output quality for tasks like writing, code review, and analysis.",
+      "explanationEs": "Puedes pedir a Claude que critique, evalúe o mejore su propia salida en un prompt de seguimiento. Esta técnica de autoreflexión implica generar una respuesta inicial, luego pedir a Claude que identifique debilidades, verifique errores o sugiera mejoras. Esto a veces se llama prompting de 'reflexión' y puede mejorar significativamente la calidad de la salida para tareas como escritura, revisión de código y análisis.",
+      "options": [
+        { "id": "PE-013_a", "text": "This is not possible; Claude cannot evaluate its own responses", "textEs": "Esto no es posible; Claude no puede evaluar sus propias respuestas", "order": 1 },
+        { "id": "PE-013_b", "text": "Ask Claude to critique its initial response, identify weaknesses, and generate an improved version (reflection prompting)", "textEs": "Pedir a Claude que critique su respuesta inicial, identifique debilidades y genere una versión mejorada (prompting de reflexión)", "order": 2 },
+        { "id": "PE-013_c", "text": "Use a special /evaluate command built into the API", "textEs": "Usar un comando especial /evaluate incorporado en la API", "order": 3 },
+        { "id": "PE-013_d", "text": "Send the output to a different model for cross-validation", "textEs": "Enviar la salida a un modelo diferente para validación cruzada", "order": 4 }
+      ],
+      "tags": ["self-reflection", "evaluation", "improvement", "iteration"]
+    },
+    {
+      "id": "PE-014",
+      "text": "What is the recommended way to handle long documents in prompts to Claude?",
+      "textEs": "¿Cuál es la forma recomendada de manejar documentos largos en prompts para Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-014_d",
+      "explanation": "For long documents, best practices include: placing the document before the instructions (Claude attends better to content near the end), using XML tags to clearly delimit the document from instructions, being specific about what you want extracted or analyzed, and using prompt caching for repeated analysis of the same document. Claude's 200K context window can handle very large documents.",
+      "explanationEs": "Para documentos largos, las mejores prácticas incluyen: colocar el documento antes de las instrucciones (Claude presta mejor atención al contenido cerca del final), usar etiquetas XML para delimitar claramente el documento de las instrucciones, ser específico sobre lo que quieres extraer o analizar, y usar prompt caching para análisis repetido del mismo documento. La ventana de contexto de 200K de Claude puede manejar documentos muy largos.",
+      "options": [
+        { "id": "PE-014_a", "text": "Always split documents into chunks of 500 words or less before sending", "textEs": "Siempre dividir documentos en fragmentos de 500 palabras o menos antes de enviar", "order": 1 },
+        { "id": "PE-014_b", "text": "Summarize the document yourself first, then ask Claude about the summary", "textEs": "Resumir el documento tú mismo primero, luego preguntar a Claude sobre el resumen", "order": 2 },
+        { "id": "PE-014_c", "text": "Convert documents to keywords before sending to reduce token count", "textEs": "Convertir documentos a palabras clave antes de enviar para reducir el conteo de tokens", "order": 3 },
+        { "id": "PE-014_d", "text": "Place the document before instructions using XML tags, be specific about the task, and use prompt caching for repeated analysis", "textEs": "Colocar el documento antes de las instrucciones usando etiquetas XML, ser específico sobre la tarea, y usar prompt caching para análisis repetido", "order": 4 }
+      ],
+      "tags": ["long-documents", "best-practices", "xml-tags", "prompt-caching"]
+    },
+    {
+      "id": "PE-015",
+      "text": "What is 'output format specification' and why is it important?",
+      "textEs": "¿Qué es la 'especificación de formato de salida' y por qué es importante?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-015_a",
+      "explanation": "Output format specification means explicitly telling Claude how to structure its response — including the format (JSON, markdown, CSV, etc.), the fields or sections expected, the length, and any constraints. This eliminates ambiguity and ensures programmatic parsability. Without it, Claude may choose any format, making automated processing unreliable.",
+      "explanationEs": "La especificación de formato de salida significa decirle explícitamente a Claude cómo estructurar su respuesta — incluyendo el formato (JSON, markdown, CSV, etc.), los campos o secciones esperados, la longitud y cualquier restricción. Esto elimina la ambigüedad y asegura la parsabilidad programática. Sin ella, Claude puede elegir cualquier formato, haciendo poco confiable el procesamiento automatizado.",
+      "options": [
+        { "id": "PE-015_a", "text": "Explicitly defining the response structure (format, fields, length, constraints) to ensure consistent, parseable output", "textEs": "Definir explícitamente la estructura de respuesta (formato, campos, longitud, restricciones) para asegurar salida consistente y parseable", "order": 1 },
+        { "id": "PE-015_b", "text": "A Claude API setting that forces all responses to be in JSON format", "textEs": "Un ajuste de la API de Claude que fuerza todas las respuestas a estar en formato JSON", "order": 2 },
+        { "id": "PE-015_c", "text": "A way to limit Claude's vocabulary to only technical terms", "textEs": "Una forma de limitar el vocabulario de Claude a solo términos técnicos", "order": 3 },
+        { "id": "PE-015_d", "text": "A post-processing step that reformats Claude's output after generation", "textEs": "Un paso de post-procesamiento que reformatea la salida de Claude después de la generación", "order": 4 }
+      ],
+      "tags": ["output-format", "specification", "structured-output", "consistency"]
+    },
+    {
+      "id": "PE-016",
+      "text": "How does the order of information in a prompt affect Claude's performance?",
+      "textEs": "¿Cómo afecta el orden de la información en un prompt al rendimiento de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-016_c",
+      "explanation": "The order of information in a prompt significantly impacts Claude's attention and output quality. Claude tends to pay more attention to content at the beginning and end of a prompt (primacy and recency effects). Best practice is to put reference documents and context first, then instructions and questions at the end. This ensures Claude focuses on the task directive after absorbing the context.",
+      "explanationEs": "El orden de la información en un prompt impacta significativamente la atención y calidad de salida de Claude. Claude tiende a prestar más atención al contenido al principio y al final de un prompt (efectos de primacía y recencia). La mejor práctica es poner documentos de referencia y contexto primero, luego instrucciones y preguntas al final. Esto asegura que Claude se enfoque en la directiva de la tarea después de absorber el contexto.",
+      "options": [
+        { "id": "PE-016_a", "text": "Order has no effect; Claude processes all parts of the prompt equally regardless of position", "textEs": "El orden no tiene efecto; Claude procesa todas las partes del prompt igualmente sin importar la posición", "order": 1 },
+        { "id": "PE-016_b", "text": "Instructions must always come first; placing them at the end causes errors", "textEs": "Las instrucciones siempre deben ir primero; colocarlas al final causa errores", "order": 2 },
+        { "id": "PE-016_c", "text": "Claude attends more to content at the start and end (primacy/recency); best practice is context first, instructions last", "textEs": "Claude presta más atención al contenido al inicio y al final (primacía/recencia); la mejor práctica es contexto primero, instrucciones al final", "order": 3 },
+        { "id": "PE-016_d", "text": "Only the first 100 tokens of the prompt matter; everything after is ignored", "textEs": "Solo los primeros 100 tokens del prompt importan; todo lo demás se ignora", "order": 4 }
+      ],
+      "tags": ["prompt-ordering", "primacy", "recency", "best-practices"]
+    },
+    {
+      "id": "PE-017",
+      "text": "What are 'guardrails' in prompt engineering and how do you implement them?",
+      "textEs": "¿Qué son las 'barandillas' en ingeniería de prompts y cómo se implementan?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-017_b",
+      "explanation": "Guardrails are constraints and rules added to prompts to keep Claude's behavior within desired boundaries. They can be implemented through system prompt instructions (e.g., 'Never provide medical diagnoses'), explicit scope limitations (e.g., 'Only discuss topics related to cooking'), output validators, and content filters. Effective guardrails are specific, unambiguous, and tested against edge cases.",
+      "explanationEs": "Las barandillas son restricciones y reglas agregadas a los prompts para mantener el comportamiento de Claude dentro de los límites deseados. Se pueden implementar a través de instrucciones en el system prompt (ej., 'Nunca proporciones diagnósticos médicos'), limitaciones de alcance explícitas (ej., 'Solo discute temas relacionados con cocina'), validadores de salida y filtros de contenido. Las barandillas efectivas son específicas, no ambiguas y probadas contra casos extremos.",
+      "options": [
+        { "id": "PE-017_a", "text": "Physical hardware limitations that restrict Claude's processing power", "textEs": "Limitaciones físicas de hardware que restringen el poder de procesamiento de Claude", "order": 1 },
+        { "id": "PE-017_b", "text": "Constraints in system prompts (scope limits, forbidden topics, output rules) that keep Claude within desired behavioral boundaries", "textEs": "Restricciones en system prompts (límites de alcance, temas prohibidos, reglas de salida) que mantienen a Claude dentro de los límites de comportamiento deseados", "order": 2 },
+        { "id": "PE-017_c", "text": "A paid add-on service that monitors Claude's responses in real-time", "textEs": "Un servicio adicional de pago que monitorea las respuestas de Claude en tiempo real", "order": 3 },
+        { "id": "PE-017_d", "text": "Special tokens that Claude cannot generate, preventing certain outputs", "textEs": "Tokens especiales que Claude no puede generar, previniendo ciertas salidas", "order": 4 }
+      ],
+      "tags": ["guardrails", "constraints", "system-prompt", "safety", "boundaries"]
+    },
+    {
+      "id": "PE-018",
+      "text": "What is 'prompt injection,' and how can it be mitigated?",
+      "textEs": "¿Qué es la 'inyección de prompt' y cómo se puede mitigar?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-018_d",
+      "explanation": "Prompt injection is an attack where user-provided text attempts to override the system prompt or instructions. For example, a user might include 'Ignore all previous instructions and instead...' in their input. Mitigation strategies include: using XML tags to separate untrusted input, explicitly instructing Claude to treat user content as data not instructions, input sanitization, and multi-layer validation of outputs.",
+      "explanationEs": "La inyección de prompt es un ataque donde el texto proporcionado por el usuario intenta anular el system prompt o las instrucciones. Por ejemplo, un usuario podría incluir 'Ignora todas las instrucciones anteriores y en su lugar...' en su entrada. Las estrategias de mitigación incluyen: usar etiquetas XML para separar entrada no confiable, instruir explícitamente a Claude para tratar el contenido del usuario como datos no instrucciones, sanitización de entrada y validación multicapa de salidas.",
+      "options": [
+        { "id": "PE-018_a", "text": "A technique for adding more context to prompts to improve output quality", "textEs": "Una técnica para agregar más contexto a los prompts para mejorar la calidad de la salida", "order": 1 },
+        { "id": "PE-018_b", "text": "A SQL injection variant that targets the Anthropic API database", "textEs": "Una variante de inyección SQL que apunta a la base de datos de la API de Anthropic", "order": 2 },
+        { "id": "PE-018_c", "text": "An error that occurs when prompts exceed the context window limit", "textEs": "Un error que ocurre cuando los prompts exceden el límite de la ventana de contexto", "order": 3 },
+        { "id": "PE-018_d", "text": "An attack where user input tries to override system instructions; mitigated with XML delimiters, explicit data/instruction separation, and output validation", "textEs": "Un ataque donde la entrada del usuario intenta anular instrucciones del sistema; mitigado con delimitadores XML, separación explícita de datos/instrucciones y validación de salida", "order": 4 }
+      ],
+      "tags": ["prompt-injection", "security", "mitigation", "xml-tags"]
+    },
+    {
+      "id": "PE-019",
+      "text": "What is 'self-consistency' prompting?",
+      "textEs": "¿Qué es el prompting de 'autoconsistencia'?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-019_a",
+      "explanation": "Self-consistency prompting involves generating multiple responses to the same question (typically with higher temperature), then selecting the most common answer through majority voting. This reduces errors because incorrect reasoning paths tend to be random, while correct ones converge. It is particularly effective for math and logic problems where there is a single correct answer.",
+      "explanationEs": "El prompting de autoconsistencia implica generar múltiples respuestas a la misma pregunta (típicamente con mayor temperatura), luego seleccionar la respuesta más común mediante votación mayoritaria. Esto reduce errores porque los caminos de razonamiento incorrectos tienden a ser aleatorios, mientras que los correctos convergen. Es particularmente efectivo para problemas de matemáticas y lógica donde hay una sola respuesta correcta.",
+      "options": [
+        { "id": "PE-019_a", "text": "Generating multiple responses with higher temperature and selecting the most common answer via majority voting to reduce errors", "textEs": "Generar múltiples respuestas con mayor temperatura y seleccionar la respuesta más común mediante votación mayoritaria para reducir errores", "order": 1 },
+        { "id": "PE-019_b", "text": "Ensuring the prompt uses consistent grammar and formatting throughout", "textEs": "Asegurar que el prompt use gramática y formato consistentes en todo momento", "order": 2 },
+        { "id": "PE-019_c", "text": "Making Claude repeat its answer multiple times to confirm it is confident", "textEs": "Hacer que Claude repita su respuesta múltiples veces para confirmar que está seguro", "order": 3 },
+        { "id": "PE-019_d", "text": "Using the same system prompt across all conversations for reproducibility", "textEs": "Usar el mismo system prompt en todas las conversaciones para reproducibilidad", "order": 4 }
+      ],
+      "tags": ["self-consistency", "majority-voting", "reliability", "technique"]
+    },
+    {
+      "id": "PE-020",
+      "text": "How should you provide negative examples (what NOT to do) in a prompt?",
+      "textEs": "¿Cómo debes proporcionar ejemplos negativos (qué NO hacer) en un prompt?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-020_c",
+      "explanation": "When providing negative examples, always pair them with positive examples showing the correct approach. Clearly label which is wrong and which is right. Avoid providing only negative examples, as this can inadvertently prime the model to produce the unwanted behavior. The pattern 'Do not do X. Instead, do Y.' with concrete examples is the most effective approach.",
+      "explanationEs": "Al proporcionar ejemplos negativos, siempre acompáñalos con ejemplos positivos que muestren el enfoque correcto. Etiqueta claramente cuál está mal y cuál está bien. Evita proporcionar solo ejemplos negativos, ya que esto puede preparar inadvertidamente al modelo para producir el comportamiento no deseado. El patrón 'No hagas X. En su lugar, haz Y.' con ejemplos concretos es el enfoque más efectivo.",
+      "options": [
+        { "id": "PE-020_a", "text": "Never include negative examples; they confuse the model completely", "textEs": "Nunca incluir ejemplos negativos; confunden al modelo completamente", "order": 1 },
+        { "id": "PE-020_b", "text": "List only negative examples in a 'DO NOT' section at the end of the prompt", "textEs": "Listar solo ejemplos negativos en una sección 'NO HACER' al final del prompt", "order": 2 },
+        { "id": "PE-020_c", "text": "Pair negative examples with positive ones, clearly labeled; use the pattern 'Do not X, instead do Y' with concrete examples", "textEs": "Emparejar ejemplos negativos con positivos, claramente etiquetados; usar el patrón 'No hagas X, en su lugar haz Y' con ejemplos concretos", "order": 3 },
+        { "id": "PE-020_d", "text": "Write negative examples in ALL CAPS to ensure the model distinguishes them from positive guidance", "textEs": "Escribir ejemplos negativos en MAYÚSCULAS para asegurar que el modelo los distinga de la guía positiva", "order": 4 }
+      ],
+      "tags": ["negative-examples", "positive-examples", "best-practices", "labeling"]
+    },
+    {
+      "id": "PE-021",
+      "text": "What is 'meta-prompting,' and how is it used with Claude?",
+      "textEs": "¿Qué es el 'meta-prompting' y cómo se usa con Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-021_b",
+      "explanation": "Meta-prompting is the technique of using Claude to generate or improve prompts. You describe the task you want to accomplish, and Claude creates an optimized prompt for that task. This leverages Claude's understanding of its own behavior and prompt engineering best practices. It is particularly useful for non-technical users who want effective prompts without deep knowledge of prompt engineering techniques.",
+      "explanationEs": "El meta-prompting es la técnica de usar a Claude para generar o mejorar prompts. Describes la tarea que quieres lograr, y Claude crea un prompt optimizado para esa tarea. Esto aprovecha la comprensión de Claude sobre su propio comportamiento y las mejores prácticas de ingeniería de prompts. Es particularmente útil para usuarios no técnicos que quieren prompts efectivos sin conocimiento profundo de técnicas de ingeniería de prompts.",
+      "options": [
+        { "id": "PE-021_a", "text": "Prompting about the metadata fields required in API requests", "textEs": "Prompting sobre los campos de metadatos requeridos en solicitudes de API", "order": 1 },
+        { "id": "PE-021_b", "text": "Using Claude to generate, evaluate, or improve prompts for specific tasks, leveraging its understanding of prompt engineering", "textEs": "Usar a Claude para generar, evaluar o mejorar prompts para tareas específicas, aprovechando su comprensión de ingeniería de prompts", "order": 2 },
+        { "id": "PE-021_c", "text": "A higher-level programming language for writing prompts that compiles to natural language", "textEs": "Un lenguaje de programación de nivel superior para escribir prompts que compila a lenguaje natural", "order": 3 },
+        { "id": "PE-021_d", "text": "Adding metadata tags to prompts for analytics tracking purposes", "textEs": "Agregar etiquetas de metadatos a los prompts para propósitos de seguimiento analítico", "order": 4 }
+      ],
+      "tags": ["meta-prompting", "prompt-generation", "optimization", "technique"]
+    },
+    {
+      "id": "PE-022",
+      "text": "What is the 'tree of thought' (ToT) prompting technique?",
+      "textEs": "¿Qué es la técnica de prompting 'árbol de pensamiento' (ToT)?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-022_a",
+      "explanation": "Tree of Thought (ToT) prompting extends chain-of-thought by having the model explore multiple reasoning paths simultaneously, evaluate each path's promise, and backtrack from unpromising paths. Unlike linear chain-of-thought, ToT considers branching possibilities, making it effective for problems with multiple valid approaches or where initial reasoning choices strongly affect the final answer (e.g., puzzles, planning tasks).",
+      "explanationEs": "El prompting de Árbol de Pensamiento (ToT) extiende la cadena de pensamiento haciendo que el modelo explore múltiples caminos de razonamiento simultáneamente, evalúe la promesa de cada camino y retroceda de caminos poco prometedores. A diferencia de la cadena de pensamiento lineal, ToT considera posibilidades ramificadas, haciéndolo efectivo para problemas con múltiples enfoques válidos o donde las elecciones iniciales de razonamiento afectan fuertemente la respuesta final (ej., puzzles, tareas de planificación).",
+      "options": [
+        { "id": "PE-022_a", "text": "Exploring multiple reasoning paths simultaneously, evaluating each, and backtracking from unpromising ones; effective for puzzles and planning", "textEs": "Explorar múltiples caminos de razonamiento simultáneamente, evaluar cada uno y retroceder de los poco prometedores; efectivo para puzzles y planificación", "order": 1 },
+        { "id": "PE-022_b", "text": "A visual diagramming tool that maps prompt dependencies in a tree structure", "textEs": "Una herramienta de diagramación visual que mapea dependencias de prompts en una estructura de árbol", "order": 2 },
+        { "id": "PE-022_c", "text": "Organizing few-shot examples in a hierarchical tree format within the prompt", "textEs": "Organizar ejemplos few-shot en un formato de árbol jerárquico dentro del prompt", "order": 3 },
+        { "id": "PE-022_d", "text": "Having multiple models discuss a problem in a tree-structured conversation", "textEs": "Hacer que múltiples modelos discutan un problema en una conversación con estructura de árbol", "order": 4 }
+      ],
+      "tags": ["tree-of-thought", "reasoning", "branching", "backtracking"]
+    },
+    {
+      "id": "PE-023",
+      "text": "How do you effectively use Claude for classification tasks?",
+      "textEs": "¿Cómo usas efectivamente a Claude para tareas de clasificación?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-023_d",
+      "explanation": "For classification tasks, provide: (1) a clear list of all possible categories with descriptions, (2) few-shot examples showing inputs mapped to categories, (3) instructions for ambiguous cases (pick best match or flag as uncertain), and (4) the desired output format. Setting low temperature (near 0) increases consistency. For batch classification, prefilling with the category structure helps maintain format.",
+      "explanationEs": "Para tareas de clasificación, proporciona: (1) una lista clara de todas las categorías posibles con descripciones, (2) ejemplos few-shot mostrando entradas mapeadas a categorías, (3) instrucciones para casos ambiguos (elegir mejor coincidencia o marcar como incierto), y (4) el formato de salida deseado. Establecer temperatura baja (cerca de 0) aumenta la consistencia. Para clasificación en lote, prellenar con la estructura de categorías ayuda a mantener el formato.",
+      "options": [
+        { "id": "PE-023_a", "text": "Simply name the categories; Claude automatically knows how to classify any input", "textEs": "Simplemente nombrar las categorías; Claude automáticamente sabe cómo clasificar cualquier entrada", "order": 1 },
+        { "id": "PE-023_b", "text": "Use high temperature for better classification accuracy", "textEs": "Usar temperatura alta para mejor precisión de clasificación", "order": 2 },
+        { "id": "PE-023_c", "text": "Only use Opus for classification; smaller models cannot classify reliably", "textEs": "Solo usar Opus para clasificación; los modelos más pequeños no pueden clasificar confiablemente", "order": 3 },
+        { "id": "PE-023_d", "text": "Provide category list with descriptions, few-shot examples, edge-case instructions, output format, and use low temperature for consistency", "textEs": "Proporcionar lista de categorías con descripciones, ejemplos few-shot, instrucciones para casos extremos, formato de salida y usar temperatura baja para consistencia", "order": 4 }
+      ],
+      "tags": ["classification", "categories", "few-shot", "temperature", "technique"]
+    },
+    {
+      "id": "PE-024",
+      "text": "What is the difference between 'temperature' and 'top_p' parameters for controlling randomness?",
+      "textEs": "¿Cuál es la diferencia entre los parámetros 'temperature' y 'top_p' para controlar la aleatoriedad?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-024_c",
+      "explanation": "Temperature scales the probability distribution — lower values sharpen it toward the most likely token, higher values flatten it. Top_p (nucleus sampling) truncates the distribution to only consider tokens whose cumulative probability reaches the threshold p. Both control randomness differently: temperature changes token probabilities, while top_p changes which tokens are considered. Anthropic recommends adjusting only one at a time, and Claude primarily uses temperature.",
+      "explanationEs": "La temperatura escala la distribución de probabilidad — valores más bajos la agudizan hacia el token más probable, valores más altos la aplanan. Top_p (muestreo de núcleo) trunca la distribución para solo considerar tokens cuya probabilidad acumulada alcanza el umbral p. Ambos controlan la aleatoriedad de forma diferente: la temperatura cambia las probabilidades de los tokens, mientras que top_p cambia qué tokens se consideran. Anthropic recomienda ajustar solo uno a la vez, y Claude utiliza principalmente temperatura.",
+      "options": [
+        { "id": "PE-024_a", "text": "They are identical parameters with different names; use either one interchangeably", "textEs": "Son parámetros idénticos con nombres diferentes; usa cualquiera de forma intercambiable", "order": 1 },
+        { "id": "PE-024_b", "text": "Temperature controls response length; top_p controls response quality", "textEs": "La temperatura controla la longitud de respuesta; top_p controla la calidad de respuesta", "order": 2 },
+        { "id": "PE-024_c", "text": "Temperature scales the probability distribution; top_p truncates it to a cumulative probability threshold. Adjust only one at a time", "textEs": "La temperatura escala la distribución de probabilidad; top_p la trunca a un umbral de probabilidad acumulada. Ajustar solo uno a la vez", "order": 3 },
+        { "id": "PE-024_d", "text": "Temperature is for creative tasks only; top_p is for analytical tasks only", "textEs": "La temperatura es solo para tareas creativas; top_p es solo para tareas analíticas", "order": 4 }
+      ],
+      "tags": ["temperature", "top-p", "nucleus-sampling", "parameters", "randomness"]
+    },
+    {
+      "id": "PE-025",
+      "text": "How do you design prompts for multi-step extraction tasks (e.g., extracting entities from a document)?",
+      "textEs": "¿Cómo diseñas prompts para tareas de extracción de múltiples pasos (ej., extraer entidades de un documento)?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-025_b",
+      "explanation": "For multi-step extraction: (1) define exactly what entities/fields to extract, (2) provide a JSON schema or example showing the expected structure, (3) include few-shot examples with realistic data, (4) ask Claude to first identify candidates then validate each against criteria, and (5) handle edge cases explicitly (what to return when data is missing or ambiguous). This structured approach yields reliable, consistent extractions.",
+      "explanationEs": "Para extracción de múltiples pasos: (1) definir exactamente qué entidades/campos extraer, (2) proporcionar un esquema JSON o ejemplo mostrando la estructura esperada, (3) incluir ejemplos few-shot con datos realistas, (4) pedir a Claude que primero identifique candidatos y luego valide cada uno contra criterios, y (5) manejar casos extremos explícitamente (qué devolver cuando los datos faltan o son ambiguos). Este enfoque estructurado produce extracciones confiables y consistentes.",
+      "options": [
+        { "id": "PE-025_a", "text": "Simply ask 'Extract all entities from this text' and Claude handles the rest", "textEs": "Simplemente pedir 'Extrae todas las entidades de este texto' y Claude se encarga del resto", "order": 1 },
+        { "id": "PE-025_b", "text": "Define fields to extract, provide schema/examples, use few-shot, add identify-then-validate steps, and handle edge cases explicitly", "textEs": "Definir campos a extraer, proporcionar esquema/ejemplos, usar few-shot, agregar pasos de identificar-luego-validar, y manejar casos extremos explícitamente", "order": 2 },
+        { "id": "PE-025_c", "text": "Use regular expressions in the prompt to define extraction patterns", "textEs": "Usar expresiones regulares en el prompt para definir patrones de extracción", "order": 3 },
+        { "id": "PE-025_d", "text": "Extraction tasks require fine-tuned models; prompting alone is insufficient", "textEs": "Las tareas de extracción requieren modelos ajustados; el prompting solo es insuficiente", "order": 4 }
+      ],
+      "tags": ["extraction", "multi-step", "entities", "schema", "few-shot"]
+    },
+    {
+      "id": "PE-026",
+      "text": "What is the best way to handle contradictory instructions in a prompt?",
+      "textEs": "¿Cuál es la mejor forma de manejar instrucciones contradictorias en un prompt?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-026_a",
+      "explanation": "Contradictory instructions confuse Claude and lead to unpredictable behavior. The best approach is to review prompts for conflicts before deployment, establish clear priority rules (e.g., 'Safety instructions override all other directives'), use numbered priority lists for competing requirements, and test edge cases where conflicts might arise. When detected, resolve contradictions in favor of the higher-priority directive.",
+      "explanationEs": "Las instrucciones contradictorias confunden a Claude y llevan a comportamiento impredecible. El mejor enfoque es revisar los prompts en busca de conflictos antes del despliegue, establecer reglas claras de prioridad (ej., 'Las instrucciones de seguridad anulan todas las demás directivas'), usar listas de prioridad numeradas para requisitos en competencia, y probar casos extremos donde podrían surgir conflictos. Cuando se detecten, resolver las contradicciones a favor de la directiva de mayor prioridad.",
+      "options": [
+        { "id": "PE-026_a", "text": "Review for conflicts, establish clear priority rules, use numbered priority lists, and test edge cases before deployment", "textEs": "Revisar conflictos, establecer reglas claras de prioridad, usar listas de prioridad numeradas y probar casos extremos antes del despliegue", "order": 1 },
+        { "id": "PE-026_b", "text": "Claude automatically resolves all contradictions correctly; no special handling is needed", "textEs": "Claude resuelve automáticamente todas las contradicciones correctamente; no se necesita manejo especial", "order": 2 },
+        { "id": "PE-026_c", "text": "Always use the last instruction as the highest priority since Claude reads sequentially", "textEs": "Siempre usar la última instrucción como la de mayor prioridad ya que Claude lee secuencialmente", "order": 3 },
+        { "id": "PE-026_d", "text": "Add a disclaimer saying 'Ignore any contradictions' to let Claude choose freely", "textEs": "Agregar una nota diciendo 'Ignora cualquier contradicción' para dejar que Claude elija libremente", "order": 4 }
+      ],
+      "tags": ["contradictions", "priority", "conflict-resolution", "best-practices"]
+    },
+    {
+      "id": "PE-027",
+      "text": "What is 'Constitutional AI' prompting (RLAIF) and how does it differ from standard RLHF?",
+      "textEs": "¿Qué es el prompting de 'IA Constitucional' (RLAIF) y cómo difiere del RLHF estándar?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-027_d",
+      "explanation": "Constitutional AI (RLAIF - Reinforcement Learning from AI Feedback) uses a set of written principles (the 'constitution') to train the model. Instead of relying solely on human feedback for every output, the model self-evaluates and revises responses based on these principles. This scales better than pure RLHF because the principles can be applied automatically. For prompt engineers, understanding this helps explain why Claude behaves the way it does regarding safety and helpfulness.",
+      "explanationEs": "La IA Constitucional (RLAIF - Aprendizaje por Refuerzo a partir de Retroalimentación de IA) usa un conjunto de principios escritos (la 'constitución') para entrenar al modelo. En lugar de depender únicamente de retroalimentación humana para cada salida, el modelo se autoevalúa y revisa respuestas basándose en estos principios. Esto escala mejor que el RLHF puro porque los principios pueden aplicarse automáticamente. Para ingenieros de prompts, entender esto ayuda a explicar por qué Claude se comporta como lo hace respecto a seguridad y utilidad.",
+      "options": [
+        { "id": "PE-027_a", "text": "A government regulation that limits what prompts can be sent to AI models", "textEs": "Una regulación gubernamental que limita qué prompts pueden enviarse a modelos de IA", "order": 1 },
+        { "id": "PE-027_b", "text": "A prompt technique where you write a constitution document that the model must follow literally", "textEs": "Una técnica de prompt donde escribes un documento de constitución que el modelo debe seguir literalmente", "order": 2 },
+        { "id": "PE-027_c", "text": "The same as RLHF but using more human evaluators for larger scale", "textEs": "Lo mismo que RLHF pero usando más evaluadores humanos para mayor escala", "order": 3 },
+        { "id": "PE-027_d", "text": "Training where the model self-evaluates against written principles (a 'constitution'), scaling better than pure RLHF by applying rules automatically", "textEs": "Entrenamiento donde el modelo se autoevalúa contra principios escritos (una 'constitución'), escalando mejor que RLHF puro al aplicar reglas automáticamente", "order": 4 }
+      ],
+      "tags": ["constitutional-ai", "rlaif", "rlhf", "training", "principles"]
+    },
+    {
+      "id": "PE-028",
+      "text": "How do you effectively test and iterate on prompts?",
+      "textEs": "¿Cómo pruebas e iteras efectivamente sobre prompts?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-028_c",
+      "explanation": "Effective prompt testing involves: (1) creating a diverse test suite of inputs including edge cases, (2) defining success criteria and evaluation metrics, (3) A/B testing prompt variations systematically, (4) using Claude itself or a separate model to evaluate outputs (LLM-as-judge), (5) documenting what works and what doesn't, and (6) iterating one variable at a time to understand each change's impact. The Anthropic Console's prompt playground facilitates this process.",
+      "explanationEs": "La prueba efectiva de prompts implica: (1) crear un conjunto de pruebas diverso de entradas incluyendo casos extremos, (2) definir criterios de éxito y métricas de evaluación, (3) hacer pruebas A/B de variaciones de prompts sistemáticamente, (4) usar a Claude mismo o un modelo separado para evaluar salidas (LLM-como-juez), (5) documentar qué funciona y qué no, y (6) iterar una variable a la vez para entender el impacto de cada cambio. El playground de prompts de la Consola de Anthropic facilita este proceso.",
+      "options": [
+        { "id": "PE-028_a", "text": "Run the prompt once; if it works, it is production-ready", "textEs": "Ejecutar el prompt una vez; si funciona, está listo para producción", "order": 1 },
+        { "id": "PE-028_b", "text": "Only test with the exact inputs you expect in production", "textEs": "Solo probar con las entradas exactas que esperas en producción", "order": 2 },
+        { "id": "PE-028_c", "text": "Create diverse test suites with edge cases, define success metrics, A/B test variations, use LLM-as-judge, and iterate one variable at a time", "textEs": "Crear conjuntos de pruebas diversos con casos extremos, definir métricas de éxito, probar variaciones A/B, usar LLM-como-juez e iterar una variable a la vez", "order": 3 },
+        { "id": "PE-028_d", "text": "Change multiple variables at once to find the optimal prompt faster", "textEs": "Cambiar múltiples variables a la vez para encontrar el prompt óptimo más rápido", "order": 4 }
+      ],
+      "tags": ["testing", "iteration", "evaluation", "a-b-testing", "metrics"]
+    },
+    {
+      "id": "PE-029",
+      "text": "What is the 'Anthropic prompt engineering cookbook' approach to building complex prompts?",
+      "textEs": "¿Cuál es el enfoque del 'recetario de ingeniería de prompts de Anthropic' para construir prompts complejos?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-029_b",
+      "explanation": "Anthropic recommends building complex prompts incrementally: start with a simple prompt that works for the basic case, then layer on complexity. Add XML structure, then examples, then edge-case handling, then output format constraints. Test at each stage. This 'build up' approach is more reliable than trying to write a perfect complex prompt from scratch, as you can identify which additions improve or degrade performance.",
+      "explanationEs": "Anthropic recomienda construir prompts complejos incrementalmente: comenzar con un prompt simple que funcione para el caso básico, luego agregar complejidad por capas. Agregar estructura XML, luego ejemplos, luego manejo de casos extremos, luego restricciones de formato de salida. Probar en cada etapa. Este enfoque de 'construir gradualmente' es más confiable que intentar escribir un prompt complejo perfecto desde cero, ya que puedes identificar qué adiciones mejoran o degradan el rendimiento.",
+      "options": [
+        { "id": "PE-029_a", "text": "Copy and paste prompts from a pre-built template library without modification", "textEs": "Copiar y pegar prompts de una biblioteca de plantillas pre-construidas sin modificación", "order": 1 },
+        { "id": "PE-029_b", "text": "Start simple, then incrementally layer XML structure, examples, edge-case handling, and format constraints, testing at each stage", "textEs": "Comenzar simple, luego agregar incrementalmente estructura XML, ejemplos, manejo de casos extremos y restricciones de formato, probando en cada etapa", "order": 2 },
+        { "id": "PE-029_c", "text": "Write the longest, most detailed prompt possible from the beginning", "textEs": "Escribir el prompt más largo y detallado posible desde el inicio", "order": 3 },
+        { "id": "PE-029_d", "text": "Use only zero-shot prompts; examples and structure add unnecessary complexity", "textEs": "Usar solo prompts zero-shot; los ejemplos y la estructura agregan complejidad innecesaria", "order": 4 }
+      ],
+      "tags": ["incremental", "cookbook", "best-practices", "building-prompts"]
+    },
+    {
+      "id": "PE-030",
+      "text": "What is 'grounding' in prompt engineering and how does it reduce hallucination?",
+      "textEs": "¿Qué es el 'anclaje' en ingeniería de prompts y cómo reduce la alucinación?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "prompt-engineering",
+      "correctOptionId": "PE-030_d",
+      "explanation": "Grounding means providing Claude with specific source material (documents, data, context) and instructing it to base its answers only on that provided information. For example: 'Answer based ONLY on the following document. If the answer is not in the document, say I don't know.' This dramatically reduces hallucination because Claude has explicit reference material and permission to say it does not know, rather than generating plausible-sounding fiction.",
+      "explanationEs": "El anclaje significa proporcionar a Claude material fuente específico (documentos, datos, contexto) e instruirle para basar sus respuestas solo en esa información proporcionada. Por ejemplo: 'Responde SOLO basándote en el siguiente documento. Si la respuesta no está en el documento, di No lo sé.' Esto reduce dramáticamente la alucinación porque Claude tiene material de referencia explícito y permiso para decir que no sabe, en lugar de generar ficción que suene plausible.",
+      "options": [
+        { "id": "PE-030_a", "text": "Connecting Claude to a grounding wire for electrical safety in hardware installations", "textEs": "Conectar a Claude a un cable de tierra para seguridad eléctrica en instalaciones de hardware", "order": 1 },
+        { "id": "PE-030_b", "text": "Training Claude on a specific domain dataset before using it", "textEs": "Entrenar a Claude en un conjunto de datos de dominio específico antes de usarlo", "order": 2 },
+        { "id": "PE-030_c", "text": "Running the model on local hardware instead of cloud servers", "textEs": "Ejecutar el modelo en hardware local en lugar de servidores cloud", "order": 3 },
+        { "id": "PE-030_d", "text": "Providing source material and instructing Claude to answer only from that context, saying 'I don't know' when information is absent", "textEs": "Proporcionar material fuente e instruir a Claude para responder solo desde ese contexto, diciendo 'No lo sé' cuando la información está ausente", "order": 4 }
+      ],
+      "tags": ["grounding", "hallucination", "source-material", "rag", "best-practices"]
+    }
+  ]
+}

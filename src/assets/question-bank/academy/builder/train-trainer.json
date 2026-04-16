@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "domain": "train-trainer",
+    "domainName": "Enterprise Train-the-Trainer",
+    "trackId": "academy-train-trainer",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10,
+    "learningLevel": 3,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "train-001",
+      "text": "What is the core principle of a train-the-trainer program for enterprise AI adoption?",
+      "textEs": "¿Cuál es el principio central de un programa de formación de formadores para la adopción empresarial de IA?",
+      "domainCode": "train-trainer",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-001_b",
+      "explanation": "The core principle is scalable knowledge transfer: training a select group of internal champions who then train others within their teams. This creates a multiplicative effect where a small investment in deeply training 10-20 trainers can reach hundreds of employees. Internal trainers have contextual knowledge of their teams' workflows, codebases, and challenges, making their training more relevant and credible than external generic training.",
+      "explanationEs": "El principio central es la transferencia de conocimiento escalable: capacitar a un grupo selecto de campeones internos que luego capacitan a otros dentro de sus equipos. Esto crea un efecto multiplicativo donde una pequeña inversión en capacitar profundamente a 10-20 formadores puede alcanzar a cientos de empleados. Los formadores internos tienen conocimiento contextual de los flujos de trabajo, bases de código y desafíos de sus equipos, haciendo que su capacitación sea más relevante y creíble que la capacitación genérica externa.",
+      "options": [
+        { "id": "train-001_a", "text": "Replace all external training vendors with internal trainers to reduce costs", "textEs": "Reemplazar todos los proveedores de capacitación externos con formadores internos para reducir costos", "order": 1 },
+        { "id": "train-001_b", "text": "Scalable knowledge transfer by training internal champions who train others, leveraging their contextual knowledge of team workflows and codebases", "textEs": "Transferencia de conocimiento escalable capacitando campeones internos que capacitan a otros, aprovechando su conocimiento contextual de flujos de trabajo y bases de código del equipo", "order": 2 },
+        { "id": "train-001_c", "text": "Create a centralized training department that exclusively delivers AI training to all employees", "textEs": "Crear un departamento de capacitación centralizado que entregue exclusivamente capacitación en IA a todos los empleados", "order": 3 },
+        { "id": "train-001_d", "text": "Record a single training video and distribute it to all employees to watch at their convenience", "textEs": "Grabar un solo video de capacitación y distribuirlo a todos los empleados para que lo vean cuando les convenga", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "knowledge-transfer", "champions", "scalability"]
+    },
+    {
+      "id": "train-002",
+      "text": "According to adult learning principles (andragogy), what is the most effective way to train experienced developers on AI tools?",
+      "textEs": "Según los principios de aprendizaje adulto (andragogía), ¿cuál es la forma más efectiva de capacitar a desarrolladores experimentados en herramientas de IA?",
+      "domainCode": "train-trainer",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-002_d",
+      "explanation": "Adult learning theory (Knowles' andragogy) emphasizes that adults learn best when training is: self-directed (they have agency in what and how they learn), experience-based (connecting new concepts to existing knowledge), immediately applicable (solving real problems they face today), problem-centered rather than content-centered, and when they understand the 'why' behind what they're learning. For developers, this means hands-on exercises using their actual codebase, not abstract examples.",
+      "explanationEs": "La teoría de aprendizaje adulto (andragogía de Knowles) enfatiza que los adultos aprenden mejor cuando la capacitación es: autodirigida (tienen agencia en qué y cómo aprenden), basada en experiencia (conectando nuevos conceptos con conocimiento existente), inmediatamente aplicable (resolviendo problemas reales que enfrentan hoy), centrada en problemas en lugar de centrada en contenido, y cuando entienden el 'por qué' detrás de lo que están aprendiendo. Para desarrolladores, esto significa ejercicios prácticos usando su base de código real, no ejemplos abstractos.",
+      "options": [
+        { "id": "train-002_a", "text": "Lecture-based presentations with comprehensive slides covering all AI theory and fundamentals before any hands-on practice", "textEs": "Presentaciones basadas en conferencias con diapositivas integrales cubriendo toda la teoría y fundamentos de IA antes de cualquier práctica", "order": 1 },
+        { "id": "train-002_b", "text": "Assign reading materials and online courses, then test knowledge with a written exam", "textEs": "Asignar materiales de lectura y cursos en línea, luego evaluar conocimiento con un examen escrito", "order": 2 },
+        { "id": "train-002_c", "text": "Pair each developer with an external AI consultant for one-on-one mentoring over several weeks", "textEs": "Emparejar a cada desarrollador con un consultor externo de IA para mentoría uno a uno durante varias semanas", "order": 3 },
+        { "id": "train-002_d", "text": "Self-directed, experience-based, problem-centered training using their actual codebase, with clear 'why' context and immediate applicability", "textEs": "Capacitación autodirigida, basada en experiencia, centrada en problemas usando su base de código real, con contexto claro del 'por qué' y aplicabilidad inmediata", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "adult-learning", "andragogy", "pedagogy", "hands-on"]
+    },
+    {
+      "id": "train-003",
+      "text": "What characteristics should you look for when selecting internal AI champions for a train-the-trainer program?",
+      "textEs": "¿Qué características debes buscar al seleccionar campeones internos de IA para un programa de formación de formadores?",
+      "domainCode": "train-trainer",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-003_a",
+      "explanation": "Ideal AI champions combine technical credibility (peers respect their engineering skills), enthusiasm for AI without being uncritical evangelists, strong communication and teaching abilities, cross-team influence and relationships, willingness to invest time in both learning and teaching, and a growth mindset. They do not need to be the most senior engineers -- mid-level developers who are enthusiastic and well-connected often make the best champions.",
+      "explanationEs": "Los campeones de IA ideales combinan credibilidad técnica (los compañeros respetan sus habilidades de ingeniería), entusiasmo por la IA sin ser evangelistas acríticos, fuertes habilidades de comunicación y enseñanza, influencia y relaciones entre equipos, disposición a invertir tiempo tanto en aprender como en enseñar, y una mentalidad de crecimiento. No necesitan ser los ingenieros más senior -- los desarrolladores de nivel medio que son entusiastas y están bien conectados a menudo son los mejores campeones.",
+      "options": [
+        { "id": "train-003_a", "text": "Technical credibility, balanced AI enthusiasm, strong communication skills, cross-team influence, teaching willingness, and growth mindset", "textEs": "Credibilidad técnica, entusiasmo equilibrado por la IA, fuertes habilidades de comunicación, influencia entre equipos, disposición a enseñar y mentalidad de crecimiento", "order": 1 },
+        { "id": "train-003_b", "text": "Only the most senior staff engineers, since their authority will ensure adoption regardless of their teaching skills", "textEs": "Solo los ingenieros de personal más senior, ya que su autoridad asegurará la adopción independientemente de sus habilidades de enseñanza", "order": 2 },
+        { "id": "train-003_c", "text": "Developers who already use AI heavily, even if they work in isolation and rarely collaborate with others", "textEs": "Desarrolladores que ya usan IA intensivamente, incluso si trabajan en aislamiento y rara vez colaboran con otros", "order": 3 },
+        { "id": "train-003_d", "text": "Only managers and team leads, since they can mandate adoption within their teams", "textEs": "Solo gerentes y líderes de equipo, ya que pueden ordenar la adopción dentro de sus equipos", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "champions", "selection-criteria", "leadership"]
+    },
+    {
+      "id": "train-004",
+      "text": "How should an AI training curriculum be structured to accommodate different skill levels within the organization?",
+      "textEs": "¿Cómo debe estructurarse un currículo de capacitación en IA para acomodar diferentes niveles de habilidad dentro de la organización?",
+      "domainCode": "train-trainer",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-004_c",
+      "explanation": "An effective curriculum uses learning paths with progressive skill levels: beginner (what is Claude, basic prompting, simple use cases), intermediate (advanced prompting, tool use, workflow integration), and advanced (multi-agent patterns, CI/CD automation, custom tooling). Each level has clear learning objectives, hands-on exercises, and assessments. Learners self-assess or take a placement evaluation to start at the right level, avoiding boredom for advanced users or overwhelm for beginners.",
+      "explanationEs": "Un currículo efectivo usa rutas de aprendizaje con niveles de habilidad progresivos: principiante (qué es Claude, prompting básico, casos de uso simples), intermedio (prompting avanzado, uso de herramientas, integración de flujos de trabajo) y avanzado (patrones multi-agente, automatización CI/CD, herramientas personalizadas). Cada nivel tiene objetivos de aprendizaje claros, ejercicios prácticos y evaluaciones. Los aprendices se autoevalúan o toman una evaluación de ubicación para comenzar en el nivel correcto, evitando aburrimiento para usuarios avanzados o sobrecarga para principiantes.",
+      "options": [
+        { "id": "train-004_a", "text": "Deliver identical training to everyone; differentiation creates an unfair advantage for some teams", "textEs": "Entregar capacitación idéntica a todos; la diferenciación crea una ventaja injusta para algunos equipos", "order": 1 },
+        { "id": "train-004_b", "text": "Only offer beginner training; advanced users can figure out advanced topics on their own", "textEs": "Solo ofrecer capacitación para principiantes; los usuarios avanzados pueden descifrar los temas avanzados por su cuenta", "order": 2 },
+        { "id": "train-004_c", "text": "Progressive learning paths (beginner, intermediate, advanced) with clear objectives, hands-on exercises, assessments, and self-placement evaluation", "textEs": "Rutas de aprendizaje progresivas (principiante, intermedio, avanzado) con objetivos claros, ejercicios prácticos, evaluaciones y evaluación de autocolocación", "order": 3 },
+        { "id": "train-004_d", "text": "Start everyone at the advanced level to set high expectations; those who struggle will naturally seek help", "textEs": "Comenzar a todos en el nivel avanzado para establecer expectativas altas; los que tengan dificultades naturalmente buscarán ayuda", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "curriculum", "skill-levels", "learning-paths", "assessment"]
+    },
+    {
+      "id": "train-005",
+      "text": "What is the most effective approach for measuring training effectiveness in an AI adoption program?",
+      "textEs": "¿Cuál es el enfoque más efectivo para medir la efectividad de la capacitación en un programa de adopción de IA?",
+      "domainCode": "train-trainer",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-005_b",
+      "explanation": "The Kirkpatrick model adapted for AI training provides four evaluation levels: Level 1 (Reaction) - participant satisfaction surveys after training; Level 2 (Learning) - pre/post assessments measuring knowledge gain; Level 3 (Behavior) - observing actual AI tool usage in daily work 30-60 days post-training; Level 4 (Results) - measuring business outcomes like productivity improvements and quality metrics. Most organizations only measure Level 1; effective programs track all four levels.",
+      "explanationEs": "El modelo de Kirkpatrick adaptado para capacitación en IA proporciona cuatro niveles de evaluación: Nivel 1 (Reacción) - encuestas de satisfacción del participante después de la capacitación; Nivel 2 (Aprendizaje) - evaluaciones pre/post midiendo ganancia de conocimiento; Nivel 3 (Comportamiento) - observar el uso real de herramientas de IA en el trabajo diario 30-60 días después de la capacitación; Nivel 4 (Resultados) - medir resultados de negocio como mejoras de productividad y métricas de calidad. La mayoría de las organizaciones solo miden el Nivel 1; los programas efectivos rastrean los cuatro niveles.",
+      "options": [
+        { "id": "train-005_a", "text": "Only measure training attendance rates; high attendance indicates the program is successful", "textEs": "Solo medir tasas de asistencia a la capacitación; alta asistencia indica que el programa es exitoso", "order": 1 },
+        { "id": "train-005_b", "text": "Use the Kirkpatrick model: reaction (satisfaction), learning (knowledge gain), behavior (actual tool usage at 30-60 days), and results (business outcomes)", "textEs": "Usar el modelo de Kirkpatrick: reacción (satisfacción), aprendizaje (ganancia de conocimiento), comportamiento (uso real de herramientas a 30-60 días) y resultados (resultados de negocio)", "order": 2 },
+        { "id": "train-005_c", "text": "Administer a certification exam at the end of training; pass rates indicate effectiveness", "textEs": "Administrar un examen de certificación al final de la capacitación; las tasas de aprobación indican efectividad", "order": 3 },
+        { "id": "train-005_d", "text": "Compare the organization's AI spending before and after training; reduced spending means employees are using AI more efficiently", "textEs": "Comparar el gasto en IA de la organización antes y después de la capacitación; gasto reducido significa que los empleados usan la IA más eficientemente", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "measurement", "kirkpatrick", "effectiveness", "assessment"]
+    },
+    {
+      "id": "train-006",
+      "text": "How should an internal champion program be sustained beyond the initial launch?",
+      "textEs": "¿Cómo debe sostenerse un programa de campeones internos más allá del lanzamiento inicial?",
+      "domainCode": "train-trainer",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-006_d",
+      "explanation": "Sustaining a champion program requires: regular champion meetings to share experiences and challenges, continuous education on new features and capabilities, recognition and rewards for champion contributions (conference speaking, promotions, public acknowledgment), a community of practice with shared resources (Slack channels, wikis, office hours), clear expectations about time commitment (typically 10-20% of work time), and executive sponsorship to legitimize the role and protect champions' time.",
+      "explanationEs": "Sostener un programa de campeones requiere: reuniones regulares de campeones para compartir experiencias y desafíos, educación continua sobre nuevas funcionalidades y capacidades, reconocimiento y recompensas por contribuciones de campeones (conferencias, promociones, reconocimiento público), una comunidad de práctica con recursos compartidos (canales de Slack, wikis, horas de consulta), expectativas claras sobre compromiso de tiempo (típicamente 10-20% del tiempo de trabajo) y patrocinio ejecutivo para legitimar el rol y proteger el tiempo de los campeones.",
+      "options": [
+        { "id": "train-006_a", "text": "Champions are only needed for the initial rollout; after that, organic adoption takes over", "textEs": "Los campeones solo se necesitan para el despliegue inicial; después de eso, la adopción orgánica toma el control", "order": 1 },
+        { "id": "train-006_b", "text": "Rotate the champion role monthly so everyone gets a turn, regardless of interest or aptitude", "textEs": "Rotar el rol de campeón mensualmente para que todos tengan un turno, independientemente del interés o aptitud", "order": 2 },
+        { "id": "train-006_c", "text": "Add champion responsibilities on top of existing workloads with no time allocation; passion should be sufficient motivation", "textEs": "Agregar responsabilidades de campeón sobre las cargas de trabajo existentes sin asignación de tiempo; la pasión debería ser motivación suficiente", "order": 3 },
+        { "id": "train-006_d", "text": "Regular meetings, continuous education, recognition/rewards, community of practice, clear time allocation (10-20%), and executive sponsorship", "textEs": "Reuniones regulares, educación continua, reconocimiento/recompensas, comunidad de práctica, asignación clara de tiempo (10-20%) y patrocinio ejecutivo", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "champion-program", "sustainability", "community", "recognition"]
+    },
+    {
+      "id": "train-007",
+      "text": "What is the best practice for designing hands-on workshop exercises for AI tool training?",
+      "textEs": "¿Cuál es la mejor práctica para diseñar ejercicios prácticos de taller para capacitación en herramientas de IA?",
+      "domainCode": "train-trainer",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-007_a",
+      "explanation": "The most effective workshop exercises use real-world scenarios from the participants' actual work. This includes: using the team's own codebase for exercises (not toy examples), tackling tasks they actually face (code review, debugging, documentation), providing scaffolded challenges that progress from guided to independent work, allowing time for experimentation and discovery, and having participants share their results and techniques with the group. Real-world relevance dramatically increases retention and post-training adoption.",
+      "explanationEs": "Los ejercicios de taller más efectivos usan escenarios del mundo real del trabajo actual de los participantes. Esto incluye: usar la propia base de código del equipo para ejercicios (no ejemplos de juguete), abordar tareas que realmente enfrentan (revisión de código, depuración, documentación), proporcionar desafíos andamiados que progresan de trabajo guiado a independiente, permitir tiempo para experimentación y descubrimiento, y hacer que los participantes compartan sus resultados y técnicas con el grupo. La relevancia del mundo real aumenta dramáticamente la retención y la adopción posterior a la capacitación.",
+      "options": [
+        { "id": "train-007_a", "text": "Use the team's own codebase, tackle real tasks they face, scaffold from guided to independent work, and include peer sharing of results", "textEs": "Usar la propia base de código del equipo, abordar tareas reales que enfrentan, andamiar de trabajo guiado a independiente e incluir compartición de resultados entre pares", "order": 1 },
+        { "id": "train-007_b", "text": "Use standardized toy problems (like sorting algorithms) so all participants have the same experience", "textEs": "Usar problemas de juguete estandarizados (como algoritmos de ordenamiento) para que todos los participantes tengan la misma experiencia", "order": 2 },
+        { "id": "train-007_c", "text": "Focus exercises exclusively on prompt writing; hands-on coding with AI tools can be practiced after the workshop", "textEs": "Enfocar los ejercicios exclusivamente en escritura de prompts; la codificación práctica con herramientas de IA puede practicarse después del taller", "order": 3 },
+        { "id": "train-007_d", "text": "Have participants watch the trainer demonstrate each exercise, then replicate the exact same steps", "textEs": "Hacer que los participantes observen al formador demostrar cada ejercicio, luego replicar exactamente los mismos pasos", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "workshop-design", "hands-on", "exercises", "real-world"]
+    },
+    {
+      "id": "train-008",
+      "text": "How should training content be kept up-to-date as AI tools and capabilities rapidly evolve?",
+      "textEs": "¿Cómo debe mantenerse actualizado el contenido de capacitación a medida que las herramientas y capacidades de IA evolucionan rápidamente?",
+      "domainCode": "train-trainer",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-008_c",
+      "explanation": "Keeping training current requires: modular content design so individual sections can be updated without rewriting everything, a designated content owner responsible for tracking AI tool updates, a regular review cadence (monthly for fast-evolving topics), version-controlled training materials with changelogs, feedback loops from trainers and participants about gaps or outdated content, and separating principles (which are stable) from tool-specific details (which change frequently). Trainers should receive updates before delivering updated content.",
+      "explanationEs": "Mantener la capacitación actualizada requiere: diseño de contenido modular para que secciones individuales puedan actualizarse sin reescribir todo, un propietario de contenido designado responsable de rastrear actualizaciones de herramientas de IA, una cadencia de revisión regular (mensual para temas de evolución rápida), materiales de capacitación con control de versiones y registros de cambios, bucles de retroalimentación de formadores y participantes sobre brechas o contenido desactualizado, y separar principios (que son estables) de detalles específicos de herramientas (que cambian frecuentemente). Los formadores deben recibir actualizaciones antes de entregar contenido actualizado.",
+      "options": [
+        { "id": "train-008_a", "text": "Create training content once and deliver it unchanged; the fundamentals do not change even when tools evolve", "textEs": "Crear contenido de capacitación una vez y entregarlo sin cambios; los fundamentos no cambian incluso cuando las herramientas evolucionan", "order": 1 },
+        { "id": "train-008_b", "text": "Wait for major version releases to update training; minor updates do not warrant content changes", "textEs": "Esperar a lanzamientos de versiones mayores para actualizar la capacitación; las actualizaciones menores no justifican cambios de contenido", "order": 2 },
+        { "id": "train-008_c", "text": "Modular content design, designated content owners, monthly review cadence, version-controlled materials, trainer/participant feedback loops, and principles vs. tool-specific separation", "textEs": "Diseño de contenido modular, propietarios de contenido designados, cadencia de revisión mensual, materiales con control de versiones, bucles de retroalimentación de formadores/participantes y separación de principios vs. específicos de herramientas", "order": 3 },
+        { "id": "train-008_d", "text": "Rely on the AI tool vendor to provide updated training materials for all enterprise customers", "textEs": "Confiar en el proveedor de la herramienta de IA para proporcionar materiales de capacitación actualizados para todos los clientes empresariales", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "content-maintenance", "modularity", "version-control", "evergreen"]
+    },
+    {
+      "id": "train-009",
+      "text": "What is the recommended approach for scaling AI knowledge from a pilot team to the entire engineering organization?",
+      "textEs": "¿Cuál es el enfoque recomendado para escalar el conocimiento de IA desde un equipo piloto a toda la organización de ingeniería?",
+      "domainCode": "train-trainer",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-009_b",
+      "explanation": "Scaling follows a hub-and-spoke model: the pilot team becomes the hub of expertise, documenting their learnings, creating reusable templates and playbooks, and training champions from adjacent teams (spokes). Each spoke team then adapts the materials to their context and trains their own members. Key enablers include: a shared knowledge base, recorded training sessions for asynchronous learning, regular cross-team knowledge sharing sessions, standardized onboarding materials, and metrics to track knowledge spread across the organization.",
+      "explanationEs": "El escalamiento sigue un modelo hub-and-spoke: el equipo piloto se convierte en el centro de experiencia, documentando sus aprendizajes, creando plantillas y manuales reutilizables, y capacitando campeones de equipos adyacentes (radios). Cada equipo radio luego adapta los materiales a su contexto y capacita a sus propios miembros. Los habilitadores clave incluyen: una base de conocimiento compartida, sesiones de capacitación grabadas para aprendizaje asíncrono, sesiones regulares de intercambio de conocimiento entre equipos, materiales de incorporación estandarizados y métricas para rastrear la difusión del conocimiento en la organización.",
+      "options": [
+        { "id": "train-009_a", "text": "Mandate immediate organization-wide adoption with a deadline; urgency drives faster scaling", "textEs": "Ordenar adopción inmediata a nivel organizacional con una fecha límite; la urgencia impulsa un escalamiento más rápido", "order": 1 },
+        { "id": "train-009_b", "text": "Hub-and-spoke model: pilot team documents learnings and trains spoke-team champions, who adapt materials and train their teams, supported by shared knowledge bases and metrics", "textEs": "Modelo hub-and-spoke: el equipo piloto documenta aprendizajes y capacita campeones de equipos radio, quienes adaptan materiales y capacitan a sus equipos, apoyados por bases de conocimiento compartidas y métricas", "order": 2 },
+        { "id": "train-009_c", "text": "Hire external consultants to train each team individually, ensuring consistent delivery quality", "textEs": "Contratar consultores externos para capacitar a cada equipo individualmente, asegurando calidad de entrega consistente", "order": 3 },
+        { "id": "train-009_d", "text": "Wait until the AI tools are mature enough that they require no training; user-friendly interfaces will enable self-adoption", "textEs": "Esperar hasta que las herramientas de IA sean lo suficientemente maduras para no requerir capacitación; las interfaces amigables permitirán la auto-adopción", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "scaling", "hub-and-spoke", "knowledge-transfer", "organization"]
+    },
+    {
+      "id": "train-010",
+      "text": "How should a trainer handle participants who are resistant or skeptical about AI tools during a training session?",
+      "textEs": "¿Cómo debe un formador manejar a los participantes que son resistentes o escépticos sobre las herramientas de IA durante una sesión de capacitación?",
+      "domainCode": "train-trainer",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "academy-train-trainer",
+      "correctOptionId": "train-010_c",
+      "explanation": "Effective trainers acknowledge skepticism as valid and healthy rather than dismissing it. The best approach is to: listen to specific concerns, acknowledge limitations honestly (AI makes mistakes, it is not a replacement for expertise), demonstrate value through their own pain points (ask what tedious tasks they wish they could automate), let skeptics discover benefits through hands-on exercises rather than lecturing them, and follow up individually after the session. Converting skeptics into informed users is more valuable than ignoring them.",
+      "explanationEs": "Los formadores efectivos reconocen el escepticismo como válido y saludable en lugar de descartarlo. El mejor enfoque es: escuchar preocupaciones específicas, reconocer limitaciones honestamente (la IA comete errores, no es un reemplazo para la experiencia), demostrar valor a través de sus propios puntos de dolor (preguntar qué tareas tediosas desearían automatizar), dejar que los escépticos descubran beneficios a través de ejercicios prácticos en lugar de darles conferencias, y hacer seguimiento individual después de la sesión. Convertir escépticos en usuarios informados es más valioso que ignorarlos.",
+      "options": [
+        { "id": "train-010_a", "text": "Ignore skeptics and focus energy on enthusiastic participants who will drive adoption", "textEs": "Ignorar a los escépticos y enfocar energía en participantes entusiastas que impulsarán la adopción", "order": 1 },
+        { "id": "train-010_b", "text": "Argue against their concerns with data and statistics until they are convinced", "textEs": "Argumentar contra sus preocupaciones con datos y estadísticas hasta que estén convencidos", "order": 2 },
+        { "id": "train-010_c", "text": "Acknowledge concerns as valid, be honest about AI limitations, demonstrate value through their pain points, let them discover benefits hands-on, and follow up individually", "textEs": "Reconocer preocupaciones como válidas, ser honesto sobre las limitaciones de la IA, demostrar valor a través de sus puntos de dolor, dejarles descubrir beneficios de forma práctica y hacer seguimiento individual", "order": 3 },
+        { "id": "train-010_d", "text": "Report resistant participants to their managers so leadership can address the attitude issue", "textEs": "Reportar a los participantes resistentes a sus gerentes para que el liderazgo pueda abordar el problema de actitud", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "resistance", "skepticism", "facilitation", "soft-skills"]
+    }
+  ]
+}

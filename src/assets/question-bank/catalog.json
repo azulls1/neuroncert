@@ -1,0 +1,1865 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-15",
+  "levels": [
+    {
+      "level": 1,
+      "name": "Fundamentos",
+      "description": "Conceptos basicos de IA y Claude. Ideal para quienes inician su recorrido con modelos de lenguaje.",
+      "icon": "seed",
+      "color": "forest-100"
+    },
+    {
+      "level": 2,
+      "name": "Prompt Engineering",
+      "description": "Tecnicas de prompting efectivo: few-shot, chain-of-thought, structured output y mejores practicas.",
+      "icon": "sprout",
+      "color": "forest-200"
+    },
+    {
+      "level": 3,
+      "name": "Builder Basics",
+      "description": "Introduccion a la API de Claude, SDKs y primeros proyectos funcionales.",
+      "icon": "sapling",
+      "color": "forest-300"
+    },
+    {
+      "level": 4,
+      "name": "Advanced Builder",
+      "description": "Patrones avanzados: tool use, streaming, batch processing y arquitectura de agentes.",
+      "icon": "tree",
+      "color": "forest-400"
+    },
+    {
+      "level": 5,
+      "name": "Infrastructure",
+      "description": "Model Context Protocol, Claude Code, CLAUDE.md, hooks, subagentes y configuracion avanzada.",
+      "icon": "forest",
+      "color": "forest-500"
+    },
+    {
+      "level": 6,
+      "name": "Cloud Integration",
+      "description": "Integracion empresarial: Amazon Bedrock, Google Vertex AI, pipelines CI/CD y despliegue en produccion.",
+      "icon": "mountain",
+      "color": "forest-600"
+    },
+    {
+      "level": 7,
+      "name": "Enterprise",
+      "description": "Gobernanza, seguridad, escalabilidad, observabilidad y operaciones a escala empresarial.",
+      "icon": "summit",
+      "color": "forest-700"
+    }
+  ],
+  "tracks": [
+    {
+      "id": "claude-101",
+      "title": "Claude 101",
+      "description": "Introduccion a Claude: capacidades, limitaciones, modelos disponibles y casos de uso fundamentales.",
+      "platform": "academy",
+      "level": 1,
+      "modules": [
+        {
+          "id": "claude-101-m1",
+          "trackId": "claude-101",
+          "title": "Conociendo a Claude",
+          "description": "Historia, modelos (Haiku, Sonnet, Opus), ventana de contexto y principios de diseno.",
+          "order": 1,
+          "topics": [
+            "modelos-claude",
+            "ventana-contexto",
+            "principios-diseno",
+            "constitutional-ai"
+          ],
+          "questionBankFile": "academy/foundation/claude-101.json",
+          "questionCount": 30
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "fundamentos",
+        "claude",
+        "modelos",
+        "introduccion"
+      ],
+      "externalUrl": "https://docs.anthropic.com/en/docs/welcome",
+      "order": 1
+    },
+    {
+      "id": "ai-fluency",
+      "title": "AI Fluency",
+      "description": "Dominio de conceptos de IA generativa: tokens, temperatura, top-p, embedding y evaluacion de modelos.",
+      "platform": "academy",
+      "level": 1,
+      "modules": [
+        {
+          "id": "ai-fluency-m1",
+          "trackId": "ai-fluency",
+          "title": "Fundamentos de IA Generativa",
+          "description": "Tokens, tokenizacion, temperatura, top-p, embeddings y metricas de evaluacion.",
+          "order": 1,
+          "topics": [
+            "tokens",
+            "temperatura",
+            "top-p",
+            "embeddings",
+            "evaluacion"
+          ],
+          "questionBankFile": "academy/foundation/ai-fluency-students.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "fundamentos",
+        "ia-generativa",
+        "tokens",
+        "evaluacion"
+      ],
+      "externalUrl": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "order": 2
+    },
+    {
+      "id": "prompt-engineering-fundamentals",
+      "title": "Prompt Engineering Fundamentals",
+      "description": "Tecnicas de prompting: zero-shot, few-shot, chain-of-thought, role prompting y structured output.",
+      "platform": "coursera",
+      "level": 2,
+      "modules": [
+        {
+          "id": "pe-fund-m1",
+          "trackId": "prompt-engineering-fundamentals",
+          "title": "Tecnicas de Prompting",
+          "description": "Zero-shot, few-shot, chain-of-thought, role prompting y mejores practicas.",
+          "order": 1,
+          "topics": [
+            "zero-shot",
+            "few-shot",
+            "chain-of-thought",
+            "role-prompting"
+          ],
+          "questionBankFile": "academy/foundation/prompt-engineering.json",
+          "questionCount": 30
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "prompt-engineering",
+        "few-shot",
+        "chain-of-thought",
+        "structured-output"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/prompt-engineering-for-claude",
+      "order": 3
+    },
+    {
+      "id": "claude-code-101",
+      "title": "Claude Code 101",
+      "description": "Introduccion a Claude Code: instalacion, CLAUDE.md, comandos personalizados, hooks y flujos de trabajo.",
+      "platform": "academy",
+      "level": 3,
+      "modules": [
+        {
+          "id": "cc101-m1",
+          "trackId": "claude-code-101",
+          "title": "Primeros Pasos con Claude Code",
+          "description": "Instalacion, configuracion inicial, CLAUDE.md basico y primeros comandos.",
+          "order": 1,
+          "topics": [
+            "instalacion",
+            "claude-md",
+            "comandos-basicos",
+            "configuracion"
+          ],
+          "questionBankFile": "academy/builder/claude-code-101.json",
+          "questionCount": 30
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "claude-code",
+        "cli",
+        "claude-md",
+        "comandos"
+      ],
+      "externalUrl": "https://docs.anthropic.com/en/docs/claude-code/overview",
+      "order": 4
+    },
+    {
+      "id": "building-with-claude-api",
+      "title": "Building with Claude API",
+      "description": "Desarrollo con la API de Claude: autenticacion, mensajes, streaming, tool use y manejo de errores.",
+      "platform": "deeplearning-ai",
+      "level": 3,
+      "modules": [
+        {
+          "id": "api-m1",
+          "trackId": "building-with-claude-api",
+          "title": "API de Claude",
+          "description": "Autenticacion, endpoints, mensajes, streaming y manejo de errores.",
+          "order": 1,
+          "topics": [
+            "api-keys",
+            "messages-api",
+            "streaming",
+            "error-handling"
+          ],
+          "questionBankFile": "academy/builder/building-with-api.json",
+          "questionCount": 40
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice",
+        "exam"
+      ],
+      "estimatedHours": 6,
+      "tags": [
+        "api",
+        "sdk",
+        "tool-use",
+        "streaming",
+        "mensajes"
+      ],
+      "externalUrl": "https://www.deeplearning.ai/short-courses/building-with-claude/",
+      "order": 5
+    },
+    {
+      "id": "intro-to-mcp",
+      "title": "Intro to MCP",
+      "description": "Model Context Protocol: primitivas (tools, resources, prompts), servidores MCP, configuracion y mejores practicas.",
+      "platform": "academy",
+      "level": 4,
+      "modules": [
+        {
+          "id": "mcp-m1",
+          "trackId": "intro-to-mcp",
+          "title": "Fundamentos de MCP",
+          "description": "Primitivas MCP, arquitectura cliente-servidor, configuracion y ciclo de vida.",
+          "order": 1,
+          "topics": [
+            "mcp-primitivas",
+            "tools",
+            "resources",
+            "prompts",
+            "servidores"
+          ],
+          "questionBankFile": "academy/builder/mcp-intro.json",
+          "questionCount": 30
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "mcp",
+        "tools",
+        "resources",
+        "prompts",
+        "servidores"
+      ],
+      "externalUrl": "https://modelcontextprotocol.io/introduction",
+      "order": 6
+    },
+    {
+      "id": "agent-skills",
+      "title": "Agent Skills",
+      "description": "Desarrollo de agentes: loops agenticos, orchestration, session management y patrones de produccion.",
+      "platform": "academy",
+      "level": 4,
+      "modules": [
+        {
+          "id": "agent-m1",
+          "trackId": "agent-skills",
+          "title": "Loops Agenticos",
+          "description": "Stop reasons, tool result appending, ciclo de vida del agente y control de flujo.",
+          "order": 1,
+          "topics": [
+            "agentic-loop",
+            "stop-reason",
+            "tool-results",
+            "control-flujo"
+          ],
+          "questionBankFile": "deeplearning-ai/agent-skills.json",
+          "questionCount": 15
+        },
+        {
+          "id": "agent-m2",
+          "trackId": "agent-skills",
+          "title": "Orchestration Patterns",
+          "description": "Hub-and-spoke, task decomposition, coordinator-subagent y delegacion.",
+          "order": 2,
+          "topics": [
+            "hub-spoke",
+            "task-decomposition",
+            "coordinator",
+            "subagent"
+          ],
+          "questionBankFile": "deeplearning-ai/agent-skills.json",
+          "questionCount": 15
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice",
+        "exam"
+      ],
+      "estimatedHours": 5,
+      "tags": [
+        "agentes",
+        "orchestration",
+        "loops",
+        "subagentes"
+      ],
+      "externalUrl": "https://docs.anthropic.com/en/docs/build-with-claude/agentic",
+      "order": 7
+    },
+    {
+      "id": "subagents-advanced",
+      "title": "Subagents & Advanced Patterns",
+      "description": "Subagentes, delegacion de tareas, context isolation, scratchpad patterns y escalation strategies.",
+      "platform": "academy",
+      "level": 5,
+      "modules": [
+        {
+          "id": "sub-m1",
+          "trackId": "subagents-advanced",
+          "title": "Subagent Delegation",
+          "description": "Patron subagente, isolation de contexto, scratchpad files y escalation.",
+          "order": 1,
+          "topics": [
+            "subagentes",
+            "context-isolation",
+            "scratchpad",
+            "escalation"
+          ],
+          "questionBankFile": "academy/builder/subagents.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "subagentes",
+        "delegacion",
+        "context-isolation",
+        "escalation"
+      ],
+      "externalUrl": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
+      "order": 8
+    },
+    {
+      "id": "enterprise-deployment",
+      "title": "Enterprise Deployment",
+      "description": "Despliegue empresarial: Amazon Bedrock, Vertex AI, CI/CD, observabilidad y gobernanza.",
+      "platform": "academy",
+      "level": 6,
+      "modules": [
+        {
+          "id": "ent-m1",
+          "trackId": "enterprise-deployment",
+          "title": "Cloud Providers",
+          "description": "Amazon Bedrock, Google Vertex AI, configuracion y mejores practicas.",
+          "order": 1,
+          "topics": [
+            "bedrock",
+            "vertex-ai",
+            "cloud-deploy",
+            "api-gateway"
+          ],
+          "questionBankFile": "academy/builder/enterprise-cloud.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 5,
+      "tags": [
+        "enterprise",
+        "bedrock",
+        "vertex-ai",
+        "ci-cd",
+        "gobernanza"
+      ],
+      "externalUrl": "https://docs.anthropic.com/en/docs/build-with-claude/enterprise",
+      "order": 9
+    },
+    {
+      "id": "academy-building-api",
+      "title": "Building with the Claude API",
+      "description": "Desarrollo con la API de Claude: autenticacion, Messages API, streaming, tool use, vision, batch processing y manejo de errores.",
+      "platform": "academy",
+      "level": 3,
+      "modules": [
+        {
+          "id": "build-api-m1",
+          "trackId": "academy-building-api",
+          "title": "Claude API Completo",
+          "description": "Messages API, autenticacion, streaming, tool use, vision, batch processing, structured output y error handling.",
+          "order": 1,
+          "topics": [
+            "messages-api",
+            "authentication",
+            "streaming",
+            "tool-use",
+            "vision",
+            "batch-api",
+            "error-handling"
+          ],
+          "questionBankFile": "academy/builder/building-with-api.json",
+          "questionCount": 40
+        }
+      ],
+      "contentTypes": [
+        "exam"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "api",
+        "sdk",
+        "tool-use",
+        "streaming",
+        "batch",
+        "vision"
+      ],
+      "externalUrl": "https://docs.anthropic.com/en/docs/build-with-claude/overview",
+      "order": 5
+    },
+    {
+      "id": "coursera-mastering-claude-1",
+      "title": "Mastering Claude - Prompting Fundamentals",
+      "description": "Fundamentos de prompting: estructura de prompts, system vs user messages, chaining, formato de salida y estrategias de prompting.",
+      "platform": "coursera",
+      "level": 2,
+      "modules": [
+        {
+          "id": "cmc-pf-m1",
+          "trackId": "coursera-mastering-claude-1",
+          "title": "Prompting Fundamentals",
+          "description": "Estructura de prompts, system messages, prompt chaining, output formatting, role-based prompting y temperatura.",
+          "order": 1,
+          "topics": [
+            "prompt-structure",
+            "system-messages",
+            "prompt-chaining",
+            "output-formatting",
+            "role-prompting",
+            "temperature"
+          ],
+          "questionBankFile": "coursera/mastering-claude/prompting-fundamentals.json",
+          "questionCount": 15
+        }
+      ],
+      "contentTypes": [
+        "exam"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "prompting",
+        "fundamentals",
+        "coursera",
+        "output-format",
+        "chaining"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/mastering-claude",
+      "order": 3
+    },
+    {
+      "id": "dlai-agent-skills",
+      "title": "Agent Skills - DeepLearning.AI",
+      "description": "Skills en Claude Code: frontmatter YAML, creacion de skills personalizados, integracion con MCP, Agent SDK y patrones avanzados.",
+      "platform": "deeplearning-ai",
+      "level": 4,
+      "modules": [
+        {
+          "id": "dlai-as-m1",
+          "trackId": "dlai-agent-skills",
+          "title": "Agent Skills",
+          "description": "SKILL.md frontmatter, context y allowed-tools, skills pre-built y personalizados, integracion con MCP y Agent SDK.",
+          "order": 1,
+          "topics": [
+            "skills",
+            "frontmatter",
+            "context",
+            "allowed-tools",
+            "mcp-integration",
+            "agent-sdk"
+          ],
+          "questionBankFile": "deeplearning-ai/agent-skills.json",
+          "questionCount": 15
+        }
+      ],
+      "contentTypes": [
+        "exam"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "skills",
+        "agent-sdk",
+        "deeplearning-ai",
+        "custom-commands",
+        "mcp"
+      ],
+      "externalUrl": "https://www.deeplearning.ai/short-courses/agent-skills/",
+      "order": 7
+    },
+    {
+      "id": "ai-fluency-students",
+      "title": "AI Fluency for Students",
+      "description": "Uso responsable de IA en contextos academicos. Integridad academica y herramientas de estudio.",
+      "platform": "academy",
+      "level": 1,
+      "modules": [
+        {
+          "id": "ai-fluency-students-m1",
+          "trackId": "ai-fluency-students",
+          "title": "AI Fluency for Students",
+          "description": "Uso responsable de IA en contextos academicos. Integridad academica y herramientas de estudio.",
+          "order": 1,
+          "topics": [
+            "fundamentos",
+            "estudiantes",
+            "uso-responsable",
+            "integridad-academica"
+          ],
+          "questionBankFile": "academy/foundation/ai-fluency-students.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "fundamentos",
+        "estudiantes",
+        "uso-responsable",
+        "integridad-academica"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/ai-fluency-for-students",
+      "order": 11
+    },
+    {
+      "id": "ai-fluency-educators",
+      "title": "AI Fluency for Educators",
+      "description": "Integracion de IA en ensenanza. Diseno de actividades, evaluacion con IA.",
+      "platform": "academy",
+      "level": 1,
+      "modules": [
+        {
+          "id": "ai-fluency-educators-m1",
+          "trackId": "ai-fluency-educators",
+          "title": "AI Fluency for Educators",
+          "description": "Integracion de IA en ensenanza. Diseno de actividades, evaluacion con IA.",
+          "order": 1,
+          "topics": [
+            "fundamentos",
+            "educadores",
+            "ensenanza",
+            "evaluacion-ia"
+          ],
+          "questionBankFile": "academy/foundation/ai-fluency-educators.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "fundamentos",
+        "educadores",
+        "ensenanza",
+        "evaluacion-ia"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/ai-fluency-for-educators",
+      "order": 12
+    },
+    {
+      "id": "teaching-ai-fluency",
+      "title": "Teaching AI Fluency",
+      "description": "Como disenar curriculos de fluencia en IA para organizaciones y aulas.",
+      "platform": "academy",
+      "level": 1,
+      "modules": [
+        {
+          "id": "teaching-ai-fluency-m1",
+          "trackId": "teaching-ai-fluency",
+          "title": "Teaching AI Fluency",
+          "description": "Como disenar curriculos de fluencia en IA para organizaciones y aulas.",
+          "order": 1,
+          "topics": [
+            "fundamentos",
+            "curriculos",
+            "train-the-trainer",
+            "fluencia-ia"
+          ],
+          "questionBankFile": "academy/foundation/teaching-ai-fluency.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "fundamentos",
+        "curriculos",
+        "train-the-trainer",
+        "fluencia-ia"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/teaching-ai-fluency",
+      "order": 13
+    },
+    {
+      "id": "ai-fluency-nonprofits",
+      "title": "AI Fluency for Nonprofits",
+      "description": "Aplicacion de IA en organizaciones sin fines de lucro. Casos de uso especificos para ONGs.",
+      "platform": "academy",
+      "level": 1,
+      "modules": [
+        {
+          "id": "ai-fluency-nonprofits-m1",
+          "trackId": "ai-fluency-nonprofits",
+          "title": "AI Fluency for Nonprofits",
+          "description": "Aplicacion de IA en organizaciones sin fines de lucro. Casos de uso especificos para ONGs.",
+          "order": 1,
+          "topics": [
+            "fundamentos",
+            "ongs",
+            "impacto-social",
+            "nonprofits"
+          ],
+          "questionBankFile": "academy/foundation/ai-fluency-nonprofits.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "fundamentos",
+        "ongs",
+        "impacto-social",
+        "nonprofits"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits",
+      "order": 14
+    },
+    {
+      "id": "claude-cowork",
+      "title": "Introduction to Claude Cowork",
+      "description": "Task loop, plugins, skills, file/research workflows. Cowork = Claude trabajando directo con tus archivos.",
+      "platform": "academy",
+      "level": 2,
+      "modules": [
+        {
+          "id": "claude-cowork-m1",
+          "trackId": "claude-cowork",
+          "title": "Introduction to Claude Cowork",
+          "description": "Task loop, plugins, skills, file/research workflows. Cowork = Claude trabajando directo con tus archivos.",
+          "order": 1,
+          "topics": [
+            "cowork",
+            "task-loops",
+            "plugins",
+            "file-workflows"
+          ],
+          "questionBankFile": "academy/foundation/claude-cowork.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "cowork",
+        "task-loops",
+        "plugins",
+        "file-workflows"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+      "order": 15
+    },
+    {
+      "id": "claude-code-action",
+      "title": "Claude Code in Action",
+      "description": "Uso avanzado del CLI, configuracion enterprise, workflows de desarrollo profesional.",
+      "platform": "academy",
+      "level": 3,
+      "modules": [
+        {
+          "id": "claude-code-action-m1",
+          "trackId": "claude-code-action",
+          "title": "Claude Code in Action",
+          "description": "Uso avanzado del CLI, configuracion enterprise, workflows de desarrollo profesional.",
+          "order": 1,
+          "topics": [
+            "claude-code",
+            "workflows",
+            "git-worktrees",
+            "hooks",
+            "ci-cd"
+          ],
+          "questionBankFile": "academy/builder/claude-code-action.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "claude-code",
+        "workflows",
+        "git-worktrees",
+        "hooks",
+        "ci-cd"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/claude-code-in-action",
+      "order": 16
+    },
+    {
+      "id": "mcp-advanced",
+      "title": "MCP: Advanced Topics",
+      "description": "Integraciones complejas, MCP en produccion, SSE transport, authentication, multi-server setups.",
+      "platform": "academy",
+      "level": 5,
+      "modules": [
+        {
+          "id": "mcp-advanced-m1",
+          "trackId": "mcp-advanced",
+          "title": "MCP: Advanced Topics",
+          "description": "Integraciones complejas, MCP en produccion, SSE transport, authentication, multi-server setups.",
+          "order": 1,
+          "topics": [
+            "mcp",
+            "sse-transport",
+            "authentication",
+            "multi-server",
+            "produccion"
+          ],
+          "questionBankFile": "academy/builder/mcp-advanced.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "mcp",
+        "sse-transport",
+        "authentication",
+        "multi-server",
+        "produccion"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/mcp-advanced-topics",
+      "order": 17
+    },
+    {
+      "id": "aws-bedrock",
+      "title": "Claude with Amazon Bedrock",
+      "description": "Despliegue y uso de Claude via AWS Bedrock. Configuracion, pricing, integracion con servicios AWS.",
+      "platform": "academy",
+      "level": 6,
+      "modules": [
+        {
+          "id": "aws-bedrock-m1",
+          "trackId": "aws-bedrock",
+          "title": "Claude with Amazon Bedrock",
+          "description": "Despliegue y uso de Claude via AWS Bedrock. Configuracion, pricing, integracion con servicios AWS.",
+          "order": 1,
+          "topics": [
+            "aws",
+            "bedrock",
+            "cloud",
+            "iam",
+            "lambda"
+          ],
+          "questionBankFile": "academy/cloud/aws-bedrock.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "aws",
+        "bedrock",
+        "cloud",
+        "iam",
+        "lambda"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/claude-with-amazon-bedrock",
+      "order": 18
+    },
+    {
+      "id": "gcp-vertex",
+      "title": "Claude with Google Cloud's Vertex AI",
+      "description": "Despliegue y uso de Claude via GCP Vertex AI. Model Garden, endpoints, monitoring.",
+      "platform": "academy",
+      "level": 6,
+      "modules": [
+        {
+          "id": "gcp-vertex-m1",
+          "trackId": "gcp-vertex",
+          "title": "Claude with Google Cloud's Vertex AI",
+          "description": "Despliegue y uso de Claude via GCP Vertex AI. Model Garden, endpoints, monitoring.",
+          "order": 1,
+          "topics": [
+            "gcp",
+            "vertex-ai",
+            "cloud",
+            "model-garden",
+            "monitoring"
+          ],
+          "questionBankFile": "academy/cloud/gcp-vertex.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "gcp",
+        "vertex-ai",
+        "cloud",
+        "model-garden",
+        "monitoring"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/claude-with-vertex-ai",
+      "order": 19
+    },
+    {
+      "id": "enterprise-adoption",
+      "title": "Driving Enterprise Adoption of Claude",
+      "description": "Estrategia de adopcion empresarial. ROI, change management, compliance, governance.",
+      "platform": "academy",
+      "level": 7,
+      "modules": [
+        {
+          "id": "enterprise-adoption-m1",
+          "trackId": "enterprise-adoption",
+          "title": "Driving Enterprise Adoption of Claude",
+          "description": "Estrategia de adopcion empresarial. ROI, change management, compliance, governance.",
+          "order": 1,
+          "topics": [
+            "enterprise",
+            "adopcion",
+            "roi",
+            "compliance",
+            "governance"
+          ],
+          "questionBankFile": "academy/builder/enterprise-adoption.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "enterprise",
+        "adopcion",
+        "roi",
+        "compliance",
+        "governance"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/driving-enterprise-adoption",
+      "order": 20
+    },
+    {
+      "id": "train-trainer",
+      "title": "Enterprise Train-the-Trainer",
+      "description": "Formar formadores internos en tu organizacion. Programa de capacitacion escalable.",
+      "platform": "academy",
+      "level": 7,
+      "modules": [
+        {
+          "id": "train-trainer-m1",
+          "trackId": "train-trainer",
+          "title": "Enterprise Train-the-Trainer",
+          "description": "Formar formadores internos en tu organizacion. Programa de capacitacion escalable.",
+          "order": 1,
+          "topics": [
+            "enterprise",
+            "train-the-trainer",
+            "capacitacion",
+            "rollout"
+          ],
+          "questionBankFile": "academy/builder/train-trainer.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "enterprise",
+        "train-the-trainer",
+        "capacitacion",
+        "rollout"
+      ],
+      "externalUrl": "https://anthropic.skilljar.com/enterprise-train-the-trainer",
+      "order": 21
+    },
+    {
+      "id": "coursera-ai-fundamentals",
+      "title": "AI Fundamentals with Claude",
+      "description": "Estructura de prompts, contexto, respuestas de calidad. Claude Artifacts para crear entregables.",
+      "platform": "coursera",
+      "level": 1,
+      "modules": [
+        {
+          "id": "coursera-ai-fundamentals-m1",
+          "trackId": "coursera-ai-fundamentals",
+          "title": "AI Fundamentals with Claude",
+          "description": "Estructura de prompts, contexto, respuestas de calidad. Claude Artifacts para crear entregables.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "fundamentos",
+            "prompts",
+            "artifacts"
+          ],
+          "questionBankFile": "coursera/real-world-ai/ai-fundamentals.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "coursera",
+        "fundamentos",
+        "prompts",
+        "artifacts"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/ai-for-everyone-ai-fundamentals-with-claude",
+      "order": 22
+    },
+    {
+      "id": "coursera-ai-collab",
+      "title": "AI Collaboration with Claude",
+      "description": "Colaboracion efectiva con IA. Workflows de equipo, revision de outputs, iteracion.",
+      "platform": "coursera",
+      "level": 1,
+      "modules": [
+        {
+          "id": "coursera-ai-collab-m1",
+          "trackId": "coursera-ai-collab",
+          "title": "AI Collaboration with Claude",
+          "description": "Colaboracion efectiva con IA. Workflows de equipo, revision de outputs, iteracion.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "colaboracion",
+            "team-workflows",
+            "iteracion"
+          ],
+          "questionBankFile": "coursera/real-world-ai/ai-collaboration.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "coursera",
+        "colaboracion",
+        "team-workflows",
+        "iteracion"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/ai-for-everyone-ai-collaboration-with-claude",
+      "order": 23
+    },
+    {
+      "id": "coursera-ai-automation",
+      "title": "AI Automation with Claude",
+      "description": "Claude Projects, automatizacion, multimodal, RAG basico.",
+      "platform": "coursera",
+      "level": 2,
+      "modules": [
+        {
+          "id": "coursera-ai-automation-m1",
+          "trackId": "coursera-ai-automation",
+          "title": "AI Automation with Claude",
+          "description": "Claude Projects, automatizacion, multimodal, RAG basico.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "automatizacion",
+            "multimodal",
+            "rag",
+            "projects"
+          ],
+          "questionBankFile": "coursera/real-world-ai/ai-automation.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "coursera",
+        "automatizacion",
+        "multimodal",
+        "rag",
+        "projects"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/ai-for-everyone-ai-automation-with-claude",
+      "order": 24
+    },
+    {
+      "id": "coursera-prompting",
+      "title": "Claude AI and Prompting for Everyone",
+      "description": "Fundamentos de prompting efectivo. Capabilities, safety behavior, long documents.",
+      "platform": "coursera",
+      "level": 2,
+      "modules": [
+        {
+          "id": "coursera-prompting-m1",
+          "trackId": "coursera-prompting",
+          "title": "Claude AI and Prompting for Everyone",
+          "description": "Fundamentos de prompting efectivo. Capabilities, safety behavior, long documents.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "prompting",
+            "safety",
+            "long-documents"
+          ],
+          "questionBankFile": "coursera/mastering-claude/prompting-for-everyone.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "coursera",
+        "prompting",
+        "safety",
+        "long-documents"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/claude-ai-and-prompting-for-everyone",
+      "order": 25
+    },
+    {
+      "id": "coursera-dev-api",
+      "title": "Developing Applications with Claude API",
+      "description": "Construir apps con la API. Multi-turn, structured outputs, context-aware agents.",
+      "platform": "coursera",
+      "level": 3,
+      "modules": [
+        {
+          "id": "coursera-dev-api-m1",
+          "trackId": "coursera-dev-api",
+          "title": "Developing Applications with Claude API",
+          "description": "Construir apps con la API. Multi-turn, structured outputs, context-aware agents.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "api",
+            "multi-turn",
+            "structured-output",
+            "agents"
+          ],
+          "questionBankFile": "coursera/dev-api.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "coursera",
+        "api",
+        "multi-turn",
+        "structured-output",
+        "agents"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/developing-applications-with-claude-api",
+      "order": 26
+    },
+    {
+      "id": "coursera-rag-mcp",
+      "title": "Building RAG and MCP Servers with Claude",
+      "description": "RAG + MCP servers para produccion. Retrieval pipelines, tool integration.",
+      "platform": "coursera",
+      "level": 4,
+      "modules": [
+        {
+          "id": "coursera-rag-mcp-m1",
+          "trackId": "coursera-rag-mcp",
+          "title": "Building RAG and MCP Servers with Claude",
+          "description": "RAG + MCP servers para produccion. Retrieval pipelines, tool integration.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "rag",
+            "mcp",
+            "retrieval",
+            "produccion"
+          ],
+          "questionBankFile": "coursera/rag-mcp.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "coursera",
+        "rag",
+        "mcp",
+        "retrieval",
+        "produccion"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/building-rag-and-mcp-servers-with-claude",
+      "order": 27
+    },
+    {
+      "id": "coursera-claude-code-sw",
+      "title": "Claude Code: Software Engineering with Generative AI Agents",
+      "description": "Build complete applications in minutes using parallel agents and multiple git branches simultaneously.",
+      "platform": "coursera",
+      "level": 3,
+      "modules": [
+        {
+          "id": "coursera-claude-code-sw-m1",
+          "trackId": "coursera-claude-code-sw",
+          "title": "Claude Code: Software Engineering with Generative AI Agents",
+          "description": "Build complete applications in minutes using parallel agents and multiple git branches simultaneously.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "claude-code",
+            "parallel-agents",
+            "git-branches",
+            "vanderbilt"
+          ],
+          "questionBankFile": "coursera/claude-code-sw.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "coursera",
+        "claude-code",
+        "parallel-agents",
+        "git-branches",
+        "vanderbilt"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/claude-code",
+      "order": 28
+    },
+    {
+      "id": "coursera-python-ai-agents",
+      "title": "Python AI Agents",
+      "description": "Autonomous Python agents for document analysis, data processing, and workflow automation.",
+      "platform": "coursera",
+      "level": 3,
+      "modules": [
+        {
+          "id": "coursera-python-ai-agents-m1",
+          "trackId": "coursera-python-ai-agents",
+          "title": "Python AI Agents",
+          "description": "Autonomous Python agents for document analysis, data processing, and workflow automation.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "python",
+            "agents",
+            "document-analysis",
+            "automation",
+            "vanderbilt"
+          ],
+          "questionBankFile": "coursera/python-ai-agents.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "coursera",
+        "python",
+        "agents",
+        "document-analysis",
+        "automation",
+        "vanderbilt"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/python-ai-agents",
+      "order": 29
+    },
+    {
+      "id": "coursera-prompt-eng-vanderbilt",
+      "title": "Prompt Engineering (Vanderbilt)",
+      "description": "Sophisticated prompts with domain-specific reasoning patterns.",
+      "platform": "coursera",
+      "level": 2,
+      "modules": [
+        {
+          "id": "coursera-prompt-eng-vanderbilt-m1",
+          "trackId": "coursera-prompt-eng-vanderbilt",
+          "title": "Prompt Engineering (Vanderbilt)",
+          "description": "Sophisticated prompts with domain-specific reasoning patterns.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "prompt-engineering",
+            "domain-reasoning",
+            "vanderbilt"
+          ],
+          "questionBankFile": "coursera/prompt-eng-vanderbilt.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "coursera",
+        "prompt-engineering",
+        "domain-reasoning",
+        "vanderbilt"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/prompt-engineering",
+      "order": 30
+    },
+    {
+      "id": "coursera-custom-gpts",
+      "title": "Custom GPTs",
+      "description": "Build specialized GPTs with business context and domain knowledge.",
+      "platform": "coursera",
+      "level": 3,
+      "modules": [
+        {
+          "id": "coursera-custom-gpts-m1",
+          "trackId": "coursera-custom-gpts",
+          "title": "Custom GPTs",
+          "description": "Build specialized GPTs with business context and domain knowledge.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "custom-gpts",
+            "business-context",
+            "vanderbilt"
+          ],
+          "questionBankFile": "coursera/custom-gpts.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 3,
+      "tags": [
+        "coursera",
+        "custom-gpts",
+        "business-context",
+        "vanderbilt"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/custom-gpts",
+      "order": 31
+    },
+    {
+      "id": "coursera-code-action",
+      "title": "Claude Code in Action (Coursera)",
+      "description": "Mismo contenido que Skilljar, disponible en Coursera.",
+      "platform": "coursera",
+      "level": 3,
+      "modules": [
+        {
+          "id": "coursera-code-action-m1",
+          "trackId": "coursera-code-action",
+          "title": "Claude Code in Action (Coursera)",
+          "description": "Mismo contenido que Skilljar, disponible en Coursera.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "claude-code",
+            "workflows",
+            "enterprise"
+          ],
+          "questionBankFile": "academy/builder/claude-code-action.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 4,
+      "tags": [
+        "coursera",
+        "claude-code",
+        "workflows",
+        "enterprise"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/claude-code-in-action",
+      "order": 32
+    },
+    {
+      "id": "coursera-building-api",
+      "title": "Building with the Claude API (Coursera)",
+      "description": "Mismo contenido flagship que Skilljar.",
+      "platform": "coursera",
+      "level": 3,
+      "modules": [
+        {
+          "id": "coursera-building-api-m1",
+          "trackId": "coursera-building-api",
+          "title": "Building with the Claude API (Coursera)",
+          "description": "Mismo contenido flagship que Skilljar.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "api",
+            "flagship",
+            "sdk",
+            "tool-use"
+          ],
+          "questionBankFile": "academy/builder/building-with-api.json",
+          "questionCount": 40
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 8,
+      "tags": [
+        "coursera",
+        "api",
+        "flagship",
+        "sdk",
+        "tool-use"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/building-with-the-claude-api",
+      "order": 33
+    },
+    {
+      "id": "coursera-intro-claude",
+      "title": "Intro to Claude AI (Scrimba)",
+      "description": "Coding challenges interactivos con Scrimba.",
+      "platform": "coursera",
+      "level": 1,
+      "modules": [
+        {
+          "id": "coursera-intro-claude-m1",
+          "trackId": "coursera-intro-claude",
+          "title": "Intro to Claude AI (Scrimba)",
+          "description": "Coding challenges interactivos con Scrimba.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "scrimba",
+            "interactivo",
+            "introduccion"
+          ],
+          "questionBankFile": "coursera/intro-claude-scrimba.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "coursera",
+        "scrimba",
+        "interactivo",
+        "introduccion"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/intro-to-claude-ai",
+      "order": 34
+    },
+    {
+      "id": "coursera-next-gen",
+      "title": "Next-Gen AI Assistant: Claude (Guided Project)",
+      "description": "Proyecto guiado practico.",
+      "platform": "coursera",
+      "level": 2,
+      "modules": [
+        {
+          "id": "coursera-next-gen-m1",
+          "trackId": "coursera-next-gen",
+          "title": "Next-Gen AI Assistant: Claude (Guided Project)",
+          "description": "Proyecto guiado practico.",
+          "order": 1,
+          "topics": [
+            "coursera",
+            "proyecto-guiado",
+            "practico"
+          ],
+          "questionBankFile": "coursera/next-gen-assistant.json",
+          "questionCount": 10
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "coursera",
+        "proyecto-guiado",
+        "practico"
+      ],
+      "externalUrl": "https://www.coursera.org/learn/next-generation-ai-assistant-claude-by-anthropic",
+      "order": 35
+    },
+    {
+      "id": "dlai-claude-code",
+      "title": "Claude Code: A Highly Agentic Coding Assistant",
+      "description": "Best practices para agentic coding. Git worktrees, MCP servers, parallel workflows.",
+      "platform": "deeplearning-ai",
+      "level": 3,
+      "modules": [
+        {
+          "id": "dlai-claude-code-m1",
+          "trackId": "dlai-claude-code",
+          "title": "Claude Code: A Highly Agentic Coding Assistant",
+          "description": "Best practices para agentic coding. Git worktrees, MCP servers, parallel workflows.",
+          "order": 1,
+          "topics": [
+            "deeplearning-ai",
+            "claude-code",
+            "agentic-coding",
+            "git-worktrees",
+            "mcp"
+          ],
+          "questionBankFile": "deeplearning-ai/claude-code-agentic.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "deeplearning-ai",
+        "claude-code",
+        "agentic-coding",
+        "git-worktrees",
+        "mcp"
+      ],
+      "externalUrl": "https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/",
+      "order": 36
+    },
+    {
+      "id": "dlai-computer-use",
+      "title": "Building Towards Computer Use with Anthropic",
+      "description": "Prompt templates, XML structuring, tool-use workflows. Build a chatbot that calls tools.",
+      "platform": "deeplearning-ai",
+      "level": 3,
+      "modules": [
+        {
+          "id": "dlai-computer-use-m1",
+          "trackId": "dlai-computer-use",
+          "title": "Building Towards Computer Use with Anthropic",
+          "description": "Prompt templates, XML structuring, tool-use workflows. Build a chatbot that calls tools.",
+          "order": 1,
+          "topics": [
+            "deeplearning-ai",
+            "computer-use",
+            "tool-use",
+            "xml",
+            "chatbot"
+          ],
+          "questionBankFile": "deeplearning-ai/computer-use.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "deeplearning-ai",
+        "computer-use",
+        "tool-use",
+        "xml",
+        "chatbot"
+      ],
+      "externalUrl": "https://www.deeplearning.ai/short-courses/building-towards-computer-use-with-anthropic/",
+      "order": 37
+    },
+    {
+      "id": "exampro-claude-code",
+      "title": "Claude Code Essentials",
+      "description": "Curso completo de Claude Code por Andrew Brown. Disponible gratis en freeCodeCamp YouTube + materiales premium en ExamPro.",
+      "platform": "third-party",
+      "level": 3,
+      "modules": [
+        {
+          "id": "exampro-claude-code-m1",
+          "trackId": "exampro-claude-code",
+          "title": "Claude Code Essentials",
+          "description": "Curso completo de Claude Code por Andrew Brown. Disponible gratis en freeCodeCamp YouTube + materiales premium en ExamPro.",
+          "order": 1,
+          "topics": [
+            "exampro",
+            "claude-code",
+            "youtube",
+            "freecodecamp"
+          ],
+          "questionBankFile": "third-party/exampro-claude-code.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 5,
+      "tags": [
+        "exampro",
+        "claude-code",
+        "youtube",
+        "freecodecamp"
+      ],
+      "externalUrl": "https://www.exampro.co/exp-claudecode-01",
+      "order": 38
+    },
+    {
+      "id": "prompt-certs-readiness",
+      "title": "Claude Code Readiness Check",
+      "description": "Evaluacion gratuita de preparacion para Claude Code.",
+      "platform": "third-party",
+      "level": 2,
+      "modules": [
+        {
+          "id": "prompt-certs-readiness-m1",
+          "trackId": "prompt-certs-readiness",
+          "title": "Claude Code Readiness Check",
+          "description": "Evaluacion gratuita de preparacion para Claude Code.",
+          "order": 1,
+          "topics": [
+            "readiness",
+            "evaluacion",
+            "preparacion",
+            "prompt-certifications"
+          ],
+          "questionBankFile": "third-party/prompt-certs-readiness.json",
+          "questionCount": 8
+        }
+      ],
+      "contentTypes": [
+        "theory",
+        "practice"
+      ],
+      "estimatedHours": 1,
+      "tags": [
+        "readiness",
+        "evaluacion",
+        "preparacion",
+        "prompt-certifications"
+      ],
+      "externalUrl": "https://www.promptcertifications.com/",
+      "order": 39
+    },
+    {
+      "id": "cca-f",
+      "title": "CCA-F Certification Exam",
+      "description": "Examen de certificacion Claude Certified Associate - Foundations. 60 preguntas, 5 dominios, 2 horas, puntaje minimo 720/1000.",
+      "platform": "cca-f",
+      "level": 5,
+      "modules": [
+        {
+          "id": "ccaf-agentic",
+          "trackId": "cca-f",
+          "title": "Agentic Architecture",
+          "description": "Loops agenticos, orchestration hub-and-spoke, task decomposition, Agent SDK lifecycle y token economics.",
+          "order": 1,
+          "topics": [
+            "agentic-loop",
+            "hub-spoke",
+            "task-decomposition",
+            "agent-sdk",
+            "token-economics"
+          ],
+          "questionBankFile": "cca-f/agentic-architecture.json",
+          "questionCount": 65
+        },
+        {
+          "id": "ccaf-tool-mcp",
+          "trackId": "cca-f",
+          "title": "Tool Design & MCP",
+          "description": "Primitivas MCP, distribucion de herramientas, umbrales de degradacion y tool_choice modes.",
+          "order": 2,
+          "topics": [
+            "mcp-primitivas",
+            "tool-distribution",
+            "degradation-threshold",
+            "tool-choice"
+          ],
+          "questionBankFile": "cca-f/tool-design-mcp.json",
+          "questionCount": 62
+        },
+        {
+          "id": "ccaf-claude-code",
+          "trackId": "cca-f",
+          "title": "Claude Code & Configuration",
+          "description": "CLAUDE.md hierarchy, import rules, custom commands, Skill frontmatter y CI/CD.",
+          "order": 3,
+          "topics": [
+            "claude-md",
+            "import-rules",
+            "custom-commands",
+            "skill-frontmatter",
+            "ci-cd"
+          ],
+          "questionBankFile": "cca-f/claude-code-config.json",
+          "questionCount": 57
+        },
+        {
+          "id": "ccaf-prompt",
+          "trackId": "cca-f",
+          "title": "Prompt Engineering",
+          "description": "Criterios explicitos, few-shot, structured output, JSON schema design y validation loops.",
+          "order": 4,
+          "topics": [
+            "explicit-criteria",
+            "few-shot",
+            "structured-output",
+            "json-schema",
+            "validation"
+          ],
+          "questionBankFile": "cca-f/prompt-engineering.json",
+          "questionCount": 57
+        },
+        {
+          "id": "ccaf-context",
+          "trackId": "cca-f",
+          "title": "Context & Reliability",
+          "description": "Summarization trap, case facts, lost-in-the-middle, escalation triggers y error propagation.",
+          "order": 5,
+          "topics": [
+            "summarization-trap",
+            "case-facts",
+            "lost-in-middle",
+            "escalation",
+            "error-propagation"
+          ],
+          "questionBankFile": "cca-f/context-reliability.json",
+          "questionCount": 55
+        },
+        {
+          "id": "ccaf-scenarios",
+          "trackId": "cca-f",
+          "title": "Scenario-Based Questions",
+          "description": "Escenarios de produccion que integran multiples dominios del CCA-F.",
+          "order": 6,
+          "topics": [
+            "scenarios",
+            "production",
+            "multi-domain",
+            "applied-knowledge"
+          ],
+          "questionBankFile": "cca-f/scenarios.json",
+          "questionCount": 60
+        }
+      ],
+      "contentTypes": [
+        "exam"
+      ],
+      "estimatedHours": 2,
+      "tags": [
+        "certificacion",
+        "cca-f",
+        "examen",
+        "agentic",
+        "mcp",
+        "claude-code",
+        "prompting",
+        "context"
+      ],
+      "order": 40
+    }
+  ],
+  "ccafConfig": {
+    "totalQuestions": 60,
+    "durationSec": 7200,
+    "passingScore": 720,
+    "maxScore": 1000,
+    "domains": [
+      {
+        "code": "agentic-architecture",
+        "name": "Agentic Architecture",
+        "weight": 0.27,
+        "questionBankFile": "cca-f/agentic-architecture.json",
+        "description": "Loops agenticos, orchestration patterns, task decomposition, Agent SDK lifecycle, session resumption, token economics y context leakage prevention.",
+        "totalQuestions": 65
+      },
+      {
+        "code": "tool-design-mcp",
+        "name": "Tool Design & MCP",
+        "weight": 0.18,
+        "questionBankFile": "cca-f/tool-design-mcp.json",
+        "description": "Primitivas MCP (tools, resources, prompts), distribucion de herramientas, umbral de degradacion de 18 tools, tool_choice modes y MCP server configuration.",
+        "totalQuestions": 62
+      },
+      {
+        "code": "claude-code-config",
+        "name": "Claude Code & Configuration",
+        "weight": 0.2,
+        "questionBankFile": "cca-f/claude-code-config.json",
+        "description": "CLAUDE.md hierarchy, @import y .claude/rules/ con YAML frontmatter globs, custom commands, Skill frontmatter y CI/CD pipeline integration.",
+        "totalQuestions": 57
+      },
+      {
+        "code": "prompt-engineering",
+        "name": "Prompt Engineering",
+        "weight": 0.2,
+        "questionBankFile": "cca-f/prompt-engineering.json",
+        "description": "Explicit criteria, few-shot prompting, structured output con tool_use, JSON schema design, validation-retry loops y batch processing.",
+        "totalQuestions": 57
+      },
+      {
+        "code": "context-reliability",
+        "name": "Context & Reliability",
+        "weight": 0.15,
+        "questionBankFile": "cca-f/context-reliability.json",
+        "description": "Progressive summarization trap, persistent case facts, lost-in-the-middle effect, escalation triggers, error propagation y scratchpad delegation.",
+        "totalQuestions": 55
+      }
+    ],
+    "scenarioCount": 6,
+    "scenarioPool": [
+      {
+        "id": "scenario-01",
+        "title": "Multi-Agent Customer Support System",
+        "description": "A large fintech company is deploying a multi-agent system for customer support. A coordinator agent triages incoming requests and delegates to specialized subagents for billing, account management, and compliance. The system processes 50,000+ tickets/month.",
+        "domains": [
+          "agentic-architecture",
+          "tool-design-mcp",
+          "context-reliability"
+        ],
+        "questionCount": 4
+      },
+      {
+        "id": "scenario-02",
+        "title": "CI/CD Pipeline Code Review Agent",
+        "description": "An engineering team integrates Claude Code into their CI/CD pipeline to perform automated code reviews on pull requests. The agent must follow project-specific coding standards defined in CLAUDE.md, use custom slash commands for different review types, and produce structured output for the PR comment system.",
+        "domains": [
+          "claude-code-config",
+          "prompt-engineering",
+          "agentic-architecture"
+        ],
+        "questionCount": 4
+      },
+      {
+        "id": "scenario-03",
+        "title": "Legal Document Analysis Platform",
+        "description": "A law firm is building a document analysis platform that processes contracts, extracts key clauses, flags risks, and generates summaries. Documents range from 5 to 200 pages. The system must maintain factual accuracy and provide provenance for all extracted information.",
+        "domains": [
+          "context-reliability",
+          "prompt-engineering",
+          "tool-design-mcp"
+        ],
+        "questionCount": 4
+      },
+      {
+        "id": "scenario-04",
+        "title": "Enterprise MCP Tool Ecosystem",
+        "description": "A SaaS company is designing an MCP server ecosystem for their internal developer platform. They need to expose database queries, deployment tools, monitoring dashboards, and documentation search across multiple teams with different access levels.",
+        "domains": [
+          "tool-design-mcp",
+          "claude-code-config",
+          "agentic-architecture"
+        ],
+        "questionCount": 4
+      },
+      {
+        "id": "scenario-05",
+        "title": "Medical Research Data Extraction",
+        "description": "A pharmaceutical company uses Claude to extract structured data from clinical trial reports. The system must handle ambiguous fields, validate extracted data against known schemas, and flag entries that require human review. Accuracy and reliability are paramount.",
+        "domains": [
+          "prompt-engineering",
+          "context-reliability",
+          "tool-design-mcp"
+        ],
+        "questionCount": 4
+      },
+      {
+        "id": "scenario-06",
+        "title": "Developer Onboarding Agent",
+        "description": "A large tech company deploys a Claude Code-based onboarding agent that helps new developers understand the codebase, set up their environment, and complete initial tasks. The agent uses CLAUDE.md files at multiple directory levels, custom commands for common workflows, and subagent delegation for complex setup procedures.",
+        "domains": [
+          "claude-code-config",
+          "agentic-architecture",
+          "context-reliability"
+        ],
+        "questionCount": 4
+      }
+    ]
+  }
+}

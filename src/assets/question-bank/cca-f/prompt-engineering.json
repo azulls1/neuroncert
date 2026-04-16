@@ -1,0 +1,1152 @@
+{
+  "meta": {
+    "domain": "prompt-engineering",
+    "domainName": "Prompt Engineering",
+    "trackId": "cca-f",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-15",
+    "totalQuestions": 57
+  },
+  "questions": [
+    {
+      "id": "ccaf-pe-001",
+      "text": "Why should you use explicit criteria instead of vague confidence levels when prompting Claude to classify or evaluate items?",
+      "textEs": "¿Por qué deberías usar criterios explícitos en lugar de niveles vagos de confianza al indicarle a Claude que clasifique o evalúe elementos?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-001_b",
+      "explanation": "Explicit criteria (e.g., 'flag if amount > $10,000 or if recipient is in a sanctioned country') produce consistent, reproducible results because every evaluator -- human or AI -- applies the same concrete rules. Vague instructions like 'flag if confidence is low' are subjective and lead to inconsistent outputs because the model interprets 'confidence' differently across runs.",
+      "explanationEs": "Los criterios explícitos (por ejemplo, 'marcar si el monto > $10,000 o si el destinatario está en un país sancionado') producen resultados consistentes y reproducibles porque cada evaluador, humano o IA, aplica las mismas reglas concretas. Las instrucciones vagas como 'marcar si la confianza es baja' son subjetivas y llevan a salidas inconsistentes porque el modelo interpreta 'confianza' de manera diferente en cada ejecución.",
+      "options": [
+        { "id": "ccaf-pe-001_a", "text": "Vague confidence levels are more expensive in tokens than explicit criteria", "textEs": "Los niveles vagos de confianza son más costosos en tokens que los criterios explícitos", "order": 1 },
+        { "id": "ccaf-pe-001_b", "text": "Explicit criteria produce consistent, reproducible results; vague instructions lead to subjective, inconsistent outputs", "textEs": "Los criterios explícitos producen resultados consistentes y reproducibles; las instrucciones vagas llevan a salidas subjetivas e inconsistentes", "order": 2 },
+        { "id": "ccaf-pe-001_c", "text": "Claude cannot understand confidence levels and will always return errors", "textEs": "Claude no puede entender niveles de confianza y siempre devolverá errores", "order": 3 },
+        { "id": "ccaf-pe-001_d", "text": "Explicit criteria reduce the model's context window usage", "textEs": "Los criterios explícitos reducen el uso de la ventana de contexto del modelo", "order": 4 }
+      ],
+      "tags": ["explicit-criteria", "classification", "consistency", "best-practices"]
+    },
+    {
+      "id": "ccaf-pe-002",
+      "text": "When constructing few-shot examples for a prompt, which practice is MOST important?",
+      "textEs": "Al construir ejemplos few-shot para un prompt, ¿qué práctica es la MÁS importante?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-002_c",
+      "explanation": "The most important practice for few-shot examples is to include diverse, representative examples that cover edge cases and the full range of expected outputs. This teaches the model the desired pattern for both common and unusual inputs. Using only 'happy path' examples will cause the model to fail on edge cases. Examples should be placed before the actual input and formatted consistently.",
+      "explanationEs": "La práctica más importante para los ejemplos few-shot es incluir ejemplos diversos y representativos que cubran casos límite y todo el rango de salidas esperadas. Esto enseña al modelo el patrón deseado tanto para entradas comunes como inusuales. Usar solo ejemplos del 'camino feliz' hará que el modelo falle en los casos límite. Los ejemplos deben colocarse antes de la entrada real y formatearse de manera consistente.",
+      "options": [
+        { "id": "ccaf-pe-002_a", "text": "Use as many examples as possible to maximize context utilization", "textEs": "Usar tantos ejemplos como sea posible para maximizar la utilización del contexto", "order": 1 },
+        { "id": "ccaf-pe-002_b", "text": "Always use exactly 3 examples as this is the statistically optimal number", "textEs": "Siempre usar exactamente 3 ejemplos ya que es el número estadísticamente óptimo", "order": 2 },
+        { "id": "ccaf-pe-002_c", "text": "Include diverse, representative examples covering edge cases and the full range of expected outputs", "textEs": "Incluir ejemplos diversos y representativos que cubran casos límite y todo el rango de salidas esperadas", "order": 3 },
+        { "id": "ccaf-pe-002_d", "text": "Keep all examples identical in structure to minimize model confusion", "textEs": "Mantener todos los ejemplos idénticos en estructura para minimizar la confusión del modelo", "order": 4 }
+      ],
+      "tags": ["few-shot", "examples", "diversity", "edge-cases"]
+    },
+    {
+      "id": "ccaf-pe-003",
+      "text": "How does using tool_use for structured output differ from asking Claude to produce JSON in a text response?",
+      "textEs": "¿Cómo difiere usar tool_use para salida estructurada de pedir a Claude que produzca JSON en una respuesta de texto?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-003_a",
+      "explanation": "Using tool_use with a defined input schema guarantees that Claude produces output matching the exact JSON schema you specified. The API validates the output against the schema, and you receive a structured tool_use content block with parsed JSON. Asking for JSON in a text response can result in malformed JSON, markdown code blocks, or extra text around the JSON, requiring fragile parsing on your end.",
+      "explanationEs": "Usar tool_use con un esquema de entrada definido garantiza que Claude produzca una salida que coincida con el esquema JSON exacto que especificaste. La API valida la salida contra el esquema, y recibes un bloque de contenido tool_use estructurado con JSON analizado. Pedir JSON en una respuesta de texto puede resultar en JSON malformado, bloques de código markdown o texto extra alrededor del JSON, requiriendo análisis frágil de tu lado.",
+      "options": [
+        { "id": "ccaf-pe-003_a", "text": "tool_use enforces a schema and returns validated, parsed JSON; text responses may produce malformed or wrapped JSON", "textEs": "tool_use aplica un esquema y devuelve JSON validado y analizado; las respuestas de texto pueden producir JSON malformado o envuelto", "order": 1 },
+        { "id": "ccaf-pe-003_b", "text": "There is no practical difference; both produce identical JSON output", "textEs": "No hay diferencia práctica; ambos producen salida JSON idéntica", "order": 2 },
+        { "id": "ccaf-pe-003_c", "text": "tool_use is slower but more accurate; text JSON is faster but may have typos", "textEs": "tool_use es más lento pero más preciso; el JSON de texto es más rápido pero puede tener errores tipográficos", "order": 3 },
+        { "id": "ccaf-pe-003_d", "text": "tool_use only works with simple key-value pairs; text JSON handles nested structures", "textEs": "tool_use solo funciona con pares clave-valor simples; el JSON de texto maneja estructuras anidadas", "order": 4 }
+      ],
+      "tags": ["tool-use", "structured-output", "json", "schema-validation"]
+    },
+    {
+      "id": "ccaf-pe-004",
+      "text": "When designing a JSON schema for data extraction, why should you include a nullable 'unclear' enum value or 'other' category?",
+      "textEs": "Al diseñar un esquema JSON para extracción de datos, ¿por qué deberías incluir un valor enum nullable 'unclear' o una categoría 'other'?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-004_b",
+      "explanation": "Including nullable fields, 'unclear' enum values, or 'other' categories gives the model an honest escape hatch when data is ambiguous or missing. Without these, the model is forced to pick the closest option even when none truly fits, leading to silent errors and false confidence. This is especially critical in data extraction where real-world data is often messy or incomplete.",
+      "explanationEs": "Incluir campos anulables, valores enum 'unclear' o categorías 'other' le da al modelo una vía de escape honesta cuando los datos son ambiguos o faltan. Sin estos, el modelo se ve forzado a elegir la opción más cercana incluso cuando ninguna encaja realmente, llevando a errores silenciosos y falsa confianza. Esto es especialmente crítico en extracción de datos donde los datos del mundo real frecuentemente están desordenados o incompletos.",
+      "options": [
+        { "id": "ccaf-pe-004_a", "text": "It reduces token usage by allowing shorter responses", "textEs": "Reduce el uso de tokens al permitir respuestas más cortas", "order": 1 },
+        { "id": "ccaf-pe-004_b", "text": "It gives the model an honest escape hatch for ambiguous or missing data, preventing forced incorrect classifications", "textEs": "Le da al modelo una vía de escape honesta para datos ambiguos o faltantes, previniendo clasificaciones incorrectas forzadas", "order": 2 },
+        { "id": "ccaf-pe-004_c", "text": "It is required by the API schema validation and will error without it", "textEs": "Es requerido por la validación de esquema de la API y generará error sin él", "order": 3 },
+        { "id": "ccaf-pe-004_d", "text": "It improves processing speed by simplifying the model's decision tree", "textEs": "Mejora la velocidad de procesamiento al simplificar el árbol de decisiones del modelo", "order": 4 }
+      ],
+      "tags": ["json-schema", "nullable", "unclear-enum", "data-extraction"]
+    },
+    {
+      "id": "ccaf-pe-005",
+      "text": "What is a validation-retry loop and when should it be used?",
+      "textEs": "¿Qué es un bucle de validación-reintento y cuándo debe usarse?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-005_c",
+      "explanation": "A validation-retry loop is a pattern where the model's output is validated against criteria (schema validation, business rules, etc.), and if validation fails, the error is fed back to the model with instructions to fix its output. This is repeated until validation passes or a max retry count is reached. Use it when output must conform to strict schemas or business rules that the model might not get right on the first try.",
+      "explanationEs": "Un bucle de validación-reintento es un patrón donde la salida del modelo se valida contra criterios (validación de esquema, reglas de negocio, etc.), y si la validación falla, el error se devuelve al modelo con instrucciones para corregir su salida. Esto se repite hasta que la validación pase o se alcance un conteo máximo de reintentos. Úsalo cuando la salida debe cumplir con esquemas estrictos o reglas de negocio que el modelo podría no acertar en el primer intento.",
+      "options": [
+        { "id": "ccaf-pe-005_a", "text": "A loop that retries API calls when rate-limited; used for high-throughput applications", "textEs": "Un bucle que reintenta llamadas a la API cuando se limita la tasa; usado para aplicaciones de alto rendimiento", "order": 1 },
+        { "id": "ccaf-pe-005_b", "text": "A loop that generates multiple outputs and picks the best one; used for creative content", "textEs": "Un bucle que genera múltiples salidas y elige la mejor; usado para contenido creativo", "order": 2 },
+        { "id": "ccaf-pe-005_c", "text": "A pattern that validates model output, feeds errors back for correction, and repeats until valid or max retries; used for strict schema compliance", "textEs": "Un patrón que valida la salida del modelo, devuelve errores para corrección y repite hasta que sea válida o se alcancen los reintentos máximos; usado para cumplimiento estricto de esquemas", "order": 3 },
+        { "id": "ccaf-pe-005_d", "text": "A loop that compares outputs from different models and selects the consensus answer", "textEs": "Un bucle que compara salidas de diferentes modelos y selecciona la respuesta de consenso", "order": 4 }
+      ],
+      "tags": ["validation-retry", "loop", "schema-compliance", "error-correction"]
+    },
+    {
+      "id": "ccaf-pe-006",
+      "text": "What is a 'detected_pattern' field in structured extraction output, and why is it useful?",
+      "textEs": "¿Qué es un campo 'detected_pattern' en la salida de extracción estructurada, y por qué es útil?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-006_a",
+      "explanation": "A 'detected_pattern' field asks the model to explicitly state what pattern or rule it identified in the input before producing the extracted output. This serves as a chain-of-thought anchor that improves extraction accuracy, makes the model's reasoning auditable, and helps catch cases where the model misidentified the pattern (revealing potential errors before they propagate).",
+      "explanationEs": "Un campo 'detected_pattern' le pide al modelo que declare explícitamente qué patrón o regla identificó en la entrada antes de producir la salida extraída. Esto sirve como un ancla de cadena de pensamiento que mejora la precisión de extracción, hace que el razonamiento del modelo sea auditable y ayuda a detectar casos donde el modelo identificó incorrectamente el patrón (revelando errores potenciales antes de que se propaguen).",
+      "options": [
+        { "id": "ccaf-pe-006_a", "text": "A field where the model states the pattern it identified, serving as chain-of-thought that improves accuracy and auditability", "textEs": "Un campo donde el modelo declara el patrón que identificó, sirviendo como cadena de pensamiento que mejora la precisión y auditabilidad", "order": 1 },
+        { "id": "ccaf-pe-006_b", "text": "A regex pattern that the model applies to extract data from text", "textEs": "Un patrón regex que el modelo aplica para extraer datos del texto", "order": 2 },
+        { "id": "ccaf-pe-006_c", "text": "A field that records which few-shot example the model matched against", "textEs": "Un campo que registra contra qué ejemplo few-shot el modelo hizo la coincidencia", "order": 3 },
+        { "id": "ccaf-pe-006_d", "text": "A system-generated metadata field that tracks token usage patterns", "textEs": "Un campo de metadatos generado por el sistema que rastrea patrones de uso de tokens", "order": 4 }
+      ],
+      "tags": ["detected-pattern", "chain-of-thought", "extraction", "auditability"]
+    },
+    {
+      "id": "ccaf-pe-007",
+      "text": "When using the Batch API for processing large datasets, what is the primary advantage over sending individual requests?",
+      "textEs": "Al usar la API por lotes para procesar grandes conjuntos de datos, ¿cuál es la ventaja principal sobre enviar solicitudes individuales?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-007_d",
+      "explanation": "The Batch API provides a 50% cost reduction compared to individual API calls. You submit a batch of requests (up to 10,000), and they are processed asynchronously within 24 hours. This is ideal for non-time-sensitive workloads like data extraction, classification, or content moderation at scale. The tradeoff is latency -- results are not immediate.",
+      "explanationEs": "La API por lotes proporciona una reducción de costos del 50% comparada con llamadas individuales a la API. Envías un lote de solicitudes (hasta 10,000) y se procesan de forma asíncrona en 24 horas. Es ideal para cargas de trabajo no sensibles al tiempo como extracción de datos, clasificación o moderación de contenido a escala. La compensación es la latencia: los resultados no son inmediatos.",
+      "options": [
+        { "id": "ccaf-pe-007_a", "text": "Batch processing uses a more powerful model for the same price", "textEs": "El procesamiento por lotes usa un modelo más poderoso por el mismo precio", "order": 1 },
+        { "id": "ccaf-pe-007_b", "text": "Batch processing guarantees results within 1 minute", "textEs": "El procesamiento por lotes garantiza resultados en 1 minuto", "order": 2 },
+        { "id": "ccaf-pe-007_c", "text": "Batch processing allows unlimited token context per request", "textEs": "El procesamiento por lotes permite contexto ilimitado de tokens por solicitud", "order": 3 },
+        { "id": "ccaf-pe-007_d", "text": "Batch processing provides 50% cost reduction for asynchronous, non-time-sensitive workloads", "textEs": "El procesamiento por lotes proporciona 50% de reducción de costos para cargas de trabajo asíncronas no sensibles al tiempo", "order": 4 }
+      ],
+      "tags": ["batch-api", "cost-optimization", "large-scale", "async"]
+    },
+    {
+      "id": "ccaf-pe-008",
+      "text": "What is a multi-pass review pattern and when should it be applied?",
+      "textEs": "¿Qué es un patrón de revisión multi-pasada y cuándo debe aplicarse?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-008_b",
+      "explanation": "A multi-pass review sends the same content through Claude multiple times, each pass focusing on a different aspect (e.g., first pass for factual accuracy, second for tone, third for completeness). This is more effective than a single 'review everything' prompt because each pass can be focused with specific criteria, reducing the chance of overlooking issues. Apply it when accuracy is critical and the cost of errors outweighs API costs.",
+      "explanationEs": "Una revisión multi-pasada envía el mismo contenido a través de Claude múltiples veces, cada pasada enfocándose en un aspecto diferente (por ejemplo, primera pasada para precisión factual, segunda para tono, tercera para completitud). Es más efectivo que un solo prompt de 'revisar todo' porque cada pasada puede enfocarse con criterios específicos, reduciendo la posibilidad de pasar por alto problemas. Aplícalo cuando la precisión es crítica y el costo de errores supera los costos de API.",
+      "options": [
+        { "id": "ccaf-pe-008_a", "text": "Sending the same prompt multiple times and picking the majority answer; used for all outputs", "textEs": "Enviar el mismo prompt múltiples veces y elegir la respuesta mayoritaria; usado para todas las salidas", "order": 1 },
+        { "id": "ccaf-pe-008_b", "text": "Multiple focused review passes, each checking a specific aspect; used when accuracy is critical", "textEs": "Múltiples pasadas de revisión enfocadas, cada una verificando un aspecto específico; usado cuando la precisión es crítica", "order": 2 },
+        { "id": "ccaf-pe-008_c", "text": "Having multiple models review the same content simultaneously; used for cross-model validation", "textEs": "Hacer que múltiples modelos revisen el mismo contenido simultáneamente; usado para validación entre modelos", "order": 3 },
+        { "id": "ccaf-pe-008_d", "text": "Incrementally adding context until the model produces the correct output; used for debugging prompts", "textEs": "Agregar contexto incrementalmente hasta que el modelo produzca la salida correcta; usado para depurar prompts", "order": 4 }
+      ],
+      "tags": ["multi-pass", "review", "accuracy", "quality-assurance"]
+    },
+    {
+      "id": "ccaf-pe-009",
+      "text": "When prompting Claude to produce structured output, where should few-shot examples be placed relative to the actual input?",
+      "textEs": "Al indicar a Claude que produzca salida estructurada, ¿dónde deben colocarse los ejemplos few-shot en relación a la entrada real?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-009_a",
+      "explanation": "Few-shot examples should be placed BEFORE the actual input, following the task instructions. This order -- instructions, then examples, then input -- gives Claude the pattern to follow before encountering the real data. Placing examples after the input or mixing them in can confuse the model about what is example vs. real data.",
+      "explanationEs": "Los ejemplos few-shot deben colocarse ANTES de la entrada real, después de las instrucciones de la tarea. Este orden (instrucciones, luego ejemplos, luego entrada) le da a Claude el patrón a seguir antes de encontrar los datos reales. Colocar ejemplos después de la entrada o mezclarlos puede confundir al modelo sobre qué es un ejemplo y qué son datos reales.",
+      "options": [
+        { "id": "ccaf-pe-009_a", "text": "After the task instructions but before the actual input data", "textEs": "Después de las instrucciones de la tarea pero antes de los datos de entrada reales", "order": 1 },
+        { "id": "ccaf-pe-009_b", "text": "After the actual input data as a reference appendix", "textEs": "Después de los datos de entrada reales como un apéndice de referencia", "order": 2 },
+        { "id": "ccaf-pe-009_c", "text": "In the system prompt, separate from the user message", "textEs": "En el prompt del sistema, separado del mensaje del usuario", "order": 3 },
+        { "id": "ccaf-pe-009_d", "text": "Placement does not matter; the model processes all content equally", "textEs": "La colocación no importa; el modelo procesa todo el contenido por igual", "order": 4 }
+      ],
+      "tags": ["few-shot", "placement", "structured-output", "prompt-structure"]
+    },
+    {
+      "id": "ccaf-pe-010",
+      "text": "You need Claude to extract data from invoices where some fields may be missing or illegible. How should you design the JSON schema?",
+      "textEs": "Necesitas que Claude extraiga datos de facturas donde algunos campos pueden faltar o ser ilegibles. ¿Cómo deberías diseñar el esquema JSON?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-010_c",
+      "explanation": "For real-world data extraction with missing/ambiguous fields, the schema should make potentially absent fields nullable (allowing null when the value cannot be determined), include a confidence or source field for traceability, and add an 'other'/'unclear' enum value for classification fields. This prevents the model from hallucinating values to fill required fields and makes missing data explicit.",
+      "explanationEs": "Para extracción de datos del mundo real con campos faltantes/ambiguos, el esquema debe hacer los campos potencialmente ausentes anulables (permitiendo null cuando el valor no puede determinarse), incluir un campo de confianza o fuente para trazabilidad, y agregar un valor enum 'other'/'unclear' para campos de clasificación. Esto previene que el modelo alucine valores para llenar campos requeridos y hace explícitos los datos faltantes.",
+      "options": [
+        { "id": "ccaf-pe-010_a", "text": "Make all fields required strings with a default value of 'N/A'", "textEs": "Hacer todos los campos cadenas requeridas con valor predeterminado 'N/A'", "order": 1 },
+        { "id": "ccaf-pe-010_b", "text": "Use a flat schema with only string types to avoid validation errors", "textEs": "Usar un esquema plano con solo tipos string para evitar errores de validación", "order": 2 },
+        { "id": "ccaf-pe-010_c", "text": "Make optional fields nullable, add 'unclear' enums for classifications, and include source/confidence fields", "textEs": "Hacer los campos opcionales anulables, agregar enums 'unclear' para clasificaciones e incluir campos de fuente/confianza", "order": 3 },
+        { "id": "ccaf-pe-010_d", "text": "Create two schemas: one strict and one lenient, and let the model choose which to use", "textEs": "Crear dos esquemas: uno estricto y uno flexible, y dejar que el modelo elija cuál usar", "order": 4 }
+      ],
+      "tags": ["json-schema", "data-extraction", "nullable", "real-world"]
+    },
+    {
+      "id": "ccaf-pe-011",
+      "text": "When using tool_choice set to a specific tool name (forced), what behavior does this produce?",
+      "textEs": "Al usar tool_choice configurado con un nombre de herramienta específico (forzado), ¿qué comportamiento produce?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-011_b",
+      "explanation": "Setting tool_choice to a specific tool name forces Claude to call that exact tool in its response. The model must produce valid input parameters for that tool. This is useful for deterministic extraction pipelines where you always want the model to produce structured output via a specific tool, regardless of the input. It eliminates the model's decision about whether and which tool to use.",
+      "explanationEs": "Configurar tool_choice con un nombre de herramienta específico fuerza a Claude a llamar a esa herramienta exacta en su respuesta. El modelo debe producir parámetros de entrada válidos para esa herramienta. Es útil para pipelines de extracción deterministas donde siempre quieres que el modelo produzca salida estructurada mediante una herramienta específica, independientemente de la entrada. Elimina la decisión del modelo sobre si usar y qué herramienta usar.",
+      "options": [
+        { "id": "ccaf-pe-011_a", "text": "Claude can only see that one tool's description and all others are hidden", "textEs": "Claude solo puede ver la descripción de esa herramienta y todas las demás están ocultas", "order": 1 },
+        { "id": "ccaf-pe-011_b", "text": "Claude is required to call that specific tool and must produce valid parameters for it", "textEs": "Claude es requerido a llamar a esa herramienta específica y debe producir parámetros válidos para ella", "order": 2 },
+        { "id": "ccaf-pe-011_c", "text": "Claude tries the specified tool first and falls back to others if it fails", "textEs": "Claude intenta la herramienta especificada primero y recurre a otras si falla", "order": 3 },
+        { "id": "ccaf-pe-011_d", "text": "Claude uses the tool but can also include text output before the tool call", "textEs": "Claude usa la herramienta pero también puede incluir salida de texto antes de la llamada a herramienta", "order": 4 }
+      ],
+      "tags": ["tool-choice", "forced", "deterministic", "structured-output"]
+    },
+    {
+      "id": "ccaf-pe-012",
+      "text": "A developer's prompt produces correct output 80% of the time but fails on edge cases. Which improvement would MOST directly increase reliability?",
+      "textEs": "El prompt de un desarrollador produce salida correcta el 80% del tiempo pero falla en casos límite. ¿Qué mejora aumentaría MÁS directamente la fiabilidad?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-012_a",
+      "explanation": "Adding few-shot examples that specifically cover the failing edge cases is the most direct improvement. The examples teach the model exactly how to handle those cases by demonstrating the expected input-output pairs. This is more targeted than increasing temperature (which adds randomness), switching models (which may not help with the specific edge cases), or adding more system instructions (which may be too abstract).",
+      "explanationEs": "Agregar ejemplos few-shot que cubran específicamente los casos límite que fallan es la mejora más directa. Los ejemplos enseñan al modelo exactamente cómo manejar esos casos demostrando los pares de entrada-salida esperados. Es más específico que aumentar la temperatura (que agrega aleatoriedad), cambiar de modelo (que podría no ayudar con los casos límite específicos) o agregar más instrucciones del sistema (que podrían ser demasiado abstractas).",
+      "options": [
+        { "id": "ccaf-pe-012_a", "text": "Add few-shot examples specifically covering the failing edge cases", "textEs": "Agregar ejemplos few-shot que cubran específicamente los casos límite que fallan", "order": 1 },
+        { "id": "ccaf-pe-012_b", "text": "Increase the temperature to generate more varied responses", "textEs": "Aumentar la temperatura para generar respuestas más variadas", "order": 2 },
+        { "id": "ccaf-pe-012_c", "text": "Switch to a larger model for all requests", "textEs": "Cambiar a un modelo más grande para todas las solicitudes", "order": 3 },
+        { "id": "ccaf-pe-012_d", "text": "Add 'be very careful with edge cases' to the system prompt", "textEs": "Agregar 'ten mucho cuidado con los casos límite' al prompt del sistema", "order": 4 }
+      ],
+      "tags": ["few-shot", "edge-cases", "reliability", "improvement"]
+    },
+    {
+      "id": "ccaf-pe-013",
+      "text": "What is chain-of-thought prompting, and when does it improve Claude's performance?",
+      "textEs": "¿Qué es el prompting de cadena de pensamiento, y cuándo mejora el rendimiento de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-013_a",
+      "explanation": "Chain-of-thought (CoT) prompting asks Claude to show its reasoning step by step before arriving at a final answer. This improves performance on tasks requiring multi-step reasoning, math, logic, and complex analysis. By explicitly asking Claude to 'think through this step by step' or providing examples that demonstrate intermediate reasoning, you get more accurate results because the model can catch errors in its own reasoning process.",
+      "explanationEs": "El prompting de cadena de pensamiento (CoT) le pide a Claude que muestre su razonamiento paso a paso antes de llegar a una respuesta final. Esto mejora el rendimiento en tareas que requieren razonamiento de múltiples pasos, matemáticas, lógica y análisis complejo. Al pedir explícitamente a Claude que 'piense paso a paso' o proporcionar ejemplos que demuestren razonamiento intermedio, obtienes resultados más precisos porque el modelo puede detectar errores en su propio proceso de razonamiento.",
+      "options": [
+        { "id": "ccaf-pe-013_a", "text": "Asking Claude to reason step-by-step before answering; improves multi-step reasoning, math, and complex analysis", "textEs": "Pedir a Claude que razone paso a paso antes de responder; mejora el razonamiento de múltiples pasos, matemáticas y análisis complejo", "order": 1 },
+        { "id": "ccaf-pe-013_b", "text": "Chaining multiple API calls where each builds on the previous response; improves long document processing", "textEs": "Encadenar múltiples llamadas a la API donde cada una se basa en la respuesta anterior; mejora el procesamiento de documentos largos", "order": 2 },
+        { "id": "ccaf-pe-013_c", "text": "Providing a chain of related examples in sequence; improves pattern recognition tasks", "textEs": "Proporcionar una cadena de ejemplos relacionados en secuencia; mejora tareas de reconocimiento de patrones", "order": 3 },
+        { "id": "ccaf-pe-013_d", "text": "Asking Claude to generate multiple thoughts and vote on the best one; improves creative tasks", "textEs": "Pedir a Claude que genere múltiples pensamientos y vote por el mejor; mejora tareas creativas", "order": 4 }
+      ],
+      "tags": ["chain-of-thought", "reasoning", "step-by-step", "accuracy"]
+    },
+    {
+      "id": "ccaf-pe-014",
+      "text": "How should XML tags be used in prompts to Claude, and what advantages do they provide?",
+      "textEs": "¿Cómo deben usarse las etiquetas XML en prompts para Claude, y qué ventajas proporcionan?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-014_c",
+      "explanation": "XML tags in prompts provide clear structural delineation of different content sections. Claude is trained to recognize XML tags as semantic boundaries. For example, <instructions>, <context>, <examples>, and <input> tags clearly separate the prompt's components. This reduces ambiguity about where instructions end and data begins, makes prompts more maintainable, and improves Claude's ability to follow complex multi-section prompts accurately.",
+      "explanationEs": "Las etiquetas XML en prompts proporcionan una delimitación estructural clara de diferentes secciones de contenido. Claude está entrenado para reconocer etiquetas XML como límites semánticos. Por ejemplo, las etiquetas <instructions>, <context>, <examples> e <input> separan claramente los componentes del prompt. Esto reduce la ambigüedad sobre dónde terminan las instrucciones y comienzan los datos, hace que los prompts sean más mantenibles y mejora la capacidad de Claude para seguir prompts complejos con múltiples secciones con precisión.",
+      "options": [
+        { "id": "ccaf-pe-014_a", "text": "XML tags must be valid and well-formed; Claude will return errors for malformed XML", "textEs": "Las etiquetas XML deben ser válidas y bien formadas; Claude devolverá errores por XML malformado", "order": 1 },
+        { "id": "ccaf-pe-014_b", "text": "XML tags are only useful for structured data extraction; they have no effect on instruction-following", "textEs": "Las etiquetas XML solo son útiles para extracción de datos estructurados; no tienen efecto en el seguimiento de instrucciones", "order": 2 },
+        { "id": "ccaf-pe-014_c", "text": "They delineate prompt sections (instructions, context, examples, input), reducing ambiguity and improving instruction-following", "textEs": "Delimitan secciones del prompt (instrucciones, contexto, ejemplos, entrada), reduciendo ambigüedad y mejorando el seguimiento de instrucciones", "order": 3 },
+        { "id": "ccaf-pe-014_d", "text": "They enable XML-based output formatting; Claude will always respond in XML when it sees XML input", "textEs": "Habilitan formato de salida basado en XML; Claude siempre responderá en XML cuando vea entrada XML", "order": 4 }
+      ],
+      "tags": ["xml-tags", "prompt-structure", "delineation", "best-practices"]
+    },
+    {
+      "id": "ccaf-pe-015",
+      "text": "What are best practices for writing effective system prompts for Claude?",
+      "textEs": "¿Cuáles son las mejores prácticas para escribir prompts del sistema efectivos para Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-015_b",
+      "explanation": "Effective system prompts should: define Claude's role and persona clearly, set specific behavioral constraints and output requirements, provide context about the use case, and list what Claude should and should not do. They should be concise but complete. System prompts persist across the entire conversation, so they are ideal for instructions that apply to all responses. Avoid putting conversation-specific data in the system prompt.",
+      "explanationEs": "Los prompts del sistema efectivos deben: definir el rol y la persona de Claude claramente, establecer restricciones de comportamiento específicas y requisitos de salida, proporcionar contexto sobre el caso de uso, y listar lo que Claude debe y no debe hacer. Deben ser concisos pero completos. Los prompts del sistema persisten durante toda la conversación, por lo que son ideales para instrucciones que aplican a todas las respuestas. Evita poner datos específicos de la conversación en el prompt del sistema.",
+      "options": [
+        { "id": "ccaf-pe-015_a", "text": "Keep them under 10 words for performance; put all details in the first user message", "textEs": "Mantenerlos bajo 10 palabras por rendimiento; poner todos los detalles en el primer mensaje del usuario", "order": 1 },
+        { "id": "ccaf-pe-015_b", "text": "Define role/persona, set behavioral constraints, provide use-case context, and list dos/don'ts; keep concise but complete", "textEs": "Definir rol/persona, establecer restricciones de comportamiento, proporcionar contexto del caso de uso y listar lo que hacer y no hacer; mantener conciso pero completo", "order": 2 },
+        { "id": "ccaf-pe-015_c", "text": "Include the entire conversation history in the system prompt to ensure context is never lost", "textEs": "Incluir todo el historial de conversación en el prompt del sistema para asegurar que nunca se pierda el contexto", "order": 3 },
+        { "id": "ccaf-pe-015_d", "text": "Use only JSON format in system prompts for machine readability", "textEs": "Usar solo formato JSON en prompts del sistema para legibilidad por máquinas", "order": 4 }
+      ],
+      "tags": ["system-prompt", "best-practices", "role", "constraints"]
+    },
+    {
+      "id": "ccaf-pe-016",
+      "text": "How does temperature affect Claude's outputs, and what values are recommended for different use cases?",
+      "textEs": "¿Cómo afecta la temperatura las salidas de Claude, y qué valores se recomiendan para diferentes casos de uso?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-016_d",
+      "explanation": "Temperature controls the randomness/creativity of Claude's outputs. A temperature of 0 produces the most deterministic, consistent outputs (ideal for classification, extraction, and factual tasks). Higher temperatures (0.5-0.7) increase variety (good for creative writing, brainstorming). Very high temperatures (>0.8) can produce incoherent outputs. The default is 1.0. For most production applications requiring reliability, lower temperatures are recommended.",
+      "explanationEs": "La temperatura controla la aleatoriedad/creatividad de las salidas de Claude. Una temperatura de 0 produce las salidas más deterministas y consistentes (ideal para clasificación, extracción y tareas factuales). Temperaturas más altas (0.5-0.7) aumentan la variedad (bueno para escritura creativa, lluvia de ideas). Temperaturas muy altas (>0.8) pueden producir salidas incoherentes. El valor predeterminado es 1.0. Para la mayoría de aplicaciones de producción que requieren fiabilidad, se recomiendan temperaturas más bajas.",
+      "options": [
+        { "id": "ccaf-pe-016_a", "text": "Temperature controls response speed; lower values are faster, higher values are slower but more accurate", "textEs": "La temperatura controla la velocidad de respuesta; valores más bajos son más rápidos, valores más altos son más lentos pero más precisos", "order": 1 },
+        { "id": "ccaf-pe-016_b", "text": "Temperature has no effect on Claude; it is a legacy parameter kept for API compatibility", "textEs": "La temperatura no tiene efecto en Claude; es un parámetro heredado mantenido por compatibilidad con la API", "order": 2 },
+        { "id": "ccaf-pe-016_c", "text": "Temperature controls token limits; lower values produce shorter responses", "textEs": "La temperatura controla los límites de tokens; valores más bajos producen respuestas más cortas", "order": 3 },
+        { "id": "ccaf-pe-016_d", "text": "Temperature controls randomness; 0 for deterministic/factual tasks, moderate for creative tasks, high values risk incoherence", "textEs": "La temperatura controla la aleatoriedad; 0 para tareas deterministas/factuales, moderada para tareas creativas, valores altos arriesgan incoherencia", "order": 4 }
+      ],
+      "tags": ["temperature", "sampling", "deterministic", "creative", "configuration"]
+    },
+    {
+      "id": "ccaf-pe-017",
+      "text": "What is prompt caching in the Anthropic API, and how does it reduce costs?",
+      "textEs": "¿Qué es el caché de prompts en la API de Anthropic, y cómo reduce los costos?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-017_a",
+      "explanation": "Prompt caching allows you to mark a prefix of your prompt (system prompt, tools, examples) as cacheable using cache_control breakpoints. When the same prefix appears in subsequent requests, the API reuses the cached computation instead of re-processing it. Cache reads cost 90% less than regular input tokens (though the initial cache write has a 25% premium). This is highly effective for agentic loops and repeated prompts with shared prefixes.",
+      "explanationEs": "El caché de prompts te permite marcar un prefijo de tu prompt (prompt del sistema, herramientas, ejemplos) como cacheable usando puntos de control cache_control. Cuando el mismo prefijo aparece en solicitudes posteriores, la API reutiliza la computación en caché en lugar de re-procesarla. Las lecturas de caché cuestan 90% menos que los tokens de entrada regulares (aunque la escritura inicial del caché tiene una prima del 25%). Es altamente efectivo para bucles agentes y prompts repetidos con prefijos compartidos.",
+      "options": [
+        { "id": "ccaf-pe-017_a", "text": "Marking prompt prefixes as cacheable with cache_control; cached reads cost 90% less, with a 25% write premium on first use", "textEs": "Marcar prefijos de prompts como cacheables con cache_control; las lecturas cacheadas cuestan 90% menos, con una prima de escritura del 25% en el primer uso", "order": 1 },
+        { "id": "ccaf-pe-017_b", "text": "Storing Claude's responses in a local cache to avoid making API calls for repeated questions", "textEs": "Almacenar las respuestas de Claude en un caché local para evitar hacer llamadas a la API para preguntas repetidas", "order": 2 },
+        { "id": "ccaf-pe-017_c", "text": "Compressing the prompt text to reduce token count before sending to the API", "textEs": "Comprimir el texto del prompt para reducir la cantidad de tokens antes de enviar a la API", "order": 3 },
+        { "id": "ccaf-pe-017_d", "text": "Pre-computing model activations for common prompts, stored on Anthropic's servers permanently", "textEs": "Pre-computar activaciones del modelo para prompts comunes, almacenadas en los servidores de Anthropic permanentemente", "order": 4 }
+      ],
+      "tags": ["prompt-caching", "cache-control", "cost-optimization", "api"]
+    },
+    {
+      "id": "ccaf-pe-018",
+      "text": "When using Claude for classification tasks, what is the 'thinking field' pattern and why is it effective?",
+      "textEs": "Al usar Claude para tareas de clasificación, ¿qué es el patrón de 'campo de pensamiento' y por qué es efectivo?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-018_c",
+      "explanation": "The thinking field pattern includes a 'thinking' or 'reasoning' field in your structured output schema that Claude fills in before the classification field. This forces the model to articulate its reasoning before committing to a label, which improves accuracy (similar to chain-of-thought but within structured output). The thinking field can be discarded in production but used for debugging and quality assurance.",
+      "explanationEs": "El patrón de campo de pensamiento incluye un campo 'thinking' o 'reasoning' en tu esquema de salida estructurada que Claude completa antes del campo de clasificación. Esto fuerza al modelo a articular su razonamiento antes de comprometerse con una etiqueta, lo que mejora la precisión (similar a la cadena de pensamiento pero dentro de salida estructurada). El campo de pensamiento puede descartarse en producción pero usarse para depuración y aseguramiento de calidad.",
+      "options": [
+        { "id": "ccaf-pe-018_a", "text": "A hidden field that records the model's internal token probabilities for each classification", "textEs": "Un campo oculto que registra las probabilidades internas de tokens del modelo para cada clasificación", "order": 1 },
+        { "id": "ccaf-pe-018_b", "text": "A field that triggers extended thinking mode for higher-quality classification", "textEs": "Un campo que activa el modo de pensamiento extendido para clasificación de mayor calidad", "order": 2 },
+        { "id": "ccaf-pe-018_c", "text": "A reasoning field in the output schema filled before the classification, forcing explicit reasoning that improves accuracy", "textEs": "Un campo de razonamiento en el esquema de salida que se completa antes de la clasificación, forzando razonamiento explícito que mejora la precisión", "order": 3 },
+        { "id": "ccaf-pe-018_d", "text": "A metadata field that records which few-shot example most influenced the classification", "textEs": "Un campo de metadatos que registra qué ejemplo few-shot influyó más en la clasificación", "order": 4 }
+      ],
+      "tags": ["thinking-field", "classification", "chain-of-thought", "structured-output"]
+    },
+    {
+      "id": "ccaf-pe-019",
+      "text": "What is the recommended approach for handling multi-language prompts with Claude?",
+      "textEs": "¿Cuál es el enfoque recomendado para manejar prompts en múltiples idiomas con Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-019_b",
+      "explanation": "For multi-language scenarios, the recommended approach is to write the system prompt and instructions in the target output language, and explicitly specify the desired output language. Claude tends to respond in the language of the prompt and input. If the input is in a different language than the desired output, include an explicit instruction like 'Always respond in English regardless of input language.' Few-shot examples in the target language also help.",
+      "explanationEs": "Para escenarios multi-idioma, el enfoque recomendado es escribir el prompt del sistema y las instrucciones en el idioma de salida objetivo, y especificar explícitamente el idioma de salida deseado. Claude tiende a responder en el idioma del prompt y la entrada. Si la entrada está en un idioma diferente al de la salida deseada, incluye una instrucción explícita como 'Siempre responde en español independientemente del idioma de entrada.' Los ejemplos few-shot en el idioma objetivo también ayudan.",
+      "options": [
+        { "id": "ccaf-pe-019_a", "text": "Always write prompts in English; Claude automatically translates to the user's language", "textEs": "Siempre escribir prompts en inglés; Claude traduce automáticamente al idioma del usuario", "order": 1 },
+        { "id": "ccaf-pe-019_b", "text": "Write instructions in the target output language, explicitly specify desired output language, and use few-shot examples in that language", "textEs": "Escribir instrucciones en el idioma de salida objetivo, especificar explícitamente el idioma de salida deseado y usar ejemplos few-shot en ese idioma", "order": 2 },
+        { "id": "ccaf-pe-019_c", "text": "Use a separate translation API before and after Claude processing; Claude only handles English well", "textEs": "Usar una API de traducción separada antes y después del procesamiento de Claude; Claude solo maneja bien el inglés", "order": 3 },
+        { "id": "ccaf-pe-019_d", "text": "Set the 'language' parameter in the API request to control Claude's output language", "textEs": "Configurar el parámetro 'language' en la solicitud de la API para controlar el idioma de salida de Claude", "order": 4 }
+      ],
+      "tags": ["multi-language", "localization", "output-language", "internationalization"]
+    },
+    {
+      "id": "ccaf-pe-020",
+      "text": "How does prefilling the assistant response influence Claude's output, and when should it be used?",
+      "textEs": "¿Cómo influye el prellenado de la respuesta del asistente en la salida de Claude, y cuándo debe usarse?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-020_a",
+      "explanation": "Prefilling provides the beginning of Claude's response in the messages array as an assistant message. Claude then continues from where the prefill left off. This is powerful for controlling output format (e.g., prefill with '{' to force JSON), maintaining a specific tone, skipping preamble, or guiding Claude into a particular response structure. It works because the model treats the prefill as its own output and maintains consistency with it.",
+      "explanationEs": "El prellenado proporciona el inicio de la respuesta de Claude en el array de mensajes como un mensaje del asistente. Claude luego continúa desde donde el prellenado se quedó. Es poderoso para controlar el formato de salida (por ejemplo, prellenar con '{' para forzar JSON), mantener un tono específico, omitir el preámbulo o guiar a Claude hacia una estructura de respuesta particular. Funciona porque el modelo trata el prellenado como su propia salida y mantiene consistencia con él.",
+      "options": [
+        { "id": "ccaf-pe-020_a", "text": "Providing the start of the assistant response to control format, skip preamble, or guide structure; Claude continues from the prefill", "textEs": "Proporcionar el inicio de la respuesta del asistente para controlar formato, omitir preámbulo o guiar la estructura; Claude continúa desde el prellenado", "order": 1 },
+        { "id": "ccaf-pe-020_b", "text": "Caching a previous response to speed up similar future requests", "textEs": "Cachear una respuesta anterior para acelerar solicitudes futuras similares", "order": 2 },
+        { "id": "ccaf-pe-020_c", "text": "Providing example responses that Claude should mimic but not continue from", "textEs": "Proporcionar respuestas de ejemplo que Claude debería imitar pero no continuar desde ellas", "order": 3 },
+        { "id": "ccaf-pe-020_d", "text": "Pre-loading the model with domain knowledge before the conversation starts", "textEs": "Pre-cargar el modelo con conocimiento de dominio antes de que la conversación comience", "order": 4 }
+      ],
+      "tags": ["prefilling", "assistant-response", "output-control", "format-control"]
+    },
+    {
+      "id": "ccaf-pe-021",
+      "text": "What is the 'prompt chaining' pattern, and how does it differ from a single long prompt?",
+      "textEs": "¿Qué es el patrón de 'encadenamiento de prompts', y cómo difiere de un solo prompt largo?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-021_c",
+      "explanation": "Prompt chaining breaks a complex task into a series of focused prompts where the output of one becomes the input of the next. For example: (1) extract entities, (2) classify entities, (3) generate summary. Each step has a clear, focused objective. This differs from a single long prompt that tries to do everything at once, which often leads to the model cutting corners on later steps or losing focus on instructions.",
+      "explanationEs": "El encadenamiento de prompts divide una tarea compleja en una serie de prompts enfocados donde la salida de uno se convierte en la entrada del siguiente. Por ejemplo: (1) extraer entidades, (2) clasificar entidades, (3) generar resumen. Cada paso tiene un objetivo claro y enfocado. Esto difiere de un solo prompt largo que intenta hacer todo a la vez, lo que frecuentemente lleva al modelo a tomar atajos en los pasos posteriores o perder el enfoque en las instrucciones.",
+      "options": [
+        { "id": "ccaf-pe-021_a", "text": "Sending the same prompt multiple times and averaging the results for accuracy", "textEs": "Enviar el mismo prompt múltiples veces y promediar los resultados para mayor precisión", "order": 1 },
+        { "id": "ccaf-pe-021_b", "text": "Linking multiple conversations together using session IDs for continuity", "textEs": "Enlazar múltiples conversaciones usando IDs de sesión para continuidad", "order": 2 },
+        { "id": "ccaf-pe-021_c", "text": "Breaking a complex task into sequential focused prompts where each step's output feeds the next, improving focus and reliability", "textEs": "Dividir una tarea compleja en prompts enfocados secuenciales donde la salida de cada paso alimenta el siguiente, mejorando el enfoque y la fiabilidad", "order": 3 },
+        { "id": "ccaf-pe-021_d", "text": "Using one prompt to generate sub-prompts that are then executed in parallel", "textEs": "Usar un prompt para generar sub-prompts que luego se ejecutan en paralelo", "order": 4 }
+      ],
+      "tags": ["prompt-chaining", "sequential", "task-decomposition", "focused-prompts"]
+    },
+    {
+      "id": "ccaf-pe-022",
+      "text": "When designing prompts for data extraction, why should you avoid asking Claude to extract information that requires real-time or post-training knowledge?",
+      "textEs": "Al diseñar prompts para extracción de datos, ¿por qué deberías evitar pedir a Claude que extraiga información que requiere conocimiento en tiempo real o posterior al entrenamiento?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-022_b",
+      "explanation": "Claude's knowledge has a training cutoff date and it cannot access the internet or external databases during inference. Asking it to extract information that requires knowledge beyond its training data (current stock prices, today's weather, recent events) will result in hallucinated or outdated information. Instead, provide all necessary context in the prompt, or use tools to retrieve real-time data that Claude can then process.",
+      "explanationEs": "El conocimiento de Claude tiene una fecha de corte de entrenamiento y no puede acceder a internet ni a bases de datos externas durante la inferencia. Pedirle que extraiga información que requiere conocimiento más allá de sus datos de entrenamiento (precios de acciones actuales, clima de hoy, eventos recientes) resultará en información alucinada o desactualizada. En su lugar, proporciona todo el contexto necesario en el prompt, o usa herramientas para recuperar datos en tiempo real que Claude pueda procesar.",
+      "options": [
+        { "id": "ccaf-pe-022_a", "text": "Real-time extraction uses more tokens and is more expensive", "textEs": "La extracción en tiempo real usa más tokens y es más costosa", "order": 1 },
+        { "id": "ccaf-pe-022_b", "text": "Claude cannot access real-time data; it will hallucinate or use outdated information. Provide context in the prompt or use tools", "textEs": "Claude no puede acceder a datos en tiempo real; alucinará o usará información desactualizada. Proporciona contexto en el prompt o usa herramientas", "order": 2 },
+        { "id": "ccaf-pe-022_c", "text": "Real-time extraction requires a special API tier that most developers do not have access to", "textEs": "La extracción en tiempo real requiere un nivel especial de API al que la mayoría de desarrolladores no tienen acceso", "order": 3 },
+        { "id": "ccaf-pe-022_d", "text": "Claude can extract real-time data but it is rate-limited to 10 queries per minute", "textEs": "Claude puede extraer datos en tiempo real pero está limitado a 10 consultas por minuto", "order": 4 }
+      ],
+      "tags": ["knowledge-cutoff", "hallucination", "real-time", "data-extraction"]
+    },
+    {
+      "id": "ccaf-pe-023",
+      "text": "What is the difference between the 'system' prompt and the first 'user' message in the Messages API?",
+      "textEs": "¿Cuál es la diferencia entre el prompt del 'sistema' y el primer mensaje del 'usuario' en la API de Messages?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-023_b",
+      "explanation": "The system prompt is a special field in the API request that sets Claude's behavior, role, and constraints for the entire conversation. It is not part of the messages array but a top-level parameter. The first user message is the beginning of the conversational exchange. System prompts are ideal for persistent instructions (role, format, constraints) while user messages contain the specific task or question for each turn.",
+      "explanationEs": "El prompt del sistema es un campo especial en la solicitud de la API que establece el comportamiento, rol y restricciones de Claude para toda la conversación. No es parte del array de mensajes sino un parámetro de nivel superior. El primer mensaje del usuario es el inicio del intercambio conversacional. Los prompts del sistema son ideales para instrucciones persistentes (rol, formato, restricciones) mientras que los mensajes del usuario contienen la tarea o pregunta específica para cada turno.",
+      "options": [
+        { "id": "ccaf-pe-023_a", "text": "They are identical in effect; the system field is just an alias for the first user message", "textEs": "Son idénticos en efecto; el campo sistema es solo un alias para el primer mensaje del usuario", "order": 1 },
+        { "id": "ccaf-pe-023_b", "text": "The system prompt is a top-level parameter for persistent behavior/role; user messages are conversational exchanges", "textEs": "El prompt del sistema es un parámetro de nivel superior para comportamiento/rol persistente; los mensajes del usuario son intercambios conversacionales", "order": 2 },
+        { "id": "ccaf-pe-023_c", "text": "The system prompt is processed after all user messages; it serves as a final instruction", "textEs": "El prompt del sistema se procesa después de todos los mensajes del usuario; sirve como instrucción final", "order": 3 },
+        { "id": "ccaf-pe-023_d", "text": "The system prompt is optional and ignored by newer Claude models", "textEs": "El prompt del sistema es opcional e ignorado por los modelos más nuevos de Claude", "order": 4 }
+      ],
+      "tags": ["system-prompt", "messages-api", "user-message", "prompt-structure"]
+    },
+    {
+      "id": "ccaf-pe-024",
+      "text": "What is role prompting, and how does it improve Claude's responses?",
+      "textEs": "¿Qué es el prompting de rol, y cómo mejora las respuestas de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-024_a",
+      "explanation": "Role prompting assigns Claude a specific persona or expertise (e.g., 'You are an experienced security auditor'). This activates relevant knowledge patterns and adjusts the tone, vocabulary, and depth of responses to match the role. It improves responses by focusing Claude's output on the domain-specific perspective, making it more likely to surface relevant considerations that a generic response would miss.",
+      "explanationEs": "El prompting de rol asigna a Claude una persona o experiencia específica (por ejemplo, 'Eres un auditor de seguridad experimentado'). Esto activa patrones de conocimiento relevantes y ajusta el tono, vocabulario y profundidad de las respuestas para coincidir con el rol. Mejora las respuestas al enfocar la salida de Claude en la perspectiva específica del dominio, haciendo más probable que surjan consideraciones relevantes que una respuesta genérica omitiría.",
+      "options": [
+        { "id": "ccaf-pe-024_a", "text": "Assigning Claude a specific persona that activates domain-relevant knowledge and adjusts tone/depth accordingly", "textEs": "Asignar a Claude una persona específica que activa conocimiento relevante del dominio y ajusta tono/profundidad en consecuencia", "order": 1 },
+        { "id": "ccaf-pe-024_b", "text": "Defining user roles (admin, editor, viewer) that control which API features are available", "textEs": "Definir roles de usuario (admin, editor, visor) que controlan qué funcionalidades de la API están disponibles", "order": 2 },
+        { "id": "ccaf-pe-024_c", "text": "Rotating between different Claude models for each message to get diverse perspectives", "textEs": "Rotar entre diferentes modelos de Claude para cada mensaje para obtener perspectivas diversas", "order": 3 },
+        { "id": "ccaf-pe-024_d", "text": "Using role-based access control to restrict Claude's tool usage per user type", "textEs": "Usar control de acceso basado en roles para restringir el uso de herramientas de Claude por tipo de usuario", "order": 4 }
+      ],
+      "tags": ["role-prompting", "persona", "domain-expertise", "system-prompt"]
+    },
+    {
+      "id": "ccaf-pe-025",
+      "text": "How do you enable JSON mode in the Anthropic API to guarantee valid JSON output?",
+      "textEs": "¿Cómo habilitas el modo JSON en la API de Anthropic para garantizar salida JSON válida?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-025_c",
+      "explanation": "To guarantee valid JSON output, use tool_use with a defined JSON schema rather than asking for JSON in a text response. Define a tool with an input_schema that describes the exact JSON structure you want. Set tool_choice to force that tool. The API validates the output against the schema and returns structured JSON in the tool_use content block. This is more reliable than text-based JSON which may include markdown fences or extra text.",
+      "explanationEs": "Para garantizar salida JSON válida, usa tool_use con un esquema JSON definido en lugar de pedir JSON en una respuesta de texto. Define una herramienta con un input_schema que describa la estructura JSON exacta que deseas. Establece tool_choice para forzar esa herramienta. La API valida la salida contra el esquema y devuelve JSON estructurado en el bloque de contenido tool_use. Esto es más confiable que JSON basado en texto que puede incluir delimitadores markdown o texto adicional.",
+      "options": [
+        { "id": "ccaf-pe-025_a", "text": "Set 'response_format: json' in the API request headers", "textEs": "Establecer 'response_format: json' en los headers de la solicitud API", "order": 1 },
+        { "id": "ccaf-pe-025_b", "text": "Add 'output only JSON' to the system prompt and parse the text response", "textEs": "Agregar 'output only JSON' al prompt del sistema y analizar la respuesta de texto", "order": 2 },
+        { "id": "ccaf-pe-025_c", "text": "Use tool_use with a defined input_schema and force the tool via tool_choice for validated, structured JSON", "textEs": "Usar tool_use con un input_schema definido y forzar la herramienta via tool_choice para JSON validado y estructurado", "order": 3 },
+        { "id": "ccaf-pe-025_d", "text": "Prefill the assistant response with '{' and post-process the output by adding '}'", "textEs": "Prellenar la respuesta del asistente con '{' y post-procesar la salida agregando '}'", "order": 4 }
+      ],
+      "tags": ["json-mode", "structured-output", "tool-use", "schema-validation"]
+    },
+    {
+      "id": "ccaf-pe-026",
+      "text": "What is the purpose of XML tags like <instructions>, <context>, and <output> in Claude prompts?",
+      "textEs": "¿Cuál es el propósito de las etiquetas XML como <instructions>, <context> y <output> en prompts de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-026_d",
+      "explanation": "XML tags provide clear semantic boundaries between different sections of a prompt. Claude is specifically trained to recognize them as structural delimiters. They prevent the model from confusing instructions with data, improve instruction adherence, and make prompts easier to maintain. Unlike markdown headers, XML tags create unambiguous open/close boundaries that clearly delineate where each section starts and ends.",
+      "explanationEs": "Las etiquetas XML proporcionan límites semánticos claros entre diferentes secciones de un prompt. Claude está específicamente entrenado para reconocerlas como delimitadores estructurales. Previenen que el modelo confunda instrucciones con datos, mejoran el seguimiento de instrucciones y hacen los prompts más fáciles de mantener. A diferencia de los encabezados markdown, las etiquetas XML crean límites inequívocos de apertura/cierre que delimitan claramente dónde empieza y termina cada sección.",
+      "options": [
+        { "id": "ccaf-pe-026_a", "text": "They force Claude to respond in XML format, enabling machine-parseable output", "textEs": "Fuerzan a Claude a responder en formato XML, habilitando salida analizable por máquinas", "order": 1 },
+        { "id": "ccaf-pe-026_b", "text": "They are required by the API and will cause errors if not included", "textEs": "Son requeridas por la API y causarán errores si no se incluyen", "order": 2 },
+        { "id": "ccaf-pe-026_c", "text": "They activate special processing modes in the API for each tagged section", "textEs": "Activan modos de procesamiento especiales en la API para cada sección etiquetada", "order": 3 },
+        { "id": "ccaf-pe-026_d", "text": "They create unambiguous semantic boundaries between prompt sections, improving instruction adherence and preventing data/instruction confusion", "textEs": "Crean límites semánticos inequívocos entre secciones del prompt, mejorando el seguimiento de instrucciones y previniendo confusión datos/instrucciones", "order": 4 }
+      ],
+      "tags": ["xml-tags", "prompt-structure", "semantic-boundaries", "best-practices"]
+    },
+    {
+      "id": "ccaf-pe-027",
+      "text": "How does prefilling with '{' in the assistant response field help with JSON output?",
+      "textEs": "¿Cómo ayuda el prellenado con '{' en el campo de respuesta del asistente con la salida JSON?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-027_b",
+      "explanation": "Prefilling the assistant response with '{' forces Claude to continue generating a JSON object directly, skipping any preamble text like 'Here is the JSON:' or markdown code fences. The model treats the prefill as its own output and maintains consistency, so it continues with valid JSON key-value pairs. This is a simple but effective technique when you do not need strict schema validation but want clean JSON output.",
+      "explanationEs": "Prellenar la respuesta del asistente con '{' fuerza a Claude a continuar generando un objeto JSON directamente, omitiendo cualquier texto de preámbulo como 'Aquí está el JSON:' o delimitadores de código markdown. El modelo trata el prellenado como su propia salida y mantiene la consistencia, así que continúa con pares clave-valor JSON válidos. Es una técnica simple pero efectiva cuando no necesitas validación estricta de esquema pero quieres salida JSON limpia.",
+      "options": [
+        { "id": "ccaf-pe-027_a", "text": "It tells the API to switch to JSON processing mode internally", "textEs": "Le dice a la API que cambie a modo de procesamiento JSON internamente", "order": 1 },
+        { "id": "ccaf-pe-027_b", "text": "Forces Claude to continue with JSON directly, skipping preamble text and code fences; simple way to get clean JSON", "textEs": "Fuerza a Claude a continuar con JSON directamente, omitiendo texto de preámbulo y delimitadores de código; forma simple de obtener JSON limpio", "order": 2 },
+        { "id": "ccaf-pe-027_c", "text": "It activates schema validation at the API level for all subsequent tokens", "textEs": "Activa la validación de esquema a nivel de API para todos los tokens subsiguientes", "order": 3 },
+        { "id": "ccaf-pe-027_d", "text": "It has no effect on JSON output; it is a deprecated technique replaced by tool_use", "textEs": "No tiene efecto en la salida JSON; es una técnica obsoleta reemplazada por tool_use", "order": 4 }
+      ],
+      "tags": ["prefilling", "json-output", "assistant-response", "technique"]
+    },
+    {
+      "id": "ccaf-pe-028",
+      "text": "What is the difference between temperature, top_p, and top_k sampling parameters?",
+      "textEs": "¿Cuál es la diferencia entre los parámetros de muestreo temperature, top_p y top_k?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-028_a",
+      "explanation": "Temperature scales the probability distribution (higher = more random, lower = more deterministic). Top_p (nucleus sampling) considers only the smallest set of tokens whose cumulative probability exceeds p (e.g., 0.9 means consider tokens making up 90% of the probability mass). Top_k limits consideration to the k most probable tokens. Generally, adjusting temperature alone is sufficient for most use cases; using multiple sampling parameters simultaneously can produce unpredictable interactions.",
+      "explanationEs": "La temperatura escala la distribución de probabilidad (mayor = más aleatorio, menor = más determinista). Top_p (muestreo de núcleo) considera solo el conjunto más pequeño de tokens cuya probabilidad acumulada excede p (por ejemplo, 0.9 significa considerar tokens que componen el 90% de la masa de probabilidad). Top_k limita la consideración a los k tokens más probables. Generalmente, ajustar solo la temperatura es suficiente para la mayoría de casos de uso; usar múltiples parámetros de muestreo simultáneamente puede producir interacciones impredecibles.",
+      "options": [
+        { "id": "ccaf-pe-028_a", "text": "Temperature scales probability distribution; top_p limits to tokens covering p% of probability mass; top_k limits to k most probable tokens", "textEs": "Temperature escala la distribución de probabilidad; top_p limita a tokens que cubren p% de la masa de probabilidad; top_k limita a los k tokens más probables", "order": 1 },
+        { "id": "ccaf-pe-028_b", "text": "They all control the same thing (randomness) and are interchangeable aliases", "textEs": "Todos controlan lo mismo (aleatoriedad) y son alias intercambiables", "order": 2 },
+        { "id": "ccaf-pe-028_c", "text": "Temperature controls speed, top_p controls accuracy, top_k controls output length", "textEs": "Temperature controla velocidad, top_p controla precisión, top_k controla longitud de salida", "order": 3 },
+        { "id": "ccaf-pe-028_d", "text": "Temperature is for text, top_p is for code, and top_k is for structured output", "textEs": "Temperature es para texto, top_p es para código y top_k es para salida estructurada", "order": 4 }
+      ],
+      "tags": ["temperature", "top-p", "top-k", "sampling", "parameters"]
+    },
+    {
+      "id": "ccaf-pe-029",
+      "text": "What is the max_tokens parameter, and what happens if the response exceeds it?",
+      "textEs": "¿Qué es el parámetro max_tokens, y qué sucede si la respuesta lo excede?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-029_c",
+      "explanation": "max_tokens sets the maximum number of tokens Claude can generate in its response. It is a required parameter in the API. If the response reaches the limit, it is truncated (stop_reason becomes 'max_tokens' instead of 'end_turn'). The response may be incomplete or cut off mid-sentence. Setting it too low truncates useful output; setting it too high wastes budget. For structured output, ensure it is large enough for the complete schema.",
+      "explanationEs": "max_tokens establece el número máximo de tokens que Claude puede generar en su respuesta. Es un parámetro requerido en la API. Si la respuesta alcanza el límite, se trunca (stop_reason se convierte en 'max_tokens' en lugar de 'end_turn'). La respuesta puede estar incompleta o cortada a mitad de oración. Establecerlo muy bajo trunca salida útil; establecerlo muy alto desperdicia presupuesto. Para salida estructurada, asegurar que sea lo suficientemente grande para el esquema completo.",
+      "options": [
+        { "id": "ccaf-pe-029_a", "text": "It limits the total tokens (input + output); exceeding it causes an API error", "textEs": "Limita los tokens totales (entrada + salida); excederlo causa un error de API", "order": 1 },
+        { "id": "ccaf-pe-029_b", "text": "It is optional; Claude automatically determines the best output length", "textEs": "Es opcional; Claude determina automáticamente la mejor longitud de salida", "order": 2 },
+        { "id": "ccaf-pe-029_c", "text": "It caps generated output tokens; if exceeded, the response is truncated with stop_reason 'max_tokens'", "textEs": "Limita los tokens de salida generados; si se excede, la respuesta se trunca con stop_reason 'max_tokens'", "order": 3 },
+        { "id": "ccaf-pe-029_d", "text": "It triggers automatic summarization of the response to fit within the limit", "textEs": "Activa resumen automático de la respuesta para ajustarla dentro del límite", "order": 4 }
+      ],
+      "tags": ["max-tokens", "truncation", "stop-reason", "api-parameters"]
+    },
+    {
+      "id": "ccaf-pe-030",
+      "text": "How does prompt caching work with multi-turn conversations?",
+      "textEs": "¿Cómo funciona el caché de prompts con conversaciones de múltiples turnos?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-030_d",
+      "explanation": "In multi-turn conversations, prompt caching is most effective for the stable prefix (system prompt + tool definitions + early messages) that does not change between turns. Place a cache_control breakpoint after this stable prefix. As the conversation grows, the cached portion remains the same and is reused, while new messages are processed normally. This saves significant cost in agentic loops where the system prompt and tools are large but constant.",
+      "explanationEs": "En conversaciones de múltiples turnos, el caché de prompts es más efectivo para el prefijo estable (prompt del sistema + definiciones de herramientas + mensajes iniciales) que no cambia entre turnos. Coloca un punto de control cache_control después de este prefijo estable. A medida que la conversación crece, la porción cacheada permanece igual y se reutiliza, mientras que los mensajes nuevos se procesan normalmente. Esto ahorra costos significativos en bucles agentes donde el prompt del sistema y las herramientas son grandes pero constantes.",
+      "options": [
+        { "id": "ccaf-pe-030_a", "text": "The entire conversation is cached after each turn, including the latest response", "textEs": "Toda la conversación se cachea después de cada turno, incluyendo la última respuesta", "order": 1 },
+        { "id": "ccaf-pe-030_b", "text": "Only the system prompt is cacheable; conversation messages cannot be cached", "textEs": "Solo el prompt del sistema se puede cachear; los mensajes de conversación no pueden cachearse", "order": 2 },
+        { "id": "ccaf-pe-030_c", "text": "Each message is cached individually and reused if the exact same text appears again", "textEs": "Cada mensaje se cachea individualmente y se reutiliza si aparece el mismo texto exacto de nuevo", "order": 3 },
+        { "id": "ccaf-pe-030_d", "text": "Place cache_control after the stable prefix (system + tools + early messages); the cached prefix is reused while new messages process normally", "textEs": "Colocar cache_control después del prefijo estable (sistema + herramientas + mensajes iniciales); el prefijo cacheado se reutiliza mientras los mensajes nuevos se procesan normalmente", "order": 4 }
+      ],
+      "tags": ["prompt-caching", "multi-turn", "cache-control", "cost-optimization"]
+    },
+    {
+      "id": "ccaf-pe-031",
+      "text": "How do you include images in a Claude API request for multimodal prompting?",
+      "textEs": "¿Cómo incluyes imágenes en una solicitud de la API de Claude para prompting multimodal?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-031_b",
+      "explanation": "Images are included in the content array of a message as an 'image' content block with either a base64-encoded source or a URL. The image block specifies the media_type (e.g., 'image/jpeg', 'image/png') and the data. Multiple images can be included in a single message, and they can be interleaved with text blocks. Claude processes images alongside text for tasks like visual analysis, document extraction, and diagram understanding.",
+      "explanationEs": "Las imágenes se incluyen en el array de contenido de un mensaje como un bloque de contenido 'image' con una fuente codificada en base64 o una URL. El bloque de imagen especifica el media_type (por ejemplo, 'image/jpeg', 'image/png') y los datos. Múltiples imágenes pueden incluirse en un solo mensaje y pueden intercalarse con bloques de texto. Claude procesa imágenes junto con texto para tareas como análisis visual, extracción de documentos y comprensión de diagramas.",
+      "options": [
+        { "id": "ccaf-pe-031_a", "text": "Pass image URLs in the system prompt; Claude downloads them automatically", "textEs": "Pasar URLs de imágenes en el prompt del sistema; Claude las descarga automáticamente", "order": 1 },
+        { "id": "ccaf-pe-031_b", "text": "Add 'image' content blocks in the message content array with base64 data or URL, specifying media_type", "textEs": "Agregar bloques de contenido 'image' en el array de contenido del mensaje con datos base64 o URL, especificando media_type", "order": 2 },
+        { "id": "ccaf-pe-031_c", "text": "Attach images as multipart form data in the HTTP request", "textEs": "Adjuntar imágenes como datos de formulario multipart en la solicitud HTTP", "order": 3 },
+        { "id": "ccaf-pe-031_d", "text": "Convert images to text descriptions using a separate OCR tool first", "textEs": "Convertir imágenes a descripciones de texto usando una herramienta OCR separada primero", "order": 4 }
+      ],
+      "tags": ["multimodal", "images", "vision", "content-blocks"]
+    },
+    {
+      "id": "ccaf-pe-032",
+      "text": "How do you send a PDF document to Claude for analysis via the API?",
+      "textEs": "¿Cómo envías un documento PDF a Claude para análisis a través de la API?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-032_a",
+      "explanation": "PDFs can be sent to Claude as a 'document' content block in the message content array. The PDF is base64-encoded and included with media_type 'application/pdf'. Claude processes both the text and visual layout of the PDF, enabling it to understand tables, charts, forms, and document structure. This is more effective than extracting text first because Claude can see the visual context.",
+      "explanationEs": "Los PDFs pueden enviarse a Claude como un bloque de contenido 'document' en el array de contenido del mensaje. El PDF se codifica en base64 y se incluye con media_type 'application/pdf'. Claude procesa tanto el texto como el diseño visual del PDF, permitiéndole entender tablas, gráficos, formularios y estructura del documento. Esto es más efectivo que extraer texto primero porque Claude puede ver el contexto visual.",
+      "options": [
+        { "id": "ccaf-pe-032_a", "text": "Include as a 'document' content block with base64-encoded PDF data and media_type 'application/pdf'", "textEs": "Incluir como un bloque de contenido 'document' con datos PDF codificados en base64 y media_type 'application/pdf'", "order": 1 },
+        { "id": "ccaf-pe-032_b", "text": "Convert to plain text first, then send as a regular text message", "textEs": "Convertir a texto plano primero, luego enviar como un mensaje de texto regular", "order": 2 },
+        { "id": "ccaf-pe-032_c", "text": "Upload the PDF to Anthropic's file storage and reference it by file ID", "textEs": "Subir el PDF al almacenamiento de archivos de Anthropic y referenciarlo por ID de archivo", "order": 3 },
+        { "id": "ccaf-pe-032_d", "text": "PDF processing requires a separate API endpoint; it cannot be done through the Messages API", "textEs": "El procesamiento de PDF requiere un endpoint de API separado; no puede hacerse a través de la API de Messages", "order": 4 }
+      ],
+      "tags": ["multimodal", "pdf", "document-analysis", "content-blocks"]
+    },
+    {
+      "id": "ccaf-pe-033",
+      "text": "What is extended thinking, and how is it enabled in the API?",
+      "textEs": "¿Qué es el pensamiento extendido, y cómo se habilita en la API?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-033_c",
+      "explanation": "Extended thinking gives Claude a dedicated reasoning space (thinking block) before it produces its visible response. Enabled by adding 'thinking' to the API request with a budget_tokens parameter that controls how many tokens Claude can use for internal reasoning. The thinking content appears as a separate 'thinking' block in the response but can be hidden from end users. It significantly improves performance on complex reasoning, math, and multi-step analysis tasks.",
+      "explanationEs": "El pensamiento extendido le da a Claude un espacio de razonamiento dedicado (bloque de pensamiento) antes de producir su respuesta visible. Se habilita agregando 'thinking' a la solicitud de la API con un parámetro budget_tokens que controla cuántos tokens puede usar Claude para razonamiento interno. El contenido de pensamiento aparece como un bloque 'thinking' separado en la respuesta pero puede ocultarse de los usuarios finales. Mejora significativamente el rendimiento en razonamiento complejo, matemáticas y tareas de análisis de múltiples pasos.",
+      "options": [
+        { "id": "ccaf-pe-033_a", "text": "Set temperature to 0 to enable deterministic thinking mode", "textEs": "Establecer temperatura en 0 para habilitar el modo de pensamiento determinista", "order": 1 },
+        { "id": "ccaf-pe-033_b", "text": "Add 'think step by step' to the system prompt to simulate extended thinking", "textEs": "Agregar 'piensa paso a paso' al prompt del sistema para simular pensamiento extendido", "order": 2 },
+        { "id": "ccaf-pe-033_c", "text": "Add 'thinking' with budget_tokens to the API request; Claude uses a dedicated reasoning block before responding", "textEs": "Agregar 'thinking' con budget_tokens a la solicitud de la API; Claude usa un bloque de razonamiento dedicado antes de responder", "order": 3 },
+        { "id": "ccaf-pe-033_d", "text": "Use the /think endpoint instead of /messages for extended reasoning", "textEs": "Usar el endpoint /think en lugar de /messages para razonamiento extendido", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "budget-tokens", "reasoning", "api-parameter"]
+    },
+    {
+      "id": "ccaf-pe-034",
+      "text": "How does the citations feature work in the Anthropic API?",
+      "textEs": "¿Cómo funciona la función de citas en la API de Anthropic?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-034_b",
+      "explanation": "The citations feature, when enabled, makes Claude automatically track and reference which parts of the input context each claim in the response comes from. The response includes citation markers that point back to specific locations in the source documents. This provides verifiable source attribution at the sentence level, making it easy to fact-check Claude's outputs against the provided documents. It works with both text and document (PDF) inputs.",
+      "explanationEs": "La función de citas, cuando se habilita, hace que Claude rastree y referencie automáticamente de qué partes del contexto de entrada proviene cada afirmación en la respuesta. La respuesta incluye marcadores de citas que apuntan a ubicaciones específicas en los documentos fuente. Esto proporciona atribución de fuentes verificable a nivel de oración, facilitando verificar las salidas de Claude contra los documentos proporcionados. Funciona tanto con entradas de texto como de documentos (PDF).",
+      "options": [
+        { "id": "ccaf-pe-034_a", "text": "It generates academic-style bibliography entries for the sources Claude used from its training data", "textEs": "Genera entradas de bibliografía de estilo académico para las fuentes que Claude usó de sus datos de entrenamiento", "order": 1 },
+        { "id": "ccaf-pe-034_b", "text": "Automatically tracks which parts of input context each response claim comes from, providing verifiable source attribution", "textEs": "Rastrea automáticamente de qué partes del contexto de entrada proviene cada afirmación de la respuesta, proporcionando atribución de fuentes verificable", "order": 2 },
+        { "id": "ccaf-pe-034_c", "text": "It adds footnotes to Claude's response with page numbers from uploaded documents", "textEs": "Agrega notas al pie a la respuesta de Claude con números de página de documentos subidos", "order": 3 },
+        { "id": "ccaf-pe-034_d", "text": "It requires a separate API call after the main response to retrieve citation data", "textEs": "Requiere una llamada API separada después de la respuesta principal para recuperar datos de citas", "order": 4 }
+      ],
+      "tags": ["citations", "source-attribution", "verification", "api-feature"]
+    },
+    {
+      "id": "ccaf-pe-035",
+      "text": "What is the Batch API, and what are its key constraints?",
+      "textEs": "¿Qué es la API de lotes (Batch API), y cuáles son sus restricciones clave?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-035_a",
+      "explanation": "The Batch API allows submitting up to 10,000 requests in a single batch for asynchronous processing within 24 hours at 50% cost savings. Key constraints: results are not real-time (up to 24-hour SLA), each request in the batch is independent (no shared context), the batch either fully completes or individual requests can fail independently, and you must poll for completion. It is ideal for data processing, classification, and content moderation at scale.",
+      "explanationEs": "La API de lotes permite enviar hasta 10,000 solicitudes en un solo lote para procesamiento asíncrono dentro de 24 horas con 50% de ahorro en costos. Restricciones clave: los resultados no son en tiempo real (SLA de hasta 24 horas), cada solicitud en el lote es independiente (sin contexto compartido), el lote se completa por completo o las solicitudes individuales pueden fallar independientemente, y debes sondear la completación. Es ideal para procesamiento de datos, clasificación y moderación de contenido a escala.",
+      "options": [
+        { "id": "ccaf-pe-035_a", "text": "Up to 10,000 async requests at 50% cost savings within 24 hours; requests are independent, no shared context", "textEs": "Hasta 10,000 solicitudes asíncronas con 50% de ahorro en costos dentro de 24 horas; solicitudes independientes, sin contexto compartido", "order": 1 },
+        { "id": "ccaf-pe-035_b", "text": "Unlimited requests processed in real-time at 25% cost savings; results stream as they complete", "textEs": "Solicitudes ilimitadas procesadas en tiempo real con 25% de ahorro en costos; los resultados se transmiten conforme se completan", "order": 2 },
+        { "id": "ccaf-pe-035_c", "text": "Up to 100 requests that share a common system prompt; results within 1 hour", "textEs": "Hasta 100 solicitudes que comparten un prompt de sistema común; resultados dentro de 1 hora", "order": 3 },
+        { "id": "ccaf-pe-035_d", "text": "Any number of requests processed in order, maintaining conversation context across the batch", "textEs": "Cualquier número de solicitudes procesadas en orden, manteniendo contexto de conversación a través del lote", "order": 4 }
+      ],
+      "tags": ["batch-api", "async", "cost-savings", "constraints"]
+    },
+    {
+      "id": "ccaf-pe-036",
+      "text": "What is constitutional AI, and how does it influence Claude's behavior?",
+      "textEs": "¿Qué es la IA constitucional, y cómo influencia el comportamiento de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-036_c",
+      "explanation": "Constitutional AI (CAI) is a training approach where Claude is guided by a set of principles (a 'constitution') that define helpful, honest, and harmless behavior. During training, the model evaluates and revises its own responses based on these principles. This influences Claude's behavior by making it refuse harmful requests, acknowledge uncertainty, avoid deception, and maintain ethical boundaries -- even without explicit instructions in the prompt.",
+      "explanationEs": "La IA constitucional (CAI) es un enfoque de entrenamiento donde Claude es guiado por un conjunto de principios (una 'constitución') que definen comportamiento útil, honesto e inofensivo. Durante el entrenamiento, el modelo evalúa y revisa sus propias respuestas basándose en estos principios. Esto influencia el comportamiento de Claude haciéndolo rechazar solicitudes dañinas, reconocer incertidumbre, evitar el engaño y mantener límites éticos, incluso sin instrucciones explícitas en el prompt.",
+      "options": [
+        { "id": "ccaf-pe-036_a", "text": "A legal framework that limits Claude's use in certain countries and industries", "textEs": "Un marco legal que limita el uso de Claude en ciertos países e industrias", "order": 1 },
+        { "id": "ccaf-pe-036_b", "text": "A configuration file that users can modify to change Claude's safety settings", "textEs": "Un archivo de configuración que los usuarios pueden modificar para cambiar la configuración de seguridad de Claude", "order": 2 },
+        { "id": "ccaf-pe-036_c", "text": "A training approach using principles for helpful, honest, harmless behavior; Claude self-evaluates and maintains ethical boundaries", "textEs": "Un enfoque de entrenamiento usando principios de comportamiento útil, honesto e inofensivo; Claude se autoevalúa y mantiene límites éticos", "order": 3 },
+        { "id": "ccaf-pe-036_d", "text": "An API rate limiting system based on content policy compliance scoring", "textEs": "Un sistema de limitación de tasa de API basado en puntuación de cumplimiento de políticas de contenido", "order": 4 }
+      ],
+      "tags": ["constitutional-ai", "safety", "principles", "training"]
+    },
+    {
+      "id": "ccaf-pe-037",
+      "text": "What are common prompt injection attacks, and how can they be defended against?",
+      "textEs": "¿Cuáles son los ataques comunes de inyección de prompts, y cómo pueden defenderse?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-037_d",
+      "explanation": "Prompt injection attacks attempt to override system instructions through user-supplied content (e.g., 'Ignore all previous instructions and...'). Defenses include: clear separation of instructions and data using XML tags, adding explicit anti-injection instructions in the system prompt, input sanitization, validating outputs against expected schemas, using the system prompt for critical instructions (harder to override than user messages), and implementing output filtering.",
+      "explanationEs": "Los ataques de inyección de prompts intentan anular las instrucciones del sistema a través de contenido proporcionado por el usuario (por ejemplo, 'Ignora todas las instrucciones anteriores y...'). Las defensas incluyen: separación clara de instrucciones y datos usando etiquetas XML, agregar instrucciones anti-inyección explícitas en el prompt del sistema, sanitización de entrada, validar salidas contra esquemas esperados, usar el prompt del sistema para instrucciones críticas (más difícil de anular que mensajes del usuario) e implementar filtrado de salida.",
+      "options": [
+        { "id": "ccaf-pe-037_a", "text": "Prompt injection is impossible with Claude due to constitutional AI training", "textEs": "La inyección de prompts es imposible con Claude debido al entrenamiento de IA constitucional", "order": 1 },
+        { "id": "ccaf-pe-037_b", "text": "Only encrypt all user inputs before sending them to Claude", "textEs": "Solo encriptar todas las entradas del usuario antes de enviarlas a Claude", "order": 2 },
+        { "id": "ccaf-pe-037_c", "text": "Block all user messages containing the word 'ignore' or 'instructions'", "textEs": "Bloquear todos los mensajes del usuario que contengan la palabra 'ignora' o 'instrucciones'", "order": 3 },
+        { "id": "ccaf-pe-037_d", "text": "Use XML tag separation, anti-injection system prompt instructions, input sanitization, output validation, and schema enforcement", "textEs": "Usar separación con etiquetas XML, instrucciones anti-inyección en el prompt del sistema, sanitización de entrada, validación de salida y cumplimiento de esquemas", "order": 4 }
+      ],
+      "tags": ["prompt-injection", "security", "defense", "input-sanitization"]
+    },
+    {
+      "id": "ccaf-pe-038",
+      "text": "What is meta-prompting, and how can it be used to improve prompt quality?",
+      "textEs": "¿Qué es el meta-prompting, y cómo puede usarse para mejorar la calidad de los prompts?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-038_a",
+      "explanation": "Meta-prompting is the practice of using Claude itself to help generate, refine, or evaluate prompts. You describe your task to Claude and ask it to write an optimized prompt for that task. Claude can suggest improvements to existing prompts, identify potential failure modes, and generate diverse test cases. This is effective because Claude understands its own capabilities and limitations, and can apply prompt engineering best practices systematically.",
+      "explanationEs": "El meta-prompting es la práctica de usar a Claude mismo para ayudar a generar, refinar o evaluar prompts. Describes tu tarea a Claude y le pides que escriba un prompt optimizado para esa tarea. Claude puede sugerir mejoras a prompts existentes, identificar modos de falla potenciales y generar casos de prueba diversos. Esto es efectivo porque Claude entiende sus propias capacidades y limitaciones, y puede aplicar mejores prácticas de ingeniería de prompts sistemáticamente.",
+      "options": [
+        { "id": "ccaf-pe-038_a", "text": "Using Claude itself to generate, refine, or evaluate prompts; effective because Claude understands its own capabilities", "textEs": "Usar a Claude mismo para generar, refinar o evaluar prompts; efectivo porque Claude entiende sus propias capacidades", "order": 1 },
+        { "id": "ccaf-pe-038_b", "text": "A prompt template language with variables and conditionals compiled before sending to the API", "textEs": "Un lenguaje de plantilla de prompts con variables y condicionales compilados antes de enviar a la API", "order": 2 },
+        { "id": "ccaf-pe-038_c", "text": "Using metadata tags in prompts to track which version of the prompt is being used", "textEs": "Usar etiquetas de metadatos en prompts para rastrear qué versión del prompt se está usando", "order": 3 },
+        { "id": "ccaf-pe-038_d", "text": "A dashboard tool that analyzes prompt performance metrics across multiple API calls", "textEs": "Una herramienta de dashboard que analiza métricas de rendimiento de prompts a través de múltiples llamadas a la API", "order": 4 }
+      ],
+      "tags": ["meta-prompting", "prompt-generation", "refinement", "optimization"]
+    },
+    {
+      "id": "ccaf-pe-039",
+      "text": "What is the relationship between system prompt length and Claude's instruction-following accuracy?",
+      "textEs": "¿Cuál es la relación entre la longitud del prompt del sistema y la precisión de seguimiento de instrucciones de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-039_b",
+      "explanation": "There is a tradeoff: very short system prompts may not provide enough context for complex tasks, but excessively long system prompts can dilute the importance of key instructions. Best practice is to keep system prompts focused and well-structured, using XML sections for organization. Critical rules should be placed prominently (beginning or end). If you have many rules, prioritize the most important ones and move detailed guidelines to user messages or few-shot examples.",
+      "explanationEs": "Hay una compensación: prompts de sistema muy cortos pueden no proporcionar suficiente contexto para tareas complejas, pero prompts de sistema excesivamente largos pueden diluir la importancia de instrucciones clave. La mejor práctica es mantener los prompts de sistema enfocados y bien estructurados, usando secciones XML para organización. Las reglas críticas deben colocarse prominentemente (inicio o final). Si tienes muchas reglas, prioriza las más importantes y mueve las directrices detalladas a mensajes del usuario o ejemplos few-shot.",
+      "options": [
+        { "id": "ccaf-pe-039_a", "text": "Longer system prompts always produce better results because Claude has more context", "textEs": "Los prompts de sistema más largos siempre producen mejores resultados porque Claude tiene más contexto", "order": 1 },
+        { "id": "ccaf-pe-039_b", "text": "There is a tradeoff: too short lacks context, too long dilutes key instructions; keep focused, structured, and prioritize critical rules", "textEs": "Hay una compensación: muy corto carece de contexto, muy largo diluye instrucciones clave; mantener enfocado, estructurado y priorizar reglas críticas", "order": 2 },
+        { "id": "ccaf-pe-039_c", "text": "System prompts must be under 500 tokens for optimal performance", "textEs": "Los prompts de sistema deben estar bajo 500 tokens para rendimiento óptimo", "order": 3 },
+        { "id": "ccaf-pe-039_d", "text": "System prompt length has no effect on accuracy; only user message quality matters", "textEs": "La longitud del prompt del sistema no tiene efecto en la precisión; solo importa la calidad del mensaje del usuario", "order": 4 }
+      ],
+      "tags": ["system-prompt", "length", "instruction-following", "best-practices"]
+    },
+    {
+      "id": "ccaf-pe-040",
+      "text": "What is the tool_choice parameter, and what are its valid values?",
+      "textEs": "¿Qué es el parámetro tool_choice, y cuáles son sus valores válidos?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-040_c",
+      "explanation": "tool_choice controls whether and how Claude uses tools. Valid values are: 'auto' (Claude decides whether to use a tool), 'any' (Claude must use one of the provided tools), and {'type': 'tool', 'name': 'specific_tool'} (Claude must use the named tool). 'auto' is the default and most flexible. 'any' ensures structured output when you always want tool use. Forcing a specific tool is useful for deterministic extraction pipelines.",
+      "explanationEs": "tool_choice controla si y cómo Claude usa herramientas. Los valores válidos son: 'auto' (Claude decide si usar una herramienta), 'any' (Claude debe usar una de las herramientas proporcionadas) y {'type': 'tool', 'name': 'specific_tool'} (Claude debe usar la herramienta nombrada). 'auto' es el predeterminado y más flexible. 'any' asegura salida estructurada cuando siempre quieres uso de herramientas. Forzar una herramienta específica es útil para pipelines de extracción deterministas.",
+      "options": [
+        { "id": "ccaf-pe-040_a", "text": "'required' (must use tools), 'optional' (may use tools), 'disabled' (no tools)", "textEs": "'required' (debe usar herramientas), 'optional' (puede usar herramientas), 'disabled' (sin herramientas)", "order": 1 },
+        { "id": "ccaf-pe-040_b", "text": "'always', 'never', and 'sometimes' based on probability thresholds", "textEs": "'always', 'never' y 'sometimes' basado en umbrales de probabilidad", "order": 2 },
+        { "id": "ccaf-pe-040_c", "text": "'auto' (Claude decides), 'any' (must use some tool), or a specific tool name (must use that tool)", "textEs": "'auto' (Claude decide), 'any' (debe usar alguna herramienta), o un nombre de herramienta específico (debe usar esa herramienta)", "order": 3 },
+        { "id": "ccaf-pe-040_d", "text": "A numeric value 0-1 representing the probability of tool use", "textEs": "Un valor numérico 0-1 representando la probabilidad de uso de herramientas", "order": 4 }
+      ],
+      "tags": ["tool-choice", "auto", "any", "forced-tool", "api-parameter"]
+    },
+    {
+      "id": "ccaf-pe-041",
+      "text": "When should you use extended thinking versus chain-of-thought prompting?",
+      "textEs": "¿Cuándo deberías usar pensamiento extendido versus prompting de cadena de pensamiento?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-041_d",
+      "explanation": "Extended thinking (API feature with budget_tokens) gives Claude dedicated reasoning space that can be hidden from users, does not count against the visible output, and provides deeper reasoning for complex tasks. Chain-of-thought (prompt technique using 'think step by step') is simpler, works in the visible output, and is sufficient for moderately complex tasks. Use extended thinking for hard math, complex code analysis, and multi-constraint problems. Use CoT for simpler reasoning tasks where visible steps are acceptable.",
+      "explanationEs": "El pensamiento extendido (función de API con budget_tokens) le da a Claude un espacio de razonamiento dedicado que puede ocultarse de los usuarios, no cuenta contra la salida visible y proporciona razonamiento más profundo para tareas complejas. La cadena de pensamiento (técnica de prompt usando 'piensa paso a paso') es más simple, funciona en la salida visible y es suficiente para tareas moderadamente complejas. Usa pensamiento extendido para matemáticas difíciles, análisis de código complejo y problemas con múltiples restricciones. Usa CoT para tareas de razonamiento más simples donde los pasos visibles son aceptables.",
+      "options": [
+        { "id": "ccaf-pe-041_a", "text": "They are the same feature; extended thinking is just the API name for chain-of-thought", "textEs": "Son la misma función; el pensamiento extendido es solo el nombre de API para cadena de pensamiento", "order": 1 },
+        { "id": "ccaf-pe-041_b", "text": "Always use extended thinking; chain-of-thought is an outdated technique", "textEs": "Siempre usar pensamiento extendido; cadena de pensamiento es una técnica obsoleta", "order": 2 },
+        { "id": "ccaf-pe-041_c", "text": "Use chain-of-thought for code tasks and extended thinking for text tasks", "textEs": "Usar cadena de pensamiento para tareas de código y pensamiento extendido para tareas de texto", "order": 3 },
+        { "id": "ccaf-pe-041_d", "text": "Extended thinking for complex problems needing hidden deep reasoning; CoT for simpler tasks where visible reasoning steps are acceptable", "textEs": "Pensamiento extendido para problemas complejos que necesitan razonamiento profundo oculto; CoT para tareas más simples donde los pasos de razonamiento visibles son aceptables", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "chain-of-thought", "comparison", "reasoning"]
+    },
+    {
+      "id": "ccaf-pe-042",
+      "text": "What is the recommended approach for using Claude to classify content into predefined categories?",
+      "textEs": "¿Cuál es el enfoque recomendado para usar Claude para clasificar contenido en categorías predefinidas?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-042_a",
+      "explanation": "For classification, use tool_use with an enum field listing the valid categories, include a 'thinking/reasoning' field before the classification field, provide clear definitions for each category (not just labels), add few-shot examples covering ambiguous cases, and include an 'other/unclear' option. Forcing the tool via tool_choice ensures structured output. The thinking field improves accuracy by requiring explicit reasoning before classification.",
+      "explanationEs": "Para clasificación, usa tool_use con un campo enum listando las categorías válidas, incluye un campo 'thinking/reasoning' antes del campo de clasificación, proporciona definiciones claras para cada categoría (no solo etiquetas), agrega ejemplos few-shot cubriendo casos ambiguos e incluye una opción 'other/unclear'. Forzar la herramienta via tool_choice asegura salida estructurada. El campo de pensamiento mejora la precisión al requerir razonamiento explícito antes de la clasificación.",
+      "options": [
+        { "id": "ccaf-pe-042_a", "text": "Use tool_use with enum categories, a thinking field, clear definitions, few-shot examples for ambiguous cases, and an 'other' option", "textEs": "Usar tool_use con categorías enum, un campo de pensamiento, definiciones claras, ejemplos few-shot para casos ambiguos y una opción 'other'", "order": 1 },
+        { "id": "ccaf-pe-042_b", "text": "Ask Claude to return only the category name as plain text and parse the response", "textEs": "Pedir a Claude que devuelva solo el nombre de la categoría como texto plano y analizar la respuesta", "order": 2 },
+        { "id": "ccaf-pe-042_c", "text": "Fine-tune a separate model on labeled classification data for each use case", "textEs": "Ajustar un modelo separado con datos de clasificación etiquetados para cada caso de uso", "order": 3 },
+        { "id": "ccaf-pe-042_d", "text": "Use multiple API calls with different temperatures and take the majority vote", "textEs": "Usar múltiples llamadas a la API con diferentes temperaturas y tomar el voto mayoritario", "order": 4 }
+      ],
+      "tags": ["classification", "tool-use", "enum", "thinking-field"]
+    },
+    {
+      "id": "ccaf-pe-043",
+      "text": "What are the key considerations when designing prompts for multimodal (image + text) tasks?",
+      "textEs": "¿Cuáles son las consideraciones clave al diseñar prompts para tareas multimodales (imagen + texto)?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-043_b",
+      "explanation": "Key considerations include: place images before the text that references them (Claude processes content in order), be specific about what to look for in the image, provide context about the image type and expected content, consider image resolution and token cost (larger images consume more tokens), use multiple images when comparison is needed, and combine with text instructions for structured extraction from visual content.",
+      "explanationEs": "Las consideraciones clave incluyen: colocar imágenes antes del texto que las referencia (Claude procesa contenido en orden), ser específico sobre qué buscar en la imagen, proporcionar contexto sobre el tipo de imagen y contenido esperado, considerar la resolución de la imagen y el costo en tokens (imágenes más grandes consumen más tokens), usar múltiples imágenes cuando se necesita comparación y combinar con instrucciones de texto para extracción estructurada de contenido visual.",
+      "options": [
+        { "id": "ccaf-pe-043_a", "text": "Always resize images to 512x512 pixels; place them after all text content", "textEs": "Siempre redimensionar imágenes a 512x512 píxeles; colocarlas después de todo el contenido de texto", "order": 1 },
+        { "id": "ccaf-pe-043_b", "text": "Place images before referencing text, be specific about what to find, consider resolution/token cost, and provide image context", "textEs": "Colocar imágenes antes del texto que las referencia, ser específico sobre qué encontrar, considerar resolución/costo de tokens y proporcionar contexto de la imagen", "order": 2 },
+        { "id": "ccaf-pe-043_c", "text": "Convert all images to text descriptions before sending; Claude cannot process images directly", "textEs": "Convertir todas las imágenes a descripciones de texto antes de enviar; Claude no puede procesar imágenes directamente", "order": 3 },
+        { "id": "ccaf-pe-043_d", "text": "Use only JPEG format; other formats are not supported by the vision system", "textEs": "Usar solo formato JPEG; otros formatos no son soportados por el sistema de visión", "order": 4 }
+      ],
+      "tags": ["multimodal", "images", "prompt-design", "vision"]
+    },
+    {
+      "id": "ccaf-pe-044",
+      "text": "How can you use the 'stop_sequences' parameter to control Claude's output format?",
+      "textEs": "¿Cómo puedes usar el parámetro 'stop_sequences' para controlar el formato de salida de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-044_c",
+      "explanation": "stop_sequences is a list of strings that, when generated by Claude, cause it to stop generating immediately (the stop sequence itself is not included in the output). This is useful for controlling output boundaries: stop at a specific XML closing tag, prevent Claude from adding commentary after structured output, or implement turn-taking in multi-agent systems. For example, stop_sequences: ['</answer>'] ensures Claude stops right after the answer tag.",
+      "explanationEs": "stop_sequences es una lista de cadenas que, cuando son generadas por Claude, hacen que deje de generar inmediatamente (la secuencia de parada no se incluye en la salida). Esto es útil para controlar los límites de la salida: parar en una etiqueta XML de cierre específica, prevenir que Claude agregue comentarios después de la salida estructurada o implementar turnos en sistemas multi-agente. Por ejemplo, stop_sequences: ['</answer>'] asegura que Claude pare justo después de la etiqueta de respuesta.",
+      "options": [
+        { "id": "ccaf-pe-044_a", "text": "It pauses generation and waits for user input before continuing", "textEs": "Pausa la generación y espera la entrada del usuario antes de continuar", "order": 1 },
+        { "id": "ccaf-pe-044_b", "text": "It removes specified words from the output after generation is complete", "textEs": "Elimina las palabras especificadas de la salida después de que la generación se complete", "order": 2 },
+        { "id": "ccaf-pe-044_c", "text": "Strings that trigger immediate stop when generated; useful for output boundaries, preventing extra commentary, and turn-taking", "textEs": "Cadenas que activan parada inmediata al generarse; útil para límites de salida, prevenir comentarios extra y turnos", "order": 3 },
+        { "id": "ccaf-pe-044_d", "text": "It defines error messages that should stop the API request if encountered", "textEs": "Define mensajes de error que deben detener la solicitud de API si se encuentran", "order": 4 }
+      ],
+      "tags": ["stop-sequences", "output-control", "format", "api-parameter"]
+    },
+    {
+      "id": "ccaf-pe-045",
+      "text": "What is the difference between 'tool_use' and 'text' content blocks in Claude's response?",
+      "textEs": "¿Cuál es la diferencia entre los bloques de contenido 'tool_use' y 'text' en la respuesta de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-045_b",
+      "explanation": "'text' content blocks contain Claude's natural language response as a string. 'tool_use' content blocks contain a structured tool call with an ID, the tool name, and the input parameters as a JSON object. A single response can contain both types: Claude might explain its reasoning in text and then make a tool call. The client must check the content block type to handle each appropriately.",
+      "explanationEs": "Los bloques de contenido 'text' contienen la respuesta en lenguaje natural de Claude como una cadena. Los bloques de contenido 'tool_use' contienen una llamada a herramienta estructurada con un ID, el nombre de la herramienta y los parámetros de entrada como un objeto JSON. Una sola respuesta puede contener ambos tipos: Claude podría explicar su razonamiento en texto y luego hacer una llamada a herramienta. El cliente debe verificar el tipo de bloque de contenido para manejar cada uno apropiadamente.",
+      "options": [
+        { "id": "ccaf-pe-045_a", "text": "They are mutually exclusive; a response is either text-only or tool-only", "textEs": "Son mutuamente excluyentes; una respuesta es solo texto o solo herramienta", "order": 1 },
+        { "id": "ccaf-pe-045_b", "text": "'text' contains natural language; 'tool_use' contains structured tool calls with ID, name, and JSON input; both can appear in one response", "textEs": "'text' contiene lenguaje natural; 'tool_use' contiene llamadas a herramientas estructuradas con ID, nombre y entrada JSON; ambos pueden aparecer en una respuesta", "order": 2 },
+        { "id": "ccaf-pe-045_c", "text": "'text' is for short responses; 'tool_use' is for long, complex responses that need structure", "textEs": "'text' es para respuestas cortas; 'tool_use' es para respuestas largas y complejas que necesitan estructura", "order": 3 },
+        { "id": "ccaf-pe-045_d", "text": "'tool_use' is a deprecated format replaced by 'text' with embedded JSON", "textEs": "'tool_use' es un formato obsoleto reemplazado por 'text' con JSON incrustado", "order": 4 }
+      ],
+      "tags": ["content-blocks", "tool-use", "text", "response-structure"]
+    },
+    {
+      "id": "ccaf-pe-046",
+      "text": "What is the 'tool_result' message type, and when must it be sent?",
+      "textEs": "¿Qué es el tipo de mensaje 'tool_result', y cuándo debe enviarse?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-046_a",
+      "explanation": "When Claude makes a tool_use call, the client must execute the tool and return the result as a 'tool_result' content block in the next user message. The tool_result must include the tool_use_id matching the original call and the content (result). If the tool failed, include 'is_error: true' with an error message. The conversation cannot continue without providing tool results for all pending tool calls.",
+      "explanationEs": "Cuando Claude hace una llamada tool_use, el cliente debe ejecutar la herramienta y devolver el resultado como un bloque de contenido 'tool_result' en el siguiente mensaje del usuario. El tool_result debe incluir el tool_use_id que coincide con la llamada original y el contenido (resultado). Si la herramienta falló, incluir 'is_error: true' con un mensaje de error. La conversación no puede continuar sin proporcionar resultados de herramientas para todas las llamadas pendientes.",
+      "options": [
+        { "id": "ccaf-pe-046_a", "text": "Sent after Claude makes a tool_use call; must include the matching tool_use_id and result content; required before conversation continues", "textEs": "Se envía después de que Claude hace una llamada tool_use; debe incluir el tool_use_id correspondiente y contenido del resultado; requerido antes de continuar la conversación", "order": 1 },
+        { "id": "ccaf-pe-046_b", "text": "An optional message type for providing feedback on Claude's tool calls", "textEs": "Un tipo de mensaje opcional para proporcionar retroalimentación sobre las llamadas a herramientas de Claude", "order": 2 },
+        { "id": "ccaf-pe-046_c", "text": "A system-generated message that the API creates automatically when tools complete", "textEs": "Un mensaje generado por el sistema que la API crea automáticamente cuando las herramientas se completan", "order": 3 },
+        { "id": "ccaf-pe-046_d", "text": "It is only needed for failed tool calls; successful results are inferred automatically", "textEs": "Solo se necesita para llamadas a herramientas fallidas; los resultados exitosos se infieren automáticamente", "order": 4 }
+      ],
+      "tags": ["tool-result", "tool-use", "messages-api", "conversation-flow"]
+    },
+    {
+      "id": "ccaf-pe-047",
+      "text": "How does streaming work with the Anthropic Messages API?",
+      "textEs": "¿Cómo funciona el streaming con la API de Messages de Anthropic?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-047_d",
+      "explanation": "Streaming is enabled by setting 'stream: true' in the API request. The response is delivered as Server-Sent Events (SSE) with incremental content deltas. Events include: message_start, content_block_start, content_block_delta (with text or tool input chunks), content_block_stop, and message_stop. Streaming reduces time-to-first-token perceived latency and allows UI updates as the response generates. It works for both text and tool_use responses.",
+      "explanationEs": "El streaming se habilita estableciendo 'stream: true' en la solicitud de la API. La respuesta se entrega como Server-Sent Events (SSE) con deltas de contenido incrementales. Los eventos incluyen: message_start, content_block_start, content_block_delta (con fragmentos de texto o entrada de herramienta), content_block_stop y message_stop. El streaming reduce la latencia percibida de tiempo al primer token y permite actualizaciones de UI mientras la respuesta se genera. Funciona tanto para respuestas de texto como de tool_use.",
+      "options": [
+        { "id": "ccaf-pe-047_a", "text": "The API sends the complete response in chunks of 100 tokens at a time", "textEs": "La API envía la respuesta completa en fragmentos de 100 tokens a la vez", "order": 1 },
+        { "id": "ccaf-pe-047_b", "text": "Streaming requires a WebSocket connection instead of HTTP", "textEs": "El streaming requiere una conexión WebSocket en lugar de HTTP", "order": 2 },
+        { "id": "ccaf-pe-047_c", "text": "Streaming is only available for text responses; tool_use calls must be non-streamed", "textEs": "El streaming solo está disponible para respuestas de texto; las llamadas tool_use deben ser no transmitidas", "order": 3 },
+        { "id": "ccaf-pe-047_d", "text": "Set 'stream: true'; response arrives as SSE with incremental deltas; reduces time-to-first-token latency for both text and tool_use", "textEs": "Establecer 'stream: true'; la respuesta llega como SSE con deltas incrementales; reduce la latencia del tiempo al primer token tanto para texto como tool_use", "order": 4 }
+      ],
+      "tags": ["streaming", "sse", "latency", "api-feature"]
+    },
+    {
+      "id": "ccaf-pe-048",
+      "text": "What happens when you combine extended thinking with tool use in a single API call?",
+      "textEs": "¿Qué sucede cuando combinas pensamiento extendido con uso de herramientas en una sola llamada API?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-048_c",
+      "explanation": "When extended thinking is enabled with tools, Claude first uses its thinking budget to reason about the problem, then decides whether and which tools to call based on that reasoning. The thinking block appears before the tool_use block in the response. After the tool result is returned, Claude can use additional thinking before its next action. This produces better tool call decisions for complex tasks because the reasoning happens before the action.",
+      "explanationEs": "Cuando el pensamiento extendido está habilitado con herramientas, Claude primero usa su presupuesto de pensamiento para razonar sobre el problema, luego decide si llamar y qué herramientas llamar basándose en ese razonamiento. El bloque de pensamiento aparece antes del bloque tool_use en la respuesta. Después de que se devuelve el resultado de la herramienta, Claude puede usar pensamiento adicional antes de su siguiente acción. Esto produce mejores decisiones de llamadas a herramientas para tareas complejas porque el razonamiento ocurre antes de la acción.",
+      "options": [
+        { "id": "ccaf-pe-048_a", "text": "Extended thinking and tool use are mutually exclusive; you must disable one to use the other", "textEs": "El pensamiento extendido y el uso de herramientas son mutuamente excluyentes; debes deshabilitar uno para usar el otro", "order": 1 },
+        { "id": "ccaf-pe-048_b", "text": "The thinking budget is shared with tool call tokens, reducing available reasoning space", "textEs": "El presupuesto de pensamiento se comparte con los tokens de llamadas a herramientas, reduciendo el espacio de razonamiento disponible", "order": 2 },
+        { "id": "ccaf-pe-048_c", "text": "Claude reasons in the thinking block first, then makes better-informed tool calls; thinking appears before tool_use in the response", "textEs": "Claude razona en el bloque de pensamiento primero, luego hace llamadas a herramientas mejor informadas; el pensamiento aparece antes de tool_use en la respuesta", "order": 3 },
+        { "id": "ccaf-pe-048_d", "text": "Tools are called during the thinking phase and results are available before the visible response", "textEs": "Las herramientas se llaman durante la fase de pensamiento y los resultados están disponibles antes de la respuesta visible", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "tool-use", "combination", "reasoning"]
+    },
+    {
+      "id": "ccaf-pe-049",
+      "text": "What is the cache_control breakpoint, and where should it be placed for maximum savings?",
+      "textEs": "¿Qué es el punto de control cache_control, y dónde debe colocarse para máximo ahorro?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-049_b",
+      "explanation": "cache_control breakpoints mark the end of a cacheable prefix in the request. Place them after the largest stable content blocks that do not change between requests. The optimal placement is after: (1) the system prompt, (2) tool definitions, and (3) any few-shot examples or reference documents. Everything before the breakpoint is cached on first use (25% write premium) and reused at 90% discount on subsequent calls. The cached prefix must match exactly byte-for-byte.",
+      "explanationEs": "Los puntos de control cache_control marcan el final de un prefijo cacheable en la solicitud. Colócalos después de los bloques de contenido estable más grandes que no cambian entre solicitudes. La ubicación óptima es después de: (1) el prompt del sistema, (2) definiciones de herramientas y (3) cualquier ejemplo few-shot o documento de referencia. Todo antes del punto de control se cachea en el primer uso (prima de escritura del 25%) y se reutiliza con 90% de descuento en llamadas posteriores. El prefijo cacheado debe coincidir exactamente byte por byte.",
+      "options": [
+        { "id": "ccaf-pe-049_a", "text": "Place at the beginning of the request to cache the entire conversation", "textEs": "Colocar al inicio de la solicitud para cachear toda la conversación", "order": 1 },
+        { "id": "ccaf-pe-049_b", "text": "Place after the largest stable blocks (system prompt, tools, examples); cached prefix must match byte-for-byte for reuse", "textEs": "Colocar después de los bloques estables más grandes (prompt del sistema, herramientas, ejemplos); el prefijo cacheado debe coincidir byte por byte para reutilización", "order": 2 },
+        { "id": "ccaf-pe-049_c", "text": "Place after each individual message for granular caching of each turn", "textEs": "Colocar después de cada mensaje individual para caché granular de cada turno", "order": 3 },
+        { "id": "ccaf-pe-049_d", "text": "It is placed automatically by the API; manual placement is not supported", "textEs": "Se coloca automáticamente por la API; la colocación manual no es soportada", "order": 4 }
+      ],
+      "tags": ["cache-control", "breakpoint", "cost-optimization", "prefix-caching"]
+    },
+    {
+      "id": "ccaf-pe-050",
+      "text": "What is the recommended approach for handling long documents that exceed the context window?",
+      "textEs": "¿Cuál es el enfoque recomendado para manejar documentos largos que exceden la ventana de contexto?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-050_a",
+      "explanation": "For documents exceeding the context window: (1) chunk the document into overlapping segments, (2) process each chunk independently with the same extraction/analysis prompt, (3) merge results using a final aggregation step. For search-oriented tasks, use RAG (Retrieval-Augmented Generation) to retrieve only relevant chunks. For summarization, use a hierarchical approach: summarize chunks, then summarize the summaries. Always consider whether the full document is truly needed or if targeted extraction suffices.",
+      "explanationEs": "Para documentos que exceden la ventana de contexto: (1) dividir el documento en segmentos con superposición, (2) procesar cada fragmento independientemente con el mismo prompt de extracción/análisis, (3) fusionar resultados usando un paso final de agregación. Para tareas orientadas a búsqueda, usar RAG (Generación Aumentada por Recuperación) para recuperar solo fragmentos relevantes. Para resumen, usar un enfoque jerárquico: resumir fragmentos, luego resumir los resúmenes. Siempre considerar si el documento completo es verdaderamente necesario o si la extracción dirigida es suficiente.",
+      "options": [
+        { "id": "ccaf-pe-050_a", "text": "Chunk with overlap, process independently, merge results; use RAG for search tasks; hierarchical summarization for summaries", "textEs": "Fragmentar con superposición, procesar independientemente, fusionar resultados; usar RAG para tareas de búsqueda; resumen jerárquico para resúmenes", "order": 1 },
+        { "id": "ccaf-pe-050_b", "text": "Compress the document text to reduce token count below the limit", "textEs": "Comprimir el texto del documento para reducir la cuenta de tokens por debajo del límite", "order": 2 },
+        { "id": "ccaf-pe-050_c", "text": "Request a context window increase from Anthropic for your API key", "textEs": "Solicitar un aumento de ventana de contexto a Anthropic para tu clave API", "order": 3 },
+        { "id": "ccaf-pe-050_d", "text": "Truncate the document to fit; information at the end is less important", "textEs": "Truncar el documento para que quepa; la información al final es menos importante", "order": 4 }
+      ],
+      "tags": ["long-documents", "chunking", "rag", "context-window"]
+    },
+    {
+      "id": "ccaf-pe-051",
+      "text": "How should you structure a prompt that combines instructions, reference data, and a user query?",
+      "textEs": "¿Cómo deberías estructurar un prompt que combine instrucciones, datos de referencia y una consulta del usuario?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-051_d",
+      "explanation": "The recommended structure is: (1) System prompt with role, constraints, and output format requirements, (2) Reference data in clearly tagged sections (e.g., <documents>, <context>), (3) Few-shot examples if needed, (4) The actual user query last. This order matches how Claude processes information: understand the task first, then see the data, then address the question. Using XML tags between sections prevents confusion about what is instruction vs. data.",
+      "explanationEs": "La estructura recomendada es: (1) Prompt del sistema con rol, restricciones y requisitos de formato de salida, (2) Datos de referencia en secciones claramente etiquetadas (por ejemplo, <documents>, <context>), (3) Ejemplos few-shot si se necesitan, (4) La consulta real del usuario al final. Este orden coincide con cómo Claude procesa información: entender la tarea primero, luego ver los datos, luego abordar la pregunta. Usar etiquetas XML entre secciones previene confusión sobre qué es instrucción vs. datos.",
+      "options": [
+        { "id": "ccaf-pe-051_a", "text": "Query first, then data, then instructions; this helps Claude prioritize the question", "textEs": "Consulta primero, luego datos, luego instrucciones; esto ayuda a Claude a priorizar la pregunta", "order": 1 },
+        { "id": "ccaf-pe-051_b", "text": "Mix instructions and data together for a natural conversational flow", "textEs": "Mezclar instrucciones y datos juntos para un flujo conversacional natural", "order": 2 },
+        { "id": "ccaf-pe-051_c", "text": "Put everything in the system prompt to ensure it persists across turns", "textEs": "Poner todo en el prompt del sistema para asegurar que persista entre turnos", "order": 3 },
+        { "id": "ccaf-pe-051_d", "text": "System prompt (role/constraints) -> tagged reference data -> few-shot examples -> user query; use XML tags between sections", "textEs": "Prompt del sistema (rol/restricciones) -> datos de referencia etiquetados -> ejemplos few-shot -> consulta del usuario; usar etiquetas XML entre secciones", "order": 4 }
+      ],
+      "tags": ["prompt-structure", "xml-tags", "ordering", "best-practices"]
+    },
+    {
+      "id": "ccaf-pe-052",
+      "text": "What is the purpose of the 'stop_reason' field in Claude's API response?",
+      "textEs": "¿Cuál es el propósito del campo 'stop_reason' en la respuesta de la API de Claude?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-052_c",
+      "explanation": "stop_reason indicates why Claude stopped generating. Values include: 'end_turn' (Claude finished naturally), 'max_tokens' (response was truncated at the token limit), 'stop_sequence' (a stop sequence was encountered), and 'tool_use' (Claude wants to call a tool and is waiting for the result). This field is essential for programmatic handling: 'max_tokens' means you may need to request continuation, 'tool_use' means you must provide tool results.",
+      "explanationEs": "stop_reason indica por qué Claude dejó de generar. Los valores incluyen: 'end_turn' (Claude terminó naturalmente), 'max_tokens' (la respuesta fue truncada al límite de tokens), 'stop_sequence' (se encontró una secuencia de parada) y 'tool_use' (Claude quiere llamar a una herramienta y está esperando el resultado). Este campo es esencial para manejo programático: 'max_tokens' significa que podrías necesitar solicitar continuación, 'tool_use' significa que debes proporcionar resultados de herramientas.",
+      "options": [
+        { "id": "ccaf-pe-052_a", "text": "It rates the quality of Claude's response on a scale of 1-10", "textEs": "Califica la calidad de la respuesta de Claude en una escala del 1 al 10", "order": 1 },
+        { "id": "ccaf-pe-052_b", "text": "It indicates the model's confidence level in its response", "textEs": "Indica el nivel de confianza del modelo en su respuesta", "order": 2 },
+        { "id": "ccaf-pe-052_c", "text": "Indicates why generation stopped: end_turn (complete), max_tokens (truncated), stop_sequence (matched), or tool_use (waiting for result)", "textEs": "Indica por qué se detuvo la generación: end_turn (completo), max_tokens (truncado), stop_sequence (coincidió), o tool_use (esperando resultado)", "order": 3 },
+        { "id": "ccaf-pe-052_d", "text": "It provides a reason code for API errors and rate limits", "textEs": "Proporciona un código de razón para errores de API y límites de tasa", "order": 4 }
+      ],
+      "tags": ["stop-reason", "api-response", "end-turn", "max-tokens"]
+    },
+    {
+      "id": "ccaf-pe-053",
+      "text": "What are best practices for using temperature 0 versus temperature 1 in production?",
+      "textEs": "¿Cuáles son las mejores prácticas para usar temperatura 0 versus temperatura 1 en producción?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-053_b",
+      "explanation": "Temperature 0 produces the most deterministic output (always picks the highest-probability token), ideal for: classification, data extraction, code generation, factual QA, and any task where consistency and reproducibility matter. Temperature 1 (default) provides natural variation, suitable for: creative writing, brainstorming, generating diverse alternatives, and conversational applications where repetition would feel unnatural. For most production applications, temperatures between 0 and 0.5 are recommended.",
+      "explanationEs": "La temperatura 0 produce la salida más determinista (siempre elige el token de mayor probabilidad), ideal para: clasificación, extracción de datos, generación de código, QA factual y cualquier tarea donde la consistencia y reproducibilidad importan. La temperatura 1 (predeterminada) proporciona variación natural, adecuada para: escritura creativa, lluvia de ideas, generar alternativas diversas y aplicaciones conversacionales donde la repetición se sentiría antinatural. Para la mayoría de aplicaciones de producción, se recomiendan temperaturas entre 0 y 0.5.",
+      "options": [
+        { "id": "ccaf-pe-053_a", "text": "Always use temperature 0 in production for maximum reliability", "textEs": "Siempre usar temperatura 0 en producción para máxima fiabilidad", "order": 1 },
+        { "id": "ccaf-pe-053_b", "text": "Temperature 0 for deterministic tasks (classification, extraction); temperature 1 for creative/conversational; 0-0.5 for most production use", "textEs": "Temperatura 0 para tareas deterministas (clasificación, extracción); temperatura 1 para creativo/conversacional; 0-0.5 para la mayoría de uso en producción", "order": 2 },
+        { "id": "ccaf-pe-053_c", "text": "Temperature has minimal effect in production; focus on prompt quality instead", "textEs": "La temperatura tiene efecto mínimo en producción; enfocarse en la calidad del prompt en su lugar", "order": 3 },
+        { "id": "ccaf-pe-053_d", "text": "Always use temperature 1 to avoid biased or repetitive outputs", "textEs": "Siempre usar temperatura 1 para evitar salidas sesgadas o repetitivas", "order": 4 }
+      ],
+      "tags": ["temperature", "production", "deterministic", "creative"]
+    },
+    {
+      "id": "ccaf-pe-054",
+      "text": "How do you handle Claude's refusal to perform a task that is within your acceptable use case?",
+      "textEs": "¿Cómo manejas la negativa de Claude de realizar una tarea que está dentro de tu caso de uso aceptable?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-054_a",
+      "explanation": "If Claude refuses a legitimate task, try: (1) provide more context about why the task is appropriate (e.g., 'This is for a medical education application'), (2) rephrase to avoid triggering safety heuristics while keeping the same intent, (3) use the system prompt to establish the authorized use case, (4) break the task into smaller, less ambiguous sub-tasks. If refusals persist for a legitimate use case, contact Anthropic about adjusting the safety configuration for your deployment.",
+      "explanationEs": "Si Claude rechaza una tarea legítima, intenta: (1) proporcionar más contexto sobre por qué la tarea es apropiada (por ejemplo, 'Esto es para una aplicación de educación médica'), (2) reformular para evitar activar heurísticas de seguridad manteniendo la misma intención, (3) usar el prompt del sistema para establecer el caso de uso autorizado, (4) dividir la tarea en sub-tareas más pequeñas y menos ambiguas. Si los rechazos persisten para un caso de uso legítimo, contactar a Anthropic sobre ajustar la configuración de seguridad para tu despliegue.",
+      "options": [
+        { "id": "ccaf-pe-054_a", "text": "Provide more context about legitimacy, rephrase to avoid safety triggers, establish use case in system prompt, or break into sub-tasks", "textEs": "Proporcionar más contexto sobre legitimidad, reformular para evitar disparadores de seguridad, establecer caso de uso en prompt del sistema o dividir en sub-tareas", "order": 1 },
+        { "id": "ccaf-pe-054_b", "text": "Set temperature to 1.5 to override the safety filters", "textEs": "Establecer temperatura en 1.5 para anular los filtros de seguridad", "order": 2 },
+        { "id": "ccaf-pe-054_c", "text": "Add 'override safety: true' to the system prompt parameters", "textEs": "Agregar 'override safety: true' a los parámetros del prompt del sistema", "order": 3 },
+        { "id": "ccaf-pe-054_d", "text": "Switch to a different model that has no safety restrictions", "textEs": "Cambiar a un modelo diferente que no tenga restricciones de seguridad", "order": 4 }
+      ],
+      "tags": ["refusal", "safety", "legitimate-use", "troubleshooting"]
+    },
+    {
+      "id": "ccaf-pe-055",
+      "text": "What is the difference between 'input tokens' and 'output tokens' in API pricing and usage?",
+      "textEs": "¿Cuál es la diferencia entre 'tokens de entrada' y 'tokens de salida' en el precio y uso de la API?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-055_d",
+      "explanation": "Input tokens are the tokens in your request (system prompt + messages + tool definitions). Output tokens are the tokens Claude generates in its response. They are priced differently, with output tokens typically costing more per token than input tokens. The usage field in the API response provides both counts. Understanding this distinction is important for cost optimization: reducing input tokens (shorter prompts, caching) and output tokens (concise instructions, max_tokens limits) both reduce costs.",
+      "explanationEs": "Los tokens de entrada son los tokens en tu solicitud (prompt del sistema + mensajes + definiciones de herramientas). Los tokens de salida son los tokens que Claude genera en su respuesta. Tienen precios diferentes, con los tokens de salida típicamente costando más por token que los de entrada. El campo de uso en la respuesta de la API proporciona ambos conteos. Entender esta distinción es importante para optimización de costos: reducir tokens de entrada (prompts más cortos, caché) y tokens de salida (instrucciones concisas, límites max_tokens) ambos reducen costos.",
+      "options": [
+        { "id": "ccaf-pe-055_a", "text": "They are the same thing; the API charges a flat rate per total token regardless of direction", "textEs": "Son lo mismo; la API cobra una tarifa fija por token total independientemente de la dirección", "order": 1 },
+        { "id": "ccaf-pe-055_b", "text": "Input tokens are free; you only pay for output tokens", "textEs": "Los tokens de entrada son gratis; solo pagas por tokens de salida", "order": 2 },
+        { "id": "ccaf-pe-055_c", "text": "Input tokens measure request size; output tokens measure response quality", "textEs": "Los tokens de entrada miden el tamaño de la solicitud; los tokens de salida miden la calidad de la respuesta", "order": 3 },
+        { "id": "ccaf-pe-055_d", "text": "Input tokens are your request (prompt/messages/tools); output tokens are Claude's response; output costs more per token", "textEs": "Los tokens de entrada son tu solicitud (prompt/mensajes/herramientas); los tokens de salida son la respuesta de Claude; la salida cuesta más por token", "order": 4 }
+      ],
+      "tags": ["tokens", "pricing", "input-output", "cost-optimization"]
+    },
+    {
+      "id": "ccaf-pe-056",
+      "text": "What is the 'thinking' content block in extended thinking responses, and can it be shared with end users?",
+      "textEs": "¿Qué es el bloque de contenido 'thinking' en respuestas de pensamiento extendido, y puede compartirse con usuarios finales?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-056_c",
+      "explanation": "The 'thinking' content block contains Claude's internal reasoning process, appearing before the text response block. It shows how Claude worked through the problem. While it can technically be shown to users, it is best practice to keep it hidden in production (used for debugging/auditing only) because: it may contain unfiltered reasoning that is not polished for end-user consumption, and it uses tokens that are priced separately. The thinking content is not sent back to Claude in subsequent turns.",
+      "explanationEs": "El bloque de contenido 'thinking' contiene el proceso de razonamiento interno de Claude, apareciendo antes del bloque de respuesta de texto. Muestra cómo Claude trabajó a través del problema. Aunque técnicamente puede mostrarse a los usuarios, la mejor práctica es mantenerlo oculto en producción (usado solo para depuración/auditoría) porque: puede contener razonamiento no filtrado que no está pulido para consumo del usuario final, y usa tokens que se cobran por separado. El contenido de pensamiento no se envía de vuelta a Claude en turnos posteriores.",
+      "options": [
+        { "id": "ccaf-pe-056_a", "text": "It is automatically hidden and cannot be accessed by the developer at all", "textEs": "Se oculta automáticamente y no puede ser accedido por el desarrollador en absoluto", "order": 1 },
+        { "id": "ccaf-pe-056_b", "text": "It must always be shown to users as a requirement of the API terms of service", "textEs": "Siempre debe mostrarse a los usuarios como requisito de los términos de servicio de la API", "order": 2 },
+        { "id": "ccaf-pe-056_c", "text": "Contains internal reasoning before the response; best kept hidden in production for debugging/auditing; not sent back in subsequent turns", "textEs": "Contiene razonamiento interno antes de la respuesta; mejor mantener oculto en producción para depuración/auditoría; no se envía de vuelta en turnos posteriores", "order": 3 },
+        { "id": "ccaf-pe-056_d", "text": "It is a summary of the conversation history that Claude generates for its own reference", "textEs": "Es un resumen del historial de conversación que Claude genera para su propia referencia", "order": 4 }
+      ],
+      "tags": ["thinking-block", "extended-thinking", "debugging", "production"]
+    },
+    {
+      "id": "ccaf-pe-057",
+      "text": "What is the 'usage' object in the API response, and what information does it provide?",
+      "textEs": "¿Qué es el objeto 'usage' en la respuesta de la API, y qué información proporciona?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-pe-057_a",
+      "explanation": "The 'usage' object in every API response provides token counts: 'input_tokens' (tokens in your request), 'output_tokens' (tokens Claude generated), and when prompt caching is used, 'cache_creation_input_tokens' and 'cache_read_input_tokens'. This data is essential for monitoring costs, optimizing prompts, tracking context window usage, and setting up billing alerts. It helps you understand exactly what you are paying for in each API call.",
+      "explanationEs": "El objeto 'usage' en cada respuesta de la API proporciona conteos de tokens: 'input_tokens' (tokens en tu solicitud), 'output_tokens' (tokens que Claude generó), y cuando se usa caché de prompts, 'cache_creation_input_tokens' y 'cache_read_input_tokens'. Estos datos son esenciales para monitorear costos, optimizar prompts, rastrear uso de la ventana de contexto y configurar alertas de facturación. Te ayuda a entender exactamente por qué estás pagando en cada llamada a la API.",
+      "options": [
+        { "id": "ccaf-pe-057_a", "text": "Token counts for input, output, and cache usage; essential for cost monitoring and optimization", "textEs": "Conteos de tokens para entrada, salida y uso de caché; esencial para monitoreo de costos y optimización", "order": 1 },
+        { "id": "ccaf-pe-057_b", "text": "Performance metrics like response time, model load, and queue position", "textEs": "Métricas de rendimiento como tiempo de respuesta, carga del modelo y posición en la cola", "order": 2 },
+        { "id": "ccaf-pe-057_c", "text": "A quality score and confidence rating for the generated response", "textEs": "Una puntuación de calidad y calificación de confianza para la respuesta generada", "order": 3 },
+        { "id": "ccaf-pe-057_d", "text": "Rate limit status showing remaining requests and tokens for the billing period", "textEs": "Estado del límite de tasa mostrando solicitudes y tokens restantes para el período de facturación", "order": 4 }
+      ],
+      "tags": ["usage", "tokens", "cost-monitoring", "api-response"]
+    }
+  ]
+}

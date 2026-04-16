@@ -1,0 +1,1152 @@
+{
+  "meta": {
+    "domain": "scenarios",
+    "domainName": "Scenario-Based Questions",
+    "trackId": "cca-f",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-15",
+    "totalQuestions": 60
+  },
+  "questions": [
+    {
+      "id": "ccaf-sc-001",
+      "text": "In the multi-agent customer support system, the coordinator agent receives a request about a disputed charge. The request requires checking billing records, verifying the customer's account status, and ensuring compliance with regulations. How should the coordinator decompose this task?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-001_b",
+      "explanation": "The coordinator should dispatch three parallel subtasks to the specialized subagents: the billing agent checks charge records, the account agent verifies status, and the compliance agent reviews regulatory requirements. The coordinator then synthesizes their results into a coherent response. This leverages the hub-and-spoke pattern with domain-specialized agents.",
+      "options": [
+        { "id": "ccaf-sc-001_a", "text": "Handle the entire request in the coordinator agent to maintain full context of the dispute", "order": 1 },
+        { "id": "ccaf-sc-001_b", "text": "Dispatch parallel subtasks to billing, account, and compliance subagents, then synthesize their results", "order": 2 },
+        { "id": "ccaf-sc-001_c", "text": "Route the request to the billing agent only, since the charge is the primary concern", "order": 3 },
+        { "id": "ccaf-sc-001_d", "text": "Create a new temporary agent that combines all three subagents' tools for this specific request", "order": 4 }
+      ],
+      "tags": ["scenario", "hub-spoke", "task-decomposition", "customer-support"],
+      "scenarioId": "scenario-01"
+    },
+    {
+      "id": "ccaf-sc-002",
+      "text": "The customer support system processes 50,000+ tickets/month. The billing subagent frequently returns large transaction histories (5,000+ tokens) as tool results. What is the most effective strategy to manage context growth?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-002_c",
+      "explanation": "Having the billing subagent return only the relevant transactions (filtered by dispute date range, amount, etc.) and a summary count rather than the full history keeps the coordinator's context manageable. The subagent processes the full data in its own isolated context and returns a compact result. The coordinator does not need the raw data -- just the analysis.",
+      "options": [
+        { "id": "ccaf-sc-002_a", "text": "Increase the context window size for the coordinator agent to handle larger results", "order": 1 },
+        { "id": "ccaf-sc-002_b", "text": "Truncate all tool results to 500 tokens before passing to the coordinator", "order": 2 },
+        { "id": "ccaf-sc-002_c", "text": "Have the billing subagent filter and summarize relevant transactions in its own context, returning only the compact analysis", "order": 3 },
+        { "id": "ccaf-sc-002_d", "text": "Store all transaction data in a database and pass only the database query to the coordinator", "order": 4 }
+      ],
+      "tags": ["scenario", "context-management", "tool-results", "trimming"],
+      "scenarioId": "scenario-01"
+    },
+    {
+      "id": "ccaf-sc-003",
+      "text": "The compliance subagent encounters a customer request that involves a sanctioned entity. This is outside normal ticket handling and requires legal team review. What should the compliance subagent do?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-003_a",
+      "explanation": "The sanctioned entity triggers a valid escalation: the task is outside the subagent's scope (it cannot make legal decisions), and it needs human/coordinator input. The subagent should escalate back to the coordinator with a clear description of what was found and why escalation is needed. The coordinator can then route to the legal team. The subagent should NOT attempt to handle the sanctioned entity itself.",
+      "options": [
+        { "id": "ccaf-sc-003_a", "text": "Escalate to the coordinator with the finding and reason (out of scope: requires legal review), allowing the coordinator to route to the legal team", "order": 1 },
+        { "id": "ccaf-sc-003_b", "text": "Silently flag the ticket in the database and continue processing normally", "order": 2 },
+        { "id": "ccaf-sc-003_c", "text": "Reject the customer request directly and send a compliance violation notice", "order": 3 },
+        { "id": "ccaf-sc-003_d", "text": "Request more information from the customer before making a decision", "order": 4 }
+      ],
+      "tags": ["scenario", "escalation", "compliance", "valid-triggers"],
+      "scenarioId": "scenario-01"
+    },
+    {
+      "id": "ccaf-sc-004",
+      "text": "The fintech company wants to prevent customer PII from leaking between the billing, account, and compliance subagents. What architectural control is most appropriate?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-004_d",
+      "explanation": "Each subagent should receive only the specific PII fields it needs for its task: billing gets transaction data without full account details, account management gets account status without billing history, and compliance gets anonymized or minimal identifying information. The coordinator controls what context each subagent receives, enforcing data minimization at the architectural level.",
+      "options": [
+        { "id": "ccaf-sc-004_a", "text": "Encrypt all PII in the conversation and give each subagent a decryption key", "order": 1 },
+        { "id": "ccaf-sc-004_b", "text": "Use a shared memory store with access control lists per subagent", "order": 2 },
+        { "id": "ccaf-sc-004_c", "text": "Add a disclaimer to each subagent's system prompt asking it not to share PII", "order": 3 },
+        { "id": "ccaf-sc-004_d", "text": "The coordinator sends each subagent only the specific data fields needed for its task, enforcing data minimization", "order": 4 }
+      ],
+      "tags": ["scenario", "context-leakage", "pii", "data-minimization"],
+      "scenarioId": "scenario-01"
+    },
+    {
+      "id": "ccaf-sc-005",
+      "text": "The CI/CD code review agent needs to follow different coding standards for the frontend (React/TypeScript) and backend (Python/FastAPI) directories. How should the CLAUDE.md configuration be structured?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-005_c",
+      "explanation": "Using .claude/rules/ with YAML frontmatter globs is the most maintainable approach: one rule file with globs: [\"frontend/**/*.ts\", \"frontend/**/*.tsx\"] for React/TypeScript standards, and another with globs: [\"backend/**/*.py\"] for Python standards. This provides automatic context-switching based on which files are being reviewed, without needing multiple CLAUDE.md files.",
+      "options": [
+        { "id": "ccaf-sc-005_a", "text": "Create separate CLAUDE.md files in the frontend/ and backend/ directories with each set of standards", "order": 1 },
+        { "id": "ccaf-sc-005_b", "text": "Put all coding standards in the root CLAUDE.md and let Claude figure out which to apply", "order": 2 },
+        { "id": "ccaf-sc-005_c", "text": "Create .claude/rules/ files with YAML frontmatter globs targeting frontend/**/*.ts and backend/**/*.py respectively", "order": 3 },
+        { "id": "ccaf-sc-005_d", "text": "Use two separate Claude Code instances, one configured for each language", "order": 4 }
+      ],
+      "tags": ["scenario", "claude-rules", "globs", "multi-language"],
+      "scenarioId": "scenario-02"
+    },
+    {
+      "id": "ccaf-sc-006",
+      "text": "The code review agent must output structured feedback in a specific JSON format that the PR comment system can parse. What is the best way to ensure consistent structured output?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-006_b",
+      "explanation": "Using tool_use with a forced tool_choice ensures Claude always produces output matching the defined JSON schema for PR comments. The tool schema defines the exact structure (file path, line number, severity, message, suggestion), and forced tool_choice guarantees the model calls this tool rather than producing free-form text. This eliminates parsing issues and schema violations.",
+      "options": [
+        { "id": "ccaf-sc-006_a", "text": "Include a few-shot JSON example in the system prompt and ask Claude to match the format", "order": 1 },
+        { "id": "ccaf-sc-006_b", "text": "Define a tool with the exact PR comment JSON schema and use forced tool_choice to guarantee structured output", "order": 2 },
+        { "id": "ccaf-sc-006_c", "text": "Post-process Claude's free-form text output with a regex parser to extract structured fields", "order": 3 },
+        { "id": "ccaf-sc-006_d", "text": "Use the system prompt to instruct Claude to only output valid JSON, no other text", "order": 4 }
+      ],
+      "tags": ["scenario", "structured-output", "tool-use", "forced-tool-choice"],
+      "scenarioId": "scenario-02"
+    },
+    {
+      "id": "ccaf-sc-007",
+      "text": "The engineering team wants to create reusable review types: 'security-review', 'perf-review', and 'style-review'. Each has different criteria and tool access. How should these be implemented in Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-007_a",
+      "explanation": "Custom commands in .claude/commands/ with Skill frontmatter are the ideal solution. Each command file (security-review.md, perf-review.md, style-review.md) includes frontmatter specifying the relevant context files to load, allowed-tools for that review type, and an argument-hint for the PR or file to review. Team members invoke them with /security-review, /perf-review, etc.",
+      "options": [
+        { "id": "ccaf-sc-007_a", "text": "Create .claude/commands/ files with Skill frontmatter defining context, allowed-tools, and argument-hint for each review type", "order": 1 },
+        { "id": "ccaf-sc-007_b", "text": "Create three separate CLAUDE.md files and switch between them based on the review type", "order": 2 },
+        { "id": "ccaf-sc-007_c", "text": "Build three MCP servers, each exposing review-type-specific tools", "order": 3 },
+        { "id": "ccaf-sc-007_d", "text": "Use a single generic review command and pass the review type as a natural language instruction", "order": 4 }
+      ],
+      "tags": ["scenario", "custom-commands", "skill-frontmatter", "code-review"],
+      "scenarioId": "scenario-02"
+    },
+    {
+      "id": "ccaf-sc-008",
+      "text": "The CI/CD pipeline runs Claude Code in headless mode on every PR. Recently, the agent modified test files that it was only supposed to review, not edit. How should this be prevented?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-008_d",
+      "explanation": "Using --allowedTools to restrict Claude Code to read-only tools (Read, Grep, Glob) in the CI/CD pipeline ensures it can analyze code but not modify it. The -p flag provides the review prompt, --yes enables non-interactive execution, and --output-format json gives structured output. This is a defense-in-depth approach that prevents accidental modifications at the tool level.",
+      "options": [
+        { "id": "ccaf-sc-008_a", "text": "Add 'Do not edit any files' to the CLAUDE.md instructions", "order": 1 },
+        { "id": "ccaf-sc-008_b", "text": "Run Claude Code in Plan Mode which never executes changes", "order": 2 },
+        { "id": "ccaf-sc-008_c", "text": "Mount the repository as read-only in the CI container", "order": 3 },
+        { "id": "ccaf-sc-008_d", "text": "Use --allowedTools to restrict to read-only tools (Read, Grep, Glob) in the CI/CD invocation", "order": 4 }
+      ],
+      "tags": ["scenario", "ci-cd", "allowed-tools", "read-only"],
+      "scenarioId": "scenario-02"
+    },
+    {
+      "id": "ccaf-sc-009",
+      "text": "The legal document analysis platform must process a 150-page contract while maintaining factual accuracy. What is the primary risk of feeding the entire document into a single context?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-009_b",
+      "explanation": "The lost-in-the-middle effect means that clauses in the middle of a 150-page document are more likely to be missed or inaccurately recalled compared to those at the beginning and end. For legal documents where every clause matters, this is a serious accuracy risk. The mitigation is to process the document in structured sections and maintain persistent facts blocks for critical extracted information.",
+      "options": [
+        { "id": "ccaf-sc-009_a", "text": "The document will exceed the context window and be truncated", "order": 1 },
+        { "id": "ccaf-sc-009_b", "text": "The lost-in-the-middle effect will cause clauses in the middle of the document to be missed or inaccurately recalled", "order": 2 },
+        { "id": "ccaf-sc-009_c", "text": "The API will timeout before processing the entire document", "order": 3 },
+        { "id": "ccaf-sc-009_d", "text": "The model will hallucinate clauses that do not exist in the original document", "order": 4 }
+      ],
+      "tags": ["scenario", "lost-in-middle", "legal", "long-documents"],
+      "scenarioId": "scenario-03"
+    },
+    {
+      "id": "ccaf-sc-010",
+      "text": "The platform extracts key clauses, flags risks, and generates summaries. To ensure provenance, what should the extraction schema include for each extracted clause?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-010_a",
+      "explanation": "For legal document extraction, each extracted clause needs: the exact source text (verbatim quote from the document), the page/section number where it was found, a classification of the clause type, and a risk assessment. The verbatim quote enables verification against the original document, and the page number provides traceability. Without these, there is no way to verify the extraction is accurate.",
+      "options": [
+        { "id": "ccaf-sc-010_a", "text": "Source text (verbatim quote), page/section number, clause classification, and risk assessment for each extraction", "order": 1 },
+        { "id": "ccaf-sc-010_b", "text": "A confidence score from 0-100 and the model version used for extraction", "order": 2 },
+        { "id": "ccaf-sc-010_c", "text": "Only the clause summary and risk level, since the original document is available for reference", "order": 3 },
+        { "id": "ccaf-sc-010_d", "text": "A hash of the original text and a timestamp for when the extraction was performed", "order": 4 }
+      ],
+      "tags": ["scenario", "provenance", "extraction-schema", "legal"],
+      "scenarioId": "scenario-03"
+    },
+    {
+      "id": "ccaf-sc-011",
+      "text": "When extracting data from legal documents, some clauses have ambiguous terms that could be classified as multiple risk types. How should the extraction tool's schema handle this?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-011_c",
+      "explanation": "The schema should allow an array of risk types (since a clause can genuinely have multiple risks), include an 'ambiguous' flag that the model can set when classification is uncertain, and include a 'notes' field for the model to explain the ambiguity. This prevents forced single-classification errors and makes ambiguity visible to downstream reviewers rather than silently picking one category.",
+      "options": [
+        { "id": "ccaf-sc-011_a", "text": "Force the model to pick the single most likely risk type to maintain clean data", "order": 1 },
+        { "id": "ccaf-sc-011_b", "text": "Use a confidence threshold and only include clauses above 90% confidence", "order": 2 },
+        { "id": "ccaf-sc-011_c", "text": "Allow an array of risk types, include an 'ambiguous' flag, and add a notes field for explaining the ambiguity", "order": 3 },
+        { "id": "ccaf-sc-011_d", "text": "Skip ambiguous clauses and queue them for manual review without any classification", "order": 4 }
+      ],
+      "tags": ["scenario", "json-schema", "ambiguity", "legal-extraction"],
+      "scenarioId": "scenario-03"
+    },
+    {
+      "id": "ccaf-sc-012",
+      "text": "The document analysis platform processes the same contract through multiple passes: clause extraction, risk flagging, and summary generation. After the risk flagging pass, how should the results be preserved for the summary generation pass?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-012_d",
+      "explanation": "Using persistent case facts blocks (or scratchpad files) to store the extracted clauses and risk flags ensures they are available for the summary pass without re-processing the entire document. These facts should include the verbatim extractions with their page references, risk classifications, and any ambiguity notes. The summary agent reads these structured facts rather than the raw document.",
+      "options": [
+        { "id": "ccaf-sc-012_a", "text": "Re-process the entire document from scratch in the summary pass", "order": 1 },
+        { "id": "ccaf-sc-012_b", "text": "Summarize the risk flagging results before passing to the summary agent", "order": 2 },
+        { "id": "ccaf-sc-012_c", "text": "Keep the full conversation history from the risk pass and append the summary instructions", "order": 3 },
+        { "id": "ccaf-sc-012_d", "text": "Store extracted clauses and risk flags as persistent case facts or scratchpad files, which the summary agent reads directly", "order": 4 }
+      ],
+      "tags": ["scenario", "case-facts", "multi-pass", "scratchpad"],
+      "scenarioId": "scenario-03"
+    },
+    {
+      "id": "ccaf-sc-013",
+      "text": "The SaaS company needs to expose database queries, deployment tools, monitoring, and documentation search across teams. The total tool count is 24. What is the recommended MCP architecture?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-013_b",
+      "explanation": "With 24 tools exceeding the 18-tool degradation threshold, the recommended architecture is to create 4 domain-specific MCP servers: one for database operations, one for deployment, one for monitoring, and one for documentation. Each team's agent configuration specifies only the MCP servers (and their tools) relevant to that team's role. This keeps each agent well under the 18-tool threshold.",
+      "options": [
+        { "id": "ccaf-sc-013_a", "text": "Create one MCP server with all 24 tools and let each team access all of them", "order": 1 },
+        { "id": "ccaf-sc-013_b", "text": "Create 4 domain-specific MCP servers (database, deployment, monitoring, docs) and configure each team's agent with only relevant servers", "order": 2 },
+        { "id": "ccaf-sc-013_c", "text": "Create 24 individual MCP servers, one per tool, for maximum flexibility", "order": 3 },
+        { "id": "ccaf-sc-013_d", "text": "Create 2 MCP servers (read-only and read-write) and assign based on team permissions", "order": 4 }
+      ],
+      "tags": ["scenario", "mcp-architecture", "tool-distribution", "enterprise"],
+      "scenarioId": "scenario-04"
+    },
+    {
+      "id": "ccaf-sc-014",
+      "text": "The DevOps team needs full access to deployment tools, but the QA team should only be able to view deployment status without triggering deployments. How should this be implemented with MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-014_c",
+      "explanation": "Scoped cross-role tools allow the deployment MCP server to expose the same tool interface but adjust behavior based on the caller's role. The DevOps team's configuration passes a role context that enables full deployment capabilities, while the QA team's context restricts to read-only status queries. This maintains a single tool definition while enforcing role-based access at the server level.",
+      "options": [
+        { "id": "ccaf-sc-014_a", "text": "Create two separate MCP servers: deploy-full for DevOps and deploy-readonly for QA", "order": 1 },
+        { "id": "ccaf-sc-014_b", "text": "Give QA the same tools but add 'do not trigger deployments' to their CLAUDE.md", "order": 2 },
+        { "id": "ccaf-sc-014_c", "text": "Use scoped cross-role tools where the MCP server checks the caller's role context and adjusts capabilities accordingly", "order": 3 },
+        { "id": "ccaf-sc-014_d", "text": "Use the same tools for both teams but add a confirmation step that only DevOps can approve", "order": 4 }
+      ],
+      "tags": ["scenario", "scoped-tools", "cross-role", "access-control"],
+      "scenarioId": "scenario-04"
+    },
+    {
+      "id": "ccaf-sc-015",
+      "text": "The project-level MCP configuration (.mcp.json) should include the database and docs servers for all developers. A senior engineer also needs a personal monitoring dashboard MCP server. Where should each be configured?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-015_a",
+      "explanation": "Shared MCP servers (database, docs) belong in the project-level .mcp.json at the repo root, which is committed to version control and shared with all developers. The senior engineer's personal monitoring server goes in ~/.claude/mcp.json, which is user-specific and available across all their projects. This separation keeps shared config consistent while allowing personal customization.",
+      "options": [
+        { "id": "ccaf-sc-015_a", "text": "Database and docs servers in .mcp.json (project root, committed); monitoring in ~/.claude/mcp.json (personal, not committed)", "order": 1 },
+        { "id": "ccaf-sc-015_b", "text": "All three servers in .mcp.json at the project root for consistency", "order": 2 },
+        { "id": "ccaf-sc-015_c", "text": "All three servers in ~/.claude/mcp.json since it has higher priority", "order": 3 },
+        { "id": "ccaf-sc-015_d", "text": "Database and docs in CLAUDE.md @import; monitoring as a custom command", "order": 4 }
+      ],
+      "tags": ["scenario", "mcp-config", "project-level", "user-level"],
+      "scenarioId": "scenario-04"
+    },
+    {
+      "id": "ccaf-sc-016",
+      "text": "An agent using the SaaS platform's MCP ecosystem attempts to call a deployment tool during a database query workflow. This indicates the agent is confused about its task. What is the root cause and fix?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-016_d",
+      "explanation": "When an agent calls tools outside its intended workflow, it typically means the agent has too many tools available (exceeding the 4-5 optimal range) and the tool descriptions are not distinct enough. The fix is to restrict each agent's tool set to only the tools relevant to its current task, using the MCP server configuration to expose only the appropriate servers for each workflow context.",
+      "options": [
+        { "id": "ccaf-sc-016_a", "text": "The deployment MCP server has a bug; fix the server implementation", "order": 1 },
+        { "id": "ccaf-sc-016_b", "text": "The model is too creative; reduce the temperature to 0", "order": 2 },
+        { "id": "ccaf-sc-016_c", "text": "The agent needs more training data; add few-shot examples of correct tool usage", "order": 3 },
+        { "id": "ccaf-sc-016_d", "text": "The agent has too many tools available; restrict its MCP configuration to only database-relevant servers for this workflow", "order": 4 }
+      ],
+      "tags": ["scenario", "tool-confusion", "tool-restriction", "mcp-config"],
+      "scenarioId": "scenario-04"
+    },
+    {
+      "id": "ccaf-sc-017",
+      "text": "The pharmaceutical company's extraction system needs to handle clinical trial reports where the dosage field sometimes contains ranges ('100-200mg'), approximations ('~150mg'), or is missing entirely. How should the dosage field be designed in the JSON schema?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-017_a",
+      "explanation": "The dosage field should be an object with: value (nullable number or string for ranges), unit (string), type (enum: 'exact', 'range', 'approximate', 'unclear'), raw_text (the original text as it appears in the document), and a requires_review flag. This captures the full spectrum of real-world dosage expressions, preserves the original text for verification, and explicitly flags unclear cases for human review.",
+      "options": [
+        { "id": "ccaf-sc-017_a", "text": "An object with nullable value, unit, type enum (exact/range/approximate/unclear), raw_text for the original, and requires_review flag", "order": 1 },
+        { "id": "ccaf-sc-017_b", "text": "A required string field that the model fills with whatever format appears in the document", "order": 2 },
+        { "id": "ccaf-sc-017_c", "text": "A required number field in milligrams, converting all formats to a single numeric value", "order": 3 },
+        { "id": "ccaf-sc-017_d", "text": "Two separate fields: dosage_min and dosage_max, both required numbers", "order": 4 }
+      ],
+      "tags": ["scenario", "json-schema", "medical-data", "nullable"],
+      "scenarioId": "scenario-05"
+    },
+    {
+      "id": "ccaf-sc-018",
+      "text": "After initial extraction from a clinical trial report, 15% of dosage fields are flagged as 'unclear'. The team wants to reduce this rate. Which approach is most likely to improve extraction accuracy?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-018_c",
+      "explanation": "Adding few-shot examples that specifically cover the patterns being flagged as unclear (unusual dosage formats, abbreviations, multi-drug entries) directly teaches the model how to handle these cases. This is more targeted than adjusting the schema (which is already well-designed) or lowering the confidence threshold (which would increase false positives). The examples should include the tricky formats and their correct extractions.",
+      "options": [
+        { "id": "ccaf-sc-018_a", "text": "Remove the 'unclear' option from the schema to force the model to always classify", "order": 1 },
+        { "id": "ccaf-sc-018_b", "text": "Switch to a larger model for all extractions", "order": 2 },
+        { "id": "ccaf-sc-018_c", "text": "Add few-shot examples covering the specific unclear patterns (unusual formats, abbreviations, multi-drug entries)", "order": 3 },
+        { "id": "ccaf-sc-018_d", "text": "Run extraction twice and take the average of both passes", "order": 4 }
+      ],
+      "tags": ["scenario", "few-shot", "medical-extraction", "accuracy"],
+      "scenarioId": "scenario-05"
+    },
+    {
+      "id": "ccaf-sc-019",
+      "text": "The extraction system must validate that extracted adverse event terms match entries in the MedDRA database. What pattern should be used?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-019_b",
+      "explanation": "A validation-retry loop with an MCP tool that queries the MedDRA database is the correct pattern. After Claude extracts adverse events, the extracted terms are validated against MedDRA via the tool. If a term does not match, the validation error (with the closest MedDRA matches) is fed back to Claude for correction. This combines Claude's extraction ability with deterministic database validation.",
+      "options": [
+        { "id": "ccaf-sc-019_a", "text": "Include the entire MedDRA database in the system prompt for reference", "order": 1 },
+        { "id": "ccaf-sc-019_b", "text": "Use a validation-retry loop: extract terms, validate via MedDRA MCP tool, feed back errors with closest matches for correction", "order": 2 },
+        { "id": "ccaf-sc-019_c", "text": "Train a custom model fine-tuned on MedDRA terminology", "order": 3 },
+        { "id": "ccaf-sc-019_d", "text": "Use a post-processing script that maps extracted terms to MedDRA codes without model involvement", "order": 4 }
+      ],
+      "tags": ["scenario", "validation-retry", "mcp-tool", "medical-data"],
+      "scenarioId": "scenario-05"
+    },
+    {
+      "id": "ccaf-sc-020",
+      "text": "A clinical trial report extraction fails because the model encounters a table that spans multiple pages and the data becomes fragmented. The system silently produces incomplete data. What architectural change prevents this?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-020_d",
+      "explanation": "Replacing silent error suppression with explicit error propagation is the key change. The extraction system should detect when it encounters fragmented or incomplete data (e.g., by checking for expected fields or row counts) and surface this as an error rather than silently producing partial results. This can be combined with a detected_pattern field where the model indicates what structure it found, making fragmentation visible.",
+      "options": [
+        { "id": "ccaf-sc-020_a", "text": "Increase the context window to fit the entire multi-page table", "order": 1 },
+        { "id": "ccaf-sc-020_b", "text": "Pre-process the PDF to merge multi-page tables before extraction", "order": 2 },
+        { "id": "ccaf-sc-020_c", "text": "Add more few-shot examples of multi-page tables", "order": 3 },
+        { "id": "ccaf-sc-020_d", "text": "Replace silent error suppression with explicit error propagation that detects incomplete extraction and surfaces it for review", "order": 4 }
+      ],
+      "tags": ["scenario", "error-propagation", "silent-suppression", "data-completeness"],
+      "scenarioId": "scenario-05"
+    },
+    {
+      "id": "ccaf-sc-021",
+      "text": "The developer onboarding agent uses CLAUDE.md at the repo root for general project info, plus CLAUDE.md files in key subdirectories (api/, frontend/, infrastructure/) for area-specific guidance. A new developer asks 'How do I set up the API locally?' What context does Claude Code load?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-021_b",
+      "explanation": "Claude Code loads the CLAUDE.md hierarchy: the user-level ~/.claude/CLAUDE.md (if it exists), the project root CLAUDE.md (general project info), and the api/ directory CLAUDE.md (API-specific setup instructions) when working with files in the api/ directory. All levels are merged, giving Claude both the general project context and the specific API setup instructions.",
+      "options": [
+        { "id": "ccaf-sc-021_a", "text": "Only the api/CLAUDE.md since the question is about the API", "order": 1 },
+        { "id": "ccaf-sc-021_b", "text": "The user-level CLAUDE.md, project root CLAUDE.md, and api/CLAUDE.md, all merged together", "order": 2 },
+        { "id": "ccaf-sc-021_c", "text": "All CLAUDE.md files in the entire project including frontend/ and infrastructure/", "order": 3 },
+        { "id": "ccaf-sc-021_d", "text": "Only the project root CLAUDE.md since it has the highest priority", "order": 4 }
+      ],
+      "tags": ["scenario", "claude-md", "hierarchy", "context-loading"],
+      "scenarioId": "scenario-06"
+    },
+    {
+      "id": "ccaf-sc-022",
+      "text": "The onboarding agent needs to help new developers run a complex environment setup that involves 15+ steps across database, services, and configuration. Using a single long conversation risks context window exhaustion. What is the best approach?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-022_c",
+      "explanation": "Delegating each setup phase (database, services, configuration) to a subagent keeps each conversation's context focused and manageable. The main onboarding agent acts as the coordinator, dispatching each phase to a specialized subagent, collecting results, and tracking progress in a scratchpad file. If one phase fails, the coordinator can retry just that phase without re-running the entire setup.",
+      "options": [
+        { "id": "ccaf-sc-022_a", "text": "Put all 15+ steps in a single CLAUDE.md custom command and run them sequentially", "order": 1 },
+        { "id": "ccaf-sc-022_b", "text": "Break the setup into separate chat sessions and ask the developer to run each manually", "order": 2 },
+        { "id": "ccaf-sc-022_c", "text": "Delegate each setup phase to a subagent with focused context, while the coordinator tracks progress in a scratchpad file", "order": 3 },
+        { "id": "ccaf-sc-022_d", "text": "Summarize the conversation after every 3 steps to keep the context window manageable", "order": 4 }
+      ],
+      "tags": ["scenario", "subagent-delegation", "scratchpad", "complex-setup"],
+      "scenarioId": "scenario-06"
+    },
+    {
+      "id": "ccaf-sc-023",
+      "text": "The onboarding agent encounters an error during database setup because the developer's local PostgreSQL version is incompatible. The database setup subagent cannot resolve this. What should happen?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-023_a",
+      "explanation": "This is a valid escalation trigger: the subagent encountered an error it cannot resolve after reasonable effort (PostgreSQL version incompatibility is outside its ability to fix -- it would need to install a different version or modify the setup). The subagent should escalate to the coordinator with the specific error details and what was attempted, allowing the coordinator to either provide guidance or escalate to the developer with clear instructions.",
+      "options": [
+        { "id": "ccaf-sc-023_a", "text": "The subagent escalates to the coordinator with the specific error and attempted solutions, triggering user guidance", "order": 1 },
+        { "id": "ccaf-sc-023_b", "text": "The subagent silently skips the database step and continues with the next phase", "order": 2 },
+        { "id": "ccaf-sc-023_c", "text": "The subagent automatically installs a compatible PostgreSQL version", "order": 3 },
+        { "id": "ccaf-sc-023_d", "text": "The entire onboarding workflow terminates immediately", "order": 4 }
+      ],
+      "tags": ["scenario", "escalation", "error-handling", "onboarding"],
+      "scenarioId": "scenario-06"
+    },
+    {
+      "id": "ccaf-sc-024",
+      "text": "After completing the setup, the onboarding agent should record what was configured, any workarounds applied, and remaining manual steps. Where should this information be persisted?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-024_d",
+      "explanation": "Using /memory to persist the setup results in the project's CLAUDE.md ensures the information is available in future sessions. This way, if the developer encounters issues later, Claude Code already knows what was configured, what workarounds were applied, and what manual steps remain. The scratchpad file from the setup process can be referenced, but /memory provides the persistent, session-spanning storage.",
+      "options": [
+        { "id": "ccaf-sc-024_a", "text": "Only in the conversation history which the developer can scroll back through", "order": 1 },
+        { "id": "ccaf-sc-024_b", "text": "In a separate markdown file that the developer manually maintains", "order": 2 },
+        { "id": "ccaf-sc-024_c", "text": "In the scratchpad file only, which will be cleaned up after the session", "order": 3 },
+        { "id": "ccaf-sc-024_d", "text": "Use /memory to persist setup results in CLAUDE.md for future sessions, with details in a setup-log file", "order": 4 }
+      ],
+      "tags": ["scenario", "memory", "persistence", "onboarding"],
+      "scenarioId": "scenario-06"
+    },
+    {
+      "id": "ccaf-sc-025",
+      "text": "Your team is building an automated code review agent with Claude that must analyze pull requests, check for security vulnerabilities, and suggest performance improvements. The agent needs access to the Git diff, a static analysis tool, and a vulnerability database. What is the best architectural approach? / Tu equipo esta construyendo un agente de code review automatizado con Claude que debe analizar pull requests, verificar vulnerabilidades de seguridad y sugerir mejoras de rendimiento. El agente necesita acceso al diff de Git, una herramienta de analisis estatico y una base de datos de vulnerabilidades. Cual es el mejor enfoque arquitectonico?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-025_c",
+      "explanation": "A hub-and-spoke architecture with a coordinator agent dispatching to specialized subagents (security, performance, style) keeps each subagent's tool set focused and under the recommended threshold. Each subagent receives only the relevant portion of the diff and its specialized tools, while the coordinator synthesizes the final review. / Una arquitectura hub-and-spoke con un agente coordinador despachando a subagentes especializados (seguridad, rendimiento, estilo) mantiene el conjunto de herramientas de cada subagente enfocado y bajo el umbral recomendado.",
+      "options": [
+        { "id": "ccaf-sc-025_a", "text": "Build a single agent with all tools (Git, static analysis, vulnerability DB) and a comprehensive system prompt / Construir un unico agente con todas las herramientas y un system prompt comprehensivo", "order": 1 },
+        { "id": "ccaf-sc-025_b", "text": "Create a sequential pipeline where each tool runs independently without Claude orchestration / Crear un pipeline secuencial donde cada herramienta corre independientemente sin orquestacion de Claude", "order": 2 },
+        { "id": "ccaf-sc-025_c", "text": "Use a coordinator agent that dispatches to specialized subagents (security, performance, style), each with focused tool access / Usar un agente coordinador que despacha a subagentes especializados, cada uno con acceso enfocado a herramientas", "order": 3 },
+        { "id": "ccaf-sc-025_d", "text": "Run three separate Claude instances in parallel with no coordination between them / Ejecutar tres instancias de Claude en paralelo sin coordinacion entre ellas", "order": 4 }
+      ],
+      "tags": ["scenario", "code-review", "hub-spoke", "tool-architecture"],
+      "scenarioId": "scenario-07"
+    },
+    {
+      "id": "ccaf-sc-026",
+      "text": "A client reports that their MCP server times out when processing files larger than 50MB. The server exposes a file_analyze tool that reads the entire file into memory before sending it to Claude. What is the most effective fix? / Un cliente reporta que su servidor MCP hace timeout al procesar archivos mayores a 50MB. El servidor expone una herramienta file_analyze que lee el archivo completo en memoria antes de enviarlo a Claude. Cual es la solucion mas efectiva?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-026_b",
+      "explanation": "The MCP tool should implement chunked processing: instead of loading the entire file, expose a paginated read tool (read_file_chunk with offset and limit parameters) that returns manageable portions. The agent iterates through chunks as needed, keeping each tool result within reasonable token limits. This prevents memory issues on the server and context overflow on the client. / La herramienta MCP debe implementar procesamiento por chunks: en lugar de cargar todo el archivo, exponer una herramienta de lectura paginada que retorna porciones manejables.",
+      "options": [
+        { "id": "ccaf-sc-026_a", "text": "Increase the MCP server timeout to 5 minutes to allow processing of large files / Aumentar el timeout del servidor MCP a 5 minutos para permitir el procesamiento", "order": 1 },
+        { "id": "ccaf-sc-026_b", "text": "Replace file_analyze with a paginated read_file_chunk tool that accepts offset and limit, processing the file in manageable portions / Reemplazar file_analyze con una herramienta paginada read_file_chunk que acepta offset y limit", "order": 2 },
+        { "id": "ccaf-sc-026_c", "text": "Compress the file before sending it to reduce transfer time / Comprimir el archivo antes de enviarlo para reducir el tiempo de transferencia", "order": 3 },
+        { "id": "ccaf-sc-026_d", "text": "Reject files larger than 50MB and ask the user to split them manually / Rechazar archivos mayores a 50MB y pedir al usuario que los divida manualmente", "order": 4 }
+      ],
+      "tags": ["scenario", "mcp-timeout", "chunked-processing", "large-files"],
+      "scenarioId": "scenario-07"
+    },
+    {
+      "id": "ccaf-sc-027",
+      "text": "You need to optimize costs for a pipeline that makes 10,000 API calls per day to Claude for customer email classification. Each email is 200-500 tokens and the system prompt is 2,000 tokens. Currently, costs are $850/day. What is the most impactful cost reduction strategy? / Necesitas optimizar costos de un pipeline que hace 10,000 llamadas/dia a Claude para clasificacion de emails de clientes. Cada email es 200-500 tokens y el system prompt es 2,000 tokens. Los costos actuales son $850/dia. Cual es la estrategia de reduccion de costos mas impactante?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-027_a",
+      "explanation": "With 10,000 calls sharing the same 2,000-token system prompt, prompt caching provides the largest immediate cost reduction. Cached input tokens cost 90% less than uncached ones. Since the system prompt is identical across all calls, it will be cached after the first call. For 10K calls/day, saving 90% on 2,000 tokens per call is approximately 18M cached tokens of savings. / Con 10,000 llamadas compartiendo el mismo system prompt de 2,000 tokens, el prompt caching proporciona la mayor reduccion inmediata de costos.",
+      "options": [
+        { "id": "ccaf-sc-027_a", "text": "Enable prompt caching for the system prompt since all 10K calls share the same 2,000-token instruction / Habilitar prompt caching para el system prompt ya que las 10K llamadas comparten la misma instruccion", "order": 1 },
+        { "id": "ccaf-sc-027_b", "text": "Batch all 10K emails into a single API call to minimize overhead / Agrupar todos los 10K emails en una sola llamada API para minimizar overhead", "order": 2 },
+        { "id": "ccaf-sc-027_c", "text": "Switch to a fine-tuned model that does not need a system prompt / Cambiar a un modelo fine-tuned que no necesita system prompt", "order": 3 },
+        { "id": "ccaf-sc-027_d", "text": "Reduce the system prompt to under 100 tokens by removing all examples / Reducir el system prompt a menos de 100 tokens eliminando todos los ejemplos", "order": 4 }
+      ],
+      "tags": ["scenario", "cost-optimization", "prompt-caching", "high-volume"],
+      "scenarioId": "scenario-08"
+    },
+    {
+      "id": "ccaf-sc-028",
+      "text": "Your research agent sometimes generates URLs to academic papers that do not exist, presenting them as real references. Users have complained about broken links in the generated reports. What is the best approach to solve this? / Tu agente de investigacion a veces genera URLs de articulos academicos que no existen, presentandolos como referencias reales. Los usuarios se quejan de enlaces rotos en los reportes generados. Cual es el mejor enfoque para resolver esto?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-028_d",
+      "explanation": "The root cause is hallucinated URLs, which is a known LLM limitation. The best solution combines: (1) an MCP tool that validates URLs by checking if they resolve, (2) instructing the system prompt to never fabricate URLs and only cite sources provided via tools, and (3) a web search tool that retrieves real URLs. This is a validation-retry pattern where generated references are verified before inclusion. / La causa raiz son URLs alucinadas. La mejor solucion combina una herramienta MCP que valida URLs, instrucciones de no fabricar URLs, y una herramienta de busqueda web.",
+      "options": [
+        { "id": "ccaf-sc-028_a", "text": "Add 'never make up URLs' to the system prompt and trust the model to comply / Agregar 'nunca inventes URLs' al system prompt y confiar en que el modelo cumpla", "order": 1 },
+        { "id": "ccaf-sc-028_b", "text": "Remove all URL generation capability and only output paper titles / Eliminar toda capacidad de generacion de URLs y solo mostrar titulos de articulos", "order": 2 },
+        { "id": "ccaf-sc-028_c", "text": "Post-process the output with a link checker script after Claude finishes / Post-procesar la salida con un script verificador de enlaces despues de que Claude termine", "order": 3 },
+        { "id": "ccaf-sc-028_d", "text": "Provide a web search tool for real URLs, instruct to only cite tool-provided sources, and validate URLs via an MCP verification tool before including them / Proveer herramienta de busqueda web, instruir a solo citar fuentes del tool, y validar URLs via MCP antes de incluirlas", "order": 4 }
+      ],
+      "tags": ["scenario", "hallucination", "url-validation", "research-agent"],
+      "scenarioId": "scenario-08"
+    },
+    {
+      "id": "ccaf-sc-029",
+      "text": "You are configuring Claude Code for a team of 20 developers working on a monorepo with microservices. Each developer works on different services, and the team wants consistent coding standards but service-specific context. What is the optimal configuration strategy? / Estas configurando Claude Code para un equipo de 20 desarrolladores trabajando en un monorepo con microservicios. Cada desarrollador trabaja en diferentes servicios y el equipo quiere estandares consistentes pero contexto especifico por servicio. Cual es la estrategia optima de configuracion?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-029_b",
+      "explanation": "A root CLAUDE.md with shared standards (linting rules, commit format, testing requirements) committed to the repo, plus CLAUDE.md files in each service directory with service-specific context (API contracts, dependencies, deployment notes). The .claude/rules/ directory with glob-based rules handles language-specific standards. This is the hierarchical CLAUDE.md pattern that Claude Code merges automatically. / Un CLAUDE.md raiz con estandares compartidos, mas CLAUDE.md en cada directorio de servicio con contexto especifico, y .claude/rules/ con reglas basadas en globs para estandares por lenguaje.",
+      "options": [
+        { "id": "ccaf-sc-029_a", "text": "Create one massive CLAUDE.md with all standards and context for every service / Crear un CLAUDE.md masivo con todos los estandares y contexto para cada servicio", "order": 1 },
+        { "id": "ccaf-sc-029_b", "text": "Root CLAUDE.md for shared standards, service-level CLAUDE.md files for specific context, and .claude/rules/ with glob patterns for language rules / CLAUDE.md raiz para estandares compartidos, CLAUDE.md por servicio, y .claude/rules/ con globs para reglas por lenguaje", "order": 2 },
+        { "id": "ccaf-sc-029_c", "text": "Let each developer maintain their own ~/.claude/CLAUDE.md with personal preferences only / Dejar que cada desarrollador mantenga su propio ~/.claude/CLAUDE.md solo con preferencias personales", "order": 3 },
+        { "id": "ccaf-sc-029_d", "text": "Use a single .claude/rules/ file with all rules and no CLAUDE.md files / Usar un solo archivo .claude/rules/ con todas las reglas y sin archivos CLAUDE.md", "order": 4 }
+      ],
+      "tags": ["scenario", "monorepo", "team-config", "claude-md-hierarchy"],
+      "scenarioId": "scenario-09"
+    },
+    {
+      "id": "ccaf-sc-030",
+      "text": "Your application needs to process 150-page PDF documents and extract key data points from specific sections. The full document is approximately 120,000 tokens. What is the best strategy to handle this within Claude's context limitations? / Tu aplicacion necesita procesar documentos PDF de 150 paginas y extraer datos clave de secciones especificas. El documento completo es aproximadamente 120,000 tokens. Cual es la mejor estrategia para manejar esto dentro de las limitaciones de contexto de Claude?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-030_c",
+      "explanation": "A multi-pass approach is best: first pass uses a table of contents or structural analysis to identify relevant sections, then targeted passes extract data from specific sections only. Extracted facts are accumulated in a scratchpad/persistent facts block between passes. This avoids the lost-in-the-middle problem and keeps each pass within a focused context window. / Un enfoque multi-pass es mejor: primer pase para identificar secciones relevantes, luego pases dirigidos para extraer datos de secciones especificas, acumulando hechos en un scratchpad.",
+      "options": [
+        { "id": "ccaf-sc-030_a", "text": "Feed the entire 120K-token document into a single API call using the maximum context window / Enviar todo el documento de 120K tokens en una sola llamada API usando la ventana de contexto maxima", "order": 1 },
+        { "id": "ccaf-sc-030_b", "text": "Summarize the document to 10K tokens first, then extract data points from the summary / Resumir el documento a 10K tokens primero, luego extraer datos del resumen", "order": 2 },
+        { "id": "ccaf-sc-030_c", "text": "Use a multi-pass approach: identify relevant sections first, then extract data from targeted sections, accumulating facts in a scratchpad between passes / Usar enfoque multi-pass: identificar secciones relevantes primero, luego extraer datos de secciones especificas, acumulando hechos en un scratchpad", "order": 3 },
+        { "id": "ccaf-sc-030_d", "text": "Split the document into 10-page chunks and process each independently with no shared state / Dividir el documento en chunks de 10 paginas y procesar cada uno independientemente sin estado compartido", "order": 4 }
+      ],
+      "tags": ["scenario", "long-document", "multi-pass", "context-management"],
+      "scenarioId": "scenario-09"
+    },
+    {
+      "id": "ccaf-sc-031",
+      "text": "You are designing a multi-agent system where a QA agent validates the output of a dev agent. The dev agent writes code and the QA agent runs tests and reviews it. The QA agent keeps rejecting valid code because it applies overly strict criteria. What should you adjust? / Estas disenando un sistema multi-agente donde un agente QA valida el output de un agente dev. El agente dev escribe codigo y el agente QA ejecuta tests y lo revisa. El agente QA sigue rechazando codigo valido porque aplica criterios excesivamente estrictos. Que debes ajustar?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-031_a",
+      "explanation": "The QA agent's system prompt needs explicit, measurable acceptance criteria (tests pass, no security vulnerabilities, code compiles) rather than vague quality standards. The QA agent should also have a maximum retry count to prevent infinite rejection loops. Without concrete criteria, the QA agent's subjective judgment leads to false rejections. / El system prompt del agente QA necesita criterios de aceptacion explicitos y medibles en lugar de estandares vagos, mas un conteo maximo de reintentos para evitar loops infinitos de rechazo.",
+      "options": [
+        { "id": "ccaf-sc-031_a", "text": "Define explicit, measurable acceptance criteria in the QA agent's system prompt with a maximum retry count / Definir criterios de aceptacion explicitos y medibles en el system prompt del agente QA con un maximo de reintentos", "order": 1 },
+        { "id": "ccaf-sc-031_b", "text": "Remove the QA agent and have the dev agent self-validate its own code / Eliminar el agente QA y hacer que el agente dev auto-valide su propio codigo", "order": 2 },
+        { "id": "ccaf-sc-031_c", "text": "Lower the temperature of the QA agent to make it less creative in finding issues / Bajar la temperatura del agente QA para hacerlo menos creativo encontrando problemas", "order": 3 },
+        { "id": "ccaf-sc-031_d", "text": "Add more tools to the QA agent so it can do more thorough analysis / Agregar mas herramientas al agente QA para que haga un analisis mas exhaustivo", "order": 4 }
+      ],
+      "tags": ["scenario", "multi-agent", "qa-validation", "acceptance-criteria"],
+      "scenarioId": "scenario-10"
+    },
+    {
+      "id": "ccaf-sc-032",
+      "text": "Your MCP server needs to provide secure access to a PostgreSQL database containing customer records. The server is used by multiple agents with different permission levels. What is the most secure design for the MCP server's database tools? / Tu servidor MCP necesita proveer acceso seguro a una base de datos PostgreSQL con registros de clientes. El servidor es usado por multiples agentes con diferentes niveles de permisos. Cual es el diseno mas seguro para las herramientas de base de datos del servidor MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-032_b",
+      "explanation": "The MCP server should expose parameterized query tools (not raw SQL execution) with pre-defined query templates that accept specific parameters. Each tool should use a scoped database role with minimum required permissions (read-only for query tools, write for update tools). The server validates all parameters against expected types and ranges before executing. Raw SQL access would allow SQL injection and unauthorized data access. / El servidor MCP debe exponer herramientas de consulta parametrizadas (no ejecucion de SQL raw) con roles de base de datos con permisos minimos.",
+      "options": [
+        { "id": "ccaf-sc-032_a", "text": "Expose a single execute_sql tool that accepts raw SQL queries with a warning in the description / Exponer una unica herramienta execute_sql que acepta consultas SQL raw con una advertencia", "order": 1 },
+        { "id": "ccaf-sc-032_b", "text": "Expose parameterized query tools with pre-defined templates, scoped database roles, and input validation on all parameters / Exponer herramientas de consulta parametrizadas con templates predefinidos, roles de BD con alcance limitado, y validacion de input", "order": 2 },
+        { "id": "ccaf-sc-032_c", "text": "Give the MCP server a read-only connection string and trust the agent to not attempt write operations / Dar al servidor MCP un connection string de solo lectura y confiar en que el agente no intente operaciones de escritura", "order": 3 },
+        { "id": "ccaf-sc-032_d", "text": "Add 'do not access customer PII' to the tool description and log all queries for audit / Agregar 'no acceder a PII de clientes' en la descripcion del tool y registrar todas las consultas para auditoria", "order": 4 }
+      ],
+      "tags": ["scenario", "mcp-security", "database", "parameterized-queries"],
+      "scenarioId": "scenario-10"
+    },
+    {
+      "id": "ccaf-sc-033",
+      "text": "Your agent's context grows to 180,000 tokens after 10 iterations of a complex research task. The agent starts giving inconsistent answers and forgetting earlier findings. What is the most effective intervention? / El contexto de tu agente crece a 180,000 tokens despues de 10 iteraciones de una tarea compleja de investigacion. El agente empieza a dar respuestas inconsistentes y olvidar hallazgos anteriores. Cual es la intervencion mas efectiva?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-033_c",
+      "explanation": "The agent should maintain a running scratchpad or persistent facts block that summarizes key findings after each iteration. When context grows too large, the conversation can be compacted by replacing old tool results with the scratchpad summary. The scratchpad goes at the end of the context (recency bias helps retention). Critical facts are never lost because they are explicitly tracked outside the conversation flow. / El agente debe mantener un scratchpad que resume hallazgos clave despues de cada iteracion. Cuando el contexto crece demasiado, se compacta reemplazando resultados antiguos con el resumen del scratchpad.",
+      "options": [
+        { "id": "ccaf-sc-033_a", "text": "Increase the context window to 200K tokens to accommodate the full conversation / Aumentar la ventana de contexto a 200K tokens para acomodar toda la conversacion", "order": 1 },
+        { "id": "ccaf-sc-033_b", "text": "Truncate the oldest 50% of the conversation to free up space / Truncar el 50% mas antiguo de la conversacion para liberar espacio", "order": 2 },
+        { "id": "ccaf-sc-033_c", "text": "Maintain a running scratchpad of key findings updated after each iteration, and compact old tool results when context grows large / Mantener un scratchpad con hallazgos clave actualizado en cada iteracion, y compactar resultados antiguos cuando el contexto crece", "order": 3 },
+        { "id": "ccaf-sc-033_d", "text": "Start a fresh conversation every 5 iterations to reset the context / Iniciar una conversacion nueva cada 5 iteraciones para resetear el contexto", "order": 4 }
+      ],
+      "tags": ["scenario", "context-growth", "scratchpad", "compaction"],
+      "scenarioId": "scenario-11"
+    },
+    {
+      "id": "ccaf-sc-034",
+      "text": "You need Claude to generate structured JSON responses for an external inventory API that expects a specific schema with nested objects and arrays. The API rejects malformed payloads. What is the most reliable approach? / Necesitas que Claude genere respuestas JSON estructuradas para una API externa de inventario que espera un schema especifico con objetos y arrays anidados. La API rechaza payloads malformados. Cual es el enfoque mas confiable?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-034_b",
+      "explanation": "Defining a tool whose input_schema exactly matches the API's expected schema and using forced tool_choice guarantees Claude outputs valid, schema-conformant JSON every time. The tool's schema acts as a contract, and the API layer simply forwards the tool call arguments. This is more reliable than asking Claude to produce JSON in free text, which risks formatting errors. / Definir un tool cuyo input_schema coincida exactamente con el schema esperado de la API y usar forced tool_choice garantiza JSON valido y conforme al schema cada vez.",
+      "options": [
+        { "id": "ccaf-sc-034_a", "text": "Include the JSON schema in the system prompt with strict formatting instructions / Incluir el schema JSON en el system prompt con instrucciones estrictas de formato", "order": 1 },
+        { "id": "ccaf-sc-034_b", "text": "Define a tool with input_schema matching the API schema and use forced tool_choice for guaranteed structure / Definir un tool con input_schema que coincida con el schema de la API y usar forced tool_choice", "order": 2 },
+        { "id": "ccaf-sc-034_c", "text": "Ask Claude to wrap JSON in code blocks and parse it with a regex extractor / Pedir a Claude que envuelva JSON en bloques de codigo y parsearlo con un extractor regex", "order": 3 },
+        { "id": "ccaf-sc-034_d", "text": "Use Claude to generate a description and have a separate service convert it to JSON / Usar Claude para generar una descripcion y tener un servicio separado que lo convierta a JSON", "order": 4 }
+      ],
+      "tags": ["scenario", "structured-json", "forced-tool-choice", "api-integration"],
+      "scenarioId": "scenario-11"
+    },
+    {
+      "id": "ccaf-sc-035",
+      "text": "Your deployment agent needs to execute bash commands on production servers to manage releases. A junior developer accidentally prompted the agent to run 'rm -rf /var/log' on production. What architectural safeguard should be in place? / Tu agente de deploy necesita ejecutar comandos bash en servidores de produccion para gestionar releases. Un desarrollador junior accidentalmente pidio al agente ejecutar 'rm -rf /var/log' en produccion. Que salvaguarda arquitectonica deberia estar implementada?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-035_a",
+      "explanation": "The deployment MCP server should expose specific, named deployment operations (deploy_release, rollback, check_status) rather than a generic execute_bash tool. Each tool validates its parameters against an allowlist of safe operations. A generic bash execution tool on production is inherently unsafe regardless of prompt instructions. Defense-in-depth means the tool itself prevents dangerous operations, not the prompt. / El servidor MCP de deploy debe exponer operaciones especificas nombradas en lugar de un tool generico execute_bash. Cada tool valida parametros contra una lista de operaciones seguras.",
+      "options": [
+        { "id": "ccaf-sc-035_a", "text": "Replace the generic bash tool with specific named operations (deploy_release, rollback, check_status) that validate parameters against an allowlist / Reemplazar el tool bash generico con operaciones nombradas especificas que validan parametros contra una lista permitida", "order": 1 },
+        { "id": "ccaf-sc-035_b", "text": "Add 'never run destructive commands' to the system prompt and trust the model / Agregar 'nunca ejecutes comandos destructivos' al system prompt y confiar en el modelo", "order": 2 },
+        { "id": "ccaf-sc-035_c", "text": "Require a human approval step for every bash command the agent wants to run / Requerir aprobacion humana para cada comando bash que el agente quiera ejecutar", "order": 3 },
+        { "id": "ccaf-sc-035_d", "text": "Run the agent in a sandboxed environment that mirrors production / Ejecutar el agente en un entorno sandbox que replica produccion", "order": 4 }
+      ],
+      "tags": ["scenario", "production-safety", "allowlist", "defense-in-depth"],
+      "scenarioId": "scenario-12"
+    },
+    {
+      "id": "ccaf-sc-036",
+      "text": "You are implementing prompt caching for a customer support chatbot that handles 5,000 conversations/day. Each conversation has a 3,000-token system prompt and conversation-specific context. After enabling caching, you notice cache hit rates are only 15%. What is the likely cause? / Estas implementando prompt caching para un chatbot de soporte al cliente que maneja 5,000 conversaciones/dia. Cada conversacion tiene un system prompt de 3,000 tokens y contexto especifico. Despues de habilitar caching, notas que la tasa de cache hits es solo 15%. Cual es la causa probable?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-036_c",
+      "explanation": "Prompt caching requires an exact prefix match. If conversation-specific context (customer name, ticket ID) is injected into the system prompt before the shared instructions, every conversation has a different prefix and the cache misses. The fix is to structure the prompt with the static shared content first (which gets cached), followed by the dynamic per-conversation context. Order matters for cache hits. / El prompt caching requiere coincidencia exacta del prefijo. Si el contexto por conversacion se inyecta antes de las instrucciones compartidas, cada conversacion tiene un prefijo diferente y el cache falla.",
+      "options": [
+        { "id": "ccaf-sc-036_a", "text": "The system prompt is too short to benefit from caching (needs 4,000+ tokens) / El system prompt es demasiado corto para beneficiarse del caching (necesita 4,000+ tokens)", "order": 1 },
+        { "id": "ccaf-sc-036_b", "text": "The cache TTL is too short and expires between conversations / El TTL del cache es muy corto y expira entre conversaciones", "order": 2 },
+        { "id": "ccaf-sc-036_c", "text": "Dynamic per-conversation data is placed before the static instructions, breaking the prefix match needed for cache hits / Los datos dinamicos por conversacion estan antes de las instrucciones estaticas, rompiendo la coincidencia de prefijo", "order": 3 },
+        { "id": "ccaf-sc-036_d", "text": "Prompt caching does not work with the Messages API, only with the Completions API / El prompt caching no funciona con la API de Messages, solo con la API de Completions", "order": 4 }
+      ],
+      "tags": ["scenario", "prompt-caching", "prefix-match", "cache-hits"],
+      "scenarioId": "scenario-12"
+    },
+    {
+      "id": "ccaf-sc-037",
+      "text": "Your team built an MCP server that wraps a legacy REST API. The server works locally but fails in the CI/CD environment with 'connection refused' errors. The MCP server uses stdio transport. What is the most likely issue? / Tu equipo construyo un servidor MCP que envuelve una API REST legacy. El servidor funciona localmente pero falla en el entorno CI/CD con errores de 'connection refused'. El servidor MCP usa transporte stdio. Cual es el problema mas probable?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-037_d",
+      "explanation": "MCP servers using stdio transport communicate via stdin/stdout with the local process. The 'connection refused' error indicates the MCP server is trying to reach the legacy REST API, which is likely not accessible from the CI/CD environment (different network, no VPN, firewall rules). The MCP transport itself (stdio) works fine locally since it is process-based, but the underlying REST API the server calls is not reachable. / El error indica que el servidor MCP intenta alcanzar la API REST legacy que probablemente no es accesible desde el entorno CI/CD (red diferente, sin VPN, reglas de firewall).",
+      "options": [
+        { "id": "ccaf-sc-037_a", "text": "Stdio transport does not work in CI/CD; switch to SSE transport / El transporte stdio no funciona en CI/CD; cambiar a transporte SSE", "order": 1 },
+        { "id": "ccaf-sc-037_b", "text": "The MCP server binary is not installed in the CI/CD container / El binario del servidor MCP no esta instalado en el contenedor CI/CD", "order": 2 },
+        { "id": "ccaf-sc-037_c", "text": "The CI/CD environment does not support Node.js which the MCP server requires / El entorno CI/CD no soporta Node.js que requiere el servidor MCP", "order": 3 },
+        { "id": "ccaf-sc-037_d", "text": "The legacy REST API the MCP server calls is not network-accessible from the CI/CD environment / La API REST legacy que el servidor MCP llama no es accesible por red desde el entorno CI/CD", "order": 4 }
+      ],
+      "tags": ["scenario", "mcp-stdio", "ci-cd", "network-access"],
+      "scenarioId": "scenario-13"
+    },
+    {
+      "id": "ccaf-sc-038",
+      "text": "You are building a content moderation pipeline where Claude reviews user-generated posts. The system must handle 1,000 posts/hour and each review needs to return a structured decision (approve/flag/reject) with reasoning. The current implementation makes individual API calls, causing high latency. What optimization should you apply? / Estas construyendo un pipeline de moderacion de contenido donde Claude revisa posts de usuarios. El sistema debe manejar 1,000 posts/hora y cada revision debe retornar una decision estructurada con razonamiento. La implementacion actual hace llamadas API individuales, causando alta latencia. Que optimizacion debes aplicar?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-038_a",
+      "explanation": "The Message Batches API is designed for high-throughput, non-real-time workloads. It accepts up to 10,000 requests per batch, processes them asynchronously with 50% cost reduction, and returns results within 24 hours. For content moderation that does not require instant responses, batching 1,000 posts into a single batch request dramatically reduces both cost and rate-limiting issues. / La API de Message Batches esta disenada para cargas de alto volumen no en tiempo real, con hasta 10,000 requests por batch y 50% de reduccion de costos.",
+      "options": [
+        { "id": "ccaf-sc-038_a", "text": "Use the Message Batches API to submit all posts as a batch with 50% cost reduction and async processing / Usar la API de Message Batches para enviar todos los posts como batch con 50% de reduccion de costos", "order": 1 },
+        { "id": "ccaf-sc-038_b", "text": "Concatenate multiple posts into a single prompt and ask Claude to review them all at once / Concatenar multiples posts en un solo prompt y pedir a Claude que los revise todos a la vez", "order": 2 },
+        { "id": "ccaf-sc-038_c", "text": "Use multiple API keys to parallelize requests and bypass rate limits / Usar multiples API keys para paralelizar requests y evadir rate limits", "order": 3 },
+        { "id": "ccaf-sc-038_d", "text": "Cache previous moderation decisions and only send new unique posts / Cachear decisiones de moderacion previas y solo enviar posts nuevos unicos", "order": 4 }
+      ],
+      "tags": ["scenario", "batches-api", "content-moderation", "throughput"],
+      "scenarioId": "scenario-13"
+    },
+    {
+      "id": "ccaf-sc-039",
+      "text": "Your agentic workflow uses Claude to generate SQL queries for a business intelligence dashboard. The agent generates syntactically correct SQL but sometimes returns queries that would take 30+ minutes to execute on the production database, causing performance issues. What is the best mitigation? / Tu workflow agentico usa Claude para generar consultas SQL para un dashboard de business intelligence. El agente genera SQL sintacticamente correcto pero a veces retorna consultas que tomarian 30+ minutos en ejecutarse, causando problemas de rendimiento. Cual es la mejor mitigacion?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-039_d",
+      "explanation": "The MCP tool should implement a query execution timeout and run EXPLAIN ANALYZE before executing the actual query. If the estimated cost exceeds a threshold, the tool returns the execution plan to Claude with a request to optimize the query. This is a validation-retry loop at the tool level: the tool catches dangerous queries before they impact production. / La herramienta MCP debe implementar un timeout de ejecucion y correr EXPLAIN ANALYZE antes de ejecutar. Si el costo estimado excede un umbral, retorna el plan de ejecucion a Claude para optimizar.",
+      "options": [
+        { "id": "ccaf-sc-039_a", "text": "Add 'only generate efficient queries' to the system prompt / Agregar 'solo genera consultas eficientes' al system prompt", "order": 1 },
+        { "id": "ccaf-sc-039_b", "text": "Limit the agent to pre-defined query templates that cannot be modified / Limitar al agente a templates de consulta predefinidos que no pueden modificarse", "order": 2 },
+        { "id": "ccaf-sc-039_c", "text": "Run all queries on a read replica to avoid impacting the production database / Ejecutar todas las consultas en una replica de lectura para no impactar produccion", "order": 3 },
+        { "id": "ccaf-sc-039_d", "text": "Have the MCP tool run EXPLAIN ANALYZE first and return the plan to Claude for optimization if estimated cost exceeds a threshold / Hacer que el tool MCP ejecute EXPLAIN ANALYZE primero y retorne el plan a Claude para optimizacion si el costo excede un umbral", "order": 4 }
+      ],
+      "tags": ["scenario", "sql-optimization", "validation-retry", "query-performance"],
+      "scenarioId": "scenario-14"
+    },
+    {
+      "id": "ccaf-sc-040",
+      "text": "Your customer-facing chatbot uses extended thinking to handle complex financial calculations. Users complain that simple greeting messages like 'Hello' take 5+ seconds to respond. What should you implement? / Tu chatbot orientado al cliente usa extended thinking para manejar calculos financieros complejos. Los usuarios se quejan de que mensajes simples como 'Hola' toman 5+ segundos en responder. Que debes implementar?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-040_c",
+      "explanation": "A classifier should route messages to different processing paths: simple messages (greetings, FAQs) go to a lightweight model or cached responses without extended thinking, while complex financial queries are routed to the full pipeline with extended thinking enabled. Using extended thinking for every message wastes compute and increases latency for simple interactions. / Un clasificador debe enrutar mensajes a diferentes caminos: mensajes simples a un modelo ligero sin extended thinking, consultas complejas al pipeline completo con extended thinking.",
+      "options": [
+        { "id": "ccaf-sc-040_a", "text": "Reduce the budget_tokens for extended thinking to minimize latency across all messages / Reducir el budget_tokens para extended thinking para minimizar latencia en todos los mensajes", "order": 1 },
+        { "id": "ccaf-sc-040_b", "text": "Pre-generate cached responses for common greetings and bypass Claude entirely / Pre-generar respuestas cacheadas para saludos comunes y evitar Claude completamente", "order": 2 },
+        { "id": "ccaf-sc-040_c", "text": "Implement a message classifier that routes simple messages to a fast path without extended thinking, and complex queries to the full pipeline / Implementar un clasificador que enrute mensajes simples sin extended thinking y consultas complejas al pipeline completo", "order": 3 },
+        { "id": "ccaf-sc-040_d", "text": "Disable extended thinking entirely and rely on standard responses for all queries / Deshabilitar extended thinking completamente y depender de respuestas estandar para todas las consultas", "order": 4 }
+      ],
+      "tags": ["scenario", "extended-thinking", "routing", "latency-optimization"],
+      "scenarioId": "scenario-14"
+    },
+    {
+      "id": "ccaf-sc-041",
+      "text": "Your e-commerce platform uses Claude to generate product descriptions from structured data. The marketing team complains that descriptions for similar products are nearly identical and lack brand voice differentiation. What prompt engineering technique would be most effective? / Tu plataforma de e-commerce usa Claude para generar descripciones de productos desde datos estructurados. El equipo de marketing se queja de que las descripciones de productos similares son casi identicas y carecen de diferenciacion de voz de marca. Que tecnica de prompt engineering seria mas efectiva?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-041_b",
+      "explanation": "Including a detailed brand voice guide with specific examples of desired tone, vocabulary, and style patterns in the system prompt gives Claude the context it needs to differentiate descriptions. Few-shot examples showing input data paired with the ideal branded output teach the model the specific voice. The system prompt should include what makes each product category unique and how to highlight differentiators. / Incluir una guia detallada de voz de marca con ejemplos especificos de tono, vocabulario y patrones de estilo en el system prompt, junto con few-shot examples del output ideal.",
+      "options": [
+        { "id": "ccaf-sc-041_a", "text": "Increase the temperature to 1.0 to get more creative and varied outputs / Aumentar la temperatura a 1.0 para obtener outputs mas creativos y variados", "order": 1 },
+        { "id": "ccaf-sc-041_b", "text": "Add a brand voice guide with specific tone and vocabulary examples, plus few-shot examples of ideal branded descriptions / Agregar una guia de voz de marca con ejemplos de tono y vocabulario, mas few-shot examples de descripciones ideales", "order": 2 },
+        { "id": "ccaf-sc-041_c", "text": "Generate 5 variations and let the marketing team pick the best one each time / Generar 5 variaciones y dejar que el equipo de marketing elija la mejor cada vez", "order": 3 },
+        { "id": "ccaf-sc-041_d", "text": "Use a different model for each product category to ensure variety / Usar un modelo diferente para cada categoria de producto para asegurar variedad", "order": 4 }
+      ],
+      "tags": ["scenario", "brand-voice", "few-shot", "product-descriptions"],
+      "scenarioId": "scenario-15"
+    },
+    {
+      "id": "ccaf-sc-042",
+      "text": "You are building a Claude-powered agent that helps developers debug production incidents. The agent has access to log search, metrics dashboard, and deployment history tools. During a critical incident, the agent enters a loop: it searches logs, finds an error, searches for related logs, finds another error, and keeps searching without ever proposing a solution. What should you add to the agent's design? / Estas construyendo un agente que ayuda a debuggear incidentes de produccion. El agente tiene acceso a busqueda de logs, dashboard de metricas y historial de deploy. Durante un incidente critico, el agente entra en un loop buscando logs sin proponer nunca una solucion. Que debes agregar al diseno del agente?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-042_b",
+      "explanation": "The agent needs a maximum iteration count and explicit phase transitions in its system prompt. After N search iterations (e.g., 5), it must transition from 'investigation' to 'diagnosis' phase where it synthesizes findings and proposes solutions. Without explicit phase transitions and iteration limits, the agent can get stuck in an infinite investigation loop, especially when each search yields more leads to follow. / El agente necesita un conteo maximo de iteraciones y transiciones de fase explicitas: despues de N busquedas, debe pasar de 'investigacion' a 'diagnostico' donde sintetiza hallazgos.",
+      "options": [
+        { "id": "ccaf-sc-042_a", "text": "Remove some of the search tools to limit the agent's investigation capability / Eliminar algunas herramientas de busqueda para limitar la capacidad de investigacion", "order": 1 },
+        { "id": "ccaf-sc-042_b", "text": "Add a maximum iteration count with explicit phase transitions (investigate -> diagnose -> propose) in the system prompt / Agregar conteo maximo de iteraciones con transiciones de fase explicitas (investigar -> diagnosticar -> proponer) en el system prompt", "order": 2 },
+        { "id": "ccaf-sc-042_c", "text": "Set a hard timeout of 60 seconds on the entire agent execution / Establecer un timeout duro de 60 segundos en toda la ejecucion del agente", "order": 3 },
+        { "id": "ccaf-sc-042_d", "text": "Pre-filter the logs before giving them to the agent so there is less to search / Pre-filtrar los logs antes de darselos al agente para que haya menos que buscar", "order": 4 }
+      ],
+      "tags": ["scenario", "agentic-loop", "phase-transitions", "incident-response"],
+      "scenarioId": "scenario-15"
+    },
+    {
+      "id": "ccaf-sc-043",
+      "text": "Your team uses Claude Code with hooks to enforce code quality. A pre-commit hook runs a linter, but developers report that Claude Code sometimes commits code that fails linting because it uses --no-verify. How should you prevent this? / Tu equipo usa Claude Code con hooks para enforcar calidad de codigo. Un hook pre-commit ejecuta un linter, pero los desarrolladores reportan que Claude Code a veces commitea codigo que falla el linting porque usa --no-verify. Como debes prevenir esto?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-043_a",
+      "explanation": "Claude Code hooks (PreToolUse, PostToolUse) defined in settings.json can intercept and modify tool behavior. A PreToolUse hook on the Bash tool can inspect the command for --no-verify flags and block it, or better yet, the CLAUDE.md should explicitly instruct Claude to never use --no-verify. The most robust approach is configuring a PreToolUse hook that rejects any git commit command containing --no-verify. / Un hook PreToolUse en settings.json puede interceptar comandos Bash e inspeccionar por flags --no-verify y bloquearlo programaticamente.",
+      "options": [
+        { "id": "ccaf-sc-043_a", "text": "Configure a PreToolUse hook in settings.json that blocks any Bash command containing --no-verify / Configurar un hook PreToolUse en settings.json que bloquee cualquier comando Bash con --no-verify", "order": 1 },
+        { "id": "ccaf-sc-043_b", "text": "Add 'never use --no-verify' to CLAUDE.md and hope the model follows the instruction / Agregar 'nunca uses --no-verify' al CLAUDE.md y esperar que el modelo siga la instruccion", "order": 2 },
+        { "id": "ccaf-sc-043_c", "text": "Remove write access to git from Claude Code's allowed tools / Eliminar acceso de escritura a git de las herramientas permitidas de Claude Code", "order": 3 },
+        { "id": "ccaf-sc-043_d", "text": "Run the linter manually after every Claude Code session / Ejecutar el linter manualmente despues de cada sesion de Claude Code", "order": 4 }
+      ],
+      "tags": ["scenario", "hooks", "pre-tool-use", "code-quality"],
+      "scenarioId": "scenario-16"
+    },
+    {
+      "id": "ccaf-sc-044",
+      "text": "You are building a multi-turn customer service agent that needs to remember the customer's name, account number, and issue throughout a conversation. After 20+ turns, the agent starts addressing the customer by the wrong name. What is the best solution? / Estas construyendo un agente de servicio al cliente multi-turno que necesita recordar nombre, numero de cuenta y problema del cliente. Despues de 20+ turnos, el agente empieza a dirigirse al cliente con el nombre equivocado. Cual es la mejor solucion?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-044_a",
+      "explanation": "A persistent facts block (or system prompt injection) that stores critical customer details and is included in every turn ensures these facts are always in the model's immediate context. As conversations grow long, information from early turns gets pushed further from the attention window. By maintaining key facts in a fixed position (system prompt or beginning of each turn), they remain reliably accessible. / Un bloque de hechos persistentes que almacena detalles criticos del cliente e incluido en cada turno asegura que estos hechos esten siempre en el contexto inmediato.",
+      "options": [
+        { "id": "ccaf-sc-044_a", "text": "Maintain a persistent facts block with customer details that is injected into the system prompt or beginning of each turn / Mantener un bloque de hechos persistentes con detalles del cliente inyectado en el system prompt o inicio de cada turno", "order": 1 },
+        { "id": "ccaf-sc-044_b", "text": "Repeat the customer's name in every assistant response to reinforce it / Repetir el nombre del cliente en cada respuesta del asistente para reforzarlo", "order": 2 },
+        { "id": "ccaf-sc-044_c", "text": "Limit conversations to 10 turns maximum and start a new session after that / Limitar las conversaciones a 10 turnos maximo e iniciar una nueva sesion despues", "order": 3 },
+        { "id": "ccaf-sc-044_d", "text": "Use a smaller model that is better at retaining information across turns / Usar un modelo mas pequeno que sea mejor reteniendo informacion entre turnos", "order": 4 }
+      ],
+      "tags": ["scenario", "persistent-facts", "multi-turn", "customer-service"],
+      "scenarioId": "scenario-16"
+    },
+    {
+      "id": "ccaf-sc-045",
+      "text": "Your company is migrating from GPT-4 to Claude for a document summarization pipeline. The existing prompts use 'You are a helpful assistant' style instructions. After migration, Claude's summaries are verbose and include unnecessary caveats. What is the most effective prompt adjustment? / Tu empresa esta migrando de GPT-4 a Claude para un pipeline de resumen de documentos. Los prompts existentes usan instrucciones estilo 'You are a helpful assistant'. Despues de la migracion, los resumenes de Claude son verbosos e incluyen caveats innecesarios. Cual es el ajuste de prompt mas efectivo?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-045_d",
+      "explanation": "Claude responds well to direct, specific instructions about output format. Instead of vague 'helpful assistant' framing, the prompt should specify: exact summary length (e.g., '3-5 bullet points, max 200 words'), no hedging language, and use prefilling to start the response format. Claude's tendency toward caveats can be eliminated with explicit instructions like 'Do not include disclaimers or hedging. State facts directly.' / Claude responde bien a instrucciones directas y especificas: longitud exacta, sin hedging, y usar prefilling para iniciar el formato de respuesta.",
+      "options": [
+        { "id": "ccaf-sc-045_a", "text": "Reduce the temperature to 0 to eliminate creative additions / Reducir la temperatura a 0 para eliminar adiciones creativas", "order": 1 },
+        { "id": "ccaf-sc-045_b", "text": "Keep the same prompts but add 'be concise' at the end / Mantener los mismos prompts pero agregar 'se conciso' al final", "order": 2 },
+        { "id": "ccaf-sc-045_c", "text": "Switch to Claude Haiku for summarization tasks since it produces shorter outputs / Cambiar a Claude Haiku para tareas de resumen ya que produce outputs mas cortos", "order": 3 },
+        { "id": "ccaf-sc-045_d", "text": "Replace vague instructions with specific format requirements (length, no hedging), and use prefilling to start the response structure / Reemplazar instrucciones vagas con requisitos de formato especificos (longitud, sin hedging), y usar prefilling para iniciar la estructura", "order": 4 }
+      ],
+      "tags": ["scenario", "migration", "verbosity", "prefilling"],
+      "scenarioId": "scenario-17"
+    },
+    {
+      "id": "ccaf-sc-046",
+      "text": "Your data pipeline uses Claude to classify customer feedback into 15 categories. You notice that 3 categories are consistently confused: 'billing issue', 'payment failed', and 'refund request'. They overlap semantically. How should you improve classification accuracy? / Tu pipeline de datos usa Claude para clasificar feedback de clientes en 15 categorias. Notas que 3 categorias se confunden consistentemente: 'billing issue', 'payment failed' y 'refund request'. Se solapan semanticamente. Como mejorar la precision de clasificacion?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-046_c",
+      "explanation": "Adding explicit disambiguation criteria and boundary examples for the confusing categories directly addresses semantic overlap. The system prompt should include a decision tree or explicit rules: 'billing issue = incorrect charges on statement; payment failed = transaction did not complete; refund request = customer wants money back for completed transaction'. Few-shot examples of borderline cases teach the model the exact boundaries. / Agregar criterios de desambiguacion explicitos y ejemplos de frontera para las categorias confusas aborda directamente el solapamiento semantico.",
+      "options": [
+        { "id": "ccaf-sc-046_a", "text": "Merge the 3 confusing categories into a single 'financial issue' category / Fusionar las 3 categorias confusas en una sola categoria 'financial issue'", "order": 1 },
+        { "id": "ccaf-sc-046_b", "text": "Run classification twice and only accept results where both runs agree / Ejecutar la clasificacion dos veces y solo aceptar donde ambas coincidan", "order": 2 },
+        { "id": "ccaf-sc-046_c", "text": "Add explicit disambiguation criteria and few-shot boundary examples for the overlapping categories in the system prompt / Agregar criterios de desambiguacion explicitos y few-shot examples de frontera para las categorias solapadas", "order": 3 },
+        { "id": "ccaf-sc-046_d", "text": "Fine-tune a custom model on labeled examples of the 3 confusing categories / Fine-tunear un modelo custom con ejemplos etiquetados de las 3 categorias confusas", "order": 4 }
+      ],
+      "tags": ["scenario", "classification", "disambiguation", "few-shot-boundary"],
+      "scenarioId": "scenario-17"
+    },
+    {
+      "id": "ccaf-sc-047",
+      "text": "Your agent generates API documentation by reading source code. It has access to a code_search tool and a file_read tool. The agent consistently produces documentation for public functions but misses internal helper functions that are important for maintainers. What should you change? / Tu agente genera documentacion de API leyendo codigo fuente. Tiene acceso a herramientas code_search y file_read. El agente produce documentacion para funciones publicas pero omite funciones auxiliares internas importantes para mantenedores. Que debes cambiar?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-047_b",
+      "explanation": "The system prompt needs to explicitly define scope: 'Document ALL functions including internal/private helpers that are called by 2+ other functions.' The agent's default behavior reflects common documentation patterns (public API only). By specifying the inclusion criteria explicitly and providing examples of the desired internal function documentation, the agent will adjust its behavior. Think step-by-step instructions for what to scan. / El system prompt necesita definir explicitamente el alcance: documentar TODAS las funciones incluyendo helpers internos, con criterios de inclusion y ejemplos.",
+      "options": [
+        { "id": "ccaf-sc-047_a", "text": "Add a tool that specifically lists all internal functions in a file / Agregar una herramienta que liste especificamente todas las funciones internas", "order": 1 },
+        { "id": "ccaf-sc-047_b", "text": "Update the system prompt with explicit scope criteria including internal functions, and provide examples of the expected documentation / Actualizar el system prompt con criterios de alcance incluyendo funciones internas, y proveer ejemplos de la documentacion esperada", "order": 2 },
+        { "id": "ccaf-sc-047_c", "text": "Run the documentation agent twice: once for public and once for internal functions / Ejecutar el agente dos veces: una para funciones publicas y otra para internas", "order": 3 },
+        { "id": "ccaf-sc-047_d", "text": "Use a more capable model that naturally documents all function types / Usar un modelo mas capaz que documente todos los tipos de funciones naturalmente", "order": 4 }
+      ],
+      "tags": ["scenario", "documentation", "scope-definition", "system-prompt"],
+      "scenarioId": "scenario-18"
+    },
+    {
+      "id": "ccaf-sc-048",
+      "text": "You are configuring Claude Code for a team that works with both a main application repo and a shared component library repo. Developers need Claude Code to understand the component library's API when working in the main app. What is the best configuration? / Estas configurando Claude Code para un equipo que trabaja con un repo de aplicacion principal y un repo de libreria de componentes compartida. Los desarrolladores necesitan que Claude Code entienda la API de la libreria cuando trabajan en la app principal. Cual es la mejor configuracion?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-048_a",
+      "explanation": "Using @import in the main app's CLAUDE.md to reference the component library's API documentation (e.g., @import ../component-library/docs/api.md) brings the library context into Claude Code automatically when working in the main app. This keeps the documentation in one place (the library repo) while making it available in the consuming repo. The path can be relative or absolute. / Usar @import en el CLAUDE.md de la app principal para referenciar la documentacion API de la libreria de componentes trae el contexto automaticamente.",
+      "options": [
+        { "id": "ccaf-sc-048_a", "text": "Use @import in the main app's CLAUDE.md to reference the component library's API docs / Usar @import en el CLAUDE.md de la app principal para referenciar los docs API de la libreria", "order": 1 },
+        { "id": "ccaf-sc-048_b", "text": "Copy the component library's documentation into the main app's CLAUDE.md manually / Copiar la documentacion de la libreria manualmente al CLAUDE.md de la app principal", "order": 2 },
+        { "id": "ccaf-sc-048_c", "text": "Create an MCP server that serves the component library's API information / Crear un servidor MCP que sirva la informacion API de la libreria", "order": 3 },
+        { "id": "ccaf-sc-048_d", "text": "Tell developers to open both repos in the same Claude Code session / Decir a los desarrolladores que abran ambos repos en la misma sesion de Claude Code", "order": 4 }
+      ],
+      "tags": ["scenario", "import", "cross-repo", "component-library"],
+      "scenarioId": "scenario-18"
+    },
+    {
+      "id": "ccaf-sc-049",
+      "text": "Your legal tech startup built an MCP server that provides contract template tools. A client reports that when two agents simultaneously request the same template, the server sometimes returns corrupted data. The server uses a shared in-memory cache. What is the root cause and fix? / Tu startup de legal tech construyo un servidor MCP que provee herramientas de templates de contratos. Un cliente reporta que cuando dos agentes solicitan el mismo template simultaneamente, el servidor a veces retorna datos corruptos. El servidor usa una cache en memoria compartida. Cual es la causa raiz y solucion?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-049_c",
+      "explanation": "The root cause is a race condition in the shared in-memory cache. When two concurrent requests read and write to the same cache entry, data corruption occurs. The fix is to ensure thread-safe cache access (using locks, immutable data structures, or copy-on-read patterns). Since MCP servers can receive concurrent requests, all shared state must be properly synchronized. / La causa raiz es una condicion de carrera en la cache compartida en memoria. La solucion es asegurar acceso thread-safe a la cache con locks o estructuras inmutables.",
+      "options": [
+        { "id": "ccaf-sc-049_a", "text": "The MCP server needs to be upgraded to handle more concurrent connections / El servidor MCP necesita ser actualizado para manejar mas conexiones concurrentes", "order": 1 },
+        { "id": "ccaf-sc-049_b", "text": "Switch from stdio to SSE transport to handle concurrent requests / Cambiar de transporte stdio a SSE para manejar requests concurrentes", "order": 2 },
+        { "id": "ccaf-sc-049_c", "text": "The shared in-memory cache has a race condition; implement thread-safe access with locks or immutable data structures / La cache en memoria compartida tiene una condicion de carrera; implementar acceso thread-safe con locks o estructuras inmutables", "order": 3 },
+        { "id": "ccaf-sc-049_d", "text": "Limit the server to one concurrent request at a time using a request queue / Limitar el servidor a un request concurrente a la vez usando una cola de requests", "order": 4 }
+      ],
+      "tags": ["scenario", "mcp-concurrency", "race-condition", "thread-safety"],
+      "scenarioId": "scenario-19"
+    },
+    {
+      "id": "ccaf-sc-050",
+      "text": "You are designing an agent that processes insurance claims. The agent must: (1) extract claim data from submitted documents, (2) check policy coverage, (3) calculate payout amounts, and (4) generate a decision letter. Step 3 requires exact numerical calculations. What is the best architecture? / Estas disenando un agente que procesa reclamaciones de seguros. El agente debe: (1) extraer datos del reclamo, (2) verificar cobertura de poliza, (3) calcular montos de pago, (4) generar carta de decision. El paso 3 requiere calculos numericos exactos. Cual es la mejor arquitectura?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-050_d",
+      "explanation": "Claude should handle steps 1, 2, and 4 (natural language tasks: extraction, policy interpretation, letter writing), while step 3 (exact numerical calculation) should be delegated to a deterministic calculation tool. LLMs are unreliable for precise math. The tool takes the extracted data and policy rules as structured input and returns exact payout amounts. Claude then uses this verified number in the decision letter. / Claude maneja los pasos de lenguaje natural, mientras el calculo numerico exacto se delega a una herramienta determinista que toma datos estructurados y retorna montos exactos.",
+      "options": [
+        { "id": "ccaf-sc-050_a", "text": "Have Claude handle all 4 steps sequentially in a single conversation with chain-of-thought for calculations / Que Claude maneje los 4 pasos secuencialmente con chain-of-thought para calculos", "order": 1 },
+        { "id": "ccaf-sc-050_b", "text": "Use 4 separate specialized agents, one for each step, coordinated by a pipeline / Usar 4 agentes especializados separados, uno por paso, coordinados por un pipeline", "order": 2 },
+        { "id": "ccaf-sc-050_c", "text": "Use Claude only for the decision letter and handle everything else with traditional code / Usar Claude solo para la carta de decision y manejar todo lo demas con codigo tradicional", "order": 3 },
+        { "id": "ccaf-sc-050_d", "text": "Claude handles extraction, coverage check, and letter generation; exact payout calculation is delegated to a deterministic tool / Claude maneja extraccion, verificacion de cobertura, y carta; el calculo exacto se delega a una herramienta determinista", "order": 4 }
+      ],
+      "tags": ["scenario", "hybrid-architecture", "deterministic-tools", "insurance"],
+      "scenarioId": "scenario-19"
+    },
+    {
+      "id": "ccaf-sc-051",
+      "text": "Your team runs Claude Code in CI to auto-fix failing lint rules on PRs. The agent fixes the lint errors but sometimes introduces new bugs because it changes logic while fixing formatting. What is the best guardrail to implement? / Tu equipo ejecuta Claude Code en CI para auto-corregir reglas de lint que fallan en PRs. El agente corrige errores de lint pero a veces introduce nuevos bugs porque cambia logica al corregir formato. Cual es la mejor salvaguarda a implementar?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-051_b",
+      "explanation": "A PostToolUse hook that runs the test suite after any file edit ensures that lint fixes do not break functionality. If tests fail after an edit, the hook can reject the change and notify the agent. Combined with explicit CLAUDE.md instructions to 'only modify formatting and whitespace, never change logic or variable names', this provides defense-in-depth. The hook is the programmatic guardrail; the instructions guide the model. / Un hook PostToolUse que ejecuta el test suite despues de cada edicion de archivo, combinado con instrucciones explicitas de solo modificar formato.",
+      "options": [
+        { "id": "ccaf-sc-051_a", "text": "Restrict Claude Code to only edit whitespace characters using a regex filter / Restringir Claude Code a solo editar caracteres de espacio en blanco con un filtro regex", "order": 1 },
+        { "id": "ccaf-sc-051_b", "text": "Configure a PostToolUse hook that runs the test suite after file edits and rejects changes that break tests / Configurar un hook PostToolUse que ejecute el test suite despues de ediciones y rechace cambios que rompan tests", "order": 2 },
+        { "id": "ccaf-sc-051_c", "text": "Only allow Claude Code to suggest changes, not apply them directly / Solo permitir que Claude Code sugiera cambios, no aplicarlos directamente", "order": 3 },
+        { "id": "ccaf-sc-051_d", "text": "Add 'do not change any logic' to the system prompt / Agregar 'no cambies ninguna logica' al system prompt", "order": 4 }
+      ],
+      "tags": ["scenario", "post-tool-use", "test-guardrail", "lint-fix"],
+      "scenarioId": "scenario-20"
+    },
+    {
+      "id": "ccaf-sc-052",
+      "text": "Your application uses Claude to translate user interface strings into 12 languages. The translation tool returns results as a JSON object with language codes as keys. After deploying, you find that Claude sometimes omits 2-3 languages from the response. What is the best fix? / Tu aplicacion usa Claude para traducir strings de interfaz de usuario a 12 idiomas. La herramienta de traduccion retorna resultados como objeto JSON con codigos de idioma como keys. Despues de deployar, encuentras que Claude a veces omite 2-3 idiomas. Cual es la mejor solucion?",
+      "domainCode": "prompt-engineering",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-052_a",
+      "explanation": "The tool schema should define the output with all 12 language codes as required fields in the JSON schema. When using forced tool_choice with required fields, Claude must populate every field before the response is considered complete. This makes omission structurally impossible rather than relying on the model remembering all 12 languages. Combine with explicit listing of all target languages in the system prompt. / El schema del tool debe definir los 12 codigos de idioma como campos requeridos. Con forced tool_choice y campos requeridos, la omision es estructuralmente imposible.",
+      "options": [
+        { "id": "ccaf-sc-052_a", "text": "Define all 12 language codes as required fields in the tool schema with forced tool_choice / Definir los 12 codigos de idioma como campos requeridos en el schema del tool con forced tool_choice", "order": 1 },
+        { "id": "ccaf-sc-052_b", "text": "Make 12 separate API calls, one per language, to ensure each is translated / Hacer 12 llamadas API separadas, una por idioma, para asegurar que cada uno se traduzca", "order": 2 },
+        { "id": "ccaf-sc-052_c", "text": "Add 'you MUST translate to all 12 languages' in bold to the system prompt / Agregar 'DEBES traducir a los 12 idiomas' en negritas al system prompt", "order": 3 },
+        { "id": "ccaf-sc-052_d", "text": "Check the response and retry the entire translation if any languages are missing / Verificar la respuesta y reintentar toda la traduccion si faltan idiomas", "order": 4 }
+      ],
+      "tags": ["scenario", "required-fields", "translation", "tool-schema"],
+      "scenarioId": "scenario-20"
+    },
+    {
+      "id": "ccaf-sc-053",
+      "text": "You manage a fleet of 50 Claude-powered agents that handle different business processes. You need to update the safety guidelines across all agents simultaneously. Currently, each agent has its own system prompt with embedded safety rules. What is the best architectural improvement? / Gestionas una flota de 50 agentes powered by Claude que manejan diferentes procesos de negocio. Necesitas actualizar las guias de seguridad en todos los agentes simultaneamente. Actualmente, cada agente tiene su propio system prompt con reglas de seguridad embebidas. Cual es la mejor mejora arquitectonica?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-053_b",
+      "explanation": "Extracting safety guidelines into a shared configuration that all agents reference (via @import in CLAUDE.md, a shared system prompt component, or a central configuration service) means updating one file updates all 50 agents. This follows the DRY principle and ensures consistency. Embedding safety rules in each agent's individual prompt means 50 places to update and a high risk of inconsistency. / Extraer las guias de seguridad a una configuracion compartida que todos los agentes referencien significa que actualizar un archivo actualiza los 50 agentes.",
+      "options": [
+        { "id": "ccaf-sc-053_a", "text": "Script the update to search-and-replace safety text across all 50 system prompts / Scriptar la actualizacion para buscar y reemplazar texto de seguridad en los 50 system prompts", "order": 1 },
+        { "id": "ccaf-sc-053_b", "text": "Extract safety guidelines into a shared configuration file that all agents import or reference / Extraer las guias de seguridad a un archivo de configuracion compartido que todos los agentes importen", "order": 2 },
+        { "id": "ccaf-sc-053_c", "text": "Create an MCP server that serves safety guidelines as a tool that agents must call / Crear un servidor MCP que sirva guias de seguridad como un tool que los agentes deben llamar", "order": 3 },
+        { "id": "ccaf-sc-053_d", "text": "Accept that some agents will have outdated guidelines and implement a monthly sync process / Aceptar que algunos agentes tendran guias desactualizadas e implementar un proceso de sincronizacion mensual", "order": 4 }
+      ],
+      "tags": ["scenario", "fleet-management", "shared-config", "safety-guidelines"],
+      "scenarioId": "scenario-21"
+    },
+    {
+      "id": "ccaf-sc-054",
+      "text": "Your agent uses extended thinking to solve complex coding problems. You set budget_tokens to 50,000 but users report the agent sometimes returns lower quality solutions for truly complex problems that would benefit from more thinking. The thinking output shows the reasoning was cut short. What should you adjust? / Tu agente usa extended thinking para resolver problemas de codigo complejos. Configuraste budget_tokens en 50,000 pero los usuarios reportan que el agente a veces retorna soluciones de menor calidad para problemas realmente complejos. El output del thinking muestra que el razonamiento fue cortado. Que debes ajustar?",
+      "domainCode": "context-reliability",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-054_d",
+      "explanation": "The budget_tokens parameter sets the maximum tokens for thinking. If complex problems consistently exhaust this budget, increasing it allows more thorough reasoning. However, a better approach is to implement adaptive budget allocation: use a classifier to estimate problem complexity and set budget_tokens dynamically (lower for simple problems, higher for complex ones). This optimizes both quality and cost. / budget_tokens establece el maximo de tokens para thinking. El mejor enfoque es implementar asignacion adaptiva de budget basada en complejidad del problema.",
+      "options": [
+        { "id": "ccaf-sc-054_a", "text": "Reduce the temperature to 0 so the model spends less time exploring alternatives / Reducir la temperatura a 0 para que el modelo gaste menos tiempo explorando alternativas", "order": 1 },
+        { "id": "ccaf-sc-054_b", "text": "Add 'think carefully and thoroughly' to the system prompt / Agregar 'piensa cuidadosamente y exhaustivamente' al system prompt", "order": 2 },
+        { "id": "ccaf-sc-054_c", "text": "Switch to a more capable model that can reason in fewer tokens / Cambiar a un modelo mas capaz que pueda razonar en menos tokens", "order": 3 },
+        { "id": "ccaf-sc-054_d", "text": "Implement adaptive budget allocation: classify problem complexity and set budget_tokens dynamically (higher for complex problems) / Implementar asignacion adaptiva de budget: clasificar complejidad y configurar budget_tokens dinamicamente", "order": 4 }
+      ],
+      "tags": ["scenario", "extended-thinking", "budget-tokens", "adaptive-allocation"],
+      "scenarioId": "scenario-21"
+    },
+    {
+      "id": "ccaf-sc-055",
+      "text": "Your company wants to use Claude Code to enforce that all Python files include type hints. You want Claude to automatically add type hints to any new Python file that lacks them before committing. What is the most appropriate Claude Code configuration? / Tu empresa quiere usar Claude Code para enforcar que todos los archivos Python incluyan type hints. Quieres que Claude automaticamente agregue type hints a cualquier archivo Python nuevo que los carezca antes de commitear. Cual es la configuracion mas apropiada de Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-055_c",
+      "explanation": "A PreToolUse hook on git commit that checks staged Python files for type hints (using mypy --check-untyped-defs or a custom script) can block the commit and trigger Claude to add the missing hints. Alternatively, a .claude/rules/ file with globs: ['**/*.py'] can instruct Claude to always add type hints. The hook provides the enforcement; the rules file provides the guidance. / Un hook PreToolUse en git commit que verifica archivos Python staged por type hints puede bloquear el commit y disparar que Claude agregue los hints faltantes.",
+      "options": [
+        { "id": "ccaf-sc-055_a", "text": "Add 'always add type hints' to the root CLAUDE.md and rely on Claude to remember / Agregar 'siempre agrega type hints' al CLAUDE.md raiz y confiar en que Claude recuerde", "order": 1 },
+        { "id": "ccaf-sc-055_b", "text": "Run mypy in CI and reject PRs that fail, without Claude Code involvement / Ejecutar mypy en CI y rechazar PRs que fallen, sin involucrar Claude Code", "order": 2 },
+        { "id": "ccaf-sc-055_c", "text": "Create a .claude/rules/ file for *.py with type hint requirements, plus a PreToolUse hook that checks for missing hints before commits / Crear un archivo .claude/rules/ para *.py con requisitos de type hints, mas un hook PreToolUse que verifique antes de commits", "order": 3 },
+        { "id": "ccaf-sc-055_d", "text": "Create a custom command /add-types that developers must manually run before committing / Crear un comando personalizado /add-types que los desarrolladores deben ejecutar manualmente", "order": 4 }
+      ],
+      "tags": ["scenario", "type-hints", "rules-globs", "pre-tool-use"],
+      "scenarioId": "scenario-22"
+    },
+    {
+      "id": "ccaf-sc-056",
+      "text": "You are building an MCP server that provides weather data to Claude agents. The weather API has a rate limit of 100 requests/minute. During peak hours, multiple agents exceed this limit causing failures. What is the best MCP server design pattern to handle this? / Estas construyendo un servidor MCP que provee datos meteorologicos a agentes Claude. La API del clima tiene un rate limit de 100 requests/minuto. En horas pico, multiples agentes exceden este limite causando fallos. Cual es el mejor patron de diseno del servidor MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-056_a",
+      "explanation": "The MCP server should implement a rate-limiting layer with a request queue and caching. Recent weather data (within 5-10 minutes) can be served from cache without hitting the API. When the rate limit is approached, requests are queued rather than rejected. The tool description should indicate that results may be cached (with a timestamp), so the agent understands data freshness. / El servidor MCP debe implementar rate-limiting con cola de requests y caching. Datos recientes se sirven del cache sin llamar a la API.",
+      "options": [
+        { "id": "ccaf-sc-056_a", "text": "Implement rate-limiting with a request queue and time-based caching in the MCP server, with cache timestamps in responses / Implementar rate-limiting con cola de requests y caching temporal en el servidor MCP, con timestamps del cache en respuestas", "order": 1 },
+        { "id": "ccaf-sc-056_b", "text": "Tell each agent to check the time and only request weather data during off-peak hours / Decir a cada agente que verifique la hora y solo solicite datos en horas de baja demanda", "order": 2 },
+        { "id": "ccaf-sc-056_c", "text": "Create multiple weather API accounts to distribute the rate limit / Crear multiples cuentas de la API del clima para distribuir el rate limit", "order": 3 },
+        { "id": "ccaf-sc-056_d", "text": "Return an error message when the rate limit is reached and let the agent retry / Retornar un mensaje de error cuando se alcance el rate limit y dejar que el agente reintente", "order": 4 }
+      ],
+      "tags": ["scenario", "mcp-rate-limiting", "caching", "request-queue"],
+      "scenarioId": "scenario-22"
+    },
+    {
+      "id": "ccaf-sc-057",
+      "text": "Your agent processes user-uploaded spreadsheets to generate financial reports. A user uploads a spreadsheet with 50,000 rows. The agent extracts all rows into the context, causing token limit errors. The agent needs to calculate totals, averages, and identify outliers. What is the correct approach? / Tu agente procesa hojas de calculo subidas por usuarios para generar reportes financieros. Un usuario sube una hoja con 50,000 filas. El agente extrae todas las filas al contexto, causando errores de limite de tokens. El agente necesita calcular totales, promedios e identificar outliers. Cual es el enfoque correcto?",
+      "domainCode": "agentic-architecture",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-057_c",
+      "explanation": "Calculations like totals, averages, and outlier detection are deterministic operations that should be handled by code tools (Python/pandas), not by putting 50K rows into the context. The agent should use a code execution tool to run statistical calculations on the data and return only the results (summary statistics, outlier rows) to Claude for interpretation and report generation. Claude excels at interpretation; code excels at computation. / Los calculos son operaciones deterministicas que deben manejarse con herramientas de codigo. El agente usa ejecucion de codigo para calcular y retorna solo resultados a Claude para interpretacion.",
+      "options": [
+        { "id": "ccaf-sc-057_a", "text": "Sample 1,000 random rows and process those as representative of the full dataset / Muestrear 1,000 filas aleatorias y procesarlas como representativas del dataset completo", "order": 1 },
+        { "id": "ccaf-sc-057_b", "text": "Split the spreadsheet into 50 chunks of 1,000 rows and process each sequentially / Dividir la hoja en 50 chunks de 1,000 filas y procesar cada uno secuencialmente", "order": 2 },
+        { "id": "ccaf-sc-057_c", "text": "Use a code execution tool (Python/pandas) to perform calculations on the full dataset and return only summary results to Claude for report generation / Usar herramienta de ejecucion de codigo para calcular en el dataset completo y retornar solo resultados resumen a Claude", "order": 3 },
+        { "id": "ccaf-sc-057_d", "text": "Ask the user to export summary tables from their spreadsheet software before uploading / Pedir al usuario que exporte tablas resumen de su software antes de subir", "order": 4 }
+      ],
+      "tags": ["scenario", "code-execution", "large-data", "hybrid-processing"],
+      "scenarioId": "scenario-23"
+    },
+    {
+      "id": "ccaf-sc-058",
+      "text": "Your company uses Claude to generate email responses for customer support. The legal team requires that all outgoing emails include a specific disclaimer footer. Despite adding this to the system prompt, 5% of responses omit it. What is the most reliable solution? / Tu empresa usa Claude para generar respuestas de email para soporte al cliente. El equipo legal requiere que todos los emails salientes incluyan un disclaimer footer especifico. A pesar de agregarlo al system prompt, 5% de respuestas lo omiten. Cual es la solucion mas confiable?",
+      "domainCode": "context-reliability",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-058_b",
+      "explanation": "For content that must appear 100% of the time, relying on the model is inherently unreliable. The disclaimer should be appended programmatically in the application layer after Claude generates the email body. This guarantees inclusion regardless of model behavior. The system prompt should still mention the disclaimer exists (so Claude does not duplicate it), but the actual insertion is deterministic. / Para contenido que debe aparecer el 100% del tiempo, depender del modelo es inherentemente poco confiable. El disclaimer debe agregarse programaticamente en la capa de aplicacion.",
+      "options": [
+        { "id": "ccaf-sc-058_a", "text": "Add the disclaimer requirement in bold and uppercase at the beginning of the system prompt / Agregar el requisito del disclaimer en negritas y mayusculas al inicio del system prompt", "order": 1 },
+        { "id": "ccaf-sc-058_b", "text": "Append the disclaimer programmatically in the application layer after Claude generates the email body / Agregar el disclaimer programaticamente en la capa de aplicacion despues de que Claude genere el cuerpo del email", "order": 2 },
+        { "id": "ccaf-sc-058_c", "text": "Use prefilling to start every response with the disclaimer text / Usar prefilling para iniciar cada respuesta con el texto del disclaimer", "order": 3 },
+        { "id": "ccaf-sc-058_d", "text": "Validate the response and retry if the disclaimer is missing / Validar la respuesta y reintentar si falta el disclaimer", "order": 4 }
+      ],
+      "tags": ["scenario", "deterministic-output", "application-layer", "compliance"],
+      "scenarioId": "scenario-23"
+    },
+    {
+      "id": "ccaf-sc-059",
+      "text": "Your team is evaluating whether to use extended thinking or standard prompting for a code generation task. The task involves generating a complex database migration script that must handle 15 edge cases. During testing, standard prompting misses 3-4 edge cases on average. What factors should drive the decision? / Tu equipo esta evaluando si usar extended thinking o prompting estandar para una tarea de generacion de codigo. La tarea involucra generar un script de migracion de base de datos complejo que debe manejar 15 edge cases. En pruebas, el prompting estandar omite 3-4 edge cases en promedio. Que factores deben guiar la decision?",
+      "domainCode": "context-reliability",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-059_a",
+      "explanation": "Extended thinking is most beneficial for tasks that require multi-step reasoning, constraint satisfaction, and systematic coverage -- exactly what complex migration scripts with 15 edge cases need. The thinking process allows the model to plan, enumerate edge cases, and verify coverage before generating code. The trade-off is higher latency and cost, but for one-time migration scripts where correctness is critical, this is justified. / Extended thinking es mas beneficioso para tareas que requieren razonamiento multi-paso y cobertura sistematica, exactamente lo que necesitan scripts de migracion complejos.",
+      "options": [
+        { "id": "ccaf-sc-059_a", "text": "Use extended thinking because the task requires multi-step reasoning and systematic edge case enumeration where correctness is critical / Usar extended thinking porque la tarea requiere razonamiento multi-paso y enumeracion sistematica de edge cases donde la correccion es critica", "order": 1 },
+        { "id": "ccaf-sc-059_b", "text": "Use standard prompting with a very detailed system prompt listing all 15 edge cases explicitly / Usar prompting estandar con un system prompt muy detallado listando los 15 edge cases explicitamente", "order": 2 },
+        { "id": "ccaf-sc-059_c", "text": "Extended thinking should never be used for code generation tasks / Extended thinking nunca debe usarse para tareas de generacion de codigo", "order": 3 },
+        { "id": "ccaf-sc-059_d", "text": "Always use extended thinking regardless of task complexity since it always produces better results / Siempre usar extended thinking sin importar la complejidad porque siempre produce mejores resultados", "order": 4 }
+      ],
+      "tags": ["scenario", "extended-thinking", "code-generation", "edge-cases"],
+      "scenarioId": "scenario-24"
+    },
+    {
+      "id": "ccaf-sc-060",
+      "text": "Your organization builds a knowledge base agent that indexes internal documentation. The MCP server provides a search_docs tool that returns relevant document chunks. Users report that the agent often gives correct answers but cannot cite which specific document the information came from. What improvement should you make to the MCP tool's response format? / Tu organizacion construye un agente de base de conocimiento que indexa documentacion interna. El servidor MCP provee una herramienta search_docs que retorna chunks de documentos relevantes. Los usuarios reportan que el agente da respuestas correctas pero no puede citar de que documento viene la informacion. Que mejora debes hacer al formato de respuesta del tool MCP?",
+      "domainCode": "tool-design-mcp",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-sc-060_c",
+      "explanation": "The MCP tool's response should include structured metadata with each chunk: document title, URL/path, section heading, last updated date, and the relevance score. When the tool returns this metadata alongside the content, Claude can naturally cite sources in its responses. Without metadata, Claude only sees the text content and has no provenance information to cite. The system prompt should then instruct Claude to always cite sources. / La respuesta del tool MCP debe incluir metadatos estructurados con cada chunk: titulo, URL, seccion, fecha, y score de relevancia para que Claude pueda citar fuentes.",
+      "options": [
+        { "id": "ccaf-sc-060_a", "text": "Add 'always cite your sources' to the system prompt without changing the tool / Agregar 'siempre cita tus fuentes' al system prompt sin cambiar el tool", "order": 1 },
+        { "id": "ccaf-sc-060_b", "text": "Return full documents instead of chunks so Claude has complete context / Retornar documentos completos en lugar de chunks para que Claude tenga contexto completo", "order": 2 },
+        { "id": "ccaf-sc-060_c", "text": "Include structured metadata (title, URL, section, date) with each returned chunk so Claude can cite specific sources / Incluir metadatos estructurados (titulo, URL, seccion, fecha) con cada chunk retornado para que Claude pueda citar fuentes", "order": 3 },
+        { "id": "ccaf-sc-060_d", "text": "Build a separate citation-generation agent that processes Claude's responses and adds citations / Construir un agente separado de generacion de citas que procese las respuestas de Claude", "order": 4 }
+      ],
+      "tags": ["scenario", "mcp-metadata", "citation", "knowledge-base"],
+      "scenarioId": "scenario-24"
+    }
+  ]
+}

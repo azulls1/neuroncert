@@ -1,0 +1,60 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-04-12T19:56:00Z",
+  "preferences": [
+    {
+      "category": "framework",
+      "preference": "angular_standalone",
+      "value": "Angular 20 standalone components exclusivamente",
+      "confidence": 1.0
+    },
+    {
+      "category": "state_management",
+      "preference": "signals_over_ngrx",
+      "value": "Angular Signals como mecanismo primario, RxJS solo para HTTP",
+      "confidence": 1.0
+    },
+    {
+      "category": "styling",
+      "preference": "css_custom_properties",
+      "value": "CSS3 puro con custom properties, sin framework CSS externo",
+      "confidence": 1.0
+    },
+    {
+      "category": "styling",
+      "preference": "color_scheme",
+      "value": "Navy blue (#0F172A, #1A2537) + Gold (#B17B20, #D79F3B)",
+      "confidence": 1.0
+    },
+    {
+      "category": "security",
+      "preference": "server_side_validation",
+      "value": "Respuestas correctas NUNCA expuestas al cliente, validacion via webhook",
+      "confidence": 1.0
+    },
+    {
+      "category": "backend",
+      "preference": "n8n_webhooks",
+      "value": "n8n como backend de logica de negocio via webhooks REST",
+      "confidence": 1.0
+    },
+    {
+      "category": "formatting",
+      "preference": "prettier_config",
+      "value": "printWidth: 100, singleQuote: true, angular parser para HTML",
+      "confidence": 1.0
+    },
+    {
+      "category": "testing",
+      "preference": "karma_jasmine",
+      "value": "Karma + Jasmine (default Angular)",
+      "confidence": 0.8
+    },
+    {
+      "category": "data_mode",
+      "preference": "remote_first",
+      "value": "Modo remote (webhooks) con fallback a local seed",
+      "confidence": 1.0
+    }
+  ]
+}

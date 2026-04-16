@@ -1,0 +1,133 @@
+{
+  "state_id": "state_20260412_195600",
+  "timestamp": "2026-04-12T19:56:00Z",
+  "agent": "nxt-multicontext (Nova)",
+
+  "orchestrator": {
+    "active": true,
+    "current_task": "Inicializacion de agentes de contexto NXT",
+    "task_id": "task_20260412_context_init",
+    "classification": {
+      "level": 2,
+      "type": "standard",
+      "estimated_agents": ["nxt-context", "nxt-multicontext", "nxt-changelog", "nxt-ralph"]
+    },
+    "progress": {
+      "phase": "construir",
+      "step": 3,
+      "total_steps": 5,
+      "percentage": 60.0
+    }
+  },
+
+  "agents": {
+    "active": ["nxt-context", "nxt-multicontext"],
+    "completed": [],
+    "pending": ["nxt-changelog", "nxt-ralph"],
+    "current": {
+      "name": "nxt-multicontext",
+      "task": "Crear estado inicial y checkpoint del proyecto",
+      "started_at": "2026-04-12T19:56:00Z",
+      "subtasks_completed": 1,
+      "subtasks_total": 3
+    }
+  },
+
+  "decisions": [
+    {
+      "id": "dec_001",
+      "type": "architecture",
+      "question": "Que framework y version usar?",
+      "answer": "Angular 20 standalone con Signals y SSR",
+      "reason": "Ultima version estable con soporte nativo de signals y standalone components",
+      "timestamp": "2026-04-01T00:00:00Z"
+    },
+    {
+      "id": "dec_002",
+      "type": "architecture",
+      "question": "Como gestionar el estado del examen?",
+      "answer": "Angular Signals sin libreria externa",
+      "reason": "Rendimiento zoneless, API simple, sin overhead de NgRx",
+      "timestamp": "2026-04-01T00:00:00Z"
+    },
+    {
+      "id": "dec_003",
+      "type": "integration",
+      "question": "Como generar preguntas sin exponer respuestas?",
+      "answer": "n8n webhooks - preguntas generadas server-side",
+      "reason": "Seguridad: respuestas correctas nunca llegan al cliente",
+      "timestamp": "2026-04-01T00:00:00Z"
+    },
+    {
+      "id": "dec_004",
+      "type": "implementation",
+      "question": "Como persistir estado de examen?",
+      "answer": "sessionStorage (examen activo) + localStorage (historial)",
+      "reason": "Sobrevive refresh sin backend, historial persiste entre sesiones",
+      "timestamp": "2026-04-01T00:00:00Z"
+    },
+    {
+      "id": "dec_005",
+      "type": "infrastructure",
+      "question": "Como aplicar el framework NXT al proyecto?",
+      "answer": "Agentes de contexto (Clio, Nova, Logan, Ralph) con estructura .nxt/",
+      "reason": "Continuidad entre sesiones, persistencia de decisiones, recovery",
+      "timestamp": "2026-04-12T19:56:00Z"
+    }
+  ],
+
+  "artifacts": {
+    "files_created": [
+      "src/app/core/services/exam-state.service.ts",
+      "src/app/core/services/webhook.service.ts",
+      "src/app/core/services/timer.service.ts",
+      "src/app/core/services/exam-history.service.ts",
+      "src/app/core/services/config.service.ts",
+      "src/app/core/services/data-source.service.ts",
+      "src/app/core/services/seed-validator.service.ts",
+      "src/app/core/guards/exam.guard.ts",
+      "src/app/core/models/domain.model.ts",
+      "src/app/core/models/question.model.ts",
+      "src/app/core/models/option.model.ts",
+      "src/app/core/models/exam-params.model.ts",
+      "src/app/core/models/exam-payload.model.ts",
+      "src/app/core/models/exam-result.model.ts",
+      "src/app/core/models/seed-data.model.ts",
+      "src/app/features/home/home.component.ts",
+      "src/app/features/exam/start/start.component.ts",
+      "src/app/features/exam/webhook-exam/webhook-exam.component.ts",
+      "src/app/features/exam/submit/submit.component.ts",
+      "src/app/features/exam/review/review.component.ts",
+      "src/app/features/exam/results/results.component.ts",
+      "src/app/features/exam/history/history.component.ts",
+      "src/app/shared/progress-steps/progress-steps.component.ts",
+      "src/app/shared/question-card/question-card.component.ts",
+      "src/app/shared/timer-badge/timer-badge.component.ts"
+    ],
+    "files_modified": [],
+    "pending_files": []
+  },
+
+  "user_context": {
+    "preferences_this_session": [
+      "Usar framework NXT con agentes de contexto",
+      "Generar contexto completo del proyecto simulador-examen-csa"
+    ],
+    "clarifications": [
+      {
+        "q": "Donde esta el framework NXT?",
+        "a": "En C:\\Users\\shernandez\\Desktop\\Personal\\Simulador de  examen\\nxt-ai-development"
+      },
+      {
+        "q": "Cual es el proyecto real?",
+        "a": "simulador-examen-csa - Simulador de examen CSA ServiceNow"
+      }
+    ]
+  },
+
+  "context_health": {
+    "status": "OK",
+    "estimated_usage": "15%",
+    "last_check": "2026-04-12T19:56:00Z"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "domain": "teaching-ai-fluency",
+    "domainName": "Teaching AI Fluency",
+    "trackId": "teaching-ai-fluency",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 8
+  },
+  "questions": [
+    {
+      "id": "taf-001",
+      "text": "When designing a curriculum that integrates AI fluency, what should be the main focus?",
+      "textEs": "Al diseñar un currículo que integre fluencia en IA, ¿cuál debería ser el enfoque principal?",
+      "domainCode": "teaching-ai-fluency",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "exam",
+      "trackId": "teaching-ai-fluency",
+      "correctOptionId": "taf-001_c",
+      "explanation": "An effective AI fluency curriculum should focus on developing critical thinking about when and how to use AI appropriately, not just on teaching how to use specific tools. Tools change rapidly, but the principles of critical evaluation, ethics, and strategic use remain relevant.",
+      "explanationEs": "Un currículo de fluencia en IA efectivo debe enfocarse en desarrollar pensamiento crítico sobre cuándo y cómo usar la IA de manera apropiada, no solo en enseñar a usar herramientas específicas. Las herramientas cambian rápidamente, pero los principios de evaluación crítica, ética y uso estratégico permanecen relevantes.",
+      "options": [
+        { "id": "taf-001_a", "text": "Teaching students to program AI models from scratch", "textEs": "Enseñar a los estudiantes a programar modelos de IA desde cero", "order": 1 },
+        { "id": "taf-001_b", "text": "Memorizing the features of each available AI tool", "textEs": "Memorizar las características de cada herramienta de IA disponible", "order": 2 },
+        { "id": "taf-001_c", "text": "Developing critical thinking about when and how to use AI appropriately", "textEs": "Desarrollar pensamiento crítico sobre cuándo y cómo usar IA de manera apropiada", "order": 3 },
+        { "id": "taf-001_d", "text": "Teaching exclusively the risks and dangers of AI", "textEs": "Enseñar exclusivamente los riesgos y peligros de la IA", "order": 4 }
+      ],
+      "tags": ["diseno-curricular", "pensamiento-critico", "fluencia-ia"]
+    },
+    {
+      "id": "taf-002",
+      "text": "In a train-the-trainer program for AI fluency, what is the most important component to ensure facilitators are effective?",
+      "textEs": "En un programa train-the-trainer para fluencia en IA, ¿cuál es el componente más importante para asegurar que los facilitadores sean efectivos?",
+      "domainCode": "teaching-ai-fluency",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "teaching-ai-fluency",
+      "correctOptionId": "taf-002_a",
+      "explanation": "Facilitators need direct hands-on experience with AI tools to be able to teach them with confidence, anticipate common questions and problems, and demonstrate uses in real time. Guided practice with feedback allows them to develop competence and comfort before facilitating sessions with others.",
+      "explanationEs": "Los facilitadores necesitan experiencia práctica directa con las herramientas de IA para poder enseñarlas con confianza, anticipar preguntas y problemas comunes, y demostrar usos en tiempo real. La práctica guiada con retroalimentación les permite desarrollar competencia y comodidad antes de facilitar sesiones con otros.",
+      "options": [
+        { "id": "taf-002_a", "text": "Extensive guided practice with AI tools and feedback on their facilitation", "textEs": "Práctica guiada extensiva con herramientas de IA y retroalimentación sobre su facilitación", "order": 1 },
+        { "id": "taf-002_b", "text": "A detailed step-by-step instruction manual to follow to the letter", "textEs": "Un manual detallado de instrucciones paso a paso para seguir al pie de la letra", "order": 2 },
+        { "id": "taf-002_c", "text": "Technical certifications in artificial intelligence and machine learning", "textEs": "Certificaciones técnicas en inteligencia artificial y machine learning", "order": 3 },
+        { "id": "taf-002_d", "text": "Access to the most expensive versions of all AI tools", "textEs": "Acceso a las versiones más costosas de todas las herramientas de IA", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "facilitacion", "practica-guiada"]
+    },
+    {
+      "id": "taf-003",
+      "text": "What is an effective instructional strategy for teaching people without technical experience how to write good prompts (prompt engineering)?",
+      "textEs": "¿Cuál es una estrategia de instrucción efectiva para enseñar a escribir buenos prompts (prompt engineering) a personas sin experiencia técnica?",
+      "domainCode": "teaching-ai-fluency",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "teaching-ai-fluency",
+      "correctOptionId": "taf-003_b",
+      "explanation": "Starting with tasks from the participants' real context makes learning immediately relevant and motivating. Iterating progressively on prompts allows seeing how small changes improve results, developing intuition about effective communication with AI. This applied methodology is more effective than abstract theory.",
+      "explanationEs": "Comenzar con tareas del contexto real de los participantes hace que el aprendizaje sea inmediatamente relevante y motivador. Iterar progresivamente sobre los prompts permite ver cómo pequeños cambios mejoran los resultados, desarrollando intuición sobre la comunicación efectiva con IA. Esta metodología aplicada es más efectiva que la teoría abstracta.",
+      "options": [
+        { "id": "taf-003_a", "text": "Start with a two-hour theoretical class on transformer architecture", "textEs": "Comenzar con una clase teórica de dos horas sobre la arquitectura de transformers", "order": 1 },
+        { "id": "taf-003_b", "text": "Use tasks from participants' real context and iterate progressively on the prompts", "textEs": "Usar tareas del contexto real de los participantes e iterar progresivamente sobre los prompts", "order": 2 },
+        { "id": "taf-003_c", "text": "Provide a list of perfect prompts for them to memorize", "textEs": "Proporcionar una lista de prompts perfectos para que los memoricen", "order": 3 },
+        { "id": "taf-003_d", "text": "Focus on the model's technical limitations before any practice", "textEs": "Enfocarse en las limitaciones técnicas del modelo antes de cualquier práctica", "order": 4 }
+      ],
+      "tags": ["prompt-engineering", "estrategias-instruccion", "aprendizaje-contextualizado"]
+    },
+    {
+      "id": "taf-004",
+      "text": "How can the AI fluency of participants in a training program be effectively measured?",
+      "textEs": "¿Cómo se puede medir efectivamente la fluencia en IA de los participantes de un programa de formación?",
+      "domainCode": "teaching-ai-fluency",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "teaching-ai-fluency",
+      "correctOptionId": "taf-004_d",
+      "explanation": "AI fluency is a multidimensional competency that includes practical skills, critical thinking, and ethical judgment. A scenario-based assessment where participants must choose tools, design prompts, and evaluate results measures these dimensions in an integrated way, similar to how competency would be assessed in any other professional domain.",
+      "explanationEs": "La fluencia en IA es una competencia multidimensional que incluye habilidades prácticas, pensamiento crítico y juicio ético. Una evaluación basada en escenarios donde los participantes deben elegir herramientas, diseñar prompts y evaluar resultados mide estas dimensiones de forma integrada, similar a cómo se evaluaría la competencia en cualquier otro dominio profesional.",
+      "options": [
+        { "id": "taf-004_a", "text": "A theoretical multiple-choice exam on AI terminology", "textEs": "Un examen teórico de opción múltiple sobre terminología de IA", "order": 1 },
+        { "id": "taf-004_b", "text": "Measure how many hours they spent using AI tools", "textEs": "Medir cuántas horas pasaron usando herramientas de IA", "order": 2 },
+        { "id": "taf-004_c", "text": "A satisfaction survey at the end of the program", "textEs": "Una encuesta de satisfacción al final del programa", "order": 3 },
+        { "id": "taf-004_d", "text": "Scenario-based assessments where they must choose tools, design prompts, and critically evaluate the results", "textEs": "Evaluaciones basadas en escenarios donde deben elegir herramientas, diseñar prompts y evaluar críticamente los resultados", "order": 4 }
+      ],
+      "tags": ["medicion", "evaluacion-competencias", "escenarios"]
+    },
+    {
+      "id": "taf-005",
+      "text": "When designing an AI fluency module for a diverse audience (different technical levels), what is the best differentiation strategy?",
+      "textEs": "Al diseñar un módulo de fluencia en IA para una audiencia diversa (diferentes niveles técnicos), ¿cuál es la mejor estrategia de diferenciación?",
+      "domainCode": "teaching-ai-fluency",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "teaching-ai-fluency",
+      "correctOptionId": "taf-005_a",
+      "explanation": "Creating learning paths with common core activities and optional extensions allows all participants to develop base competencies while more advanced learners go deeper. This respects different starting points without leaving anyone behind or boring those who already have experience.",
+      "explanationEs": "Crear rutas de aprendizaje con actividades núcleo comunes y extensiones opcionales permite que todos los participantes desarrollen competencias base mientras los más avanzados profundizan. Esto respeta los diferentes puntos de partida sin dejar atrás a nadie ni aburrir a quienes ya tienen experiencia.",
+      "options": [
+        { "id": "taf-005_a", "text": "Create learning paths with common core activities and optional extensions by level", "textEs": "Crear rutas de aprendizaje con actividades núcleo comunes y extensiones opcionales por nivel", "order": 1 },
+        { "id": "taf-005_b", "text": "Teach only at the level of the least advanced participant", "textEs": "Enseñar solo al nivel del participante menos avanzado", "order": 2 },
+        { "id": "taf-005_c", "text": "Completely separate participants by level and never mix them", "textEs": "Separar completamente a los participantes por nivel y nunca mezclarlos", "order": 3 },
+        { "id": "taf-005_d", "text": "Give the same content to everyone and let each person advance at their own pace without structure", "textEs": "Dar el mismo contenido a todos y que cada quien avance a su ritmo sin estructura", "order": 4 }
+      ],
+      "tags": ["diferenciacion", "audiencia-diversa", "rutas-aprendizaje"]
+    },
+    {
+      "id": "taf-006",
+      "text": "What curricular integration model is most sustainable for teaching AI fluency long-term in an educational institution?",
+      "textEs": "¿Qué modelo de integración curricular es más sostenible para enseñar fluencia en IA a largo plazo en una institución educativa?",
+      "domainCode": "teaching-ai-fluency",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "exam",
+      "trackId": "teaching-ai-fluency",
+      "correctOptionId": "taf-006_c",
+      "explanation": "Cross-curricular integration, where AI fluency is developed within existing subjects, is more sustainable because it does not require additional hours in the curriculum, contextualizes learning in the student's discipline, and distributes responsibility among multiple teachers. An introductory module provides the necessary common foundation.",
+      "explanationEs": "La integración transversal, donde la fluencia en IA se desarrolla dentro de las materias existentes, es más sostenible porque no requiere horas adicionales en el currículo, contextualiza el aprendizaje en la disciplina del estudiante, y distribuye la responsabilidad entre múltiples docentes. Un módulo introductorio proporciona la base común necesaria.",
+      "options": [
+        { "id": "taf-006_a", "text": "A single mandatory one-semester course on AI", "textEs": "Un curso obligatorio único de un semestre sobre IA", "order": 1 },
+        { "id": "taf-006_b", "text": "Voluntary extracurricular workshops", "textEs": "Talleres extracurriculares voluntarios", "order": 2 },
+        { "id": "taf-006_c", "text": "Cross-curricular integration within existing subjects with a common introductory base module", "textEs": "Integración transversal en materias existentes con un módulo introductorio base común", "order": 3 },
+        { "id": "taf-006_d", "text": "A separate specialization only for students interested in technology", "textEs": "Una especialización separada solo para estudiantes interesados en tecnología", "order": 4 }
+      ],
+      "tags": ["integracion-curricular", "sostenibilidad", "transversalidad"]
+    },
+    {
+      "id": "taf-007",
+      "text": "What is a key indicator that an AI fluency program is achieving real change in participants' practices?",
+      "textEs": "¿Cuál es un indicador clave de que un programa de fluencia en IA está logrando un cambio real en las prácticas de los participantes?",
+      "domainCode": "teaching-ai-fluency",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "teaching-ai-fluency",
+      "correctOptionId": "taf-007_b",
+      "explanation": "The most significant indicator of real impact is that participants integrate AI regularly and critically into their actual workflows, beyond the training context. This demonstrates transfer of learning, which is the ultimate goal of any competency development program.",
+      "explanationEs": "El indicador más significativo de impacto real es que los participantes integren la IA de forma regular y crítica en sus flujos de trabajo reales, más allá del contexto de la formación. Esto demuestra transferencia del aprendizaje, que es el objetivo último de cualquier programa de desarrollo de competencias.",
+      "options": [
+        { "id": "taf-007_a", "text": "High grades on program exams", "textEs": "Altas calificaciones en los exámenes del programa", "order": 1 },
+        { "id": "taf-007_b", "text": "Participants integrate AI regularly and critically into their real workflows after the program", "textEs": "Los participantes integran IA de forma regular y crítica en sus flujos de trabajo reales después del programa", "order": 2 },
+        { "id": "taf-007_c", "text": "Participants report high satisfaction on exit surveys", "textEs": "Los participantes reportan alta satisfacción en las encuestas de salida", "order": 3 },
+        { "id": "taf-007_d", "text": "The number of enrolled participants increases each cohort", "textEs": "El número de participantes inscritos aumenta cada cohorte", "order": 4 }
+      ],
+      "tags": ["indicadores", "impacto", "transferencia-aprendizaje"]
+    },
+    {
+      "id": "taf-008",
+      "text": "In a train-the-trainer approach, how should facilitators be prepared to handle questions they cannot answer about AI?",
+      "textEs": "En un enfoque train-the-trainer, ¿cómo debe prepararse a los facilitadores para manejar preguntas que no puedan responder sobre IA?",
+      "domainCode": "teaching-ai-fluency",
+      "difficulty": "medium",
+      "learningLevel": 2,
+      "contentType": "exam",
+      "trackId": "teaching-ai-fluency",
+      "correctOptionId": "taf-008_d",
+      "explanation": "Given that AI evolves rapidly, it is inevitable that questions without an immediate answer will arise. Teaching facilitators to model intellectual curiosity and information-seeking turns these moments into learning opportunities, demonstrating that fluency includes knowing how to research and verify information about AI.",
+      "explanationEs": "Dado que la IA evoluciona rápidamente, es inevitable que surjan preguntas sin respuesta inmediata. Enseñar a los facilitadores a modelar la curiosidad intelectual y la búsqueda de información convierte estos momentos en oportunidades de aprendizaje, demostrando que la fluencia incluye saber cómo investigar y verificar información sobre IA.",
+      "options": [
+        { "id": "taf-008_a", "text": "Memorize answers to the 100 most frequently asked questions about AI", "textEs": "Memorizar respuestas a las 100 preguntas más frecuentes sobre IA", "order": 1 },
+        { "id": "taf-008_b", "text": "Avoid open question sessions to not be exposed", "textEs": "Evitar sesiones de preguntas abiertas para no exponerse", "order": 2 },
+        { "id": "taf-008_c", "text": "Say that it is outside the scope of the course and move on", "textEs": "Decir que eso está fuera del alcance del curso y seguir adelante", "order": 3 },
+        { "id": "taf-008_d", "text": "Model intellectual curiosity: acknowledge what they don't know and research together with the participants", "textEs": "Modelar la curiosidad intelectual: reconocer lo que no saben e investigar junto con los participantes", "order": 4 }
+      ],
+      "tags": ["train-the-trainer", "manejo-incertidumbre", "modelaje"]
+    }
+  ]
+}

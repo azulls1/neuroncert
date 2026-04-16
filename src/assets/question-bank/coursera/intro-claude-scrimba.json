@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "intro-claude-scrimba",
+    "domainName": "Intro to Claude AI (Scrimba)",
+    "trackId": "intro-claude-scrimba",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "ICS-001",
+      "text": "What is Claude, and which company developed it?",
+      "textEs": "¿Qué es Claude y qué empresa lo desarrolló?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-001_c",
+      "explanation": "Claude is an AI assistant created by Anthropic. It is built on large language model (LLM) technology and is designed to be helpful, harmless, and honest. Anthropic was founded by former members of OpenAI with a focus on AI safety research.",
+      "explanationEs": "Claude es un asistente de IA creado por Anthropic. Está construido sobre tecnología de modelos de lenguaje grandes (LLM) y está diseñado para ser útil, inofensivo y honesto. Anthropic fue fundada por ex miembros de OpenAI con un enfoque en investigación de seguridad en IA.",
+      "options": [
+        { "id": "ICS-001_a", "text": "A search engine developed by Google", "textEs": "Un motor de búsqueda desarrollado por Google", "order": 1 },
+        { "id": "ICS-001_b", "text": "An open-source chatbot developed by Meta", "textEs": "Un chatbot de código abierto desarrollado por Meta", "order": 2 },
+        { "id": "ICS-001_c", "text": "An AI assistant developed by Anthropic, designed to be helpful, harmless, and honest", "textEs": "Un asistente de IA desarrollado por Anthropic, diseñado para ser útil, inofensivo y honesto", "order": 3 },
+        { "id": "ICS-001_d", "text": "A programming language developed by Microsoft for AI applications", "textEs": "Un lenguaje de programación desarrollado por Microsoft para aplicaciones de IA", "order": 4 }
+      ],
+      "tags": ["claude", "anthropic", "introduction", "basics"]
+    },
+    {
+      "id": "ICS-002",
+      "text": "Which of the following is a core capability of Claude?",
+      "textEs": "¿Cuál de las siguientes es una capacidad fundamental de Claude?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-002_a",
+      "explanation": "Claude excels at analyzing and generating text, including summarization, writing, translation, coding assistance, question answering, and reasoning through complex problems. It processes and produces natural language, making it versatile for many text-based tasks. It cannot browse the internet in real-time or run programs on your computer by default.",
+      "explanationEs": "Claude sobresale en analizar y generar texto, incluyendo resumen, escritura, traducción, asistencia en programación, respuesta a preguntas y razonamiento sobre problemas complejos. Procesa y produce lenguaje natural, haciéndolo versátil para muchas tareas basadas en texto. No puede navegar por internet en tiempo real ni ejecutar programas en tu computadora por defecto.",
+      "options": [
+        { "id": "ICS-002_a", "text": "Analyzing and generating text, including summarization, coding help, and complex reasoning", "textEs": "Analizar y generar texto, incluyendo resúmenes, ayuda con código y razonamiento complejo", "order": 1 },
+        { "id": "ICS-002_b", "text": "Generating photorealistic images from text descriptions", "textEs": "Generar imágenes fotorrealistas a partir de descripciones de texto", "order": 2 },
+        { "id": "ICS-002_c", "text": "Directly controlling hardware devices and IoT sensors", "textEs": "Controlar directamente dispositivos de hardware y sensores IoT", "order": 3 },
+        { "id": "ICS-002_d", "text": "Accessing and modifying your local file system without any additional tools", "textEs": "Acceder y modificar tu sistema de archivos local sin herramientas adicionales", "order": 4 }
+      ],
+      "tags": ["capabilities", "text-generation", "reasoning", "basics"]
+    },
+    {
+      "id": "ICS-003",
+      "text": "What is a 'prompt' in the context of interacting with Claude?",
+      "textEs": "¿Qué es un 'prompt' en el contexto de interactuar con Claude?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-003_b",
+      "explanation": "A prompt is the text input or instruction you provide to Claude to get a response. It can be a question, a command, a piece of text to analyze, or a creative writing request. The quality and clarity of your prompt directly affects the quality of Claude's response. Effective prompting is a key skill for getting the most out of AI assistants.",
+      "explanationEs": "Un prompt es la entrada de texto o instrucción que proporcionas a Claude para obtener una respuesta. Puede ser una pregunta, un comando, un texto para analizar o una solicitud de escritura creativa. La calidad y claridad de tu prompt afecta directamente la calidad de la respuesta de Claude. La creación efectiva de prompts es una habilidad clave para aprovechar al máximo los asistentes de IA.",
+      "options": [
+        { "id": "ICS-003_a", "text": "The internal configuration file that controls Claude's behavior", "textEs": "El archivo de configuración interno que controla el comportamiento de Claude", "order": 1 },
+        { "id": "ICS-003_b", "text": "The text input or instruction you give to Claude to get a response", "textEs": "La entrada de texto o instrucción que le das a Claude para obtener una respuesta", "order": 2 },
+        { "id": "ICS-003_c", "text": "The loading screen displayed while Claude generates a response", "textEs": "La pantalla de carga que se muestra mientras Claude genera una respuesta", "order": 3 },
+        { "id": "ICS-003_d", "text": "A paid subscription tier that unlocks advanced features", "textEs": "Un nivel de suscripción de pago que desbloquea funciones avanzadas", "order": 4 }
+      ],
+      "tags": ["prompt", "input", "basics", "interaction"]
+    },
+    {
+      "id": "ICS-004",
+      "text": "How does a conversation with Claude work in terms of context?",
+      "textEs": "¿Cómo funciona una conversación con Claude en términos de contexto?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-004_d",
+      "explanation": "Claude maintains context throughout a single conversation by remembering all previous messages in the thread. Each time you send a message, Claude receives the full conversation history, allowing it to reference earlier points and maintain coherent multi-turn dialogues. However, Claude does not retain memory across separate conversations — each new conversation starts fresh.",
+      "explanationEs": "Claude mantiene el contexto a lo largo de una sola conversación recordando todos los mensajes previos en el hilo. Cada vez que envías un mensaje, Claude recibe el historial completo de la conversación, permitiéndole hacer referencia a puntos anteriores y mantener diálogos coherentes de múltiples turnos. Sin embargo, Claude no retiene memoria entre conversaciones separadas — cada nueva conversación comienza desde cero.",
+      "options": [
+        { "id": "ICS-004_a", "text": "Claude remembers all conversations you've ever had with it permanently", "textEs": "Claude recuerda todas las conversaciones que has tenido con él permanentemente", "order": 1 },
+        { "id": "ICS-004_b", "text": "Claude forgets everything after each individual message, so you must repeat context every time", "textEs": "Claude olvida todo después de cada mensaje individual, por lo que debes repetir el contexto cada vez", "order": 2 },
+        { "id": "ICS-004_c", "text": "Claude only remembers the last three messages in a conversation", "textEs": "Claude solo recuerda los últimos tres mensajes en una conversación", "order": 3 },
+        { "id": "ICS-004_d", "text": "Claude remembers the full conversation history within a single thread but starts fresh in new conversations", "textEs": "Claude recuerda el historial completo de la conversación dentro de un solo hilo pero comienza desde cero en conversaciones nuevas", "order": 4 }
+      ],
+      "tags": ["conversation", "context", "memory", "multi-turn"]
+    },
+    {
+      "id": "ICS-005",
+      "text": "Which of the following is a known limitation of Claude that beginners should be aware of?",
+      "textEs": "¿Cuál de las siguientes es una limitación conocida de Claude que los principiantes deben conocer?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-005_a",
+      "explanation": "Claude can sometimes generate plausible-sounding but incorrect information, known as 'hallucination.' This is an inherent limitation of large language models. Claude's training data has a knowledge cutoff date, so it may not know about very recent events. Users should verify critical facts from authoritative sources rather than relying solely on Claude's output.",
+      "explanationEs": "Claude puede generar información que suena plausible pero que es incorrecta, lo que se conoce como 'alucinación'. Esta es una limitación inherente de los modelos de lenguaje grandes. Los datos de entrenamiento de Claude tienen una fecha de corte de conocimiento, por lo que puede no conocer eventos muy recientes. Los usuarios deben verificar datos críticos en fuentes autorizadas en lugar de confiar únicamente en la salida de Claude.",
+      "options": [
+        { "id": "ICS-005_a", "text": "It can 'hallucinate' — generating plausible-sounding but incorrect information — and has a knowledge cutoff date", "textEs": "Puede 'alucinar' — generando información que suena plausible pero es incorrecta — y tiene una fecha de corte de conocimiento", "order": 1 },
+        { "id": "ICS-005_b", "text": "It can only respond in English and does not support any other language", "textEs": "Solo puede responder en inglés y no admite ningún otro idioma", "order": 2 },
+        { "id": "ICS-005_c", "text": "It is unable to write any form of creative content such as stories or poems", "textEs": "Es incapaz de escribir cualquier forma de contenido creativo como historias o poemas", "order": 3 },
+        { "id": "ICS-005_d", "text": "It requires an internet connection to process each word individually in real-time", "textEs": "Requiere una conexión a internet para procesar cada palabra individualmente en tiempo real", "order": 4 }
+      ],
+      "tags": ["limitations", "hallucination", "knowledge-cutoff", "accuracy"]
+    },
+    {
+      "id": "ICS-006",
+      "text": "What is a good basic prompting technique to get a more detailed response from Claude?",
+      "textEs": "¿Cuál es una buena técnica básica de prompting para obtener una respuesta más detallada de Claude?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-006_c",
+      "explanation": "Being specific about what you want is one of the most effective basic prompting techniques. Instead of asking 'Tell me about Python,' you could ask 'Explain three key advantages of Python for beginners, with a code example for each.' Providing context, specifying the format, and indicating the desired level of detail all help Claude deliver a more useful response.",
+      "explanationEs": "Ser específico sobre lo que quieres es una de las técnicas básicas de prompting más efectivas. En lugar de preguntar 'Háblame de Python', podrías preguntar 'Explica tres ventajas clave de Python para principiantes, con un ejemplo de código para cada una.' Proporcionar contexto, especificar el formato e indicar el nivel de detalle deseado ayudan a Claude a entregar una respuesta más útil.",
+      "options": [
+        { "id": "ICS-006_a", "text": "Use as few words as possible to save tokens and reduce costs", "textEs": "Usar la menor cantidad de palabras posible para ahorrar tokens y reducir costos", "order": 1 },
+        { "id": "ICS-006_b", "text": "Always write prompts in formal academic language regardless of the topic", "textEs": "Siempre escribir prompts en lenguaje académico formal sin importar el tema", "order": 2 },
+        { "id": "ICS-006_c", "text": "Be specific about what you want: include context, desired format, and level of detail", "textEs": "Ser específico sobre lo que quieres: incluir contexto, formato deseado y nivel de detalle", "order": 3 },
+        { "id": "ICS-006_d", "text": "Repeat your question three times in the same prompt to ensure Claude understands", "textEs": "Repetir tu pregunta tres veces en el mismo prompt para asegurar que Claude entienda", "order": 4 }
+      ],
+      "tags": ["prompting", "specificity", "basics", "best-practices"]
+    },
+    {
+      "id": "ICS-007",
+      "text": "What are the different model tiers available in the Claude family, and when should a beginner choose each?",
+      "textEs": "¿Cuáles son los diferentes niveles de modelos disponibles en la familia Claude y cuándo debería un principiante elegir cada uno?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-007_b",
+      "explanation": "The Claude family has three main tiers: Haiku (fastest and cheapest, good for simple tasks), Sonnet (balanced performance and cost, ideal for most everyday tasks), and Opus (most capable, best for complex reasoning and nuanced tasks). Beginners should start with Sonnet for general use, switch to Haiku for high-volume simple tasks, and use Opus when they need the highest quality output on challenging problems.",
+      "explanationEs": "La familia Claude tiene tres niveles principales: Haiku (el más rápido y económico, bueno para tareas simples), Sonnet (rendimiento y costo equilibrados, ideal para la mayoría de tareas cotidianas) y Opus (el más capaz, mejor para razonamiento complejo y tareas con matices). Los principiantes deben comenzar con Sonnet para uso general, cambiar a Haiku para tareas simples de alto volumen y usar Opus cuando necesiten la mayor calidad en problemas desafiantes.",
+      "options": [
+        { "id": "ICS-007_a", "text": "There is only one Claude model; the tiers refer to subscription pricing plans", "textEs": "Solo hay un modelo Claude; los niveles se refieren a planes de precios de suscripción", "order": 1 },
+        { "id": "ICS-007_b", "text": "Haiku (fast, cheap, simple tasks), Sonnet (balanced, everyday use), Opus (most capable, complex reasoning)", "textEs": "Haiku (rápido, económico, tareas simples), Sonnet (equilibrado, uso cotidiano), Opus (más capaz, razonamiento complejo)", "order": 2 },
+        { "id": "ICS-007_c", "text": "Basic, Standard, and Enterprise — each requiring a different API key type", "textEs": "Basic, Standard y Enterprise — cada uno requiriendo un tipo diferente de clave API", "order": 3 },
+        { "id": "ICS-007_d", "text": "Version 1, Version 2, and Version 3 — each being a newer release that replaces the previous", "textEs": "Versión 1, Versión 2 y Versión 3 — cada una siendo una versión más nueva que reemplaza la anterior", "order": 4 }
+      ],
+      "tags": ["models", "haiku", "sonnet", "opus", "model-selection"]
+    },
+    {
+      "id": "ICS-008",
+      "text": "Which of the following is NOT a recommended use case for Claude?",
+      "textEs": "¿Cuál de los siguientes NO es un caso de uso recomendado para Claude?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-008_d",
+      "explanation": "Claude should not be used as a sole source for critical medical, legal, or financial decisions. While Claude can help research and summarize information in these domains, its outputs should always be reviewed by qualified professionals. Claude can hallucinate, may not have the latest information, and is not a licensed practitioner. Summarizing articles, drafting emails, and explaining code are all appropriate everyday use cases.",
+      "explanationEs": "Claude no debería usarse como fuente única para decisiones críticas médicas, legales o financieras. Aunque Claude puede ayudar a investigar y resumir información en estos dominios, sus resultados siempre deben ser revisados por profesionales calificados. Claude puede alucinar, puede no tener la información más reciente y no es un profesional con licencia. Resumir artículos, redactar correos electrónicos y explicar código son todos casos de uso cotidiano apropiados.",
+      "options": [
+        { "id": "ICS-008_a", "text": "Summarizing long articles or documents into key points", "textEs": "Resumir artículos largos o documentos en puntos clave", "order": 1 },
+        { "id": "ICS-008_b", "text": "Drafting and polishing professional emails", "textEs": "Redactar y pulir correos electrónicos profesionales", "order": 2 },
+        { "id": "ICS-008_c", "text": "Explaining a piece of code and suggesting improvements", "textEs": "Explicar un fragmento de código y sugerir mejoras", "order": 3 },
+        { "id": "ICS-008_d", "text": "Making critical medical or legal decisions without human professional review", "textEs": "Tomar decisiones médicas o legales críticas sin revisión de un profesional humano", "order": 4 }
+      ],
+      "tags": ["use-cases", "limitations", "safety", "responsibility"]
+    },
+    {
+      "id": "ICS-009",
+      "text": "What happens when you provide Claude with follow-up messages in the same conversation?",
+      "textEs": "¿Qué sucede cuando proporcionas a Claude mensajes de seguimiento en la misma conversación?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-009_a",
+      "explanation": "When you send follow-up messages in the same conversation, Claude uses the entire prior conversation as context. You can ask it to refine, expand, or change its previous response. For example, after getting a summary, you could say 'Make it shorter' or 'Focus on the financial aspects.' This iterative refinement is one of the most powerful ways to work with Claude.",
+      "explanationEs": "Cuando envías mensajes de seguimiento en la misma conversación, Claude usa toda la conversación previa como contexto. Puedes pedirle que refine, amplíe o cambie su respuesta anterior. Por ejemplo, después de obtener un resumen, podrías decir 'Hazlo más corto' o 'Enfócate en los aspectos financieros.' Este refinamiento iterativo es una de las formas más poderosas de trabajar con Claude.",
+      "options": [
+        { "id": "ICS-009_a", "text": "Claude uses the full prior conversation as context and can refine, expand, or adjust its previous responses", "textEs": "Claude usa toda la conversación previa como contexto y puede refinar, ampliar o ajustar sus respuestas anteriores", "order": 1 },
+        { "id": "ICS-009_b", "text": "Each follow-up message starts a completely new conversation with no prior context", "textEs": "Cada mensaje de seguimiento inicia una conversación completamente nueva sin contexto previo", "order": 2 },
+        { "id": "ICS-009_c", "text": "Claude can only handle a maximum of five messages per conversation before it resets", "textEs": "Claude solo puede manejar un máximo de cinco mensajes por conversación antes de reiniciarse", "order": 3 },
+        { "id": "ICS-009_d", "text": "Follow-up messages are queued and answered in batch after a delay", "textEs": "Los mensajes de seguimiento se ponen en cola y se responden en lote después de un retraso", "order": 4 }
+      ],
+      "tags": ["conversation-flow", "follow-up", "iteration", "refinement"]
+    },
+    {
+      "id": "ICS-010",
+      "text": "How should a beginner get started with Claude to build confidence?",
+      "textEs": "¿Cómo debería un principiante comenzar con Claude para ganar confianza?",
+      "domainCode": "intro-claude-scrimba",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "intro-claude-scrimba",
+      "correctOptionId": "ICS-010_c",
+      "explanation": "The best way for beginners to build confidence is to start with simple, verifiable tasks where you can check Claude's output — like summarizing an article you've already read or solving a math problem you know the answer to. This helps you calibrate Claude's accuracy and understand its strengths and weaknesses. Gradually move to more complex tasks as you learn how to prompt effectively and verify outputs.",
+      "explanationEs": "La mejor forma para que los principiantes ganen confianza es comenzar con tareas simples y verificables donde puedan comprobar la salida de Claude — como resumir un artículo que ya leyeron o resolver un problema matemático cuya respuesta conocen. Esto ayuda a calibrar la precisión de Claude y entender sus fortalezas y debilidades. Gradualmente pasar a tareas más complejas conforme aprendan a hacer prompts efectivos y verificar resultados.",
+      "options": [
+        { "id": "ICS-010_a", "text": "Immediately use it for your most critical work project to test its full capabilities under pressure", "textEs": "Usarlo inmediatamente para tu proyecto de trabajo más crítico para probar sus capacidades completas bajo presión", "order": 1 },
+        { "id": "ICS-010_b", "text": "Read the entire technical documentation before sending your first message", "textEs": "Leer toda la documentación técnica antes de enviar tu primer mensaje", "order": 2 },
+        { "id": "ICS-010_c", "text": "Start with simple, verifiable tasks to calibrate accuracy, then gradually increase complexity as you learn effective prompting", "textEs": "Comenzar con tareas simples y verificables para calibrar la precisión, luego aumentar gradualmente la complejidad conforme aprendas a hacer prompts efectivos", "order": 3 },
+        { "id": "ICS-010_d", "text": "Only use Claude for creative writing since it cannot be trusted for factual tasks", "textEs": "Solo usar Claude para escritura creativa ya que no se puede confiar en él para tareas factuales", "order": 4 }
+      ],
+      "tags": ["getting-started", "beginners", "best-practices", "learning"]
+    }
+  ]
+}

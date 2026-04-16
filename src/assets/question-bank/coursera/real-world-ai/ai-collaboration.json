@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "domain": "ai-collaboration",
+    "domainName": "AI Collaboration",
+    "trackId": "coursera-real-world-ai-2",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-12",
+    "totalQuestions": 8,
+    "learningLevel": 1,
+    "contentType": "exam"
+  },
+  "questions": [
+    {
+      "id": "crwa-ac-001",
+      "text": "¿Qué significa 'colaboración efectiva con IA' en el contexto de trabajar con Claude?",
+      "textEs": "¿Qué significa 'colaboración efectiva con IA' en el contexto de trabajar con Claude?",
+      "domainCode": "ai-collaboration",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-2",
+      "correctOptionId": "crwa-ac-001_b",
+      "explanation": "La colaboración efectiva con IA implica tratar a Claude como un compañero de trabajo al que se le dan instrucciones claras, se le proporciona contexto relevante y se itera sobre sus respuestas para refinar el resultado. No se trata de dar un solo comando perfecto, sino de un proceso de ida y vuelta donde el usuario guía al modelo hacia el resultado deseado proporcionando retroalimentación constructiva.",
+      "explanationEs": "La colaboración efectiva con IA implica tratar a Claude como un compañero de trabajo al que se le dan instrucciones claras, se le proporciona contexto relevante y se itera sobre sus respuestas para refinar el resultado. No se trata de dar un solo comando perfecto, sino de un proceso de ida y vuelta donde el usuario guía al modelo hacia el resultado deseado proporcionando retroalimentación constructiva.",
+      "options": [
+        { "id": "crwa-ac-001_a", "text": "Delegar completamente las tareas a Claude sin intervención humana", "textEs": "Delegar completamente las tareas a Claude sin intervención humana", "order": 1 },
+        { "id": "crwa-ac-001_b", "text": "Un proceso iterativo donde se proporcionan instrucciones claras, contexto relevante y retroalimentación para refinar resultados progresivamente", "textEs": "Un proceso iterativo donde se proporcionan instrucciones claras, contexto relevante y retroalimentación para refinar resultados progresivamente", "order": 2 },
+        { "id": "crwa-ac-001_c", "text": "Usar Claude únicamente para tareas que los humanos no pueden realizar", "textEs": "Usar Claude únicamente para tareas que los humanos no pueden realizar", "order": 3 },
+        { "id": "crwa-ac-001_d", "text": "Conectar a Claude con otros modelos de IA para que colaboren entre sí", "textEs": "Conectar a Claude con otros modelos de IA para que colaboren entre sí", "order": 4 }
+      ],
+      "tags": ["colaboracion", "proceso-iterativo", "fundamentos"]
+    },
+    {
+      "id": "crwa-ac-002",
+      "text": "¿Por qué es importante aplicar pensamiento crítico al evaluar las respuestas de Claude?",
+      "textEs": "¿Por qué es importante aplicar pensamiento crítico al evaluar las respuestas de Claude?",
+      "domainCode": "ai-collaboration",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-2",
+      "correctOptionId": "crwa-ac-002_d",
+      "explanation": "Claude, como todos los modelos de lenguaje, puede generar información que suena convincente pero que es incorrecta (alucinaciones). El pensamiento crítico es esencial para identificar errores factuales, sesgos, información desactualizada o respuestas que no se alinean con los requisitos. El usuario debe verificar datos clave, cuestionar suposiciones y no aceptar respuestas sin evaluación.",
+      "explanationEs": "Claude, como todos los modelos de lenguaje, puede generar información que suena convincente pero que es incorrecta (alucinaciones). El pensamiento crítico es esencial para identificar errores factuales, sesgos, información desactualizada o respuestas que no se alinean con los requisitos. El usuario debe verificar datos clave, cuestionar suposiciones y no aceptar respuestas sin evaluación.",
+      "options": [
+        { "id": "crwa-ac-002_a", "text": "No es importante; Claude siempre proporciona información verificada y precisa", "textEs": "No es importante; Claude siempre proporciona información verificada y precisa", "order": 1 },
+        { "id": "crwa-ac-002_b", "text": "Solo es necesario cuando se usan modelos pequeños como Haiku", "textEs": "Solo es necesario cuando se usan modelos pequeños como Haiku", "order": 2 },
+        { "id": "crwa-ac-002_c", "text": "Para reducir el costo de la API evitando solicitudes innecesarias", "textEs": "Para reducir el costo de la API evitando solicitudes innecesarias", "order": 3 },
+        { "id": "crwa-ac-002_d", "text": "Claude puede generar alucinaciones convincentes; el pensamiento crítico permite identificar errores, sesgos e información incorrecta", "textEs": "Claude puede generar alucinaciones convincentes; el pensamiento crítico permite identificar errores, sesgos e información incorrecta", "order": 4 }
+      ],
+      "tags": ["pensamiento-critico", "alucinaciones", "verificacion"]
+    },
+    {
+      "id": "crwa-ac-003",
+      "text": "¿Cuál es la mejor práctica al comunicarse con Claude cuando la primera respuesta no cumple las expectativas?",
+      "textEs": "¿Cuál es la mejor práctica al comunicarse con Claude cuando la primera respuesta no cumple las expectativas?",
+      "domainCode": "ai-collaboration",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-2",
+      "correctOptionId": "crwa-ac-003_a",
+      "explanation": "La iteración efectiva implica dar retroalimentación específica sobre qué aspectos de la respuesta no son satisfactorios y qué cambios se necesitan. En lugar de repetir la misma pregunta o empezar de cero, es más productivo decir exactamente qué ajustar: 'La respuesta es demasiado técnica, simplifica el lenguaje' o 'Incluye ejemplos concretos en cada punto'. Esto aprovecha el contexto de la conversación y guía al modelo.",
+      "explanationEs": "La iteración efectiva implica dar retroalimentación específica sobre qué aspectos de la respuesta no son satisfactorios y qué cambios se necesitan. En lugar de repetir la misma pregunta o empezar de cero, es más productivo decir exactamente qué ajustar: 'La respuesta es demasiado técnica, simplifica el lenguaje' o 'Incluye ejemplos concretos en cada punto'. Esto aprovecha el contexto de la conversación y guía al modelo.",
+      "options": [
+        { "id": "crwa-ac-003_a", "text": "Dar retroalimentación específica sobre qué no funciona y qué cambios se necesitan, aprovechando el contexto de la conversación", "textEs": "Dar retroalimentación específica sobre qué no funciona y qué cambios se necesitan, aprovechando el contexto de la conversación", "order": 1 },
+        { "id": "crwa-ac-003_b", "text": "Iniciar una nueva conversación desde cero con un prompt completamente diferente", "textEs": "Iniciar una nueva conversación desde cero con un prompt completamente diferente", "order": 2 },
+        { "id": "crwa-ac-003_c", "text": "Repetir exactamente el mismo prompt esperando un resultado diferente", "textEs": "Repetir exactamente el mismo prompt esperando un resultado diferente", "order": 3 },
+        { "id": "crwa-ac-003_d", "text": "Cambiar a un modelo más grande, ya que el problema siempre es la capacidad del modelo", "textEs": "Cambiar a un modelo más grande, ya que el problema siempre es la capacidad del modelo", "order": 4 }
+      ],
+      "tags": ["iteracion", "retroalimentacion", "comunicacion-efectiva"]
+    },
+    {
+      "id": "crwa-ac-004",
+      "text": "¿Qué rol cumple la comunicación clara y precisa al interactuar con Claude?",
+      "textEs": "¿Qué rol cumple la comunicación clara y precisa al interactuar con Claude?",
+      "domainCode": "ai-collaboration",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-2",
+      "correctOptionId": "crwa-ac-004_c",
+      "explanation": "La comunicación clara actúa como puente entre la intención del usuario y la interpretación del modelo. Claude interpreta literalmente las instrucciones, por lo que la ambigüedad en la comunicación se traduce directamente en respuestas imprecisas. Ser claro sobre el objetivo, la audiencia, el tono, el formato y las restricciones minimiza la brecha entre lo que el usuario espera y lo que Claude produce.",
+      "explanationEs": "La comunicación clara actúa como puente entre la intención del usuario y la interpretación del modelo. Claude interpreta literalmente las instrucciones, por lo que la ambigüedad en la comunicación se traduce directamente en respuestas imprecisas. Ser claro sobre el objetivo, la audiencia, el tono, el formato y las restricciones minimiza la brecha entre lo que el usuario espera y lo que Claude produce.",
+      "options": [
+        { "id": "crwa-ac-004_a", "text": "No es relevante porque Claude comprende la intención sin importar cómo se formule el mensaje", "textEs": "No es relevante porque Claude comprende la intención sin importar cómo se formule el mensaje", "order": 1 },
+        { "id": "crwa-ac-004_b", "text": "Solo importa cuando se usa la API; en claude.ai la comunicación informal funciona igual", "textEs": "Solo importa cuando se usa la API; en claude.ai la comunicación informal funciona igual", "order": 2 },
+        { "id": "crwa-ac-004_c", "text": "Es el puente entre la intención del usuario y la interpretación del modelo; la ambigüedad produce respuestas imprecisas", "textEs": "Es el puente entre la intención del usuario y la interpretación del modelo; la ambigüedad produce respuestas imprecisas", "order": 3 },
+        { "id": "crwa-ac-004_d", "text": "Mejora la velocidad de respuesta del modelo al reducir el procesamiento necesario", "textEs": "Mejora la velocidad de respuesta del modelo al reducir el procesamiento necesario", "order": 4 }
+      ],
+      "tags": ["comunicacion", "claridad", "precision", "fundamentos"]
+    },
+    {
+      "id": "crwa-ac-005",
+      "text": "¿Cómo puede el proceso de iteración mejorar un documento generado por Claude?",
+      "textEs": "¿Cómo puede el proceso de iteración mejorar un documento generado por Claude?",
+      "domainCode": "ai-collaboration",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-2",
+      "correctOptionId": "crwa-ac-005_b",
+      "explanation": "La iteración permite refinar progresivamente un documento a través de rondas sucesivas de retroalimentación. Primero se puede generar un borrador, luego ajustar el tono, después agregar secciones faltantes, y finalmente pulir el formato. Cada ronda aborda aspectos específicos, lo que resulta más efectivo que intentar obtener el documento perfecto en un solo intento.",
+      "explanationEs": "La iteración permite refinar progresivamente un documento a través de rondas sucesivas de retroalimentación. Primero se puede generar un borrador, luego ajustar el tono, después agregar secciones faltantes, y finalmente pulir el formato. Cada ronda aborda aspectos específicos, lo que resulta más efectivo que intentar obtener el documento perfecto en un solo intento.",
+      "options": [
+        { "id": "crwa-ac-005_a", "text": "No lo mejora; la primera versión siempre es la mejor porque Claude pierde contexto en iteraciones", "textEs": "No lo mejora; la primera versión siempre es la mejor porque Claude pierde contexto en iteraciones", "order": 1 },
+        { "id": "crwa-ac-005_b", "text": "Permite refinar progresivamente: primero el borrador, luego ajustar tono, agregar secciones y pulir formato en rondas sucesivas", "textEs": "Permite refinar progresivamente: primero el borrador, luego ajustar tono, agregar secciones y pulir formato en rondas sucesivas", "order": 2 },
+        { "id": "crwa-ac-005_c", "text": "Solo sirve para corregir errores ortográficos, no para cambios estructurales", "textEs": "Solo sirve para corregir errores ortográficos, no para cambios estructurales", "order": 3 },
+        { "id": "crwa-ac-005_d", "text": "Requiere regenerar completamente el documento en cada iteración sin conservar cambios previos", "textEs": "Requiere regenerar completamente el documento en cada iteración sin conservar cambios previos", "order": 4 }
+      ],
+      "tags": ["iteracion", "refinamiento", "documentos", "proceso"]
+    },
+    {
+      "id": "crwa-ac-006",
+      "text": "¿Qué estrategia es más efectiva cuando Claude proporciona información que parece dudosa?",
+      "textEs": "¿Qué estrategia es más efectiva cuando Claude proporciona información que parece dudosa?",
+      "domainCode": "ai-collaboration",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-2",
+      "correctOptionId": "crwa-ac-006_c",
+      "explanation": "Cuando una respuesta parece dudosa, la mejor estrategia es pedir a Claude que cite sus fuentes o explique su razonamiento, y luego verificar la información de forma independiente. También es útil reformular la pregunta para obtener una segunda perspectiva. Aceptar información sin verificación puede propagar errores, mientras que descartar todo sin evaluar desperdicia respuestas potencialmente válidas.",
+      "explanationEs": "Cuando una respuesta parece dudosa, la mejor estrategia es pedir a Claude que cite sus fuentes o explique su razonamiento, y luego verificar la información de forma independiente. También es útil reformular la pregunta para obtener una segunda perspectiva. Aceptar información sin verificación puede propagar errores, mientras que descartar todo sin evaluar desperdicia respuestas potencialmente válidas.",
+      "options": [
+        { "id": "crwa-ac-006_a", "text": "Aceptar la información tal cual, ya que Claude es generalmente confiable", "textEs": "Aceptar la información tal cual, ya que Claude es generalmente confiable", "order": 1 },
+        { "id": "crwa-ac-006_b", "text": "Descartar completamente la respuesta y no usar Claude para ese tipo de consulta", "textEs": "Descartar completamente la respuesta y no usar Claude para ese tipo de consulta", "order": 2 },
+        { "id": "crwa-ac-006_c", "text": "Pedir a Claude que explique su razonamiento o cite fuentes, y verificar la información de forma independiente", "textEs": "Pedir a Claude que explique su razonamiento o cite fuentes, y verificar la información de forma independiente", "order": 3 },
+        { "id": "crwa-ac-006_d", "text": "Aumentar la temperatura del modelo para obtener respuestas más diversas", "textEs": "Aumentar la temperatura del modelo para obtener respuestas más diversas", "order": 4 }
+      ],
+      "tags": ["pensamiento-critico", "verificacion", "alucinaciones", "estrategias"]
+    },
+    {
+      "id": "crwa-ac-007",
+      "text": "¿Cuál es una ventaja clave del enfoque iterativo sobre el enfoque de 'prompt único perfecto'?",
+      "textEs": "¿Cuál es una ventaja clave del enfoque iterativo sobre el enfoque de 'prompt único perfecto'?",
+      "domainCode": "ai-collaboration",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-2",
+      "correctOptionId": "crwa-ac-007_a",
+      "explanation": "El enfoque iterativo reduce la presión de crear un prompt perfecto desde el inicio. Permite explorar ideas, descubrir requisitos que no se habían considerado inicialmente y refinar el resultado progresivamente. Además, en conversaciones multi-turno, Claude mantiene el contexto de intercambios anteriores, lo que permite construir sobre lo ya producido en lugar de empezar de cero.",
+      "explanationEs": "El enfoque iterativo reduce la presión de crear un prompt perfecto desde el inicio. Permite explorar ideas, descubrir requisitos que no se habían considerado inicialmente y refinar el resultado progresivamente. Además, en conversaciones multi-turno, Claude mantiene el contexto de intercambios anteriores, lo que permite construir sobre lo ya producido en lugar de empezar de cero.",
+      "options": [
+        { "id": "crwa-ac-007_a", "text": "Permite explorar ideas, descubrir requisitos no considerados y refinar resultados aprovechando el contexto acumulado de la conversación", "textEs": "Permite explorar ideas, descubrir requisitos no considerados y refinar resultados aprovechando el contexto acumulado de la conversación", "order": 1 },
+        { "id": "crwa-ac-007_b", "text": "Es más barato porque cada iteración usa menos tokens que un prompt largo", "textEs": "Es más barato porque cada iteración usa menos tokens que un prompt largo", "order": 2 },
+        { "id": "crwa-ac-007_c", "text": "Garantiza que la respuesta final no contenga errores ni alucinaciones", "textEs": "Garantiza que la respuesta final no contenga errores ni alucinaciones", "order": 3 },
+        { "id": "crwa-ac-007_d", "text": "Es más rápido porque Claude procesa mensajes cortos con menor latencia", "textEs": "Es más rápido porque Claude procesa mensajes cortos con menor latencia", "order": 4 }
+      ],
+      "tags": ["iteracion", "proceso", "ventajas", "multi-turno"]
+    },
+    {
+      "id": "crwa-ac-008",
+      "text": "¿Cómo se debe manejar una situación donde Claude admite no estar seguro de una respuesta?",
+      "textEs": "¿Cómo se debe manejar una situación donde Claude admite no estar seguro de una respuesta?",
+      "domainCode": "ai-collaboration",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "coursera-real-world-ai-2",
+      "correctOptionId": "crwa-ac-008_d",
+      "explanation": "Cuando Claude expresa incertidumbre, es una señal positiva de honestidad del modelo (alineado con su entrenamiento para ser honest). Se debe valorar esta transparencia, proporcionar más contexto o información que ayude a Claude a responder mejor, y si el tema es crítico, verificar con fuentes confiables. Nunca se debe forzar a Claude a dar una respuesta definitiva cuando expresa dudas legítimas.",
+      "explanationEs": "Cuando Claude expresa incertidumbre, es una señal positiva de honestidad del modelo (alineado con su entrenamiento para ser honest). Se debe valorar esta transparencia, proporcionar más contexto o información que ayude a Claude a responder mejor, y si el tema es crítico, verificar con fuentes confiables. Nunca se debe forzar a Claude a dar una respuesta definitiva cuando expresa dudas legítimas.",
+      "options": [
+        { "id": "crwa-ac-008_a", "text": "Insistir hasta que Claude dé una respuesta definitiva, ya que siempre tiene la información", "textEs": "Insistir hasta que Claude dé una respuesta definitiva, ya que siempre tiene la información", "order": 1 },
+        { "id": "crwa-ac-008_b", "text": "Ignorar la advertencia y usar la respuesta parcial como si fuera definitiva", "textEs": "Ignorar la advertencia y usar la respuesta parcial como si fuera definitiva", "order": 2 },
+        { "id": "crwa-ac-008_c", "text": "Reportar un error técnico a Anthropic porque Claude siempre debería estar seguro", "textEs": "Reportar un error técnico a Anthropic porque Claude siempre debería estar seguro", "order": 3 },
+        { "id": "crwa-ac-008_d", "text": "Valorar la honestidad del modelo, proporcionar más contexto si es posible y verificar con fuentes confiables para temas críticos", "textEs": "Valorar la honestidad del modelo, proporcionar más contexto si es posible y verificar con fuentes confiables para temas críticos", "order": 4 }
+      ],
+      "tags": ["honestidad", "incertidumbre", "colaboracion", "mejores-practicas"]
+    }
+  ]
+}

@@ -1,0 +1,958 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-12",
+  "title": "Ecosistema de Formacion y Certificacion Claude",
+  "subtitle": "Mapa completo actualizado — Abril 2026",
+  "platforms": [
+    {
+      "id": "academy",
+      "name": "Anthropic Academy",
+      "icon": "graduation-cap",
+      "color": "#04202C",
+      "url": "https://anthropic.skilljar.com/",
+      "description": "Plataforma oficial de Anthropic en Skilljar. Cursos gratuitos con certificado de completacion.",
+      "pricing": "GRATIS",
+      "requirements": "Solo email para registrarse",
+      "totalHours": "~20 hrs todo el catalogo",
+      "layers": [
+        {
+          "id": "foundation",
+          "name": "Foundation Layer",
+          "subtitle": "No requiere codigo",
+          "icon": "book-open",
+          "color": "#5B7065",
+          "courses": [
+            {
+              "id": "claude-101",
+              "number": 1,
+              "certNumber": 1,
+              "title": "Claude 101",
+              "description": "Prompting, flujos de trabajo diarios, capacidades core de Claude",
+              "audience": "Todos",
+              "duration": "1-2 hrs",
+              "level": 1,
+              "url": "https://anthropic.skilljar.com/claude-101",
+              "topics": ["Prompting basico", "Capacidades de Claude", "Flujos de trabajo diarios", "Modelos disponibles", "Context window"],
+              "prerequisites": [],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "ai-fluency",
+              "number": 2,
+              "certNumber": 2,
+              "title": "AI Fluency: Framework & Foundations",
+              "description": "Principios de colaboracion con IA, delegacion efectiva, discernimiento de outputs",
+              "audience": "Todos",
+              "duration": "2 hrs",
+              "level": 1,
+              "url": "https://anthropic.skilljar.com/ai-fluency-framework-and-foundations",
+              "topics": ["Colaboracion humano-IA", "Delegacion efectiva", "Evaluacion de outputs", "Framework de fluencia", "Discernimiento"],
+              "prerequisites": [],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "ai-fluency-students",
+              "number": 3,
+              "certNumber": 3,
+              "title": "AI Fluency for Students",
+              "description": "Uso responsable de IA en contextos academicos. Integridad academica y herramientas de estudio.",
+              "audience": "Estudiantes",
+              "duration": "1-2 hrs",
+              "level": 1,
+              "url": "https://anthropic.skilljar.com/ai-fluency-for-students",
+              "topics": ["Uso responsable de IA", "Integridad academica", "Herramientas de estudio con IA", "Citacion y atribucion"],
+              "prerequisites": [],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "ai-fluency-educators",
+              "number": 4,
+              "certNumber": 4,
+              "title": "AI Fluency for Educators",
+              "description": "Integracion de IA en ensenanza. Diseno de actividades, evaluacion con IA.",
+              "audience": "Educadores",
+              "duration": "1-2 hrs",
+              "level": 1,
+              "url": "https://anthropic.skilljar.com/ai-fluency-for-educators",
+              "topics": ["IA en educacion", "Diseno curricular con IA", "Evaluacion asistida", "Politicas de uso"],
+              "prerequisites": [],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "teaching-ai-fluency",
+              "number": 5,
+              "certNumber": 5,
+              "title": "Teaching AI Fluency",
+              "description": "Como disenar curriculos de fluencia en IA para organizaciones y aulas.",
+              "audience": "Formadores / Instructional Designers",
+              "duration": "1-2 hrs",
+              "level": 1,
+              "url": "https://anthropic.skilljar.com/teaching-ai-fluency",
+              "topics": ["Diseno de curriculos IA", "Train-the-trainer", "Medicion de fluencia", "Recursos pedagogicos"],
+              "prerequisites": ["ai-fluency"],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "ai-fluency-nonprofits",
+              "number": 6,
+              "certNumber": 6,
+              "title": "AI Fluency for Nonprofits",
+              "description": "Aplicacion de IA en organizaciones sin fines de lucro. Casos de uso especificos para ONGs.",
+              "audience": "ONGs / Sector social",
+              "duration": "1-2 hrs",
+              "level": 1,
+              "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits",
+              "topics": ["IA para impacto social", "Automatizacion en ONGs", "Grants y fundraising con IA", "Compliance y etica"],
+              "prerequisites": [],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "claude-cowork",
+              "number": 7,
+              "certNumber": 7,
+              "title": "Introduction to Claude Cowork",
+              "description": "Task loop, plugins, skills, file/research workflows. Cowork = Claude trabajando directo con tus archivos.",
+              "audience": "Todos",
+              "duration": "1-2 hrs",
+              "level": 2,
+              "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+              "topics": ["Claude Cowork", "Task loops", "Plugins", "Skills basicos", "File workflows", "Research workflows"],
+              "prerequisites": ["claude-101"],
+              "certificate": true,
+              "isNew": true
+            }
+          ]
+        },
+        {
+          "id": "builder",
+          "name": "Builder Layer",
+          "subtitle": "Requiere Python/CLI",
+          "icon": "code",
+          "color": "#304040",
+          "courses": [
+            {
+              "id": "claude-code-101",
+              "number": 8,
+              "certNumber": 8,
+              "title": "Claude Code 101",
+              "description": "Instalacion, configuracion y customizacion de Claude Code. Para devs nuevos o senior que no han usado coding agents.",
+              "audience": "Developers",
+              "duration": "2-3 hrs",
+              "level": 2,
+              "url": "https://anthropic.skilljar.com/claude-code-101",
+              "topics": ["Instalacion Claude Code", "CLI basico", "Configuracion inicial", "CLAUDE.md", "Primer proyecto", "Permisos y seguridad"],
+              "prerequisites": ["claude-101"],
+              "certificate": true,
+              "isNew": true
+            },
+            {
+              "id": "claude-code-action",
+              "number": 9,
+              "certNumber": 9,
+              "title": "Claude Code in Action",
+              "description": "Uso avanzado del CLI, configuracion enterprise, workflows de desarrollo profesional.",
+              "audience": "Developers Senior",
+              "duration": "3-4 hrs",
+              "level": 3,
+              "url": "https://anthropic.skilljar.com/claude-code-in-action",
+              "topics": ["Workflows avanzados", "Git worktrees", "MCP servers en Claude Code", "Hooks del sistema", "CI/CD integration", "Team workflows"],
+              "prerequisites": ["claude-code-101"],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "building-api",
+              "number": 10,
+              "certNumber": 10,
+              "title": "Building with the Claude API",
+              "description": "Curso flagship: 84 lectures, 8+ horas, 10 quizzes. API lifecycle completo.",
+              "audience": "Developers",
+              "duration": "8+ hrs",
+              "level": 3,
+              "url": "https://anthropic.skilljar.com/building-with-the-claude-api",
+              "topics": ["Messages API", "Streaming (SSE)", "Authentication", "Structured output", "Error handling", "Retry logic", "Rate limiting", "Batch API", "Tool use / Function calling", "Vision / Multimodal", "Python SDK", "TypeScript SDK"],
+              "prerequisites": ["claude-101"],
+              "certificate": true,
+              "isNew": false,
+              "flagship": true,
+              "stats": { "lectures": 84, "quizzes": 10, "hours": 8 }
+            },
+            {
+              "id": "agent-skills",
+              "number": 11,
+              "certNumber": 11,
+              "title": "Introduction to Agent Skills",
+              "description": "Crear, configurar y compartir Skills en Claude Code. Distribucion via plugins, enterprise managed settings.",
+              "audience": "Developers",
+              "duration": "2-3 hrs",
+              "level": 4,
+              "url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+              "topics": ["SKILL.md frontmatter", "context field", "allowed-tools", "argument-hint", "Pre-built skills", "Custom skills", "Plugin distribution", "Enterprise settings", "Troubleshooting"],
+              "prerequisites": ["claude-code-action"],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "subagents",
+              "number": 12,
+              "certNumber": 12,
+              "title": "Introduction to Subagents",
+              "description": "Crear sub-agentes, delegar tareas, mantener contexto limpio. Cuando vale la pena delegar vs hacer inline.",
+              "audience": "Developers Senior",
+              "duration": "2-3 hrs",
+              "level": 4,
+              "url": "https://anthropic.skilljar.com/introduction-to-subagents",
+              "topics": ["Subagent creation", "Task delegation", "Context isolation", "Worktree agents", "Parallel execution", "When to delegate vs inline"],
+              "prerequisites": ["agent-skills"],
+              "certificate": true,
+              "isNew": true
+            }
+          ]
+        },
+        {
+          "id": "infrastructure",
+          "name": "Infrastructure Layer",
+          "subtitle": "Requiere Python/CLI",
+          "icon": "server",
+          "color": "#1A3036",
+          "courses": [
+            {
+              "id": "intro-mcp",
+              "number": 13,
+              "certNumber": 13,
+              "title": "Introduction to Model Context Protocol (MCP)",
+              "description": "Fundamentos de MCP: tools, resources, prompts. Construir MCP servers desde cero en Python.",
+              "audience": "Developers",
+              "duration": "3-4 hrs",
+              "level": 4,
+              "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+              "topics": ["3 primitivas MCP: tools, resources, prompts", "MCP server en Python", "stdio transport", "Tool schemas", "Resource templates", "Testing MCP servers"],
+              "prerequisites": ["building-api"],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "mcp-advanced",
+              "number": 14,
+              "certNumber": 14,
+              "title": "MCP: Advanced Topics",
+              "description": "Integraciones complejas, MCP en produccion, SSE transport, authentication, multi-server setups.",
+              "audience": "Developers Senior / Architects",
+              "duration": "3-4 hrs",
+              "level": 5,
+              "url": "https://anthropic.skilljar.com/mcp-advanced-topics",
+              "topics": ["SSE transport", "Authentication patterns", "Multi-server orchestration", "Production deployment", "Error handling", "Capability negotiation", "Resource subscriptions"],
+              "prerequisites": ["intro-mcp"],
+              "certificate": true,
+              "isNew": false
+            }
+          ]
+        },
+        {
+          "id": "cloud",
+          "name": "Cloud Platform Layer",
+          "subtitle": "Deployment en la nube",
+          "icon": "cloud",
+          "color": "#5B7065",
+          "courses": [
+            {
+              "id": "aws-bedrock",
+              "number": 15,
+              "certNumber": 15,
+              "title": "Claude with Amazon Bedrock",
+              "description": "Despliegue y uso de Claude via AWS Bedrock. Configuracion, pricing, integracion con servicios AWS.",
+              "audience": "Cloud Engineers / DevOps",
+              "duration": "2-3 hrs",
+              "level": 6,
+              "url": "https://anthropic.skilljar.com/claude-with-amazon-bedrock",
+              "topics": ["AWS Bedrock setup", "Claude on Bedrock", "IAM permissions", "Pricing model", "Integration con Lambda/S3", "Guardrails"],
+              "prerequisites": ["building-api"],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "gcp-vertex",
+              "number": 16,
+              "certNumber": 16,
+              "title": "Claude with Google Cloud's Vertex AI",
+              "description": "Despliegue y uso de Claude via GCP Vertex AI. Model Garden, endpoints, monitoring.",
+              "audience": "Cloud Engineers / DevOps",
+              "duration": "2-3 hrs",
+              "level": 6,
+              "url": "https://anthropic.skilljar.com/claude-with-vertex-ai",
+              "topics": ["Vertex AI Model Garden", "Claude endpoints", "GCP IAM", "Monitoring", "Pricing", "Integration con BigQuery"],
+              "prerequisites": ["building-api"],
+              "certificate": true,
+              "isNew": false
+            }
+          ]
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise Layer",
+          "subtitle": "Para organizaciones",
+          "icon": "building",
+          "color": "#04202C",
+          "courses": [
+            {
+              "id": "enterprise-adoption",
+              "number": 17,
+              "certNumber": 17,
+              "title": "Driving Enterprise Adoption of Claude",
+              "description": "Estrategia de adopcion empresarial. ROI, change management, compliance, governance.",
+              "audience": "Lideres / CIOs / VPs",
+              "duration": "2-3 hrs",
+              "level": 7,
+              "url": "https://anthropic.skilljar.com/driving-enterprise-adoption",
+              "topics": ["Estrategia de adopcion", "ROI de IA", "Change management", "Compliance", "Governance", "Security review"],
+              "prerequisites": [],
+              "certificate": true,
+              "isNew": false
+            },
+            {
+              "id": "train-trainer",
+              "number": 18,
+              "certNumber": 18,
+              "title": "Enterprise Train-the-Trainer",
+              "description": "Formar formadores internos en tu organizacion. Programa de capacitacion escalable.",
+              "audience": "L&D / HR / Internal Trainers",
+              "duration": "2-3 hrs",
+              "level": 7,
+              "url": "https://anthropic.skilljar.com/enterprise-train-the-trainer",
+              "topics": ["Program design", "Internal champions", "Metrics de adopcion", "Materiales de capacitacion", "Rollout por fases"],
+              "prerequisites": ["enterprise-adoption"],
+              "certificate": true,
+              "isNew": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coursera",
+      "name": "Coursera",
+      "icon": "play-circle",
+      "color": "#0056D2",
+      "url": "https://www.coursera.org/partners/anthropic",
+      "description": "Cursos oficiales de Anthropic en Coursera. Gratis para auditar, certificado pago.",
+      "pricing": "Gratis auditar / ~$49/mes certificado",
+      "specializations": [
+        {
+          "id": "real-world-ai",
+          "title": "Real-World AI for Everyone",
+          "description": "Para todos los niveles, no tecnico. Uso practico de Claude en el dia a dia.",
+          "url": "https://www.coursera.org/specializations/real-world-ai-for-everyone",
+          "audience": "Todos los niveles",
+          "courses": [
+            {
+              "id": "coursera-ai-fundamentals",
+              "certNumber": 19,
+              "title": "AI Fundamentals with Claude",
+              "description": "Estructura de prompts, contexto, respuestas de calidad. Claude Artifacts para crear entregables.",
+              "url": "https://www.coursera.org/learn/ai-for-everyone-ai-fundamentals-with-claude",
+              "level": 1,
+              "topics": ["Prompt structure", "Contexto efectivo", "Calidad de respuestas", "Claude Artifacts", "Entregables con IA"]
+            },
+            {
+              "id": "coursera-ai-collab",
+              "certNumber": 20,
+              "title": "AI Collaboration with Claude",
+              "description": "Colaboracion efectiva con IA. Workflows de equipo, revision de outputs, iteracion.",
+              "url": "https://www.coursera.org/learn/ai-for-everyone-ai-collaboration-with-claude",
+              "level": 1,
+              "topics": ["Colaboracion humano-IA", "Team workflows", "Output review", "Iteracion efectiva"]
+            },
+            {
+              "id": "coursera-ai-automation",
+              "certNumber": 21,
+              "title": "AI Automation with Claude",
+              "description": "Claude Projects, automatizacion, multimodal, RAG basico.",
+              "url": "https://www.coursera.org/learn/ai-for-everyone-ai-automation-with-claude",
+              "level": 2,
+              "topics": ["Claude Projects", "Automatizacion", "Multimodal (imagenes)", "RAG introductorio", "Batch processing"]
+            }
+          ]
+        },
+        {
+          "id": "mastering-claude",
+          "title": "Mastering Claude AI: Prompting, APIs, RAG, and MCP",
+          "description": "De prompting a produccion. Para developers.",
+          "url": "https://www.coursera.org/specializations/mastering-claude-ai-prompting-apis-rag-and-mcp",
+          "audience": "Developers",
+          "courses": [
+            {
+              "id": "coursera-prompting",
+              "certNumber": 23,
+              "title": "Claude AI and Prompting for Everyone",
+              "description": "Fundamentos de prompting efectivo. Capabilities, safety behavior, long documents.",
+              "url": "https://www.coursera.org/learn/claude-ai-and-prompting-for-everyone",
+              "level": 2,
+              "topics": ["Prompting fundamentals", "Safety behavior", "Long documents", "Structured prompting"]
+            },
+            {
+              "id": "coursera-dev-api",
+              "certNumber": 24,
+              "title": "Developing Applications with Claude API",
+              "description": "Construir apps con la API. Multi-turn, structured outputs, context-aware agents.",
+              "url": "https://www.coursera.org/learn/developing-applications-with-claude-api",
+              "level": 3,
+              "topics": ["API requests", "Multi-turn conversations", "Structured outputs", "Context-aware agents"]
+            },
+            {
+              "id": "coursera-rag-mcp",
+              "certNumber": 25,
+              "title": "Building RAG and MCP Servers with Claude",
+              "description": "RAG + MCP servers para produccion. Retrieval pipelines, tool integration.",
+              "url": "https://www.coursera.org/learn/building-rag-and-mcp-servers-with-claude",
+              "level": 4,
+              "topics": ["RAG pipelines", "MCP servers", "Retrieval strategies", "Tool integration", "Production workflows"]
+            }
+          ]
+        },
+        {
+          "id": "generative-ai-sw-eng",
+          "title": "Generative AI Software Engineering",
+          "description": "By Vanderbilt University. Build complete apps with AI agents, parallel workflows, and multiple git branches simultaneously.",
+          "url": "https://www.coursera.org/specializations/generative-ai-software-engineering",
+          "audience": "Software Engineers",
+          "courses": [
+            {
+              "id": "coursera-claude-code-sw",
+              "certNumber": 27,
+              "title": "Claude Code: Software Engineering with Generative AI Agents",
+              "description": "Build complete applications in minutes using parallel agents and multiple git branches simultaneously.",
+              "url": "https://www.coursera.org/learn/claude-code",
+              "level": 3,
+              "topics": ["Claude Code advanced", "Parallel agents", "Git branches", "Full app building"]
+            },
+            {
+              "id": "coursera-python-ai-agents",
+              "certNumber": 28,
+              "title": "Python AI Agents",
+              "description": "Autonomous Python agents for document analysis, data processing, and workflow automation.",
+              "url": "https://www.coursera.org/learn/python-ai-agents",
+              "level": 3,
+              "topics": ["Python agents", "Document analysis", "Data processing", "Workflow automation"]
+            },
+            {
+              "id": "coursera-prompt-eng-vanderbilt",
+              "certNumber": 29,
+              "title": "Prompt Engineering (Vanderbilt)",
+              "description": "Sophisticated prompts with domain-specific reasoning patterns.",
+              "url": "https://www.coursera.org/learn/prompt-engineering",
+              "level": 2,
+              "topics": ["Advanced prompting", "Domain reasoning", "Complex prompts"]
+            },
+            {
+              "id": "coursera-custom-gpts",
+              "certNumber": 30,
+              "title": "Custom GPTs",
+              "description": "Build specialized GPTs with business context and domain knowledge.",
+              "url": "https://www.coursera.org/learn/custom-gpts",
+              "level": 3,
+              "topics": ["Custom GPTs", "Business context", "Specialization"]
+            }
+          ]
+        }
+      ],
+      "individualCourses": [
+        {
+          "id": "coursera-code-action",
+          "certNumber": 32,
+          "title": "Claude Code in Action",
+          "description": "Mismo contenido que Skilljar, disponible en Coursera.",
+          "url": "https://www.coursera.org/learn/claude-code-in-action",
+          "level": 3
+        },
+        {
+          "id": "coursera-building-api",
+          "certNumber": 33,
+          "title": "Building with the Claude API",
+          "description": "Mismo contenido flagship que Skilljar.",
+          "url": "https://www.coursera.org/learn/building-with-the-claude-api",
+          "level": 3
+        },
+        {
+          "id": "coursera-intro-claude",
+          "certNumber": 34,
+          "title": "Intro to Claude AI (Scrimba)",
+          "description": "Coding challenges interactivos con Scrimba.",
+          "url": "https://www.coursera.org/learn/intro-to-claude-ai",
+          "level": 1
+        },
+        {
+          "id": "coursera-next-gen",
+          "certNumber": 35,
+          "title": "Next-Gen AI Assistant: Claude (Guided Project)",
+          "description": "Proyecto guiado practico.",
+          "url": "https://www.coursera.org/learn/next-generation-ai-assistant-claude-by-anthropic",
+          "level": 2
+        },
+        {
+          "id": "coursera-real-world-spec",
+          "certNumber": 22,
+          "title": "Certificado Specialization: Real-World AI for Everyone",
+          "description": "Se obtiene al completar los 3 cursos de esta especializacion.",
+          "url": "https://www.coursera.org/specializations/real-world-ai-for-everyone",
+          "level": 2,
+          "certType": "specialization",
+          "topics": []
+        },
+        {
+          "id": "coursera-vanderbilt-spec",
+          "certNumber": 31,
+          "title": "Certificado Specialization: Generative AI Software Engineering",
+          "description": "Se obtiene al completar los 4 cursos de Vanderbilt University.",
+          "url": "https://www.coursera.org/specializations/generative-ai-software-engineering",
+          "level": 3,
+          "certType": "specialization",
+          "topics": []
+        },
+        {
+          "id": "coursera-mastering-spec",
+          "certNumber": 26,
+          "title": "Certificado Specialization: Mastering Claude AI",
+          "description": "Se obtiene al completar los 3 cursos de esta especializacion.",
+          "url": "https://www.coursera.org/specializations/mastering-claude-ai-prompting-apis-rag-and-mcp",
+          "level": 4,
+          "certType": "specialization",
+          "topics": []
+        }
+      ]
+    },
+    {
+      "id": "deeplearning-ai",
+      "name": "DeepLearning.AI",
+      "icon": "brain",
+      "color": "#FF6F00",
+      "url": "https://www.deeplearning.ai/",
+      "description": "Short courses gratuitos con Anthropic. Instructores de Anthropic y Andrew Ng.",
+      "pricing": "GRATIS",
+      "courses": [
+        {
+          "id": "dlai-agent-skills",
+          "certNumber": 36,
+          "title": "Agent Skills with Anthropic",
+          "description": "Pre-built skills (Excel, PowerPoint, Skill Creation). Custom skills, Claude API code execution, Agent SDK.",
+          "url": "https://www.deeplearning.ai/short-courses/agent-skills-with-anthropic/",
+          "level": 4,
+          "duration": "1-2 hrs",
+          "topics": ["Pre-built skills (Excel, PowerPoint)", "Custom skill creation", "Claude API code execution", "Agent SDK integration", "Subagents with skills", "Marketing campaign analysis workflow"],
+          "instructor": "Anthropic team"
+        },
+        {
+          "id": "dlai-claude-code",
+          "certNumber": 37,
+          "title": "Claude Code: A Highly Agentic Coding Assistant",
+          "description": "Best practices para agentic coding. Git worktrees, MCP servers, parallel workflows.",
+          "url": "https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/",
+          "level": 3,
+          "duration": "1-2 hrs",
+          "topics": ["Claude Code overview", "Agentic coding patterns", "Git worktrees", "MCP servers", "Parallel tools", "Best practices"],
+          "instructor": "Elie Schoppik (Head of Technical Education, Anthropic)"
+        },
+        {
+          "id": "dlai-computer-use",
+          "certNumber": 38,
+          "title": "Building Towards Computer Use with Anthropic",
+          "description": "Prompt templates, XML structuring, tool-use workflows. Build a chatbot that calls tools.",
+          "url": "https://www.deeplearning.ai/short-courses/building-towards-computer-use-with-anthropic/",
+          "level": 3,
+          "duration": "1-2 hrs",
+          "topics": ["Prompt templates", "XML structuring", "Tool-use workflows", "Chatbot with tools", "Computer use patterns"],
+          "instructor": "Colt Steele (Head of Curriculum, Anthropic)",
+          "certificate": true
+        }
+      ]
+    },
+    {
+      "id": "github",
+      "name": "GitHub Open Source",
+      "icon": "github",
+      "color": "#24292E",
+      "url": "https://github.com/anthropics/courses",
+      "description": "Jupyter Notebooks interactivos del repositorio oficial de Anthropic.",
+      "pricing": "GRATIS",
+      "courses": [
+        {
+          "id": "github-notebooks",
+          "title": "anthropics/courses",
+          "description": "Jupyter Notebooks interactivos cubriendo todo el stack de Claude.",
+          "url": "https://github.com/anthropics/courses",
+          "level": 3,
+          "topics": ["Prompt Engineering", "API fundamentals", "Tool Use", "RAG", "Fine-tuning patterns", "Evaluations"]
+        }
+      ]
+    },
+    {
+      "id": "third-party",
+      "name": "Third Party Resources",
+      "icon": "external",
+      "color": "#6B7280",
+      "url": "",
+      "description": "Cursos y certificaciones de terceros sobre Claude. No oficiales de Anthropic pero complementarios.",
+      "pricing": "Varia ($0-$25)",
+      "courses": [
+        {
+          "id": "exampro-claude-code",
+          "certNumber": 39,
+          "title": "Claude Code Essentials",
+          "description": "Curso completo de Claude Code por Andrew Brown. Disponible gratis en freeCodeCamp YouTube + materiales premium en ExamPro.",
+          "url": "https://www.exampro.co/exp-claudecode-01",
+          "level": 3,
+          "duration": "4-6 hrs",
+          "topics": ["Claude Code fundamentals", "CLI usage", "Project setup", "Workflows", "Best practices"],
+          "instructor": "Andrew Brown (ExamPro)",
+          "certificate": true
+        },
+        {
+          "id": "prompt-certs-readiness",
+          "certNumber": 40,
+          "title": "Claude Code Readiness Check",
+          "description": "Evaluacion gratuita de preparacion para Claude Code.",
+          "url": "https://www.promptcertifications.com/",
+          "level": 2,
+          "topics": ["Readiness assessment", "Claude Code basics"],
+          "certificate": true
+        },
+        {
+          "id": "udemy-ccaf-practice",
+          "title": "CCA-F Practice Tests",
+          "description": "Tests de practica para la certificacion CCA-F. Multiples sets de preguntas con explicaciones.",
+          "url": "https://www.udemy.com/course/new-claude-certified-architect-foundations-cca-f-exams/",
+          "level": 5,
+          "duration": "Variable",
+          "topics": ["CCA-F practice", "Exam simulation", "Domain review"],
+          "certificate": true
+        }
+      ]
+    }
+  ],
+  "certifications": {
+    "partnerNetwork": {
+      "name": "Claude Partner Network",
+      "url": "https://partnerportal.anthropic.com",
+      "description": "Requisito previo para certificaciones formales. Gratis para cualquier organizacion.",
+      "requirements": ["Email corporativo obligatorio", "Completar learning path de 4 modulos (~8-16 hrs)"],
+      "tracks": ["Consulting Partners", "Technology Partners", "Services Partners"],
+      "benefits": ["Early access a nuevos features", "Co-sell opportunities", "Technical architects dedicados", "Directorio de partners"]
+    },
+    "available": [
+      {
+        "id": "cca-f",
+        "name": "Claude Certified Architect: Foundations (CCA-F)",
+        "status": "available",
+        "launchDate": "2026-03-12",
+        "format": "60 preguntas | 120 min | Proctored | Multiple choice",
+        "passingScore": "720 / 1000",
+        "price": "GRATIS (primeros 5,000) → $99/intento despues",
+        "prerequisite": "~6 meses exp. con Claude API + Claude Code",
+        "badge": "Digital badge via Credly + Score report en 2 dias habiles",
+        "linkedin": "Si, badge verificable con URL de Credly",
+        "url": "https://claudecertifiedarchitect.net/",
+        "studyResources": [
+          { "name": "Community Study Guide (GitHub)", "url": "https://github.com/daronyondem/claude-architect-exam-guide" },
+          { "name": "Practice Tests — claudecertifications.com", "url": "https://claudecertifications.com/" },
+          { "name": "Tutorials Dojo Study Guide", "url": "https://tutorialsdojo.com/cca-f-claude-certified-architect-foundations-study-guide/" },
+          { "name": "Udemy Practice Exams (~$15-20)", "url": "https://www.udemy.com/course/new-claude-certified-architect-foundations-cca-f-exams/" },
+          { "name": "ExamPro Claude Code Essentials (YouTube/freeCodeCamp)", "url": "https://www.exampro.co/exp-claudecode-01" },
+          { "name": "Prompt Certifications Readiness Check", "url": "https://www.promptcertifications.com/" }
+        ],
+        "domains": [
+          {
+            "name": "Agentic Architecture & Orchestration",
+            "weight": 27,
+            "topics": ["Agentic loops (stop_reason, tool result appending)", "Hub-and-spoke orchestration", "Task decomposition patterns", "Hooks vs prompts decision framework", "Session resumption", "Token economics y context leakage prevention", "Claude Agent SDK lifecycle"]
+          },
+          {
+            "name": "Prompt Engineering & Structured Output",
+            "weight": 20,
+            "topics": ["Explicit criteria vs vague confidence", "Few-shot prompting (construction + timing)", "Structured output con tool_use (tool_choice modes)", "JSON schema design (nullable, unclear enums, other)", "Validation-retry loops", "detected_pattern fields"]
+          },
+          {
+            "name": "Claude Code Config & Workflows",
+            "weight": 20,
+            "topics": ["CLAUDE.md hierarchy (user/project/directory)", "@import y .claude/rules/ con YAML frontmatter globs", "Custom commands: .claude/commands/ (shared) vs ~/.claude/commands/ (personal)", "Skill frontmatter (context, allowed-tools, argument-hint)", "/memory debugging command", "CI/CD pipeline integration"]
+          },
+          {
+            "name": "Tool Design & MCP Integration",
+            "weight": 18,
+            "topics": ["3 primitivas MCP: tools, resources, prompts", "Tool distribution: 18-tool degradation threshold", "Optimal 4-5 tools per agent", "tool_choice modes: auto vs any vs forced", "Scoped cross-role tools (85% simple lookups)", "MCP server config: project-level vs user-level", "Build-vs-use decision framework"]
+          },
+          {
+            "name": "Context Management & Reliability",
+            "weight": 15,
+            "topics": ["Progressive summarization trap", "Persistent case facts blocks", "Lost-in-the-middle effect", "Tool result trimming", "Escalation: 3 valid triggers vs 2 unreliable", "Error propagation: silent suppression vs termination", "Scratchpad files + subagent delegation", "Information provenance"]
+          }
+        ],
+        "recommendedPrep": [
+          "Skilljar: Claude 101 → Building with Claude API → Claude Code in Action → Intro MCP → MCP Advanced → Agent Skills → Subagents",
+          "DeepLearning.AI: Agent Skills + Claude Code Agentic",
+          "GitHub: anthropics/courses (notebooks practicos)",
+          "ExamPro: Claude Code Essentials (YouTube gratis)",
+          "Practice: claudecertifications.com + Udemy practice tests"
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "id": "seller-cert",
+        "name": "Seller Certification",
+        "status": "upcoming",
+        "expectedDate": "2do Semestre 2026",
+        "audience": "Partners comerciales / ventas",
+        "focus": "Posicionamiento, ROI, casos de uso enterprise"
+      },
+      {
+        "id": "developer-cert",
+        "name": "Developer Certification",
+        "status": "upcoming",
+        "expectedDate": "2do Semestre 2026",
+        "audience": "Developers que implementan features con Claude",
+        "focus": "Codigo, integracion API, implementacion (diferencia con CCA-F: implementacion, no arquitectura)"
+      },
+      {
+        "id": "advanced-architect",
+        "name": "Advanced Architect Certification",
+        "status": "upcoming",
+        "expectedDate": "2do Semestre 2026",
+        "audience": "Arquitectos senior / enterprise",
+        "focus": "Arquitecturas complejas, escalabilidad, multi-tenant",
+        "prerequisite": "CCA-F"
+      }
+    ],
+    "certSummary": {
+      "types": [
+        { "type": "Certificacion formal Anthropic (CCA-F)", "count": "1 activa", "price": "$0-$99", "linkedin": "Digital badge Credly" },
+        { "type": "Certificaciones formales anunciadas", "count": "3", "price": "TBD", "linkedin": "TBD" },
+        { "type": "Certificados Anthropic Academy (Skilljar)", "count": "18", "price": "Gratis", "linkedin": "URL verificable" },
+        { "type": "Certificados Coursera (3 spec + 14 ind)", "count": "17", "price": "~$49/mes", "linkedin": "Coursera cert" },
+        { "type": "Certificados DeepLearning.AI", "count": "3", "price": "Gratis", "linkedin": "DLAI cert" },
+        { "type": "Certificados terceros (ExamPro, PromptCert)", "count": "2", "price": "$0-$25", "linkedin": "Varia" }
+      ],
+      "totalAvailableNow": 40,
+      "totalWithUpcoming": 44
+    }
+  },
+  "learningPath": [
+    {
+      "level": 1,
+      "name": "Fundamentos",
+      "hours": "~10 hrs",
+      "description": "Base para cualquier persona, sin codigo",
+      "courses": [
+        "claude-101",
+        "ai-fluency",
+        "ai-fluency-students",
+        "ai-fluency-educators",
+        "teaching-ai-fluency",
+        "ai-fluency-nonprofits",
+        "coursera-ai-fundamentals",
+        "coursera-ai-collab",
+        "coursera-intro-claude"
+      ]
+    },
+    {
+      "level": 2,
+      "name": "Usuario Power",
+      "hours": "~8 hrs",
+      "description": "Uso avanzado de Claude sin programar",
+      "courses": [
+        "claude-cowork",
+        "coursera-ai-automation",
+        "coursera-real-world-spec",
+        "coursera-next-gen",
+        "coursera-prompt-eng-vanderbilt"
+      ]
+    },
+    {
+      "level": 3,
+      "name": "Developer",
+      "hours": "~20 hrs",
+      "description": "Construir aplicaciones con Claude API y Claude Code",
+      "courses": [
+        "claude-code-101",
+        "claude-code-action",
+        "building-api",
+        "coursera-prompting",
+        "coursera-dev-api",
+        "coursera-code-action",
+        "coursera-building-api",
+        "coursera-claude-code-sw",
+        "coursera-python-ai-agents",
+        "coursera-custom-gpts",
+        "coursera-vanderbilt-spec",
+        "dlai-claude-code",
+        "dlai-computer-use",
+        "exampro-claude-code"
+      ]
+    },
+    {
+      "level": 4,
+      "name": "Architect",
+      "hours": "~15 hrs",
+      "description": "Agentes, MCP, skills y patrones avanzados",
+      "courses": [
+        "agent-skills",
+        "subagents",
+        "intro-mcp",
+        "mcp-advanced",
+        "coursera-rag-mcp",
+        "coursera-mastering-spec",
+        "dlai-agent-skills",
+        "github-notebooks"
+      ]
+    },
+    {
+      "level": 5,
+      "name": "Certificacion",
+      "hours": "Variable",
+      "description": "Preparacion y certificaciones formales",
+      "courses": [
+        "udemy-ccaf-practice",
+        "prompt-certs-readiness",
+        "cca-f",
+        "seller-cert",
+        "developer-cert",
+        "advanced-architect"
+      ]
+    },
+    {
+      "level": 6,
+      "name": "Cloud Deployment",
+      "hours": "~4 hrs",
+      "description": "Desplegar Claude en AWS y GCP",
+      "courses": [
+        "aws-bedrock",
+        "gcp-vertex"
+      ]
+    },
+    {
+      "level": 7,
+      "name": "Enterprise",
+      "hours": "~6 hrs",
+      "description": "Adopcion y formacion a nivel organizacion",
+      "courses": [
+        "enterprise-adoption",
+        "train-trainer"
+      ]
+    }
+  ],
+  "rolePaths": [
+    {
+      "id": "non-technical",
+      "role": "No-Tecnico / Manager / Usuario General",
+      "icon": "user",
+      "courses": ["claude-101", "ai-fluency", "claude-cowork", "coursera-ai-fundamentals", "coursera-ai-collab", "coursera-ai-automation", "coursera-real-world-spec"],
+      "certCount": "7",
+      "cost": "$0-$49",
+      "description": "Domina Claude como herramienta de trabajo diaria sin necesidad de codigo."
+    },
+    {
+      "id": "student",
+      "role": "Estudiante",
+      "icon": "academic-cap",
+      "courses": ["claude-101", "ai-fluency-students", "coursera-ai-fundamentals", "dlai-computer-use"],
+      "certCount": "4",
+      "cost": "$0",
+      "description": "Usa IA responsablemente en tus estudios y proyectos academicos."
+    },
+    {
+      "id": "educator",
+      "role": "Educador / Formador",
+      "icon": "presentation",
+      "courses": ["claude-101", "ai-fluency", "ai-fluency-educators", "teaching-ai-fluency", "train-trainer"],
+      "certCount": "5",
+      "cost": "$0",
+      "description": "Integra IA en tu ensenanza y forma a otros educadores."
+    },
+    {
+      "id": "enterprise-leader",
+      "role": "Lider Empresarial / CTO",
+      "icon": "building",
+      "courses": ["claude-101", "enterprise-adoption", "train-trainer", "coursera-ai-fundamentals", "coursera-ai-collab", "coursera-ai-automation", "coursera-real-world-spec"],
+      "certCount": "6+",
+      "cost": "$0-$49",
+      "formalCert": "Seller Certification (proximamente)",
+      "description": "Lidera la adopcion de Claude en tu organizacion con estrategia y gobernanza."
+    },
+    {
+      "id": "developer",
+      "role": "Developer (Backend/Full-Stack)",
+      "icon": "code",
+      "courses": ["claude-101", "claude-code-101", "claude-code-action", "building-api", "agent-skills", "subagents", "coursera-prompting", "coursera-dev-api", "coursera-rag-mcp", "coursera-mastering-spec", "dlai-claude-code", "dlai-agent-skills"],
+      "certCount": "13+",
+      "cost": "$0-$49",
+      "formalCert": "Developer Certification (proximamente)",
+      "description": "Construye aplicaciones con Claude API, Claude Code, agents y skills."
+    },
+    {
+      "id": "integrations-dev",
+      "role": "Developer de Integraciones / MCP",
+      "icon": "puzzle",
+      "courses": ["intro-mcp", "mcp-advanced", "agent-skills", "subagents", "coursera-rag-mcp", "dlai-computer-use"],
+      "certCount": "6+",
+      "cost": "$0-$49",
+      "description": "Conecta Claude con sistemas externos via MCP, tools y pipelines RAG."
+    },
+    {
+      "id": "cloud-engineer",
+      "role": "Cloud Engineer (AWS/GCP)",
+      "icon": "cloud",
+      "courses": ["building-api", "aws-bedrock", "gcp-vertex", "coursera-building-api"],
+      "certCount": "3-4",
+      "cost": "$0-$49",
+      "description": "Despliega Claude en AWS Bedrock o GCP Vertex AI para produccion."
+    },
+    {
+      "id": "solution-architect",
+      "role": "Solution Architect",
+      "icon": "shield",
+      "courses": ["claude-101", "building-api", "claude-code-action", "intro-mcp", "mcp-advanced", "agent-skills", "subagents", "aws-bedrock", "gcp-vertex", "coursera-prompting", "coursera-dev-api", "coursera-rag-mcp", "coursera-mastering-spec", "coursera-claude-code-sw", "coursera-vanderbilt-spec", "dlai-agent-skills", "dlai-claude-code", "dlai-computer-use", "exampro-claude-code", "udemy-ccaf-practice"],
+      "certCount": "20+",
+      "cost": "$0-$150",
+      "formalCert": "CCA-F ($0-$99) + Advanced Architect (proximamente)",
+      "description": "Domina todo el ecosistema para disenar arquitecturas Claude a escala enterprise."
+    },
+    {
+      "id": "sales-partner",
+      "role": "Partner Comercial / Ventas",
+      "icon": "briefcase",
+      "courses": ["claude-101", "ai-fluency", "enterprise-adoption", "coursera-ai-fundamentals", "coursera-ai-collab", "coursera-ai-automation", "coursera-real-world-spec"],
+      "certCount": "7+",
+      "cost": "$0-$49",
+      "formalCert": "Seller Certification (proximamente)",
+      "description": "Posiciona Claude en enterprise con conocimiento de ROI y casos de uso."
+    },
+    {
+      "id": "completionist",
+      "role": "Quiero TODO (Maximo certificados)",
+      "icon": "star",
+      "courses": "all",
+      "certCount": "40+",
+      "cost": "$250-$400",
+      "formalCert": "CCA-F + 3 futuras = 4 certificaciones formales",
+      "description": "Obtener absolutamente todos los certificados y certificaciones del ecosistema Claude. 40 certificados + 4 certificaciones formales."
+    }
+  ],
+  "summary": {
+    "totalCourses": "30+",
+    "totalCertificates": "40 certificates + 4 formal certifications",
+    "totalCertificatesNumber": 40,
+    "totalCertificationsNumber": 4,
+    "platforms": [
+      { "name": "Anthropic Academy (Skilljar)", "courses": "18", "price": "Gratis", "certs": "18 certificados oficiales" },
+      { "name": "Coursera (3 Specializations + Individual)", "courses": "17", "price": "Gratis auditar / ~$49/mes cert", "certs": "3 specialization + 14 individual = 17" },
+      { "name": "DeepLearning.AI", "courses": "3", "price": "Gratis", "certs": "3 certificados" },
+      { "name": "GitHub (anthropics/courses)", "courses": "1 repo", "price": "Gratis", "certs": "Sin certificado (autoestudio)" },
+      { "name": "Terceros (ExamPro, PromptCert)", "courses": "2+", "price": "$0-$25", "certs": "2 certificados" },
+      { "name": "Certificaciones formales (Partner Network)", "courses": "1 examen activo + 3 anunciados", "price": "$0-$99", "certs": "1 CCA-F + 3 upcoming = 4" }
+    ]
+  }
+}

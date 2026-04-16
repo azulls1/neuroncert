@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "coursera-custom-gpts",
+    "domainName": "Custom GPTs",
+    "trackId": "coursera-custom-gpts",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "CGPTS-001",
+      "text": "When building a custom AI assistant for a specific business domain, what is the most effective way to inject domain knowledge into its behavior?",
+      "textEs": "Al construir un asistente de IA personalizado para un dominio de negocio especifico, ¿cual es la forma mas efectiva de inyectar conocimiento del dominio en su comportamiento?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-001_b",
+      "explanation": "The most effective approach is a comprehensive system prompt that includes the domain context, business rules, terminology definitions, and behavioral guidelines. This acts as the assistant's 'operating manual'. Supplementing with uploaded reference documents (for RAG-style retrieval) allows the assistant to access detailed information without exceeding system prompt length limits. This combination provides both behavioral guidance and factual grounding.",
+      "explanationEs": "El enfoque mas efectivo es un system prompt integral que incluya el contexto del dominio, reglas de negocio, definiciones de terminologia, y lineamientos de comportamiento. Esto actua como el 'manual de operacion' del asistente. Complementar con documentos de referencia cargados (para recuperacion estilo RAG) permite al asistente acceder a informacion detallada sin exceder los limites de longitud del system prompt. Esta combinacion proporciona tanto guia de comportamiento como fundamentacion factual.",
+      "options": [
+        { "id": "CGPTS-001_a", "text": "Only provide the assistant's name and let it learn from user interactions over time", "textEs": "Solo proporcionar el nombre del asistente y dejarlo aprender de las interacciones del usuario con el tiempo", "order": 1 },
+        { "id": "CGPTS-001_b", "text": "Use a comprehensive system prompt with domain context, business rules, and terminology, supplemented by uploaded reference documents", "textEs": "Usar un system prompt integral con contexto del dominio, reglas de negocio y terminologia, complementado con documentos de referencia cargados", "order": 2 },
+        { "id": "CGPTS-001_c", "text": "Fine-tune the base model on proprietary data; system prompts cannot encode domain knowledge", "textEs": "Ajustar finamente el modelo base con datos propietarios; los system prompts no pueden codificar conocimiento del dominio", "order": 3 },
+        { "id": "CGPTS-001_d", "text": "Use the same generic prompt for all domains and adjust only the temperature setting", "textEs": "Usar el mismo prompt generico para todos los dominios y ajustar solo la configuracion de temperatura", "order": 4 }
+      ],
+      "tags": ["domain-knowledge", "system-prompt", "business-context", "reference-documents"]
+    },
+    {
+      "id": "CGPTS-002",
+      "text": "What are 'custom instructions' in the context of building a specialized AI assistant, and how do they differ from regular user messages?",
+      "textEs": "¿Que son las 'instrucciones personalizadas' en el contexto de construir un asistente de IA especializado, y como difieren de los mensajes regulares del usuario?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-002_c",
+      "explanation": "Custom instructions are persistent directives placed in the system message that define how the assistant should behave across ALL conversations. Unlike user messages (which are per-turn), custom instructions persist throughout the entire session and apply to every response. They typically define: the assistant's role, communication style, response format, domain boundaries, and any constraints. They form the assistant's 'personality' and operational rules.",
+      "explanationEs": "Las instrucciones personalizadas son directivas persistentes colocadas en el mensaje de sistema que definen como debe comportarse el asistente en TODAS las conversaciones. A diferencia de los mensajes de usuario (que son por turno), las instrucciones personalizadas persisten durante toda la sesion y se aplican a cada respuesta. Tipicamente definen: el rol del asistente, estilo de comunicacion, formato de respuesta, limites del dominio, y cualquier restriccion. Forman la 'personalidad' y reglas operativas del asistente.",
+      "options": [
+        { "id": "CGPTS-002_a", "text": "They are special API parameters that modify the model's weights for each request", "textEs": "Son parametros especiales de la API que modifican los pesos del modelo para cada solicitud", "order": 1 },
+        { "id": "CGPTS-002_b", "text": "They are user messages that are automatically prepended to every conversation turn", "textEs": "Son mensajes de usuario que se agregan automaticamente antes de cada turno de conversacion", "order": 2 },
+        { "id": "CGPTS-002_c", "text": "Persistent system-level directives defining role, style, format, and constraints that apply to every response throughout the session", "textEs": "Directivas persistentes a nivel de sistema que definen rol, estilo, formato y restricciones que se aplican a cada respuesta durante toda la sesion", "order": 3 },
+        { "id": "CGPTS-002_d", "text": "A separate configuration file that is loaded before the model starts generating", "textEs": "Un archivo de configuracion separado que se carga antes de que el modelo comience a generar", "order": 4 }
+      ],
+      "tags": ["custom-instructions", "system-message", "persistence", "assistant-behavior"]
+    },
+    {
+      "id": "CGPTS-003",
+      "text": "When designing a custom AI assistant for a customer support team, how should you handle user personas to ensure appropriate responses for different user types?",
+      "textEs": "Al diseñar un asistente de IA personalizado para un equipo de soporte al cliente, ¿como debes manejar los personas de usuario para asegurar respuestas apropiadas para diferentes tipos de usuario?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-003_a",
+      "explanation": "Including persona-aware instructions in the system prompt that define how to adapt based on user type (e.g., technical vs. non-technical, new vs. returning customer) allows the assistant to adjust its language complexity, level of detail, and recommended actions appropriately. The assistant can detect user expertise from their language and questions, then adapt accordingly. This is more effective than creating separate assistants per persona or ignoring user differences entirely.",
+      "explanationEs": "Incluir instrucciones conscientes de personas en el system prompt que definan como adaptarse segun el tipo de usuario (por ejemplo, tecnico vs. no tecnico, cliente nuevo vs. recurrente) permite al asistente ajustar la complejidad del lenguaje, nivel de detalle, y acciones recomendadas apropiadamente. El asistente puede detectar la experiencia del usuario por su lenguaje y preguntas, y luego adaptarse en consecuencia. Esto es mas efectivo que crear asistentes separados por persona o ignorar las diferencias de usuario completamente.",
+      "options": [
+        { "id": "CGPTS-003_a", "text": "Include persona-aware instructions that define how to adapt language complexity and detail level based on detected user expertise", "textEs": "Incluir instrucciones conscientes de personas que definan como adaptar la complejidad del lenguaje y nivel de detalle basado en la experiencia detectada del usuario", "order": 1 },
+        { "id": "CGPTS-003_b", "text": "Create a separate custom assistant for each user persona; one assistant cannot serve multiple user types", "textEs": "Crear un asistente personalizado separado para cada persona de usuario; un asistente no puede servir multiples tipos de usuario", "order": 2 },
+        { "id": "CGPTS-003_c", "text": "Always use the simplest possible language regardless of user type to ensure universal understanding", "textEs": "Siempre usar el lenguaje mas simple posible sin importar el tipo de usuario para asegurar comprension universal", "order": 3 },
+        { "id": "CGPTS-003_d", "text": "Ask users to self-identify their expertise level at the start of every conversation before providing any help", "textEs": "Pedir a los usuarios que se auto-identifiquen su nivel de experiencia al inicio de cada conversacion antes de proporcionar cualquier ayuda", "order": 4 }
+      ],
+      "tags": ["user-personas", "adaptive-responses", "customer-support", "expertise-detection"]
+    },
+    {
+      "id": "CGPTS-004",
+      "text": "What evaluation metrics should be used to assess the quality of a custom AI assistant in a production business environment?",
+      "textEs": "¿Que metricas de evaluacion deben usarse para evaluar la calidad de un asistente de IA personalizado en un entorno de negocio en produccion?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-004_d",
+      "explanation": "A comprehensive evaluation framework for custom AI assistants should include: task completion rate (did it solve the user's problem?), accuracy/faithfulness (are responses factually correct given the domain knowledge?), user satisfaction (NPS or CSAT scores), adherence to custom instructions (does it stay within defined boundaries?), and safety metrics (refusal of out-of-scope requests, no harmful outputs). These should be measured through both automated evaluation (test suites with expected outputs) and human evaluation (sample review by domain experts).",
+      "explanationEs": "Un marco de evaluacion integral para asistentes de IA personalizados debe incluir: tasa de completacion de tareas (¿resolvio el problema del usuario?), precision/fidelidad (¿son las respuestas factualmente correctas dado el conocimiento del dominio?), satisfaccion del usuario (puntajes NPS o CSAT), adherencia a instrucciones personalizadas (¿se mantiene dentro de los limites definidos?), y metricas de seguridad (rechazo de solicitudes fuera de alcance, sin salidas dañinas). Estos deben medirse tanto con evaluacion automatizada (conjuntos de prueba con salidas esperadas) como evaluacion humana (revision de muestras por expertos del dominio).",
+      "options": [
+        { "id": "CGPTS-004_a", "text": "Only measure response time; faster responses always indicate a better assistant", "textEs": "Solo medir tiempo de respuesta; respuestas mas rapidas siempre indican un mejor asistente", "order": 1 },
+        { "id": "CGPTS-004_b", "text": "Count the number of conversations per day; more conversations mean higher quality", "textEs": "Contar el numero de conversaciones por dia; mas conversaciones significan mayor calidad", "order": 2 },
+        { "id": "CGPTS-004_c", "text": "Only use the model's self-assessed confidence scores as the quality metric", "textEs": "Solo usar los puntajes de confianza auto-evaluados del modelo como metrica de calidad", "order": 3 },
+        { "id": "CGPTS-004_d", "text": "Measure task completion rate, accuracy/faithfulness, user satisfaction, instruction adherence, and safety, using both automated test suites and human review", "textEs": "Medir tasa de completacion de tareas, precision/fidelidad, satisfaccion del usuario, adherencia a instrucciones, y seguridad, usando tanto conjuntos de prueba automatizados como revision humana", "order": 4 }
+      ],
+      "tags": ["evaluation-metrics", "task-completion", "accuracy", "user-satisfaction", "production"]
+    },
+    {
+      "id": "CGPTS-005",
+      "text": "When building a custom assistant that must handle sensitive topics (e.g., medical or financial information), what guardrail design is most appropriate?",
+      "textEs": "Al construir un asistente personalizado que debe manejar temas sensibles (por ejemplo, informacion medica o financiera), ¿que diseño de barreras de proteccion es mas apropiado?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-005_b",
+      "explanation": "For sensitive domains, the system instructions should explicitly define scope boundaries (what the assistant can and cannot advise on), include mandatory disclaimers (e.g., 'I am not a medical professional'), redirect to human experts for high-stakes decisions, and never provide definitive advice that could replace professional judgment. The assistant should be helpful within bounds while clearly communicating limitations. This protects both users and the organization.",
+      "explanationEs": "Para dominios sensibles, las instrucciones del sistema deben definir explicitamente los limites del alcance (sobre que puede y no puede aconsejar el asistente), incluir descargos obligatorios (por ejemplo, 'No soy un profesional medico'), redirigir a expertos humanos para decisiones de alto riesgo, y nunca proporcionar consejo definitivo que pueda reemplazar el juicio profesional. El asistente debe ser util dentro de los limites mientras comunica claramente las limitaciones. Esto protege tanto a los usuarios como a la organizacion.",
+      "options": [
+        { "id": "CGPTS-005_a", "text": "Completely block all medical/financial questions with a generic refusal message", "textEs": "Bloquear completamente todas las preguntas medicas/financieras con un mensaje de rechazo generico", "order": 1 },
+        { "id": "CGPTS-005_b", "text": "Define scope boundaries, include mandatory disclaimers, redirect high-stakes decisions to human experts, and be helpful within defined limits", "textEs": "Definir limites del alcance, incluir descargos obligatorios, redirigir decisiones de alto riesgo a expertos humanos, y ser util dentro de los limites definidos", "order": 2 },
+        { "id": "CGPTS-005_c", "text": "Allow the assistant to provide definitive medical/financial advice since it has broad training data", "textEs": "Permitir que el asistente proporcione consejo medico/financiero definitivo ya que tiene datos de entrenamiento amplios", "order": 3 },
+        { "id": "CGPTS-005_d", "text": "Add a single disclaimer at the end of every response regardless of topic", "textEs": "Agregar un solo descargo al final de cada respuesta sin importar el tema", "order": 4 }
+      ],
+      "tags": ["guardrails", "sensitive-topics", "disclaimers", "scope-boundaries", "safety"]
+    },
+    {
+      "id": "CGPTS-006",
+      "text": "How should a custom assistant's knowledge base be structured to minimize hallucinations when answering domain-specific questions?",
+      "textEs": "¿Como debe estructurarse la base de conocimientos de un asistente personalizado para minimizar alucinaciones al responder preguntas especificas del dominio?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-006_c",
+      "explanation": "To minimize hallucinations: structure the knowledge base with clear, authoritative documents as the source of truth; instruct the assistant to cite specific sources when answering; include an explicit instruction to say 'I don't have information about that in my knowledge base' when a question falls outside the available documents; and provide domain-specific terminology definitions to prevent misinterpretation. The assistant should ground all answers in the provided knowledge and never fabricate information.",
+      "explanationEs": "Para minimizar alucinaciones: estructurar la base de conocimientos con documentos claros y autorizados como fuente de verdad; instruir al asistente para que cite fuentes especificas al responder; incluir una instruccion explicita para decir 'No tengo informacion sobre eso en mi base de conocimientos' cuando una pregunta cae fuera de los documentos disponibles; y proporcionar definiciones de terminologia especifica del dominio para prevenir malinterpretaciones. El asistente debe fundamentar todas las respuestas en el conocimiento proporcionado y nunca fabricar informacion.",
+      "options": [
+        { "id": "CGPTS-006_a", "text": "Upload as many documents as possible without organization; more data always reduces hallucinations", "textEs": "Cargar tantos documentos como sea posible sin organizacion; mas datos siempre reduce alucinaciones", "order": 1 },
+        { "id": "CGPTS-006_b", "text": "Do not provide any knowledge base; the model's training data is sufficient for all domains", "textEs": "No proporcionar ninguna base de conocimientos; los datos de entrenamiento del modelo son suficientes para todos los dominios", "order": 2 },
+        { "id": "CGPTS-006_c", "text": "Use authoritative documents as source of truth, instruct citation of sources, define fallback behavior for unknown topics, and include domain terminology definitions", "textEs": "Usar documentos autorizados como fuente de verdad, instruir citacion de fuentes, definir comportamiento de respaldo para temas desconocidos, e incluir definiciones de terminologia del dominio", "order": 3 },
+        { "id": "CGPTS-006_d", "text": "Set temperature to 0 and that alone eliminates all hallucinations", "textEs": "Establecer temperatura en 0 y eso solo elimina todas las alucinaciones", "order": 4 }
+      ],
+      "tags": ["hallucination-reduction", "knowledge-base", "source-citation", "grounding"]
+    },
+    {
+      "id": "CGPTS-007",
+      "text": "What is the purpose of defining a 'conversation starter' or 'welcome message' for a custom AI assistant?",
+      "textEs": "¿Cual es el proposito de definir un 'iniciador de conversacion' o 'mensaje de bienvenida' para un asistente de IA personalizado?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "easy",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-007_a",
+      "explanation": "A conversation starter or welcome message sets user expectations by explaining what the assistant can help with, its limitations, and how to get the best results. It reduces user confusion, guides them toward productive interactions, and establishes the assistant's persona from the first message. Good starters include the assistant's capabilities, example questions users can ask, and any important caveats about the assistant's scope.",
+      "explanationEs": "Un iniciador de conversacion o mensaje de bienvenida establece las expectativas del usuario al explicar con que puede ayudar el asistente, sus limitaciones, y como obtener los mejores resultados. Reduce la confusion del usuario, los guia hacia interacciones productivas, y establece la persona del asistente desde el primer mensaje. Buenos iniciadores incluyen las capacidades del asistente, preguntas de ejemplo que los usuarios pueden hacer, y cualquier advertencia importante sobre el alcance del asistente.",
+      "options": [
+        { "id": "CGPTS-007_a", "text": "It sets user expectations by explaining capabilities, limitations, and how to interact effectively with the assistant", "textEs": "Establece las expectativas del usuario al explicar capacidades, limitaciones, y como interactuar efectivamente con el asistente", "order": 1 },
+        { "id": "CGPTS-007_b", "text": "It is required by the API; without it the assistant cannot generate any responses", "textEs": "Es requerido por la API; sin el, el asistente no puede generar ninguna respuesta", "order": 2 },
+        { "id": "CGPTS-007_c", "text": "It trains the model on the user's preferences before the conversation begins", "textEs": "Entrena al modelo sobre las preferencias del usuario antes de que comience la conversacion", "order": 3 },
+        { "id": "CGPTS-007_d", "text": "It is purely decorative and has no functional impact on the assistant's behavior", "textEs": "Es puramente decorativo y no tiene impacto funcional en el comportamiento del asistente", "order": 4 }
+      ],
+      "tags": ["welcome-message", "user-expectations", "onboarding", "conversation-design"]
+    },
+    {
+      "id": "CGPTS-008",
+      "text": "When creating a custom assistant for an internal company tool, how should you handle requests that fall outside the assistant's defined scope?",
+      "textEs": "Al crear un asistente personalizado para una herramienta interna de la empresa, ¿como debes manejar solicitudes que caen fuera del alcance definido del asistente?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-008_d",
+      "explanation": "The assistant should gracefully decline out-of-scope requests while being helpful. Best practice is to: (1) Acknowledge the user's request, (2) Explain that it falls outside the assistant's expertise area, (3) Suggest where the user might find help (e.g., a different tool, a human contact, or a documentation link), and (4) Offer to help with something within scope. This maintains a positive user experience while enforcing boundaries. Hard refusals without alternatives frustrate users.",
+      "explanationEs": "El asistente debe rechazar graciosamente solicitudes fuera de alcance mientras es util. La mejor practica es: (1) Reconocer la solicitud del usuario, (2) Explicar que cae fuera del area de experiencia del asistente, (3) Sugerir donde el usuario podria encontrar ayuda (por ejemplo, una herramienta diferente, un contacto humano, o un enlace de documentacion), y (4) Ofrecer ayudar con algo dentro del alcance. Esto mantiene una experiencia de usuario positiva mientras se imponen limites. Los rechazos duros sin alternativas frustran a los usuarios.",
+      "options": [
+        { "id": "CGPTS-008_a", "text": "Attempt to answer anyway, even if the response might be inaccurate, to avoid frustrating the user", "textEs": "Intentar responder de todos modos, incluso si la respuesta podria ser imprecisa, para evitar frustrar al usuario", "order": 1 },
+        { "id": "CGPTS-008_b", "text": "Silently ignore the request and wait for the user to ask something else", "textEs": "Ignorar silenciosamente la solicitud y esperar a que el usuario pregunte algo mas", "order": 2 },
+        { "id": "CGPTS-008_c", "text": "Return a generic error message: 'Request not supported' with no further guidance", "textEs": "Devolver un mensaje de error generico: 'Solicitud no soportada' sin mas orientacion", "order": 3 },
+        { "id": "CGPTS-008_d", "text": "Acknowledge the request, explain it is outside scope, suggest alternative resources, and offer to help with in-scope topics", "textEs": "Reconocer la solicitud, explicar que esta fuera del alcance, sugerir recursos alternativos, y ofrecer ayuda con temas dentro del alcance", "order": 4 }
+      ],
+      "tags": ["scope-management", "graceful-decline", "user-experience", "redirect"]
+    },
+    {
+      "id": "CGPTS-009",
+      "text": "What is the role of 'few-shot examples' within a custom assistant's configuration, and how many examples are typically optimal?",
+      "textEs": "¿Cual es el rol de los 'ejemplos few-shot' dentro de la configuracion de un asistente personalizado, y cuantos ejemplos son tipicamente optimos?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "medium",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-009_b",
+      "explanation": "Few-shot examples within a custom assistant's configuration demonstrate the expected interaction style, response format, tone, and depth. They serve as concrete behavioral templates that are more effective than abstract instructions alone. Typically 2-5 diverse examples covering different scenarios provide the best balance between clarity and token efficiency. Too few may not cover enough variation; too many waste context space and may cause the model to be overly rigid.",
+      "explanationEs": "Los ejemplos few-shot dentro de la configuracion de un asistente personalizado demuestran el estilo de interaccion esperado, formato de respuesta, tono y profundidad. Sirven como plantillas de comportamiento concretas que son mas efectivas que instrucciones abstractas solas. Tipicamente 2-5 ejemplos diversos que cubran diferentes escenarios proporcionan el mejor equilibrio entre claridad y eficiencia de tokens. Muy pocos pueden no cubrir suficiente variacion; demasiados desperdician espacio de contexto y pueden causar que el modelo sea demasiado rigido.",
+      "options": [
+        { "id": "CGPTS-009_a", "text": "They are unnecessary; detailed written instructions are always sufficient to define behavior", "textEs": "Son innecesarios; instrucciones escritas detalladas siempre son suficientes para definir el comportamiento", "order": 1 },
+        { "id": "CGPTS-009_b", "text": "They serve as concrete behavioral templates showing expected style, format, and tone; 2-5 diverse examples typically provide the best balance", "textEs": "Sirven como plantillas de comportamiento concretas mostrando estilo, formato y tono esperados; 2-5 ejemplos diversos tipicamente proporcionan el mejor equilibrio", "order": 2 },
+        { "id": "CGPTS-009_c", "text": "Include at least 50 examples to cover every possible user query scenario", "textEs": "Incluir al menos 50 ejemplos para cubrir cada posible escenario de consulta del usuario", "order": 3 },
+        { "id": "CGPTS-009_d", "text": "They fine-tune the model weights during the conversation, permanently improving future responses", "textEs": "Ajustan finamente los pesos del modelo durante la conversacion, mejorando permanentemente las respuestas futuras", "order": 4 }
+      ],
+      "tags": ["few-shot-examples", "behavioral-templates", "configuration", "response-calibration"]
+    },
+    {
+      "id": "CGPTS-010",
+      "text": "A business wants to deploy a custom AI assistant that handles both English and Spanish customer inquiries. What design approach ensures consistent quality in both languages?",
+      "textEs": "Un negocio quiere desplegar un asistente de IA personalizado que maneje consultas de clientes tanto en ingles como en español. ¿Que enfoque de diseño asegura calidad consistente en ambos idiomas?",
+      "domainCode": "coursera-custom-gpts",
+      "difficulty": "hard",
+      "learningLevel": 3,
+      "contentType": "theory",
+      "trackId": "coursera-custom-gpts",
+      "correctOptionId": "CGPTS-010_c",
+      "explanation": "The best approach includes: bilingual custom instructions (so the assistant understands its role in both languages), an instruction to detect the user's language and respond in the same language, domain terminology provided in both languages, few-shot examples in both languages showing the expected quality level, and evaluation test suites for both languages. Simply translating instructions may lose nuance, so native-quality examples in each language are important for calibration.",
+      "explanationEs": "El mejor enfoque incluye: instrucciones personalizadas bilingues (para que el asistente entienda su rol en ambos idiomas), una instruccion para detectar el idioma del usuario y responder en el mismo idioma, terminologia del dominio proporcionada en ambos idiomas, ejemplos few-shot en ambos idiomas mostrando el nivel de calidad esperado, y conjuntos de prueba de evaluacion para ambos idiomas. Simplemente traducir instrucciones puede perder matices, asi que ejemplos de calidad nativa en cada idioma son importantes para la calibracion.",
+      "options": [
+        { "id": "CGPTS-010_a", "text": "Write all instructions in English only; the model will automatically translate them for Spanish users", "textEs": "Escribir todas las instrucciones solo en ingles; el modelo las traducira automaticamente para usuarios en español", "order": 1 },
+        { "id": "CGPTS-010_b", "text": "Deploy two separate assistants, one for each language, with completely independent configurations", "textEs": "Desplegar dos asistentes separados, uno para cada idioma, con configuraciones completamente independientes", "order": 2 },
+        { "id": "CGPTS-010_c", "text": "Use bilingual instructions, language detection with same-language response, domain terminology in both languages, and evaluation test suites for each language", "textEs": "Usar instrucciones bilingues, deteccion de idioma con respuesta en el mismo idioma, terminologia del dominio en ambos idiomas, y conjuntos de prueba de evaluacion para cada idioma", "order": 3 },
+        { "id": "CGPTS-010_d", "text": "Always respond in English regardless of the user's language; consistency is more important than accessibility", "textEs": "Siempre responder en ingles sin importar el idioma del usuario; la consistencia es mas importante que la accesibilidad", "order": 4 }
+      ],
+      "tags": ["multilingual", "bilingual", "language-detection", "quality-consistency", "localization"]
+    }
+  ]
+}

@@ -1,0 +1,1152 @@
+{
+  "meta": {
+    "domain": "claude-code-config",
+    "domainName": "Claude Code & Configuration",
+    "trackId": "cca-f",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-15",
+    "totalQuestions": 57
+  },
+  "questions": [
+    {
+      "id": "ccaf-cc-001",
+      "text": "What is the hierarchy of CLAUDE.md files, from highest to lowest priority?",
+      "textEs": "¿Cuál es la jerarquía de los archivos CLAUDE.md, de mayor a menor prioridad?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-001_c",
+      "explanation": "CLAUDE.md files follow a hierarchy: user-level (~/.claude/CLAUDE.md) provides personal preferences, project-level (CLAUDE.md at repo root) provides project-wide instructions, and directory-level (CLAUDE.md in subdirectories) provides context-specific instructions for files in that directory. All levels are merged, with more specific (directory-level) instructions taking precedence for files in that directory. The user-level file applies across all projects.",
+      "explanationEs": "Los archivos CLAUDE.md siguen una jerarquía: el nivel de usuario (~/.claude/CLAUDE.md) proporciona preferencias personales, el nivel de proyecto (CLAUDE.md en la raíz del repositorio) proporciona instrucciones a nivel de proyecto, y el nivel de directorio (CLAUDE.md en subdirectorios) proporciona instrucciones específicas de contexto para archivos en ese directorio. Todos los niveles se fusionan, con las instrucciones más específicas (nivel de directorio) teniendo precedencia para los archivos en ese directorio. El archivo de nivel de usuario aplica a todos los proyectos.",
+      "options": [
+        { "id": "ccaf-cc-001_a", "text": "Directory-level > User-level > Project-level", "textEs": "Nivel de directorio > Nivel de usuario > Nivel de proyecto", "order": 1 },
+        { "id": "ccaf-cc-001_b", "text": "Project-level > User-level > Directory-level", "textEs": "Nivel de proyecto > Nivel de usuario > Nivel de directorio", "order": 2 },
+        { "id": "ccaf-cc-001_c", "text": "User-level (~/.claude/CLAUDE.md) > Project-level (repo root) > Directory-level (subdirectories), all merged with directory-level most specific", "textEs": "Nivel de usuario (~/.claude/CLAUDE.md) > Nivel de proyecto (raíz del repo) > Nivel de directorio (subdirectorios), todos fusionados con el nivel de directorio siendo el más específico", "order": 3 },
+        { "id": "ccaf-cc-001_d", "text": "There is only one CLAUDE.md per project with no hierarchy", "textEs": "Solo hay un CLAUDE.md por proyecto sin jerarquía", "order": 4 }
+      ],
+      "tags": ["claude-md", "hierarchy", "configuration", "precedence"]
+    },
+    {
+      "id": "ccaf-cc-002",
+      "text": "How do you use @import in CLAUDE.md and what is its purpose?",
+      "textEs": "¿Cómo se usa @import en CLAUDE.md y cuál es su propósito?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-002_a",
+      "explanation": "@import allows CLAUDE.md to include content from other files, enabling modular configuration. You can import shared rules, coding standards, or documentation. The syntax is '@import path/to/file.md' placed in CLAUDE.md. This keeps CLAUDE.md concise while allowing detailed instructions in separate, maintainable files.",
+      "explanationEs": "@import permite que CLAUDE.md incluya contenido de otros archivos, habilitando configuración modular. Puedes importar reglas compartidas, estándares de codificación o documentación. La sintaxis es '@import ruta/al/archivo.md' colocada en CLAUDE.md. Esto mantiene CLAUDE.md conciso mientras permite instrucciones detalladas en archivos separados y mantenibles.",
+      "options": [
+        { "id": "ccaf-cc-002_a", "text": "Use '@import path/to/file.md' in CLAUDE.md to include content from external files for modular configuration", "textEs": "Usar '@import ruta/al/archivo.md' en CLAUDE.md para incluir contenido de archivos externos para configuración modular", "order": 1 },
+        { "id": "ccaf-cc-002_b", "text": "Use '@import' as a CLI command to load external configuration at startup", "textEs": "Usar '@import' como un comando CLI para cargar configuración externa al inicio", "order": 2 },
+        { "id": "ccaf-cc-002_c", "text": "Use '@import' to install MCP servers from a registry", "textEs": "Usar '@import' para instalar servidores MCP desde un registro", "order": 3 },
+        { "id": "ccaf-cc-002_d", "text": "@import is deprecated in favor of .claude/rules/ directory", "textEs": "@import está obsoleto en favor del directorio .claude/rules/", "order": 4 }
+      ],
+      "tags": ["claude-md", "import", "modular-config"]
+    },
+    {
+      "id": "ccaf-cc-003",
+      "text": "What is the purpose of .claude/rules/ files with YAML frontmatter globs?",
+      "textEs": "¿Cuál es el propósito de los archivos .claude/rules/ con globs en frontmatter YAML?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-003_b",
+      "explanation": "Files in .claude/rules/ are rule files that can include YAML frontmatter with glob patterns to specify which files they apply to. For example, a rule with '---\\nglobs: [\"*.py\"]\\n---' would only apply when working with Python files. This provides fine-grained, file-type-specific instructions without cluttering the main CLAUDE.md.",
+      "explanationEs": "Los archivos en .claude/rules/ son archivos de reglas que pueden incluir frontmatter YAML con patrones glob para especificar a qué archivos aplican. Por ejemplo, una regla con '---\\nglobs: [\"*.py\"]\\n---' solo aplicaría al trabajar con archivos Python. Esto proporciona instrucciones específicas por tipo de archivo de manera granular sin saturar el CLAUDE.md principal.",
+      "options": [
+        { "id": "ccaf-cc-003_a", "text": "They define CI/CD pipeline rules that are executed automatically on every commit", "textEs": "Definen reglas de pipeline CI/CD que se ejecutan automáticamente en cada commit", "order": 1 },
+        { "id": "ccaf-cc-003_b", "text": "They provide file-type-specific instructions that activate only when working with files matching the glob patterns", "textEs": "Proporcionan instrucciones específicas por tipo de archivo que se activan solo al trabajar con archivos que coinciden con los patrones glob", "order": 2 },
+        { "id": "ccaf-cc-003_c", "text": "They define access control rules for which team members can use specific commands", "textEs": "Definen reglas de control de acceso sobre qué miembros del equipo pueden usar comandos específicos", "order": 3 },
+        { "id": "ccaf-cc-003_d", "text": "They configure linting rules that Claude enforces on generated code", "textEs": "Configuran reglas de linting que Claude aplica al código generado", "order": 4 }
+      ],
+      "tags": ["claude-rules", "yaml-frontmatter", "globs", "conditional-rules"]
+    },
+    {
+      "id": "ccaf-cc-004",
+      "text": "What is the difference between shared custom commands (.claude/commands/) and personal custom commands (~/.claude/commands/)?",
+      "textEs": "¿Cuál es la diferencia entre los comandos personalizados compartidos (.claude/commands/) y los comandos personalizados personales (~/.claude/commands/)?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-004_d",
+      "explanation": "Shared custom commands in .claude/commands/ are committed to the repository and available to all team members. Personal custom commands in ~/.claude/commands/ are user-specific and available across all projects for that user but not shared with the team. Both are invoked with /command-name syntax.",
+      "explanationEs": "Los comandos personalizados compartidos en .claude/commands/ se hacen commit al repositorio y están disponibles para todos los miembros del equipo. Los comandos personalizados personales en ~/.claude/commands/ son específicos del usuario y están disponibles en todos los proyectos de ese usuario pero no se comparten con el equipo. Ambos se invocan con la sintaxis /nombre-del-comando.",
+      "options": [
+        { "id": "ccaf-cc-004_a", "text": "Shared commands run faster because they are cached; personal commands are interpreted each time", "textEs": "Los comandos compartidos se ejecutan más rápido porque están en caché; los personales se interpretan cada vez", "order": 1 },
+        { "id": "ccaf-cc-004_b", "text": "Shared commands can use tools; personal commands are text-only", "textEs": "Los comandos compartidos pueden usar herramientas; los personales son solo texto", "order": 2 },
+        { "id": "ccaf-cc-004_c", "text": "There is no difference; both are accessible by the entire team", "textEs": "No hay diferencia; ambos son accesibles por todo el equipo", "order": 3 },
+        { "id": "ccaf-cc-004_d", "text": "Shared commands are in the repo for the team; personal commands are in the user's home directory for all their projects", "textEs": "Los comandos compartidos están en el repositorio para el equipo; los personales están en el directorio home del usuario para todos sus proyectos", "order": 4 }
+      ],
+      "tags": ["custom-commands", "shared-commands", "personal-commands"]
+    },
+    {
+      "id": "ccaf-cc-005",
+      "text": "What fields are included in Skill frontmatter for Claude Code custom commands?",
+      "textEs": "¿Qué campos se incluyen en el frontmatter de Skills para los comandos personalizados de Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-005_a",
+      "explanation": "Skill frontmatter in custom command files can include: 'context' (files or patterns to automatically load into context), 'allowed-tools' (which tools the skill can use), 'argument-hint' (description of expected arguments shown in the UI), and 'description' (a brief description of what the skill does). These fields help scope the skill's capabilities and provide a better user experience.",
+      "explanationEs": "El frontmatter de Skills en archivos de comandos personalizados puede incluir: 'context' (archivos o patrones para cargar automáticamente en el contexto), 'allowed-tools' (qué herramientas puede usar el skill), 'argument-hint' (descripción de los argumentos esperados mostrada en la UI) y 'description' (una breve descripción de lo que hace el skill). Estos campos ayudan a delimitar las capacidades del skill y proporcionan una mejor experiencia de usuario.",
+      "options": [
+        { "id": "ccaf-cc-005_a", "text": "context (files to load), allowed-tools (permitted tools), argument-hint (argument description), and description", "textEs": "context (archivos a cargar), allowed-tools (herramientas permitidas), argument-hint (descripción de argumentos) y description", "order": 1 },
+        { "id": "ccaf-cc-005_b", "text": "name, version, dependencies, and entrypoint", "textEs": "name, version, dependencies y entrypoint", "order": 2 },
+        { "id": "ccaf-cc-005_c", "text": "model, temperature, max-tokens, and system-prompt", "textEs": "model, temperature, max-tokens y system-prompt", "order": 3 },
+        { "id": "ccaf-cc-005_d", "text": "trigger, schedule, timeout, and retry-count", "textEs": "trigger, schedule, timeout y retry-count", "order": 4 }
+      ],
+      "tags": ["skill-frontmatter", "custom-commands", "context", "allowed-tools"]
+    },
+    {
+      "id": "ccaf-cc-006",
+      "text": "How does the /memory command interact with CLAUDE.md?",
+      "textEs": "¿Cómo interactúa el comando /memory con CLAUDE.md?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-006_b",
+      "explanation": "The /memory command reads and writes to the project-level CLAUDE.md file. When you use /memory, Claude can add persistent notes, preferences, and instructions to CLAUDE.md that will be loaded on every future session. For debugging, you can inspect CLAUDE.md directly to see what memories have been stored and manually edit or remove entries.",
+      "explanationEs": "El comando /memory lee y escribe en el archivo CLAUDE.md a nivel de proyecto. Cuando usas /memory, Claude puede agregar notas persistentes, preferencias e instrucciones a CLAUDE.md que se cargarán en cada sesión futura. Para depuración, puedes inspeccionar CLAUDE.md directamente para ver qué memorias se han almacenado y editar o eliminar entradas manualmente.",
+      "options": [
+        { "id": "ccaf-cc-006_a", "text": "/memory stores data in a separate SQLite database that CLAUDE.md references", "textEs": "/memory almacena datos en una base de datos SQLite separada que CLAUDE.md referencia", "order": 1 },
+        { "id": "ccaf-cc-006_b", "text": "/memory reads and writes persistent notes directly to the project-level CLAUDE.md file", "textEs": "/memory lee y escribe notas persistentes directamente en el archivo CLAUDE.md a nivel de proyecto", "order": 2 },
+        { "id": "ccaf-cc-006_c", "text": "/memory stores session history in ~/.claude/memory/ as separate JSON files", "textEs": "/memory almacena el historial de sesiones en ~/.claude/memory/ como archivos JSON separados", "order": 3 },
+        { "id": "ccaf-cc-006_d", "text": "/memory is a read-only command that displays the current CLAUDE.md contents", "textEs": "/memory es un comando de solo lectura que muestra los contenidos actuales de CLAUDE.md", "order": 4 }
+      ],
+      "tags": ["memory", "claude-md", "persistence", "debugging"]
+    },
+    {
+      "id": "ccaf-cc-007",
+      "text": "When integrating Claude Code into a CI/CD pipeline, what is the recommended approach for non-interactive execution?",
+      "textEs": "Al integrar Claude Code en un pipeline CI/CD, ¿cuál es el enfoque recomendado para la ejecución no interactiva?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-007_c",
+      "explanation": "For CI/CD integration, Claude Code should be run in non-interactive (headless) mode using the -p flag with a prompt, combined with --allowedTools to restrict which tools it can use. The --output-format json flag gives structured output for pipeline parsing. CLAUDE.md at the project root provides persistent instructions for the CI context.",
+      "explanationEs": "Para la integración CI/CD, Claude Code debe ejecutarse en modo no interactivo (headless) usando la bandera -p con un prompt, combinado con --allowedTools para restringir qué herramientas puede usar. La bandera --output-format json proporciona salida estructurada para el análisis del pipeline. CLAUDE.md en la raíz del proyecto proporciona instrucciones persistentes para el contexto de CI.",
+      "options": [
+        { "id": "ccaf-cc-007_a", "text": "Run Claude Code interactively with a virtual terminal emulator in the CI container", "textEs": "Ejecutar Claude Code interactivamente con un emulador de terminal virtual en el contenedor de CI", "order": 1 },
+        { "id": "ccaf-cc-007_b", "text": "Use the Claude API directly instead of Claude Code for CI/CD", "textEs": "Usar la API de Claude directamente en lugar de Claude Code para CI/CD", "order": 2 },
+        { "id": "ccaf-cc-007_c", "text": "Use the -p flag for headless execution with --allowedTools restrictions and --output-format json for structured output", "textEs": "Usar la bandera -p para ejecución headless con restricciones --allowedTools y --output-format json para salida estructurada", "order": 3 },
+        { "id": "ccaf-cc-007_d", "text": "Write a custom wrapper script that simulates keyboard input to Claude Code", "textEs": "Escribir un script envolvente personalizado que simule entrada de teclado para Claude Code", "order": 4 }
+      ],
+      "tags": ["ci-cd", "headless", "pipeline", "non-interactive"]
+    },
+    {
+      "id": "ccaf-cc-008",
+      "text": "What is the difference between Plan Mode and direct execution in Claude Code?",
+      "textEs": "¿Cuál es la diferencia entre el Modo Plan y la ejecución directa en Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-008_b",
+      "explanation": "Plan Mode (activated with Shift+Tab or the plan command) tells Claude to analyze and describe what it would do WITHOUT actually executing any changes. It outlines the steps, files to modify, and approach. Direct execution mode (the default) allows Claude to read, write, and execute tools immediately. Plan Mode is useful for reviewing complex changes before committing to them.",
+      "explanationEs": "El Modo Plan (activado con Shift+Tab o el comando plan) le indica a Claude que analice y describa lo que haría SIN ejecutar realmente ningún cambio. Describe los pasos, archivos a modificar y el enfoque. El modo de ejecución directa (el predeterminado) permite a Claude leer, escribir y ejecutar herramientas inmediatamente. El Modo Plan es útil para revisar cambios complejos antes de comprometerse con ellos.",
+      "options": [
+        { "id": "ccaf-cc-008_a", "text": "Plan Mode executes changes in a sandbox; direct mode executes in the real filesystem", "textEs": "El Modo Plan ejecuta cambios en un sandbox; el modo directo ejecuta en el sistema de archivos real", "order": 1 },
+        { "id": "ccaf-cc-008_b", "text": "Plan Mode describes proposed changes without executing; direct mode reads, writes, and executes immediately", "textEs": "El Modo Plan describe los cambios propuestos sin ejecutarlos; el modo directo lee, escribe y ejecuta inmediatamente", "order": 2 },
+        { "id": "ccaf-cc-008_c", "text": "Plan Mode creates a git branch; direct mode commits to the current branch", "textEs": "El Modo Plan crea una rama git; el modo directo hace commit en la rama actual", "order": 3 },
+        { "id": "ccaf-cc-008_d", "text": "There is no difference; they are aliases for the same behavior", "textEs": "No hay diferencia; son alias para el mismo comportamiento", "order": 4 }
+      ],
+      "tags": ["plan-mode", "direct-execution", "claude-code"]
+    },
+    {
+      "id": "ccaf-cc-009",
+      "text": "A team wants all Python files to follow a specific docstring format when edited by Claude Code. What is the most maintainable way to configure this?",
+      "textEs": "Un equipo quiere que todos los archivos Python sigan un formato de docstring específico cuando Claude Code los edite. ¿Cuál es la forma más mantenible de configurar esto?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-009_c",
+      "explanation": "Creating a rule file in .claude/rules/ with YAML frontmatter specifying globs: [\"*.py\"] is the most maintainable approach. This keeps the Python-specific instructions separate from the main CLAUDE.md, only activates when Python files are involved, and is committed to the repo for the whole team. The rule file content describes the docstring format requirements.",
+      "explanationEs": "Crear un archivo de reglas en .claude/rules/ con frontmatter YAML especificando globs: [\"*.py\"] es el enfoque más mantenible. Esto mantiene las instrucciones específicas de Python separadas del CLAUDE.md principal, solo se activa cuando hay archivos Python involucrados, y se hace commit al repositorio para todo el equipo. El contenido del archivo de reglas describe los requisitos del formato de docstring.",
+      "options": [
+        { "id": "ccaf-cc-009_a", "text": "Add the docstring rules to the project CLAUDE.md so they apply to all files", "textEs": "Agregar las reglas de docstring al CLAUDE.md del proyecto para que apliquen a todos los archivos", "order": 1 },
+        { "id": "ccaf-cc-009_b", "text": "Create a CLAUDE.md in every Python directory with the docstring rules", "textEs": "Crear un CLAUDE.md en cada directorio de Python con las reglas de docstring", "order": 2 },
+        { "id": "ccaf-cc-009_c", "text": "Create a .claude/rules/python-docstrings.md file with YAML frontmatter: globs: [\"*.py\"]", "textEs": "Crear un archivo .claude/rules/python-docstrings.md con frontmatter YAML: globs: [\"*.py\"]", "order": 3 },
+        { "id": "ccaf-cc-009_d", "text": "Configure a pre-commit hook that reformats docstrings after Claude makes changes", "textEs": "Configurar un hook pre-commit que reformatee los docstrings después de que Claude haga cambios", "order": 4 }
+      ],
+      "tags": ["claude-rules", "globs", "python", "maintainability"]
+    },
+    {
+      "id": "ccaf-cc-010",
+      "text": "How can you debug issues with CLAUDE.md not being loaded correctly?",
+      "textEs": "¿Cómo puedes depurar problemas con CLAUDE.md que no se carga correctamente?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-010_a",
+      "explanation": "To debug CLAUDE.md loading issues, you can ask Claude directly 'What instructions do you have from CLAUDE.md?' or use /memory to see what is currently loaded. You can also check file permissions, verify the file is in the correct location (repo root for project-level), and ensure @import paths are correct relative to the CLAUDE.md file location.",
+      "explanationEs": "Para depurar problemas de carga de CLAUDE.md, puedes preguntarle a Claude directamente '¿Qué instrucciones tienes de CLAUDE.md?' o usar /memory para ver qué está cargado actualmente. También puedes verificar los permisos de archivos, confirmar que el archivo está en la ubicación correcta (raíz del repo para nivel de proyecto) y asegurar que las rutas de @import sean correctas relativas a la ubicación del archivo CLAUDE.md.",
+      "options": [
+        { "id": "ccaf-cc-010_a", "text": "Ask Claude 'What instructions do you have from CLAUDE.md?' and verify with /memory; check file paths and permissions", "textEs": "Preguntar a Claude '¿Qué instrucciones tienes de CLAUDE.md?' y verificar con /memory; comprobar rutas de archivos y permisos", "order": 1 },
+        { "id": "ccaf-cc-010_b", "text": "Run 'claude-code --debug-config' to see a full configuration dump", "textEs": "Ejecutar 'claude-code --debug-config' para ver un volcado completo de configuración", "order": 2 },
+        { "id": "ccaf-cc-010_c", "text": "Check the ~/.claude/logs/config.log file for loading errors", "textEs": "Verificar el archivo ~/.claude/logs/config.log en busca de errores de carga", "order": 3 },
+        { "id": "ccaf-cc-010_d", "text": "CLAUDE.md is always loaded correctly; issues are caused by conflicting .claude/rules/ files", "textEs": "CLAUDE.md siempre se carga correctamente; los problemas son causados por archivos .claude/rules/ en conflicto", "order": 4 }
+      ],
+      "tags": ["debugging", "claude-md", "memory", "troubleshooting"]
+    },
+    {
+      "id": "ccaf-cc-011",
+      "text": "What is the 'allowed-tools' field in Skill frontmatter used for?",
+      "textEs": "¿Para qué se usa el campo 'allowed-tools' en el frontmatter de Skills?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-011_b",
+      "explanation": "The 'allowed-tools' field in Skill frontmatter restricts which tools the skill can use during execution. This is a security and scoping mechanism -- for example, a 'review-code' skill might only need Read and Grep tools, not Edit or Bash. By limiting tools, you prevent the skill from making unintended changes and make its behavior more predictable.",
+      "explanationEs": "El campo 'allowed-tools' en el frontmatter de Skills restringe qué herramientas puede usar el skill durante la ejecución. Es un mecanismo de seguridad y delimitación de alcance; por ejemplo, un skill de 'revisar-código' podría solo necesitar las herramientas Read y Grep, no Edit o Bash. Al limitar las herramientas, evitas que el skill haga cambios no deseados y haces su comportamiento más predecible.",
+      "options": [
+        { "id": "ccaf-cc-011_a", "text": "It lists tools that the skill installs from an external registry", "textEs": "Lista las herramientas que el skill instala desde un registro externo", "order": 1 },
+        { "id": "ccaf-cc-011_b", "text": "It restricts the skill to only use the specified tools during execution, preventing unintended actions", "textEs": "Restringe al skill para que solo use las herramientas especificadas durante la ejecución, previniendo acciones no deseadas", "order": 2 },
+        { "id": "ccaf-cc-011_c", "text": "It defines the tools that must be installed before the skill can be used", "textEs": "Define las herramientas que deben estar instaladas antes de que el skill pueda usarse", "order": 3 },
+        { "id": "ccaf-cc-011_d", "text": "It specifies MCP server tools that the skill exposes to other agents", "textEs": "Especifica herramientas de servidor MCP que el skill expone a otros agentes", "order": 4 }
+      ],
+      "tags": ["skill-frontmatter", "allowed-tools", "security", "scoping"]
+    },
+    {
+      "id": "ccaf-cc-012",
+      "text": "When using Claude Code in a CI/CD pipeline, which flag combination ensures Claude will not prompt for user confirmation?",
+      "textEs": "Al usar Claude Code en un pipeline CI/CD, ¿qué combinación de banderas asegura que Claude no solicite confirmación del usuario?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-012_d",
+      "explanation": "The --yes flag (or -y) auto-accepts all permission prompts, making Claude Code fully non-interactive. Combined with -p for providing the prompt inline and --allowedTools to restrict tool access, this enables safe CI/CD execution. The --yes flag is essential because CI/CD environments have no interactive terminal for user confirmations.",
+      "explanationEs": "La bandera --yes (o -y) acepta automáticamente todos los prompts de permisos, haciendo que Claude Code sea completamente no interactivo. Combinado con -p para proporcionar el prompt en línea y --allowedTools para restringir el acceso a herramientas, esto permite una ejecución CI/CD segura. La bandera --yes es esencial porque los entornos CI/CD no tienen terminal interactiva para confirmaciones del usuario.",
+      "options": [
+        { "id": "ccaf-cc-012_a", "text": "--non-interactive --silent", "textEs": "--non-interactive --silent", "order": 1 },
+        { "id": "ccaf-cc-012_b", "text": "--batch --no-confirm", "textEs": "--batch --no-confirm", "order": 2 },
+        { "id": "ccaf-cc-012_c", "text": "--headless --auto-approve", "textEs": "--headless --auto-approve", "order": 3 },
+        { "id": "ccaf-cc-012_d", "text": "--yes (or -y) combined with -p for inline prompt and --allowedTools for tool restrictions", "textEs": "--yes (o -y) combinado con -p para prompt en línea y --allowedTools para restricciones de herramientas", "order": 4 }
+      ],
+      "tags": ["ci-cd", "non-interactive", "yes-flag", "automation"]
+    },
+    {
+      "id": "ccaf-cc-013",
+      "text": "What is worktree isolation in Claude Code, and what problem does it solve?",
+      "textEs": "¿Qué es el aislamiento de worktree en Claude Code, y qué problema resuelve?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-013_a",
+      "explanation": "Worktree isolation uses git worktrees to give each Claude Code session its own working copy of the repository. This solves the problem of concurrent sessions modifying the same files and conflicting with each other. Each session operates in a separate worktree directory with its own branch, and changes can be merged back when the session completes. It is especially useful for parallel task execution.",
+      "explanationEs": "El aislamiento de worktree usa worktrees de git para dar a cada sesión de Claude Code su propia copia de trabajo del repositorio. Esto resuelve el problema de sesiones concurrentes que modifican los mismos archivos y entran en conflicto entre sí. Cada sesión opera en un directorio worktree separado con su propia rama, y los cambios pueden fusionarse cuando la sesión se complete. Es especialmente útil para la ejecución de tareas en paralelo.",
+      "options": [
+        { "id": "ccaf-cc-013_a", "text": "Using git worktrees to give each session a separate working copy, preventing concurrent file conflicts between sessions", "textEs": "Usar worktrees de git para dar a cada sesión una copia de trabajo separada, previniendo conflictos de archivos concurrentes entre sesiones", "order": 1 },
+        { "id": "ccaf-cc-013_b", "text": "Running Claude Code in a Docker container with an isolated filesystem for security", "textEs": "Ejecutar Claude Code en un contenedor Docker con un sistema de archivos aislado por seguridad", "order": 2 },
+        { "id": "ccaf-cc-013_c", "text": "Creating a virtual filesystem overlay that discards changes when the session ends", "textEs": "Crear una capa de sistema de archivos virtual que descarta cambios cuando la sesión termina", "order": 3 },
+        { "id": "ccaf-cc-013_d", "text": "Locking files in the working directory so only one session can edit them at a time", "textEs": "Bloquear archivos en el directorio de trabajo para que solo una sesión pueda editarlos a la vez", "order": 4 }
+      ],
+      "tags": ["worktree", "isolation", "concurrent-sessions", "git"]
+    },
+    {
+      "id": "ccaf-cc-014",
+      "text": "What are Claude Code hooks, and what are the available hook types?",
+      "textEs": "¿Qué son los hooks de Claude Code, y cuáles son los tipos de hook disponibles?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-014_b",
+      "explanation": "Claude Code hooks are user-defined shell commands configured in settings.json that execute at specific lifecycle events. The available hook types are: PreToolUse (before a tool is executed), PostToolUse (after a tool completes), Notification (when Claude sends a notification), and Stop (before the agent turn ends). Hooks run outside the model's context and can be used for logging, validation, blocking certain actions, or triggering external processes.",
+      "explanationEs": "Los hooks de Claude Code son comandos de shell definidos por el usuario configurados en settings.json que se ejecutan en eventos específicos del ciclo de vida. Los tipos de hook disponibles son: PreToolUse (antes de que se ejecute una herramienta), PostToolUse (después de que una herramienta se complete), Notification (cuando Claude envía una notificación) y Stop (antes de que el turno del agente termine). Los hooks se ejecutan fuera del contexto del modelo y pueden usarse para registro, validación, bloqueo de ciertas acciones o activación de procesos externos.",
+      "options": [
+        { "id": "ccaf-cc-014_a", "text": "Git hooks (pre-commit, post-commit) configured through .claude/hooks/ directory", "textEs": "Hooks de git (pre-commit, post-commit) configurados a través del directorio .claude/hooks/", "order": 1 },
+        { "id": "ccaf-cc-014_b", "text": "User-defined shell commands in settings.json for PreToolUse, PostToolUse, Notification, and Stop lifecycle events", "textEs": "Comandos de shell definidos por el usuario en settings.json para eventos del ciclo de vida PreToolUse, PostToolUse, Notification y Stop", "order": 2 },
+        { "id": "ccaf-cc-014_c", "text": "API webhooks that notify external services; types include onMessage, onError, and onComplete", "textEs": "Webhooks de API que notifican a servicios externos; los tipos incluyen onMessage, onError y onComplete", "order": 3 },
+        { "id": "ccaf-cc-014_d", "text": "JavaScript functions in .claude/hooks.js for beforePrompt, afterResponse, and onToolCall events", "textEs": "Funciones JavaScript en .claude/hooks.js para eventos beforePrompt, afterResponse y onToolCall", "order": 4 }
+      ],
+      "tags": ["hooks", "PreToolUse", "PostToolUse", "Stop", "lifecycle"]
+    },
+    {
+      "id": "ccaf-cc-015",
+      "text": "How can a PreToolUse hook be used to enforce security policies in Claude Code?",
+      "textEs": "¿Cómo puede un hook PreToolUse usarse para aplicar políticas de seguridad en Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-015_c",
+      "explanation": "A PreToolUse hook runs before each tool execution and can inspect the tool name and parameters. By exiting with a non-zero status code, it blocks the tool call. This enables policies like: blocking writes to certain directories, preventing execution of dangerous shell commands, requiring approval for specific file patterns, or logging all tool calls for audit. The hook receives tool details via environment variables.",
+      "explanationEs": "Un hook PreToolUse se ejecuta antes de cada ejecución de herramienta y puede inspeccionar el nombre de la herramienta y sus parámetros. Al salir con un código de estado diferente de cero, bloquea la llamada a la herramienta. Esto permite políticas como: bloquear escrituras en ciertos directorios, prevenir la ejecución de comandos de shell peligrosos, requerir aprobación para patrones de archivos específicos, o registrar todas las llamadas a herramientas para auditoría. El hook recibe los detalles de la herramienta a través de variables de entorno.",
+      "options": [
+        { "id": "ccaf-cc-015_a", "text": "It encrypts all tool parameters before they are sent to the model", "textEs": "Encripta todos los parámetros de herramientas antes de enviarlos al modelo", "order": 1 },
+        { "id": "ccaf-cc-015_b", "text": "It adds authentication headers to all tool requests automatically", "textEs": "Agrega encabezados de autenticación a todas las solicitudes de herramientas automáticamente", "order": 2 },
+        { "id": "ccaf-cc-015_c", "text": "It inspects tool name and parameters before execution and can block the call by exiting with a non-zero status code", "textEs": "Inspecciona el nombre de la herramienta y los parámetros antes de la ejecución y puede bloquear la llamada saliendo con un código de estado diferente de cero", "order": 3 },
+        { "id": "ccaf-cc-015_d", "text": "It sandboxes the tool execution in a separate process with limited permissions", "textEs": "Aísla la ejecución de la herramienta en un proceso separado con permisos limitados", "order": 4 }
+      ],
+      "tags": ["hooks", "PreToolUse", "security", "blocking", "policies"]
+    },
+    {
+      "id": "ccaf-cc-016",
+      "text": "What are the different permission modes in Claude Code, and how do they affect tool execution?",
+      "textEs": "¿Cuáles son los diferentes modos de permisos en Claude Code, y cómo afectan la ejecución de herramientas?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-016_d",
+      "explanation": "Claude Code has permission modes that control how tool calls are approved. In default mode, potentially dangerous actions (file writes, shell commands) require user confirmation. With --allowedTools, you can pre-approve specific tools so they execute without prompting. The --yes flag auto-approves everything (use only in trusted CI/CD environments). These modes balance safety with productivity based on the use case.",
+      "explanationEs": "Claude Code tiene modos de permisos que controlan cómo se aprueban las llamadas a herramientas. En el modo predeterminado, las acciones potencialmente peligrosas (escritura de archivos, comandos de shell) requieren confirmación del usuario. Con --allowedTools, puedes pre-aprobar herramientas específicas para que se ejecuten sin solicitar confirmación. La bandera --yes aprueba todo automáticamente (usar solo en entornos CI/CD de confianza). Estos modos equilibran seguridad con productividad según el caso de uso.",
+      "options": [
+        { "id": "ccaf-cc-016_a", "text": "Read-only and read-write modes; read-only blocks all file modifications", "textEs": "Modos de solo lectura y lectura-escritura; solo lectura bloquea todas las modificaciones de archivos", "order": 1 },
+        { "id": "ccaf-cc-016_b", "text": "Admin and user modes; admin can execute shell commands, user cannot", "textEs": "Modos administrador y usuario; el administrador puede ejecutar comandos de shell, el usuario no", "order": 2 },
+        { "id": "ccaf-cc-016_c", "text": "Online and offline modes; offline mode disables all network-accessing tools", "textEs": "Modos en línea y fuera de línea; el modo fuera de línea desactiva todas las herramientas que acceden a la red", "order": 3 },
+        { "id": "ccaf-cc-016_d", "text": "Default mode (user confirms dangerous actions), --allowedTools (pre-approve specific tools), --yes (auto-approve all)", "textEs": "Modo predeterminado (el usuario confirma acciones peligrosas), --allowedTools (pre-aprobar herramientas específicas), --yes (auto-aprobar todo)", "order": 4 }
+      ],
+      "tags": ["permissions", "allowedTools", "yes-flag", "safety", "modes"]
+    },
+    {
+      "id": "ccaf-cc-017",
+      "text": "How do you configure which AI model Claude Code uses, and what models are available?",
+      "textEs": "¿Cómo configuras qué modelo de IA usa Claude Code, y qué modelos están disponibles?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-017_a",
+      "explanation": "Claude Code's model can be configured via the --model flag on the command line or in settings.json. By default, it uses Claude Sonnet for the optimal balance of speed and capability. You can switch to Opus for complex tasks requiring deeper reasoning or Haiku for simple, fast operations. The model can also be configured per-session or globally in settings.",
+      "explanationEs": "El modelo de Claude Code puede configurarse mediante la bandera --model en la línea de comandos o en settings.json. Por defecto, usa Claude Sonnet para el equilibrio óptimo entre velocidad y capacidad. Puedes cambiar a Opus para tareas complejas que requieran razonamiento más profundo o Haiku para operaciones simples y rápidas. El modelo también puede configurarse por sesión o globalmente en la configuración.",
+      "options": [
+        { "id": "ccaf-cc-017_a", "text": "Via the --model CLI flag or settings.json; defaults to Sonnet, with Opus for complex tasks and Haiku for simple ones", "textEs": "Mediante la bandera CLI --model o settings.json; por defecto Sonnet, con Opus para tareas complejas y Haiku para simples", "order": 1 },
+        { "id": "ccaf-cc-017_b", "text": "In CLAUDE.md with a 'model:' directive at the top of the file", "textEs": "En CLAUDE.md con una directiva 'model:' al inicio del archivo", "order": 2 },
+        { "id": "ccaf-cc-017_c", "text": "Through an environment variable CLAUDE_MODEL; only GPT and Claude models are available", "textEs": "A través de una variable de entorno CLAUDE_MODEL; solo los modelos GPT y Claude están disponibles", "order": 3 },
+        { "id": "ccaf-cc-017_d", "text": "Claude Code automatically selects the best model for each task; manual selection is not available", "textEs": "Claude Code selecciona automáticamente el mejor modelo para cada tarea; la selección manual no está disponible", "order": 4 }
+      ],
+      "tags": ["model-selection", "settings", "sonnet", "opus", "haiku"]
+    },
+    {
+      "id": "ccaf-cc-018",
+      "text": "What is extended thinking in Claude Code, and how is it configured?",
+      "textEs": "¿Qué es el pensamiento extendido en Claude Code, y cómo se configura?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-018_b",
+      "explanation": "Extended thinking allows Claude to use a separate thinking process before generating its response, enabling deeper reasoning for complex tasks. In Claude Code, it can be enabled with the --thinking flag or by pressing a keyboard shortcut during a session. The thinking budget controls how many tokens Claude can use for internal reasoning. Extended thinking is especially useful for complex debugging, architecture decisions, and multi-step planning.",
+      "explanationEs": "El pensamiento extendido permite a Claude usar un proceso de pensamiento separado antes de generar su respuesta, habilitando un razonamiento más profundo para tareas complejas. En Claude Code, puede habilitarse con la bandera --thinking o presionando un atajo de teclado durante una sesión. El presupuesto de pensamiento controla cuántos tokens puede usar Claude para razonamiento interno. El pensamiento extendido es especialmente útil para depuración compleja, decisiones de arquitectura y planificación de múltiples pasos.",
+      "options": [
+        { "id": "ccaf-cc-018_a", "text": "A mode where Claude takes longer to respond in exchange for using a more powerful model", "textEs": "Un modo donde Claude tarda más en responder a cambio de usar un modelo más poderoso", "order": 1 },
+        { "id": "ccaf-cc-018_b", "text": "A reasoning mode where Claude uses a separate thinking process before responding; enabled via --thinking flag or keyboard shortcut", "textEs": "Un modo de razonamiento donde Claude usa un proceso de pensamiento separado antes de responder; habilitado mediante la bandera --thinking o atajo de teclado", "order": 2 },
+        { "id": "ccaf-cc-018_c", "text": "An automatic retry system that generates multiple responses and picks the best one", "textEs": "Un sistema de reintento automático que genera múltiples respuestas y elige la mejor", "order": 3 },
+        { "id": "ccaf-cc-018_d", "text": "A collaborative mode where Claude consults multiple model versions before answering", "textEs": "Un modo colaborativo donde Claude consulta múltiples versiones del modelo antes de responder", "order": 4 }
+      ],
+      "tags": ["extended-thinking", "reasoning", "configuration", "thinking-budget"]
+    },
+    {
+      "id": "ccaf-cc-019",
+      "text": "How does the PostToolUse hook differ from PreToolUse, and what are its common use cases?",
+      "textEs": "¿En qué se diferencia el hook PostToolUse del PreToolUse, y cuáles son sus casos de uso comunes?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-019_d",
+      "explanation": "PostToolUse hooks execute after a tool has completed, receiving both the tool call details and its result. Unlike PreToolUse (which can block execution), PostToolUse is used for after-the-fact actions: logging tool results for audit, triggering automated tests after code changes, sending notifications, updating external dashboards, or performing cleanup. PostToolUse cannot undo the tool action but can react to it.",
+      "explanationEs": "Los hooks PostToolUse se ejecutan después de que una herramienta se ha completado, recibiendo tanto los detalles de la llamada a la herramienta como su resultado. A diferencia de PreToolUse (que puede bloquear la ejecución), PostToolUse se usa para acciones posteriores: registrar resultados de herramientas para auditoría, ejecutar pruebas automatizadas después de cambios de código, enviar notificaciones, actualizar dashboards externos o realizar limpieza. PostToolUse no puede deshacer la acción de la herramienta pero puede reaccionar a ella.",
+      "options": [
+        { "id": "ccaf-cc-019_a", "text": "It reverses the tool action if the result is incorrect; used for automatic rollbacks", "textEs": "Revierte la acción de la herramienta si el resultado es incorrecto; usado para reversiones automáticas", "order": 1 },
+        { "id": "ccaf-cc-019_b", "text": "It validates the tool's output schema; used to ensure tools return correct data types", "textEs": "Valida el esquema de salida de la herramienta; usado para asegurar que las herramientas devuelvan tipos de datos correctos", "order": 2 },
+        { "id": "ccaf-cc-019_c", "text": "It transforms the tool result before Claude sees it; used for data masking", "textEs": "Transforma el resultado de la herramienta antes de que Claude lo vea; usado para enmascaramiento de datos", "order": 3 },
+        { "id": "ccaf-cc-019_d", "text": "It executes after tool completion for logging, triggering tests, notifications, or cleanup; cannot block the action but reacts to it", "textEs": "Se ejecuta después de que la herramienta se completa para registro, ejecución de pruebas, notificaciones o limpieza; no puede bloquear la acción pero reacciona a ella", "order": 4 }
+      ],
+      "tags": ["hooks", "PostToolUse", "logging", "automation", "after-action"]
+    },
+    {
+      "id": "ccaf-cc-020",
+      "text": "What is the Stop hook in Claude Code, and when does it execute?",
+      "textEs": "¿Qué es el hook Stop en Claude Code, y cuándo se ejecuta?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-020_a",
+      "explanation": "The Stop hook executes when Claude is about to finish its turn -- after it has decided it is done but before control returns to the user. This is useful for running final validation checks (e.g., linting modified files, running tests), generating summary reports, or triggering deployment steps. If the Stop hook returns specific output, it can cause Claude to continue working rather than stopping.",
+      "explanationEs": "El hook Stop se ejecuta cuando Claude está a punto de terminar su turno; después de haber decidido que terminó pero antes de que el control regrese al usuario. Es útil para ejecutar verificaciones de validación finales (por ejemplo, ejecutar linting en archivos modificados, correr pruebas), generar reportes de resumen o activar pasos de despliegue. Si el hook Stop devuelve una salida específica, puede hacer que Claude continúe trabajando en lugar de detenerse.",
+      "options": [
+        { "id": "ccaf-cc-020_a", "text": "Executes when Claude is about to finish its turn; useful for final validations, running tests, or triggering post-completion workflows", "textEs": "Se ejecuta cuando Claude está a punto de terminar su turno; útil para validaciones finales, ejecutar pruebas o activar flujos de trabajo post-completación", "order": 1 },
+        { "id": "ccaf-cc-020_b", "text": "Executes when the user presses Ctrl+C; useful for graceful shutdown and cleanup", "textEs": "Se ejecuta cuando el usuario presiona Ctrl+C; útil para apagado controlado y limpieza", "order": 2 },
+        { "id": "ccaf-cc-020_c", "text": "Executes when the context window is nearly full; useful for triggering summarization", "textEs": "Se ejecuta cuando la ventana de contexto está casi llena; útil para activar resumen", "order": 3 },
+        { "id": "ccaf-cc-020_d", "text": "Executes when an error is detected; useful for automatic error recovery", "textEs": "Se ejecuta cuando se detecta un error; útil para recuperación automática de errores", "order": 4 }
+      ],
+      "tags": ["hooks", "Stop", "final-validation", "lifecycle"]
+    },
+    {
+      "id": "ccaf-cc-021",
+      "text": "How can Claude Code be configured to automatically run linting after every file edit?",
+      "textEs": "¿Cómo puede configurarse Claude Code para ejecutar linting automáticamente después de cada edición de archivo?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-021_c",
+      "explanation": "To automatically run linting after every file edit, configure a PostToolUse hook in settings.json that matches the Edit/Write tools. The hook script runs the linter on the modified file and returns the results. This ensures code quality is maintained without relying on Claude to remember to lint. The hook configuration specifies which tools trigger it via a matcher pattern.",
+      "explanationEs": "Para ejecutar linting automáticamente después de cada edición de archivo, configura un hook PostToolUse en settings.json que coincida con las herramientas Edit/Write. El script del hook ejecuta el linter en el archivo modificado y devuelve los resultados. Esto asegura que la calidad del código se mantenga sin depender de que Claude recuerde ejecutar el linter. La configuración del hook especifica qué herramientas lo activan mediante un patrón de coincidencia.",
+      "options": [
+        { "id": "ccaf-cc-021_a", "text": "Add 'always run lint after editing' instruction in CLAUDE.md", "textEs": "Agregar la instrucción 'siempre ejecutar lint después de editar' en CLAUDE.md", "order": 1 },
+        { "id": "ccaf-cc-021_b", "text": "Configure a git pre-commit hook that runs the linter", "textEs": "Configurar un hook git pre-commit que ejecute el linter", "order": 2 },
+        { "id": "ccaf-cc-021_c", "text": "Configure a PostToolUse hook in settings.json that matches Edit/Write tools and runs the linter on the modified file", "textEs": "Configurar un hook PostToolUse en settings.json que coincida con las herramientas Edit/Write y ejecute el linter en el archivo modificado", "order": 3 },
+        { "id": "ccaf-cc-021_d", "text": "Create a custom /lint command and instruct Claude to run it after every edit", "textEs": "Crear un comando personalizado /lint e instruir a Claude para que lo ejecute después de cada edición", "order": 4 }
+      ],
+      "tags": ["hooks", "PostToolUse", "linting", "automation", "settings"]
+    },
+    {
+      "id": "ccaf-cc-022",
+      "text": "What is the purpose of the --output-format json flag in Claude Code, and how is it used in automation?",
+      "textEs": "¿Cuál es el propósito de la bandera --output-format json en Claude Code, y cómo se usa en automatización?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-022_b",
+      "explanation": "The --output-format json flag makes Claude Code output its results as structured JSON instead of human-readable text. This is essential for automation and CI/CD pipelines where the output needs to be parsed by other tools. The JSON output includes the response text, tool calls made, files modified, and other metadata. Combined with -p for headless execution, it enables reliable integration with scripts and pipelines.",
+      "explanationEs": "La bandera --output-format json hace que Claude Code emita sus resultados como JSON estructurado en lugar de texto legible para humanos. Esto es esencial para automatización y pipelines CI/CD donde la salida necesita ser analizada por otras herramientas. La salida JSON incluye el texto de respuesta, las llamadas a herramientas realizadas, los archivos modificados y otros metadatos. Combinado con -p para ejecución headless, permite una integración confiable con scripts y pipelines.",
+      "options": [
+        { "id": "ccaf-cc-022_a", "text": "It forces Claude to generate all responses as JSON objects instead of natural language", "textEs": "Fuerza a Claude a generar todas las respuestas como objetos JSON en lugar de lenguaje natural", "order": 1 },
+        { "id": "ccaf-cc-022_b", "text": "It outputs Claude Code's results as structured JSON for parsing by scripts and CI/CD pipelines", "textEs": "Emite los resultados de Claude Code como JSON estructurado para ser analizado por scripts y pipelines CI/CD", "order": 2 },
+        { "id": "ccaf-cc-022_c", "text": "It formats the conversation log as JSON for debugging", "textEs": "Formatea el registro de conversación como JSON para depuración", "order": 3 },
+        { "id": "ccaf-cc-022_d", "text": "It configures Claude Code to only accept JSON input from the user", "textEs": "Configura Claude Code para solo aceptar entrada JSON del usuario", "order": 4 }
+      ],
+      "tags": ["output-format", "json", "automation", "ci-cd", "structured-output"]
+    },
+    {
+      "id": "ccaf-cc-023",
+      "text": "What does the /init command do when run inside a project for the first time?",
+      "textEs": "¿Qué hace el comando /init cuando se ejecuta dentro de un proyecto por primera vez?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-023_b",
+      "explanation": "/init bootstraps a new project for Claude Code by generating a CLAUDE.md file at the project root. It analyzes the repository structure, languages, frameworks, and existing configuration to produce an initial set of instructions and conventions. This saves time compared to writing CLAUDE.md from scratch and gives Claude context about the codebase from the first session.",
+      "explanationEs": "/init inicializa un nuevo proyecto para Claude Code generando un archivo CLAUDE.md en la raíz del proyecto. Analiza la estructura del repositorio, lenguajes, frameworks y configuración existente para producir un conjunto inicial de instrucciones y convenciones. Esto ahorra tiempo comparado con escribir CLAUDE.md desde cero y le da a Claude contexto sobre el código base desde la primera sesión.",
+      "options": [
+        { "id": "ccaf-cc-023_a", "text": "It installs Claude Code dependencies and creates a .claude/package.json", "textEs": "Instala las dependencias de Claude Code y crea un .claude/package.json", "order": 1 },
+        { "id": "ccaf-cc-023_b", "text": "It analyzes the repo and generates an initial CLAUDE.md with project conventions and structure", "textEs": "Analiza el repositorio y genera un CLAUDE.md inicial con convenciones y estructura del proyecto", "order": 2 },
+        { "id": "ccaf-cc-023_c", "text": "It creates a .claude/ directory with default settings.json and hooks", "textEs": "Crea un directorio .claude/ con settings.json y hooks predeterminados", "order": 3 },
+        { "id": "ccaf-cc-023_d", "text": "It connects the project to Anthropic's cloud for remote session storage", "textEs": "Conecta el proyecto a la nube de Anthropic para almacenamiento remoto de sesiones", "order": 4 }
+      ],
+      "tags": ["init", "bootstrap", "claude-md", "project-setup"]
+    },
+    {
+      "id": "ccaf-cc-024",
+      "text": "What does the /compact command do in Claude Code?",
+      "textEs": "¿Qué hace el comando /compact en Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-024_a",
+      "explanation": "/compact summarizes the current conversation to reduce context window usage. It condenses the conversation history while preserving key facts, decisions, and the current task state. This is useful in long sessions where the context is filling up and you want to keep working without starting a new session. You can optionally provide a focus topic so the summary emphasizes specific aspects.",
+      "explanationEs": "/compact resume la conversación actual para reducir el uso de la ventana de contexto. Condensa el historial de conversación preservando hechos clave, decisiones y el estado actual de la tarea. Es útil en sesiones largas donde el contexto se está llenando y quieres seguir trabajando sin iniciar una nueva sesión. Opcionalmente puedes proporcionar un tema de enfoque para que el resumen enfatice aspectos específicos.",
+      "options": [
+        { "id": "ccaf-cc-024_a", "text": "Summarizes the conversation to free context window space while preserving key facts and task state", "textEs": "Resume la conversación para liberar espacio de la ventana de contexto preservando hechos clave y el estado de la tarea", "order": 1 },
+        { "id": "ccaf-cc-024_b", "text": "Compresses all project files into a single archive for faster loading", "textEs": "Comprime todos los archivos del proyecto en un solo archivo para carga más rápida", "order": 2 },
+        { "id": "ccaf-cc-024_c", "text": "Removes all tool call history from the conversation to save tokens", "textEs": "Elimina todo el historial de llamadas a herramientas de la conversación para ahorrar tokens", "order": 3 },
+        { "id": "ccaf-cc-024_d", "text": "Minifies the CLAUDE.md file by removing comments and whitespace", "textEs": "Minifica el archivo CLAUDE.md eliminando comentarios y espacios en blanco", "order": 4 }
+      ],
+      "tags": ["compact", "summarization", "context-management", "slash-command"]
+    },
+    {
+      "id": "ccaf-cc-025",
+      "text": "How does the /review command work in Claude Code?",
+      "textEs": "¿Cómo funciona el comando /review en Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-025_c",
+      "explanation": "/review creates a code review of the current uncommitted changes (or a specified branch/PR). Claude analyzes the diff, identifies potential issues, suggests improvements, and highlights bugs or security concerns. It provides a structured review similar to what a human reviewer would produce, covering code quality, correctness, and best practices.",
+      "explanationEs": "/review crea una revisión de código de los cambios no confirmados actuales (o una rama/PR especificada). Claude analiza el diff, identifica problemas potenciales, sugiere mejoras y resalta bugs o problemas de seguridad. Proporciona una revisión estructurada similar a lo que produciría un revisor humano, cubriendo calidad de código, corrección y mejores prácticas.",
+      "options": [
+        { "id": "ccaf-cc-025_a", "text": "It runs the project test suite and reports pass/fail results", "textEs": "Ejecuta la suite de pruebas del proyecto y reporta resultados de aprobado/fallido", "order": 1 },
+        { "id": "ccaf-cc-025_b", "text": "It compares the current code against a style guide and auto-fixes formatting issues", "textEs": "Compara el código actual contra una guía de estilo y corrige automáticamente problemas de formato", "order": 2 },
+        { "id": "ccaf-cc-025_c", "text": "It analyzes uncommitted changes or a specified diff, providing a structured code review with issues, improvements, and concerns", "textEs": "Analiza los cambios no confirmados o un diff especificado, proporcionando una revisión de código estructurada con problemas, mejoras y preocupaciones", "order": 3 },
+        { "id": "ccaf-cc-025_d", "text": "It sends the code to a team of human reviewers via an integrated review platform", "textEs": "Envía el código a un equipo de revisores humanos a través de una plataforma de revisión integrada", "order": 4 }
+      ],
+      "tags": ["review", "code-review", "diff", "slash-command"]
+    },
+    {
+      "id": "ccaf-cc-026",
+      "text": "What does the /commit command do in Claude Code, and how does it differ from running 'git commit' manually?",
+      "textEs": "¿Qué hace el comando /commit en Claude Code, y cómo difiere de ejecutar 'git commit' manualmente?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-026_d",
+      "explanation": "/commit stages and commits changes with an AI-generated commit message. Claude analyzes the diff, understands the semantic intent of the changes, and writes a descriptive commit message that explains the 'why' rather than just the 'what'. This produces higher-quality commit messages than manual ones and is faster than writing them by hand.",
+      "explanationEs": "/commit prepara y confirma cambios con un mensaje de commit generado por IA. Claude analiza el diff, entiende la intención semántica de los cambios y escribe un mensaje de commit descriptivo que explica el 'por qué' en lugar de solo el 'qué'. Esto produce mensajes de commit de mayor calidad que los manuales y es más rápido que escribirlos a mano.",
+      "options": [
+        { "id": "ccaf-cc-026_a", "text": "It creates a commit with a random UUID as the message", "textEs": "Crea un commit con un UUID aleatorio como mensaje", "order": 1 },
+        { "id": "ccaf-cc-026_b", "text": "It is identical to 'git commit' but runs inside Claude Code's terminal", "textEs": "Es idéntico a 'git commit' pero se ejecuta dentro de la terminal de Claude Code", "order": 2 },
+        { "id": "ccaf-cc-026_c", "text": "It pushes the commit to remote automatically after creating it", "textEs": "Hace push del commit al remoto automáticamente después de crearlo", "order": 3 },
+        { "id": "ccaf-cc-026_d", "text": "It stages changes and generates a semantic commit message by analyzing the diff, explaining the intent of the changes", "textEs": "Prepara los cambios y genera un mensaje de commit semántico analizando el diff, explicando la intención de los cambios", "order": 4 }
+      ],
+      "tags": ["commit", "git", "ai-generated", "slash-command"]
+    },
+    {
+      "id": "ccaf-cc-027",
+      "text": "What is the UserPromptSubmit hook, and how can it be used?",
+      "textEs": "¿Qué es el hook UserPromptSubmit, y cómo puede usarse?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-027_a",
+      "explanation": "The UserPromptSubmit hook fires after the user submits a prompt but before Claude processes it. It receives the user's message and can modify it, enrich it with additional context, or block it entirely. Use cases include injecting additional instructions automatically, logging all user prompts for compliance, or performing input validation before Claude sees the message.",
+      "explanationEs": "El hook UserPromptSubmit se dispara después de que el usuario envía un prompt pero antes de que Claude lo procese. Recibe el mensaje del usuario y puede modificarlo, enriquecerlo con contexto adicional o bloquearlo por completo. Los casos de uso incluyen inyectar instrucciones adicionales automáticamente, registrar todos los prompts del usuario para cumplimiento normativo o realizar validación de entrada antes de que Claude vea el mensaje.",
+      "options": [
+        { "id": "ccaf-cc-027_a", "text": "Fires after user submits a prompt but before Claude processes it; can modify, enrich, or block the message", "textEs": "Se dispara después de que el usuario envía un prompt pero antes de que Claude lo procese; puede modificar, enriquecer o bloquear el mensaje", "order": 1 },
+        { "id": "ccaf-cc-027_b", "text": "Fires after Claude generates a response; used to filter or modify Claude's output", "textEs": "Se dispara después de que Claude genera una respuesta; usado para filtrar o modificar la salida de Claude", "order": 2 },
+        { "id": "ccaf-cc-027_c", "text": "Fires when the user types but before pressing Enter; used for autocomplete suggestions", "textEs": "Se dispara cuando el usuario escribe pero antes de presionar Enter; usado para sugerencias de autocompletado", "order": 3 },
+        { "id": "ccaf-cc-027_d", "text": "Fires on session start; used to load user preferences from a database", "textEs": "Se dispara al inicio de la sesión; usado para cargar preferencias del usuario desde una base de datos", "order": 4 }
+      ],
+      "tags": ["hooks", "UserPromptSubmit", "input-processing", "lifecycle"]
+    },
+    {
+      "id": "ccaf-cc-028",
+      "text": "How does Claude Code integrate with VS Code, and what features does the IDE integration provide?",
+      "textEs": "¿Cómo se integra Claude Code con VS Code, y qué funcionalidades proporciona la integración con el IDE?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-028_b",
+      "explanation": "Claude Code integrates with VS Code as an extension that provides an embedded terminal/chat panel within the IDE. It can see the currently open file, selected code, diagnostics (errors/warnings), and terminal output. Users can highlight code and send it to Claude with context, use inline commands, and see file changes applied directly in the editor with diff previews.",
+      "explanationEs": "Claude Code se integra con VS Code como una extensión que proporciona un terminal/panel de chat integrado dentro del IDE. Puede ver el archivo abierto actualmente, código seleccionado, diagnósticos (errores/advertencias) y salida de terminal. Los usuarios pueden resaltar código y enviarlo a Claude con contexto, usar comandos en línea y ver cambios de archivos aplicados directamente en el editor con vistas previas de diff.",
+      "options": [
+        { "id": "ccaf-cc-028_a", "text": "It replaces VS Code's built-in terminal with Claude's command line interface", "textEs": "Reemplaza la terminal integrada de VS Code con la interfaz de línea de comandos de Claude", "order": 1 },
+        { "id": "ccaf-cc-028_b", "text": "An extension providing an embedded chat panel with access to open files, selections, diagnostics, and inline diff previews", "textEs": "Una extensión que proporciona un panel de chat integrado con acceso a archivos abiertos, selecciones, diagnósticos y vistas previas de diff en línea", "order": 2 },
+        { "id": "ccaf-cc-028_c", "text": "A separate desktop application that communicates with VS Code via a plugin API", "textEs": "Una aplicación de escritorio separada que se comunica con VS Code a través de una API de plugins", "order": 3 },
+        { "id": "ccaf-cc-028_d", "text": "A web-based interface that opens in a browser tab alongside VS Code", "textEs": "Una interfaz web que se abre en una pestaña del navegador junto a VS Code", "order": 4 }
+      ],
+      "tags": ["vs-code", "ide-integration", "extension", "editor"]
+    },
+    {
+      "id": "ccaf-cc-029",
+      "text": "What is the purpose of the settings.json file in the .claude/ directory, and what can it configure?",
+      "textEs": "¿Cuál es el propósito del archivo settings.json en el directorio .claude/, y qué puede configurar?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-029_c",
+      "explanation": "The settings.json file in .claude/ (at project level) or ~/.claude/ (at user level) configures Claude Code's behavior including: hooks (PreToolUse, PostToolUse, etc.), allowed/denied tools, permissions, model preferences, MCP server configurations, and other runtime settings. Project-level settings are shared with the team via version control, while user-level settings are personal.",
+      "explanationEs": "El archivo settings.json en .claude/ (a nivel de proyecto) o ~/.claude/ (a nivel de usuario) configura el comportamiento de Claude Code incluyendo: hooks (PreToolUse, PostToolUse, etc.), herramientas permitidas/denegadas, permisos, preferencias de modelo, configuraciones de servidores MCP y otras configuraciones de runtime. Las configuraciones a nivel de proyecto se comparten con el equipo a través de control de versiones, mientras que las de nivel de usuario son personales.",
+      "options": [
+        { "id": "ccaf-cc-029_a", "text": "It stores conversation history in JSON format for session recovery", "textEs": "Almacena el historial de conversación en formato JSON para recuperación de sesiones", "order": 1 },
+        { "id": "ccaf-cc-029_b", "text": "It defines the project's build and test commands for CI/CD integration", "textEs": "Define los comandos de build y pruebas del proyecto para integración CI/CD", "order": 2 },
+        { "id": "ccaf-cc-029_c", "text": "It configures hooks, tool permissions, model preferences, and MCP servers; exists at project and user levels", "textEs": "Configura hooks, permisos de herramientas, preferencias de modelo y servidores MCP; existe a nivel de proyecto y usuario", "order": 3 },
+        { "id": "ccaf-cc-029_d", "text": "It only stores API key credentials for authenticating with Anthropic services", "textEs": "Solo almacena credenciales de clave API para autenticarse con servicios de Anthropic", "order": 4 }
+      ],
+      "tags": ["settings-json", "configuration", "hooks", "permissions"]
+    },
+    {
+      "id": "ccaf-cc-030",
+      "text": "How can parallel tool use improve Claude Code's performance on complex tasks?",
+      "textEs": "¿Cómo puede el uso paralelo de herramientas mejorar el rendimiento de Claude Code en tareas complejas?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-030_d",
+      "explanation": "Parallel tool use allows Claude to invoke multiple independent tools simultaneously in a single turn rather than sequentially. For example, when analyzing a codebase, Claude can read multiple files at the same time, or run searches across different directories concurrently. This significantly reduces the total time for multi-step tasks because independent operations do not have to wait for each other.",
+      "explanationEs": "El uso paralelo de herramientas permite a Claude invocar múltiples herramientas independientes simultáneamente en un solo turno en lugar de secuencialmente. Por ejemplo, al analizar un código base, Claude puede leer múltiples archivos al mismo tiempo o ejecutar búsquedas en diferentes directorios concurrentemente. Esto reduce significativamente el tiempo total para tareas de múltiples pasos porque las operaciones independientes no tienen que esperar unas a otras.",
+      "options": [
+        { "id": "ccaf-cc-030_a", "text": "It runs multiple Claude instances on different GPUs to increase throughput", "textEs": "Ejecuta múltiples instancias de Claude en diferentes GPUs para aumentar el rendimiento", "order": 1 },
+        { "id": "ccaf-cc-030_b", "text": "It splits a single tool call across multiple threads for faster execution", "textEs": "Divide una sola llamada a herramienta en múltiples hilos para ejecución más rápida", "order": 2 },
+        { "id": "ccaf-cc-030_c", "text": "It pre-computes the results of likely future tool calls while the current one runs", "textEs": "Pre-calcula los resultados de futuras llamadas probables a herramientas mientras se ejecuta la actual", "order": 3 },
+        { "id": "ccaf-cc-030_d", "text": "It invokes multiple independent tools simultaneously in one turn, reducing total time by avoiding sequential waits", "textEs": "Invoca múltiples herramientas independientes simultáneamente en un turno, reduciendo el tiempo total al evitar esperas secuenciales", "order": 4 }
+      ],
+      "tags": ["parallel-tool-use", "performance", "concurrency", "optimization"]
+    },
+    {
+      "id": "ccaf-cc-031",
+      "text": "What is the Claude Code memory system, and where is memory stored?",
+      "textEs": "¿Qué es el sistema de memoria de Claude Code, y dónde se almacena la memoria?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-031_a",
+      "explanation": "The Claude Code memory system stores persistent information across sessions in CLAUDE.md files. When Claude learns something important about the project (conventions, user preferences, architecture decisions), it can save it as a memory entry in CLAUDE.md. These memories are automatically loaded at the start of every session, giving Claude continuity between conversations. Memory is stored as plain text in the file, making it easy to inspect and edit.",
+      "explanationEs": "El sistema de memoria de Claude Code almacena información persistente entre sesiones en archivos CLAUDE.md. Cuando Claude aprende algo importante sobre el proyecto (convenciones, preferencias del usuario, decisiones de arquitectura), puede guardarlo como una entrada de memoria en CLAUDE.md. Estas memorias se cargan automáticamente al inicio de cada sesión, dando a Claude continuidad entre conversaciones. La memoria se almacena como texto plano en el archivo, facilitando su inspección y edición.",
+      "options": [
+        { "id": "ccaf-cc-031_a", "text": "Persistent information stored in CLAUDE.md files, automatically loaded each session; editable as plain text", "textEs": "Información persistente almacenada en archivos CLAUDE.md, cargada automáticamente en cada sesión; editable como texto plano", "order": 1 },
+        { "id": "ccaf-cc-031_b", "text": "An encrypted database in ~/.claude/memory.db that stores conversation summaries", "textEs": "Una base de datos encriptada en ~/.claude/memory.db que almacena resúmenes de conversación", "order": 2 },
+        { "id": "ccaf-cc-031_c", "text": "Cloud-based storage on Anthropic's servers, synced across all devices", "textEs": "Almacenamiento basado en la nube en los servidores de Anthropic, sincronizado entre todos los dispositivos", "order": 3 },
+        { "id": "ccaf-cc-031_d", "text": "A vector database that stores embeddings of previous conversations for semantic retrieval", "textEs": "Una base de datos vectorial que almacena embeddings de conversaciones previas para recuperación semántica", "order": 4 }
+      ],
+      "tags": ["memory-system", "persistence", "claude-md", "sessions"]
+    },
+    {
+      "id": "ccaf-cc-032",
+      "text": "What is fast mode (Shift+Tab toggle) in Claude Code, and when is it useful?",
+      "textEs": "¿Qué es el modo rápido (alternado con Shift+Tab) en Claude Code, y cuándo es útil?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-032_b",
+      "explanation": "Fast mode in Claude Code switches to a faster, more lightweight model (like Haiku) for simple tasks that do not require deep reasoning. It is toggled via Shift+Tab, which cycles through available modes. This is useful for quick questions, simple edits, file navigation, and routine tasks where speed matters more than reasoning depth, reducing both latency and cost.",
+      "explanationEs": "El modo rápido en Claude Code cambia a un modelo más rápido y liviano (como Haiku) para tareas simples que no requieren razonamiento profundo. Se alterna con Shift+Tab, que cicla entre los modos disponibles. Es útil para preguntas rápidas, ediciones simples, navegación de archivos y tareas rutinarias donde la velocidad importa más que la profundidad de razonamiento, reduciendo tanto la latencia como el costo.",
+      "options": [
+        { "id": "ccaf-cc-032_a", "text": "A mode that disables all tool confirmations and auto-approves everything for maximum speed", "textEs": "Un modo que deshabilita todas las confirmaciones de herramientas y auto-aprueba todo para máxima velocidad", "order": 1 },
+        { "id": "ccaf-cc-032_b", "text": "Switches to a faster, lighter model for simple tasks; toggled via Shift+Tab to reduce latency and cost", "textEs": "Cambia a un modelo más rápido y liviano para tareas simples; alternado con Shift+Tab para reducir latencia y costo", "order": 2 },
+        { "id": "ccaf-cc-032_c", "text": "A mode that skips reading CLAUDE.md and rules files for faster startup", "textEs": "Un modo que omite la lectura de CLAUDE.md y archivos de reglas para un inicio más rápido", "order": 3 },
+        { "id": "ccaf-cc-032_d", "text": "A mode that caches all tool results and reuses them for identical calls", "textEs": "Un modo que almacena en caché todos los resultados de herramientas y los reutiliza para llamadas idénticas", "order": 4 }
+      ],
+      "tags": ["fast-mode", "model-selection", "haiku", "performance"]
+    },
+    {
+      "id": "ccaf-cc-033",
+      "text": "How does the Agent SDK relate to Claude Code, and what additional capabilities does it provide?",
+      "textEs": "¿Cómo se relaciona el Agent SDK con Claude Code, y qué capacidades adicionales proporciona?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-033_c",
+      "explanation": "The Agent SDK allows developers to programmatically use Claude Code as a building block for custom agentic applications. While Claude Code is an interactive CLI tool, the Agent SDK provides a JavaScript/TypeScript API to spawn Claude Code sessions, send prompts, receive structured responses, and manage tool permissions programmatically. This enables building custom workflows, integrations, and automation on top of Claude Code's capabilities.",
+      "explanationEs": "El Agent SDK permite a los desarrolladores usar programáticamente Claude Code como un bloque de construcción para aplicaciones agentes personalizadas. Mientras Claude Code es una herramienta CLI interactiva, el Agent SDK proporciona una API de JavaScript/TypeScript para crear sesiones de Claude Code, enviar prompts, recibir respuestas estructuradas y gestionar permisos de herramientas programáticamente. Esto permite construir flujos de trabajo personalizados, integraciones y automatización sobre las capacidades de Claude Code.",
+      "options": [
+        { "id": "ccaf-cc-033_a", "text": "The Agent SDK is a replacement for Claude Code designed for enterprise environments", "textEs": "El Agent SDK es un reemplazo de Claude Code diseñado para entornos empresariales", "order": 1 },
+        { "id": "ccaf-cc-033_b", "text": "The Agent SDK provides pre-built agent templates that run without configuration", "textEs": "El Agent SDK proporciona plantillas de agentes pre-construidas que se ejecutan sin configuración", "order": 2 },
+        { "id": "ccaf-cc-033_c", "text": "A programmatic API to spawn Claude Code sessions, send prompts, and manage tools; enables custom agentic applications", "textEs": "Una API programática para crear sesiones de Claude Code, enviar prompts y gestionar herramientas; permite aplicaciones agentes personalizadas", "order": 3 },
+        { "id": "ccaf-cc-033_d", "text": "A mobile SDK that brings Claude Code functionality to iOS and Android apps", "textEs": "Un SDK móvil que lleva la funcionalidad de Claude Code a apps de iOS y Android", "order": 4 }
+      ],
+      "tags": ["agent-sdk", "programmatic", "api", "custom-applications"]
+    },
+    {
+      "id": "ccaf-cc-034",
+      "text": "How does Claude Code handle JetBrains IDE integration (IntelliJ, PyCharm, WebStorm)?",
+      "textEs": "¿Cómo maneja Claude Code la integración con IDEs de JetBrains (IntelliJ, PyCharm, WebStorm)?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-034_d",
+      "explanation": "Claude Code integrates with JetBrains IDEs through a plugin that embeds the Claude Code terminal within the IDE. Similar to the VS Code integration, it provides access to the current file, project structure, and IDE features. Users can interact with Claude in a tool window, see file changes with diff support, and leverage JetBrains-specific features like inspections and refactoring alongside Claude's suggestions.",
+      "explanationEs": "Claude Code se integra con los IDEs de JetBrains a través de un plugin que incrusta la terminal de Claude Code dentro del IDE. Similar a la integración con VS Code, proporciona acceso al archivo actual, estructura del proyecto y funcionalidades del IDE. Los usuarios pueden interactuar con Claude en una ventana de herramientas, ver cambios de archivos con soporte de diff y aprovechar funcionalidades específicas de JetBrains como inspecciones y refactorización junto con las sugerencias de Claude.",
+      "options": [
+        { "id": "ccaf-cc-034_a", "text": "JetBrains integration is not available; Claude Code only works with VS Code", "textEs": "La integración con JetBrains no está disponible; Claude Code solo funciona con VS Code", "order": 1 },
+        { "id": "ccaf-cc-034_b", "text": "It uses a browser-based interface that opens alongside the JetBrains IDE", "textEs": "Usa una interfaz basada en navegador que se abre junto al IDE de JetBrains", "order": 2 },
+        { "id": "ccaf-cc-034_c", "text": "It requires running Claude Code in a separate terminal and manually copying code between the IDE and terminal", "textEs": "Requiere ejecutar Claude Code en una terminal separada y copiar código manualmente entre el IDE y la terminal", "order": 3 },
+        { "id": "ccaf-cc-034_d", "text": "A plugin embedding Claude Code terminal in the IDE with access to files, project structure, and diff support", "textEs": "Un plugin que incrusta la terminal de Claude Code en el IDE con acceso a archivos, estructura del proyecto y soporte de diff", "order": 4 }
+      ],
+      "tags": ["jetbrains", "ide-integration", "plugin", "intellij"]
+    },
+    {
+      "id": "ccaf-cc-035",
+      "text": "What is the -p (print) flag in Claude Code CLI, and how does it differ from interactive mode?",
+      "textEs": "¿Qué es la bandera -p (print) en la CLI de Claude Code, y cómo difiere del modo interactivo?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-035_a",
+      "explanation": "The -p flag runs Claude Code in non-interactive (headless) mode, taking a prompt directly as an argument and outputting the result to stdout. Unlike interactive mode where you have a back-and-forth conversation with a UI, -p executes a single prompt and exits. This is essential for scripting, piping, CI/CD pipelines, and any automation where a human cannot interact with the terminal.",
+      "explanationEs": "La bandera -p ejecuta Claude Code en modo no interactivo (headless), tomando un prompt directamente como argumento y emitiendo el resultado a stdout. A diferencia del modo interactivo donde tienes una conversación bidireccional con una UI, -p ejecuta un solo prompt y sale. Esto es esencial para scripting, piping, pipelines CI/CD y cualquier automatización donde un humano no puede interactuar con la terminal.",
+      "options": [
+        { "id": "ccaf-cc-035_a", "text": "Runs a single prompt non-interactively and outputs to stdout; essential for scripting and CI/CD", "textEs": "Ejecuta un solo prompt de forma no interactiva y emite a stdout; esencial para scripting y CI/CD", "order": 1 },
+        { "id": "ccaf-cc-035_b", "text": "Enables 'preview' mode that shows planned changes without executing them", "textEs": "Habilita el modo 'preview' que muestra cambios planificados sin ejecutarlos", "order": 2 },
+        { "id": "ccaf-cc-035_c", "text": "Activates 'parallel' mode to run multiple prompts simultaneously", "textEs": "Activa el modo 'paralelo' para ejecutar múltiples prompts simultáneamente", "order": 3 },
+        { "id": "ccaf-cc-035_d", "text": "Prints the current configuration and settings without starting a session", "textEs": "Imprime la configuración y ajustes actuales sin iniciar una sesión", "order": 4 }
+      ],
+      "tags": ["cli-flags", "headless", "print-mode", "automation"]
+    },
+    {
+      "id": "ccaf-cc-036",
+      "text": "How can you configure hooks to run different scripts based on which tool is being called?",
+      "textEs": "¿Cómo puedes configurar hooks para ejecutar diferentes scripts basándose en qué herramienta se está llamando?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-036_b",
+      "explanation": "Hook configurations in settings.json support a 'matcher' field that specifies which tools the hook applies to. You can use exact tool names (e.g., 'Edit', 'Bash') or glob patterns (e.g., 'mcp__*' for all MCP tools). By creating multiple hook entries with different matchers, you can run different scripts for different tools. The hook script also receives the tool name as environment variable input, enabling conditional logic within a single script.",
+      "explanationEs": "Las configuraciones de hooks en settings.json soportan un campo 'matcher' que especifica a qué herramientas aplica el hook. Puedes usar nombres exactos de herramientas (por ejemplo, 'Edit', 'Bash') o patrones glob (por ejemplo, 'mcp__*' para todas las herramientas MCP). Creando múltiples entradas de hook con diferentes matchers, puedes ejecutar diferentes scripts para diferentes herramientas. El script del hook también recibe el nombre de la herramienta como entrada de variable de entorno, permitiendo lógica condicional dentro de un solo script.",
+      "options": [
+        { "id": "ccaf-cc-036_a", "text": "Create a separate settings.json for each tool and switch between them at runtime", "textEs": "Crear un settings.json separado para cada herramienta y alternar entre ellos en tiempo de ejecución", "order": 1 },
+        { "id": "ccaf-cc-036_b", "text": "Use the 'matcher' field in hook config to specify tool names or glob patterns; create multiple hooks with different matchers", "textEs": "Usar el campo 'matcher' en la configuración del hook para especificar nombres de herramientas o patrones glob; crear múltiples hooks con diferentes matchers", "order": 2 },
+        { "id": "ccaf-cc-036_c", "text": "Define all hook logic in CLAUDE.md and let Claude decide which script to run", "textEs": "Definir toda la lógica de hooks en CLAUDE.md y dejar que Claude decida qué script ejecutar", "order": 3 },
+        { "id": "ccaf-cc-036_d", "text": "Hooks cannot be tool-specific; they always run for every tool call", "textEs": "Los hooks no pueden ser específicos de herramientas; siempre se ejecutan para cada llamada a herramienta", "order": 4 }
+      ],
+      "tags": ["hooks", "matcher", "tool-specific", "configuration"]
+    },
+    {
+      "id": "ccaf-cc-037",
+      "text": "What are the three levels at which settings.json can exist, and what is their precedence?",
+      "textEs": "¿Cuáles son los tres niveles en los que puede existir settings.json, y cuál es su precedencia?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-037_a",
+      "explanation": "Settings.json exists at three levels: project (.claude/settings.json, committed to repo), user (~/.claude/settings.json, personal across all projects), and enterprise (managed by organization admins). Enterprise settings have the highest precedence and cannot be overridden. Project settings override user settings for tool permissions and hooks. This hierarchy allows organizations to enforce policies while letting projects and users customize within those bounds.",
+      "explanationEs": "Settings.json existe en tres niveles: proyecto (.claude/settings.json, confirmado en el repo), usuario (~/.claude/settings.json, personal en todos los proyectos) y empresarial (gestionado por administradores de la organización). Las configuraciones empresariales tienen la mayor precedencia y no pueden anularse. Las configuraciones de proyecto anulan las de usuario para permisos de herramientas y hooks. Esta jerarquía permite a las organizaciones aplicar políticas mientras deja que proyectos y usuarios personalicen dentro de esos límites.",
+      "options": [
+        { "id": "ccaf-cc-037_a", "text": "Project (.claude/settings.json), user (~/.claude/settings.json), and enterprise; enterprise has highest precedence", "textEs": "Proyecto (.claude/settings.json), usuario (~/.claude/settings.json) y empresarial; el empresarial tiene la mayor precedencia", "order": 1 },
+        { "id": "ccaf-cc-037_b", "text": "Local, remote, and cloud; cloud overrides all others", "textEs": "Local, remoto y nube; la nube anula todos los demás", "order": 2 },
+        { "id": "ccaf-cc-037_c", "text": "Development, staging, and production; determined by NODE_ENV", "textEs": "Desarrollo, staging y producción; determinado por NODE_ENV", "order": 3 },
+        { "id": "ccaf-cc-037_d", "text": "There is only one settings.json level at the project root", "textEs": "Solo hay un nivel de settings.json en la raíz del proyecto", "order": 4 }
+      ],
+      "tags": ["settings-json", "hierarchy", "precedence", "enterprise"]
+    },
+    {
+      "id": "ccaf-cc-038",
+      "text": "How do you restrict Claude Code to only use specific tools via the CLI?",
+      "textEs": "¿Cómo restringes Claude Code para que solo use herramientas específicas a través de la CLI?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-038_d",
+      "explanation": "The --allowedTools CLI flag accepts a comma-separated list of tool names that Claude is permitted to use. Any tool not in the list is blocked. For example, '--allowedTools Read,Grep,Glob' restricts Claude to read-only operations. This is essential for CI/CD pipelines and automated workflows where you want to limit Claude's capabilities to prevent unintended modifications.",
+      "explanationEs": "La bandera CLI --allowedTools acepta una lista separada por comas de nombres de herramientas que Claude tiene permitido usar. Cualquier herramienta no en la lista es bloqueada. Por ejemplo, '--allowedTools Read,Grep,Glob' restringe a Claude a operaciones de solo lectura. Esto es esencial para pipelines CI/CD y flujos de trabajo automatizados donde quieres limitar las capacidades de Claude para prevenir modificaciones no deseadas.",
+      "options": [
+        { "id": "ccaf-cc-038_a", "text": "Edit the CLAUDE.md file with 'only use these tools:' instruction", "textEs": "Editar el archivo CLAUDE.md con la instrucción 'solo usa estas herramientas:'", "order": 1 },
+        { "id": "ccaf-cc-038_b", "text": "Set environment variable CLAUDE_TOOLS to a list of allowed tools", "textEs": "Establecer la variable de entorno CLAUDE_TOOLS con una lista de herramientas permitidas", "order": 2 },
+        { "id": "ccaf-cc-038_c", "text": "Uninstall unwanted tools from the system before running Claude Code", "textEs": "Desinstalar las herramientas no deseadas del sistema antes de ejecutar Claude Code", "order": 3 },
+        { "id": "ccaf-cc-038_d", "text": "Use --allowedTools with a comma-separated list of permitted tool names to block all others", "textEs": "Usar --allowedTools con una lista separada por comas de nombres de herramientas permitidas para bloquear todas las demás", "order": 4 }
+      ],
+      "tags": ["allowedTools", "cli-flags", "restrictions", "security"]
+    },
+    {
+      "id": "ccaf-cc-039",
+      "text": "What happens when a PreToolUse hook outputs JSON with a 'decision' field set to 'block'?",
+      "textEs": "¿Qué sucede cuando un hook PreToolUse emite JSON con un campo 'decision' establecido en 'block'?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-039_c",
+      "explanation": "When a PreToolUse hook outputs JSON with 'decision' set to 'block', the tool call is prevented from executing and Claude receives the block reason. The hook can also include a 'reason' field that is shown to Claude, explaining why the action was blocked. This allows Claude to adjust its approach. Other decision values include 'approve' (skip user confirmation) and the default behavior when no JSON is returned.",
+      "explanationEs": "Cuando un hook PreToolUse emite JSON con 'decision' establecido en 'block', la llamada a la herramienta se impide de ejecutar y Claude recibe la razón del bloqueo. El hook también puede incluir un campo 'reason' que se muestra a Claude, explicando por qué la acción fue bloqueada. Esto permite a Claude ajustar su enfoque. Otros valores de decisión incluyen 'approve' (omitir confirmación del usuario) y el comportamiento predeterminado cuando no se devuelve JSON.",
+      "options": [
+        { "id": "ccaf-cc-039_a", "text": "The tool runs but its output is hidden from Claude", "textEs": "La herramienta se ejecuta pero su salida se oculta de Claude", "order": 1 },
+        { "id": "ccaf-cc-039_b", "text": "Claude retries the tool call with different parameters automatically", "textEs": "Claude reintenta la llamada a la herramienta con diferentes parámetros automáticamente", "order": 2 },
+        { "id": "ccaf-cc-039_c", "text": "The tool call is prevented; Claude receives the block reason and can adjust its approach", "textEs": "La llamada a la herramienta se impide; Claude recibe la razón del bloqueo y puede ajustar su enfoque", "order": 3 },
+        { "id": "ccaf-cc-039_d", "text": "The session is terminated immediately with an error code", "textEs": "La sesión se termina inmediatamente con un código de error", "order": 4 }
+      ],
+      "tags": ["hooks", "PreToolUse", "block-decision", "security"]
+    },
+    {
+      "id": "ccaf-cc-040",
+      "text": "What is the Notification hook, and what are typical use cases?",
+      "textEs": "¿Qué es el hook Notification, y cuáles son sus casos de uso típicos?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-040_b",
+      "explanation": "The Notification hook fires when Claude Code sends a notification to the user, typically when a long-running task completes or when Claude needs user attention. Typical use cases include sending Slack/Teams messages, triggering desktop notifications on remote machines, integrating with monitoring systems, or logging task completion times for productivity tracking.",
+      "explanationEs": "El hook Notification se dispara cuando Claude Code envía una notificación al usuario, típicamente cuando una tarea de larga duración se completa o cuando Claude necesita la atención del usuario. Los casos de uso típicos incluyen enviar mensajes de Slack/Teams, activar notificaciones de escritorio en máquinas remotas, integrarse con sistemas de monitoreo o registrar tiempos de completación de tareas para seguimiento de productividad.",
+      "options": [
+        { "id": "ccaf-cc-040_a", "text": "It fires on every API call to track request/response pairs for billing", "textEs": "Se dispara en cada llamada a la API para rastrear pares de solicitud/respuesta para facturación", "order": 1 },
+        { "id": "ccaf-cc-040_b", "text": "Fires when Claude sends notifications; used for Slack/Teams alerts, desktop notifications, and monitoring integration", "textEs": "Se dispara cuando Claude envía notificaciones; usado para alertas de Slack/Teams, notificaciones de escritorio e integración con monitoreo", "order": 2 },
+        { "id": "ccaf-cc-040_c", "text": "It fires when the model detects a potential security vulnerability in code", "textEs": "Se dispara cuando el modelo detecta una vulnerabilidad de seguridad potencial en el código", "order": 3 },
+        { "id": "ccaf-cc-040_d", "text": "It fires when system resources (CPU, memory) exceed a threshold", "textEs": "Se dispara cuando los recursos del sistema (CPU, memoria) exceden un umbral", "order": 4 }
+      ],
+      "tags": ["hooks", "Notification", "alerts", "monitoring"]
+    },
+    {
+      "id": "ccaf-cc-041",
+      "text": "How can you use git worktrees with Claude Code to work on multiple tasks simultaneously?",
+      "textEs": "¿Cómo puedes usar worktrees de git con Claude Code para trabajar en múltiples tareas simultáneamente?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-041_a",
+      "explanation": "Git worktrees allow multiple working directories from the same repository, each on a different branch. With Claude Code, you can create separate worktrees for different tasks and run independent Claude Code sessions in each. This prevents file conflicts between tasks, allows parallel development, and each session has its own clean workspace. After tasks complete, changes from each worktree can be merged independently.",
+      "explanationEs": "Los worktrees de git permiten múltiples directorios de trabajo del mismo repositorio, cada uno en una rama diferente. Con Claude Code, puedes crear worktrees separados para diferentes tareas y ejecutar sesiones independientes de Claude Code en cada uno. Esto previene conflictos de archivos entre tareas, permite desarrollo en paralelo y cada sesión tiene su propio espacio de trabajo limpio. Después de completar las tareas, los cambios de cada worktree pueden fusionarse independientemente.",
+      "options": [
+        { "id": "ccaf-cc-041_a", "text": "Create separate worktrees per task, run independent Claude Code sessions in each, and merge changes independently", "textEs": "Crear worktrees separados por tarea, ejecutar sesiones independientes de Claude Code en cada uno y fusionar cambios independientemente", "order": 1 },
+        { "id": "ccaf-cc-041_b", "text": "Use the --worktree flag to automatically create isolated environments for each prompt", "textEs": "Usar la bandera --worktree para crear automáticamente entornos aislados para cada prompt", "order": 2 },
+        { "id": "ccaf-cc-041_c", "text": "Clone the repository multiple times into different directories", "textEs": "Clonar el repositorio múltiples veces en diferentes directorios", "order": 3 },
+        { "id": "ccaf-cc-041_d", "text": "Use Docker containers with separate git clones for each task", "textEs": "Usar contenedores Docker con clones de git separados para cada tarea", "order": 4 }
+      ],
+      "tags": ["worktrees", "parallel-tasks", "git", "isolation"]
+    },
+    {
+      "id": "ccaf-cc-042",
+      "text": "What is the --resume flag used for in Claude Code CLI?",
+      "textEs": "¿Para qué se usa la bandera --resume en la CLI de Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "easy",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-042_c",
+      "explanation": "The --resume flag allows you to continue a previous Claude Code session by loading its conversation history. You can specify a session ID or use --resume to continue the most recent session. This is useful when you accidentally close a terminal, need to continue a long-running task, or want to pick up where you left off after a break.",
+      "explanationEs": "La bandera --resume permite continuar una sesión previa de Claude Code cargando su historial de conversación. Puedes especificar un ID de sesión o usar --resume para continuar la sesión más reciente. Es útil cuando cierras accidentalmente una terminal, necesitas continuar una tarea de larga duración o quieres retomar donde lo dejaste después de un descanso.",
+      "options": [
+        { "id": "ccaf-cc-042_a", "text": "It resumes a paused batch processing job", "textEs": "Reanuda un trabajo de procesamiento por lotes pausado", "order": 1 },
+        { "id": "ccaf-cc-042_b", "text": "It restarts the Claude Code application after an update", "textEs": "Reinicia la aplicación Claude Code después de una actualización", "order": 2 },
+        { "id": "ccaf-cc-042_c", "text": "Continues a previous session by loading its conversation history; useful for recovering closed sessions", "textEs": "Continúa una sesión previa cargando su historial de conversación; útil para recuperar sesiones cerradas", "order": 3 },
+        { "id": "ccaf-cc-042_d", "text": "It replays the last command that was executed in the session", "textEs": "Reproduce el último comando que se ejecutó en la sesión", "order": 4 }
+      ],
+      "tags": ["cli-flags", "resume", "session-recovery", "conversation-history"]
+    },
+    {
+      "id": "ccaf-cc-043",
+      "text": "How does the permission system differentiate between 'allowedTools' and 'deniedTools' in settings.json?",
+      "textEs": "¿Cómo diferencia el sistema de permisos entre 'allowedTools' y 'deniedTools' en settings.json?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-043_a",
+      "explanation": "In settings.json, 'allowedTools' specifies tools that are pre-approved to run without user confirmation (whitelisting), while 'deniedTools' specifies tools that are completely blocked from use (blacklisting). Both support exact names and glob patterns. For example, allowedTools: ['Read', 'Grep'] auto-approves those tools, while deniedTools: ['Bash'] prevents shell command execution entirely. Denied tools take precedence over allowed tools.",
+      "explanationEs": "En settings.json, 'allowedTools' especifica herramientas pre-aprobadas para ejecutar sin confirmación del usuario (lista blanca), mientras que 'deniedTools' especifica herramientas completamente bloqueadas de uso (lista negra). Ambos soportan nombres exactos y patrones glob. Por ejemplo, allowedTools: ['Read', 'Grep'] auto-aprueba esas herramientas, mientras que deniedTools: ['Bash'] previene la ejecución de comandos de shell por completo. Las herramientas denegadas tienen precedencia sobre las permitidas.",
+      "options": [
+        { "id": "ccaf-cc-043_a", "text": "allowedTools pre-approves tools without confirmation; deniedTools blocks tools entirely; denied takes precedence over allowed", "textEs": "allowedTools pre-aprueba herramientas sin confirmación; deniedTools bloquea herramientas por completo; denegadas tienen precedencia sobre permitidas", "order": 1 },
+        { "id": "ccaf-cc-043_b", "text": "allowedTools lists tools Claude can see; deniedTools hides tools from Claude's tool list", "textEs": "allowedTools lista herramientas que Claude puede ver; deniedTools oculta herramientas de la lista de Claude", "order": 2 },
+        { "id": "ccaf-cc-043_c", "text": "They are aliases; both control the same permission with opposite logic", "textEs": "Son alias; ambos controlan el mismo permiso con lógica opuesta", "order": 3 },
+        { "id": "ccaf-cc-043_d", "text": "allowedTools applies to interactive mode; deniedTools applies to headless mode only", "textEs": "allowedTools aplica al modo interactivo; deniedTools aplica solo al modo headless", "order": 4 }
+      ],
+      "tags": ["permissions", "allowedTools", "deniedTools", "settings-json"]
+    },
+    {
+      "id": "ccaf-cc-044",
+      "text": "What is the purpose of the 'context' field in custom command (Skill) frontmatter?",
+      "textEs": "¿Cuál es el propósito del campo 'context' en el frontmatter de comandos personalizados (Skills)?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-044_b",
+      "explanation": "The 'context' field in Skill frontmatter specifies files or glob patterns that should be automatically loaded into Claude's context when the command is invoked. For example, a '/review-api' command might have 'context: [\"src/api/**/*.ts\", \"docs/api-spec.yaml\"]' to auto-load API files. This ensures Claude has the relevant code available without the user needing to manually reference files.",
+      "explanationEs": "El campo 'context' en el frontmatter de Skills especifica archivos o patrones glob que deben cargarse automáticamente en el contexto de Claude cuando se invoca el comando. Por ejemplo, un comando '/review-api' podría tener 'context: [\"src/api/**/*.ts\", \"docs/api-spec.yaml\"]' para auto-cargar archivos de API. Esto asegura que Claude tenga el código relevante disponible sin que el usuario necesite referenciar archivos manualmente.",
+      "options": [
+        { "id": "ccaf-cc-044_a", "text": "It specifies the programming language context for syntax highlighting", "textEs": "Especifica el contexto del lenguaje de programación para resaltado de sintaxis", "order": 1 },
+        { "id": "ccaf-cc-044_b", "text": "It specifies files or patterns to auto-load into context when the command is invoked", "textEs": "Especifica archivos o patrones para auto-cargar en el contexto cuando se invoca el comando", "order": 2 },
+        { "id": "ccaf-cc-044_c", "text": "It defines the system prompt context that overrides the default one", "textEs": "Define el contexto del prompt del sistema que anula el predeterminado", "order": 3 },
+        { "id": "ccaf-cc-044_d", "text": "It lists prerequisites that must be installed before the command can run", "textEs": "Lista los requisitos previos que deben instalarse antes de que el comando pueda ejecutarse", "order": 4 }
+      ],
+      "tags": ["skill-frontmatter", "context-field", "auto-load", "custom-commands"]
+    },
+    {
+      "id": "ccaf-cc-045",
+      "text": "How does the --model flag interact with the model configuration in settings.json?",
+      "textEs": "¿Cómo interactúa la bandera --model con la configuración de modelo en settings.json?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-045_c",
+      "explanation": "The --model CLI flag overrides the model configured in settings.json for the current session only. The precedence is: CLI flag > environment variable (ANTHROPIC_MODEL) > project settings.json > user settings.json > default model. This allows temporary model switches without changing configuration, such as using Opus for a complex debugging session while keeping Sonnet as the default.",
+      "explanationEs": "La bandera CLI --model anula el modelo configurado en settings.json solo para la sesión actual. La precedencia es: bandera CLI > variable de entorno (ANTHROPIC_MODEL) > settings.json de proyecto > settings.json de usuario > modelo predeterminado. Esto permite cambios temporales de modelo sin modificar la configuración, como usar Opus para una sesión de depuración compleja mientras se mantiene Sonnet como predeterminado.",
+      "options": [
+        { "id": "ccaf-cc-045_a", "text": "The settings.json model always takes precedence over CLI flags", "textEs": "El modelo de settings.json siempre tiene precedencia sobre las banderas CLI", "order": 1 },
+        { "id": "ccaf-cc-045_b", "text": "They are mutually exclusive; using --model disables settings.json entirely", "textEs": "Son mutuamente excluyentes; usar --model deshabilita settings.json por completo", "order": 2 },
+        { "id": "ccaf-cc-045_c", "text": "CLI flag overrides settings.json for the current session; precedence: CLI > env var > project settings > user settings > default", "textEs": "La bandera CLI anula settings.json para la sesión actual; precedencia: CLI > var de entorno > configuración de proyecto > configuración de usuario > predeterminado", "order": 3 },
+        { "id": "ccaf-cc-045_d", "text": "Both models are used simultaneously, with the CLI model handling tool calls and settings.json model handling text", "textEs": "Ambos modelos se usan simultáneamente, con el modelo CLI manejando llamadas a herramientas y el de settings.json manejando texto", "order": 4 }
+      ],
+      "tags": ["model-selection", "cli-flags", "settings-json", "precedence"]
+    },
+    {
+      "id": "ccaf-cc-046",
+      "text": "What is the purpose of the 'argument-hint' field in Skill frontmatter?",
+      "textEs": "¿Cuál es el propósito del campo 'argument-hint' en el frontmatter de Skills?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-046_d",
+      "explanation": "The 'argument-hint' field provides a human-readable description of what arguments the custom command expects. It is displayed in the UI when listing available commands and in the autocomplete suggestions. For example, a /deploy command might have argument-hint: '<environment> [--dry-run]' to show users the expected input format. The actual argument text is available as $ARGUMENTS in the command template.",
+      "explanationEs": "El campo 'argument-hint' proporciona una descripción legible para humanos de qué argumentos espera el comando personalizado. Se muestra en la UI al listar comandos disponibles y en las sugerencias de autocompletado. Por ejemplo, un comando /deploy podría tener argument-hint: '<environment> [--dry-run]' para mostrar a los usuarios el formato de entrada esperado. El texto real del argumento está disponible como $ARGUMENTS en la plantilla del comando.",
+      "options": [
+        { "id": "ccaf-cc-046_a", "text": "It validates the argument type at runtime and rejects invalid inputs", "textEs": "Valida el tipo de argumento en tiempo de ejecución y rechaza entradas inválidas", "order": 1 },
+        { "id": "ccaf-cc-046_b", "text": "It defines default argument values when none are provided", "textEs": "Define valores de argumento predeterminados cuando no se proporcionan", "order": 2 },
+        { "id": "ccaf-cc-046_c", "text": "It maps arguments to environment variables for the command script", "textEs": "Mapea argumentos a variables de entorno para el script del comando", "order": 3 },
+        { "id": "ccaf-cc-046_d", "text": "A human-readable description shown in the UI and autocomplete to indicate expected argument format", "textEs": "Una descripción legible para humanos mostrada en la UI y autocompletado para indicar el formato de argumento esperado", "order": 4 }
+      ],
+      "tags": ["skill-frontmatter", "argument-hint", "ui", "custom-commands"]
+    },
+    {
+      "id": "ccaf-cc-047",
+      "text": "How can you create a custom slash command that runs a specific test file related to the code being changed?",
+      "textEs": "¿Cómo puedes crear un comando slash personalizado que ejecute un archivo de prueba específico relacionado con el código que se está cambiando?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-047_a",
+      "explanation": "Create a Markdown file in .claude/commands/ (e.g., test-related.md) with a prompt template that instructs Claude to identify the test file associated with the current changes and run it. Use the $ARGUMENTS placeholder for any additional parameters. The Skill frontmatter can include 'allowed-tools: [\"Bash\", \"Read\", \"Glob\"]' to restrict permissions and 'context' to auto-load relevant files. Invoke it with /test-related.",
+      "explanationEs": "Crear un archivo Markdown en .claude/commands/ (por ejemplo, test-related.md) con una plantilla de prompt que instruya a Claude a identificar el archivo de prueba asociado con los cambios actuales y ejecutarlo. Usar el placeholder $ARGUMENTS para parámetros adicionales. El frontmatter de Skills puede incluir 'allowed-tools: [\"Bash\", \"Read\", \"Glob\"]' para restringir permisos y 'context' para auto-cargar archivos relevantes. Invocarlo con /test-related.",
+      "options": [
+        { "id": "ccaf-cc-047_a", "text": "Create a .claude/commands/test-related.md with a prompt template, frontmatter with allowed-tools, and use $ARGUMENTS for parameters", "textEs": "Crear un .claude/commands/test-related.md con una plantilla de prompt, frontmatter con allowed-tools y usar $ARGUMENTS para parámetros", "order": 1 },
+        { "id": "ccaf-cc-047_b", "text": "Add a test mapping configuration in settings.json that maps source files to test files", "textEs": "Agregar una configuración de mapeo de pruebas en settings.json que mapee archivos fuente a archivos de prueba", "order": 2 },
+        { "id": "ccaf-cc-047_c", "text": "Write a PostToolUse hook that automatically runs tests after every file edit", "textEs": "Escribir un hook PostToolUse que automáticamente ejecute pruebas después de cada edición de archivo", "order": 3 },
+        { "id": "ccaf-cc-047_d", "text": "Use the built-in /test command with a --related flag", "textEs": "Usar el comando integrado /test con una bandera --related", "order": 4 }
+      ],
+      "tags": ["custom-commands", "testing", "skill-frontmatter", "automation"]
+    },
+    {
+      "id": "ccaf-cc-048",
+      "text": "What environment variables does a hook script receive when executed?",
+      "textEs": "¿Qué variables de entorno recibe un script de hook cuando se ejecuta?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-048_b",
+      "explanation": "Hook scripts receive tool call details via stdin as a JSON object. The JSON includes the tool name, tool input parameters, and for PostToolUse hooks, the tool result. The hook script can read this JSON from stdin, parse it, and make decisions based on the content. The working directory is set to the project root. This allows hooks to inspect exactly what Claude is doing and respond accordingly.",
+      "explanationEs": "Los scripts de hook reciben los detalles de la llamada a la herramienta a través de stdin como un objeto JSON. El JSON incluye el nombre de la herramienta, los parámetros de entrada y, para hooks PostToolUse, el resultado de la herramienta. El script del hook puede leer este JSON desde stdin, analizarlo y tomar decisiones basándose en el contenido. El directorio de trabajo se establece en la raíz del proyecto. Esto permite a los hooks inspeccionar exactamente lo que Claude está haciendo y responder en consecuencia.",
+      "options": [
+        { "id": "ccaf-cc-048_a", "text": "The hook receives tool details as command-line arguments passed to the script", "textEs": "El hook recibe detalles de la herramienta como argumentos de línea de comandos pasados al script", "order": 1 },
+        { "id": "ccaf-cc-048_b", "text": "Tool call details are passed via stdin as JSON, including tool name, input parameters, and (for PostToolUse) results", "textEs": "Los detalles de la llamada a la herramienta se pasan por stdin como JSON, incluyendo nombre de herramienta, parámetros de entrada y (para PostToolUse) resultados", "order": 2 },
+        { "id": "ccaf-cc-048_c", "text": "The hook reads details from a temporary file at /tmp/claude-hook-context.json", "textEs": "El hook lee detalles de un archivo temporal en /tmp/claude-hook-context.json", "order": 3 },
+        { "id": "ccaf-cc-048_d", "text": "Hook scripts do not receive any context; they must query the Claude Code API for details", "textEs": "Los scripts de hook no reciben ningún contexto; deben consultar la API de Claude Code para obtener detalles", "order": 4 }
+      ],
+      "tags": ["hooks", "stdin", "json", "tool-details"]
+    },
+    {
+      "id": "ccaf-cc-049",
+      "text": "What is the --continue flag, and how does it differ from --resume?",
+      "textEs": "¿Qué es la bandera --continue, y cómo difiere de --resume?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-049_a",
+      "explanation": "--continue (or -c) continues the most recent conversation in the current project, automatically loading the context. --resume requires specifying a session ID or picks the most recent session globally. The key difference is that --continue is project-scoped and picks up the last session in the current directory, while --resume can target any specific past session by ID across projects.",
+      "explanationEs": "--continue (o -c) continúa la conversación más reciente en el proyecto actual, cargando automáticamente el contexto. --resume requiere especificar un ID de sesión o elige la sesión más reciente globalmente. La diferencia clave es que --continue tiene alcance de proyecto y retoma la última sesión en el directorio actual, mientras que --resume puede apuntar a cualquier sesión pasada específica por ID a través de proyectos.",
+      "options": [
+        { "id": "ccaf-cc-049_a", "text": "--continue resumes the most recent session in the current project; --resume can target any session by ID across projects", "textEs": "--continue reanuda la sesión más reciente en el proyecto actual; --resume puede apuntar a cualquier sesión por ID a través de proyectos", "order": 1 },
+        { "id": "ccaf-cc-049_b", "text": "They are identical aliases for the same functionality", "textEs": "Son alias idénticos para la misma funcionalidad", "order": 2 },
+        { "id": "ccaf-cc-049_c", "text": "--continue adds to the conversation; --resume replaces the last response", "textEs": "--continue agrega a la conversación; --resume reemplaza la última respuesta", "order": 3 },
+        { "id": "ccaf-cc-049_d", "text": "--continue works offline; --resume requires an internet connection", "textEs": "--continue funciona sin conexión; --resume requiere conexión a internet", "order": 4 }
+      ],
+      "tags": ["cli-flags", "continue", "resume", "session-management"]
+    },
+    {
+      "id": "ccaf-cc-050",
+      "text": "How can you configure Claude Code to deny the use of the Bash tool for shell commands entirely?",
+      "textEs": "¿Cómo puedes configurar Claude Code para denegar el uso de la herramienta Bash para comandos de shell por completo?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-050_d",
+      "explanation": "To completely block the Bash tool, add it to the 'deniedTools' array in settings.json at the appropriate level (project or user). You can also use 'Bash(*)' patterns to block specific command patterns while allowing others. For project-level enforcement shared with the team, use .claude/settings.json. For personal restriction, use ~/.claude/settings.json. Enterprise settings can enforce this across all users.",
+      "explanationEs": "Para bloquear completamente la herramienta Bash, agrégala al array 'deniedTools' en settings.json al nivel apropiado (proyecto o usuario). También puedes usar patrones 'Bash(*)' para bloquear patrones de comando específicos mientras permites otros. Para cumplimiento a nivel de proyecto compartido con el equipo, usa .claude/settings.json. Para restricción personal, usa ~/.claude/settings.json. Las configuraciones empresariales pueden aplicar esto a todos los usuarios.",
+      "options": [
+        { "id": "ccaf-cc-050_a", "text": "Delete the Bash tool binary from the system", "textEs": "Eliminar el binario de la herramienta Bash del sistema", "order": 1 },
+        { "id": "ccaf-cc-050_b", "text": "Add 'no-shell: true' to CLAUDE.md", "textEs": "Agregar 'no-shell: true' al CLAUDE.md", "order": 2 },
+        { "id": "ccaf-cc-050_c", "text": "Set the CLAUDE_NO_BASH environment variable to 'true'", "textEs": "Establecer la variable de entorno CLAUDE_NO_BASH en 'true'", "order": 3 },
+        { "id": "ccaf-cc-050_d", "text": "Add 'Bash' to the 'deniedTools' array in settings.json; supports patterns like 'Bash(*)' for specific commands", "textEs": "Agregar 'Bash' al array 'deniedTools' en settings.json; soporta patrones como 'Bash(*)' para comandos específicos", "order": 4 }
+      ],
+      "tags": ["deniedTools", "bash", "security", "settings-json"]
+    },
+    {
+      "id": "ccaf-cc-051",
+      "text": "What is the recommended approach for using Claude Code with monorepos that contain multiple projects?",
+      "textEs": "¿Cuál es el enfoque recomendado para usar Claude Code con monorepos que contienen múltiples proyectos?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-051_c",
+      "explanation": "For monorepos, use directory-level CLAUDE.md files in each sub-project to provide project-specific context, combined with a root-level CLAUDE.md for shared conventions. Use .claude/rules/ with YAML glob patterns to apply rules only to specific sub-project paths. Custom commands can be scoped per sub-project. For isolation, use worktrees or run separate Claude Code sessions from each sub-project directory.",
+      "explanationEs": "Para monorepos, usa archivos CLAUDE.md a nivel de directorio en cada sub-proyecto para proporcionar contexto específico del proyecto, combinado con un CLAUDE.md a nivel raíz para convenciones compartidas. Usa .claude/rules/ con patrones glob YAML para aplicar reglas solo a rutas específicas de sub-proyectos. Los comandos personalizados pueden delimitarse por sub-proyecto. Para aislamiento, usa worktrees o ejecuta sesiones separadas de Claude Code desde el directorio de cada sub-proyecto.",
+      "options": [
+        { "id": "ccaf-cc-051_a", "text": "Create a separate .claude/ configuration for each sub-project and switch manually", "textEs": "Crear una configuración .claude/ separada para cada sub-proyecto y alternar manualmente", "order": 1 },
+        { "id": "ccaf-cc-051_b", "text": "Use a single CLAUDE.md with all project instructions concatenated", "textEs": "Usar un solo CLAUDE.md con todas las instrucciones de proyectos concatenadas", "order": 2 },
+        { "id": "ccaf-cc-051_c", "text": "Use directory-level CLAUDE.md per sub-project, root CLAUDE.md for shared rules, and .claude/rules/ with path-specific globs", "textEs": "Usar CLAUDE.md a nivel de directorio por sub-proyecto, CLAUDE.md raíz para reglas compartidas y .claude/rules/ con globs específicos de ruta", "order": 3 },
+        { "id": "ccaf-cc-051_d", "text": "Split the monorepo into separate repositories for Claude Code compatibility", "textEs": "Dividir el monorepo en repositorios separados para compatibilidad con Claude Code", "order": 4 }
+      ],
+      "tags": ["monorepo", "directory-level", "claude-md", "rules"]
+    },
+    {
+      "id": "ccaf-cc-052",
+      "text": "How does the PreToolUse hook's 'approve' decision work, and when should it be used?",
+      "textEs": "¿Cómo funciona la decisión 'approve' del hook PreToolUse, y cuándo debe usarse?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-052_b",
+      "explanation": "When a PreToolUse hook outputs JSON with 'decision' set to 'approve', the tool call is automatically approved without prompting the user for confirmation. This is useful for trusted operations that would normally require confirmation -- for example, auto-approving file writes within a specific directory, or approving shell commands that match known-safe patterns. It streamlines workflows while maintaining security through the hook's inspection logic.",
+      "explanationEs": "Cuando un hook PreToolUse emite JSON con 'decision' establecido en 'approve', la llamada a la herramienta se aprueba automáticamente sin solicitar confirmación al usuario. Esto es útil para operaciones de confianza que normalmente requerirían confirmación, por ejemplo, auto-aprobar escrituras de archivos dentro de un directorio específico o aprobar comandos de shell que coinciden con patrones conocidos como seguros. Agiliza los flujos de trabajo mientras mantiene la seguridad a través de la lógica de inspección del hook.",
+      "options": [
+        { "id": "ccaf-cc-052_a", "text": "It asks the user for explicit approval before each tool call via a dialog", "textEs": "Solicita aprobación explícita del usuario antes de cada llamada a herramienta mediante un diálogo", "order": 1 },
+        { "id": "ccaf-cc-052_b", "text": "Auto-approves the tool call without user confirmation; useful for trusted operations matching known-safe patterns", "textEs": "Auto-aprueba la llamada a la herramienta sin confirmación del usuario; útil para operaciones de confianza que coinciden con patrones conocidos como seguros", "order": 2 },
+        { "id": "ccaf-cc-052_c", "text": "Approves the tool but runs it in a sandboxed environment", "textEs": "Aprueba la herramienta pero la ejecuta en un entorno sandbox", "order": 3 },
+        { "id": "ccaf-cc-052_d", "text": "Logs the approval to an audit trail but still prompts the user", "textEs": "Registra la aprobación en un registro de auditoría pero aún solicita confirmación al usuario", "order": 4 }
+      ],
+      "tags": ["hooks", "PreToolUse", "approve-decision", "auto-approve"]
+    },
+    {
+      "id": "ccaf-cc-053",
+      "text": "How can you pipe input to Claude Code from another command?",
+      "textEs": "¿Cómo puedes canalizar entrada a Claude Code desde otro comando?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-053_a",
+      "explanation": "Claude Code accepts piped input via stdin when used with the -p flag. For example, 'cat error.log | claude -p \"Analyze this log and find the root cause\"' sends the log content as context along with the prompt. The piped content is prepended to the prompt. This enables integration with other CLI tools, allowing you to chain commands and feed their output directly to Claude for analysis.",
+      "explanationEs": "Claude Code acepta entrada canalizada por stdin cuando se usa con la bandera -p. Por ejemplo, 'cat error.log | claude -p \"Analiza este log y encuentra la causa raíz\"' envía el contenido del log como contexto junto con el prompt. El contenido canalizado se antepone al prompt. Esto permite la integración con otras herramientas CLI, permitiéndote encadenar comandos y alimentar su salida directamente a Claude para análisis.",
+      "options": [
+        { "id": "ccaf-cc-053_a", "text": "Use -p flag with piped stdin: 'cat file | claude -p \"analyze this\"'; piped content is prepended to the prompt", "textEs": "Usar la bandera -p con stdin canalizado: 'cat archivo | claude -p \"analiza esto\"'; el contenido canalizado se antepone al prompt", "order": 1 },
+        { "id": "ccaf-cc-053_b", "text": "Write the input to a file and use --input-file flag to read it", "textEs": "Escribir la entrada en un archivo y usar la bandera --input-file para leerla", "order": 2 },
+        { "id": "ccaf-cc-053_c", "text": "Claude Code does not support piped input; you must use the interactive prompt", "textEs": "Claude Code no soporta entrada canalizada; debes usar el prompt interactivo", "order": 3 },
+        { "id": "ccaf-cc-053_d", "text": "Use the --stdin flag explicitly to enable pipe mode", "textEs": "Usar la bandera --stdin explícitamente para habilitar el modo de canalización", "order": 4 }
+      ],
+      "tags": ["cli-flags", "stdin", "pipe", "integration"]
+    },
+    {
+      "id": "ccaf-cc-054",
+      "text": "What is the --max-turns flag used for in Claude Code?",
+      "textEs": "¿Para qué se usa la bandera --max-turns en Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-054_c",
+      "explanation": "The --max-turns flag limits the number of agentic turns (tool call + response cycles) Claude can make in a single invocation. This is a safety mechanism for automated/CI pipelines to prevent runaway sessions that could consume excessive resources. For example, '--max-turns 10' limits Claude to 10 tool call cycles before stopping. Combined with -p and --output-format json, it provides predictable, bounded execution.",
+      "explanationEs": "La bandera --max-turns limita el número de turnos agentes (ciclos de llamada a herramienta + respuesta) que Claude puede hacer en una sola invocación. Es un mecanismo de seguridad para pipelines automatizados/CI para prevenir sesiones descontroladas que podrían consumir recursos excesivos. Por ejemplo, '--max-turns 10' limita a Claude a 10 ciclos de llamadas a herramientas antes de detenerse. Combinado con -p y --output-format json, proporciona ejecución predecible y acotada.",
+      "options": [
+        { "id": "ccaf-cc-054_a", "text": "It limits the number of files Claude can modify in a session", "textEs": "Limita el número de archivos que Claude puede modificar en una sesión", "order": 1 },
+        { "id": "ccaf-cc-054_b", "text": "It sets the maximum number of user messages in a conversation", "textEs": "Establece el número máximo de mensajes del usuario en una conversación", "order": 2 },
+        { "id": "ccaf-cc-054_c", "text": "Limits agentic turns (tool call cycles) per invocation; a safety mechanism for automated pipelines", "textEs": "Limita los turnos agentes (ciclos de llamadas a herramientas) por invocación; un mecanismo de seguridad para pipelines automatizados", "order": 3 },
+        { "id": "ccaf-cc-054_d", "text": "It controls the maximum number of parallel tool calls per turn", "textEs": "Controla el número máximo de llamadas a herramientas paralelas por turno", "order": 4 }
+      ],
+      "tags": ["cli-flags", "max-turns", "safety", "automation"]
+    },
+    {
+      "id": "ccaf-cc-055",
+      "text": "How does the .claude/settings.local.json file differ from .claude/settings.json?",
+      "textEs": "¿Cómo difiere el archivo .claude/settings.local.json de .claude/settings.json?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-055_a",
+      "explanation": ".claude/settings.local.json is intended for personal, machine-specific settings that should NOT be committed to version control (it should be in .gitignore). In contrast, .claude/settings.json is committed and shared with the team. The local file lets developers have personal hooks, tool preferences, or model settings that differ from the team's shared configuration without creating merge conflicts.",
+      "explanationEs": ".claude/settings.local.json está destinado para configuraciones personales y específicas de la máquina que NO deben confirmarse en control de versiones (debe estar en .gitignore). En contraste, .claude/settings.json se confirma y se comparte con el equipo. El archivo local permite a los desarrolladores tener hooks personales, preferencias de herramientas o configuraciones de modelo que difieren de la configuración compartida del equipo sin crear conflictos de merge.",
+      "options": [
+        { "id": "ccaf-cc-055_a", "text": "settings.local.json is for personal, untracked settings (gitignored); settings.json is committed and shared with the team", "textEs": "settings.local.json es para configuraciones personales no rastreadas (gitignored); settings.json se confirma y comparte con el equipo", "order": 1 },
+        { "id": "ccaf-cc-055_b", "text": "settings.local.json is for local development; settings.json is for production deployments", "textEs": "settings.local.json es para desarrollo local; settings.json es para despliegues en producción", "order": 2 },
+        { "id": "ccaf-cc-055_c", "text": "They are identical files; .local is an outdated naming convention", "textEs": "Son archivos idénticos; .local es una convención de nombres obsoleta", "order": 3 },
+        { "id": "ccaf-cc-055_d", "text": "settings.local.json stores encrypted secrets; settings.json stores plain configuration", "textEs": "settings.local.json almacena secretos encriptados; settings.json almacena configuración en texto plano", "order": 4 }
+      ],
+      "tags": ["settings-json", "local-settings", "gitignore", "team-sharing"]
+    },
+    {
+      "id": "ccaf-cc-056",
+      "text": "How can you configure MCP (Model Context Protocol) servers in Claude Code?",
+      "textEs": "¿Cómo puedes configurar servidores MCP (Model Context Protocol) en Claude Code?",
+      "domainCode": "claude-code-config",
+      "difficulty": "hard",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-056_d",
+      "explanation": "MCP servers are configured in settings.json under the 'mcpServers' key. Each server entry specifies the command to start the server, any arguments, and optional environment variables. MCP servers extend Claude Code with custom tools, resources, and prompts. They can be configured at project level (shared) or user level (personal). Claude Code connects to MCP servers at startup and makes their tools available alongside built-in tools.",
+      "explanationEs": "Los servidores MCP se configuran en settings.json bajo la clave 'mcpServers'. Cada entrada de servidor especifica el comando para iniciar el servidor, los argumentos y variables de entorno opcionales. Los servidores MCP extienden Claude Code con herramientas, recursos y prompts personalizados. Pueden configurarse a nivel de proyecto (compartidos) o nivel de usuario (personales). Claude Code se conecta a los servidores MCP al inicio y hace sus herramientas disponibles junto a las herramientas integradas.",
+      "options": [
+        { "id": "ccaf-cc-056_a", "text": "Install MCP servers as npm packages and import them in CLAUDE.md", "textEs": "Instalar servidores MCP como paquetes npm e importarlos en CLAUDE.md", "order": 1 },
+        { "id": "ccaf-cc-056_b", "text": "Place MCP server binaries in the .claude/mcp/ directory for auto-discovery", "textEs": "Colocar binarios de servidores MCP en el directorio .claude/mcp/ para auto-descubrimiento", "order": 2 },
+        { "id": "ccaf-cc-056_c", "text": "Register MCP servers with Anthropic's cloud registry and reference them by name", "textEs": "Registrar servidores MCP en el registro en la nube de Anthropic y referenciarlos por nombre", "order": 3 },
+        { "id": "ccaf-cc-056_d", "text": "Configure them in settings.json under 'mcpServers' with command, args, and env; they connect at startup", "textEs": "Configurarlos en settings.json bajo 'mcpServers' con command, args y env; se conectan al inicio", "order": 4 }
+      ],
+      "tags": ["mcp", "servers", "settings-json", "custom-tools"]
+    },
+    {
+      "id": "ccaf-cc-057",
+      "text": "What is the $ARGUMENTS variable in custom command templates, and how is it used?",
+      "textEs": "¿Qué es la variable $ARGUMENTS en las plantillas de comandos personalizados, y cómo se usa?",
+      "domainCode": "claude-code-config",
+      "difficulty": "medium",
+      "learningLevel": 5,
+      "contentType": "exam",
+      "trackId": "cca-f",
+      "correctOptionId": "ccaf-cc-057_c",
+      "explanation": "$ARGUMENTS is a placeholder in custom command Markdown files that gets replaced with whatever text the user provides after the command name. For example, if a user types '/deploy staging --dry-run', the $ARGUMENTS variable would contain 'staging --dry-run'. This makes custom commands flexible and parameterizable, allowing a single command definition to handle different inputs.",
+      "explanationEs": "$ARGUMENTS es un placeholder en archivos Markdown de comandos personalizados que se reemplaza con cualquier texto que el usuario proporcione después del nombre del comando. Por ejemplo, si un usuario escribe '/deploy staging --dry-run', la variable $ARGUMENTS contendría 'staging --dry-run'. Esto hace que los comandos personalizados sean flexibles y parametrizables, permitiendo que una sola definición de comando maneje diferentes entradas.",
+      "options": [
+        { "id": "ccaf-cc-057_a", "text": "A system variable containing the list of allowed tools for the current command", "textEs": "Una variable del sistema que contiene la lista de herramientas permitidas para el comando actual", "order": 1 },
+        { "id": "ccaf-cc-057_b", "text": "A predefined set of flags parsed from the command line (like --verbose, --quiet)", "textEs": "Un conjunto predefinido de banderas analizadas de la línea de comandos (como --verbose, --quiet)", "order": 2 },
+        { "id": "ccaf-cc-057_c", "text": "A placeholder replaced with the text the user provides after the command name, making commands parameterizable", "textEs": "Un placeholder reemplazado con el texto que el usuario proporciona después del nombre del comando, haciendo los comandos parametrizables", "order": 3 },
+        { "id": "ccaf-cc-057_d", "text": "An environment variable set by the parent shell containing the full command history", "textEs": "Una variable de entorno establecida por el shell padre que contiene el historial completo de comandos", "order": 4 }
+      ],
+      "tags": ["custom-commands", "arguments", "templates", "placeholder"]
+    }
+  ]
+}

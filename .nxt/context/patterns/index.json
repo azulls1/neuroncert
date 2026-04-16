@@ -1,0 +1,61 @@
+{
+  "total": 7,
+  "patterns": [
+    {
+      "id": "PAT-001",
+      "pattern": "Standalone Component with Lazy Loading",
+      "description": "Todos los feature components se cargan lazy via loadComponent() en routes",
+      "example": "src/app/features/exam/webhook-exam/webhook-exam.component.ts",
+      "template": "src/app/features/{feature}/{component}.component.ts",
+      "usage_count": 8
+    },
+    {
+      "id": "PAT-002",
+      "pattern": "Signal-based State Service",
+      "description": "Servicios que usan signal() para estado mutable y computed() para derivados",
+      "example": "src/app/core/services/exam-state.service.ts",
+      "template": "src/app/core/services/{name}.service.ts",
+      "usage_count": 3
+    },
+    {
+      "id": "PAT-003",
+      "pattern": "Barrel Export Index",
+      "description": "Archivo index.ts que re-exporta todos los modulos de un directorio",
+      "example": "src/app/core/models/index.ts",
+      "template": "{directory}/index.ts",
+      "usage_count": 3
+    },
+    {
+      "id": "PAT-004",
+      "pattern": "Webhook-driven Flow",
+      "description": "Flujo de datos via webhooks: start -> validate+next -> finish",
+      "example": "src/app/core/services/webhook.service.ts",
+      "template": "N/A (patron de flujo, no de archivo)",
+      "usage_count": 1
+    },
+    {
+      "id": "PAT-005",
+      "pattern": "Route Guard por Estado",
+      "description": "Guards que verifican estado del examen para proteger rutas",
+      "example": "src/app/core/guards/exam.guard.ts",
+      "template": "src/app/core/guards/{name}.guard.ts",
+      "usage_count": 1
+    },
+    {
+      "id": "PAT-006",
+      "pattern": "Environment Config Object",
+      "description": "Configuracion centralizada en environment.ts con tipado fuerte",
+      "example": "src/environments/environment.ts",
+      "template": "src/environments/environment{.prod}.ts",
+      "usage_count": 2
+    },
+    {
+      "id": "PAT-007",
+      "pattern": "Shared Presentational Component",
+      "description": "Componentes dumb/presentational reutilizables en shared/",
+      "example": "src/app/shared/question-card/question-card.component.ts",
+      "template": "src/app/shared/{component}/{component}.component.ts",
+      "usage_count": 3
+    }
+  ]
+}

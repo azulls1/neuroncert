@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "domain": "next-gen-assistant",
+    "domainName": "Next-Gen AI Assistant: Claude",
+    "trackId": "next-gen-assistant",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-13",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": "NGA-001",
+      "text": "What is the 'Projects' feature in Claude.ai, and how does it enhance productivity?",
+      "textEs": "¿Qué es la función 'Projects' en Claude.ai y cómo mejora la productividad?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-001_b",
+      "explanation": "Projects in Claude.ai allow you to organize conversations around a specific topic or goal, upload relevant files as persistent context, and set custom instructions that apply to all conversations within that project. This means Claude always has the right background information without you needing to re-upload files or repeat instructions in each conversation.",
+      "explanationEs": "Projects en Claude.ai permite organizar conversaciones alrededor de un tema u objetivo específico, subir archivos relevantes como contexto persistente y establecer instrucciones personalizadas que se aplican a todas las conversaciones dentro de ese proyecto. Esto significa que Claude siempre tiene la información de fondo correcta sin necesidad de volver a subir archivos o repetir instrucciones en cada conversación.",
+      "options": [
+        { "id": "NGA-001_a", "text": "A project management tool that creates Gantt charts and tracks deadlines", "textEs": "Una herramienta de gestión de proyectos que crea diagramas de Gantt y rastrea plazos", "order": 1 },
+        { "id": "NGA-001_b", "text": "A way to organize conversations with persistent uploaded files and custom instructions that apply across all chats in the project", "textEs": "Una forma de organizar conversaciones con archivos subidos persistentes e instrucciones personalizadas que se aplican a todos los chats del proyecto", "order": 2 },
+        { "id": "NGA-001_c", "text": "A feature that allows multiple users to edit the same document in real-time", "textEs": "Una función que permite a múltiples usuarios editar el mismo documento en tiempo real", "order": 3 },
+        { "id": "NGA-001_d", "text": "A billing feature that groups API usage costs by project for accounting purposes", "textEs": "Una función de facturación que agrupa los costos de uso de API por proyecto para fines contables", "order": 4 }
+      ],
+      "tags": ["projects", "organization", "context", "claude-ai"]
+    },
+    {
+      "id": "NGA-002",
+      "text": "What are Artifacts in Claude.ai, and what types of content can they contain?",
+      "textEs": "¿Qué son los Artifacts en Claude.ai y qué tipos de contenido pueden contener?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-002_c",
+      "explanation": "Artifacts are standalone, interactive content panels that appear alongside the conversation in Claude.ai. They can contain code snippets, HTML/CSS/JS previews, SVG graphics, Mermaid diagrams, Markdown documents, and React components. Artifacts are useful because they can be copied, downloaded, iterated upon, and rendered live — making them ideal for creating deliverables during a conversation.",
+      "explanationEs": "Los Artifacts son paneles de contenido independientes e interactivos que aparecen junto a la conversación en Claude.ai. Pueden contener fragmentos de código, previsualizaciones HTML/CSS/JS, gráficos SVG, diagramas Mermaid, documentos Markdown y componentes React. Los Artifacts son útiles porque se pueden copiar, descargar, iterar y renderizar en vivo — haciéndolos ideales para crear entregables durante una conversación.",
+      "options": [
+        { "id": "NGA-002_a", "text": "Permanent files stored in cloud storage that persist after the conversation ends", "textEs": "Archivos permanentes almacenados en la nube que persisten después de que termina la conversación", "order": 1 },
+        { "id": "NGA-002_b", "text": "Chat messages that have been bookmarked for future reference", "textEs": "Mensajes de chat que han sido marcados para referencia futura", "order": 2 },
+        { "id": "NGA-002_c", "text": "Interactive content panels that can display code, HTML previews, diagrams, documents, and React components alongside the chat", "textEs": "Paneles de contenido interactivo que pueden mostrar código, previsualizaciones HTML, diagramas, documentos y componentes React junto al chat", "order": 3 },
+        { "id": "NGA-002_d", "text": "Debug logs generated automatically when Claude encounters an error", "textEs": "Registros de depuración generados automáticamente cuando Claude encuentra un error", "order": 4 }
+      ],
+      "tags": ["artifacts", "interactive-content", "code-preview", "deliverables"]
+    },
+    {
+      "id": "NGA-003",
+      "text": "What types of multimodal input can Claude process when you upload content to a conversation?",
+      "textEs": "¿Qué tipos de entrada multimodal puede procesar Claude cuando subes contenido a una conversación?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-003_a",
+      "explanation": "Claude supports multimodal input including images (JPEG, PNG, GIF, WebP), PDFs, and text files. When you upload an image, Claude can describe it, extract text from it, analyze charts and diagrams, and answer questions about its content. PDF support allows Claude to read and analyze entire documents. However, Claude cannot process audio or video files directly.",
+      "explanationEs": "Claude admite entrada multimodal incluyendo imágenes (JPEG, PNG, GIF, WebP), PDFs y archivos de texto. Cuando subes una imagen, Claude puede describirla, extraer texto de ella, analizar gráficos y diagramas, y responder preguntas sobre su contenido. El soporte de PDF permite a Claude leer y analizar documentos completos. Sin embargo, Claude no puede procesar archivos de audio o video directamente.",
+      "options": [
+        { "id": "NGA-003_a", "text": "Images (JPEG, PNG, GIF, WebP), PDFs, and text files — but not audio or video", "textEs": "Imágenes (JPEG, PNG, GIF, WebP), PDFs y archivos de texto — pero no audio ni video", "order": 1 },
+        { "id": "NGA-003_b", "text": "Only plain text files; images and PDFs require a separate tool", "textEs": "Solo archivos de texto plano; las imágenes y PDFs requieren una herramienta separada", "order": 2 },
+        { "id": "NGA-003_c", "text": "Audio, video, images, and 3D model files in all standard formats", "textEs": "Audio, video, imágenes y archivos de modelos 3D en todos los formatos estándar", "order": 3 },
+        { "id": "NGA-003_d", "text": "Only screenshots captured through the built-in screen capture feature", "textEs": "Solo capturas de pantalla tomadas a través de la función de captura de pantalla integrada", "order": 4 }
+      ],
+      "tags": ["multimodal", "images", "pdf", "file-upload", "vision"]
+    },
+    {
+      "id": "NGA-004",
+      "text": "How can you effectively manage long conversations with Claude to maintain quality responses?",
+      "textEs": "¿Cómo puedes gestionar eficazmente conversaciones largas con Claude para mantener respuestas de calidad?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-004_d",
+      "explanation": "As conversations grow longer, they consume more of the context window and Claude may lose focus on earlier details. Best practices include starting new conversations when switching to a different topic, summarizing key decisions before continuing a long thread, and using the Projects feature to maintain persistent context without bloating individual conversations. This keeps Claude focused and responses high-quality.",
+      "explanationEs": "A medida que las conversaciones se alargan, consumen más de la ventana de contexto y Claude puede perder el enfoque en detalles anteriores. Las mejores prácticas incluyen iniciar nuevas conversaciones al cambiar de tema, resumir decisiones clave antes de continuar un hilo largo y usar la función Projects para mantener contexto persistente sin inflar conversaciones individuales. Esto mantiene a Claude enfocado y las respuestas de alta calidad.",
+      "options": [
+        { "id": "NGA-004_a", "text": "Always keep everything in a single conversation so Claude has maximum context about every topic", "textEs": "Siempre mantener todo en una sola conversación para que Claude tenga el máximo contexto sobre cada tema", "order": 1 },
+        { "id": "NGA-004_b", "text": "Delete old messages manually to free up context window space", "textEs": "Eliminar mensajes antiguos manualmente para liberar espacio de la ventana de contexto", "order": 2 },
+        { "id": "NGA-004_c", "text": "Limit each conversation to exactly ten messages for optimal performance", "textEs": "Limitar cada conversación a exactamente diez mensajes para un rendimiento óptimo", "order": 3 },
+        { "id": "NGA-004_d", "text": "Start new conversations for different topics, summarize key points in long threads, and use Projects for persistent context", "textEs": "Iniciar nuevas conversaciones para diferentes temas, resumir puntos clave en hilos largos y usar Projects para contexto persistente", "order": 4 }
+      ],
+      "tags": ["conversation-management", "context-window", "best-practices", "projects"]
+    },
+    {
+      "id": "NGA-005",
+      "text": "What is the benefit of setting custom instructions (system prompt) within a Claude.ai Project?",
+      "textEs": "¿Cuál es el beneficio de establecer instrucciones personalizadas (prompt de sistema) dentro de un Project de Claude.ai?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-005_a",
+      "explanation": "Custom instructions in a Project act as a persistent system prompt that applies to every new conversation within that project. You can define Claude's persona, specify output format preferences, set domain-specific terminology, or establish constraints. This eliminates the need to repeat setup instructions in each conversation and ensures consistent behavior across all project interactions.",
+      "explanationEs": "Las instrucciones personalizadas en un Project actúan como un prompt de sistema persistente que se aplica a cada nueva conversación dentro de ese proyecto. Puedes definir la persona de Claude, especificar preferencias de formato de salida, establecer terminología específica del dominio o establecer restricciones. Esto elimina la necesidad de repetir instrucciones de configuración en cada conversación y asegura un comportamiento consistente en todas las interacciones del proyecto.",
+      "options": [
+        { "id": "NGA-005_a", "text": "They act as a persistent system prompt that ensures consistent behavior and eliminates repeating setup instructions in every conversation", "textEs": "Actúan como un prompt de sistema persistente que asegura un comportamiento consistente y elimina la repetición de instrucciones de configuración en cada conversación", "order": 1 },
+        { "id": "NGA-005_b", "text": "They automatically translate all Claude responses into the language specified in the instructions", "textEs": "Traducen automáticamente todas las respuestas de Claude al idioma especificado en las instrucciones", "order": 2 },
+        { "id": "NGA-005_c", "text": "They restrict Claude from answering questions outside the specified topic, returning an error for off-topic queries", "textEs": "Restringen a Claude de responder preguntas fuera del tema especificado, devolviendo un error para consultas fuera de tema", "order": 3 },
+        { "id": "NGA-005_d", "text": "They increase the context window size for all conversations in the project", "textEs": "Aumentan el tamaño de la ventana de contexto para todas las conversaciones en el proyecto", "order": 4 }
+      ],
+      "tags": ["custom-instructions", "system-prompt", "projects", "configuration"]
+    },
+    {
+      "id": "NGA-006",
+      "text": "How can you use Claude.ai to create a practical workflow for weekly report writing?",
+      "textEs": "¿Cómo puedes usar Claude.ai para crear un flujo de trabajo práctico para escribir reportes semanales?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-006_b",
+      "explanation": "The optimal workflow combines several Claude.ai features: create a Project with your report template and style guidelines as uploaded context, set custom instructions defining the report format, then each week start a new conversation within the project, paste your raw notes, and ask Claude to draft the report. Artifacts let you preview and iterate on the document. This approach maintains consistency across weeks while keeping each report's conversation clean.",
+      "explanationEs": "El flujo de trabajo óptimo combina varias funciones de Claude.ai: crear un Project con tu plantilla de reporte y guías de estilo como contexto subido, establecer instrucciones personalizadas definiendo el formato del reporte, luego cada semana iniciar una nueva conversación dentro del proyecto, pegar tus notas sin procesar y pedir a Claude que redacte el reporte. Los Artifacts permiten previsualizar e iterar sobre el documento. Este enfoque mantiene la consistencia entre semanas mientras mantiene limpia la conversación de cada reporte.",
+      "options": [
+        { "id": "NGA-006_a", "text": "Paste all weekly notes into a single ever-growing conversation and ask Claude to find the latest ones", "textEs": "Pegar todas las notas semanales en una sola conversación en crecimiento y pedir a Claude que encuentre las más recientes", "order": 1 },
+        { "id": "NGA-006_b", "text": "Create a Project with your template and guidelines, set custom instructions for the format, then start a fresh conversation each week with your raw notes", "textEs": "Crear un Project con tu plantilla y guías, establecer instrucciones personalizadas para el formato, luego iniciar una conversación nueva cada semana con tus notas sin procesar", "order": 2 },
+        { "id": "NGA-006_c", "text": "Write the entire report manually and then ask Claude only to check for spelling errors", "textEs": "Escribir el reporte completo manualmente y luego pedir a Claude solo que verifique errores de ortografía", "order": 3 },
+        { "id": "NGA-006_d", "text": "Use a different AI tool for each section of the report, then combine them manually", "textEs": "Usar una herramienta de IA diferente para cada sección del reporte, luego combinarlas manualmente", "order": 4 }
+      ],
+      "tags": ["workflow", "reports", "projects", "artifacts", "practical"]
+    },
+    {
+      "id": "NGA-007",
+      "text": "What can you do with an Artifact after Claude generates it?",
+      "textEs": "¿Qué puedes hacer con un Artifact después de que Claude lo genera?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "easy",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-007_d",
+      "explanation": "After Claude generates an Artifact, you can copy its contents, download it as a file, ask Claude to modify it in follow-up messages, and for HTML/React artifacts you can see a live preview rendered in the browser. You can also publish artifacts to share them with others via a link. This makes Artifacts a powerful tool for iterative content creation and collaboration.",
+      "explanationEs": "Después de que Claude genera un Artifact, puedes copiar su contenido, descargarlo como archivo, pedir a Claude que lo modifique en mensajes de seguimiento y para artifacts HTML/React puedes ver una previsualización en vivo renderizada en el navegador. También puedes publicar artifacts para compartirlos con otros mediante un enlace. Esto hace que los Artifacts sean una herramienta poderosa para la creación iterativa de contenido y la colaboración.",
+      "options": [
+        { "id": "NGA-007_a", "text": "Only view it during the current session; it is permanently deleted when you close the conversation", "textEs": "Solo verlo durante la sesión actual; se elimina permanentemente cuando cierras la conversación", "order": 1 },
+        { "id": "NGA-007_b", "text": "Export it only as a PDF; no other formats are supported", "textEs": "Exportarlo solo como PDF; no se admiten otros formatos", "order": 2 },
+        { "id": "NGA-007_c", "text": "Nothing — artifacts are read-only and cannot be modified after initial generation", "textEs": "Nada — los artifacts son de solo lectura y no pueden modificarse después de la generación inicial", "order": 3 },
+        { "id": "NGA-007_d", "text": "Copy, download, request modifications, see live previews for HTML/React, and publish to share via link", "textEs": "Copiar, descargar, solicitar modificaciones, ver previsualizaciones en vivo para HTML/React y publicar para compartir mediante enlace", "order": 4 }
+      ],
+      "tags": ["artifacts", "download", "preview", "iteration", "sharing"]
+    },
+    {
+      "id": "NGA-008",
+      "text": "When uploading an image to Claude, which type of analysis can Claude perform?",
+      "textEs": "Al subir una imagen a Claude, ¿qué tipo de análisis puede realizar Claude?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "medium",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-008_c",
+      "explanation": "Claude's vision capabilities allow it to describe image contents, read and extract text (OCR), interpret charts and graphs, analyze diagrams and screenshots, compare multiple images, and answer specific questions about visual content. It works well with photos, screenshots, documents, diagrams, and charts. However, it may struggle with very small text, complex handwriting, or highly specialized medical imagery.",
+      "explanationEs": "Las capacidades de visión de Claude le permiten describir el contenido de imágenes, leer y extraer texto (OCR), interpretar gráficos y tablas, analizar diagramas y capturas de pantalla, comparar múltiples imágenes y responder preguntas específicas sobre contenido visual. Funciona bien con fotos, capturas de pantalla, documentos, diagramas y gráficos. Sin embargo, puede tener dificultades con texto muy pequeño, escritura a mano compleja o imágenes médicas altamente especializadas.",
+      "options": [
+        { "id": "NGA-008_a", "text": "Only identify whether the image contains a face for security verification", "textEs": "Solo identificar si la imagen contiene un rostro para verificación de seguridad", "order": 1 },
+        { "id": "NGA-008_b", "text": "Only read printed text through OCR; it cannot understand visual content", "textEs": "Solo leer texto impreso mediante OCR; no puede entender contenido visual", "order": 2 },
+        { "id": "NGA-008_c", "text": "Describe contents, extract text (OCR), interpret charts, analyze diagrams, compare images, and answer visual questions", "textEs": "Describir contenidos, extraer texto (OCR), interpretar gráficos, analizar diagramas, comparar imágenes y responder preguntas visuales", "order": 3 },
+        { "id": "NGA-008_d", "text": "Edit the image directly by adding filters, cropping, and adjusting colors", "textEs": "Editar la imagen directamente agregando filtros, recortando y ajustando colores", "order": 4 }
+      ],
+      "tags": ["vision", "image-analysis", "OCR", "multimodal"]
+    },
+    {
+      "id": "NGA-009",
+      "text": "How does Claude handle requests that could lead to harmful, unethical, or dangerous outputs?",
+      "textEs": "¿Cómo maneja Claude las solicitudes que podrían llevar a resultados dañinos, no éticos o peligrosos?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-009_a",
+      "explanation": "Claude is trained with Constitutional AI principles to be helpful, harmless, and honest. When it detects a request that could lead to harmful output, it will decline or redirect the conversation, often explaining why it cannot help with that specific request. It can still discuss sensitive topics in educational or analytical contexts, but it draws lines around content that could cause direct harm, such as instructions for violence or generating malicious code.",
+      "explanationEs": "Claude está entrenado con principios de IA Constitucional para ser útil, inofensivo y honesto. Cuando detecta una solicitud que podría llevar a resultados dañinos, declinará o redirigirá la conversación, a menudo explicando por qué no puede ayudar con esa solicitud específica. Puede discutir temas sensibles en contextos educativos o analíticos, pero establece límites alrededor de contenido que podría causar daño directo, como instrucciones de violencia o generación de código malicioso.",
+      "options": [
+        { "id": "NGA-009_a", "text": "It declines or redirects harmful requests while explaining its reasoning; it can discuss sensitive topics educationally but avoids enabling direct harm", "textEs": "Declina o redirige solicitudes dañinas mientras explica su razonamiento; puede discutir temas sensibles educativamente pero evita permitir daño directo", "order": 1 },
+        { "id": "NGA-009_b", "text": "It complies with all requests without any restrictions, relying on the user's judgment", "textEs": "Cumple con todas las solicitudes sin ninguna restricción, confiando en el juicio del usuario", "order": 2 },
+        { "id": "NGA-009_c", "text": "It immediately ends the conversation and reports the user to a moderation team", "textEs": "Termina inmediatamente la conversación y reporta al usuario a un equipo de moderación", "order": 3 },
+        { "id": "NGA-009_d", "text": "It provides the harmful information but adds a legal disclaimer at the end", "textEs": "Proporciona la información dañina pero agrega un aviso legal al final", "order": 4 }
+      ],
+      "tags": ["safety", "constitutional-ai", "harm-prevention", "ethics"]
+    },
+    {
+      "id": "NGA-010",
+      "text": "What is an effective way to use Claude.ai for data analysis when you have a CSV or spreadsheet file?",
+      "textEs": "¿Cuál es una forma efectiva de usar Claude.ai para análisis de datos cuando tienes un archivo CSV u hoja de cálculo?",
+      "domainCode": "next-gen-assistant",
+      "difficulty": "hard",
+      "learningLevel": 1,
+      "contentType": "theory",
+      "trackId": "next-gen-assistant",
+      "correctOptionId": "NGA-010_b",
+      "explanation": "You can upload CSV or Excel files directly to Claude, then ask it to analyze patterns, generate summary statistics, create visualizations (as Artifacts), identify outliers, or answer specific questions about the data. Claude can write and execute analysis code, producing charts and tables as interactive Artifacts. For best results, describe what insights you're looking for and ask Claude to explain its methodology.",
+      "explanationEs": "Puedes subir archivos CSV o Excel directamente a Claude, luego pedir que analice patrones, genere estadísticas resumidas, cree visualizaciones (como Artifacts), identifique valores atípicos o responda preguntas específicas sobre los datos. Claude puede escribir y ejecutar código de análisis, produciendo gráficos y tablas como Artifacts interactivos. Para mejores resultados, describe qué insights buscas y pide a Claude que explique su metodología.",
+      "options": [
+        { "id": "NGA-010_a", "text": "Manually type all the data values into the chat message since Claude cannot read uploaded files", "textEs": "Escribir manualmente todos los valores de datos en el mensaje del chat ya que Claude no puede leer archivos subidos", "order": 1 },
+        { "id": "NGA-010_b", "text": "Upload the file directly, ask Claude to analyze patterns, generate statistics, and create chart Artifacts while explaining its methodology", "textEs": "Subir el archivo directamente, pedir a Claude que analice patrones, genere estadísticas y cree Artifacts de gráficos mientras explica su metodología", "order": 2 },
+        { "id": "NGA-010_c", "text": "Convert the file to a JPEG image and upload that instead, since Claude only processes images", "textEs": "Convertir el archivo a una imagen JPEG y subir eso en su lugar, ya que Claude solo procesa imágenes", "order": 3 },
+        { "id": "NGA-010_d", "text": "Claude cannot perform data analysis; you must use a specialized BI tool instead", "textEs": "Claude no puede realizar análisis de datos; debes usar una herramienta especializada de BI en su lugar", "order": 4 }
+      ],
+      "tags": ["data-analysis", "csv", "visualization", "artifacts", "practical"]
+    }
+  ]
+}

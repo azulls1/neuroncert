@@ -1,0 +1,129 @@
+<!-- Layout principal — Forest Design System (no sidebar) -->
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: var(--color-bg-page, #F7F8F7);">
+  <!-- Navbar -->
+  <header class="navbar" style="position: sticky; top: 0; z-index: 40;">
+    <div class="navbar-inner" style="max-width: 100%; margin: 0 auto; width: 100%;">
+      <!-- Logo iagentek -->
+      <a routerLink="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+        <img src="/assets/icons/logo-iagentek.webp" alt="iagentek" style="width: 36px; height: 36px; border-radius: 8px; object-fit: contain; background: #04202C; padding: 4px;">
+        <div>
+          <div class="font-display" style="font-size: 14px; font-weight: 700; color: #04202C; line-height: 1.2;">{{ title() }}</div>
+          <div style="font-size: 10px; color: #9EADA3; line-height: 1;">por <strong style="color: #5B7065;">iagentek</strong></div>
+        </div>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="app-nav">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+           class="btn btn-ghost nav-link">Inicio</a>
+        <a routerLink="/tracks" routerLinkActive="active"
+           class="btn btn-ghost nav-link">Tracks</a>
+        <a routerLink="/roadmap" routerLinkActive="active"
+           class="btn btn-ghost nav-link">Roadmap</a>
+        <a routerLink="/certifications" routerLinkActive="active"
+           class="btn btn-ghost nav-link">Certs</a>
+      </nav>
+
+      <!-- Status -->
+      <div class="badge badge-active" style="font-size: 12px;">Activo</div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="page" style="flex: 1; max-width: 100%;">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: linear-gradient(135deg, #04202C 0%, #1A3036 50%, #304040 100%); padding: 0; color: #C9D1C8;">
+    <!-- Stats bar -->
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding: 16px 24px;">
+      <div style="max-width: 100%; margin: 0 auto; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; font-size: 12px; padding: 0 32px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-weight: 700; color: white; font-family: 'Sora', sans-serif;">40+</span>
+          <span style="color: #9EADA3;">Certificaciones</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-weight: 700; color: white; font-family: 'Sora', sans-serif;">30+</span>
+          <span style="color: #9EADA3;">Cursos</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-weight: 700; color: white; font-family: 'Sora', sans-serif;">5</span>
+          <span style="color: #9EADA3;">Plataformas</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-weight: 700; color: white; font-family: 'Sora', sans-serif;">7</span>
+          <span style="color: #9EADA3;">Niveles</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-weight: 700; color: white; font-family: 'Sora', sans-serif;">195</span>
+          <span style="color: #9EADA3;">Preguntas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main footer -->
+    <div style="padding: 28px 24px;">
+      <div style="max-width: 100%; margin: 0 auto; display: grid; padding: 0 32px; grid-template-columns: 1fr; gap: 24px;">
+
+        <!-- Row: brand + links + platforms -->
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
+
+          <!-- Brand -->
+          <div style="min-width: 200px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <img src="/assets/icons/logo_ia_withe.webp" alt="iagentek" style="width: 36px; height: 36px; border-radius: 8px; object-fit: contain;">
+              <div>
+                <div style="font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: white;">iagentek</div>
+                <div style="font-size: 11px; color: #9EADA3;">Claude AI Learning Platform</div>
+              </div>
+            </div>
+            <p style="font-size: 12px; color: #7D8F84; line-height: 1.5; max-width: 280px; margin: 0;">
+              Plataforma de aprendizaje del ecosistema Claude AI. Desde fundamentos hasta certificacion profesional.
+            </p>
+          </div>
+
+          <!-- Quick links -->
+          <div style="min-width: 120px;">
+            <div style="font-size: 11px; font-weight: 600; color: #9EADA3; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Plataforma</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <a routerLink="/" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">Inicio</a>
+              <a routerLink="/tracks" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">Tracks</a>
+              <a routerLink="/roadmap" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">Roadmap</a>
+              <a routerLink="/certifications" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">Certificaciones</a>
+            </div>
+          </div>
+
+          <!-- Resources -->
+          <div style="min-width: 140px;">
+            <div style="font-size: 11px; font-weight: 600; color: #9EADA3; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Recursos Oficiales</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <a href="https://anthropic.skilljar.com/" target="_blank" rel="noopener" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">Anthropic Academy ↗</a>
+              <a href="https://www.coursera.org/partners/anthropic" target="_blank" rel="noopener" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">Coursera ↗</a>
+              <a href="https://www.deeplearning.ai/" target="_blank" rel="noopener" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">DeepLearning.AI ↗</a>
+              <a href="https://github.com/anthropics/courses" target="_blank" rel="noopener" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">GitHub Courses ↗</a>
+            </div>
+          </div>
+
+          <!-- Certifications -->
+          <div style="min-width: 140px;">
+            <div style="font-size: 11px; font-weight: 600; color: #9EADA3; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Certificaciones</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <a href="https://partnerportal.anthropic.com" target="_blank" rel="noopener" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">Partner Network ↗</a>
+              <a href="https://claudecertifiedarchitect.net/" target="_blank" rel="noopener" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">CCA-F Info ↗</a>
+              <a href="https://claudecertifications.com/" target="_blank" rel="noopener" style="font-size: 12px; color: #C9D1C8; text-decoration: none;">Practice Tests ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 14px 24px;">
+      <div style="max-width: 100%; margin: 0 auto; display: flex; justify-content: space-between; padding: 0 32px; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 11px; color: #7D8F84;">
+        <span>&copy; 2026 iagentek. Todos los derechos reservados.</span>
+        <span>Ecosistema Claude AI &middot; Actualizado Abril 2026</span>
+      </div>
+    </div>
+  </footer>
+</div>

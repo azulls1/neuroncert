@@ -1,0 +1,52 @@
+/* Root component — Forest DS overrides */
+:host {
+  display: block;
+}
+
+main {
+  flex: 1;
+}
+
+/* ── Responsive navbar nav ── */
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-link {
+  font-size: 13px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .app-nav {
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1;
+    justify-content: center;
+  }
+  .app-nav::-webkit-scrollbar { display: none; }
+  .nav-link {
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 479px) {
+  .nav-link {
+    font-size: 10px !important;
+    padding: 4px 6px !important;
+  }
+}
+
+/* ── Footer responsive ── */
+@media (max-width: 639px) {
+  footer .footer-links {
+    gap: 24px !important;
+  }
+}
