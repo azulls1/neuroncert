@@ -63,7 +63,7 @@ import { LoggingService } from '../../core/services/logging.service';
             experto certificado — todos los caminos estan aqui.
           </p>
           <div class="flex gap-3 justify-center flex-wrap mb-10 animate-fadeInUp">
-            <a routerLink="/roadmap" class="btn rounded-xl px-7 py-3 font-semibold text-sm no-underline shadow-lg hover-lift bg-white text-forest">
+            <a routerLink="/roadmap" class="btn rounded-xl px-7 py-3 font-semibold text-sm no-underline shadow-lg hover-lift bg-forest text-white">
               <svg
                 width="20"
                 height="20"
@@ -534,7 +534,7 @@ import { LoggingService } from '../../core/services/logging.service';
             </div>
 
             <div class="flex gap-3 flex-wrap mt-7">
-              <a routerLink="/roadmap" class="btn rounded-xl px-6 py-2.5 font-semibold text-sm no-underline hover-lift bg-white text-forest">
+              <a routerLink="/roadmap" class="btn rounded-xl px-6 py-2.5 font-semibold text-sm no-underline hover-lift bg-forest text-white">
                 Ver Roadmap Completo
               </a>
               <a routerLink="/ccaf" class="btn rounded-xl px-6 py-2.5 font-medium text-sm no-underline bg-white/15 text-white border border-white/40 hover:bg-white/25">
