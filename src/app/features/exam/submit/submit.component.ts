@@ -19,7 +19,7 @@ import { LoggingService } from '../../../core/services/logging.service';
   template: `
     <div class="page page-medium animate-fadeInUp">
       <!-- Header -->
-      <div class="page-header" style="text-align: center;">
+      <div class="page-header text-center">
         <h1 class="page-header__title font-display">Confirmar Envio del Examen</h1>
         <p class="page-header__desc">
           Revisa tu examen antes de enviarlo. Una vez enviado, no podras hacer cambios.
@@ -27,15 +27,12 @@ import { LoggingService } from '../../../core/services/logging.service';
       </div>
 
       <!-- Resumen del examen -->
-      <div class="card-section animate-fadeInUp delay-100" style="margin-bottom: 24px;">
-        <h2
-          class="font-display"
-          style="font-size: 18px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 20px;"
-        >
+      <div class="card-section animate-fadeInUp delay-100 mb-6">
+        <h2 class="font-display text-lg font-bold text-forest mb-5">
           Resumen del Examen
         </h2>
 
-        <div class="grid-stats" style="margin-bottom: 24px;">
+        <div class="grid-stats mb-6">
           <div class="card-stat">
             <div class="card-stat__label">Total de Preguntas</div>
             <div class="card-stat__value">{{ examStats().total }}</div>
@@ -56,35 +53,28 @@ import { LoggingService } from '../../../core/services/logging.service';
 
         <!-- Tiempo utilizado -->
         <div class="divider"></div>
-        <h3
-          class="font-display"
-          style="font-size: 16px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;"
-        >
+        <h3 class="font-display text-base font-semibold text-forest mb-3">
           Tiempo Utilizado
         </h3>
-        <div class="submit-time-info">
-          <div class="submit-time-item">
+        <div class="flex flex-wrap gap-6 max-sm:flex-col max-sm:gap-3">
+          <div class="flex flex-col gap-1">
             <span class="card-stat__label">Tiempo total</span>
-            <span
-              class="font-mono"
-              style="font-size: 18px; font-weight: 600; color: var(--color-text-primary);"
-              >{{ formatTime(examStats().totalTime) }}</span
-            >
+            <span class="font-mono text-lg font-semibold text-forest">
+              {{ formatTime(examStats().totalTime) }}
+            </span>
           </div>
-          <div class="submit-time-item">
+          <div class="flex flex-col gap-1">
             <span class="card-stat__label">Tiempo restante</span>
-            <span
-              class="font-mono"
-              style="font-size: 18px; font-weight: 600; color: var(--color-text-primary);"
-              >{{ formatTime(examStats().remainingTime) }}</span
-            >
+            <span class="font-mono text-lg font-semibold text-forest">
+              {{ formatTime(examStats().remainingTime) }}
+            </span>
           </div>
         </div>
       </div>
 
       <!-- Advertencias -->
       @if (examStats().remaining > 0) {
-        <div class="alert alert-warning animate-fadeInUp delay-200" style="margin-bottom: 24px;">
+        <div class="alert alert-warning animate-fadeInUp delay-200 mb-6">
           <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
             <path
               fill-rule="evenodd"
@@ -94,7 +84,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           </svg>
           <div class="alert__content">
             <div class="alert__title">Preguntas sin responder</div>
-            <p style="margin: 0;">
+            <p class="m-0">
               Tienes {{ examStats().remaining }} pregunta(s) sin responder. Estas seguro de que
               quieres enviar el examen?
             </p>
@@ -104,21 +94,16 @@ import { LoggingService } from '../../../core/services/logging.service';
 
       <!-- Preguntas marcadas -->
       @if (examStats().flagged > 0) {
-        <div class="card-section animate-fadeInUp delay-200" style="margin-bottom: 24px;">
-          <h3
-            class="font-display"
-            style="font-size: 16px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;"
-          >
+        <div class="card-section animate-fadeInUp delay-200 mb-6">
+          <h3 class="font-display text-base font-semibold text-forest mb-3">
             Preguntas Marcadas para Revisar
           </h3>
-          <div class="submit-flagged-list">
+          <div class="flex flex-wrap gap-2">
             @for (question of flaggedQuestions(); track question.id) {
-              <div class="card card-compact">
-                <span
-                  class="font-display"
-                  style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);"
-                  >Pregunta {{ getQuestionNumber(question.id) }}</span
-                >
+              <div class="card card-compact flex items-center gap-2">
+                <span class="font-display text-sm font-semibold text-forest">
+                  Pregunta {{ getQuestionNumber(question.id) }}
+                </span>
                 <span class="badge badge-warning">{{ getDomainName(question.domainCode) }}</span>
               </div>
             }
@@ -127,10 +112,10 @@ import { LoggingService } from '../../../core/services/logging.service';
       }
 
       <!-- Acciones -->
-      <div class="action-bar" style="justify-content: center;">
+      <div class="action-bar justify-center">
         <button
           type="button"
-          class="btn btn-secondary"
+          class="btn btn-ghost"
           (click)="goBack()"
           [disabled]="isSubmitting()"
         >
@@ -151,10 +136,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           [disabled]="isSubmitting()"
         >
           @if (isSubmitting()) {
-            <span
-              class="animate-spin"
-              style="display: inline-block; width: 16px; height: 16px; border: 2px solid transparent; border-top: 2px solid currentColor; border-radius: 50%;"
-            ></span>
+            <span class="animate-spin inline-block size-4 border-2 border-transparent border-t-current rounded-full"></span>
             Enviando...
           } @else {
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -170,7 +152,7 @@ import { LoggingService } from '../../../core/services/logging.service';
       </div>
 
       @if (error()) {
-        <div class="alert alert-error animate-fadeInUp" style="margin-top: 24px;">
+        <div class="alert alert-error animate-fadeInUp mt-6">
           <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
             <path
               fill-rule="evenodd"
@@ -180,46 +162,13 @@ import { LoggingService } from '../../../core/services/logging.service';
           </svg>
           <div class="alert__content">
             <div class="alert__title">Error al enviar el examen</div>
-            <p style="margin: 0;">{{ error() }}</p>
+            <p class="m-0">{{ error() }}</p>
           </div>
         </div>
       }
     </div>
   `,
-  styles: [
-    `
-      .submit-time-info {
-        display: flex;
-        gap: 24px;
-        flex-wrap: wrap;
-      }
-
-      .submit-time-item {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .submit-flagged-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .submit-flagged-list .card {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      @media (max-width: 640px) {
-        .submit-time-info {
-          flex-direction: column;
-          gap: 12px;
-        }
-      }
-    `,
-  ],
+  styles: [],
 })
 export class SubmitComponent implements OnInit, OnDestroy {
   // Inyección de dependencias

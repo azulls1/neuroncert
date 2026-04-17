@@ -13,7 +13,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
   imports: [CommonModule],
   template: `
     <div
-      class="fc-scene"
+      class="fc-scene cursor-pointer mb-5"
       (click)="flip.emit()"
       role="button"
       aria-label="Voltear tarjeta"
@@ -24,7 +24,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
       <div class="fc-card" [class.fc-card--flipped]="showAnswer()" aria-live="polite">
         <!-- Front face: Question -->
         <div class="fc-face fc-face--front card-section">
-          <div class="fc-front-header">
+          <div class="flex items-center gap-2.5 mb-5">
             <span class="tag font-mono">{{ question().domainCode }}</span>
             <span
               class="badge"
@@ -38,10 +38,8 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
             </span>
           </div>
 
-          <div class="fc-question-text">
-            <h3
-              style="font-size: 17px; font-weight: 600; color: var(--color-text-primary); line-height: 1.6; margin: 0;"
-            >
+          <div class="flex flex-col gap-1.5 mb-4">
+            <h3 class="text-[17px] font-semibold text-gray-900 leading-relaxed m-0">
               {{ question().text }}
             </h3>
             <p class="fc-question-es">
@@ -50,18 +48,16 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
           </div>
 
           @if (question().context) {
-            <div class="fc-context">
-              <span style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary);"
-                >Contexto:</span
-              >
-              <span style="font-size: 13px; color: var(--color-text-muted); line-height: 1.5;">{{
-                question().context
-              }}</span>
+            <div
+              class="bg-gray-50 border border-gray-200 rounded-lg p-2.5 mb-3 flex flex-col gap-1"
+            >
+              <span class="text-xs font-semibold text-gray-700">Contexto:</span>
+              <span class="text-xs text-gray-500 leading-snug">{{ question().context }}</span>
             </div>
           }
 
           <!-- Options on front (selectable) -->
-          <div class="fc-front-options" (click)="$event.stopPropagation()">
+          <div class="flex flex-col gap-1.5 mb-2" (click)="$event.stopPropagation()">
             @for (option of question().options; track option.id) {
               <button
                 class="fc-front-option"
@@ -78,14 +74,12 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
                 (click)="selectOption(option.id)"
                 [attr.aria-label]="'Opcion ' + getOptionLabel(option.order) + ': ' + option.text"
               >
-                <span class="fc-option-label">{{ getOptionLabel(option.order) }}</span>
-                <div style="flex: 1; text-align: left;">
-                  <div style="font-size: 13px; line-height: 1.4; color: #04202C;">
-                    {{ option.text }}
-                  </div>
-                  <div
-                    style="font-size: 12px; color: #5B7065; line-height: 1.3; margin-top: 3px; font-style: italic;"
-                  >
+                <span class="font-bold min-w-[20px] text-sm">{{
+                  getOptionLabel(option.order)
+                }}</span>
+                <div class="flex-1 text-left">
+                  <div class="text-xs leading-snug text-forest">{{ option.text }}</div>
+                  <div class="text-xs text-pine leading-tight mt-0.5 italic">
                     {{ option.textEs || '' }}
                   </div>
                 </div>
@@ -94,7 +88,9 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
           </div>
 
           @if (answered()) {
-            <div class="fc-flip-hint" style="color: var(--color-forest-600, #16a34a);">
+            <div
+              class="flex items-center justify-center gap-1.5 text-xs text-emerald-600 mt-auto pt-4"
+            >
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fill-rule="evenodd"
@@ -105,84 +101,80 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
               Voltea la tarjeta para ver la explicacion
             </div>
           } @else {
-            <div class="fc-flip-hint">Selecciona una opcion o voltea para ver la respuesta</div>
+            <div
+              class="flex items-center justify-center gap-1.5 text-xs text-gray-500 mt-auto pt-4"
+            >
+              Selecciona una opcion o voltea para ver la respuesta
+            </div>
           }
         </div>
 
         <!-- Back face: Answer -->
         <div class="fc-face fc-face--back card-section">
-          <div class="fc-back-header">
-            <span class="font-display text-forest" style="font-size: 16px; font-weight: 700;"
-              >Respuesta</span
-            >
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-display text-forest text-base font-bold">Respuesta</span>
             <span class="tag font-mono">{{ question().domainCode }}</span>
           </div>
 
-          <div class="stack" style="margin-bottom: 16px;">
+          <div class="stack mb-4">
             @for (option of question().options; track option.id) {
               <div
                 class="fc-option"
                 [class.fc-option--correct]="option.id === question().correctOptionId"
               >
                 <span
-                  class="fc-option-label"
+                  class="font-bold min-w-[20px] text-sm"
                   [class.text-forest]="option.id === question().correctOptionId"
                 >
                   {{ getOptionLabel(option.order) }}
                 </span>
-                <div style="flex: 1;">
-                  <div style="font-size: 14px; line-height: 1.5;">{{ option.text }}</div>
+                <div class="flex-1">
+                  <div class="text-sm leading-snug">{{ option.text }}</div>
                   @if (option.textEs) {
-                    <div
-                      style="font-size: 12px; color: #7D8F84; line-height: 1.3; margin-top: 2px;"
-                    >
+                    <div class="text-xs text-gray-400 leading-tight mt-0.5">
                       {{ option.textEs }}
                     </div>
                   }
                 </div>
                 @if (option.id === question().correctOptionId) {
-                  <span class="badge badge-active" style="flex-shrink: 0;">Correcta</span>
+                  <span class="badge badge-active shrink-0">Correcta</span>
                 }
               </div>
             }
           </div>
 
-          <div class="divider-subtle" style="margin: 12px 0;"></div>
+          <div class="divider-subtle my-3"></div>
 
-          <div class="alert alert-info" style="margin-bottom: 12px;">
-            <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Explicacion</div>
+          <div class="alert alert-info mb-3">
+            <div class="text-xs font-semibold mb-1">Explicacion</div>
             @if (question().explanationEs) {
-              <div style="font-size: 13px; line-height: 1.6; margin-bottom: 8px;">
+              <div class="text-xs leading-relaxed mb-2">
                 {{ question().explanationEs }}
               </div>
               <div
-                style="font-size: 12px; line-height: 1.5; color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle, #EFF2F0); padding-top: 8px;"
+                class="text-xs leading-snug text-gray-500 border-t border-gray-100 pt-2"
               >
-                <span style="font-weight: 600;">EN:</span> {{ question().explanation }}
+                <span class="font-semibold">EN:</span> {{ question().explanation }}
               </div>
             } @else {
-              <div style="font-size: 13px; line-height: 1.6;">{{ question().explanation }}</div>
+              <div class="text-xs leading-relaxed">{{ question().explanation }}</div>
             }
           </div>
 
           @if (question().references && (question().references || []).length > 0) {
-            <div style="margin-top: 8px;">
-              <div
-                style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 4px;"
-              >
-                Referencias:
-              </div>
-              <ul style="list-style: none; padding: 0; margin: 0;">
+            <div class="mt-2">
+              <div class="text-xs font-semibold text-gray-700 mb-1">Referencias:</div>
+              <ul class="list-none p-0 m-0">
                 @for (ref of question().references; track ref) {
-                  <li style="font-size: 12px; color: var(--color-text-muted); margin-bottom: 2px;">
-                    {{ ref }}
-                  </li>
+                  <li class="text-xs text-gray-500 mb-0.5">{{ ref }}</li>
                 }
               </ul>
             </div>
           }
 
-          <div class="fc-flip-hint">
+          <div
+            class="flex items-center justify-center gap-1.5 text-xs text-gray-500 mt-auto pt-4"
+          >
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fill-rule="evenodd"
@@ -197,7 +189,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
     </div>
 
     <!-- Navigation -->
-    <div class="fc-nav" role="navigation" aria-label="Navegacion de flashcards">
+    <div class="flex items-center justify-between" role="navigation" aria-label="Navegacion de flashcards">
       <button
         type="button"
         class="btn btn-ghost"
@@ -216,8 +208,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
       </button>
 
       <span
-        class="font-mono"
-        style="font-size: 14px; color: var(--color-text-secondary);"
+        class="font-mono text-sm text-gray-700"
         aria-live="polite"
         [attr.aria-label]="'Tarjeta ' + (index() + 1) + ' de ' + total()"
       >
@@ -247,8 +238,6 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
       /* 3D Flip scene */
       .fc-scene {
         perspective: 1000px;
-        cursor: pointer;
-        margin-bottom: 20px;
       }
 
       .fc-card {
@@ -279,21 +268,6 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
         transform: rotateY(180deg);
       }
 
-      /* Front layout */
-      .fc-front-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 20px;
-      }
-
-      .fc-question-text {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        margin-bottom: 16px;
-      }
-
       .fc-question-es {
         font-size: 14px;
         color: #5b7065;
@@ -308,36 +282,6 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
 
       .fc-question-es:empty {
         display: none;
-      }
-
-      .fc-context {
-        background: var(--color-bg-muted);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-md);
-        padding: 10px;
-        margin-bottom: 12px;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .fc-flip-hint {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        font-size: 13px;
-        color: var(--color-text-muted);
-        margin-top: auto;
-        padding-top: 16px;
-      }
-
-      /* Back layout */
-      .fc-back-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 16px;
       }
 
       .fc-option {
@@ -356,30 +300,17 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
         background: #f0fdf4;
       }
 
-      .fc-option-label {
-        font-weight: 700;
-        min-width: 20px;
-        font-size: 14px;
-      }
-
       /* Front options */
-      .fc-front-options {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        margin-bottom: 8px;
-      }
-
       .fc-front-option {
         display: flex;
         align-items: flex-start;
         gap: 10px;
         padding: 10px 14px;
         border: 2px solid var(--color-border-subtle, #dfe4e0);
-        border-radius: 10px;
+        border-radius: var(--radius-lg);
         background: white;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: all var(--duration-normal) var(--ease-apple);
         text-align: left;
         width: 100%;
       }
@@ -390,8 +321,8 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
       }
 
       .fc-front-option--selected {
-        border-color: #04202c !important;
-        background: #eff2f0 !important;
+        border-color: var(--forest-900) !important;
+        background: var(--forest-50) !important;
       }
 
       .fc-front-option--correct {
@@ -406,13 +337,6 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
 
       .fc-front-option:disabled {
         cursor: default;
-      }
-
-      /* Navigation */
-      .fc-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
       }
 
       @media (max-width: 768px) {

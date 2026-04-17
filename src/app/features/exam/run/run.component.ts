@@ -30,16 +30,14 @@ import { LoggingService } from '../../../core/services/logging.service';
   imports: [CommonModule, TimerBadgeComponent, ProgressStepsComponent, QuestionCardComponent],
   template: `
     <!-- Header -->
-    <header class="card card-compact" style="margin-bottom: 1rem;">
-      <div
-        style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;"
-      >
+    <header class="card card-compact mb-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 class="h4">Simulador CCA-F Claude AI</h1>
-          <p class="text-muted">Examen en progreso</p>
+          <h1 class="font-display text-lg font-bold">Simulador CCA-F Claude AI</h1>
+          <p class="text-sm text-pine">Examen en progreso</p>
         </div>
-        <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
-          <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+        <div class="flex flex-wrap items-center gap-3">
+          <div class="flex flex-wrap items-center gap-2">
             <span class="badge badge-info">
               {{ examState().progress.answered }} / {{ examState().progress.total }} respondidas
             </span>
@@ -54,10 +52,10 @@ import { LoggingService } from '../../../core/services/logging.service';
     </header>
 
     <!-- Progress bar -->
-    <div class="progress-labeled" style="margin-bottom: 1.5rem;">
-      <div class="progress-bar">
+    <div class="progress-labeled mb-6">
+      <div class="progress">
         <div
-          class="progress-fill"
+          class="progress__bar"
           [style.width.%]="
             examState().progress.total > 0
               ? (examState().progress.answered / examState().progress.total) * 100
@@ -65,7 +63,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           "
         ></div>
       </div>
-      <span class="progress-text">
+      <span class="progress-labeled__value">
         {{
           examState().progress.total > 0
             ? ((examState().progress.answered / examState().progress.total) * 100 | number: '1.0-0')
@@ -79,10 +77,9 @@ import { LoggingService } from '../../../core/services/logging.service';
       <div
         role="alert"
         aria-live="assertive"
-        class="badge badge-error"
-        style="margin-bottom: 1rem; display: block; padding: 0.75rem 1rem;"
+        class="alert alert-error mb-4"
       >
-        {{ errorMessage() }}
+        <div class="alert__content">{{ errorMessage() }}</div>
       </div>
     }
 
@@ -100,13 +97,10 @@ import { LoggingService } from '../../../core/services/logging.service';
           ></app-question-card>
 
           <!-- Navigation -->
-          <nav
-            class="pagination"
-            style="margin-top:1.5rem;display:flex;justify-content:space-between;align-items:center;"
-          >
+          <nav class="flex items-center justify-between mt-6">
             <button
               type="button"
-              class="btn btn-outline"
+              class="btn btn-secondary"
               [disabled]="!examState().navigation.canGoPrevious"
               (click)="goToPrevious()"
               aria-label="Pregunta anterior"
@@ -114,7 +108,7 @@ import { LoggingService } from '../../../core/services/logging.service';
               &larr; Anterior
             </button>
 
-            <span class="text-muted">
+            <span class="text-sm text-pine">
               <strong>{{ examState().currentIndex + 1 }}</strong> de
               <strong>{{ examState().questions.length }}</strong>
             </span>
@@ -131,13 +125,13 @@ import { LoggingService } from '../../../core/services/logging.service';
           </nav>
         } @else {
           <div
-            class="loading-dots"
+            class="empty-state animate-fadeInUp"
             role="status"
             aria-busy="true"
             aria-live="polite"
-            style="padding:2rem;text-align:center;"
           >
-            <span>Cargando pregunta...</span>
+            <div class="loading-dots"><span></span><span></span><span></span></div>
+            <p class="empty-state__desc">Cargando pregunta...</p>
           </div>
         }
       </main>
@@ -155,14 +149,11 @@ import { LoggingService } from '../../../core/services/logging.service';
     </div>
 
     <!-- Footer action bar -->
-    <footer
-      class="action-bar"
-      style="margin-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;"
-    >
-      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+    <footer class="action-bar mt-8 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap gap-2">
         <button
           type="button"
-          class="btn btn-outline"
+          class="btn btn-secondary"
           (click)="togglePause()"
           [disabled]="examState().status !== 'running' && examState().status !== 'paused'"
         >
@@ -179,14 +170,14 @@ import { LoggingService } from '../../../core/services/logging.service';
         </button>
       </div>
 
-      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-        <span class="text-muted">
+      <div class="flex flex-wrap gap-3 text-sm text-pine">
+        <span>
           <strong>{{ examState().progress.answered }}</strong> Respondidas
         </span>
-        <span class="text-muted">
+        <span>
           <strong>{{ examState().progress.flagged }}</strong> Marcadas
         </span>
-        <span class="text-muted">
+        <span>
           <strong>{{ examState().progress.total - examState().progress.answered }}</strong>
           Restantes
         </span>

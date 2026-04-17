@@ -28,7 +28,7 @@ import { LoggingService } from '../../../core/services/logging.service';
       </div>
 
       @if (catalogLoading()) {
-        <div class="card-section animate-fadeInUp" style="text-align: center; padding: 48px 0;">
+        <div class="card-section animate-fadeInUp text-center py-12">
           <span class="text-pine">Cargando configuracion del examen...</span>
         </div>
       } @else if (ccafConfig()) {
@@ -63,19 +63,18 @@ import { LoggingService } from '../../../core/services/logging.service';
 
         <!-- Domain Weights Summary -->
         <div class="card-section animate-fadeInUp">
-          <h3 class="page-header__title" style="font-size: 1.125rem;">Pesos por Dominio</h3>
-          <div class="stack" style="margin-top: 12px;">
+          <h3 class="page-header__title text-lg">Pesos por Dominio</h3>
+          <div class="stack mt-3">
             @for (domain of domainWeights(); track domain.code) {
-              <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="flex items-center gap-3">
                 <span
-                  class="badge badge-info font-mono"
-                  style="min-width: 36px; text-align: center;"
+                  class="badge badge-info font-mono min-w-[36px] text-center"
                   >{{ domain.code }}</span
                 >
-                <span style="flex: 1; font-size: 0.875rem;" class="text-forest">{{
+                <span class="flex-1 text-sm text-forest">{{
                   domain.name
                 }}</span>
-                <div class="progress-labeled" style="flex: 1;">
+                <div class="progress-labeled flex-1">
                   <div class="progress">
                     <div class="progress__bar" [style.width.%]="domain.weight"></div>
                   </div>
@@ -117,7 +116,7 @@ import { LoggingService } from '../../../core/services/logging.service';
       }
 
       <!-- Action Buttons -->
-      <div style="display: flex; gap: 12px; justify-content: center;" class="animate-fadeInUp">
+      <div class="flex gap-3 justify-center animate-fadeInUp">
         <a routerLink="/ccaf" class="btn btn-secondary">Volver</a>
         <button
           class="btn btn-cta"
@@ -129,13 +128,7 @@ import { LoggingService } from '../../../core/services/logging.service';
       </div>
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class CCAFExamComponent implements OnInit {
   private destroyRef = inject(DestroyRef);

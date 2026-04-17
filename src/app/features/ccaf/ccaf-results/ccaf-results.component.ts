@@ -21,13 +21,8 @@ import { LoggingService } from '../../../core/services/logging.service';
     <div class="page-medium animate-fadeInUp stagger-children">
       <!-- Pass / Fail Indicator -->
       @if (passed) {
-        <div
-          class="card-section animate-fadeInUp"
-          style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e;"
-        >
-          <div
-            style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 0;"
-          >
+        <div class="card-hero animate-fadeInUp bg-emerald-50 border-l-4 border-emerald-500 text-center">
+          <div class="flex flex-col items-center gap-3 py-6">
             <svg
               width="64"
               height="64"
@@ -41,19 +36,12 @@ import { LoggingService } from '../../../core/services/logging.service';
               <path d="M9 12l2 2 4-4" />
               <circle cx="12" cy="12" r="10" />
             </svg>
-            <span class="font-display text-3xl" style="color: #22c55e; font-weight: 700;"
-              >APROBADO</span
-            >
+            <span class="font-display text-3xl font-bold text-emerald-500">APROBADO</span>
           </div>
         </div>
       } @else {
-        <div
-          class="card-section animate-fadeInUp"
-          style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444;"
-        >
-          <div
-            style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 0;"
-          >
+        <div class="card-hero animate-fadeInUp bg-red-50 border-l-4 border-red-500 text-center">
+          <div class="flex flex-col items-center gap-3 py-6">
             <svg
               width="64"
               height="64"
@@ -68,24 +56,19 @@ import { LoggingService } from '../../../core/services/logging.service';
               <line x1="15" y1="9" x2="9" y2="15" />
               <line x1="9" y1="9" x2="15" y2="15" />
             </svg>
-            <span class="font-display text-3xl" style="color: #ef4444; font-weight: 700;"
-              >NO APROBADO</span
-            >
+            <span class="font-display text-3xl font-bold text-red-500">NO APROBADO</span>
           </div>
         </div>
       }
 
       <!-- Weighted Score Display -->
-      <div style="display: flex; justify-content: center; margin: 24px 0;" class="animate-fadeInUp">
-        <div
-          class="card-stat"
-          style="text-align: center; padding: 24px; width: 100%; max-width: 400px;"
-        >
+      <div class="flex justify-center my-6 animate-fadeInUp">
+        <div class="card-stat text-center p-6 w-full max-w-[400px]">
           <div class="card-stat__label">Score Ponderado</div>
-          <div class="card-stat__value font-display" style="font-size: clamp(2rem, 6vw, 3rem);">
+          <div class="card-stat__value font-display text-[clamp(2rem,6vw,3rem)]">
             {{ weightedScore }} / {{ configMaxScore() }}
           </div>
-          <div class="text-pine text-sm" style="margin-top: 8px;">
+          <div class="text-pine text-sm mt-2">
             Score para aprobar: {{ configPassingScore() }} / {{ configMaxScore() }}
           </div>
         </div>
@@ -93,25 +76,23 @@ import { LoggingService } from '../../../core/services/logging.service';
 
       <!-- Domain Breakdown -->
       <div class="card-section animate-fadeInUp delay-100">
-        <h2 class="font-display" style="margin-bottom: 16px;">Desglose por Dominio</h2>
+        <h2 class="font-display mb-4">Desglose por Dominio</h2>
 
         <div class="stack">
           @for (domain of domainScores; track domain.domainCode) {
-            <div class="card-compact" style="padding: 16px;">
-              <div
-                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;"
-              >
-                <span class="font-display text-sm" style="flex: 1; min-width: 120px;">{{
+            <div class="card-feature p-4">
+              <div class="flex items-center justify-between mb-2 flex-wrap gap-1.5">
+                <span class="font-display text-sm flex-1 min-w-[120px]">{{
                   domain.domainName
                 }}</span>
-                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                  <span class="tag font-mono" style="font-size: 11px;"
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="tag font-mono text-xs"
                     >{{ (domain.weight * 100).toFixed(0) }}%</span
                   >
-                  <span class="font-mono" style="font-size: 12px;"
+                  <span class="font-mono text-xs"
                     >{{ domain.correct }}/{{ domain.total }}</span
                   >
-                  <span class="badge" style="font-size: 11px;"
+                  <span class="badge text-xs"
                     >{{ domain.weightedContribution }} pts</span
                   >
                 </div>
@@ -149,7 +130,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           <div class="alert alert-warning">
             <div class="alert__content">
               <div class="alert__title">Enfocate en estos dominios:</div>
-              <ul style="margin: 8px 0 0; padding-left: 20px;">
+              <ul class="mt-2 pl-5">
                 @for (domain of weakDomains; track domain.domainCode) {
                   <li>
                     {{ domain.domainName }} ({{ domain.domainCode }}) &mdash;
@@ -170,23 +151,14 @@ import { LoggingService } from '../../../core/services/logging.service';
       </div>
 
       <!-- Actions -->
-      <div
-        style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;"
-        class="animate-fadeInUp"
-      >
+      <div class="flex gap-3 justify-center flex-wrap animate-fadeInUp">
         <a routerLink="/ccaf/exam" class="btn btn-primary hover-lift">Intentar de Nuevo</a>
         <a routerLink="/ccaf" class="btn btn-secondary hover-lift">Volver a CCA-F</a>
         <a routerLink="/exam/history" class="btn btn-ghost">Ver Historial</a>
       </div>
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class CCAFResultsComponent implements OnInit {
   private destroyRef = inject(DestroyRef);

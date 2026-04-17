@@ -407,32 +407,6 @@ interface PlatformColor {
         opacity: 0.7;
       }
 
-      /* ── Legend ── */
-      .flow-legend {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        padding: 24px 0;
-        border-top: 1px solid #eff2f0;
-        margin-top: 40px;
-      }
-
-      .legend-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .legend-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-      }
-      .legend-label {
-        font-size: 12px;
-        color: #7d8f84;
-      }
-
       /* ── Modal ── */
       .modal-overlay {
         position: fixed;
@@ -593,12 +567,6 @@ interface PlatformColor {
         margin: 0;
       }
 
-      .roadmap-concept-caption p {
-        font-size: 10px;
-        color: #c9d1c8;
-        margin: 0;
-      }
-
       /* ── Image lightbox modal ── */
       .image-lightbox {
         position: fixed;
@@ -653,17 +621,6 @@ interface PlatformColor {
 
       .lightbox-close:hover {
         background: rgba(255, 255, 255, 0.3);
-      }
-
-      /* ── Legend card ── */
-      .roadmap-legend-card {
-        background: white;
-        border: 1px solid #eff2f0;
-        border-radius: 16px;
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
       }
 
       .roadmap-legend-items {
@@ -823,7 +780,7 @@ interface PlatformColor {
   template: `
     <div class="roadmap-container">
       <!-- Hero -->
-      <div class="card-hero" style="margin-bottom: 32px;">
+      <div class="card-hero dark-surface mb-8">
         <h1 class="card-hero__title">Ecosistema Claude — Ruta de Aprendizaje</h1>
         <p class="card-hero__desc">
           Tu ruta de aprendizaje paso a paso, desde los fundamentos hasta la certificacion. Sigue el
@@ -832,7 +789,7 @@ interface PlatformColor {
       </div>
 
       @if (loadError()) {
-        <div class="alert alert-warning" style="margin-bottom: 24px;">
+        <div class="alert alert-warning mb-6">
           <div class="alert__content">
             <div class="alert__title">Error al cargar</div>
             <span>{{ loadError() }}</span>
@@ -845,14 +802,8 @@ interface PlatformColor {
         <!-- Col 1: Imagen thumbnail (click to expand) -->
         <div class="roadmap-concept" (click)="showImageModal.set(true)">
           <div class="roadmap-expand-hint">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
               <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
             </svg>
             Click para ampliar
@@ -864,83 +815,63 @@ interface PlatformColor {
           />
           <div class="roadmap-concept-caption">
             <h3>Certifications Roadmap</h3>
-            <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-              <span class="badge badge-active" style="font-size: 9px;">Entry</span>
-              <span class="badge badge-info" style="font-size: 9px;">Advanced</span>
-              <span
-                class="badge"
-                style="font-size: 9px; background: rgba(255,255,255,0.15); color: #C9D1C8;"
-                >Expert</span
-              >
+            <div class="flex flex-wrap gap-1">
+              <span class="badge badge-active text-[9px]">Entry</span>
+              <span class="badge badge-info text-[9px]">Advanced</span>
+              <span class="badge badge--on-dark text-[9px]">Expert</span>
             </div>
           </div>
         </div>
 
         <!-- Col 2: Leyenda -->
-        <section class="roadmap-legend-card">
-          <h3
-            class="font-display"
-            style="font-size: 15px; font-weight: 700; color: #04202C; margin-bottom: 16px;"
-          >
+        <section class="roadmap-legend-card card-section">
+          <h3 class="font-display text-[15px] font-bold text-forest mb-4">
             Antes de empezar — Que significa cada cosa
           </h3>
 
           <div class="roadmap-legend-items">
             <div class="roadmap-legend-item">
-              <span style="font-size: 20px;">📜</span>
+              <span class="text-xl">📜</span>
               <div>
-                <div style="font-size: 13px; color: #04202C; font-weight: 600;">
-                  Certificado de completacion
-                </div>
-                <div style="font-size: 11px; color: #9EADA3;">Gratis al terminar el curso</div>
+                <div class="text-[13px] text-forest font-semibold">Certificado de completacion</div>
+                <div class="text-[11px] text-moss">Gratis al terminar el curso</div>
               </div>
             </div>
             <div class="roadmap-legend-item">
-              <span style="font-size: 20px;">🏅</span>
+              <span class="text-xl">🏅</span>
               <div>
-                <div style="font-size: 13px; color: #04202C; font-weight: 600;">
-                  Certificado de Especializacion
-                </div>
-                <div style="font-size: 11px; color: #9EADA3;">Al completar todos los cursos</div>
+                <div class="text-[13px] text-forest font-semibold">Certificado de Especializacion</div>
+                <div class="text-[11px] text-moss">Al completar todos los cursos</div>
               </div>
             </div>
             <div class="roadmap-legend-item">
-              <span style="font-size: 20px;">🏆</span>
+              <span class="text-xl">🏆</span>
               <div>
-                <div style="font-size: 13px; color: #04202C; font-weight: 600;">
-                  Certificacion formal
-                </div>
-                <div style="font-size: 11px; color: #9EADA3;">
-                  Examen supervisado + badge Credly
-                </div>
+                <div class="text-[13px] text-forest font-semibold">Certificacion formal</div>
+                <div class="text-[11px] text-moss">Examen supervisado + badge Credly</div>
               </div>
             </div>
             <div class="roadmap-legend-item">
-              <span style="font-size: 20px;">🔮</span>
+              <span class="text-xl">🔮</span>
               <div>
-                <div style="font-size: 13px; color: #04202C; font-weight: 600;">Proximamente</div>
-                <div style="font-size: 11px; color: #9EADA3;">Anunciado, aun no disponible</div>
+                <div class="text-[13px] text-forest font-semibold">Proximamente</div>
+                <div class="text-[11px] text-moss">Anunciado, aun no disponible</div>
               </div>
             </div>
           </div>
 
-          <div style="border-top: 1px solid #EFF2F0; padding-top: 14px; margin-top: 16px;">
-            <div
-              style="font-size: 11px; font-weight: 600; color: #7D8F84; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;"
-            >
-              Colores por Plataforma
-            </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-              @for (p of platformColors(); track p.id) {
-                <div style="display: flex; align-items: center; gap: 6px;">
-                  <div
-                    style="width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #DFE4E0;"
-                    [style.background]="p.color"
-                  ></div>
-                  <span style="font-size: 12px; color: #5B7065;">{{ p.name }}</span>
-                </div>
-              }
-            </div>
+          <div class="divider my-4"></div>
+          <div class="card-stat__label mb-2">Colores por Plataforma</div>
+          <div class="flex flex-wrap gap-3">
+            @for (p of platformColors(); track p.id) {
+              <div class="flex items-center gap-1.5">
+                <div
+                  class="w-3 h-3 rounded-full border-2 border-white shadow-soft"
+                  [style.background]="p.color"
+                ></div>
+                <span class="text-xs text-pine">{{ p.name }}</span>
+              </div>
+            }
           </div>
         </section>
       </div>
@@ -951,19 +882,11 @@ interface PlatformColor {
           <div class="flow-level">
             <!-- Level header badge -->
             <div class="flow-level-header">
-              <div
-                class="flow-level-badge"
-                style="background: linear-gradient(135deg, #04202C, #304040);"
-              >
+              <div class="flow-level-badge gradient-dark">
                 <span class="flow-level-number">{{ level.level }}</span>
               </div>
               <div class="flow-level-info">
-                <h2
-                  class="font-display"
-                  style="font-size: 1.125rem; font-weight: 700; color: #04202C; margin: 0;"
-                >
-                  {{ level.name }}
-                </h2>
+                <h2 class="font-display text-lg font-bold text-forest m-0">{{ level.name }}</h2>
                 @if (level.hours) {
                   <span class="tag font-mono">{{ level.hours }}</span>
                 }
@@ -974,7 +897,6 @@ interface PlatformColor {
             <div class="flow-courses">
               @for (course of level.courses; track course.id) {
                 <div class="flow-step" (click)="selectCourse(course)">
-                  <!-- Vertical line connector -->
                   <div class="flow-line">
                     <div
                       class="flow-dot"
@@ -982,7 +904,6 @@ interface PlatformColor {
                     ></div>
                   </div>
 
-                  <!-- Step card -->
                   <div
                     class="flow-card"
                     [style.border-left-color]="getPlatformColor(course.platformId)"
@@ -993,22 +914,18 @@ interface PlatformColor {
                           ? 'Cert ' + course.certNumber
                           : 'Paso ' + course.globalStep
                       }}</span>
+                      <span class="text-sm leading-none"
+                        [title]="getCertTooltip(course)">{{ getCertIcon(course) }}</span>
                       <span
-                        style="font-size: 14px; line-height: 1;"
-                        [title]="getCertTooltip(course)"
-                        >{{ getCertIcon(course) }}</span
-                      >
-                      <span
-                        class="tag font-mono"
-                        style="font-size: 10px;"
+                        class="tag font-mono text-[10px]"
                         [style.color]="getPlatformColor(course.platformId)"
                         >{{ course.platformName }}</span
                       >
                       @if (course.isNew) {
-                        <span class="badge badge-warning" style="font-size: 9px;">NUEVO</span>
+                        <span class="badge badge-warning text-[9px]">NUEVO</span>
                       }
                       @if (course.flagship) {
-                        <span class="badge badge-active" style="font-size: 9px;">FLAGSHIP</span>
+                        <span class="badge badge-active text-[9px]">FLAGSHIP</span>
                       }
                       @if (course.duration) {
                         <span class="flow-duration font-mono">{{ course.duration }}</span>
@@ -1026,35 +943,20 @@ interface PlatformColor {
 
       <!-- Certification crown at the bottom -->
       <div class="flow-crown">
-        <div class="crown-card" (click)="selectCert()">
-          <div style="position: relative; z-index: 2; text-align: center;">
-            <div style="font-size: 32px; margin-bottom: 8px;">🏆</div>
-            <h3
-              class="font-display"
-              style="font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 6px;"
-            >
+        <div class="crown-card dark-surface" (click)="selectCert()">
+          <div class="relative z-[2] text-center">
+            <div class="text-[32px] mb-2">🏆</div>
+            <h3 class="font-display text-lg font-bold text-on-dark m-0 mb-1.5">
               Certificaciones Formales
             </h3>
-            <p style="font-size: 13px; color: #C9D1C8; margin: 0 0 12px;">
+            <p class="text-on-dark-muted text-[13px] m-0 mb-3">
               1 activa + 3 anunciadas | Badge digital Credly
             </p>
-            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <span class="badge badge-active" style="font-size: 10px;">🏆 CCA-F (Activa)</span>
-              <span
-                class="badge"
-                style="font-size: 10px; background: rgba(255,255,255,0.1); color: #C9D1C8;"
-                >🔮 Seller</span
-              >
-              <span
-                class="badge"
-                style="font-size: 10px; background: rgba(255,255,255,0.1); color: #C9D1C8;"
-                >🔮 Developer</span
-              >
-              <span
-                class="badge"
-                style="font-size: 10px; background: rgba(255,255,255,0.1); color: #C9D1C8;"
-                >🔮 Advanced Architect</span
-              >
+            <div class="flex flex-wrap gap-2 justify-center">
+              <span class="badge badge-active text-[10px]">🏆 CCA-F (Activa)</span>
+              <span class="badge badge--on-dark text-[10px]">🔮 Seller</span>
+              <span class="badge badge--on-dark text-[10px]">🔮 Developer</span>
+              <span class="badge badge--on-dark text-[10px]">🔮 Advanced Architect</span>
             </div>
           </div>
         </div>
@@ -1063,31 +965,17 @@ interface PlatformColor {
       <!-- Upcoming certifications -->
       @if (upcomingCerts().length) {
         <div class="upcoming-section">
-          <h3
-            class="font-display"
-            style="font-size: 0.875rem; font-weight: 700; color: #7D8F84; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;"
-          >
-            Proximas Certificaciones
-          </h3>
-          <div
-            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px;"
-          >
+          <h3 class="card-stat__label mb-3">Proximas Certificaciones</h3>
+          <div class="grid-auto">
             @for (cert of upcomingCerts(); track cert.id) {
               <div class="upcoming-card">
-                <h4
-                  class="font-display"
-                  style="font-size: 0.875rem; font-weight: 600; color: #04202C; margin: 0;"
-                >
-                  {{ cert.name }}
-                </h4>
-                <p style="font-size: 0.75rem; color: #7D8F84; margin: 4px 0 0;">{{ cert.focus }}</p>
-                <div style="display: flex; gap: 6px; align-items: center; margin-top: 8px;">
+                <h4 class="font-display text-sm font-semibold text-forest m-0">{{ cert.name }}</h4>
+                <p class="text-xs text-gray-500 mt-1 m-0">{{ cert.focus }}</p>
+                <div class="flex items-center gap-1.5 mt-2">
                   @if (cert.expectedDate) {
-                    <span class="tag font-mono" style="font-size: 10px;">{{
-                      cert.expectedDate
-                    }}</span>
+                    <span class="tag font-mono text-[10px]">{{ cert.expectedDate }}</span>
                   }
-                  <span class="badge" style="font-size: 9px;">PROXIMAMENTE</span>
+                  <span class="badge text-[9px]">PROXIMAMENTE</span>
                 </div>
               </div>
             }
@@ -1095,16 +983,13 @@ interface PlatformColor {
         </div>
       }
 
-      <!-- ═══ ROLE-BASED PATHS ═══ -->
+      <!-- ROLE-BASED PATHS -->
       @if (rolePaths().length > 0) {
-        <section style="margin-top: 48px;">
-          <h2
-            class="font-display"
-            style="font-size: 1.5rem; font-weight: 700; color: #04202C; margin-bottom: 8px; text-align: center;"
-          >
+        <section class="mt-12">
+          <h2 class="font-display text-2xl font-bold text-forest mb-2 text-center">
             Elige Tu Ruta
           </h2>
-          <p style="font-size: 14px; color: #7D8F84; text-align: center; margin-bottom: 24px;">
+          <p class="text-sm text-gray-500 text-center mb-6">
             Selecciona tu rol para ver la ruta de certificacion recomendada
           </p>
 
@@ -1115,57 +1000,37 @@ interface PlatformColor {
                 [class.role-card--active]="selectedRole() === rp.id"
                 (click)="toggleRole(rp.id)"
               >
-                <!-- Icon -->
                 <div class="role-card__icon">
-                  <span class="font-mono" style="font-size: 12px; font-weight: 700;"
+                  <span class="font-mono text-xs font-bold"
                     >{{ rp.role[0] }}{{ rp.role[1] }}</span
                   >
                 </div>
-
-                <!-- Title -->
                 <h3 class="role-card__title font-display">{{ rp.role }}</h3>
-
-                <!-- Description -->
                 <p class="role-card__desc">{{ rp.description }}</p>
-
-                <!-- Stats -->
                 <div class="role-card__stats">
                   <div class="role-card__stat">
-                    <span
-                      class="font-mono"
-                      style="font-size: 1.25rem; font-weight: 700; color: #04202C;"
-                      >{{ rp.certCount }}</span
-                    >
-                    <span style="font-size: 10px; color: #9EADA3;">certs</span>
+                    <span class="font-mono text-xl font-bold text-forest">{{ rp.certCount }}</span>
+                    <span class="text-[10px] text-moss">certs</span>
                   </div>
-                  <span class="tag font-mono" style="font-size: 11px;">{{ rp.cost }}</span>
+                  <span class="tag font-mono text-[11px]">{{ rp.cost }}</span>
                 </div>
-
-                <!-- Expanded: course list -->
                 @if (selectedRole() === rp.id) {
                   <div class="role-card__detail">
                     @if (rp.formalCert) {
-                      <span
-                        class="badge badge-active"
-                        style="font-size: 10px; margin-bottom: 8px;"
-                        >{{ rp.formalCert }}</span
-                      >
+                      <span class="badge badge-active text-[10px] mb-2">{{ rp.formalCert }}</span>
                     }
-                    <div
-                      style="font-size: 11px; font-weight: 600; color: #04202C; margin-bottom: 6px;"
-                    >
+                    <div class="text-[11px] font-semibold text-forest mb-1.5">
                       Cursos recomendados:
                     </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                    <div class="flex flex-wrap gap-1">
                       @if (rp.courses === 'all') {
-                        <span class="tag font-mono" style="font-size: 10px; background: #EFF2F0;"
+                        <span class="tag font-mono text-[10px] bg-gray-100"
                           >30+ cursos de todas las plataformas</span
                         >
                       } @else {
                         @for (courseId of rp.courses; track courseId) {
                           <span
-                            class="tag font-mono"
-                            style="font-size: 10px; background: #EFF2F0; cursor: pointer;"
+                            class="tag font-mono text-[10px] bg-gray-100 cursor-pointer"
                             (click)="selectCourseById(courseId); $event.stopPropagation()"
                           >
                             {{ getCourseTitle(courseId) || courseId }}
@@ -1181,35 +1046,25 @@ interface PlatformColor {
         </section>
       }
 
-      <!-- ═══════ COURSE MODAL ═══════ -->
+      <!-- COURSE MODAL -->
       @if (selectedCourseData()) {
         <div class="modal-overlay" (click)="closeCourse()">
           <div class="modal-card animate-scaleIn" (click)="$event.stopPropagation()">
-            <!-- Close button -->
             <button class="modal-close btn btn-icon" (click)="closeCourse()">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
 
-            <!-- Course header -->
             <div
+              class="pb-4 mb-4"
               [style.border-bottom]="
                 '3px solid ' + getPlatformColor(selectedCourseData()!.platformId)
               "
-              style="padding-bottom: 16px; margin-bottom: 16px;"
             >
-              <div
-                style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;"
-              >
+              <div class="flex items-center flex-wrap gap-2 mb-2">
                 <span
                   class="tag font-mono"
                   [style.border-color]="getPlatformColor(selectedCourseData()!.platformId)"
@@ -1229,38 +1084,27 @@ interface PlatformColor {
                   <span class="badge badge-active">Certificado</span>
                 }
               </div>
-              <h2
-                class="font-display"
-                style="font-size: 1.2rem; font-weight: 700; color: #04202C; margin: 0;"
-              >
+              <h2 class="font-display text-xl font-bold text-forest m-0">
                 {{ selectedCourseData()!.title }}
               </h2>
-              <p style="font-size: 0.8125rem; color: #5B7065; margin: 8px 0 0;">
+              <p class="text-[0.8125rem] text-pine mt-2 m-0">
                 {{ selectedCourseData()!.description }}
               </p>
             </div>
 
-            <!-- Topics grid -->
             @if (selectedCourseData()!.topics?.length) {
-              <div style="margin-bottom: 16px;">
-                <h3
-                  style="font-size: 0.8125rem; font-weight: 700; color: #04202C; margin-bottom: 8px;"
-                >
-                  Temas que cubre
-                </h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <div class="mb-4">
+                <h3 class="text-[0.8125rem] font-bold text-forest mb-2">Temas que cubre</h3>
+                <div class="flex flex-wrap gap-1.5">
                   @for (topic of selectedCourseData()!.topics; track topic) {
-                    <span class="tag font-mono" style="font-size: 11px; background: #F7F9F8;">{{
-                      topic
-                    }}</span>
+                    <span class="tag font-mono text-[11px] bg-gray-50">{{ topic }}</span>
                   }
                 </div>
               </div>
             }
 
-            <!-- Stats if flagship -->
             @if (selectedCourseData()!.stats) {
-              <div class="grid-stats" style="gap: 8px; margin-bottom: 16px;">
+              <div class="grid-stats gap-2 mb-4">
                 <div class="card-stat">
                   <div class="card-stat__value">{{ selectedCourseData()!.stats!.lectures }}</div>
                   <div class="card-stat__label">Lecciones</div>
@@ -1276,19 +1120,13 @@ interface PlatformColor {
               </div>
             }
 
-            <!-- Prerequisites -->
             @if (selectedCourseData()!.prerequisites?.length) {
-              <div style="margin-bottom: 16px;">
-                <h3
-                  style="font-size: 0.8125rem; font-weight: 700; color: #04202C; margin-bottom: 8px;"
-                >
-                  Prerequisitos
-                </h3>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <div class="mb-4">
+                <h3 class="text-[0.8125rem] font-bold text-forest mb-2">Prerequisitos</h3>
+                <div class="flex flex-wrap gap-1.5">
                   @for (pre of selectedCourseData()!.prerequisites; track pre) {
                     <span
-                      class="badge badge-warning"
-                      style="font-size: 11px; cursor: pointer;"
+                      class="badge badge-warning text-[11px] cursor-pointer"
                       (click)="selectCourseById(pre)"
                       >{{ getCourseTitle(pre) }}</span
                     >
@@ -1297,32 +1135,23 @@ interface PlatformColor {
               </div>
             }
 
-            <!-- Instructor -->
             @if (selectedCourseData()!.instructor) {
-              <p style="font-size: 0.8125rem; color: #5B7065; margin-bottom: 16px;">
+              <p class="text-[0.8125rem] text-pine mb-4">
                 Instructor:
-                <strong style="color: #04202C;">{{ selectedCourseData()!.instructor }}</strong>
+                <strong class="text-forest">{{ selectedCourseData()!.instructor }}</strong>
               </p>
             }
 
-            <!-- Actions -->
-            <div style="display: flex; gap: 12px; margin-top: 20px;">
+            <div class="flex gap-3 mt-5">
               <a
                 [href]="selectedCourseData()!.url"
                 target="_blank"
                 rel="noopener"
                 class="btn btn-primary"
-                style="display: inline-flex; align-items: center; gap: 6px;"
               >
                 Ir al curso
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
                   <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
                   <polyline points="15 3 21 3 21 9" />
                   <line x1="10" y1="14" x2="21" y2="3" />
@@ -1334,18 +1163,12 @@ interface PlatformColor {
         </div>
       }
 
-      <!-- ═══════ IMAGE LIGHTBOX ═══════ -->
+      <!-- IMAGE LIGHTBOX -->
       @if (showImageModal()) {
         <div class="image-lightbox" (click)="showImageModal.set(false)">
           <button class="lightbox-close" (click)="showImageModal.set(false)">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
@@ -1358,9 +1181,7 @@ interface PlatformColor {
         </div>
       }
 
-      <!-- ═══════ COURSE MODAL ═══════ -->
-
-      <!-- ═══════ CERTIFICATION MODAL ═══════ -->
+      <!-- CERTIFICATION MODAL -->
       <app-ccaf-domains
         [domains]="certData()?.domains ?? []"
         [totalQuestions]="ccafConfig()?.totalQuestions ?? config.ccafQuestionCount"

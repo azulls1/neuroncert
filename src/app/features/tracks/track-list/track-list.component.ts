@@ -65,12 +65,10 @@ import { ProgressService } from '../../../core/services/progress.service';
 
       <!-- Track Cards Grid -->
       @if (filteredTracks().length > 0) {
-        <div class="grid-cards stagger-children">
+        <div class="grid-features stagger-children">
           @for (track of filteredTracks(); track track.id) {
-            <div class="card hover-lift animate-fadeInUp">
-              <div
-                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;"
-              >
+            <div class="card-feature hover-lift animate-fadeInUp">
+              <div class="flex items-center justify-between mb-2">
                 <span
                   class="badge"
                   [class.badge-active]="isStarted(track.id)"
@@ -81,35 +79,29 @@ import { ProgressService } from '../../../core/services/progress.service';
                 <span class="tag font-mono">{{ getPlatformLabel(track.platform) }}</span>
               </div>
 
-              <h2 style="margin: 8px 0 4px; font-weight: 600; font-size: 1rem;" class="text-forest">
+              <h2 class="text-forest font-semibold text-base mt-2 mb-1">
                 {{ track.title }}
               </h2>
-              <p style="margin: 0 0 12px; font-size: 0.875rem;" class="text-pine">
+              <p class="text-pine text-sm mb-3">
                 {{ track.description }}
               </p>
 
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+              <div class="flex items-center gap-2 mb-3">
                 <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="text-moss"
+                  width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="text-moss"
                 >
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                <span style="font-size: 0.8125rem;" class="text-pine"
+                <span class="text-pine text-[0.8125rem]"
                   >{{ track.estimatedHours }}h estimadas</span
                 >
               </div>
 
               @if (isStarted(track.id) && getProgress(track.id) > 0) {
-                <div class="progress-labeled" style="margin-bottom: 12px;">
+                <div class="progress-labeled mb-3">
                   <div class="progress">
                     <div
                       class="progress__bar"
@@ -122,10 +114,9 @@ import { ProgressService } from '../../../core/services/progress.service';
               }
 
               <button
-                class="btn"
+                class="btn w-full"
                 [class.btn-primary]="!isStarted(track.id)"
                 [class.btn-secondary]="isStarted(track.id)"
-                style="width: 100%;"
                 (click)="goToTrack(track.id)"
               >
                 {{ isStarted(track.id) ? 'Continuar' : 'Comenzar' }}
@@ -137,13 +128,8 @@ import { ProgressService } from '../../../core/services/progress.service';
         <div class="empty-state animate-fadeInUp">
           <div class="empty-state__icon">
             <svg
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
               stroke-linejoin="round"
             >
               <circle cx="11" cy="11" r="8" />
@@ -158,13 +144,7 @@ import { ProgressService } from '../../../core/services/progress.service';
       }
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class TrackListComponent implements OnInit {
   private destroyRef = inject(DestroyRef);

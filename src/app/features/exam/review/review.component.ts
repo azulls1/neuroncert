@@ -17,14 +17,14 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
     <div class="stack-lg animate-fadeInUp">
       @if (!result()) {
         <!-- No result available -->
-        <div class="card" style="text-align: center; padding: 48px;">
+        <div class="card text-center p-12">
           <div class="empty-state">
             <h3 class="empty-state__title">Sin Resultados de Examen</h3>
             <p class="empty-state__desc">
               No hay resultados de examen para revisar. Toma un examen primero para ver tus
               resultados aqui.
             </p>
-            <div style="margin-top: 20px;">
+            <div class="mt-5">
               <a routerLink="/ccaf/exam" class="btn btn-primary">Comenzar Examen</a>
             </div>
           </div>
@@ -41,77 +41,66 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
           class="card-hero"
           [class.gradient-dark]="!passed()"
           [class.dark-surface]="!passed()"
-          [style.background]="passed() ? 'var(--color-forest-50, #f0fdf4)' : ''"
+          [class.bg-green-50]="passed()"
         >
-          <div
-            style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: center;"
-          >
-            <div style="text-align: center;">
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <div class="text-center">
               <div
-                style="font-size: clamp(2rem, 6vw, 3rem); font-weight: 800;"
-                class="font-mono"
+                class="font-mono font-extrabold text-5xl max-sm:text-3xl"
                 [class.text-forest]="passed()"
               >
                 {{ result()!.score }}%
               </div>
-              <div class="text-pine" style="font-size: 0.875rem;">Puntuacion</div>
+              <div class="text-pine text-sm">Puntuacion</div>
             </div>
 
             @if (result()!.weightedScore !== undefined) {
-              <div style="text-align: center;">
+              <div class="text-center">
                 <div
-                  style="font-size: clamp(1.25rem, 4vw, 2rem); font-weight: 700;"
-                  class="font-mono"
+                  class="font-mono font-bold text-3xl max-sm:text-xl"
                   [class.text-forest]="passed()"
                 >
                   {{ result()!.weightedScore }}/1000
                 </div>
-                <div class="text-pine" style="font-size: 0.875rem;">Score Ponderado</div>
+                <div class="text-pine text-sm">Score Ponderado</div>
               </div>
             }
 
-            <div style="text-align: center;">
+            <div class="text-center">
               <span
-                class="badge"
-                [class.badge-success]="passed()"
+                class="badge text-sm px-4 py-2"
+                [class.badge-active]="passed()"
                 [class.badge-warning]="!passed()"
-                style="font-size: 0.875rem; padding: 8px 16px;"
               >
                 {{ passed() ? 'APROBADO' : 'NO APROBADO' }}
               </span>
             </div>
           </div>
 
-          <div class="grid-stats" style="margin-top: 24px;">
-            <div class="card-compact" style="text-align: center; padding: 12px;">
-              <div class="text-forest font-mono" style="font-size: 1.25rem; font-weight: 700;">
+          <div class="grid-stats mt-6">
+            <div class="card-compact text-center p-3">
+              <div class="text-forest font-mono text-xl font-bold">
                 {{ result()!.summary.correct }}
               </div>
-              <div class="text-pine" style="font-size: 0.8125rem;">Correctas</div>
+              <div class="text-pine text-xs">Correctas</div>
             </div>
-            <div class="card-compact" style="text-align: center; padding: 12px;">
-              <div
-                class="font-mono"
-                style="font-size: 1.25rem; font-weight: 700; color: var(--color-red-600, #dc2626);"
-              >
+            <div class="card-compact text-center p-3">
+              <div class="font-mono text-xl font-bold text-red-600">
                 {{ result()!.summary.incorrect }}
               </div>
-              <div class="text-pine" style="font-size: 0.8125rem;">Incorrectas</div>
+              <div class="text-pine text-xs">Incorrectas</div>
             </div>
-            <div class="card-compact" style="text-align: center; padding: 12px;">
-              <div
-                class="font-mono"
-                style="font-size: 1.25rem; font-weight: 700; color: var(--color-amber-600, #d97706);"
-              >
+            <div class="card-compact text-center p-3">
+              <div class="font-mono text-xl font-bold text-amber-600">
                 {{ result()!.summary.skipped }}
               </div>
-              <div class="text-pine" style="font-size: 0.8125rem;">Omitidas</div>
+              <div class="text-pine text-xs">Omitidas</div>
             </div>
-            <div class="card-compact" style="text-align: center; padding: 12px;">
-              <div class="font-mono" style="font-size: 1.25rem; font-weight: 700;">
+            <div class="card-compact text-center p-3">
+              <div class="font-mono text-xl font-bold">
                 {{ result()!.summary.flagged }}
               </div>
-              <div class="text-pine" style="font-size: 0.8125rem;">Marcadas</div>
+              <div class="text-pine text-xs">Marcadas</div>
             </div>
           </div>
         </div>
@@ -138,42 +127,38 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
             <div class="alert__content">
               <div class="alert__title">Recomendaciones</div>
               @for (rec of result()!.recommendations; track $index) {
-                <p style="margin: 4px 0;">{{ rec }}</p>
+                <p class="my-1">{{ rec }}</p>
               }
             </div>
           </div>
         }
 
-        <!-- Filter Navigation -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <!-- Filter Navigation (tabs-like) -->
+        <div class="tabs">
           <button
-            class="btn"
-            [class.btn-primary]="filter() === 'all'"
-            [class.btn-ghost]="filter() !== 'all'"
+            class="tab"
+            [class.active]="filter() === 'all'"
             (click)="setFilter('all')"
           >
             Todas ({{ questions().length }})
           </button>
           <button
-            class="btn"
-            [class.btn-primary]="filter() === 'correct'"
-            [class.btn-ghost]="filter() !== 'correct'"
+            class="tab"
+            [class.active]="filter() === 'correct'"
             (click)="setFilter('correct')"
           >
             Correctas ({{ correctCount() }})
           </button>
           <button
-            class="btn"
-            [class.btn-primary]="filter() === 'incorrect'"
-            [class.btn-ghost]="filter() !== 'incorrect'"
+            class="tab"
+            [class.active]="filter() === 'incorrect'"
             (click)="setFilter('incorrect')"
           >
             Incorrectas ({{ incorrectCount() }})
           </button>
           <button
-            class="btn"
-            [class.btn-primary]="filter() === 'skipped'"
-            [class.btn-ghost]="filter() !== 'skipped'"
+            class="tab"
+            [class.active]="filter() === 'skipped'"
             (click)="setFilter('skipped')"
           >
             Omitidas ({{ skippedCount() }})
@@ -195,15 +180,13 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
               "
             >
               <!-- Question Header -->
-              <div
-                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;"
-              >
-                <div style="display: flex; align-items: center; gap: 8px;">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex flex-wrap items-center gap-2">
                   <span
                     class="badge"
-                    [class.badge-success]="item.isCorrect"
+                    [class.badge-active]="item.isCorrect"
                     [class.badge-warning]="!item.selectedOptionId"
-                    [class.badge-danger]="!!item.selectedOptionId && !item.isCorrect"
+                    [class.badge-error]="!!item.selectedOptionId && !item.isCorrect"
                   >
                     {{
                       item.isCorrect
@@ -215,19 +198,17 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
                   </span>
                   <span class="badge badge-info">{{ item.domainCode }}</span>
                   @if (item.flagged) {
-                    <span class="tag" style="color: var(--color-amber-600, #d97706);">Marcada</span>
+                    <span class="badge badge-warning">Marcada</span>
                   }
                 </div>
               </div>
 
               <!-- Question Text -->
-              <p style="font-weight: 600; margin-bottom: 4px;">
+              <p class="font-semibold mb-1">
                 {{ getQuestionText(item.questionId) }}
               </p>
               @if (getQuestionTextEs(item.questionId)) {
-                <p
-                  style="font-size: 14px; color: #5B7065; margin: 0 0 16px; padding: 8px 12px; background: #F7F9F8; border-radius: 8px; border-left: 3px solid #9EADA3; line-height: 1.5;"
-                >
+                <p class="text-sm text-pine m-0 mb-4 p-2 px-3 bg-gray-50 rounded-lg border-l-3 border-moss leading-relaxed">
                   {{ getQuestionTextEs(item.questionId) }}
                 </p>
               }
@@ -240,24 +221,18 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
                     [style.border-left]="'3px solid ' + getOptionBorderColor(option.id, item)"
                     [style.background]="getOptionBackground(option.id, item)"
                   >
-                    <div style="display: flex; align-items: flex-start; gap: 8px;">
+                    <div class="flex items-start gap-2">
                       @if (option.id === item.correctOptionId) {
-                        <span style="color: var(--color-forest-500, #22c55e); flex-shrink: 0;"
-                          >&#10003;</span
-                        >
+                        <span class="text-green-600 shrink-0">&#10003;</span>
                       } @else if (option.id === item.selectedOptionId && !item.isCorrect) {
-                        <span style="color: var(--color-red-500, #ef4444); flex-shrink: 0;"
-                          >&#10007;</span
-                        >
+                        <span class="text-red-500 shrink-0">&#10007;</span>
                       } @else {
-                        <span style="visibility: hidden; flex-shrink: 0;">&#10003;</span>
+                        <span class="invisible shrink-0">&#10003;</span>
                       }
-                      <div style="flex: 1;">
+                      <div class="flex-1">
                         <span>{{ option.text }}</span>
                         @if (option.textEs) {
-                          <div
-                            style="font-size: 12px; color: #5B7065; margin-top: 2px; font-style: italic;"
-                          >
+                          <div class="text-xs text-pine mt-0.5 italic">
                             {{ option.textEs }}
                           </div>
                         }
@@ -268,16 +243,14 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
               </div>
 
               <!-- Explanation -->
-              <div class="alert alert-info" style="margin-top: 16px;">
+              <div class="alert alert-info mt-4">
                 <div class="alert__content">
                   <div class="alert__title">Explicacion</div>
                   @if (getQuestionExplanationEs(item.questionId)) {
-                    <div style="margin-bottom: 8px;">
+                    <div class="mb-2">
                       {{ getQuestionExplanationEs(item.questionId) }}
                     </div>
-                    <div
-                      style="font-size: 12px; color: var(--color-text-muted); border-top: 1px solid #EFF2F0; padding-top: 8px;"
-                    >
+                    <div class="text-xs text-pine border-t border-gray-200 pt-2">
                       <strong>EN:</strong> {{ item.explanation }}
                     </div>
                   } @else {
@@ -290,7 +263,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
         </div>
 
         @if (filteredItems().length === 0) {
-          <div class="card" style="text-align: center; padding: 32px;">
+          <div class="card text-center p-8">
             <p class="text-pine">Ninguna pregunta coincide con el filtro seleccionado.</p>
           </div>
         }
@@ -298,7 +271,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
         <div class="divider"></div>
 
         <!-- Action Buttons -->
-        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <div class="flex flex-wrap items-center justify-center gap-3">
           <button class="btn btn-primary" (click)="retakeExam()">Repetir Examen</button>
           <a routerLink="/ccaf" class="btn btn-secondary">Volver a CCA-F</a>
           <a routerLink="/tracks" class="btn btn-ghost">Explorar Tracks</a>
@@ -306,18 +279,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
       }
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-      .stack-sm {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class ReviewComponent {
   private examState = inject(ExamStateService);

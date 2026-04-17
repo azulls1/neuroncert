@@ -15,63 +15,55 @@ import { LoggingService } from '../../core/services/logging.service';
   standalone: true,
   imports: [CommonModule, RouterLink, StatCardComponent],
   template: `
-    <div class="welcome">
+    <div class="overflow-hidden">
       @if (hasResumableExam()) {
-        <div
-          class="alert alert-info"
-          style="margin: 0 0 16px; border-radius: 12px; padding: 16px 20px;"
-        >
-          <div
-            class="alert__content"
-            style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;"
-          >
-            <div class="alert__title" style="margin-right: 4px;">Examen en progreso</div>
+        <div class="alert alert-info mb-4 rounded-xl px-5 py-4">
+          <div class="alert__content flex items-center flex-wrap gap-2">
+            <div class="alert__title mr-1">Examen en progreso</div>
             <span>Tienes un examen sin terminar.</span>
             <a
               routerLink="/exam/run"
               (click)="resumeExam()"
-              class="btn btn-primary"
-              style="margin-left: 12px;"
+              class="btn btn-primary ml-3"
               >Continuar Examen</a
             >
-            <button (click)="dismissResumable()" class="btn btn-ghost" style="margin-left: 8px;">
+            <button (click)="dismissResumable()" class="btn btn-ghost ml-2">
               Descartar
             </button>
           </div>
         </div>
       }
       <!-- HERO -- Full-width gradient with animated elements -->
-      <section class="hero">
-        <div class="hero-bg">
+      <section class="card-hero dark-surface relative min-h-[480px] sm:min-h-[520px] flex items-center justify-center !rounded-none !rounded-b-[32px] !px-6 !py-15 sm:!px-10 sm:!py-20 -mx-8 sm:-mx-12 2xl:-mx-16 -mt-10"
+        style="background: linear-gradient(135deg, #04202c 0%, #1a3036 30%, #304040 60%, #5b7065 100%);">
+        <div class="absolute inset-0 overflow-hidden">
           <!-- Animated gradient orbs -->
-          <div class="hero-orb hero-orb-1"></div>
-          <div class="hero-orb hero-orb-2"></div>
-          <div class="hero-orb hero-orb-3"></div>
+          <div class="absolute rounded-full blur-[80px] opacity-30 w-[400px] h-[400px] bg-pine -top-[100px] -right-[100px] animate-[orbFloat1_8s_ease-in-out_infinite]"></div>
+          <div class="absolute rounded-full blur-[80px] opacity-30 w-[300px] h-[300px] bg-moss -bottom-[50px] -left-[50px] animate-[orbFloat2_10s_ease-in-out_infinite]"></div>
+          <div class="absolute rounded-full blur-[80px] opacity-30 w-[200px] h-[200px] bg-fog top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-[orbFloat3_12s_ease-in-out_infinite]"></div>
         </div>
-        <div class="hero-content">
-          <div class="animate-fadeInUp" style="margin-bottom: 16px;">
+        <div class="relative z-2 text-center max-w-[720px]">
+          <div class="animate-fadeInUp mb-4">
             <img
               src="/assets/icons/logo_ia_withe.webp"
               alt="Claude AI Learning Platform"
-              style="width: 56px; height: 56px; border-radius: 12px; object-fit: contain;"
+              class="w-14 h-14 rounded-xl object-contain"
             />
           </div>
-          <div class="hero-badge animate-fadeInUp">
-            <span class="font-mono" style="font-size: 12px; letter-spacing: 0.1em;"
-              >ECOSISTEMA CLAUDE AI</span
-            >
+          <div class="badge--on-dark animate-fadeInUp inline-block rounded-full px-4 py-1.5 mb-6 backdrop-blur-sm">
+            <span class="font-mono text-xs tracking-widest">ECOSISTEMA CLAUDE AI</span>
           </div>
-          <h1 class="hero-title animate-fadeInUp">
+          <h1 class="card-hero__title animate-fadeInUp !text-[2.5rem] sm:!text-[3.5rem] lg:!text-[4rem] !leading-[1.1] !mb-5 tracking-tight">
             Domina Claude.<br />
-            <span class="hero-title-accent">Tu Ecosistema de Aprendizaje Completo.</span>
+            <span class="bg-gradient-to-br from-moss via-fog to-white bg-clip-text text-transparent">Tu Ecosistema de Aprendizaje Completo.</span>
           </h1>
-          <p class="hero-subtitle animate-fadeInUp">
+          <p class="card-hero__desc animate-fadeInUp text-on-dark-dim !text-base sm:!text-lg !leading-relaxed !mb-8 !max-w-[540px]">
             {{ trackCount() }}+ cursos en {{ platformCount() }} plataformas. {{ certCount() }}+
             certificaciones. {{ levelCount() }} niveles de aprendizaje. Desde principiante hasta
             experto certificado — todos los caminos estan aqui.
           </p>
-          <div class="hero-actions animate-fadeInUp">
-            <a routerLink="/roadmap" class="hero-btn-primary">
+          <div class="flex gap-3 justify-center flex-wrap mb-10 animate-fadeInUp">
+            <a routerLink="/roadmap" class="btn btn-primary--on-dark rounded-xl px-7 py-3 font-semibold text-sm no-underline shadow-lg hover-lift">
               <svg
                 width="20"
                 height="20"
@@ -86,7 +78,7 @@ import { LoggingService } from '../../core/services/logging.service';
               </svg>
               Explorar Roadmap
             </a>
-            <a routerLink="/tracks" class="hero-btn-secondary">
+            <a routerLink="/tracks" class="btn btn-secondary--on-dark rounded-xl px-7 py-3 font-medium text-sm no-underline">
               Ver Todos los Tracks
               <svg
                 width="16"
@@ -102,22 +94,22 @@ import { LoggingService } from '../../core/services/logging.service';
             </a>
           </div>
           <!-- Floating stat pills -->
-          <div class="hero-pills animate-fadeInUp">
-            <div class="hero-pill">
-              <span class="hero-pill-value font-mono">{{ trackCount() }}+</span>
-              <span class="hero-pill-label">Cursos</span>
+          <div class="flex justify-center gap-3 flex-wrap animate-fadeInUp">
+            <div class="card--on-dark flex flex-col items-center px-5 py-3 rounded-xl min-w-[80px] !backdrop-blur-sm">
+              <span class="font-mono text-xl font-bold text-on-dark leading-none">{{ trackCount() }}+</span>
+              <span class="text-on-dark-dim text-[11px] mt-1">Cursos</span>
             </div>
-            <div class="hero-pill">
-              <span class="hero-pill-value font-mono">{{ questionCount() }}+</span>
-              <span class="hero-pill-label">Preguntas</span>
+            <div class="card--on-dark flex flex-col items-center px-5 py-3 rounded-xl min-w-[80px] !backdrop-blur-sm">
+              <span class="font-mono text-xl font-bold text-on-dark leading-none">{{ questionCount() }}+</span>
+              <span class="text-on-dark-dim text-[11px] mt-1">Preguntas</span>
             </div>
-            <div class="hero-pill">
-              <span class="hero-pill-value font-mono">{{ levelCount() }}</span>
-              <span class="hero-pill-label">Niveles</span>
+            <div class="card--on-dark flex flex-col items-center px-5 py-3 rounded-xl min-w-[80px] !backdrop-blur-sm">
+              <span class="font-mono text-xl font-bold text-on-dark leading-none">{{ levelCount() }}</span>
+              <span class="text-on-dark-dim text-[11px] mt-1">Niveles</span>
             </div>
-            <div class="hero-pill">
-              <span class="hero-pill-value font-mono">{{ platformCount() }}</span>
-              <span class="hero-pill-label">Plataformas</span>
+            <div class="card--on-dark flex flex-col items-center px-5 py-3 rounded-xl min-w-[80px] !backdrop-blur-sm">
+              <span class="font-mono text-xl font-bold text-on-dark leading-none">{{ platformCount() }}</span>
+              <span class="text-on-dark-dim text-[11px] mt-1">Plataformas</span>
             </div>
           </div>
         </div>
@@ -133,12 +125,13 @@ import { LoggingService } from '../../core/services/logging.service';
       }
 
       <!-- QUICK ACTIONS -- "What do you want to do?" -->
-      <section class="actions-section">
-        <h2 class="section-title font-display">Que te gustaria hacer?</h2>
-        <div class="actions-grid">
+      <section class="pt-12">
+        <h2 class="font-display text-2xl font-bold text-forest mb-6">Que te gustaria hacer?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <!-- Learning Roadmap -->
-          <a routerLink="/roadmap" class="action-card action-roadmap">
-            <div class="action-icon">
+          <a routerLink="/roadmap" class="card-feature hover-lift flex items-center gap-4 no-underline text-inherit cursor-pointer">
+            <div class="card-feature__icon !w-[52px] !h-[52px] !rounded-[14px] !mb-0 shrink-0"
+              style="background: linear-gradient(135deg, #5b7065, #9eada3); color: white;">
               <svg
                 width="28"
                 height="28"
@@ -152,13 +145,13 @@ import { LoggingService } from '../../core/services/logging.service';
                 <path d="M12 6v6l4 2" />
               </svg>
             </div>
-            <div class="action-content">
-              <h3 class="action-title font-display">Ruta de Aprendizaje</h3>
-              <p class="action-desc">
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display text-[15px] font-semibold text-forest m-0 mb-1">Ruta de Aprendizaje</h3>
+              <p class="text-xs text-gray-600 m-0 leading-snug">
                 Ruta paso a paso con {{ trackCount() }}+ cursos en {{ levelCount() }} niveles.
               </p>
             </div>
-            <div class="action-arrow">
+            <div class="text-gray-400 shrink-0 opacity-50 transition-all duration-250">
               <svg
                 width="20"
                 height="20"
@@ -174,8 +167,9 @@ import { LoggingService } from '../../core/services/logging.service';
           </a>
 
           <!-- All Certifications -->
-          <a routerLink="/roadmap" fragment="certifications" class="action-card action-ccaf">
-            <div class="action-icon">
+          <a routerLink="/roadmap" fragment="certifications" class="card-feature hover-lift flex items-center gap-4 no-underline text-inherit cursor-pointer">
+            <div class="card-feature__icon !w-[52px] !h-[52px] !rounded-[14px] !mb-0 shrink-0"
+              style="background: linear-gradient(135deg, #04202c, #304040); color: white;">
               <svg
                 width="28"
                 height="28"
@@ -189,14 +183,14 @@ import { LoggingService } from '../../core/services/logging.service';
                 <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" />
               </svg>
             </div>
-            <div class="action-content">
-              <h3 class="action-title font-display">Todas las Certificaciones</h3>
-              <p class="action-desc">
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display text-[15px] font-semibold text-forest m-0 mb-1">Todas las Certificaciones</h3>
+              <p class="text-xs text-gray-600 m-0 leading-snug">
                 {{ certCount() }}+ certificados disponibles. Academy, Coursera, DeepLearning.AI y
                 mas.
               </p>
             </div>
-            <div class="action-arrow">
+            <div class="text-gray-400 shrink-0 opacity-50 transition-all duration-250">
               <svg
                 width="20"
                 height="20"
@@ -212,8 +206,9 @@ import { LoggingService } from '../../core/services/logging.service';
           </a>
 
           <!-- Learning Tracks -->
-          <a routerLink="/tracks" class="action-card action-tracks">
-            <div class="action-icon">
+          <a routerLink="/tracks" class="card-feature hover-lift flex items-center gap-4 no-underline text-inherit cursor-pointer">
+            <div class="card-feature__icon !w-[52px] !h-[52px] !rounded-[14px] !mb-0 shrink-0"
+              style="background: linear-gradient(135deg, #304040, #5b7065); color: white;">
               <svg
                 width="28"
                 height="28"
@@ -227,13 +222,13 @@ import { LoggingService } from '../../core/services/logging.service';
                 <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
               </svg>
             </div>
-            <div class="action-content">
-              <h3 class="action-title font-display">Tracks de Aprendizaje</h3>
-              <p class="action-desc">
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display text-[15px] font-semibold text-forest m-0 mb-1">Tracks de Aprendizaje</h3>
+              <p class="text-xs text-gray-600 m-0 leading-snug">
                 Explora cursos por plataforma y nivel. Encuentra tu siguiente habilidad.
               </p>
             </div>
-            <div class="action-arrow">
+            <div class="text-gray-400 shrink-0 opacity-50 transition-all duration-250">
               <svg
                 width="20"
                 height="20"
@@ -249,8 +244,9 @@ import { LoggingService } from '../../core/services/logging.service';
           </a>
 
           <!-- Practice & Exams -->
-          <a routerLink="/exam/start" class="action-card action-practice">
-            <div class="action-icon">
+          <a routerLink="/exam/start" class="card-feature hover-lift flex items-center gap-4 no-underline text-inherit cursor-pointer">
+            <div class="card-feature__icon !w-[52px] !h-[52px] !rounded-[14px] !mb-0 shrink-0"
+              style="background: linear-gradient(135deg, #1a3036, #5b7065); color: white;">
               <svg
                 width="28"
                 height="28"
@@ -265,14 +261,14 @@ import { LoggingService } from '../../core/services/logging.service';
                 />
               </svg>
             </div>
-            <div class="action-content">
-              <h3 class="action-title font-display">Practica y Examenes</h3>
-              <p class="action-desc">
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display text-[15px] font-semibold text-forest m-0 mb-1">Practica y Examenes</h3>
+              <p class="text-xs text-gray-600 m-0 leading-snug">
                 {{ questionCount() }}+ preguntas de practica. Simulador CCA-F, flashcards, repaso de
                 conceptos.
               </p>
             </div>
-            <div class="action-arrow">
+            <div class="text-gray-400 shrink-0 opacity-50 transition-all duration-250">
               <svg
                 width="20"
                 height="20"
@@ -290,9 +286,9 @@ import { LoggingService } from '../../core/services/logging.service';
       </section>
 
       <!-- YOUR PROGRESS -->
-      <section class="progress-section">
-        <h2 class="section-title font-display">Tu Progreso</h2>
-        <div class="stats-grid">
+      <section class="pt-12">
+        <h2 class="font-display text-2xl font-bold text-forest mb-6">Tu Progreso</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
           <app-stat-card
             [value]="'' + overallProgress().tracksStarted"
             label="Tracks Iniciados"
@@ -387,24 +383,22 @@ import { LoggingService } from '../../core/services/logging.service';
       </section>
 
       <!-- CERTIFICATION PATHS -->
-      <section class="spotlight">
-        <div class="spotlight-card">
-          <div class="spotlight-bg"></div>
-          <div class="spotlight-content">
-            <div class="spotlight-badge font-mono">{{ certCount() }}+ CERTIFICADOS DISPONIBLES</div>
-            <h2 class="spotlight-title font-display">Tus Rutas de Certificacion</h2>
-            <p class="spotlight-desc">
+      <section class="pt-12 pb-4">
+        <div class="card-hero dark-surface relative !rounded-[20px] !px-8 !py-10 sm:!px-10 sm:!py-12">
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(91,112,101,0.3)_0%,_transparent_60%)]"></div>
+          <div class="relative z-2">
+            <div class="tag--on-dark font-mono !text-[11px] !tracking-widest text-on-dark-dim mb-4">{{ certCount() }}+ CERTIFICADOS DISPONIBLES</div>
+            <h2 class="card-hero__title font-display !text-left !text-[1.75rem] sm:!text-[2rem] !leading-tight !mb-3">Tus Rutas de Certificacion</h2>
+            <p class="card-hero__desc !text-left !text-sm !leading-relaxed !mb-6 !max-w-[560px] !mx-0">
               Multiples caminos para demostrar tu experiencia con Claude. Desde cursos gratuitos
               hasta certificaciones formales.
             </p>
 
-            <div class="cert-paths">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-5">
               <!-- Formal cert -->
-              <div class="cert-path-card">
-                <div
-                  class="cert-path-icon"
-                  style="background: linear-gradient(135deg, #D97706, #F59E0B);"
-                >
+              <div class="card--on-dark flex items-start gap-3.5 !p-4 !rounded-xl transition-fast">
+                <div class="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0 text-white"
+                  style="background: linear-gradient(135deg, #D97706, #F59E0B);">
                   <svg
                     width="24"
                     height="24"
@@ -418,23 +412,21 @@ import { LoggingService } from '../../core/services/logging.service';
                     <path d="M9 12l2 2 4-4" />
                   </svg>
                 </div>
-                <div class="cert-path-info">
-                  <h3 class="cert-path-name font-display">Certificacion CCA-F</h3>
-                  <p class="cert-path-detail">
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-display text-sm font-semibold text-on-dark m-0 mb-1">Certificacion CCA-F</h3>
+                  <p class="text-[11px] text-on-dark-muted m-0 leading-snug">
                     Examen supervisado. {{ ccafTotalQuestions() }} preguntas,
                     {{ ccafPassingScore() }}/{{ ccafMaxScore() }} para aprobar. Badge digital via
                     Credly.
                   </p>
-                  <span class="cert-path-meta font-mono">$0 - $99</span>
+                  <span class="font-mono text-[10px] text-on-dark-dim inline-block mt-1.5">$0 - $99</span>
                 </div>
               </div>
 
               <!-- Academy certs -->
-              <div class="cert-path-card">
-                <div
-                  class="cert-path-icon"
-                  style="background: linear-gradient(135deg, #04202C, #304040);"
-                >
+              <div class="card--on-dark flex items-start gap-3.5 !p-4 !rounded-xl transition-fast">
+                <div class="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0 text-white"
+                  style="background: linear-gradient(135deg, #04202C, #304040);">
                   <svg
                     width="24"
                     height="24"
@@ -448,22 +440,20 @@ import { LoggingService } from '../../core/services/logging.service';
                     <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
                   </svg>
                 </div>
-                <div class="cert-path-info">
-                  <h3 class="cert-path-name font-display">Anthropic Academy</h3>
-                  <p class="cert-path-detail">
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-display text-sm font-semibold text-on-dark m-0 mb-1">Anthropic Academy</h3>
+                  <p class="text-[11px] text-on-dark-muted m-0 leading-snug">
                     {{ academyTrackCount() }} certificados de completacion gratuitos. Oficiales de
                     Anthropic en Skilljar.
                   </p>
-                  <span class="cert-path-meta font-mono">GRATIS</span>
+                  <span class="font-mono text-[10px] text-on-dark-dim inline-block mt-1.5">GRATIS</span>
                 </div>
               </div>
 
               <!-- Coursera certs -->
-              <div class="cert-path-card">
-                <div
-                  class="cert-path-icon"
-                  style="background: linear-gradient(135deg, #0056D2, #2563EB);"
-                >
+              <div class="card--on-dark flex items-start gap-3.5 !p-4 !rounded-xl transition-fast">
+                <div class="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0 text-white"
+                  style="background: linear-gradient(135deg, #0056D2, #2563EB);">
                   <svg
                     width="24"
                     height="24"
@@ -477,22 +467,20 @@ import { LoggingService } from '../../core/services/logging.service';
                     <polygon points="10 8 16 12 10 16 10 8" />
                   </svg>
                 </div>
-                <div class="cert-path-info">
-                  <h3 class="cert-path-name font-display">Certificados Coursera</h3>
-                  <p class="cert-path-detail">
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-display text-sm font-semibold text-on-dark m-0 mb-1">Certificados Coursera</h3>
+                  <p class="text-[11px] text-on-dark-muted m-0 leading-snug">
                     {{ courseraTrackCount() }} certificados disponibles. Anthropic, Vanderbilt,
                     Edureka.
                   </p>
-                  <span class="cert-path-meta font-mono">~$49/mo</span>
+                  <span class="font-mono text-[10px] text-on-dark-dim inline-block mt-1.5">~$49/mo</span>
                 </div>
               </div>
 
               <!-- DeepLearning.AI -->
-              <div class="cert-path-card">
-                <div
-                  class="cert-path-icon"
-                  style="background: linear-gradient(135deg, #FF6F00, #FF9800);"
-                >
+              <div class="card--on-dark flex items-start gap-3.5 !p-4 !rounded-xl transition-fast">
+                <div class="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0 text-white"
+                  style="background: linear-gradient(135deg, #FF6F00, #FF9800);">
                   <svg
                     width="24"
                     height="24"
@@ -508,22 +496,20 @@ import { LoggingService } from '../../core/services/logging.service';
                     <path d="M12 8v4l3 3" />
                   </svg>
                 </div>
-                <div class="cert-path-info">
-                  <h3 class="cert-path-name font-display">DeepLearning.AI</h3>
-                  <p class="cert-path-detail">
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-display text-sm font-semibold text-on-dark m-0 mb-1">DeepLearning.AI</h3>
+                  <p class="text-[11px] text-on-dark-muted m-0 leading-snug">
                     {{ deeplearningTrackCount() }} certificados gratuitos de cursos cortos. Con
                     Andrew Ng y equipo Anthropic.
                   </p>
-                  <span class="cert-path-meta font-mono">GRATIS</span>
+                  <span class="font-mono text-[10px] text-on-dark-dim inline-block mt-1.5">GRATIS</span>
                 </div>
               </div>
 
               <!-- Upcoming -->
-              <div class="cert-path-card" style="opacity: 0.6;">
-                <div
-                  class="cert-path-icon"
-                  style="background: linear-gradient(135deg, #6B7280, #9CA3AF);"
-                >
+              <div class="card--on-dark flex items-start gap-3.5 !p-4 !rounded-xl transition-fast opacity-60">
+                <div class="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0 text-white"
+                  style="background: linear-gradient(135deg, #6B7280, #9CA3AF);">
                   <svg
                     width="24"
                     height="24"
@@ -537,21 +523,21 @@ import { LoggingService } from '../../core/services/logging.service';
                     <path d="M12 6v6l4 2" />
                   </svg>
                 </div>
-                <div class="cert-path-info">
-                  <h3 class="cert-path-name font-display">Proximamente S2 2026</h3>
-                  <p class="cert-path-detail">
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-display text-sm font-semibold text-on-dark m-0 mb-1">Proximamente S2 2026</h3>
+                  <p class="text-[11px] text-on-dark-muted m-0 leading-snug">
                     Certificaciones Seller, Developer y Advanced Architect anunciadas.
                   </p>
-                  <span class="cert-path-meta font-mono">POR VENIR</span>
+                  <span class="font-mono text-[10px] text-on-dark-dim inline-block mt-1.5">POR VENIR</span>
                 </div>
               </div>
             </div>
 
-            <div class="spotlight-actions" style="margin-top: 28px;">
-              <a routerLink="/roadmap" class="hero-btn-primary" style="padding: 10px 24px;">
+            <div class="flex gap-3 flex-wrap mt-7">
+              <a routerLink="/roadmap" class="btn btn-primary--on-dark rounded-xl px-6 py-2.5 font-semibold text-sm no-underline hover-lift">
                 Ver Roadmap Completo
               </a>
-              <a routerLink="/ccaf" class="hero-btn-secondary" style="padding: 10px 24px;">
+              <a routerLink="/ccaf" class="btn btn-secondary--on-dark rounded-xl px-6 py-2.5 font-medium text-sm no-underline">
                 Practicar CCA-F
               </a>
             </div>
@@ -560,520 +546,7 @@ import { LoggingService } from '../../core/services/logging.service';
       </section>
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-
-      .welcome {
-        overflow: hidden;
-      }
-
-      /* ====== HERO ====== */
-      .hero {
-        position: relative;
-        min-height: 480px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 60px 24px 48px;
-        overflow: hidden;
-        background: linear-gradient(135deg, #04202c 0%, #1a3036 30%, #304040 60%, #5b7065 100%);
-        border-radius: 0 0 32px 32px;
-        margin: -40px -48px 0;
-      }
-
-      @media (min-width: 640px) {
-        .hero {
-          min-height: 520px;
-          padding: 80px 40px 60px;
-          margin: -40px -48px 0;
-        }
-      }
-
-      @media (min-width: 1440px) {
-        .hero {
-          margin: -40px -64px 0;
-        }
-      }
-
-      .hero-bg {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-      }
-
-      .hero-orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.3;
-      }
-
-      .hero-orb-1 {
-        width: 400px;
-        height: 400px;
-        background: #5b7065;
-        top: -100px;
-        right: -100px;
-        animation: orbFloat1 8s ease-in-out infinite;
-      }
-
-      .hero-orb-2 {
-        width: 300px;
-        height: 300px;
-        background: #9eada3;
-        bottom: -50px;
-        left: -50px;
-        animation: orbFloat2 10s ease-in-out infinite;
-      }
-
-      .hero-orb-3 {
-        width: 200px;
-        height: 200px;
-        background: #c9d1c8;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation: orbFloat3 12s ease-in-out infinite;
-      }
-
-      @keyframes orbFloat1 {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        50% {
-          transform: translate(-30px, 20px) scale(1.1);
-        }
-      }
-
-      @keyframes orbFloat2 {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        50% {
-          transform: translate(20px, -30px) scale(1.05);
-        }
-      }
-
-      @keyframes orbFloat3 {
-        0%,
-        100% {
-          transform: translate(-50%, -50%) scale(1);
-          opacity: 0.2;
-        }
-        50% {
-          transform: translate(-50%, -50%) scale(1.2);
-          opacity: 0.4;
-        }
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        max-width: 720px;
-      }
-
-      .hero-badge {
-        display: inline-block;
-        padding: 6px 16px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 9999px;
-        color: #c9d1c8;
-        margin-bottom: 24px;
-        backdrop-filter: blur(8px);
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .hero-title {
-        font-family: 'Sora', sans-serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: white;
-        line-height: 1.1;
-        margin: 0 0 20px;
-        letter-spacing: -0.02em;
-      }
-
-      @media (min-width: 640px) {
-        .hero-title {
-          font-size: 3.5rem;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .hero-title {
-          font-size: 4rem;
-        }
-      }
-
-      .hero-title-accent {
-        background: linear-gradient(135deg, #9eada3, #c9d1c8, #ffffff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-        color: #7d9088;
-        line-height: 1.6;
-        margin: 0 0 32px;
-        max-width: 540px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      @media (min-width: 640px) {
-        .hero-subtitle {
-          font-size: 1.125rem;
-        }
-      }
-
-      .hero-actions {
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-      }
-
-      .hero-btn-primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 28px;
-        background: white;
-        color: #04202c;
-        font-weight: 600;
-        font-size: 14px;
-        border-radius: 12px;
-        text-decoration: none;
-        transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-      }
-
-      .hero-btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      }
-
-      .hero-btn-secondary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 28px;
-        background: transparent;
-        color: white;
-        font-weight: 500;
-        font-size: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 12px;
-        text-decoration: none;
-        transition: all 0.25s ease;
-      }
-
-      .hero-btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.4);
-      }
-
-      .hero-pills {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-
-      .hero-pill {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 12px 20px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        backdrop-filter: blur(8px);
-        min-width: 80px;
-      }
-
-      .hero-pill-value {
-        font-size: 20px;
-        font-weight: 700;
-        color: white;
-        line-height: 1;
-      }
-
-      .hero-pill-label {
-        font-size: 11px;
-        color: #7d9088;
-        margin-top: 4px;
-      }
-
-      /* ====== ACTIONS ====== */
-      .actions-section {
-        padding: 48px 0 0;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #04202c;
-        margin-bottom: 24px;
-      }
-
-      .actions-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      @media (min-width: 640px) {
-        .actions-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      .action-card {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 20px;
-        background: white;
-        border: 1px solid #eff2f0;
-        border-radius: 16px;
-        text-decoration: none;
-        color: inherit;
-        transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
-        cursor: pointer;
-      }
-
-      .action-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 32px rgba(4, 32, 44, 0.08);
-        border-color: #c9d1c8;
-      }
-
-      .action-card:hover .action-arrow {
-        transform: translateX(4px);
-        opacity: 1;
-      }
-
-      .action-card:hover .action-icon {
-        transform: scale(1.1);
-      }
-
-      .action-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        transition: transform 0.25s ease;
-      }
-
-      .action-ccaf .action-icon {
-        background: linear-gradient(135deg, #04202c, #304040);
-        color: white;
-      }
-      .action-tracks .action-icon {
-        background: linear-gradient(135deg, #304040, #5b7065);
-        color: white;
-      }
-      .action-roadmap .action-icon {
-        background: linear-gradient(135deg, #5b7065, #9eada3);
-        color: white;
-      }
-      .action-practice .action-icon {
-        background: linear-gradient(135deg, #1a3036, #5b7065);
-        color: white;
-      }
-
-      .action-content {
-        flex: 1;
-        min-width: 0;
-      }
-      .action-title {
-        font-size: 15px;
-        font-weight: 600;
-        color: #04202c;
-        margin: 0 0 4px;
-      }
-      .action-desc {
-        font-size: 12px;
-        color: #5b6b62;
-        margin: 0;
-        line-height: 1.4;
-      }
-
-      .action-arrow {
-        color: #7d9088;
-        flex-shrink: 0;
-        opacity: 0.5;
-        transition: all 0.25s ease;
-      }
-
-      /* ====== PROGRESS STATS ====== */
-      .progress-section {
-        padding: 48px 0 0;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      @media (min-width: 768px) {
-        .stats-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      /* ====== CCA-F SPOTLIGHT ====== */
-      .spotlight {
-        padding: 48px 0 16px;
-      }
-
-      .spotlight-card {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        background: linear-gradient(135deg, #04202c 0%, #1a3036 40%, #304040 100%);
-        padding: 40px 32px;
-        color: white;
-      }
-
-      @media (min-width: 640px) {
-        .spotlight-card {
-          padding: 48px 40px;
-        }
-      }
-
-      .spotlight-bg {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          ellipse at top right,
-          rgba(91, 112, 101, 0.3) 0%,
-          transparent 60%
-        );
-      }
-
-      .spotlight-content {
-        position: relative;
-        z-index: 2;
-      }
-
-      .spotlight-badge {
-        display: inline-block;
-        padding: 4px 12px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 4px;
-        color: #7d9088;
-        font-size: 11px;
-        letter-spacing: 0.1em;
-        margin-bottom: 16px;
-      }
-
-      .spotlight-title {
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin: 0 0 12px;
-        line-height: 1.2;
-      }
-
-      @media (min-width: 640px) {
-        .spotlight-title {
-          font-size: 2rem;
-        }
-      }
-
-      .spotlight-desc {
-        font-size: 14px;
-        color: #c9d1c8;
-        margin: 0 0 24px;
-        max-width: 560px;
-        line-height: 1.6;
-      }
-
-      .spotlight-actions {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-
-      /* ====== CERT PATHS ====== */
-      .cert-paths {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      @media (min-width: 640px) {
-        .cert-paths {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      .cert-path-card {
-        display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        padding: 16px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        transition: all 0.2s ease;
-      }
-
-      .cert-path-card:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.15);
-      }
-
-      .cert-path-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        color: white;
-      }
-
-      .cert-path-info {
-        flex: 1;
-        min-width: 0;
-      }
-      .cert-path-name {
-        font-size: 14px;
-        font-weight: 600;
-        color: white;
-        margin: 0 0 4px;
-      }
-      .cert-path-detail {
-        font-size: 11px;
-        color: #c9d1c8;
-        margin: 0;
-        line-height: 1.4;
-      }
-      .cert-path-meta {
-        font-size: 10px;
-        color: #7d9088;
-        margin-top: 6px;
-        display: inline-block;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class DashboardComponent implements OnInit {
   private destroyRef = inject(DestroyRef);

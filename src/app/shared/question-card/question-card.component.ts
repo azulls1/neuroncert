@@ -22,9 +22,9 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
   template: `
     <div class="card-section hover-lift" aria-live="polite" [attr.aria-atomic]="true">
       <!-- Header de la pregunta -->
-      <div class="qc-header">
-        <div class="qc-meta">
-          <span class="font-display text-forest" style="font-size: 18px; font-weight: 700;"
+      <div class="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-start">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="font-display text-forest text-lg font-bold"
             >Pregunta {{ questionNumber() }}</span
           >
           <span class="tag">{{ domainName() }}</span>
@@ -55,31 +55,25 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
         </button>
       </div>
 
-      <div class="divider-subtle" style="margin: 16px 0;"></div>
+      <div class="divider-subtle my-4"></div>
 
       <!-- Texto de la pregunta -->
-      <div style="margin-bottom: 24px;">
-        <h2
-          style="font-size: 18px; font-weight: 600; color: var(--color-text-primary); line-height: 1.6; margin: 0;"
-        >
+      <div class="mb-6">
+        <h2 class="text-lg font-semibold text-gray-900 leading-relaxed m-0">
           {{ question().text }}
         </h2>
         @if (question().textEs) {
           <p
-            style="font-size: 14px; color: #5B7065; margin: 6px 0 0; line-height: 1.5; padding: 8px 12px; background: #F7F9F8; border-radius: 8px; border-left: 3px solid #9EADA3;"
+            class="text-sm text-pine mt-1.5 leading-snug py-2 px-3 bg-gray-50 rounded-lg border-l-3 border-moss"
           >
             {{ question().textEs }}
           </p>
         }
 
         @if (question().context) {
-          <div class="qc-context">
-            <div
-              style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 6px;"
-            >
-              Contexto:
-            </div>
-            <div style="font-size: 13px; color: var(--color-text-muted); line-height: 1.5;">
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 mt-3">
+            <div class="text-xs font-semibold text-gray-700 mb-1.5">Contexto:</div>
+            <div class="text-xs text-gray-500 leading-snug">
               {{ question().context }}
             </div>
           </div>
@@ -88,11 +82,10 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
 
       <!-- Opciones de respuesta -->
       <div
-        class="stack"
+        class="stack mb-5"
         role="radiogroup"
         [attr.aria-label]="'Opciones para la pregunta ' + questionNumber()"
         (keydown)="onRadiogroupKeydown($event)"
-        style="margin-bottom: 20px;"
       >
         @for (option of question().options; track option.id) {
           <label
@@ -107,18 +100,18 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
               [value]="option.id"
               [checked]="isOptionSelected(option.id)"
               (change)="onOptionSelect(option.id)"
-              class="qc-radio"
+              class="m-0 w-[18px] h-[18px] accent-forest shrink-0 mt-0.5"
             />
-            <div class="qc-option-content">
-              <span class="qc-option-label text-forest">{{ getOptionLabel(option.order) }}</span>
-              <div style="flex: 1;">
-                <div style="font-size: 14px; color: var(--color-text-primary); line-height: 1.5;">
+            <div class="flex-1 flex items-start gap-2.5">
+              <span class="font-bold min-w-[20px] text-[15px] text-forest">{{
+                getOptionLabel(option.order)
+              }}</span>
+              <div class="flex-1">
+                <div class="text-sm text-gray-900 leading-snug">
                   {{ option.text }}
                 </div>
                 @if (option.textEs) {
-                  <div
-                    style="font-size: 12px; color: #5B7065; line-height: 1.3; margin-top: 3px; font-style: italic;"
-                  >
+                  <div class="text-xs text-pine leading-tight mt-0.5 italic">
                     {{ option.textEs }}
                   </div>
                 }
@@ -129,10 +122,10 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
       </div>
 
       <!-- Footer de la pregunta -->
-      <div class="divider-subtle" style="margin-bottom: 12px;"></div>
-      <div class="qc-footer">
+      <div class="divider-subtle mb-3"></div>
+      <div class="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-start">
         @if (question().timeSpent && (question().timeSpent || 0) > 0) {
-          <div class="qc-time">
+          <div class="flex items-center gap-1.5 text-gray-500">
             <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fill-rule="evenodd"
@@ -140,24 +133,18 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
                 clip-rule="evenodd"
               ></path>
             </svg>
-            <span class="font-mono" style="font-size: 13px;">{{
+            <span class="font-mono text-xs">{{
               formatTime(question().timeSpent || 0)
             }}</span>
           </div>
         }
 
         @if (question().references && (question().references || []).length > 0) {
-          <div style="flex: 1;">
-            <div
-              style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 4px;"
-            >
-              Referencias:
-            </div>
-            <ul style="list-style: none; padding: 0; margin: 0;">
+          <div class="flex-1">
+            <div class="text-xs font-semibold text-gray-700 mb-1">Referencias:</div>
+            <ul class="list-none p-0 m-0">
               @for (ref of question().references; track ref) {
-                <li style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 2px;">
-                  {{ ref }}
-                </li>
+                <li class="text-xs text-gray-500 mb-0.5">{{ ref }}</li>
               }
             </ul>
           </div>
@@ -167,30 +154,10 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
   `,
   styles: [
     `
-      .qc-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-
-      .qc-meta {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
       .qc-flag-active {
         background: #d97706 !important;
         color: white !important;
         border-color: #b45309 !important;
-      }
-
-      .qc-context {
-        background: var(--color-bg-muted);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-md);
-        padding: 12px;
       }
 
       .qc-option {
@@ -215,60 +182,9 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
         background: var(--forest-50);
       }
 
-      .qc-radio {
-        margin: 0;
-        width: 18px;
-        height: 18px;
-        accent-color: var(--forest-900);
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-
-      .qc-option-content {
-        flex: 1;
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .qc-option-label {
-        font-weight: 700;
-        min-width: 20px;
-        font-size: 15px;
-      }
-
-      .qc-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 16px;
-      }
-
-      .qc-time {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        color: var(--color-text-muted);
-      }
-
       @media (max-width: 768px) {
-        .qc-header {
-          flex-direction: column;
-          gap: 12px;
-        }
-
         .qc-option {
           padding: 10px;
-        }
-
-        .qc-option-content {
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .qc-footer {
-          flex-direction: column;
-          gap: 12px;
         }
       }
     `,

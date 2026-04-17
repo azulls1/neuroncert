@@ -22,33 +22,34 @@ export interface QuestionStatus {
   template: `
     <div class="card-section" role="navigation" aria-label="Progreso del examen">
       <!-- Header del progreso -->
-      <div style="margin-bottom: 12px;">
-        <h3
-          class="font-display"
-          style="font-size: 14px; font-weight: 700; color: var(--color-text-primary); margin: 0 0 8px 0;"
-        >
-          Progreso
-        </h3>
-        <div class="ps-stats">
-          <div class="ps-stat-item">
-            <span class="ps-stat-number text-forest">{{ answeredCount() }}</span>
-            <span class="ps-stat-label">Resp.</span>
+      <div class="mb-3">
+        <h3 class="font-display text-sm font-bold text-gray-900 m-0 mb-2">Progreso</h3>
+        <div class="flex gap-2 justify-between">
+          <div
+            class="flex flex-col items-center text-center flex-1 py-1.5 px-1 bg-gray-50 rounded-lg"
+          >
+            <span class="text-lg font-bold leading-none text-forest">{{ answeredCount() }}</span>
+            <span class="text-[10px] text-gray-500 mt-0.5">Resp.</span>
           </div>
-          <div class="ps-stat-item">
-            <span class="ps-stat-number" style="color: #D97706;">{{ flaggedCount() }}</span>
-            <span class="ps-stat-label">Marc.</span>
+          <div
+            class="flex flex-col items-center text-center flex-1 py-1.5 px-1 bg-gray-50 rounded-lg"
+          >
+            <span class="text-lg font-bold leading-none text-amber-600">{{ flaggedCount() }}</span>
+            <span class="text-[10px] text-gray-500 mt-0.5">Marc.</span>
           </div>
-          <div class="ps-stat-item">
-            <span class="ps-stat-number" style="color: var(--color-text-muted);">{{
+          <div
+            class="flex flex-col items-center text-center flex-1 py-1.5 px-1 bg-gray-50 rounded-lg"
+          >
+            <span class="text-lg font-bold leading-none text-gray-500">{{
               remainingCount()
             }}</span>
-            <span class="ps-stat-label">Rest.</span>
+            <span class="text-[10px] text-gray-500 mt-0.5">Rest.</span>
           </div>
         </div>
       </div>
 
       <!-- Barra de progreso general -->
-      <div class="progress-labeled" style="margin-bottom: 16px;">
+      <div class="progress-labeled mb-4">
         <div class="progress progress--success">
           <div class="progress__bar" [style.width.%]="progressPercentage()"></div>
         </div>
@@ -57,83 +58,57 @@ export interface QuestionStatus {
 
       <!-- Grid de preguntas -->
       <div
-        class="ps-questions-grid"
+        class="ps-questions-grid mb-4"
         role="group"
         aria-label="Navegacion de preguntas"
         (keydown)="onGridKeydown($event)"
-        style="margin-bottom: 16px;"
       >
         @for (status of questionStatuses(); track status.index) {
           <button
             type="button"
-            class="pagination__btn"
+            class="pagination__btn ps-grid-btn"
             [class.ps-answered]="status.answered"
             [class.ps-flagged]="status.flagged"
             [class.ps-current]="status.current"
             [attr.aria-label]="getQuestionAriaLabel(status)"
             (click)="onQuestionClick()(status.index)"
           >
-            <span style="font-size: 12px; font-weight: 600;">{{ status.index + 1 }}</span>
+            <span class="text-xs font-semibold">{{ status.index + 1 }}</span>
             @if (status.flagged) {
-              <span class="ps-flag-indicator" aria-label="Marcada para revisar">!</span>
+              <span
+                class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-amber-600 text-white rounded-full text-[9px] font-bold flex items-center justify-center leading-none"
+                aria-label="Marcada para revisar"
+                >!</span
+              >
             }
           </button>
         }
       </div>
 
       <!-- Leyenda -->
-      <div class="divider-subtle" style="margin-bottom: 12px;"></div>
-      <div class="ps-legend">
-        <div class="ps-legend-item">
-          <div class="ps-legend-dot ps-legend-dot--answered"></div>
-          <span style="font-size: 12px; color: var(--color-text-muted);">Respondida</span>
+      <div class="divider-subtle mb-3"></div>
+      <div class="grid grid-cols-2 gap-1.5">
+        <div class="flex items-center gap-1.5">
+          <div class="w-3 h-3 rounded-full bg-forest border border-forest"></div>
+          <span class="text-xs text-gray-500">Respondida</span>
         </div>
-        <div class="ps-legend-item">
-          <div class="ps-legend-dot ps-legend-dot--flagged"></div>
-          <span style="font-size: 12px; color: var(--color-text-muted);">Marcada</span>
+        <div class="flex items-center gap-1.5">
+          <div class="w-3 h-3 rounded-full bg-amber-600 border border-amber-700"></div>
+          <span class="text-xs text-gray-500">Marcada</span>
         </div>
-        <div class="ps-legend-item">
-          <div class="ps-legend-dot ps-legend-dot--current"></div>
-          <span style="font-size: 12px; color: var(--color-text-muted);">Actual</span>
+        <div class="flex items-center gap-1.5">
+          <div class="w-3 h-3 rounded-full bg-gray-50 border-2 border-forest"></div>
+          <span class="text-xs text-gray-500">Actual</span>
         </div>
-        <div class="ps-legend-item">
-          <div class="ps-legend-dot ps-legend-dot--unanswered"></div>
-          <span style="font-size: 12px; color: var(--color-text-muted);">Sin responder</span>
+        <div class="flex items-center gap-1.5">
+          <div class="w-3 h-3 rounded-full bg-white border border-gray-200"></div>
+          <span class="text-xs text-gray-500">Sin responder</span>
         </div>
       </div>
     </div>
   `,
   styles: [
     `
-      .ps-stats {
-        display: flex;
-        gap: 8px;
-        justify-content: space-between;
-      }
-
-      .ps-stat-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        flex: 1;
-        padding: 6px 4px;
-        background: var(--color-bg-muted, #f7f8f7);
-        border-radius: 8px;
-      }
-
-      .ps-stat-number {
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 1;
-      }
-
-      .ps-stat-label {
-        font-size: 10px;
-        color: var(--color-text-muted);
-        margin-top: 2px;
-      }
-
       .ps-questions-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
@@ -143,7 +118,7 @@ export interface QuestionStatus {
         padding: 4px;
       }
 
-      .ps-questions-grid .pagination__btn {
+      .ps-grid-btn {
         position: relative;
         width: 36px;
         height: 36px;
@@ -155,84 +130,28 @@ export interface QuestionStatus {
         transition: all var(--duration-normal) var(--ease-apple);
       }
 
-      .ps-questions-grid .pagination__btn:hover:not(:disabled) {
+      .ps-grid-btn:hover:not(:disabled) {
         background: var(--color-bg-hover);
         border-color: var(--color-text-accent);
       }
 
-      .ps-questions-grid .pagination__btn.ps-answered {
+      .ps-grid-btn.ps-answered {
         background: var(--forest-900);
         border-color: var(--forest-900);
         color: white;
       }
 
-      .ps-questions-grid .pagination__btn.ps-flagged {
+      .ps-grid-btn.ps-flagged {
         background: #d97706;
         border-color: #b45309;
         color: white;
       }
 
-      .ps-questions-grid .pagination__btn.ps-current {
+      .ps-grid-btn.ps-current {
         border-color: var(--forest-900);
         background: var(--forest-50);
         color: var(--forest-900);
         box-shadow: 0 0 0 2px rgba(4, 32, 44, 0.2);
-      }
-
-      .ps-flag-indicator {
-        position: absolute;
-        top: -4px;
-        right: -4px;
-        width: 14px;
-        height: 14px;
-        background: #d97706;
-        color: white;
-        border-radius: 50%;
-        font-size: 9px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-      }
-
-      .ps-legend {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6px;
-      }
-
-      .ps-legend-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      .ps-legend-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 1px solid var(--color-border);
-      }
-
-      .ps-legend-dot--answered {
-        background: var(--forest-900);
-        border-color: var(--forest-900);
-      }
-
-      .ps-legend-dot--flagged {
-        background: #d97706;
-        border-color: #b45309;
-      }
-
-      .ps-legend-dot--current {
-        background: var(--forest-50);
-        border-color: var(--forest-900);
-      }
-
-      .ps-legend-dot--unanswered {
-        background: white;
-        border-color: var(--color-border);
       }
 
       @media (max-width: 1023px) {

@@ -27,7 +27,7 @@ import { ExamResult } from '../../../core/models';
             ></path>
           </svg>
         </div>
-        <h1 class="page-header__title font-display text-3xl">¡Examen Completado!</h1>
+        <h1 class="page-header__title font-display text-3xl">Examen Completado!</h1>
         <p class="page-header__desc mt-2">
           Has terminado el Simulador CCA-F Claude AI. Aqui estan tus resultados.
         </p>
@@ -41,16 +41,16 @@ import { ExamResult } from '../../../core/models';
 
         <!-- Score principal -->
         <div class="flex justify-center mb-8 animate-scaleIn">
-          <div class="card-stat text-center px-12 py-8 shadow-forest-lg">
-            <div class="card-stat__label text-sm">Puntuación</div>
-            <div class="card-stat__value font-display text-5xl text-forest">
+          <div class="card-hero text-center px-12 py-8">
+            <div class="card-stat__label text-sm">Puntuacion</div>
+            <div class="font-display text-5xl font-extrabold text-white">
               {{ examResult()?.score }}%
             </div>
-            <div class="card-stat__desc">Resultado final</div>
+            <div class="card-stat__desc text-fog">Resultado final</div>
           </div>
         </div>
 
-        <!-- Estadísticas detalladas -->
+        <!-- Estadisticas detalladas -->
         <div class="grid-stats mb-6 stagger-children">
           <div class="card-stat hover-lift animate-fadeInUp">
             <div class="flex items-center gap-3">
@@ -166,10 +166,7 @@ import { ExamResult } from '../../../core/models';
       </div>
 
       <!-- Acciones -->
-      <div
-        class="flex-row justify-center animate-fadeInUp"
-        style="flex-wrap: wrap; justify-content: center;"
-      >
+      <div class="flex flex-wrap items-center justify-center gap-4 animate-fadeInUp">
         <button type="button" (click)="startNewExam()" class="btn btn-primary hover-lift">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -196,13 +193,7 @@ import { ExamResult } from '../../../core/models';
       </div>
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class ResultsComponent implements OnInit {
   private examState = inject(ExamStateService);

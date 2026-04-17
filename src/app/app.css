@@ -1,4 +1,4 @@
-/* Root component — Forest DS overrides */
+/* Root component — Forest DS */
 :host {
   display: block;
 }
@@ -41,7 +41,7 @@
   top: -40px;
   left: 0;
   padding: 8px 16px;
-  background: var(--color-forest-900, #0F172A);
+  background: var(--forest-900);
   color: white;
   z-index: 1000;
   transition: top 0.2s;
@@ -53,47 +53,45 @@
   top: 0;
 }
 
-main {
-  flex: 1;
-}
-
-/* ── Header positioning (required for mobile dropdown) ── */
-.navbar {
-  position: relative;
-}
-
-/* ── Hamburger toggle ── */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  padding: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.menu-toggle__bar {
-  width: 20px;
-  height: 2px;
-  background: var(--color-forest-700, #2D3B35);
-  border-radius: 2px;
-  transition: transform 0.2s;
-}
-
-/* ── Responsive navbar nav ── */
-.app-nav {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
+/* ── Navigation links — active state ── */
 .nav-link {
   font-size: 13px;
   padding: 6px 12px;
   white-space: nowrap;
+  text-decoration: none;
 }
 
-/* ── Footer links ── */
+.nav-link.active {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* ── Footer ── */
+.app-footer {
+  background: linear-gradient(135deg, #04202C 0%, #1A3036 50%, #304040 100%);
+  color: var(--forest-200);
+}
+
+.app-footer a {
+  color: var(--forest-200);
+  text-decoration: none;
+  transition: color var(--duration-normal) ease;
+}
+
+.app-footer a:hover {
+  color: white;
+}
+
+.footer-heading {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--forest-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -103,16 +101,13 @@ main {
 
 /* ── Mobile breakpoint ── */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
   .app-nav {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: var(--color-bg-surface);
     flex-direction: column;
     padding: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);

@@ -18,8 +18,8 @@ import { LoggingService } from '../../../core/services/logging.service';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="stack-lg animate-fadeInUp">
-      <div style="margin-bottom: 16px;">
-        <a routerLink="/certifications" class="btn btn-ghost" style="font-size: 12px;">
+      <div class="mb-4">
+        <a routerLink="/certifications" class="btn btn-ghost">
           <svg
             width="14"
             height="14"
@@ -34,7 +34,7 @@ import { LoggingService } from '../../../core/services/logging.service';
         </a>
       </div>
       @if (loading()) {
-        <div class="card" style="text-align: center; padding: 48px;">
+        <div class="card text-center py-12">
           <p class="text-pine">Cargando configuracion CCA-F...</p>
         </div>
       } @else if (error()) {
@@ -54,25 +54,25 @@ import { LoggingService } from '../../../core/services/logging.service';
           </p>
 
           @if (overallProgress().ccafAttempts > 0) {
-            <div style="display: flex; gap: 24px; margin-top: 16px;">
+            <div class="flex gap-6 mt-4 justify-center">
               <div>
-                <span class="text-pine" style="font-size: 0.8125rem;">Mejor Score</span>
-                <div class="text-forest font-mono" style="font-size: 1.5rem; font-weight: 700;">
+                <span class="text-on-dark-muted text-xs">Mejor Score</span>
+                <div class="text-on-dark font-mono text-2xl font-bold">
                   {{ overallProgress().ccafBestScore }}/{{
                     ccafConfig()?.maxScore ?? configSvc.ccafMaxScore
                   }}
                 </div>
               </div>
               <div>
-                <span class="text-pine" style="font-size: 0.8125rem;">Intentos</span>
-                <div class="text-forest font-mono" style="font-size: 1.5rem; font-weight: 700;">
+                <span class="text-on-dark-muted text-xs">Intentos</span>
+                <div class="text-on-dark font-mono text-2xl font-bold">
                   {{ overallProgress().ccafAttempts }}
                 </div>
               </div>
             </div>
           }
 
-          <div style="margin-top: 24px;">
+          <div class="mt-6">
             <a routerLink="/ccaf/exam" class="btn btn-cta">Comenzar Examen CCA-F</a>
           </div>
         </div>
@@ -113,20 +113,18 @@ import { LoggingService } from '../../../core/services/logging.service';
             puntuacion ponderada.
           </p>
 
-          <div class="grid-features stagger-children" style="margin-top: 16px;">
+          <div class="grid-features stagger-children mt-4">
             @for (domain of domains(); track domain.code) {
-              <div class="card hover-lift animate-fadeInUp">
-                <div
-                  style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;"
-                >
+              <div class="card-feature hover-lift animate-fadeInUp">
+                <div class="flex items-center justify-between mb-2">
                   <span class="badge badge-info">{{ domain.code }}</span>
                   <span class="tag font-mono tag-counter">{{ domainWeightPercent(domain) }}%</span>
                 </div>
 
-                <h3 style="margin: 8px 0 4px; font-weight: 600;" class="text-forest">
+                <h3 class="text-forest font-semibold mt-2 mb-1">
                   {{ domain.name }}
                 </h3>
-                <p style="margin: 0 0 12px; font-size: 0.875rem;" class="text-pine">
+                <p class="text-pine text-sm mb-3">
                   {{ domain.description }}
                 </p>
 
@@ -146,21 +144,20 @@ import { LoggingService } from '../../../core/services/logging.service';
           <h2 class="page-header__title">Recursos de Estudio</h2>
           <p class="page-header__desc">Cursos y materiales recomendados para cada dominio.</p>
 
-          <div class="grid-features stagger-children" style="margin-top: 16px;">
+          <div class="grid-features stagger-children mt-4">
             @for (domain of domains(); track domain.code) {
-              <div class="card-compact hover-lift" style="padding: 16px;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                  <span class="badge badge-info font-mono" style="font-size: 11px;">{{
+              <div class="card-feature hover-lift p-4">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="badge badge-info font-mono text-xs">{{
                     domain.code
                   }}</span>
-                  <span class="text-forest" style="font-weight: 600; font-size: 0.875rem;">{{
+                  <span class="text-forest font-semibold text-sm">{{
                     domain.name
                   }}</span>
                 </div>
                 <a
                   routerLink="/tracks"
-                  class="btn btn-ghost"
-                  style="font-size: 0.8125rem; width: 100%; justify-content: center;"
+                  class="btn btn-ghost w-full justify-center text-sm"
                   >Ver Cursos</a
                 >
               </div>
@@ -171,21 +168,15 @@ import { LoggingService } from '../../../core/services/logging.service';
         <div class="divider"></div>
 
         <!-- Bottom CTA -->
-        <div style="text-align: center;" class="animate-fadeInUp">
+        <div class="text-center animate-fadeInUp">
           <a routerLink="/ccaf/exam" class="btn btn-primary">Configurar e Iniciar Examen</a>
-          <span style="margin: 0 12px;" class="text-pine">o</span>
+          <span class="text-pine mx-3">o</span>
           <a routerLink="/tracks" class="btn btn-secondary">Explorar Tracks de Aprendizaje</a>
         </div>
       }
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class CCAFHomeComponent implements OnInit {
   private destroyRef = inject(DestroyRef);

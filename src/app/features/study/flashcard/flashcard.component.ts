@@ -25,12 +25,13 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
       </div>
 
       @if (loading()) {
-        <div class="card-section" style="text-align: center; padding: 60px 20px;">
-          <p style="font-size: 16px; color: var(--color-text-muted);">Cargando flashcards...</p>
+        <div class="card-section text-center py-16 px-5">
+          <div class="loading-dots mx-auto"><span></span><span></span><span></span></div>
+          <p class="text-gray-500 text-base mt-4">Cargando flashcards...</p>
         </div>
       } @else if (filteredQuestions().length === 0) {
-        <div class="card-section animate-fadeInUp" style="text-align: center; padding: 60px 20px;">
-          <p style="font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px;">
+        <div class="card-section animate-fadeInUp text-center py-16 px-5">
+          <p class="text-gray-500 text-base mb-4">
             No se encontraron flashcards para este track.
           </p>
           <button type="button" class="btn btn-secondary" (click)="goBack()">
@@ -40,8 +41,7 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
       } @else {
         <!-- Progress -->
         <div
-          class="animate-fadeInUp"
-          style="margin-bottom: 24px;"
+          class="animate-fadeInUp mb-6"
           role="status"
           aria-live="polite"
           [attr.aria-label]="
@@ -54,13 +54,12 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
             </span>
           </div>
           <div
-            class="progress"
+            class="progress mt-2"
             role="progressbar"
             [attr.aria-valuenow]="progressPercent()"
             aria-valuemin="0"
             aria-valuemax="100"
             [attr.aria-label]="'Progreso: ' + progressPercent() + '%'"
-            style="margin-top: 8px;"
           >
             <div class="progress__bar" [style.width.%]="progressPercent()"></div>
           </div>
@@ -80,18 +79,14 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
         </div>
 
         <!-- Difficulty filter -->
-        <div class="animate-fadeInUp" style="margin-top: 28px;">
-          <div
-            style="font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;"
-          >
-            Filtrar por dificultad
-          </div>
+        <div class="animate-fadeInUp mt-7">
+          <div class="label mb-2">Filtrar por dificultad</div>
           <div class="filter-pills" role="group" aria-label="Filtrar por dificultad">
             @for (pill of difficultyPills; track pill.value) {
               <button
                 type="button"
                 class="filter-pill"
-                [class.filter-pill--active]="selectedDifficulty() === pill.value"
+                [class.active]="selectedDifficulty() === pill.value"
                 (click)="setDifficulty(pill.value)"
                 [attr.aria-label]="'Filtrar dificultad: ' + pill.label"
                 [attr.aria-pressed]="selectedDifficulty() === pill.value"
@@ -103,34 +98,25 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
         </div>
 
         <!-- Stats -->
-        <div class="divider" style="margin: 24px 0;"></div>
-        <div
-          class="animate-fadeInUp"
-          style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;"
-        >
+        <div class="divider my-6"></div>
+        <div class="grid-stats animate-fadeInUp mb-6">
           <div class="card-stat">
-            <span class="font-mono text-forest" style="font-size: 24px; font-weight: 700;">{{
-              reviewedCount()
-            }}</span>
-            <span style="font-size: 13px; color: var(--color-text-muted);">Revisadas</span>
+            <span class="card-stat__value font-mono text-forest">{{ reviewedCount() }}</span>
+            <span class="card-stat__label">Revisadas</span>
           </div>
           <div class="card-stat">
-            <span class="font-mono text-pine" style="font-size: 24px; font-weight: 700;">{{
-              remainingCount()
-            }}</span>
-            <span style="font-size: 13px; color: var(--color-text-muted);">Pendientes</span>
+            <span class="card-stat__value font-mono text-pine">{{ remainingCount() }}</span>
+            <span class="card-stat__label">Pendientes</span>
           </div>
           <div class="card-stat">
-            <span class="font-mono" style="font-size: 24px; font-weight: 700;">{{
-              filteredQuestions().length
-            }}</span>
-            <span style="font-size: 13px; color: var(--color-text-muted);">Total</span>
+            <span class="card-stat__value font-mono">{{ filteredQuestions().length }}</span>
+            <span class="card-stat__label">Total</span>
           </div>
         </div>
       }
 
       <!-- Back button -->
-      <div style="margin-top: 16px;">
+      <div class="mt-4">
         <button type="button" class="btn btn-secondary" (click)="goBack()">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
             <path
@@ -144,15 +130,7 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
       </div>
     </div>
   `,
-  styles: [
-    `
-      .filter-pill--active {
-        background: var(--forest-900) !important;
-        color: white !important;
-        border-color: var(--forest-900) !important;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class FlashcardComponent implements OnInit {
   private destroyRef = inject(DestroyRef);

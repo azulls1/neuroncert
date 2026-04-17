@@ -21,18 +21,21 @@ import { CurriculumService, ProgressService } from '../../../core/services';
       </div>
     } @else if (track(); as t) {
       <div class="stack-lg animate-fadeInUp">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+          <a routerLink="/tracks">Tracks</a>
+          <span>/</span>
+          <span class="breadcrumb__current">{{ t.title }}</span>
+        </nav>
+
         <!-- Page Header -->
         <div class="page-header">
           <h1 class="page-header__title font-display">{{ t.title }}</h1>
           <p class="page-header__desc">{{ t.description }}</p>
-          <div
-            style="display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap;"
-          >
+          <div class="flex items-center gap-2 mt-2 flex-wrap">
             <span class="badge badge-info">Nivel {{ t.level }}</span>
             <span class="tag font-mono">{{ t.platform }}</span>
-            <span style="font-size: 0.875rem;" class="text-pine"
-              >{{ t.estimatedHours }}h estimadas</span
-            >
+            <span class="text-pine text-sm">{{ t.estimatedHours }}h estimadas</span>
           </div>
         </div>
 
@@ -74,16 +77,9 @@ import { CurriculumService, ProgressService } from '../../../core/services';
           <div class="tab-panel animate-fadeInUp">
             <div class="alert alert-info">
               <div class="alert__icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="16" x2="12" y2="12" />
                   <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -95,7 +91,7 @@ import { CurriculumService, ProgressService } from '../../../core/services';
                 >
               </div>
             </div>
-            <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+            <div class="flex flex-wrap gap-3 mt-4">
               <a class="btn btn-primary" [routerLink]="['/study/flashcards', t.id]"
                 >Iniciar Flashcards</a
               >
@@ -109,18 +105,11 @@ import { CurriculumService, ProgressService } from '../../../core/services';
         <!-- Practice Tab -->
         @if (activeTab() === 'practice') {
           <div class="tab-panel animate-fadeInUp">
-            <div class="alert alert-info" style="margin-bottom: 20px;">
+            <div class="alert alert-info mb-5">
               <div class="alert__icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <path
                     d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
                   />
@@ -131,7 +120,7 @@ import { CurriculumService, ProgressService } from '../../../core/services';
                 <span>Responde preguntas una por una con feedback inmediato.</span>
               </div>
             </div>
-            <div class="grid-stats" style="margin-bottom: 20px;">
+            <div class="grid-stats mb-5">
               <div class="card-stat">
                 <span class="card-stat__value">{{ totalQuestions() }}</span>
                 <span class="card-stat__label">Preguntas</span>
@@ -145,7 +134,7 @@ import { CurriculumService, ProgressService } from '../../../core/services';
                 <span class="card-stat__label">Estimado</span>
               </div>
             </div>
-            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <div class="flex flex-wrap gap-3">
               <a class="btn btn-primary" [routerLink]="['/tracks', t.id, 'practice']"
                 >Iniciar Practica</a
               >
@@ -174,7 +163,7 @@ import { CurriculumService, ProgressService } from '../../../core/services';
                 <span class="card-stat__label">Dificultad</span>
               </div>
             </div>
-            <div style="margin-top: 16px;">
+            <div class="mt-4">
               <a
                 class="btn btn-cta"
                 [routerLink]="['/exam/start']"
@@ -187,22 +176,16 @@ import { CurriculumService, ProgressService } from '../../../core/services';
 
         <!-- Module List -->
         <div class="divider"></div>
-        <h2 class="text-forest" style="font-size: 1.25rem; font-weight: 600;">Modulos</h2>
+        <h2 class="text-forest text-xl font-semibold">Modulos</h2>
         <div class="stack">
           @for (mod of t.modules; track mod.id) {
-            <div class="card-compact hover-lift">
-              <div
-                style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;"
-              >
-                <div style="flex: 1; min-width: 0;">
-                  <h3 style="font-weight: 600; margin: 0 0 4px;" class="text-forest">
-                    {{ mod.title }}
-                  </h3>
-                  <p style="margin: 0; font-size: 0.875rem;" class="text-pine">
-                    {{ mod.description }}
-                  </p>
+            <div class="card-section hover-lift">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-forest font-semibold mb-1">{{ mod.title }}</h3>
+                  <p class="text-pine text-sm m-0">{{ mod.description }}</p>
                 </div>
-                <span class="badge badge-info" style="flex-shrink: 0;"
+                <span class="badge badge-info shrink-0"
                   >{{ mod.questionCount }} preguntas</span
                 >
               </div>
@@ -216,35 +199,20 @@ import { CurriculumService, ProgressService } from '../../../core/services';
     } @else {
       <div class="empty-state animate-fadeInUp">
         <div class="empty-state__icon">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
         </div>
         <h3 class="empty-state__title">Track no encontrado</h3>
         <p class="empty-state__desc">El track de aprendizaje solicitado no pudo ser encontrado.</p>
-        <a class="btn btn-secondary" routerLink="/tracks" style="margin-top: 16px;"
-          >Volver a Tracks</a
-        >
+        <a class="btn btn-secondary mt-4" routerLink="/tracks">Volver a Tracks</a>
       </div>
     }
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class TrackDetailComponent implements OnInit {
   private destroyRef = inject(DestroyRef);

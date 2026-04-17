@@ -19,8 +19,9 @@ import { LoggingService } from '../../../core/services/logging.service';
   template: `
     <div class="stack-lg animate-fadeInUp">
       @if (loading()) {
-        <div class="card" style="text-align: center; padding: 48px;">
-          <p class="text-pine">Cargando preguntas de practica...</p>
+        <div class="card text-center py-12">
+          <div class="loading-dots mx-auto"><span></span><span></span><span></span></div>
+          <p class="text-pine mt-4">Cargando preguntas de practica...</p>
         </div>
       } @else if (error()) {
         <div class="alert alert-warning">
@@ -29,7 +30,7 @@ import { LoggingService } from '../../../core/services/logging.service';
             <span>{{ error() }}</span>
           </div>
         </div>
-        <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+        <div class="flex flex-wrap gap-3 mt-4">
           <a class="btn btn-secondary" [routerLink]="['/tracks', trackId]">Volver al Track</a>
         </div>
       } @else if (completed()) {
@@ -39,44 +40,32 @@ import { LoggingService } from '../../../core/services/logging.service';
           <p class="page-header__desc">{{ track()?.title ?? 'Track' }}</p>
         </div>
 
-        <div class="card-hero gradient-dark dark-surface" style="text-align: center;">
-          <div style="font-size: 3rem; font-weight: 800;" class="font-mono">
+        <div class="card-hero gradient-dark dark-surface text-center">
+          <div class="font-mono text-5xl font-extrabold text-on-dark">
             {{ correctCount() }}/{{ questions().length }}
           </div>
-          <div class="text-pine" style="margin-top: 4px;">{{ scorePercent() }}% correctas</div>
+          <div class="text-on-dark-muted mt-1">{{ scorePercent() }}% correctas</div>
 
-          <div
-            class="progress-labeled"
-            style="margin-top: 24px; max-width: 400px; margin-left: auto; margin-right: auto;"
-          >
+          <div class="progress-labeled mt-6 max-w-[400px] mx-auto">
             <div class="progress">
               <div class="progress__bar" [style.width.%]="scorePercent()"></div>
             </div>
             <span class="progress-labeled__value">{{ scorePercent() }}%</span>
           </div>
 
-          <div
-            style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 24px;"
-          >
+          <div class="flex flex-wrap gap-6 justify-center mt-6">
             <div>
-              <div class="text-forest font-mono" style="font-size: 1.5rem; font-weight: 700;">
-                {{ correctCount() }}
-              </div>
-              <div class="text-pine" style="font-size: 0.8125rem;">Correctas</div>
+              <div class="font-mono text-2xl font-bold text-on-dark">{{ correctCount() }}</div>
+              <div class="text-on-dark-muted text-[0.8125rem]">Correctas</div>
             </div>
             <div>
-              <div
-                class="font-mono"
-                style="font-size: 1.5rem; font-weight: 700; color: var(--color-red-600, #dc2626);"
-              >
-                {{ incorrectCount() }}
-              </div>
-              <div class="text-pine" style="font-size: 0.8125rem;">Incorrectas</div>
+              <div class="font-mono text-2xl font-bold text-red-400">{{ incorrectCount() }}</div>
+              <div class="text-on-dark-muted text-[0.8125rem]">Incorrectas</div>
             </div>
           </div>
         </div>
 
-        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <div class="flex flex-wrap gap-3 justify-center">
           <button class="btn btn-primary" (click)="retry()">Reintentar Practica</button>
           <a
             class="btn btn-secondary"
@@ -96,16 +85,9 @@ import { LoggingService } from '../../../core/services/logging.service';
         <div class="card-section">
           <div class="empty-state">
             <div class="empty-state__icon">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round">
                 <path
                   d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
                 />
@@ -115,7 +97,7 @@ import { LoggingService } from '../../../core/services/logging.service';
             <p class="empty-state__desc">Aun no hay preguntas de practica para este track.</p>
           </div>
 
-          <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
+          <div class="flex flex-wrap gap-3 mt-5">
             <a class="btn btn-primary" [routerLink]="['/study/flashcards', trackId]"
               >Probar Flashcards</a
             >
@@ -128,7 +110,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           <h1 class="page-header__title font-display">Practica: {{ track()?.title ?? 'Track' }}</h1>
           <p class="page-header__desc">
             Pregunta {{ currentIndex() + 1 }} de {{ questions().length }}
-            <span class="text-pine" style="margin-left: 12px;">
+            <span class="text-pine ml-3">
               {{ correctCount() }} correctas, {{ incorrectCount() }} incorrectas
             </span>
           </p>
@@ -146,35 +128,33 @@ import { LoggingService } from '../../../core/services/logging.service';
 
         <!-- Question Card -->
         <div class="card animate-fadeInUp">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+          <div class="flex items-center gap-2 mb-4">
             <span class="badge badge-info">{{ currentQuestion()!.domainCode }}</span>
             <span class="tag">{{ currentQuestion()!.difficulty }}</span>
           </div>
 
           @if (currentQuestion()!.context) {
-            <div class="alert alert-info" style="margin-bottom: 16px;">
+            <div class="alert alert-info mb-4">
               <div class="alert__content">
                 <span>{{ currentQuestion()!.context }}</span>
               </div>
             </div>
           }
 
-          <p style="font-weight: 600; font-size: 1.0625rem; margin-bottom: 4px;">
+          <p class="font-semibold text-[1.0625rem] mb-1">
             {{ currentQuestion()!.text }}
           </p>
           @if (currentQuestion()!.textEs) {
-            <p
-              style="font-size: 14px; color: #5B7065; margin: 0 0 20px; padding: 8px 12px; background: #F7F9F8; border-radius: 8px; border-left: 3px solid #9EADA3; line-height: 1.5;"
-            >
+            <p class="text-sm text-pine mb-5 py-2 px-3 bg-gray-50 rounded-lg border-l-[3px] border-moss leading-relaxed">
               {{ currentQuestion()!.textEs }}
             </p>
           }
 
           <!-- Options -->
-          <div class="stack-sm">
+          <div class="flex flex-col gap-2">
             @for (option of currentQuestion()!.options; track option.id) {
               <button
-                class="card-compact"
+                class="card-compact w-full text-left cursor-pointer border-2 border-transparent transition-all"
                 [class.option-selected]="selectedOptionId() === option.id"
                 [class.option-correct]="
                   answered() && option.id === currentQuestion()!.correctOptionId
@@ -187,34 +167,23 @@ import { LoggingService } from '../../../core/services/logging.service';
                 [disabled]="answered()"
                 (click)="selectOption(option.id)"
                 [attr.aria-label]="'Opcion ' + getOptionLabel(option.order) + ': ' + option.text"
-                style="width: 100%; text-align: left; cursor: pointer; border: 2px solid transparent; transition: all 0.2s;"
               >
-                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                <div class="flex items-start gap-2">
                   @if (answered() && option.id === currentQuestion()!.correctOptionId) {
-                    <span
-                      style="color: var(--color-forest-500, #22c55e); flex-shrink: 0; font-weight: 700;"
-                      >&#10003;</span
-                    >
+                    <span class="text-green-600 shrink-0 font-bold">&#10003;</span>
                   } @else if (
                     answered() &&
                     selectedOptionId() === option.id &&
                     option.id !== currentQuestion()!.correctOptionId
                   ) {
-                    <span
-                      style="color: var(--color-red-500, #ef4444); flex-shrink: 0; font-weight: 700;"
-                      >&#10007;</span
-                    >
+                    <span class="text-red-500 shrink-0 font-bold">&#10007;</span>
                   } @else {
-                    <span style="flex-shrink: 0; visibility: hidden;">&#10003;</span>
+                    <span class="shrink-0 invisible">&#10003;</span>
                   }
-                  <div style="flex: 1;">
+                  <div class="flex-1">
                     <span>{{ option.text }}</span>
                     @if (option.textEs) {
-                      <div
-                        style="font-size: 12px; color: #5B7065; margin-top: 2px; font-style: italic;"
-                      >
-                        {{ option.textEs }}
-                      </div>
+                      <div class="text-xs text-pine mt-0.5 italic">{{ option.textEs }}</div>
                     }
                   </div>
                 </div>
@@ -224,16 +193,14 @@ import { LoggingService } from '../../../core/services/logging.service';
 
           <!-- Explanation (shown after answering) -->
           @if (answered()) {
-            <div class="alert alert-info animate-fadeInUp" style="margin-top: 20px;">
+            <div class="alert alert-info animate-fadeInUp mt-5">
               <div class="alert__content">
                 <div class="alert__title">
                   {{ isCurrentCorrect() ? 'Correcto!' : 'Incorrecto' }}
                 </div>
                 @if (currentQuestion()!.explanationEs) {
-                  <div style="margin-bottom: 8px;">{{ currentQuestion()!.explanationEs }}</div>
-                  <div
-                    style="font-size: 12px; color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle, #EFF2F0); padding-top: 8px;"
-                  >
+                  <div class="mb-2">{{ currentQuestion()!.explanationEs }}</div>
+                  <div class="text-xs text-gray-500 border-t border-gray-100 pt-2">
                     <strong>EN:</strong> {{ currentQuestion()!.explanation }}
                   </div>
                 } @else {
@@ -245,7 +212,7 @@ import { LoggingService } from '../../../core/services/logging.service';
         </div>
 
         <!-- Navigation -->
-        <div style="display: flex; gap: 12px; justify-content: space-between;">
+        <div class="flex justify-between gap-3">
           <div>
             @if (currentIndex() > 0) {
               <button class="btn btn-ghost" (click)="goToPrevious()">Anterior</button>
@@ -268,27 +235,19 @@ import { LoggingService } from '../../../core/services/logging.service';
   `,
   styles: [
     `
-      :host {
-        display: block;
-      }
-      .stack-sm {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
       .option-selected {
-        border-color: var(--color-forest-300, #86efac) !important;
+        border-color: var(--forest-300, #C9D1C8) !important;
       }
       .option-correct {
-        border-color: var(--color-forest-500, #22c55e) !important;
-        background: var(--color-forest-50, rgba(34, 197, 94, 0.08)) !important;
+        border-color: #16a34a !important;
+        background: #f0fdf4 !important;
       }
       .option-incorrect {
-        border-color: var(--color-red-500, #ef4444) !important;
-        background: var(--color-red-50, rgba(239, 68, 68, 0.08)) !important;
+        border-color: #ef4444 !important;
+        background: #fef2f2 !important;
       }
       button.card-compact:hover:not(:disabled) {
-        border-color: var(--color-forest-300, #86efac);
+        border-color: var(--forest-300, #C9D1C8);
       }
       button.card-compact:disabled {
         cursor: default;

@@ -78,10 +78,11 @@ interface RoadmapData {
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <div class="cert-page">
+    <div class="flex flex-col gap-4">
       @if (loading()) {
-        <div class="card" style="text-align: center; padding: 48px;">
-          <p class="text-pine">Cargando certificaciones...</p>
+        <div class="card text-center py-12">
+          <div class="loading-dots mx-auto"><span></span><span></span><span></span></div>
+          <p class="text-pine mt-4">Cargando certificaciones...</p>
         </div>
       } @else if (error()) {
         <div class="alert alert-warning">
@@ -92,76 +93,52 @@ interface RoadmapData {
         </div>
       } @else {
         <!-- HERO compact -->
-        <div
-          class="card-hero gradient-dark dark-surface"
-          style="padding: 20px 16px; text-align: center;"
-        >
-          <h1
-            class="font-display"
-            style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); font-weight: 700; color: white; margin: 0 0 10px;"
-          >
+        <div class="card-hero gradient-dark dark-surface py-5 px-4 text-center">
+          <h1 class="font-display text-[clamp(1.1rem,3.5vw,1.5rem)] font-bold text-on-dark m-0 mb-2.5">
             {{ totalCerts() }}+ Certificados &middot; {{ platformCount() }} Plataformas
           </h1>
-          <div
-            style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; font-size: 12px;"
-          >
-            <span style="color: #C9D1C8;"
-              ><strong class="font-mono" style="color: white;">{{ totalCerts() }}</strong>
+          <div class="flex flex-wrap gap-3 justify-center text-xs">
+            <span class="text-on-dark-muted"
+              ><strong class="font-mono text-on-dark">{{ totalCerts() }}</strong>
               disponibles</span
             >
-            <span style="color: #C9D1C8;"
-              ><strong class="font-mono" style="color: white;">{{ totalWithUpcoming() }}</strong>
+            <span class="text-on-dark-muted"
+              ><strong class="font-mono text-on-dark">{{ totalWithUpcoming() }}</strong>
               con proximas</span
             >
-            <a routerLink="/ccaf" style="color: #9EADA3; text-decoration: underline;"
-              >Practicar CCA-F</a
-            >
+            <a routerLink="/ccaf" class="text-moss underline">Practicar CCA-F</a>
           </div>
         </div>
 
-        <!-- ============================================================ -->
-        <!-- SECTION 1 — Formal Certification (CCA-F)                     -->
-        <!-- ============================================================ -->
         <!-- CCA-F + Resources in 2 cols -->
         @if (ccafCert(); as cert) {
-          <div class="cert-grid-2">
-            <div class="cert-card" style="border-left: 4px solid #C9A227;">
-              <div class="cert-card__header">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#C9A227"
-                  stroke-width="2"
-                >
+          <div class="grid-2">
+            <div class="card-feature cert-border-gold">
+              <div class="flex items-center flex-wrap gap-2 mb-1.5">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#C9A227" stroke-width="2">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                <span class="cert-card__title">{{ cert.name }}</span>
-                <span class="badge badge-info font-mono" style="font-size: 9px;">CCA-F</span>
+                <span class="font-display text-sm font-bold text-forest">{{ cert.name }}</span>
+                <span class="badge badge-info font-mono text-[9px]">CCA-F</span>
               </div>
-              <p class="cert-card__desc">
+              <p class="text-xs text-gray-500 mb-2 leading-snug">
                 {{ cert.format }} &middot; {{ cert.passingScore }} &middot; {{ cert.price }}
               </p>
               @if (cert.domains?.length) {
                 @for (domain of cert.domains; track domain.name) {
                   <div class="cert-row">
-                    <span>{{ domain.name }}</span
-                    ><span class="font-mono">{{ domain.weight }}%</span>
+                    <span>{{ domain.name }}</span>
+                    <span class="font-mono">{{ domain.weight }}%</span>
                   </div>
                 }
               }
-              <div style="margin-top: 10px;">
-                <a
-                  routerLink="/ccaf"
-                  class="btn btn-primary"
-                  style="font-size: 12px; padding: 5px 12px;"
-                  >Practicar</a
-                >
+              <div class="mt-2.5">
+                <a routerLink="/ccaf" class="btn btn-primary text-xs py-1 px-3">Practicar</a>
               </div>
             </div>
-            <div class="cert-card">
-              <h2 class="cert-card__title" style="margin-bottom: 8px;">Recursos y Preparacion</h2>
+            <div class="card-feature">
+              <h2 class="font-display text-sm font-bold text-forest mb-2">Recursos y Preparacion</h2>
               @if (cert.studyResources?.length) {
                 @for (resource of cert.studyResources; track resource.name) {
                   <a
@@ -174,12 +151,10 @@ interface RoadmapData {
                 }
               }
               @if (cert.recommendedPrep?.length) {
-                <div style="border-top: 1px solid #EFF2F0; margin: 8px 0; padding-top: 8px;">
+                <div class="divider-subtle my-2 pt-2">
                   @for (step of cert.recommendedPrep; track step; let i = $index) {
                     <div class="cert-row">
-                      <span class="font-mono" style="font-weight: 700; color: #04202C;">{{
-                        i + 1
-                      }}</span>
+                      <span class="font-mono font-bold text-forest">{{ i + 1 }}</span>
                       <span>{{ step }}</span>
                     </div>
                   }
@@ -190,136 +165,127 @@ interface RoadmapData {
         }
 
         <!-- ALL PLATFORMS uniform grid -->
-        <div class="cert-grid-3">
+        <div class="grid-features">
           @if (getPlatform('academy'); as p) {
-            <div class="cert-card" [style.border-left]="'4px solid ' + (p.color || '#2D5A3D')">
-              <div class="cert-card__header">
-                <span class="cert-card__title">{{ p.name }}</span
-                ><span class="badge" style="font-size: 9px;"
-                  >{{ countCourses(p) }} certs &middot; {{ p.pricing }}</span
-                >
+            <div class="card-feature" [style.border-left]="'4px solid ' + (p.color || '#2D5A3D')">
+              <div class="flex items-center flex-wrap gap-2 mb-1.5">
+                <span class="font-display text-sm font-bold text-forest">{{ p.name }}</span>
+                <span class="badge text-[9px]">{{ countCourses(p) }} certs &middot; {{ p.pricing }}</span>
               </div>
-              <p class="cert-card__desc">{{ p.description }}</p>
+              <p class="text-xs text-gray-500 mb-2 leading-snug">{{ p.description }}</p>
               @for (layer of p.layers || []; track layer.id) {
-                <div class="cert-layer">{{ layer.name }}</div>
-                <div class="cert-tags">
+                <div class="card-stat__label mt-1.5 mb-0.5">{{ layer.name }}</div>
+                <div class="flex flex-wrap gap-1 mb-1">
                   @for (c of layer.courses; track c.id) {
-                    <span class="cert-tag">{{ c.title }}</span>
+                    <span class="tag text-[10px]">{{ c.title }}</span>
                   }
                 </div>
               }
               @if (p.url) {
-                <a [href]="p.url" target="_blank" class="cert-link">Visitar &#8599;</a>
+                <a [href]="p.url" target="_blank" class="text-xs font-semibold text-forest mt-2 no-underline hover:underline inline-block">Visitar &#8599;</a>
               }
             </div>
           }
           @if (getPlatform('coursera'); as p) {
-            <div class="cert-card" [style.border-left]="'4px solid ' + (p.color || '#0056D2')">
-              <div class="cert-card__header">
-                <span class="cert-card__title">{{ p.name }}</span
-                ><span class="badge" style="font-size: 9px;">{{ countCourses(p) }} certs</span>
+            <div class="card-feature" [style.border-left]="'4px solid ' + (p.color || '#0056D2')">
+              <div class="flex items-center flex-wrap gap-2 mb-1.5">
+                <span class="font-display text-sm font-bold text-forest">{{ p.name }}</span>
+                <span class="badge text-[9px]">{{ countCourses(p) }} certs</span>
               </div>
-              <p class="cert-card__desc">{{ p.description }}</p>
+              <p class="text-xs text-gray-500 mb-2 leading-snug">{{ p.description }}</p>
               @for (spec of p.specializations || []; track spec.id) {
-                <div class="cert-layer">{{ spec.title }}</div>
-                <div class="cert-tags">
+                <div class="card-stat__label mt-1.5 mb-0.5">{{ spec.title }}</div>
+                <div class="flex flex-wrap gap-1 mb-1">
                   @for (c of spec.courses; track c.id) {
-                    <span class="cert-tag">{{ c.title }}</span>
+                    <span class="tag text-[10px]">{{ c.title }}</span>
                   }
                 </div>
               }
               @if (p.individualCourses?.length) {
-                <div class="cert-layer">Individuales</div>
-                <div class="cert-tags">
+                <div class="card-stat__label mt-1.5 mb-0.5">Individuales</div>
+                <div class="flex flex-wrap gap-1 mb-1">
                   @for (c of p.individualCourses; track c.id) {
-                    <span class="cert-tag">{{ c.title }}</span>
+                    <span class="tag text-[10px]">{{ c.title }}</span>
                   }
                 </div>
               }
               @if (p.url) {
-                <a [href]="p.url" target="_blank" class="cert-link">Visitar &#8599;</a>
+                <a [href]="p.url" target="_blank" class="text-xs font-semibold text-forest mt-2 no-underline hover:underline inline-block">Visitar &#8599;</a>
               }
             </div>
           }
           @if (getPlatform('deeplearning-ai'); as p) {
-            <div class="cert-card" [style.border-left]="'4px solid ' + (p.color || '#FF6F00')">
-              <div class="cert-card__header">
-                <span class="cert-card__title">{{ p.name }}</span
-                ><span class="badge" style="font-size: 9px;"
-                  >{{ countCourses(p) }} certs &middot; {{ p.pricing }}</span
-                >
+            <div class="card-feature" [style.border-left]="'4px solid ' + (p.color || '#FF6F00')">
+              <div class="flex items-center flex-wrap gap-2 mb-1.5">
+                <span class="font-display text-sm font-bold text-forest">{{ p.name }}</span>
+                <span class="badge text-[9px]">{{ countCourses(p) }} certs &middot; {{ p.pricing }}</span>
               </div>
-              <p class="cert-card__desc">{{ p.description }}</p>
-              <div class="cert-tags">
+              <p class="text-xs text-gray-500 mb-2 leading-snug">{{ p.description }}</p>
+              <div class="flex flex-wrap gap-1 mb-1">
                 @for (c of p.courses || []; track c.id) {
-                  <span class="cert-tag">{{ c.title }}</span>
+                  <span class="tag text-[10px]">{{ c.title }}</span>
                 }
               </div>
               @if (p.url) {
-                <a [href]="p.url" target="_blank" class="cert-link">Visitar &#8599;</a>
+                <a [href]="p.url" target="_blank" class="text-xs font-semibold text-forest mt-2 no-underline hover:underline inline-block">Visitar &#8599;</a>
               }
             </div>
           }
           @if (getPlatform('third-party'); as p) {
-            <div class="cert-card" [style.border-left]="'4px solid ' + (p.color || '#6B7280')">
-              <div class="cert-card__header">
-                <span class="cert-card__title">{{ p.name }}</span>
+            <div class="card-feature" [style.border-left]="'4px solid ' + (p.color || '#6B7280')">
+              <div class="flex items-center flex-wrap gap-2 mb-1.5">
+                <span class="font-display text-sm font-bold text-forest">{{ p.name }}</span>
               </div>
-              <p class="cert-card__desc">{{ p.description }}</p>
-              <div class="cert-tags">
+              <p class="text-xs text-gray-500 mb-2 leading-snug">{{ p.description }}</p>
+              <div class="flex flex-wrap gap-1 mb-1">
                 @for (c of p.courses || []; track c.id) {
-                  <span class="cert-tag">{{ c.title }}</span>
+                  <span class="tag text-[10px]">{{ c.title }}</span>
                 }
               </div>
             </div>
           }
           @if (upcomingCerts().length) {
-            <div class="cert-card" style="border-left: 4px solid #9CA3AF; opacity: 0.8;">
-              <div class="cert-card__header">
-                <span class="cert-card__title" style="color: #6B7280;">Proximamente</span
-                ><span class="badge" style="font-size: 9px;">{{ upcomingCerts().length }}</span>
+            <div class="card-feature opacity-80" style="border-left: 4px solid #9CA3AF;">
+              <div class="flex items-center flex-wrap gap-2 mb-1.5">
+                <span class="font-display text-sm font-bold text-gray-500">Proximamente</span>
+                <span class="badge text-[9px]">{{ upcomingCerts().length }}</span>
               </div>
               @for (cert of upcomingCerts(); track cert.id) {
                 <div class="cert-row">
-                  <span style="font-weight: 600;">{{ cert.name }}</span>
+                  <span class="font-semibold">{{ cert.name }}</span>
                 </div>
-                <p class="cert-card__desc">{{ cert.focus }}</p>
+                <p class="text-xs text-gray-500 mb-2 leading-snug">{{ cert.focus }}</p>
               }
             </div>
           }
         </div>
 
         <!-- SUMMARIES side by side -->
-        <div class="cert-grid-2">
+        <div class="grid-2">
           @if (certSummaryTypes().length) {
-            <div class="cert-card">
-              <h2 class="cert-card__title" style="margin-bottom: 10px;">
+            <div class="card-feature">
+              <h2 class="font-display text-sm font-bold text-forest mb-2.5">
                 Resumen de Certificaciones
               </h2>
               @for (row of certSummaryTypes(); track row.type) {
                 <div class="cert-row">
-                  <span>{{ row.type }}</span
-                  ><span class="font-mono" style="font-weight: 700; font-size: 16px;">{{
-                    row.count
-                  }}</span
-                  ><span class="font-mono" style="font-size: 11px; color: #9EADA3;">{{
-                    row.price
-                  }}</span>
+                  <span>{{ row.type }}</span>
+                  <span class="font-mono font-bold text-base">{{ row.count }}</span>
+                  <span class="font-mono text-[11px] text-moss">{{ row.price }}</span>
                 </div>
               }
             </div>
           }
           @if (summaryPlatforms().length) {
-            <div class="cert-card">
-              <h2 class="cert-card__title" style="margin-bottom: 10px;">Resumen por Plataforma</h2>
+            <div class="card-feature">
+              <h2 class="font-display text-sm font-bold text-forest mb-2.5">Resumen por Plataforma</h2>
               @for (row of summaryPlatforms(); track row.name) {
                 <div class="cert-row">
-                  <span>{{ row.name }}</span
-                  ><span class="font-mono" style="font-size: 11px;"
+                  <span>{{ row.name }}</span>
+                  <span class="font-mono text-[11px]"
                     >{{ row.courses }} cursos &middot; {{ row.certs }} certs</span
-                  ><span class="font-mono" style="font-size: 11px; color: #9EADA3;">{{
-                    row.price
-                  }}</span>
+                  >
+                  <span class="font-mono text-[11px] text-moss">{{ row.price }}</span>
                 </div>
               }
             </div>
@@ -330,86 +296,18 @@ interface RoadmapData {
   `,
   styles: [
     `
-      :host {
-        display: block;
+      .cert-border-gold {
+        border-left: 4px solid #C9A227;
       }
-      .cert-page {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      /* 2-col grid */
-      .cert-grid-2 {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      @media (min-width: 768px) {
-        .cert-grid-2 {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      /* 3-col grid */
-      .cert-grid-3 {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      @media (min-width: 640px) {
-        .cert-grid-3 {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      @media (min-width: 1100px) {
-        .cert-grid-3 {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-
-      /* Uniform card */
-      .cert-card {
-        background: white;
-        border: 1px solid #eff2f0;
-        border-radius: 12px;
-        padding: 16px;
-        transition: box-shadow 0.2s;
-      }
-      .cert-card:hover {
-        box-shadow: 0 4px 16px rgba(4, 32, 44, 0.06);
-      }
-
-      .cert-card__header {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-bottom: 6px;
-      }
-      .cert-card__title {
-        font-family: 'Sora', sans-serif;
-        font-size: 14px;
-        font-weight: 700;
-        color: #04202c;
-      }
-      .cert-card__desc {
-        font-size: 12px;
-        color: #7d8f84;
-        margin: 0 0 8px;
-        line-height: 1.4;
-      }
-
-      /* Compact row */
       .cert-row {
         display: flex;
         align-items: center;
         gap: 8px;
         padding: 6px 10px;
-        background: #f7f9f8;
+        background: var(--color-bg-muted, #F7F8F7);
         border-radius: 6px;
         font-size: 12px;
-        color: #5b7065;
+        color: var(--color-text-accent, #5B7065);
         margin-bottom: 4px;
       }
       .cert-row span:first-child {
@@ -417,93 +315,12 @@ interface RoadmapData {
       }
       .cert-row--link {
         text-decoration: none;
-        color: #04202c;
+        color: var(--color-text-primary, #04202C);
         cursor: pointer;
-        transition: background 0.15s;
+        transition: background var(--duration-fast) ease;
       }
       .cert-row--link:hover {
-        background: #eff2f0;
-      }
-
-      /* Layer label */
-      .cert-layer {
-        font-size: 11px;
-        font-weight: 600;
-        color: #7d8f84;
-        margin: 6px 0 3px;
-      }
-
-      /* Tags */
-      .cert-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px;
-        margin-bottom: 4px;
-      }
-      .cert-tag {
-        font-size: 10px;
-        padding: 3px 8px;
-        background: #f7f9f8;
-        border: 1px solid #eff2f0;
-        border-radius: 4px;
-        color: #5b7065;
-        white-space: nowrap;
-      }
-
-      /* Link */
-      .cert-link {
-        display: inline-block;
-        font-size: 12px;
-        color: #04202c;
-        font-weight: 600;
-        margin-top: 8px;
-        text-decoration: none;
-      }
-      .cert-link:hover {
-        text-decoration: underline;
-      }
-
-      /* ── Responsive ── */
-      @media (max-width: 639px) {
-        .cert-card {
-          padding: 12px;
-        }
-        .cert-card__title {
-          font-size: 13px;
-        }
-        .cert-card__desc {
-          font-size: 11px;
-        }
-        .cert-card__header {
-          gap: 6px;
-        }
-        .cert-row {
-          flex-wrap: wrap;
-          padding: 5px 8px;
-          font-size: 11px;
-          gap: 4px;
-        }
-        .cert-tag {
-          font-size: 9px;
-          padding: 2px 6px;
-        }
-        .cert-layer {
-          font-size: 10px;
-        }
-      }
-
-      @media (max-width: 479px) {
-        .cert-page {
-          gap: 10px;
-        }
-        .cert-grid-2,
-        .cert-grid-3 {
-          gap: 10px;
-        }
-        .cert-row span:first-child {
-          min-width: 0;
-          word-break: break-word;
-        }
+        background: var(--color-bg-hover, #EFF2F0);
       }
     `,
   ],

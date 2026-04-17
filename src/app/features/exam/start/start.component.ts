@@ -25,7 +25,7 @@ import { LoggingService } from '../../../core/services/logging.service';
     <div class="page-medium">
       <!-- Header -->
       <div class="page-header animate-fadeInUp">
-        <h1 class="page-header__title">Configurar Simulacro</h1>
+        <h1 class="page-header__title font-display">Configurar Simulacro</h1>
         <p class="page-header__desc">
           {{ headerDescription() }}
         </p>
@@ -42,7 +42,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           <form (ngSubmit)="startExam()" #examForm="ngForm">
             <!-- Track context info -->
             @if (currentTrack(); as t) {
-              <div class="alert alert-info" style="margin-bottom: 24px;">
+              <div class="alert alert-info mb-6">
                 <div class="alert__icon">
                   <svg
                     width="20"
@@ -61,7 +61,7 @@ import { LoggingService } from '../../../core/services/logging.service';
                 </div>
                 <div class="alert__content">
                   <div class="alert__title">{{ t.title }}</div>
-                  <div style="font-size: 0.875rem; margin-top: 4px;">
+                  <div class="text-sm mt-1">
                     {{ t.modules.length }} modulos &middot; Nivel {{ t.level }} &middot;
                     {{ t.platform }}
                   </div>
@@ -72,28 +72,23 @@ import { LoggingService } from '../../../core/services/logging.service';
             <!-- Dificultad -->
             <div class="stack-lg">
               <div>
-                <h2 class="label" style="font-size: 16px; margin-bottom: 12px;">
+                <h2 class="label text-base mb-3">
                   Nivel de Dificultad
                 </h2>
                 <div class="form-grid">
                   @for (difficulty of difficultyOptions; track difficulty.value) {
                     <label
-                      class="card-feature hover-lift"
-                      style="cursor: pointer; display: flex; align-items: center; gap: 12px;"
+                      class="card-feature hover-lift cursor-pointer flex items-center gap-3"
                     >
                       <input
                         type="radio"
                         name="difficulty"
                         [value]="difficulty.value"
                         [(ngModel)]="selectedDifficulty"
-                        class="input"
-                        style="width: 16px; height: 16px; flex-shrink: 0;"
+                        class="size-4 shrink-0 accent-forest"
                       />
                       <div>
-                        <div
-                          class="card-stat__label"
-                          style="text-transform: none; font-size: 14px;"
-                        >
+                        <div class="text-sm font-medium text-gray-700">
                           {{ difficulty.label }}
                         </div>
                         <div class="card-stat__desc">{{ difficulty.description }}</div>
@@ -105,7 +100,7 @@ import { LoggingService } from '../../../core/services/logging.service';
 
               <!-- Configuracion del Examen -->
               <div>
-                <h2 class="label" style="font-size: 16px; margin-bottom: 12px;">
+                <h2 class="label text-base mb-3">
                   Configuraci&oacute;n del Examen
                 </h2>
 
@@ -132,7 +127,7 @@ import { LoggingService } from '../../../core/services/logging.service';
                       {{ examConfigTitle() }}: {{ effectiveQuestionCount() }} preguntas,
                       {{ formatDuration(effectiveDurationSec()) }}
                     </div>
-                    <div style="margin-top: 12px;">
+                    <div class="mt-3">
                       <div class="grid-stats">
                         <div class="card-stat">
                           <div class="card-stat__value">{{ effectiveQuestionCount() }}</div>
@@ -155,7 +150,7 @@ import { LoggingService } from '../../../core/services/logging.service';
               </div>
 
               <!-- Botones de accion -->
-              <div class="flex-row flex-row--between" style="justify-content: flex-end; gap: 12px;">
+              <div class="flex justify-end gap-3">
                 <button type="button" (click)="goBack()" class="btn btn-secondary">
                   <svg
                     width="16"
@@ -209,7 +204,7 @@ import { LoggingService } from '../../../core/services/logging.service';
       }
     </div>
   `,
-  styles: [``],
+  styles: [],
 })
 export class StartComponent implements OnInit {
   // Inyeccion de dependencias

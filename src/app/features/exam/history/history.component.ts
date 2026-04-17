@@ -19,16 +19,14 @@ import { ConfigService } from '../../../core/services/config.service';
 
       <!-- Header -->
       <div class="page-header animate-fadeInUp">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
-          <div
-            style="width: 40px; height: 40px; border-radius: 10px; background: rgba(4, 32, 44, 0.1); display: flex; align-items: center; justify-content: center;"
-          >
+        <div class="flex items-center gap-3 mb-1">
+          <div class="card-feature__icon">
             <svg
               width="20"
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#04202C"
+              stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -46,7 +44,7 @@ import { ConfigService } from '../../../core/services/config.service';
 
       <!-- Loading -->
       @if (loading()) {
-        <div class="card-section" style="display: flex; justify-content: center; padding: 48px;">
+        <div class="card-section flex justify-center p-12">
           <div class="loading-dots">
             <span></span>
             <span></span>
@@ -74,7 +72,7 @@ import { ConfigService } from '../../../core/services/config.service';
               <line x1="9" y1="16" x2="13" y2="16" />
             </svg>
             <div class="empty-state__title">No hay examenes registrados</div>
-            <div class="empty-state__desc" style="margin-bottom: 20px;">
+            <div class="empty-state__desc mb-5">
               Realiza tu primer examen para comenzar a ver tu historial aqui.
             </div>
             <a routerLink="/exam/start" class="btn btn-primary hover-lift">
@@ -118,118 +116,54 @@ import { ConfigService } from '../../../core/services/config.service';
         </div>
 
         <!-- Session List -->
-        <div class="stack animate-fadeInUp">
-          @for (session of sessions(); track session.sessionId) {
-            <div class="card hover-lift" style="padding: 20px;">
-              <div
-                style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px;"
-              >
-                <!-- Left: info -->
-                <div style="flex: 1; min-width: 200px;">
-                  <div
-                    style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;"
-                  >
+        <div class="table-wrapper animate-fadeInUp">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Modo</th>
+                <th>Score</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Duracion</th>
+                <th>Resultado</th>
+                <th>Progreso</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (session of sessions(); track session.sessionId) {
+                <tr>
+                  <td>
                     <span class="badge" [ngClass]="getModeBadgeClass(session.difficulty)">
                       {{ getModeLabel(session.difficulty) }}
                     </span>
-                    <span class="badge" [ngClass]="getScoreBadgeClass(getScorePercent(session))">
-                      {{ getScorePercent(session) }}%
-                    </span>
+                  </td>
+                  <td>
+                    <span class="font-mono font-bold">{{ getScorePercent(session) }}%</span>
+                  </td>
+                  <td>
                     @if (isPassed(session)) {
                       <span class="badge badge-active">Aprobado</span>
                     } @else {
                       <span class="badge badge-error">No Aprobado</span>
                     }
-                  </div>
-
-                  <div
-                    style="font-size: 14px; color: var(--color-text-secondary); display: flex; flex-wrap: wrap; gap: 16px;"
-                  >
-                    <span style="display: flex; align-items: center; gap: 4px;">
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                        <line x1="16" y1="2" x2="16" y2="6" />
-                        <line x1="8" y1="2" x2="8" y2="6" />
-                        <line x1="3" y1="10" x2="21" y2="10" />
-                      </svg>
-                      {{ formatDate(session.startTime) }}
-                    </span>
-                    <span style="display: flex; align-items: center; gap: 4px;">
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <circle cx="12" cy="12" r="10" />
-                        <polyline points="12 6 12 12 16 14" />
-                      </svg>
-                      {{ getDuration(session) }}
-                    </span>
-                    <span style="display: flex; align-items: center; gap: 4px;">
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path
-                          d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"
-                        />
-                        <rect x="9" y="3" width="6" height="4" rx="1" />
-                      </svg>
-                      {{ session.correctAnswers }}/{{ session.totalQuestions }} correctas
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Right: score circle -->
-                <div
-                  style="display: flex; align-items: center; justify-content: center; min-width: 64px;"
-                >
-                  <div
-                    style="width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;"
-                    [style.background]="getScoreCircleBg(getScorePercent(session))"
-                    [style.color]="getScoreCircleColor(getScorePercent(session))"
-                  >
-                    {{ getScorePercent(session) }}%
-                  </div>
-                </div>
-              </div>
-
-              <!-- Progress bar -->
-              <div style="margin-top: 12px;">
-                <div class="progress" [ngClass]="getProgressClass(getScorePercent(session))">
-                  <div class="progress__bar" [style.width.%]="getScorePercent(session)"></div>
-                </div>
-              </div>
-            </div>
-          }
+                  </td>
+                  <td class="text-sm text-pine">{{ formatDate(session.startTime) }}</td>
+                  <td class="text-sm text-pine">{{ getDuration(session) }}</td>
+                  <td class="text-sm">{{ session.correctAnswers }}/{{ session.totalQuestions }} correctas</td>
+                  <td>
+                    <div class="progress" [ngClass]="getProgressClass(getScorePercent(session))">
+                      <div class="progress__bar" [style.width.%]="getScorePercent(session)"></div>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
         </div>
       }
 
       <!-- Actions -->
-      <div
-        style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;"
-        class="animate-fadeInUp"
-      >
+      <div class="flex flex-wrap items-center justify-center gap-3 mt-8 animate-fadeInUp">
         <a routerLink="/exam/start" class="btn btn-primary hover-lift">
           <svg
             width="16"
@@ -263,7 +197,7 @@ import { ConfigService } from '../../../core/services/config.service';
           Volver al Dashboard
         </a>
         @if (sessions().length > 0) {
-          <button type="button" (click)="clearHistory()" class="btn btn-ghost">
+          <button type="button" (click)="clearHistory()" class="btn btn-danger">
             <svg
               width="14"
               height="14"
@@ -283,16 +217,7 @@ import { ConfigService } from '../../../core/services/config.service';
       </div>
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-      .mb-6 {
-        margin-bottom: 24px;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class HistoryComponent implements OnInit {
   private historyService = inject(ExamHistoryService);

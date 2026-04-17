@@ -13,7 +13,7 @@ import { ConfigService } from '../../core/services/config.service';
   imports: [CommonModule],
   template: `
     <div
-      class="tag-counter"
+      class="tag-counter relative overflow-hidden transition-slow"
       role="timer"
       aria-live="polite"
       [attr.aria-atomic]="true"
@@ -28,12 +28,12 @@ import { ConfigService } from '../../core/services/config.service';
           clip-rule="evenodd"
         ></path>
       </svg>
-      <span class="font-mono" style="font-size: 16px; font-weight: 700; line-height: 1;">{{
+      <span class="font-mono text-base font-bold leading-none">{{
         formattedTime()
       }}</span>
       @if (showProgress()) {
-        <div class="tb-progress">
-          <div class="tb-progress-bar" [style.width.%]="progressPercentage()"></div>
+        <div class="progress progress--sm absolute bottom-0 left-0 right-0 rounded-none opacity-40">
+          <div class="progress__bar" [style.width.%]="progressPercentage()"></div>
         </div>
       }
     </div>
@@ -44,42 +44,18 @@ import { ConfigService } from '../../core/services/config.service';
         display: inline-flex;
       }
 
-      .tag-counter {
-        position: relative;
-        overflow: hidden;
-        transition: all var(--duration-slow) var(--ease-apple);
-      }
-
-      .tag-counter.tb-warning {
+      .tb-warning {
         background: #fffbeb;
         border-color: #d97706;
         color: #92400e;
         animation: tb-pulse 2s ease-in-out infinite;
       }
 
-      .tag-counter.tb-critical {
+      .tb-critical {
         background: #fef2f2;
         border-color: #dc2626;
         color: #991b1b;
         animation: tb-pulse-critical 1s ease-in-out infinite;
-      }
-
-      .tb-progress {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 9999px 9999px;
-        overflow: hidden;
-      }
-
-      .tb-progress-bar {
-        height: 100%;
-        background: currentColor;
-        opacity: 0.4;
-        transition: width var(--duration-slow) var(--ease-apple);
       }
 
       @keyframes tb-pulse {
@@ -165,7 +141,7 @@ export class TimerBadgeComponent {
   ariaLabel = computed(() => {
     const time = this.formattedTime();
     if (this.isTimeCritical()) {
-      return `Tiempo crítico: ${time} restantes`;
+      return `Tiempo critico: ${time} restantes`;
     } else if (this.isTimeLow()) {
       return `Tiempo bajo: ${time} restantes`;
     } else {
