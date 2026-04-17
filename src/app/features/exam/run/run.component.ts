@@ -34,7 +34,7 @@ import { LoggingService } from '../../../core/services/logging.service';
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 class="font-display text-lg font-bold">Simulador CCA-F Claude AI</h1>
-          <p class="text-sm text-pine">Examen en progreso</p>
+          <p class="text-sm text-forest">Examen en progreso</p>
         </div>
         <div class="flex flex-wrap items-center gap-3">
           <div class="flex flex-wrap items-center gap-2">
@@ -108,7 +108,7 @@ import { LoggingService } from '../../../core/services/logging.service';
               &larr; Anterior
             </button>
 
-            <span class="text-sm text-pine">
+            <span class="text-sm text-forest">
               <strong>{{ examState().currentIndex + 1 }}</strong> de
               <strong>{{ examState().questions.length }}</strong>
             </span>
@@ -170,7 +170,7 @@ import { LoggingService } from '../../../core/services/logging.service';
         </button>
       </div>
 
-      <div class="flex flex-wrap gap-3 text-sm text-pine">
+      <div class="flex flex-wrap gap-3 text-sm text-forest">
         <span>
           <strong>{{ examState().progress.answered }}</strong> Respondidas
         </span>

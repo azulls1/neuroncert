@@ -82,7 +82,7 @@ interface RoadmapData {
       @if (loading()) {
         <div class="card text-center py-12">
           <div class="loading-dots mx-auto"><span></span><span></span><span></span></div>
-          <p class="text-pine mt-4">Cargando certificaciones...</p>
+          <p class="text-forest mt-4">Cargando certificaciones...</p>
         </div>
       } @else if (error()) {
         <div class="alert alert-warning">
@@ -106,7 +106,7 @@ interface RoadmapData {
               ><strong class="font-mono text-on-dark">{{ totalWithUpcoming() }}</strong>
               con proximas</span
             >
-            <a routerLink="/ccaf" class="text-moss underline">Practicar CCA-F</a>
+            <a routerLink="/ccaf" class="text-gray-700 underline">Practicar CCA-F</a>
           </div>
         </div>
 
@@ -122,7 +122,7 @@ interface RoadmapData {
                 <span class="font-display text-sm font-bold text-forest">{{ cert.name }}</span>
                 <span class="badge badge-info font-mono text-[9px]">CCA-F</span>
               </div>
-              <p class="text-xs text-gray-500 mb-2 leading-snug">
+              <p class="text-xs text-gray-700 mb-2 leading-snug">
                 {{ cert.format }} &middot; {{ cert.passingScore }} &middot; {{ cert.price }}
               </p>
               @if (cert.domains?.length) {
@@ -172,7 +172,7 @@ interface RoadmapData {
                 <span class="font-display text-sm font-bold text-forest">{{ p.name }}</span>
                 <span class="badge text-[9px]">{{ countCourses(p) }} certs &middot; {{ p.pricing }}</span>
               </div>
-              <p class="text-xs text-gray-500 mb-2 leading-snug">{{ p.description }}</p>
+              <p class="text-xs text-gray-700 mb-2 leading-snug">{{ p.description }}</p>
               @for (layer of p.layers || []; track layer.id) {
                 <div class="card-stat__label mt-1.5 mb-0.5">{{ layer.name }}</div>
                 <div class="flex flex-wrap gap-1 mb-1">
@@ -192,7 +192,7 @@ interface RoadmapData {
                 <span class="font-display text-sm font-bold text-forest">{{ p.name }}</span>
                 <span class="badge text-[9px]">{{ countCourses(p) }} certs</span>
               </div>
-              <p class="text-xs text-gray-500 mb-2 leading-snug">{{ p.description }}</p>
+              <p class="text-xs text-gray-700 mb-2 leading-snug">{{ p.description }}</p>
               @for (spec of p.specializations || []; track spec.id) {
                 <div class="card-stat__label mt-1.5 mb-0.5">{{ spec.title }}</div>
                 <div class="flex flex-wrap gap-1 mb-1">
@@ -220,7 +220,7 @@ interface RoadmapData {
                 <span class="font-display text-sm font-bold text-forest">{{ p.name }}</span>
                 <span class="badge text-[9px]">{{ countCourses(p) }} certs &middot; {{ p.pricing }}</span>
               </div>
-              <p class="text-xs text-gray-500 mb-2 leading-snug">{{ p.description }}</p>
+              <p class="text-xs text-gray-700 mb-2 leading-snug">{{ p.description }}</p>
               <div class="flex flex-wrap gap-1 mb-1">
                 @for (c of p.courses || []; track c.id) {
                   <span class="tag text-[10px]">{{ c.title }}</span>
@@ -236,7 +236,7 @@ interface RoadmapData {
               <div class="flex items-center flex-wrap gap-2 mb-1.5">
                 <span class="font-display text-sm font-bold text-forest">{{ p.name }}</span>
               </div>
-              <p class="text-xs text-gray-500 mb-2 leading-snug">{{ p.description }}</p>
+              <p class="text-xs text-gray-700 mb-2 leading-snug">{{ p.description }}</p>
               <div class="flex flex-wrap gap-1 mb-1">
                 @for (c of p.courses || []; track c.id) {
                   <span class="tag text-[10px]">{{ c.title }}</span>
@@ -247,14 +247,14 @@ interface RoadmapData {
           @if (upcomingCerts().length) {
             <div class="card-feature opacity-80" style="border-left: 4px solid #9CA3AF;">
               <div class="flex items-center flex-wrap gap-2 mb-1.5">
-                <span class="font-display text-sm font-bold text-gray-500">Proximamente</span>
+                <span class="font-display text-sm font-bold text-gray-700">Proximamente</span>
                 <span class="badge text-[9px]">{{ upcomingCerts().length }}</span>
               </div>
               @for (cert of upcomingCerts(); track cert.id) {
                 <div class="cert-row">
                   <span class="font-semibold">{{ cert.name }}</span>
                 </div>
-                <p class="text-xs text-gray-500 mb-2 leading-snug">{{ cert.focus }}</p>
+                <p class="text-xs text-gray-700 mb-2 leading-snug">{{ cert.focus }}</p>
               }
             </div>
           }
@@ -271,7 +271,7 @@ interface RoadmapData {
                 <div class="cert-row">
                   <span>{{ row.type }}</span>
                   <span class="font-mono font-bold text-base">{{ row.count }}</span>
-                  <span class="font-mono text-[11px] text-moss">{{ row.price }}</span>
+                  <span class="font-mono text-[11px] text-gray-700">{{ row.price }}</span>
                 </div>
               }
             </div>
@@ -285,7 +285,7 @@ interface RoadmapData {
                   <span class="font-mono text-[11px]"
                     >{{ row.courses }} cursos &middot; {{ row.certs }} certs</span
                   >
-                  <span class="font-mono text-[11px] text-moss">{{ row.price }}</span>
+                  <span class="font-mono text-[11px] text-gray-700">{{ row.price }}</span>
                 </div>
               }
             </div>

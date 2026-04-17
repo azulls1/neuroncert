@@ -68,7 +68,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           <div class="card-stat__value font-display text-[clamp(2rem,6vw,3rem)]">
             {{ weightedScore }} / {{ configMaxScore() }}
           </div>
-          <div class="text-pine text-sm mt-2">
+          <div class="text-forest text-sm mt-2">
             Score para aprobar: {{ configPassingScore() }} / {{ configMaxScore() }}
           </div>
         </div>

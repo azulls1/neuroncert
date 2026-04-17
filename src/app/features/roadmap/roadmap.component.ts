@@ -834,28 +834,28 @@ interface PlatformColor {
               <span class="text-xl">📜</span>
               <div>
                 <div class="text-[13px] text-forest font-semibold">Certificado de completacion</div>
-                <div class="text-[11px] text-moss">Gratis al terminar el curso</div>
+                <div class="text-[11px] text-gray-700">Gratis al terminar el curso</div>
               </div>
             </div>
             <div class="roadmap-legend-item">
               <span class="text-xl">🏅</span>
               <div>
                 <div class="text-[13px] text-forest font-semibold">Certificado de Especializacion</div>
-                <div class="text-[11px] text-moss">Al completar todos los cursos</div>
+                <div class="text-[11px] text-gray-700">Al completar todos los cursos</div>
               </div>
             </div>
             <div class="roadmap-legend-item">
               <span class="text-xl">🏆</span>
               <div>
                 <div class="text-[13px] text-forest font-semibold">Certificacion formal</div>
-                <div class="text-[11px] text-moss">Examen supervisado + badge Credly</div>
+                <div class="text-[11px] text-gray-700">Examen supervisado + badge Credly</div>
               </div>
             </div>
             <div class="roadmap-legend-item">
               <span class="text-xl">🔮</span>
               <div>
                 <div class="text-[13px] text-forest font-semibold">Proximamente</div>
-                <div class="text-[11px] text-moss">Anunciado, aun no disponible</div>
+                <div class="text-[11px] text-gray-700">Anunciado, aun no disponible</div>
               </div>
             </div>
           </div>
@@ -869,7 +869,7 @@ interface PlatformColor {
                   class="w-3 h-3 rounded-full border-2 border-white shadow-soft"
                   [style.background]="p.color"
                 ></div>
-                <span class="text-xs text-pine">{{ p.name }}</span>
+                <span class="text-xs text-forest">{{ p.name }}</span>
               </div>
             }
           </div>
@@ -970,7 +970,7 @@ interface PlatformColor {
             @for (cert of upcomingCerts(); track cert.id) {
               <div class="upcoming-card">
                 <h4 class="font-display text-sm font-semibold text-forest m-0">{{ cert.name }}</h4>
-                <p class="text-xs text-gray-500 mt-1 m-0">{{ cert.focus }}</p>
+                <p class="text-xs text-gray-700 mt-1 m-0">{{ cert.focus }}</p>
                 <div class="flex items-center gap-1.5 mt-2">
                   @if (cert.expectedDate) {
                     <span class="tag font-mono text-[10px]">{{ cert.expectedDate }}</span>
@@ -989,7 +989,7 @@ interface PlatformColor {
           <h2 class="font-display text-2xl font-bold text-forest mb-2 text-center">
             Elige Tu Ruta
           </h2>
-          <p class="text-sm text-gray-500 text-center mb-6">
+          <p class="text-sm text-gray-700 text-center mb-6">
             Selecciona tu rol para ver la ruta de certificacion recomendada
           </p>
 
@@ -1010,7 +1010,7 @@ interface PlatformColor {
                 <div class="role-card__stats">
                   <div class="role-card__stat">
                     <span class="font-mono text-xl font-bold text-forest">{{ rp.certCount }}</span>
-                    <span class="text-[10px] text-moss">certs</span>
+                    <span class="text-[10px] text-gray-700">certs</span>
                   </div>
                   <span class="tag font-mono text-[11px]">{{ rp.cost }}</span>
                 </div>
@@ -1087,7 +1087,7 @@ interface PlatformColor {
               <h2 class="font-display text-xl font-bold text-forest m-0">
                 {{ selectedCourseData()!.title }}
               </h2>
-              <p class="text-[0.8125rem] text-pine mt-2 m-0">
+              <p class="text-[0.8125rem] text-forest mt-2 m-0">
                 {{ selectedCourseData()!.description }}
               </p>
             </div>
@@ -1136,7 +1136,7 @@ interface PlatformColor {
             }
 
             @if (selectedCourseData()!.instructor) {
-              <p class="text-[0.8125rem] text-pine mb-4">
+              <p class="text-[0.8125rem] text-forest mb-4">
                 Instructor:
                 <strong class="text-forest">{{ selectedCourseData()!.instructor }}</strong>
               </p>

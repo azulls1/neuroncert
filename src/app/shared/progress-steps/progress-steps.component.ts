@@ -29,21 +29,21 @@ export interface QuestionStatus {
             class="flex flex-col items-center text-center flex-1 py-1.5 px-1 bg-gray-50 rounded-lg"
           >
             <span class="text-lg font-bold leading-none text-forest">{{ answeredCount() }}</span>
-            <span class="text-[10px] text-gray-500 mt-0.5">Resp.</span>
+            <span class="text-[10px] text-gray-700 mt-0.5">Resp.</span>
           </div>
           <div
             class="flex flex-col items-center text-center flex-1 py-1.5 px-1 bg-gray-50 rounded-lg"
           >
             <span class="text-lg font-bold leading-none text-amber-600">{{ flaggedCount() }}</span>
-            <span class="text-[10px] text-gray-500 mt-0.5">Marc.</span>
+            <span class="text-[10px] text-gray-700 mt-0.5">Marc.</span>
           </div>
           <div
             class="flex flex-col items-center text-center flex-1 py-1.5 px-1 bg-gray-50 rounded-lg"
           >
-            <span class="text-lg font-bold leading-none text-gray-500">{{
+            <span class="text-lg font-bold leading-none text-gray-700">{{
               remainingCount()
             }}</span>
-            <span class="text-[10px] text-gray-500 mt-0.5">Rest.</span>
+            <span class="text-[10px] text-gray-700 mt-0.5">Rest.</span>
           </div>
         </div>
       </div>
@@ -90,19 +90,19 @@ export interface QuestionStatus {
       <div class="grid grid-cols-2 gap-1.5">
         <div class="flex items-center gap-1.5">
           <div class="w-3 h-3 rounded-full bg-forest border border-forest"></div>
-          <span class="text-xs text-gray-500">Respondida</span>
+          <span class="text-xs text-gray-700">Respondida</span>
         </div>
         <div class="flex items-center gap-1.5">
           <div class="w-3 h-3 rounded-full bg-amber-600 border border-amber-700"></div>
-          <span class="text-xs text-gray-500">Marcada</span>
+          <span class="text-xs text-gray-700">Marcada</span>
         </div>
         <div class="flex items-center gap-1.5">
           <div class="w-3 h-3 rounded-full bg-gray-50 border-2 border-forest"></div>
-          <span class="text-xs text-gray-500">Actual</span>
+          <span class="text-xs text-gray-700">Actual</span>
         </div>
         <div class="flex items-center gap-1.5">
           <div class="w-3 h-3 rounded-full bg-white border border-gray-200"></div>
-          <span class="text-xs text-gray-500">Sin responder</span>
+          <span class="text-xs text-gray-700">Sin responder</span>
         </div>
       </div>
     </div>

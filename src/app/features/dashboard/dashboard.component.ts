@@ -151,7 +151,7 @@ import { LoggingService } from '../../core/services/logging.service';
                 Ruta paso a paso con {{ trackCount() }}+ cursos en {{ levelCount() }} niveles.
               </p>
             </div>
-            <div class="text-gray-400 shrink-0 opacity-50 transition-all duration-250">
+            <div class="text-gray-600 shrink-0 opacity-50 transition-all duration-250">
               <svg
                 width="20"
                 height="20"
@@ -190,7 +190,7 @@ import { LoggingService } from '../../core/services/logging.service';
                 mas.
               </p>
             </div>
-            <div class="text-gray-400 shrink-0 opacity-50 transition-all duration-250">
+            <div class="text-gray-600 shrink-0 opacity-50 transition-all duration-250">
               <svg
                 width="20"
                 height="20"
@@ -228,7 +228,7 @@ import { LoggingService } from '../../core/services/logging.service';
                 Explora cursos por plataforma y nivel. Encuentra tu siguiente habilidad.
               </p>
             </div>
-            <div class="text-gray-400 shrink-0 opacity-50 transition-all duration-250">
+            <div class="text-gray-600 shrink-0 opacity-50 transition-all duration-250">
               <svg
                 width="20"
                 height="20"
@@ -268,7 +268,7 @@ import { LoggingService } from '../../core/services/logging.service';
                 conceptos.
               </p>
             </div>
-            <div class="text-gray-400 shrink-0 opacity-50 transition-all duration-250">
+            <div class="text-gray-600 shrink-0 opacity-50 transition-all duration-250">
               <svg
                 width="20"
                 height="20"

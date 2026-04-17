@@ -147,8 +147,8 @@ import { ConfigService } from '../../../core/services/config.service';
                       <span class="badge badge-error">No Aprobado</span>
                     }
                   </td>
-                  <td class="text-sm text-pine">{{ formatDate(session.startTime) }}</td>
-                  <td class="text-sm text-pine">{{ getDuration(session) }}</td>
+                  <td class="text-sm text-forest">{{ formatDate(session.startTime) }}</td>
+                  <td class="text-sm text-forest">{{ getDuration(session) }}</td>
                   <td class="text-sm">{{ session.correctAnswers }}/{{ session.totalQuestions }} correctas</td>
                   <td>
                     <div class="progress" [ngClass]="getProgressClass(getScorePercent(session))">

@@ -23,7 +23,7 @@ import { LearningTrack } from '../../../core/models';
 
         <div class="card-section mb-6">
           <h2 class="font-display text-2xl font-bold text-forest mb-2">{{ t.title }}</h2>
-          <p class="text-pine mb-4">{{ t.description }}</p>
+          <p class="text-forest mb-4">{{ t.description }}</p>
 
           <div class="flex flex-wrap gap-2 mb-4">
             @for (tag of t.tags; track tag) {
@@ -73,7 +73,7 @@ import { LearningTrack } from '../../../core/models';
                     <div>
                       <div class="font-semibold text-forest">{{ mod.title }}</div>
                       @if (mod.description) {
-                        <div class="text-pine text-[13px]">{{ mod.description }}</div>
+                        <div class="text-forest text-[13px]">{{ mod.description }}</div>
                       }
                     </div>
                   </div>
@@ -85,7 +85,7 @@ import { LearningTrack } from '../../../core/models';
       } @else {
         <div class="card-section text-center">
           <h2 class="text-forest mb-4">Track no encontrado</h2>
-          <p class="text-pine">No se pudo cargar la informacion del track.</p>
+          <p class="text-forest">No se pudo cargar la informacion del track.</p>
           <a routerLink="/tracks" class="btn btn-secondary mt-4">Volver a Tracks</a>
         </div>
       }

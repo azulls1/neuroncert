@@ -64,7 +64,7 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
         </h2>
         @if (question().textEs) {
           <p
-            class="text-sm text-pine mt-1.5 leading-snug py-2 px-3 bg-gray-50 rounded-lg border-l-3 border-moss"
+            class="text-sm text-forest mt-1.5 leading-snug py-2 px-3 bg-gray-50 rounded-lg border-l-3 border-moss"
           >
             {{ question().textEs }}
           </p>
@@ -73,7 +73,7 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
         @if (question().context) {
           <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 mt-3">
             <div class="text-xs font-semibold text-gray-700 mb-1.5">Contexto:</div>
-            <div class="text-xs text-gray-500 leading-snug">
+            <div class="text-xs text-gray-700 leading-snug">
               {{ question().context }}
             </div>
           </div>
@@ -111,7 +111,7 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
                   {{ option.text }}
                 </div>
                 @if (option.textEs) {
-                  <div class="text-xs text-pine leading-tight mt-0.5 italic">
+                  <div class="text-xs text-forest leading-tight mt-0.5 italic">
                     {{ option.textEs }}
                   </div>
                 }
@@ -125,7 +125,7 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
       <div class="divider-subtle mb-3"></div>
       <div class="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-start">
         @if (question().timeSpent && (question().timeSpent || 0) > 0) {
-          <div class="flex items-center gap-1.5 text-gray-500">
+          <div class="flex items-center gap-1.5 text-gray-700">
             <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fill-rule="evenodd"
@@ -144,7 +144,7 @@ import { formatTime, getOptionLabel, getDifficultyLabel } from '../../core/utils
             <div class="text-xs font-semibold text-gray-700 mb-1">Referencias:</div>
             <ul class="list-none p-0 m-0">
               @for (ref of question().references; track ref) {
-                <li class="text-xs text-gray-500 mb-0.5">{{ ref }}</li>
+                <li class="text-xs text-gray-700 mb-0.5">{{ ref }}</li>
               }
             </ul>
           </div>

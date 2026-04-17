@@ -82,7 +82,7 @@ import { ProgressService } from '../../../core/services/progress.service';
               <h2 class="text-forest font-semibold text-base mt-2 mb-1">
                 {{ track.title }}
               </h2>
-              <p class="text-pine text-sm mb-3">
+              <p class="text-forest text-sm mb-3">
                 {{ track.description }}
               </p>
 
@@ -90,12 +90,12 @@ import { ProgressService } from '../../../core/services/progress.service';
                 <svg
                   width="14" height="14" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="text-moss"
+                  stroke-linejoin="round" class="text-gray-700"
                 >
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                <span class="text-pine text-[0.8125rem]"
+                <span class="text-forest text-[0.8125rem]"
                   >{{ track.estimatedHours }}h estimadas</span
                 >
               </div>

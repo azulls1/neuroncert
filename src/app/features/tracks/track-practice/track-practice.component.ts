@@ -21,7 +21,7 @@ import { LoggingService } from '../../../core/services/logging.service';
       @if (loading()) {
         <div class="card text-center py-12">
           <div class="loading-dots mx-auto"><span></span><span></span><span></span></div>
-          <p class="text-pine mt-4">Cargando preguntas de practica...</p>
+          <p class="text-forest mt-4">Cargando preguntas de practica...</p>
         </div>
       } @else if (error()) {
         <div class="alert alert-warning">
@@ -110,7 +110,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           <h1 class="page-header__title font-display">Practica: {{ track()?.title ?? 'Track' }}</h1>
           <p class="page-header__desc">
             Pregunta {{ currentIndex() + 1 }} de {{ questions().length }}
-            <span class="text-pine ml-3">
+            <span class="text-forest ml-3">
               {{ correctCount() }} correctas, {{ incorrectCount() }} incorrectas
             </span>
           </p>
@@ -145,7 +145,7 @@ import { LoggingService } from '../../../core/services/logging.service';
             {{ currentQuestion()!.text }}
           </p>
           @if (currentQuestion()!.textEs) {
-            <p class="text-sm text-pine mb-5 py-2 px-3 bg-gray-50 rounded-lg border-l-[3px] border-moss leading-relaxed">
+            <p class="text-sm text-forest mb-5 py-2 px-3 bg-gray-50 rounded-lg border-l-[3px] border-moss leading-relaxed">
               {{ currentQuestion()!.textEs }}
             </p>
           }
@@ -183,7 +183,7 @@ import { LoggingService } from '../../../core/services/logging.service';
                   <div class="flex-1">
                     <span>{{ option.text }}</span>
                     @if (option.textEs) {
-                      <div class="text-xs text-pine mt-0.5 italic">{{ option.textEs }}</div>
+                      <div class="text-xs text-forest mt-0.5 italic">{{ option.textEs }}</div>
                     }
                   </div>
                 </div>
@@ -200,7 +200,7 @@ import { LoggingService } from '../../../core/services/logging.service';
                 </div>
                 @if (currentQuestion()!.explanationEs) {
                   <div class="mb-2">{{ currentQuestion()!.explanationEs }}</div>
-                  <div class="text-xs text-gray-500 border-t border-gray-100 pt-2">
+                  <div class="text-xs text-gray-700 border-t border-gray-100 pt-2">
                     <strong>EN:</strong> {{ currentQuestion()!.explanation }}
                   </div>
                 } @else {

@@ -51,7 +51,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
               >
                 {{ result()!.score }}%
               </div>
-              <div class="text-pine text-sm">Puntuacion</div>
+              <div class="text-forest text-sm">Puntuacion</div>
             </div>
 
             @if (result()!.weightedScore !== undefined) {
@@ -62,7 +62,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
                 >
                   {{ result()!.weightedScore }}/1000
                 </div>
-                <div class="text-pine text-sm">Score Ponderado</div>
+                <div class="text-forest text-sm">Score Ponderado</div>
               </div>
             }
 
@@ -82,25 +82,25 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
               <div class="text-forest font-mono text-xl font-bold">
                 {{ result()!.summary.correct }}
               </div>
-              <div class="text-pine text-xs">Correctas</div>
+              <div class="text-forest text-xs">Correctas</div>
             </div>
             <div class="card-compact text-center p-3">
               <div class="font-mono text-xl font-bold text-red-600">
                 {{ result()!.summary.incorrect }}
               </div>
-              <div class="text-pine text-xs">Incorrectas</div>
+              <div class="text-forest text-xs">Incorrectas</div>
             </div>
             <div class="card-compact text-center p-3">
               <div class="font-mono text-xl font-bold text-amber-600">
                 {{ result()!.summary.skipped }}
               </div>
-              <div class="text-pine text-xs">Omitidas</div>
+              <div class="text-forest text-xs">Omitidas</div>
             </div>
             <div class="card-compact text-center p-3">
               <div class="font-mono text-xl font-bold">
                 {{ result()!.summary.flagged }}
               </div>
-              <div class="text-pine text-xs">Marcadas</div>
+              <div class="text-forest text-xs">Marcadas</div>
             </div>
           </div>
         </div>
@@ -208,7 +208,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
                 {{ getQuestionText(item.questionId) }}
               </p>
               @if (getQuestionTextEs(item.questionId)) {
-                <p class="text-sm text-pine m-0 mb-4 p-2 px-3 bg-gray-50 rounded-lg border-l-3 border-moss leading-relaxed">
+                <p class="text-sm text-forest m-0 mb-4 p-2 px-3 bg-gray-50 rounded-lg border-l-3 border-moss leading-relaxed">
                   {{ getQuestionTextEs(item.questionId) }}
                 </p>
               }
@@ -232,7 +232,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
                       <div class="flex-1">
                         <span>{{ option.text }}</span>
                         @if (option.textEs) {
-                          <div class="text-xs text-pine mt-0.5 italic">
+                          <div class="text-xs text-forest mt-0.5 italic">
                             {{ option.textEs }}
                           </div>
                         }
@@ -250,7 +250,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
                     <div class="mb-2">
                       {{ getQuestionExplanationEs(item.questionId) }}
                     </div>
-                    <div class="text-xs text-pine border-t border-gray-200 pt-2">
+                    <div class="text-xs text-forest border-t border-gray-200 pt-2">
                       <strong>EN:</strong> {{ item.explanation }}
                     </div>
                   } @else {
@@ -264,7 +264,7 @@ type FilterMode = 'all' | 'correct' | 'incorrect' | 'skipped';
 
         @if (filteredItems().length === 0) {
           <div class="card text-center p-8">
-            <p class="text-pine">Ninguna pregunta coincide con el filtro seleccionado.</p>
+            <p class="text-forest">Ninguna pregunta coincide con el filtro seleccionado.</p>
           </div>
         }
 

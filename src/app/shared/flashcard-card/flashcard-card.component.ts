@@ -52,7 +52,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
               class="bg-gray-50 border border-gray-200 rounded-lg p-2.5 mb-3 flex flex-col gap-1"
             >
               <span class="text-xs font-semibold text-gray-700">Contexto:</span>
-              <span class="text-xs text-gray-500 leading-snug">{{ question().context }}</span>
+              <span class="text-xs text-gray-700 leading-snug">{{ question().context }}</span>
             </div>
           }
 
@@ -79,7 +79,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
                 }}</span>
                 <div class="flex-1 text-left">
                   <div class="text-xs leading-snug text-forest">{{ option.text }}</div>
-                  <div class="text-xs text-pine leading-tight mt-0.5 italic">
+                  <div class="text-xs text-forest leading-tight mt-0.5 italic">
                     {{ option.textEs || '' }}
                   </div>
                 </div>
@@ -102,7 +102,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
             </div>
           } @else {
             <div
-              class="flex items-center justify-center gap-1.5 text-xs text-gray-500 mt-auto pt-4"
+              class="flex items-center justify-center gap-1.5 text-xs text-gray-700 mt-auto pt-4"
             >
               Selecciona una opcion o voltea para ver la respuesta
             </div>
@@ -131,7 +131,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
                 <div class="flex-1">
                   <div class="text-sm leading-snug">{{ option.text }}</div>
                   @if (option.textEs) {
-                    <div class="text-xs text-gray-400 leading-tight mt-0.5">
+                    <div class="text-xs text-gray-600 leading-tight mt-0.5">
                       {{ option.textEs }}
                     </div>
                   }
@@ -152,7 +152,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
                 {{ question().explanationEs }}
               </div>
               <div
-                class="text-xs leading-snug text-gray-500 border-t border-gray-100 pt-2"
+                class="text-xs leading-snug text-gray-700 border-t border-gray-100 pt-2"
               >
                 <span class="font-semibold">EN:</span> {{ question().explanation }}
               </div>
@@ -166,14 +166,14 @@ import { getOptionLabel, getDifficultyLabel } from '../../core/utils/exam.utils'
               <div class="text-xs font-semibold text-gray-700 mb-1">Referencias:</div>
               <ul class="list-none p-0 m-0">
                 @for (ref of question().references; track ref) {
-                  <li class="text-xs text-gray-500 mb-0.5">{{ ref }}</li>
+                  <li class="text-xs text-gray-700 mb-0.5">{{ ref }}</li>
                 }
               </ul>
             </div>
           }
 
           <div
-            class="flex items-center justify-center gap-1.5 text-xs text-gray-500 mt-auto pt-4"
+            class="flex items-center justify-center gap-1.5 text-xs text-gray-700 mt-auto pt-4"
           >
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
               <path

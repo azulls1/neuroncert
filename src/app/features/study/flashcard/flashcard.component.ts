@@ -27,11 +27,11 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
       @if (loading()) {
         <div class="card-section text-center py-16 px-5">
           <div class="loading-dots mx-auto"><span></span><span></span><span></span></div>
-          <p class="text-gray-500 text-base mt-4">Cargando flashcards...</p>
+          <p class="text-gray-700 text-base mt-4">Cargando flashcards...</p>
         </div>
       } @else if (filteredQuestions().length === 0) {
         <div class="card-section animate-fadeInUp text-center py-16 px-5">
-          <p class="text-gray-500 text-base mb-4">
+          <p class="text-gray-700 text-base mb-4">
             No se encontraron flashcards para este track.
           </p>
           <button type="button" class="btn btn-secondary" (click)="goBack()">
@@ -105,7 +105,7 @@ import { FlashcardCardComponent } from '../../../shared/flashcard-card/flashcard
             <span class="card-stat__label">Revisadas</span>
           </div>
           <div class="card-stat">
-            <span class="card-stat__value font-mono text-pine">{{ remainingCount() }}</span>
+            <span class="card-stat__value font-mono text-forest">{{ remainingCount() }}</span>
             <span class="card-stat__label">Pendientes</span>
           </div>
           <div class="card-stat">

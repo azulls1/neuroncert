@@ -29,7 +29,7 @@ import { LoggingService } from '../../../core/services/logging.service';
 
       @if (catalogLoading()) {
         <div class="card-section animate-fadeInUp text-center py-12">
-          <span class="text-pine">Cargando configuracion del examen...</span>
+          <span class="text-forest">Cargando configuracion del examen...</span>
         </div>
       } @else if (ccafConfig()) {
         <!-- Exam Details Card -->

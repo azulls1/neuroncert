@@ -28,11 +28,11 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
       @if (loading()) {
         <div class="card-section text-center py-16 px-5">
           <div class="loading-dots mx-auto"><span></span><span></span><span></span></div>
-          <p class="text-gray-500 text-base mt-4">Cargando preguntas...</p>
+          <p class="text-gray-700 text-base mt-4">Cargando preguntas...</p>
         </div>
       } @else if (allQuestions().length === 0) {
         <div class="card-section animate-fadeInUp text-center py-16 px-5">
-          <p class="text-gray-500 text-base mb-4">
+          <p class="text-gray-700 text-base mb-4">
             No se encontraron preguntas para este track.
           </p>
           <button type="button" class="btn btn-secondary" (click)="goBack()">
@@ -121,7 +121,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                   {{ question.text }}
                 </h3>
                 @if (question.textEs) {
-                  <p class="text-[13px] text-pine mb-3 py-2 px-3 bg-gray-50 rounded-lg border-l-[3px] border-moss leading-relaxed">
+                  <p class="text-[13px] text-forest mb-3 py-2 px-3 bg-gray-50 rounded-lg border-l-[3px] border-moss leading-relaxed">
                     {{ question.textEs }}
                   </p>
                 }
@@ -142,7 +142,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                       <div class="flex-1">
                         <div class="text-sm leading-relaxed">{{ option.text }}</div>
                         @if (option.textEs) {
-                          <div class="text-xs text-pine mt-0.5 italic">{{ option.textEs }}</div>
+                          <div class="text-xs text-forest mt-0.5 italic">{{ option.textEs }}</div>
                         }
                       </div>
                       @if (option.id === question.correctOptionId) {
@@ -158,7 +158,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                     <div class="text-[13px] font-semibold mb-1">Explicacion</div>
                     @if (question.explanationEs) {
                       <div class="text-[13px] leading-relaxed mb-2">{{ question.explanationEs }}</div>
-                      <div class="text-xs text-gray-500 border-t border-gray-100 pt-2">
+                      <div class="text-xs text-gray-700 border-t border-gray-100 pt-2">
                         <strong>EN:</strong> {{ question.explanation }}
                       </div>
                     } @else {
@@ -173,7 +173,7 @@ import { getOptionLabel, getDifficultyLabel } from '../../../core/utils/exam.uti
                     <div class="label mb-1">Referencias:</div>
                     <ul class="list-none p-0 m-0">
                       @for (ref of question.references; track ref) {
-                        <li class="text-xs text-gray-500 mb-0.5">{{ ref }}</li>
+                        <li class="text-xs text-gray-700 mb-0.5">{{ ref }}</li>
                       }
                     </ul>
                   </div>

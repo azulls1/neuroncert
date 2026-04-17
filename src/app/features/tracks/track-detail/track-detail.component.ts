@@ -35,7 +35,7 @@ import { CurriculumService, ProgressService } from '../../../core/services';
           <div class="flex items-center gap-2 mt-2 flex-wrap">
             <span class="badge badge-info">Nivel {{ t.level }}</span>
             <span class="tag font-mono">{{ t.platform }}</span>
-            <span class="text-pine text-sm">{{ t.estimatedHours }}h estimadas</span>
+            <span class="text-forest text-sm">{{ t.estimatedHours }}h estimadas</span>
           </div>
         </div>
 
@@ -183,7 +183,7 @@ import { CurriculumService, ProgressService } from '../../../core/services';
               <div class="flex items-center justify-between flex-wrap gap-2">
                 <div class="flex-1 min-w-0">
                   <h3 class="text-forest font-semibold mb-1">{{ mod.title }}</h3>
-                  <p class="text-pine text-sm m-0">{{ mod.description }}</p>
+                  <p class="text-forest text-sm m-0">{{ mod.description }}</p>
                 </div>
                 <span class="badge badge-info shrink-0"
                   >{{ mod.questionCount }} preguntas</span

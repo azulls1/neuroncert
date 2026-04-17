@@ -33,7 +33,7 @@ interface StudyResource {
           <h2 class="font-display text-xl font-bold text-forest mb-2">
             CCA-F — Arquitecto Certificado Claude: Fundamentos
           </h2>
-          <p class="text-[0.8125rem] text-pine mb-4">{{ format() }}</p>
+          <p class="text-[0.8125rem] text-forest mb-4">{{ format() }}</p>
 
           <div class="grid-stats mb-5">
             <div class="card-stat">
@@ -88,7 +88,7 @@ interface StudyResource {
                 class="card-compact hover-lift cursor-pointer no-underline flex items-center gap-2"
               >
                 <span class="text-[0.8125rem] text-forest">{{ res.name }}</span>
-                <span class="text-pine ml-auto text-xs">&#8599;</span>
+                <span class="text-forest ml-auto text-xs">&#8599;</span>
               </a>
             }
           </div>

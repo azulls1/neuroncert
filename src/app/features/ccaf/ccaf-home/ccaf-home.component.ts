@@ -35,7 +35,7 @@ import { LoggingService } from '../../../core/services/logging.service';
       </div>
       @if (loading()) {
         <div class="card text-center py-12">
-          <p class="text-pine">Cargando configuracion CCA-F...</p>
+          <p class="text-forest">Cargando configuracion CCA-F...</p>
         </div>
       } @else if (error()) {
         <div class="alert alert-warning">
@@ -124,7 +124,7 @@ import { LoggingService } from '../../../core/services/logging.service';
                 <h3 class="text-forest font-semibold mt-2 mb-1">
                   {{ domain.name }}
                 </h3>
-                <p class="text-pine text-sm mb-3">
+                <p class="text-forest text-sm mb-3">
                   {{ domain.description }}
                 </p>
 
@@ -170,7 +170,7 @@ import { LoggingService } from '../../../core/services/logging.service';
         <!-- Bottom CTA -->
         <div class="text-center animate-fadeInUp">
           <a routerLink="/ccaf/exam" class="btn btn-primary">Configurar e Iniciar Examen</a>
-          <span class="text-pine mx-3">o</span>
+          <span class="text-forest mx-3">o</span>
           <a routerLink="/tracks" class="btn btn-secondary">Explorar Tracks de Aprendizaje</a>
         </div>
       }
