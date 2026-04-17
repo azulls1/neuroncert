@@ -63,7 +63,7 @@ import { LoggingService } from '../../core/services/logging.service';
             experto certificado — todos los caminos estan aqui.
           </p>
           <div class="flex gap-3 justify-center flex-wrap mb-10 animate-fadeInUp">
-            <a routerLink="/roadmap" class="btn btn-primary--on-dark rounded-xl px-7 py-3 font-semibold text-sm no-underline shadow-lg hover-lift">
+            <a routerLink="/roadmap" class="btn rounded-xl px-7 py-3 font-semibold text-sm no-underline shadow-lg hover-lift bg-white text-forest">
               <svg
                 width="20"
                 height="20"
@@ -78,7 +78,7 @@ import { LoggingService } from '../../core/services/logging.service';
               </svg>
               Explorar Roadmap
             </a>
-            <a routerLink="/tracks" class="btn btn-secondary--on-dark rounded-xl px-7 py-3 font-medium text-sm no-underline">
+            <a routerLink="/tracks" class="btn rounded-xl px-7 py-3 font-medium text-sm no-underline bg-white/15 text-white border border-white/40 hover:bg-white/25">
               Ver Todos los Tracks
               <svg
                 width="16"
@@ -534,10 +534,10 @@ import { LoggingService } from '../../core/services/logging.service';
             </div>
 
             <div class="flex gap-3 flex-wrap mt-7">
-              <a routerLink="/roadmap" class="btn btn-primary--on-dark rounded-xl px-6 py-2.5 font-semibold text-sm no-underline hover-lift">
+              <a routerLink="/roadmap" class="btn rounded-xl px-6 py-2.5 font-semibold text-sm no-underline hover-lift bg-white text-forest">
                 Ver Roadmap Completo
               </a>
-              <a routerLink="/ccaf" class="btn btn-secondary--on-dark rounded-xl px-6 py-2.5 font-medium text-sm no-underline">
+              <a routerLink="/ccaf" class="btn rounded-xl px-6 py-2.5 font-medium text-sm no-underline bg-white/15 text-white border border-white/40 hover:bg-white/25">
                 Practicar CCA-F
               </a>
             </div>
